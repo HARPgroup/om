@@ -7,10 +7,10 @@ ln -s /opt/model/p53/p532c-sova/out /opt/model/p53/p532c-sova/tmp/out
 # NAS big links
 sudo mount deqnas:/data /media/NAS
 sudo mount deqnas2:/data /media/NAS2
-ln -s /media/NAS/omdata/p6/tmp/wdm/river /opt/model/p6/p6_gb604/tmp/wdm/river
-ln -s /media/NAS/omdata/p6/tmp/wdm/land /opt/model/p6/p6_gb604/tmp/wdm/land
-ln -s /media/NAS/omdata/p6/out /opt/model/p6/p6_gb604/out
-ln -s /media/NAS/omdata /var/www/html/data
+ln -s /media/model/p6/tmp/wdm/river /opt/model/p6/p6_gb604/tmp/wdm/river
+ln -s /media/model/p6/tmp/wdm/land /opt/model/p6/p6_gb604/tmp/wdm/land
+ln -s /media/model/p6/out /opt/model/p6/p6_gb604/out
+ln -s /media/NAS2/omdata /var/www/html/data
 
 // Libraries
 

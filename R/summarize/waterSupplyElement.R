@@ -23,6 +23,8 @@ pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
 
+finfo <- fn_get_runfile_info(elid, runid,37, site= omsite)
+remote_url <- as.character(finfo$remote_url)
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
 syear = min(dat$year)
 eyear = max(dat$year)

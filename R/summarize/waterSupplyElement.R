@@ -633,6 +633,7 @@ if("impoundment" %in% cols) {
     xlab=paste("Storage and Flows",sdate,"to",edate)
   )
   par(new = TRUE)
+  ymx <- ceiling(max(datpd$impoundment_Qin, datpd$impoundment_Qout, datpd$wd_mgd * 1.547, ylim=c(0,ymx)))
   plot(datpd$impoundment_Qin,col='blue', axes=FALSE, xlab="", ylab="")
   lines(datpd$impoundment_Qout,col='green')
   lines(datpd$wd_mgd * 1.547,col='red')

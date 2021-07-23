@@ -4,7 +4,7 @@
 # dirs/URLs
 
 #----------------------------------------------
-site <- "http://deq2.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
+site <- "http://deq1.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
 #----------------------------------------------
 # Load Libraries
 basepath='/var/www/R';
@@ -23,8 +23,6 @@ pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
 
-finfo <- fn_get_runfile_info(elid, runid)
-remote_url <- finfo$remote_url
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
 syear = min(dat$year)
 eyear = max(dat$year)
@@ -528,7 +526,7 @@ if("impoundment" %in% cols) {
     sep = '/'
   )
   png(fname)
-  ymn <- 1
+  ymn <- 0
   ymx <- 100
   par(mar = c(5,5,2,5))
   plot(
@@ -623,7 +621,7 @@ if("impoundment" %in% cols) {
     sep = '/'
   )
   png(fname)
-  ymn <- 1
+  ymn <- 0
   ymx <- 100
   par(mar = c(5,5,2,5))
   plot(

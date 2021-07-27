@@ -8762,8 +8762,8 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
                error_log("Cache file for runid $cache_id and $elementid MISSING<br>");
             }
             $linkobj = $res['object'];
-            $linkobj->debug = 1;
-            $linkobj->debugmode = 1;
+            //$linkobj->debug = 1;
+            //$linkobj->debugmode = 1;
             array_push($returnArray['cached'], $src_id);
             //$unserobjects[$elementid] = $thisobject;
             

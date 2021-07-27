@@ -1,0 +1,2 @@
+#!/bin/sh
+chgrp www-data /data/omdata/* -R

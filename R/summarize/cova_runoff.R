@@ -31,7 +31,7 @@ if (syear != eyear) {
 message(paste("Restricting dates to", sdate, "and", edate))
 dat <- window(dat, start = sdate, end = edate);
 message("Zooing Runit")
-Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = dat$thisdate);
+Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = as.POSIXct(dat$thisdate));
 
 #boxplot(as.numeric(dat$Runit) ~ dat$year, ylim=c(0,3))
 # get feature attached to this element id using REST

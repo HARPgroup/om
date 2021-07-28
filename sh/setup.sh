@@ -4,6 +4,9 @@
 sudo chown www-data:allmodelers www/om/cache
 # set up cbp to www link
 ln -s /opt/model/p53/p532c-sova/out /opt/model/p53/p532c-sova/tmp/out       
+# Make folder always have specific owner and group 
+
+
 # NAS big links
 sudo mount deqnas:/data /media/NAS
 sudo mount deqnas2:/data /media/NAS2

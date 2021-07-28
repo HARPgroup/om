@@ -28,12 +28,15 @@ if (syear != eyear) {
   sdate <- as.Date(paste0(syear,"-02-01"))
   edate <- as.Date(paste0(eyear,"-12-31"))
 }
+message(paste("Restricting dates to", sdate, "and", edate))
 dat <- window(dat, start = sdate, end = edate);
+message("Calculating Runit")
 dat$Runit <- as.numeric(dat$Qout) / as.numeric(dat$area_sqmi)
 Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = dat$thisdate);
 
 #boxplot(as.numeric(dat$Runit) ~ dat$year, ylim=c(0,3))
 # get feature attached to this element id using REST
+message("Finding model property")
 element <- getProperty(list(pid=pid), base_url, prop)
 # Post up a run summary for this runid
 scen.propname<-paste0('runid_', runid)

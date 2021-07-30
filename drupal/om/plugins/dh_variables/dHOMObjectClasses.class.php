@@ -1026,16 +1026,17 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
       'featureid' => $entity->pid,
       'entity_type' => 'dh_properties',
       'bundle' => 'dh_properties',
+      'bundle' => 'om_element_connection',
       'varid' => dh_varkey2varid('om_element_connection', TRUE),
     );
     $elvar = dh_properties_enforce_singularity($elvar_info, 'singular');
-    dpm($elvar_info, " dh_get_properties(elvar_info, 'singular')");
-    dpm($elvar, " elvar");
+    //dpm($elvar_info, " dh_get_properties(elvar_info, 'singular')");
+    //dpm($elvar, " elvar");
     return $elvar;
   }
   
   public function findRemoteOMElement($entity, &$path) {
-    dpm($entity, "findRemoteOMElement @ depth = $path");
+    //dpm($entity, "findRemoteOMElement @ depth = $path");
     $elid = 0;
     $path[] = $entity->propname;
     $elvar = $this->findRemoteOMElementProp($entity);
@@ -1045,7 +1046,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     } else {
       // get parent
       $parent = $this->getParentEntity($entity);
-      dpm($parent,"Looking at object parent for remote element link.");
+      //dpm($parent,"Looking at object parent for remote element link.");
       if (isset($parent->dh_variables_plugins) and is_array($parent->dh_variables_plugins)) {
         foreach ($parent->dh_variables_plugins as $plugin) {
           if (is_object($plugin) and method_exists($plugin, 'findRemoteOMElement')) {
@@ -1256,7 +1257,7 @@ class dHOMElementConnect extends dHOMBaseObjectClass {
     $parent = $this->getParentEntity($entity);
     // nothing yet - need to exclude om_element_connection properties, or at least nullify settings to prevent redundant updates.
     $propnames = dh_get_dh_propnames($parent->entityType(), $parent->identifier());
-    dpm($propnames, "Propnames ");
+    //dpm($propnames, "Propnames ");
     foreach ($propnames as $propname) {
       // get property by name
       // save the property

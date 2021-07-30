@@ -1029,13 +1029,13 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
       'varid' => dh_varkey2varid('om_element_connection', TRUE),
     );
     $elvar = dh_properties_enforce_singularity($elvar_info, 'singular');
-    //dpm($elvar_info, " dh_get_properties(elvar_info, 'singular')");
-    //dpm($elvar, " elvar");
+    dpm($elvar_info, " dh_get_properties(elvar_info, 'singular')");
+    dpm($elvar, " elvar");
     return $elvar;
   }
   
   public function findRemoteOMElement($entity, &$path) {
-    //dpm($entity, "findRemoteOMElement @ depth = $path");
+    dpm($entity, "findRemoteOMElement @ depth = $path");
     $elid = 0;
     $path[] = $entity->propname;
     $elvar = $this->findRemoteOMElementProp($entity);
@@ -1045,7 +1045,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     } else {
       // get parent
       $parent = $this->getParentEntity($entity);
-      //dpm($parent,"Looking at object parent for remote element link.");
+      dpm($parent,"Looking at object parent for remote element link.");
       if (isset($parent->dh_variables_plugins) and is_array($parent->dh_variables_plugins)) {
         foreach ($parent->dh_variables_plugins as $plugin) {
           if (is_object($plugin) and method_exists($plugin, 'findRemoteOMElement')) {
@@ -2557,6 +2557,7 @@ class dHOMLinkage extends dHOMBaseObjectClass {
     }
     //dpm("Fix int $entity->propvalue");
   }
+  
   
   public function formRowEdit(&$rowform, $entity) {
     $this->fix_bigint($entity);

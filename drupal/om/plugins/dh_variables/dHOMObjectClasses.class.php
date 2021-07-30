@@ -1026,6 +1026,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
       'featureid' => $entity->pid,
       'entity_type' => 'dh_properties',
       'bundle' => 'dh_properties',
+      'bundle' => 'om_element_connection',
       'varid' => dh_varkey2varid('om_element_connection', TRUE),
     );
     $elvar = dh_properties_enforce_singularity($elvar_info, 'singular');
@@ -1256,7 +1257,7 @@ class dHOMElementConnect extends dHOMBaseObjectClass {
     $parent = $this->getParentEntity($entity);
     // nothing yet - need to exclude om_element_connection properties, or at least nullify settings to prevent redundant updates.
     $propnames = dh_get_dh_propnames($parent->entityType(), $parent->identifier());
-    dpm($propnames, "Propnames ");
+    //dpm($propnames, "Propnames ");
     foreach ($propnames as $propname) {
       // get property by name
       // save the property
@@ -2557,6 +2558,7 @@ class dHOMLinkage extends dHOMBaseObjectClass {
     }
     //dpm("Fix int $entity->propvalue");
   }
+  
   
   public function formRowEdit(&$rowform, $entity) {
     $this->fix_bigint($entity);

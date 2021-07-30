@@ -313,7 +313,7 @@ function om_run_model_form_run(&$form, &$form_state) {
       dsm("Can't find remote Element method on plugin findRemoteOMElement()");
     }
   }
-  dpm($form,'form');
+  //dpm($form,'form');
   // figure out which button
   // the last item in the triggering_element parents array will contain the button name
   //    either "run_model" or "end_model"

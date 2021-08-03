@@ -2076,6 +2076,20 @@ class dHOM_ModelScenario extends dHVariablePluginDefault {
   public function getRunData() {
     // returns run CSV
   }
+  public function exportOpenMIBase($entity) {
+    // creates the base properties for this class
+    $export = array(
+      $entity->propname => array(
+        'id' => $entity->pid, 
+        'name' => $entity->propname, 
+        'startdate' => $entity->startdate, 
+        'enddate' => $entity->enddate, 
+        'modified' => $entity->modified, 
+        'value' => $entity->propcode, 
+      )
+    );
+    return $export;
+  }
 }
 
 class dHOM_Analysis extends dHVariablePluginDefault {

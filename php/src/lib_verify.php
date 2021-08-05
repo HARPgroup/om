@@ -887,19 +887,19 @@ function shakeTree($listobject, $sip, $num_sim, $recid, $run_id, $startdate, $en
    }
    switch ($cacheable) {
       case 0:
-      error_log("Item can not be cached, returning 1 \n");
+      error_log("Item $rec_id can not be cached, returning 1 \n");
       return 1;
       break;
       
       case 2:
       // proceed on, but since this object can not be cached by itself, it will return 1 when it gets to the 
       // step to be run
-      error_log("Item permits pass-through caching, checking for cacheable/runnable children \n");
+      error_log("Item $rec_id permits pass-through caching, checking for cacheable/runnable children \n");
       break;
       
       default:
       // proceed on, this is a fully stand-alone object, capable of separate running and caching
-      error_log("Item permits full caching, checking last run date \n");
+      error_log("Item $rec_id permits full caching, checking last run date \n");
       break;
       
    }

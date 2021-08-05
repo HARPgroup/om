@@ -1855,7 +1855,7 @@ function shakeTreeCached($listobject, $sip, $num_sim, $recid, $run_id, $startdat
    }
    switch ($cacheable) {
       case 0:
-      //error_log("Item can not be cached, returning 1 \n");
+      //error_log("Item $recid can not be cached, returning 1 \n");
       return 1;
       break;
       

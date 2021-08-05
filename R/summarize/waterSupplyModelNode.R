@@ -18,6 +18,9 @@ runid <- as.integer(argst[3])
 
 finfo <- fn_get_runfile_info(elid, runid)
 remote_url <- finfo$remote_url
+# Note: when we migrate to om_get_rundata()
+# we must insure that we do NOT use the auto-trim to water year
+# as we want to have the model_run_start and _end for scenario storage
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
 mode(dat) <- 'numeric'
 
@@ -34,6 +37,8 @@ mode(dat) <- 'numeric'
 #)
 syear = as.integer(min(dat$year))
 eyear = as.integer(max(dat$year))
+model_run_start <- min(dat$thisdate)
+model_run_end <- max(dat$thisdate)
 if (syear < (eyear - 2)) {
   sdate <- as.Date(paste0(syear,"-10-01"))
   edate <- as.Date(paste0(eyear,"-09-30"))
@@ -62,6 +67,8 @@ if (identical(scenprop, FALSE)) {
 } else {
   sceninfo$pid = scenprop$pid
 }
+scenprop$startdate <- model_run_start
+scenprop$enddate <- model_run_end
 scenprop = postProperty(inputs=sceninfo,base_url=base_url,prop)
 scenprop <- getProperty(sceninfo, site, scenprop)
 sceninfo <- list(

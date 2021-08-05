@@ -489,8 +489,9 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
   var $base; // base width of channel in feet
   var $length; // channel length in feet
   var $drainage_area; // in square miles
-  var $Z; // side slope Z
-  var $n; // Manning's n
+  var $base = 1.0; // base width of channel 
+  var $Z = 1.0; // side slope ratio 
+  var $n = 0.002; // Manning's n
   
   public function getDefaults($entity, &$defaults = array()) {
     $defaults = parent::getDefaults($entity, $defaults);
@@ -644,9 +645,10 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
     return $defaults;
   }
 
-  function setChannelGeom() {
+  function setChannelGeom(&$values) {
     // @tbd: implement this on save() or update()?
-    switch ($this->province) {
+    $drainage_area = $values['drainage_area'];
+    switch ($values['province']) {
       case 1:
         # Appalachian Plateau
         # bank full stage
@@ -702,26 +704,35 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
         $n = 0.036;
       break;
     }
-    $h = $hc * pow($this->drainage_area, $he);
-    $bf = $bfc * pow($this->drainage_area, $bfe);
-    $b = $bc * pow($this->drainage_area, $be);
+    $h = $hc * pow($drainage_area, $he);
+    $bf = $bfc * pow($drainage_area, $bfe);
+    $b = $bc * pow($drainage_area, $be);
     $z = 0.5 * ($bf - $b) / $h; 
     # since Z is increase slope of a single side, 
     # the top width increases (relative to the bottom) at a rate of (2 * Z * h)
     # only use these derived values if they are non-zero, otherwise, use defaults
     if ($z > 0) {
-      $this->Z = $z;
+      $values['Z'] = $z;
     } else {
       dsm("Calculated Z value from (0.5 * ($bf - $b) / $h) less than zero, using default " . $this->Z);
     }
     if ($b > 0) {
-      $this->base = $b;
+      $values['base'] = $b;
+      }
     } else {
-      dsm("Calculated base value from ($bc * pow($this->drainage_area, $be)) less than zero, using default " . $this->base);
+      dsm("Calculated base value from ($bc * pow($entity->drainage_area, $be)) less than zero, using default " . $this->base);
     }
-    dsm("Calculated base value from ($bc * pow($this->drainage_area, $be)), = $b / " . $this->base . " Province: $this->province");
-    $this->n = $n;
+    dsm("Calculated base value from ($bc * pow($entity->drainage_area, $be)), = $b / " . $entity->base . " Province: $entity->province");
+    $values['n'] = $n;
     return;
+  }
+  
+  public function formRowSave(&$values, &$entity) {
+    // special form save handlers
+    //dpm($rowvalues,'vals');
+    //dpm($row,'entity');
+    $this->setChannelGeom($values);
+    parent::formRowSave($rowvalues, $row);
   }
    
 }

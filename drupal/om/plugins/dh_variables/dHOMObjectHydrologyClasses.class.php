@@ -540,6 +540,17 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
         'vardesc' => 'slope.',
         'varid' => dh_varkey2varid('om_class_Constant', TRUE),
       ), 
+      'Z' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => NULL,
+        'propvalue_default' => 0.01,
+        'propname' => 'Z',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'varname' => 'Z',
+        'vardesc' => 'Channel side-slope ratio.',
+        'varid' => dh_varkey2varid('om_class_Constant', TRUE),
+      ), 
       'length' => array(
         'entity_type' => $entity->entityType(),
         'propcode_default' => NULL,

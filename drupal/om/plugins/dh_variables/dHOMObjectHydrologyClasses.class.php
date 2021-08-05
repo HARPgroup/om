@@ -729,10 +729,10 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
   
   public function formRowSave(&$values, &$entity) {
     // special form save handlers
-    //dpm($rowvalues,'vals');
-    //dpm($row,'entity');
+    //dpm($values,'vals');
+    //dpm($entity,'entity');
     $this->setChannelGeom($values);
-    parent::formRowSave($rowvalues, $row);
+    parent::formRowSave($values, $entity);
   }
    
 }

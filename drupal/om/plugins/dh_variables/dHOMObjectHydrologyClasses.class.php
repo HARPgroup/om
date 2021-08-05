@@ -732,6 +732,9 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
     dpm($values,'vals');
     //dpm($entity,'entity');
     $this->setChannelGeom($values);
+    $entity->base = $values['base'];
+    $entity->n = $values['n'];
+    $entity->Z = $values['Z'];
     parent::formRowSave($values, $entity);
   }
    

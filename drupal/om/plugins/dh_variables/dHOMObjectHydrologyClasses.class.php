@@ -543,7 +543,7 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
       'Z' => array(
         'entity_type' => $entity->entityType(),
         'propcode_default' => NULL,
-        'propvalue_default' => 0.01,
+        'propvalue_default' => 1.0,
         'propname' => 'Z',
         'singularity' => 'name_singular',
         'featureid' => $entity->identifier(),

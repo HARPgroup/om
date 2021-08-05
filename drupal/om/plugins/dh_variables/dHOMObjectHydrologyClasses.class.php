@@ -714,12 +714,13 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
     if ($z > 0) {
       $values['Z'] = $z;
     } else {
+      $values['Z'] = $this->Z;
       dsm("Calculated Z value from (0.5 * ($bf - $b) / $h) less than zero, using default " . $this->Z);
     }
     if ($b > 0) {
       $values['base'] = $b;
-      }
     } else {
+      $values['base'] = $this->base;
       dsm("Calculated base value from ($bc * pow($entity->drainage_area, $be)) less than zero, using default " . $this->base);
     }
     dsm("Calculated base value from ($bc * pow($entity->drainage_area, $be)), = $b / " . $entity->base . " Province: $entity->province");

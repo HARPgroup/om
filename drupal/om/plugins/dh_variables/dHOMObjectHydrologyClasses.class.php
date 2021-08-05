@@ -720,16 +720,16 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
       $values['base'] = $b;
     } else {
       $values['base'] = $this->base;
-      dsm("Calculated base value from ($bc * pow($entity->drainage_area, $be)) less than zero, using default " . $this->base);
+      dsm("Calculated base value from ($bc * pow($drainage_area, $be)) less than zero, using default " . $this->base);
     }
-    dsm("Calculated base value from ($bc * pow($entity->drainage_area, $be)), = $b / " . $entity->base . " Province: $entity->province");
+    dsm("Calculated base value from ($bc * pow($drainage_area, $be)), = $b  Province: $values[province]");
     $values['n'] = $n;
     return;
   }
   
   public function formRowSave(&$values, &$entity) {
     // special form save handlers
-    //dpm($values,'vals');
+    dpm($values,'vals');
     //dpm($entity,'entity');
     $this->setChannelGeom($values);
     parent::formRowSave($values, $entity);

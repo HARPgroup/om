@@ -289,6 +289,7 @@ if (syear <= 1990 && eyear >= 2000) {
 message("Plotting critical flow periods")
 # does this have an active impoundment sub-comp
 if (imp_off == 0) {
+  
   if("impoundment" %in% cols) {
     # Plot and analyze impoundment sub-comps
     dat$storage_pct <- dat$impoundment_use_remain_mg * 3.07 / dat$impoundment_max_usable
@@ -558,7 +559,11 @@ if (imp_off == 0) {
     sep = '/'
   )
   png(fname)
-  ymx <- max(datpd$Qbaseline, datpd$Qout)
+  # Because these are zoo timeseries, they will throw an error if you use a normal DF
+  # max() syntax which is OK with max(c(df1, df2))
+  # instead, we cbind them instead of the default which is an implicit rbind
+  # ymx <- max(datpd$Qbaseline, datpd$Qout)
+  ymx <- max(cbind(datpd$Qbaseline, datpd$Qout))
   plot(
     datpd$Qbaseline, ylim = c(0,ymx),
     ylab="Flow/WD/PS (cfs)",
@@ -566,7 +571,11 @@ if (imp_off == 0) {
   )
   lines(datpd$Qout,col='blue')
   par(new = TRUE)
-  ymx <- max(datpd$wd_cumulative_mgd * 1.547, datpd$ps_cumulative_mgd * 1.547)
+  # Because these are zoo timeseries, they will throw an error if you use a normal DF
+  # max() syntax which is OK with max(c(df1, df2))
+  # instead, we cbind them instead of the default which is an implicit rbind
+  # ymx <- max(cbind(datpd$wd_cumulative_mgd * 1.547, datpd$ps_cumulative_mgd * 1.547))
+  ymx <- max(cbind(datpd$wd_cumulative_mgd * 1.547, datpd$ps_cumulative_mgd * 1.547))
   plot(
     datpd$wd_cumulative_mgd * 1.547,col='red', 
     axes=FALSE, xlab="", ylab="", ylim=c(0,ymx)
@@ -596,7 +605,7 @@ if (imp_off == 0) {
     sep = '/'
   )
   png(fname)
-  ymx <- max(datpd$Qbaseline, datpd$Qout)
+  ymx <- max(c(max(datpd$Qbaseline), max(datpd$Qout)))
   plot(
     datpd$Qbaseline, ylim = c(0,ymx),
     ylab="Flow/WD/PS (cfs)",

@@ -492,19 +492,25 @@ function om_run_stash_modes($model, $model_config) {
     'propname' => 'runid_' . $model_config['runid'],
     'propvalue' => $model_config['runid'],
   );
-  $run_scenario = om_model_getSetProperty($runid_config, 'name');
+  $run_scenario = om_model_getSetProperty($scenario_config, 'name');
   if (isset($run_scenario->pid) and ($run_scenario->pid > 0)) {
     $run_pid = $run_scenario->pid;
     $run_mode_config['featureid'] = $run_pid;
     $run_mode = om_model_getSetProperty($run_mode_config, 'name');
     $cache_date_config['featureid'] = $run_pid;
-    $cache_date = om_model_getSetProperty($run_mode_config, 'name');
+    $cache_date = om_model_getSetProperty($cache_date_config, 'name');
     $flow_mode_config['featureid'] = $run_pid;
-    $flow_mode = om_model_getSetProperty($run_mode_config, 'name');
+    $flow_mode = om_model_getSetProperty($flow_mode_config, 'name');
     $dt_config['featureid'] = $run_pid;
-    $dt = om_model_getSetProperty($run_mode_config, 'name');
-    $dt_config['featureid'] = $run_pid;
-    $dt = om_model_getSetProperty($run_mode_config, 'name');
+    $dt = om_model_getSetProperty($dt_config, 'name');
+    $runid_config = array(
+      'entity_type' => 'dh_properties',
+      'featureid' => $run_pid,
+      'varkey' => 'om_class_Constant',
+      'propname' => 'runid_' . $model_config['runid'],
+      'propvalue' => $model_config['runid'],
+    );
+    $runid = om_model_getSetProperty($runid_config, 'name');
   }
 }
 

@@ -476,7 +476,9 @@ function om_run_stash_modes($model, $model_config) {
   );
   $run_info = om_model_getSetProperty($run_info_config, 'name');
   $run_info->save();
-  
+}
+
+function om_run_create_scenario($model, $model_config) {
   // Now stash on runid_XX 
   
   // create or load a run scenario 

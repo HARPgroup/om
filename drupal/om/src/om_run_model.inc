@@ -1,7 +1,7 @@
 <?php
 module_load_include('module', 'dh');
 module_load_include('module', 'om');
-global $om_path = "/var/www/html/om/";
+$om_path = "/var/www/html/om/";
 // @todo: run_mode handling
 //        - vwp projects shoudl continue to use the vwp modes
 //        - other models should allow choice between normal single container running 

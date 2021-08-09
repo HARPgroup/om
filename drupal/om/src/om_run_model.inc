@@ -1,7 +1,7 @@
 <?php
 module_load_include('module', 'dh');
 module_load_include('module', 'om');
-
+global $om_path = "/var/www/html/om/";
 // @todo: run_mode handling
 //        - vwp projects shoudl continue to use the vwp modes
 //        - other models should allow choice between normal single container running 
@@ -220,9 +220,9 @@ function om_run_model_form_controls(&$form, &$form_state) {
 
 // @todo: move this to the base module?
 function om_run_model($config) {
+  global $om_path; // @todo: put this in the module settings somewhere
   //$test_only = TRUE;
   //dpm($config,'submitted to run model');
-  $path = "/var/www/html/om/"; // @todo: put this in the module settings somewhere
   // run the model 
   $run_id = $config['run_id'];
   $elementid = $config['elementid'];
@@ -231,7 +231,7 @@ function om_run_model($config) {
   $flow_mode = isset($config['flow_mode']) ? $config['flow_mode']: FALSE;
   $dt = $config['dt'];
   $debug = 0;
-  //error_log("Config" . print_r($config,1));
+  
   switch ($config['runtype']) {
     case 'shake_tree':
     // shake tree optionsL
@@ -250,7 +250,7 @@ function om_run_model($config) {
     //  strict = 1 - verify with narrow valid criteria
     //  strict = -1 - do not verify, assume it is OK
     $run_mode = $config['run_mode']; // run_mode - model setting for use by internal lists etc. select list of 1-100?
-    $setstr = "/usr/bin/php -f /var/www/html/om/run_shakeTree.php $operation $elementid $run_id $startdate $enddate $cache_date $force_overwrite $scid $strict $run_mode ";
+    $setstr = "/usr/bin/php -f $om_path" . "run_shakeTree.php $operation $elementid $run_id $startdate $enddate $cache_date $force_overwrite $scid $strict $run_mode ";
     // @todo: this does not do anything.  The run_model.php script and the forkRun() routines are not able to handle this
     //        so for now this is a placeholder.
     $setstr .= "normal flow_mode=$flow_mode $debug $dt";
@@ -259,11 +259,11 @@ function om_run_model($config) {
 	
     case 'cached':
     default:
-    $setstr = "/usr/bin/php -f /var/www/html/om/run_model.php $elementid $run_id cached $startdate $enddate -1 \"\" 1 0 ";
+    $setstr = "/usr/bin/php -f $om_path" . "run_model.php $elementid $run_id cached $startdate $enddate -1 \"\" 1 0 ";
     break;
   }
   $cmd_output = array();
-  $cmd = "cd $path \n";
+  $cmd = "cd $om_path \n";
   $cmd .= $setstr;
   if ($test_only) {
       //dpm( $cmd, "Testing Only ");
@@ -283,9 +283,7 @@ function om_run_model($config) {
 
 // @todo: move this to the base module?
 function om_run_message_model($config) {
-  //$test_only = TRUE;
-  //dpm($config,'submitted to run model');
-  $path = "/var/www/html/om/"; // @todo: put this in the module settings somewhere
+  global $om_path;
   $config += array(
     'host' => 'localhost',
     'runtype' => 'cached',
@@ -414,56 +412,60 @@ function om_run_model_form_run(&$form, &$form_state) {
 function om_run_stash_modes($model, $model_config) {
   // Save items on object needed for current run, and future stashing
   // set the model run_mode property here, it will cascade a change back to the OM database before running.
+  // also stores all of this data and more on the "runid_XX" prop, and in the future *only* the runid_XX prop 
+  // will need to hold this data.
+  //error_log("Config" . print_r($config,1));
+  
+  // we set these on the object AND on the scenario object because the model runtime looks back at this object to get info 
   $run_mode = $model_config['run_mode'];
-  $values = array(
+  $run_mode_config = array(
     'entity_type' => 'dh_properties',
     'featureid' => $model->pid,
     'varkey' => 'om_class_Constant',
     'propname' => 'run_mode',
     'propvalue' => $run_mode,
   );
-  $run_mode = om_model_getSetProperty($values, 'name');
+  $run_mode = om_model_getSetProperty($run_mode_config, 'name');
   $run_mode->save();
   
   // set model timestep dt here
   $dt = $model_config['dt'];
-  $values = array(
+  $dt_config = array(
     'entity_type' => 'dh_properties',
     'featureid' => $model->pid,
     'varkey' => 'om_class_Constant',
     'propname' => 'dt',
     'propvalue' => $dt,
   );
-  $dt = om_model_getSetProperty($values, 'name');
+  $dt = om_model_getSetProperty($dt_config, 'name');
   $dt->save();
   
   // set the model flow_mode property here
-  $flow_mode = $model_config['flow_mode'];
-  $values = array(
+  $flow_mode_config = array(
     'entity_type' => 'dh_properties',
     'featureid' => $model->pid,
     'varkey' => 'om_class_Constant',
     'propname' => 'flow_mode',
     'propvalue' => $flow_mode,
   );
-  $flow_mode = om_model_getSetProperty($values, 'name');
+  $flow_mode = om_model_getSetProperty($flow_mode_config, 'name');
   $flow_mode->save();
   
   // set the model flow_mode property here
   $cache_date = $model_config['cache_date'];
-  $values = array(
+  $cache_date_config = array(
     'entity_type' => 'dh_properties',
     'featureid' => $model->pid,
     'varkey' => 'om_class_Constant',
     'propname' => 'cache_date',
     'startdate' => $cache_date,
   );
-  $cache_date = om_model_getSetProperty($values, 'name');
+  $cache_date = om_model_getSetProperty($cache_date_config, 'name');
   //dpm($cache_date, 'cache date');
   $cache_date->save();
   
   // set the model flow_mode property here
-  $values = array(
+  $run_info_config = array(
     'entity_type' => 'dh_properties',
     'featureid' => $model->pid,
     'varkey' => 'om_class_Constant',
@@ -472,8 +474,38 @@ function om_run_stash_modes($model, $model_config) {
     'enddate' => $model_config['enddate'],
     'propvalue' => $model_config['run_id'],
   );
-  $run_info = om_model_getSetProperty($values, 'name');
+  $run_info = om_model_getSetProperty($run_info_config, 'name');
   $run_info->save();
+  
+  // Now stash on runid_XX 
+  
+  // create or load a run scenario 
+  // set the status = 1 (run requested)
+  // set run_mode, flow_mode 
+  // set model_session_db_status
+  // set model_runtime_db_status 
+  
+  $scenario_config = array(
+    'entity_type' => 'dh_properties',
+    'featureid' => $model->pid,
+    'varkey' => 'om_scenario',
+    'propname' => 'runid_' . $model_config['runid'],
+    'propvalue' => $model_config['runid'],
+  );
+  $run_scenario = om_model_getSetProperty($runid_config, 'name');
+  if (isset($run_scenario->pid) and ($run_scenario->pid > 0)) {
+    $run_pid = $run_scenario->pid;
+    $run_mode_config['featureid'] = $run_pid;
+    $run_mode = om_model_getSetProperty($run_mode_config, 'name');
+    $cache_date_config['featureid'] = $run_pid;
+    $cache_date = om_model_getSetProperty($run_mode_config, 'name');
+    $flow_mode_config['featureid'] = $run_pid;
+    $flow_mode = om_model_getSetProperty($run_mode_config, 'name');
+    $dt_config['featureid'] = $run_pid;
+    $dt = om_model_getSetProperty($run_mode_config, 'name');
+    $dt_config['featureid'] = $run_pid;
+    $dt = om_model_getSetProperty($run_mode_config, 'name');
+  }
 }
 
 /* USAGE

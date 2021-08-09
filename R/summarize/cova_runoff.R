@@ -9,7 +9,7 @@ basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 save_directory <-  "/var/www/html/data/proj3/out"
 library(hydrotools)
-# authenticate
+# authenticate new way
 ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)
 
@@ -60,13 +60,6 @@ if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
 }
 
 # Metric defs
-
-sceninfo <- list(
-  varkey = 'om_scenario',
-  propname = scen.propname,
-  featureid = pid,
-  entity_type = "dh_properties"
-)
 
 # POSTING METRICS TO SCENARIO PROPERTIES ON VA HYDRO
 # QA

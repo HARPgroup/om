@@ -633,7 +633,8 @@ if (imp_off == 0) {
 # RSEG ELFGEN
 ###############################################
 #GET RSEG HYDROID FROM RSEG MODEL PID
-rseg <-getProperty(list(pid=pid), site)
+#rseg <-getProperty(list(pid=pid), site)
+rseg <- RomProperty$new( ds, list(pid=pid), TRUE)
 rseg_hydroid<-rseg$featureid
 
 huc_level <- 'huc8'

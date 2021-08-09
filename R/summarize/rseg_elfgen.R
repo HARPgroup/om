@@ -99,7 +99,7 @@ elfgen_confidence <- function(elf,rseg.name,outlet_flow,yaxis_thresh,cuf){
   
 }
 
-elfgen_huc <- function(runid, hydroid, huc_level, dataset){
+elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, token){
   breakpt <- 530
   x.metric <- 'erom_q0001e_mean'
   y.metric <- 'aqbio_nt_total'
@@ -108,26 +108,6 @@ elfgen_huc <- function(runid, hydroid, huc_level, dataset){
   yaxis_thresh <- 53
   
   post_props <- 'YES' #HELPFUL TO SET TO 'NO' DURING TESTING
-  
-  scen.propname<-paste0('runid_', runid)
-    
-  # GETTING SCENARIO PROPERTY FROM VAHYDRO
-  sceninfo <- list(
-    varkey = 'om_scenario',
-    propname = scen.propname,
-    featureid = pid,
-    entity_type = "dh_properties"
-  )
-  scenprop <- getProperty(sceninfo, site, scenprop)
-  # POST PROPERTY IF IT IS NOT YET CREATED
-  if (identical(scenprop, FALSE)) {
-    # create
-    sceninfo$pid = NULL
-  } else {
-    sceninfo$pid = scenprop$pid
-  }
-  #scenprop = postProperty(inputs=sceninfo,base_url=base_url,prop)
-  scenprop <- getProperty(sceninfo, site, scenprop)
   
   #Determines watershed outlet nhd+ segment and hydroid
   nhdplus_views <- paste(site,'dh-feature-containing-export', hydroid, 'watershed/nhdplus/nhdp_drainage_sqmi',  sep = '/')

@@ -639,7 +639,7 @@ rseg_hydroid<-rseg$featureid
 huc_level <- 'huc8'
 dataset <- 'VAHydro-EDAS'
 
-elfgen_huc(runid, rseg_hydroid, huc_level, dataset)
+elfgen_huc(runid, rseg_hydroid, huc_level, dataset, token)
 ###############################################
 ###############################################
 

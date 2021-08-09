@@ -69,9 +69,8 @@ scenprop$startdate <- model_run_start
 scenprop$enddate <- model_run_end
 
 # POST PROPERTY IF IT IS NOT YET CREATED
-if (identical(scenprop, FALSE)) {
+if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
   # create
-  sceninfo$pid = NULL
   scenprop$save(TRUE)
 }
 

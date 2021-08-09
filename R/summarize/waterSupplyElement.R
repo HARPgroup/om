@@ -67,9 +67,8 @@ sceninfo <- list(
 scenprop <- RomProperty$new( ds, sceninfo, TRUE)
 
 # POST PROPERTY IF IT IS NOT YET CREATED
-if (identical(scenprop, FALSE)) {
+if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
   # create
-  sceninfo$pid = NULL
   scenprop$save(TRUE)
 }
 vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NULL, site, token)

@@ -12,6 +12,11 @@ library(dataRetrieval)
 save_directory <-  "/var/www/html/data/proj3/out"
 
 # Read Args
+# if testing:
+# riv.seg = 'PM7_4580_4820_difficult_run'
+# runid = 2
+# gage_number = '01646000'
+# mod.scenario = 'vahydro-1.0'
 argst <- commandArgs(trailingOnly=T)
 riv.seg <- as.character(argst[1])
 runid <- as.integer(argst[2]) # what to store this as

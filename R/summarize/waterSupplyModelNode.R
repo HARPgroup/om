@@ -605,7 +605,7 @@ if (imp_off == 0) {
     sep = '/'
   )
   png(fname)
-  ymx <- max(c(max(datpd$Qbaseline), max(datpd$Qout)))
+  ymx <- max(cbind(max(datpd$Qbaseline), max(datpd$Qout)))
   plot(
     datpd$Qbaseline, ylim = c(0,ymx),
     ylab="Flow/WD/PS (cfs)",
@@ -613,7 +613,7 @@ if (imp_off == 0) {
   )
   lines(datpd$Qout,col='blue')
   par(new = TRUE)
-  ymx <- max(datpd$wd_cumulative_mgd * 1.547, datpd$ps_cumulative_mgd * 1.547)
+  ymx <- max(cbind(datpd$wd_cumulative_mgd * 1.547, datpd$ps_cumulative_mgd * 1.547))
   plot(
     datpd$wd_cumulative_mgd * 1.547,col='red', 
     axes=FALSE, xlab="", ylab="", ylim=c(0,ymx)

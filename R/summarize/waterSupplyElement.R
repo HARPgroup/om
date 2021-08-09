@@ -10,6 +10,11 @@ site <- "http://deq1.bse.vt.edu/d.dh"    #Specify the site of interest, either d
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 save_directory <-  "/var/www/html/data/proj3/out"
+library(hydrotools)
+# authenticate
+ds <- RomDataSource$new(site, rest_uname)
+ds$get_token(rest_pw)
+
 # Load Local libs
 library(stringr)
 library(ggplot2)
@@ -57,16 +62,16 @@ sceninfo <- list(
   featureid = pid,
   entity_type = "dh_properties"
 )
-scenprop <- getProperty(sceninfo, site, scenprop)
+# newschool
+#scenprop <- getProperty(sceninfo, site, scenprop)
+scenprop <- RomProperty$new( ds, sceninfo, TRUE)
+
 # POST PROPERTY IF IT IS NOT YET CREATED
 if (identical(scenprop, FALSE)) {
   # create
   sceninfo$pid = NULL
-} else {
-  sceninfo$pid = scenprop$pid
+  scenprop$save(TRUE)
 }
-scenprop = postProperty(inputs=sceninfo,base_url=base_url,prop)
-scenprop <- getProperty(sceninfo, site, scenprop)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NULL, site, token)
 
 #omsite = site <- "http://deq2.bse.vt.edu"

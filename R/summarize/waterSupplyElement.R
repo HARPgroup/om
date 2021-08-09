@@ -57,16 +57,16 @@ sceninfo <- list(
   featureid = pid,
   entity_type = "dh_properties"
 )
-scenprop <- getProperty(sceninfo, site, scenprop)
+# newschool
+#scenprop <- getProperty(sceninfo, site, scenprop)
+scenprop <- RomProperty$new( ds, sceninfo, TRUE)
+
 # POST PROPERTY IF IT IS NOT YET CREATED
 if (identical(scenprop, FALSE)) {
   # create
   sceninfo$pid = NULL
-} else {
-  sceninfo$pid = scenprop$pid
+  scenprop$save(TRUE)
 }
-scenprop = postProperty(inputs=sceninfo,base_url=base_url,prop)
-scenprop <- getProperty(sceninfo, site, scenprop)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NULL, site, token)
 
 #omsite = site <- "http://deq2.bse.vt.edu"

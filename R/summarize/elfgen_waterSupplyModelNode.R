@@ -7,6 +7,10 @@ source(paste(basepath,'config.R',sep='/'))
 library(stringr)
 # dirs/URLs
 save_directory <- "/var/www/html/data/proj3/out"
+library(hydrotools)
+# authenticate
+ds <- RomDataSource$new(site, rest_uname)
+ds$get_token(rest_pw)
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)
@@ -23,17 +27,13 @@ sceninfo <- list(
   featureid = pid,
   entity_type = "dh_properties"
 )
-scenprop <- getProperty(sceninfo, site, scenprop)
-# POST PROPERTY IF IT IS NOT YET CREATED
-if (identical(scenprop, FALSE)) {
-  # create
-  sceninfo$pid = NULL
-} else {
-  sceninfo$pid = scenprop$pid
-}
-scenprop = postProperty(inputs=sceninfo,base_url=base_url,prop)
-scenprop <- getProperty(sceninfo, site, scenprop)
+scenprop <- RomProperty$new( ds, sceninfo, TRUE)
 
+# POST PROPERTY IF IT IS NOT YET CREATED
+if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
+  # create
+  scenprop$save(TRUE)
+}
 # Create an algorithm that finds the outlet point for the watershed 
 
 # Load the model result data for this scenario for "consumptive_use_frac" property

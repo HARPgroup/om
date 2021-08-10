@@ -1,7 +1,8 @@
 <?php
 module_load_include('module', 'dh');
 module_load_include('module', 'om');
-$om_path = "/var/www/html/om/";
+
+
 // @todo: run_mode handling
 //        - vwp projects shoudl continue to use the vwp modes
 //        - other models should allow choice between normal single container running 
@@ -220,7 +221,7 @@ function om_run_model_form_controls(&$form, &$form_state) {
 
 // @todo: move this to the base module?
 function om_run_model($config) {
-  global $om_path; // @todo: put this in the module settings somewhere
+  global $php_path; // @todo: put this in the module settings somewhere
   //$test_only = TRUE;
   //dpm($config,'submitted to run model');
   // run the model 
@@ -250,7 +251,7 @@ function om_run_model($config) {
     //  strict = 1 - verify with narrow valid criteria
     //  strict = -1 - do not verify, assume it is OK
     $run_mode = $config['run_mode']; // run_mode - model setting for use by internal lists etc. select list of 1-100?
-    $setstr = "/usr/bin/php -f $om_path" . "run_shakeTree.php $operation $elementid $run_id $startdate $enddate $cache_date $force_overwrite $scid $strict $run_mode ";
+    $setstr = "/usr/bin/php -f $php_path" . "run_shakeTree.php $operation $elementid $run_id $startdate $enddate $cache_date $force_overwrite $scid $strict $run_mode ";
     // @todo: this does not do anything.  The run_model.php script and the forkRun() routines are not able to handle this
     //        so for now this is a placeholder.
     $setstr .= "normal flow_mode=$flow_mode $debug $dt";
@@ -259,11 +260,11 @@ function om_run_model($config) {
 	
     case 'cached':
     default:
-    $setstr = "/usr/bin/php -f $om_path" . "run_model.php $elementid $run_id cached $startdate $enddate -1 \"\" 1 0 ";
+    $setstr = "/usr/bin/php -f $php_path" . "run_model.php $elementid $run_id cached $startdate $enddate -1 \"\" 1 0 ";
     break;
   }
   $cmd_output = array();
-  $cmd = "cd $om_path \n";
+  $cmd = "cd $php_path \n";
   $cmd .= $setstr;
   if ($test_only) {
       //dpm( $cmd, "Testing Only ");
@@ -283,7 +284,7 @@ function om_run_model($config) {
 
 // @todo: move this to the base module?
 function om_run_message_model($config) {
-  global $om_path;
+  global $php_path;
   $config += array(
     'host' => 'localhost',
     'runtype' => 'cached',

@@ -25,7 +25,8 @@ sceninfo <- list(
   varkey = 'om_scenario',
   propname = scen.propname,
   featureid = pid,
-  entity_type = "dh_properties"
+  entity_type = "dh_properties",
+  bundle = "dh_properties"
 )
 scenprop <- RomProperty$new( ds, sceninfo, TRUE)
 

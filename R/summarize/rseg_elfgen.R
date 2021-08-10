@@ -156,7 +156,8 @@ elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, ds){
     varkey = 'om_class_Constant',
     propname = 'consumptive_use_frac',
     entity_type = 'dh_properties',
-    featureid = scenprop$pid
+    featureid = scenprop$pid,
+    bundle = "dh_properties"
   )
   prop_cuf <- getProperty(inputs, site)
   cuf <- prop_cuf$propvalue
@@ -233,6 +234,7 @@ elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, ds){
     varkey = 'om_class_Constant',
     propname = paste('elfgen_', dataname,'_', huc_level, sep=''),
     entity_type = 'dh_properties',
+    bundle = "dh_properties",
     propcode = watershed.code,
     featureid = scenprop$pid,
     proptext = dataset, #figure out how to make this part changeable

@@ -122,9 +122,9 @@ if (is.na(storage_pct)) {
 }
 
 # post em up
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, ds)
 
 
 # this has an impoundment.  Plot it up.
@@ -180,7 +180,7 @@ axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
 print(paste("Saved file: ", fname, "with URL", furl))
-vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
 
 # l90 2 year
 # this has an impoundment.  Plot it up.
@@ -226,7 +226,7 @@ axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
 print(paste("Saved file: ", fname, "with URL", furl))
-vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, ds)
 
 # All Periods
 # this has an impoundment.  Plot it up.
@@ -266,7 +266,7 @@ axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
 print(paste("Saved file: ", fname, "with URL", furl))
-vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
 
 # Low Elevation Period
 # Dat for Critical Period
@@ -319,5 +319,5 @@ axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
 print(paste("Saved file: ", fname, "with URL", furl))
-vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
 

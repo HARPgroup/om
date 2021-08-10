@@ -58,8 +58,6 @@ sceninfo <- list(
   entity_type = "dh_properties"
 )
 scenprop <- RomProperty$new( ds, sceninfo, TRUE)
-scenprop$startdate <- model_run_start
-scenprop$enddate <- model_run_end
 
 # POST PROPERTY IF IT IS NOT YET CREATED
 if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {

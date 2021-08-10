@@ -53,16 +53,16 @@ Rmean <- mean(as.numeric(dat$Runit) )
 if (is.na(Rmean)) {
   Rmean = 0.0
 }
-Rmeanprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Rmean', Rmean, site, token)
+Rmeanprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Rmean', Rmean, ds)
 
 Qin_mean <- mean(as.numeric(dat$Qin) )
 if (is.na(Rmean)) {
   Rmean = 0.0
 }
-Qin_meanprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qin_mean', Qin_mean, site, token)
+Qin_meanprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qin_mean', Qin_mean, ds)
 
 Qout_mean <- mean(as.numeric(dat$Qout) )
 if (is.na(Rmean)) {
   Rmean = 0.0
 }
-Qout_meanprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qout_mean', Qout_mean, site, token)
+Qout_meanprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qout_mean', Qout_mean, ds)

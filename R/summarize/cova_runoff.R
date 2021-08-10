@@ -73,14 +73,14 @@ if (is.na(l90)) {
   l90_Runit = 0.0
   l90_year = 0
 }
-l90prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_RUnit', l90_RUnit, site, token)
-l90yr_prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_year', l90_year, site, token)
+l90prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_RUnit', l90_RUnit, ds)
+l90yr_prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_year', l90_year, ds)
 
 Runit <- mean(as.numeric(dat$Runit) )
 if (is.na(Runit)) {
   Runit = 0.0
 }
-Runitprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Runit', Runit, site, token)
+Runitprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Runit', Runit, ds)
 
 # Runoff boxplot
 fname <- paste0(
@@ -101,5 +101,5 @@ png(fpath)
 boxplot(as.numeric(dat$Runit) ~ dat$year, ylim=c(0,3))
 dev.off()
 print(paste("Saved file: ", fname, "with URL", furl))
-vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'Runit_boxplot_year', 0.0, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'Runit_boxplot_year', 0.0, ds)
 

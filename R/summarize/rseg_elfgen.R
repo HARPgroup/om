@@ -99,7 +99,7 @@ elfgen_confidence <- function(elf,rseg.name,outlet_flow,yaxis_thresh,cuf){
   
 }
 
-elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, token){
+elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, ds){
   breakpt <- 530
   x.metric <- 'erom_q0001e_mean'
   y.metric <- 'aqbio_nt_total'
@@ -279,7 +279,7 @@ elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, token){
     # 
     # prop_huc<-getProperty(inputs, site)
     
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'om_class_Constant', NULL, 'richness_change_abs', confidence$df$abs_change, site, token)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'om_class_Constant', NULL, 'richness_change_abs', confidence$df$abs_change, ds)
     
     #Absolute change confidence interval bounds - posted underneath richness_change_abs property 
     inputs <- list(
@@ -290,11 +290,11 @@ elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, token){
     
     prop_abs<-getProperty(inputs, site)
     
-    vahydro_post_metric_to_scenprop(prop_abs$pid, 'om_class_Constant', NULL, 'upper_confidence', confidence$df$abs_d1, site, token) #flipped and negated to match negative richness change value
-    vahydro_post_metric_to_scenprop(prop_abs$pid, 'om_class_Constant', NULL, 'lower_confidence', confidence$df$abs_d2, site, token)
+    vahydro_post_metric_to_scenprop(prop_abs$pid, 'om_class_Constant', NULL, 'upper_confidence', confidence$df$abs_d1, ds) #flipped and negated to match negative richness change value
+    vahydro_post_metric_to_scenprop(prop_abs$pid, 'om_class_Constant', NULL, 'lower_confidence', confidence$df$abs_d2, ds)
     
     #Percent change branch - posted underneath elfgen_richness_change_huc_level scenario property
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'om_class_Constant', NULL, 'richness_change_pct', confidence$df$pct_change, site, token)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'om_class_Constant', NULL, 'richness_change_pct', confidence$df$pct_change, ds)
     
     #Percent change confidence interval bounds - posted underneath richness_change_pct property 
     inputs <- list(
@@ -305,21 +305,21 @@ elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, token){
     
     prop_pct<-getProperty(inputs, site)
     
-    vahydro_post_metric_to_scenprop(prop_pct$pid, 'om_class_Constant', NULL, 'upper_confidence', confidence$df$pct_d1, site, token) #flipped similar to vahydro
-    vahydro_post_metric_to_scenprop(prop_pct$pid, 'om_class_Constant', NULL, 'lower_confidence', confidence$df$pct_d2, site, token)
+    vahydro_post_metric_to_scenprop(prop_pct$pid, 'om_class_Constant', NULL, 'upper_confidence', confidence$df$pct_d1, ds) #flipped similar to vahydro
+    vahydro_post_metric_to_scenprop(prop_pct$pid, 'om_class_Constant', NULL, 'lower_confidence', confidence$df$pct_d2, ds)
     
     #Elf$stats posts - posted underneath elfgen_richness_change_huc_level scenario property-----------------------
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_bkpt', NULL, 'breakpt', elf$stats$breakpt, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_qu', NULL, 'quantile', elf$stats$quantile, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_m', NULL, 'm', elf$stats$m, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_b', NULL, 'b', elf$stats$b, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_rsq', NULL, 'rsquared', elf$stats$rsquared, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_adj_rsq', NULL, 'rsquared_adj', elf$stats$rsquared_adj, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_p', NULL, 'p', elf$stats$p, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_n_tot', NULL, 'n_total', elf$stats$n_total, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_n_sub', NULL, 'n_subset', elf$stats$n_subset, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_n', NULL, 'n_subset_upper', elf$stats$n_subset_upper, site, token)
-    vahydro_post_metric_to_scenprop(prop_huc$pid, 'erom_q0001e_mean', code_out, 'erom_q0001e_mean', outlet_flow, site, token)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_bkpt', NULL, 'breakpt', elf$stats$breakpt, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_qu', NULL, 'quantile', elf$stats$quantile, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_m', NULL, 'm', elf$stats$m, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_b', NULL, 'b', elf$stats$b, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_rsq', NULL, 'rsquared', elf$stats$rsquared, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_adj_rsq', NULL, 'rsquared_adj', elf$stats$rsquared_adj, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_p', NULL, 'p', elf$stats$p, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_n_tot', NULL, 'n_total', elf$stats$n_total, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_n_sub', NULL, 'n_subset', elf$stats$n_subset, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'stat_quantreg_n', NULL, 'n_subset_upper', elf$stats$n_subset_upper, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'erom_q0001e_mean', code_out, 'erom_q0001e_mean', outlet_flow, ds)
     
     #Elf$plot post - posted underneath elfgen_richness_change_huc_level scenario property------------
  
@@ -355,7 +355,7 @@ elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, token){
   
   if (post_props == 'YES'){ 
       print(paste("Saved file: ", fname, "with URL", furl))
-      vahydro_post_metric_to_scenprop(prop_huc$pid, 'dh_image_file', furl, 'fig.elfgen', 0.0, site, token)
+      vahydro_post_metric_to_scenprop(prop_huc$pid, 'dh_image_file', furl, 'fig.elfgen', 0.0, ds)
   }
       
   print('DONE')

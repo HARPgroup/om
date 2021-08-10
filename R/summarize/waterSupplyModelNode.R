@@ -75,8 +75,7 @@ if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
 }
 
 # Post link to run file
-vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NULL, site, token)
-
+vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NA, ds)
 
 # does this have an impoundment sub-comp and is imp_off = 0?
 cols <- names(dat)
@@ -153,16 +152,16 @@ modat <- sqldf("select month, avg(wd_cumulative_mgd) as wd_mgd, avg(ps_cumulativ
 #barplot(wd_mgd ~ month, data=modat)
 
 # post em up
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'net_consumption_mgd', net_consumption_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_mgd', wd_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_cumulative_mgd', wd_cumulative_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_mgd', ps_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_cumulative_mgd', ps_cumulative_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qout', Qout, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qbaseline', Qbaseline, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_nextdown_mgd', ps_nextdown_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'consumptive_use_frac', consumptive_use_frac, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'daily_consumptive_use_frac', daily_consumptive_use_frac, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'net_consumption_mgd', net_consumption_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_mgd', wd_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_cumulative_mgd', wd_cumulative_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_mgd', ps_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_cumulative_mgd', ps_cumulative_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qout', Qout, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qbaseline', Qbaseline, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_nextdown_mgd', ps_nextdown_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'consumptive_use_frac', consumptive_use_frac, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'daily_consumptive_use_frac', daily_consumptive_use_frac, ds)
 
 # Metrics that need Zoo (IHA)
 flows <- zoo(as.numeric(as.character( dat$Qout )), order.by = index(dat));
@@ -188,8 +187,8 @@ if (is.na(l90)) {
   l90_year = 0
 }
 
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_Qout', l90_Qout, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_year', l90_year, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_Qout', l90_Qout, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_year', l90_year, ds)
 
 l30 <- loflows["30 Day Min"];
 ndx = which.min(as.numeric(l30[,"30 Day Min"]));
@@ -201,8 +200,8 @@ if (is.na(l30)) {
   l30_year = 0
 }
 
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_Qout', l30_Qout, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_year', l30_year, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_Qout', l30_Qout, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_year', l30_year, ds)
 
 # 7q10 -- also requires PearsonDS packages
 x7q10 <- fn_iha_7q10(flows)
@@ -210,7 +209,7 @@ x7q10 <- fn_iha_7q10(flows)
 if (is.na(x7q10)) {
   x7q10 = 0.0
 }
-vahydro_post_metric_to_scenprop(scenprop$pid, '7q10', NULL, '7q10', x7q10, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, '7q10', NULL, '7q10', x7q10, ds)
 
 # ALF -- also requires IHA package and lubridate
 alf_data <- data.frame(matrix(data = NA, nrow = length(dat$thisdate), ncol = 5))
@@ -223,20 +222,20 @@ alf_data$day <- day(ymd(alf_data$thisdate))
 zoo.alf_data <- zoo(alf_data$Qout, order.by = alf_data$thisdate)
 alf <- fn_iha_mlf(zoo.alf_data,'August')
 
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ml8', alf, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ml8', alf, ds)
 
 # Sept. 10%
 sept_flows <- subset(alf_data, month == '9')
 sept_10 <- as.numeric(round(quantile(sept_flows$Qout, 0.10),6))
 
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'mne9_10', sept_10, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'mne9_10', sept_10, ds)
 
 #Unmet demand
 unmet_demand_mgd <- mean(as.numeric(dat$unmet_demand_mgd) )
 if (is.na(unmet_demand_mgd)) {
   unmet_demand_mgd = 0.0
 }
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet_demand_mgd', unmet_demand_mgd, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet_demand_mgd', unmet_demand_mgd, ds)
 
 # Metrics trimmed to climate change scenario timescale (Jan. 1 1990 -- Dec. 31 2000)
 if (syear <= 1990 && eyear >= 2000) {
@@ -269,8 +268,8 @@ if (syear <= 1990 && eyear >= 2000) {
     l90_year_trim = 0
   }
   
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_cc_Qout', l90_Qout_trim, site, token)
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_cc_year', l90_year_trim, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_cc_Qout', l90_Qout_trim, ds)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_cc_year', l90_year_trim, ds)
   
   l30_trim <- loflows_trim["30 Day Min"];
   ndx_trim = which.min(as.numeric(l30_trim[,"30 Day Min"]));
@@ -282,8 +281,8 @@ if (syear <= 1990 && eyear >= 2000) {
     l30_year_trim = 0
   }
   
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_cc_Qout', l30_Qout_trim, site, token)
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_cc_year', l30_year_trim, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_cc_Qout', l30_Qout_trim, ds)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_cc_year', l30_year_trim, ds)
 }
 
 message("Plotting critical flow periods")
@@ -318,13 +317,13 @@ if (imp_off == 0) {
     }
     
     # post em up
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, site, token)
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, site, token)
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, site, token)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, ds)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, ds)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, ds)
     
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p0', remaining_days_p0, site, token)
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p10', remaining_days_p10, site, token)
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p50', remaining_days_p50, site, token)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p0', remaining_days_p0, ds)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p10', remaining_days_p10, ds)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p50', remaining_days_p50, ds)
     
     
     # this has an impoundment.  Plot it up.
@@ -375,7 +374,7 @@ if (imp_off == 0) {
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
     print(paste("Saved file: ", fname, "with URL", furl))
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, site, token)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
     
     # l90 2 year
     # this has an impoundment.  Plot it up.
@@ -425,7 +424,7 @@ if (imp_off == 0) {
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
     print(paste("Saved file: ", fname, "with URL", furl))
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, site, token)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, ds)
     
     # All Periods
     # this has an impoundment.  Plot it up.
@@ -469,7 +468,7 @@ if (imp_off == 0) {
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
     print(paste("Saved file: ", fname, "with URL", furl))
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, site, token)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
     
     # Low Elevation Period
     # Dat for Critical Period
@@ -526,7 +525,7 @@ if (imp_off == 0) {
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
     print(paste("Saved file: ", fname, "with URL", furl))
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, site, token)
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
     
   }
 } else {
@@ -585,7 +584,7 @@ if (imp_off == 0) {
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_flows.2yr', 0.0, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_flows.2yr', 0.0, ds)
   
   datpd <- dat
   fname <- paste(
@@ -623,7 +622,7 @@ if (imp_off == 0) {
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.flows.all', 0.0, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.flows.all', 0.0, ds)
   
 }
 
@@ -643,10 +642,5 @@ dataset <- 'VAHydro-EDAS'
 elfgen_huc(runid, rseg_hydroid, huc_level, dataset, scenprop, token)
 ###############################################
 ###############################################
-
-
-
-
-
 
 

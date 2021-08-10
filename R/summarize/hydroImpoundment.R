@@ -100,14 +100,14 @@ if (is.na(storage_pct)) {
 }
 
 # post em up
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_mgd', wd_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_mgd', ps_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'evap_mgd', evap_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qout', Qout, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qin', Qin, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_mgd', wd_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_mgd', ps_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'evap_mgd', evap_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qout', Qout, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qin', Qin, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, ds)
 
 # Dat for Critical Period
 flows <- zoo(dat$Qin, order.by = index(dat));
@@ -177,7 +177,7 @@ if (imp_off == 0) {
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
   
   
   # All Periods
@@ -220,7 +220,7 @@ if (imp_off == 0) {
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
   
   
   # Low Elevation Period
@@ -262,6 +262,6 @@ if (imp_off == 0) {
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage', 0.0, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage', 0.0, ds)
   
 }

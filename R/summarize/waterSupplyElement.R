@@ -71,7 +71,7 @@ if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
   # create
   scenprop$save(TRUE)
 }
-vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NULL, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NULL, ds)
 
 #omsite = site <- "http://deq2.bse.vt.edu"
 #dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE);
@@ -121,21 +121,21 @@ unmet1 = round(udflows[ndx,]$"1 Day Max",6);
 
 
 # post em up
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_mgd', wd_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'gw_demand_mgd', gw_demand_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet_demand_mgd', unmet_demand_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_mgd', ps_mgd, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet90_mgd', unmet90, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet30_mgd', unmet30, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet7_mgd', unmet7, site, token)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet1_mgd', unmet1, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_mgd', wd_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'gw_demand_mgd', gw_demand_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet_demand_mgd', unmet_demand_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_mgd', ps_mgd, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet90_mgd', unmet90, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet30_mgd', unmet30, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet7_mgd', unmet7, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet1_mgd', unmet1, ds)
 
 # Intake Flows 
 iflows <- zoo(as.numeric(dat$Qintake), order.by = index(dat));
 uiflows <- group2(iflows, 'calendar')
 Qin30 <- uiflows["30 Day Min"];
 l30_Qintake <- min(Qin30["30 Day Min"]);
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_Qintake', l30_Qintake, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_Qintake', l30_Qintake, ds)
 
 # Define year at which highest 30 Day Max occurs (Lal's code, line 405)
 #defines critical period based on Qintake if there is no unmet demand
@@ -262,7 +262,7 @@ ggsave(fname,width=7,height=4.75)
 
 print(paste("Saved file: ", fname, "with URL", furl))
 
-vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.30daymax_unmet', 0.0, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.30daymax_unmet', 0.0, ds)
 
 
 ##### HEATMAP
@@ -392,7 +392,7 @@ ggsave(fname2,plot = unmet_avg, width= 7, height=7)
 
 print(paste('File saved to save_directory:', fname2))
 
-vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl2, 'fig.unmet_heatmap', 0.0, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl2, 'fig.unmet_heatmap', 0.0, ds)
 
 ###################################### Plot and save Second unmet Demand Grid
 # contains count/ Avg unmet demand mgd
@@ -470,7 +470,7 @@ ggsave(fname3,plot = unmet_avg, width= 9.5, height=6)
 
 print('File saved to save_directory')
 
-vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl3, 'fig.unmet_heatmap_amt', 0.0, site, token)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl3, 'fig.unmet_heatmap_amt', 0.0, ds)
 
 # does this have an impoundment sub-comp and is imp_off = 0?
 cols <- names(dat)
@@ -501,9 +501,9 @@ if("impoundment" %in% cols) {
   }
 
   # post em up
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, site, token)
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, site, token)
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, ds)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, ds)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, ds)
 
 
   # this has an impoundment.  Plot it up.
@@ -557,7 +557,7 @@ if("impoundment" %in% cols) {
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
 
   # l90 2 year
   # this has an impoundment.  Plot it up.
@@ -604,7 +604,7 @@ if("impoundment" %in% cols) {
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, ds)
 
   # All Periods
   # this has an impoundment.  Plot it up.
@@ -645,7 +645,7 @@ if("impoundment" %in% cols) {
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
 
   # Low Elevation Period
   # Dat for Critical Period
@@ -698,6 +698,6 @@ if("impoundment" %in% cols) {
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
-  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, site, token)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
 
 }

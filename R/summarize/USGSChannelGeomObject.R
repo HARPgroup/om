@@ -6,6 +6,10 @@ site <- "http://deq2.bse.vt.edu/d.dh"    #Specify the site of interest, either d
 # Load Libraries
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
+library(hydrotools)
+# authenticate
+ds <- RomDataSource$new(site, rest_uname)
+ds$get_token(rest_pw)
 
 # Camp Creek - 279191
 argst <- commandArgs(trailingOnly=T)
@@ -35,26 +39,15 @@ sceninfo <- list(
   featureid = pid,
   entity_type = "dh_properties"
 )
-scenprop <- getProperty(sceninfo, site, scenprop)
+scenprop <- RomProperty$new( ds, sceninfo, TRUE)
+scenprop$startdate <- model_run_start
+scenprop$enddate <- model_run_end
+
 # POST PROPERTY IF IT IS NOT YET CREATED
-if (identical(scenprop, FALSE)) {
+if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
   # create
-  sceninfo$pid = NULL
-} else {
-  sceninfo$pid = scenprop$pid
+  scenprop$save(TRUE)
 }
-scenprop = postProperty(inputs=sceninfo,base_url=base_url,prop)
-scenprop <- getProperty(sceninfo, site, scenprop)
-
-# Metric defs
-
-sceninfo <- list(
-  varkey = 'om_scenario',
-  propname = scen.propname,
-  featureid = pid,
-  entity_type = "dh_properties"
-)
-
 
 Rmean <- mean(as.numeric(dat$Runit) )
 if (is.na(Rmean)) {

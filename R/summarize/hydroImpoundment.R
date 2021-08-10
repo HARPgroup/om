@@ -7,6 +7,10 @@ source(paste(basepath,'config.R',sep='/'))
 library(stringr)
 # dirs/URLs
 save_directory <- "/var/www/html/data/proj3/out"
+library(hydrotools)
+# authenticate
+ds <- RomDataSource$new(site, rest_uname)
+ds$get_token(rest_pw)
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)
@@ -53,22 +57,15 @@ sceninfo <- list(
   featureid = pid,
   entity_type = "dh_properties"
 )
-scenprop <- getProperty(sceninfo, site, scenprop)
+scenprop <- RomProperty$new( ds, sceninfo, TRUE)
+scenprop$startdate <- model_run_start
+scenprop$enddate <- model_run_end
+
 # POST PROPERTY IF IT IS NOT YET CREATED
-if (identical(scenprop, FALSE)) {
+if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
   # create
-  sceninfo$pid = NULL
-} else {
-  sceninfo$pid = scenprop$pid
+  scenprop$save(TRUE)
 }
-scenprop = postProperty(inputs=sceninfo,base_url=base_url,prop)
-scenprop <- getProperty(sceninfo, site, scenprop)
-sceninfo <- list(
-  varkey = 'om_scenario',
-  propname = scen.propname,
-  featureid = pid,
-  entity_type = "dh_properties"
-)
 
 wd_mgd <- mean(as.numeric(dat$demand) )
 if (is.na(wd_mgd)) {

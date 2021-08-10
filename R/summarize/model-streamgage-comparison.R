@@ -137,14 +137,14 @@ scale_info = list(
 )
 scaleprop <- postProperty(scale_info, site, scaleprop)
   
-all_flow_metrics_2_vahydro(gmodel_run$pid, gage_data_formatted, token)
+all_flow_metrics_2_vahydro(gmodel_run$pid, gage_data_formatted, ds)
 # do we need to do this if the model has already been summarized
 # Test this?
 # ts <- as.POSIXct(model_data_formatted$date,origin="1970-01-01")
 # model_data_formatted <- zoo(model_data_formatted, order.by = ts)
 # all_flow_metrics_2_vahydro(mmodel_run$pid, as.zoo(model_data_formatted), token)
 # instead of this
-all_flow_metrics_2_vahydro(mmodel_run$pid, model_data_formatted, token)
+all_flow_metrics_2_vahydro(mmodel_run$pid, model_data_formatted, ds)
 
 message("Stream gage comparison complete.")
 message(paste("Scale adjustment for gage record:", wscale))

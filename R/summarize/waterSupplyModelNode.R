@@ -429,8 +429,33 @@ if (imp_off == 0) {
     
     # All Periods
     # this has an impoundment.  Plot it up.
-    # Now zoom in on critical drought period
+    
+    # Full period Flow duration curve
     datpd <- dat
+    fname <- paste(
+      save_directory,
+      paste0(
+        'fig.fdc.all.',
+        elid, '.', runid, '.png'
+      ),
+      sep = '/'
+    )
+    furl <- paste(
+      save_url,
+      paste0(
+        'fig.fdc.all.',
+        elid, '.', runid, '.png'
+      ),
+      sep = '/'
+    )
+    png(fname)
+    hydroTSM::fdc(cbind(dat$impoundment_Qin, dat$impoundment_Qout))
+    dev.off()
+    print(paste("Saved file: ", fname, "with URL", furl))
+    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc.all.', 0.0, ds)
+    
+    
+    # Full period inflow/outflow, res level
     fname <- paste(
       save_directory,
       paste0(

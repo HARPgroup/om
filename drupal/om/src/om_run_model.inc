@@ -442,6 +442,7 @@ function om_run_stash_modes($model, $model_config) {
   $dt->save();
   
   // set the model flow_mode property here
+  $flow_mode = $model_config['flow_mode'];
   $flow_mode_config = array(
     'entity_type' => 'dh_properties',
     'featureid' => $model->pid,

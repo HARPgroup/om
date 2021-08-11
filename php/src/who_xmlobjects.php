@@ -1177,7 +1177,7 @@ if($result === true)
    $who_xmlobjects['wsp_flowby']['type'] = '2'; 
    $who_xmlobjects['wsp_flowby']['toolgroup'] = 9;
    $who_xmlobjects['wsp_flowby']['name'] = 'wsp_flowby';
-   $who_xmlobjects['wsp_flowby']['parent'] = array('hydroImpoundment','wsp_vpdesvwuds','wsp_VWUDSData','wsp_waterUser', 'waterSupplyElement');
+   $who_xmlobjects['wsp_flowby']['parent'] = array('hydroImpoundment','wsp_vpdesvwuds','wsp_VWUDSData','wsp_waterUser', 'waterSupplyElement','waterSupplyModelNode');
    $who_xmlobjects['wsp_flowby']['parentprops'] = array('cfb_var'=>'publicvars','custom_cons_var'=>'publicvars');
    $who_xmlobjects['wsp_flowby']['description'] = 'Defines Flow-By for this object.';
 }
@@ -1198,7 +1198,7 @@ if($result === true)
    $who_xmlobjects['wsp_1tierflowby']['type'] = '2'; 
    $who_xmlobjects['wsp_1tierflowby']['toolgroup'] = 9;
    $who_xmlobjects['wsp_1tierflowby']['name'] = 'wsp_1tierflowby';
-   $who_xmlobjects['wsp_1tierflowby']['parent'] = array('hydroImpoundment','wsp_vpdesvwuds','wsp_VWUDSData','wsp_waterUser', 'waterSupplyElement');
+   $who_xmlobjects['wsp_1tierflowby']['parent'] = array('hydroImpoundment','wsp_vpdesvwuds','wsp_VWUDSData','wsp_waterUser', 'waterSupplyElement','waterSupplyModelNode');
    $who_xmlobjects['wsp_1tierflowby']['parentprops'] = array('tier_var'=>'publicvars','cfb_var'=>'publicvars','custom_cons_var'=>'publicvars');
    $who_xmlobjects['wsp_1tierflowby']['description'] = 'Defines Flow-By for this object.';
 }

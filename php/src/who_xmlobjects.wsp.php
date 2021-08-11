@@ -11,6 +11,24 @@ include_once('lib_wooomm.wsp.php');
 error_log("Creating USGSArima<br>");
 error_reporting(E_ALL);
 
+
+error_log("Creating waterSupplyModelNode<br>");
+#print("Creating Object<br>");
+$obj = new waterSupplyModelNode;
+// perform serialization
+$result = $serializer->serialize($obj);
+#print("Printing Result<br>");
+// check result code and display XML if success
+if($result === true)
+{
+   $xml = $serializer->getSerializedData();
+   $who_xmlobjects['waterSupplyModelNode']['xml'] = $xml;
+   $who_xmlobjects['waterSupplyModelNode']['type'] = '3'; 
+   $who_xmlobjects['waterSupplyModelNode']['toolgroup'] = 9;# type 1 - stand-alone object, 2 - sub-component only, 3 - model container (runnable), 4 - both stand-alone and sub-comp
+   $who_xmlobjects['waterSupplyModelNode']['name'] = 'Water Supply Model Element';
+   $who_xmlobjects['waterSupplyModelNode']['description'] = 'An object that can be used to assemble and run individual hydrologic model components in a concerted fashion.  Includes some pre-determined properties such as Qin, Qout and storage to facilitate linakges';
+}
+
 #print("Creating Object<br>");
 $obj = new wsp_LUBasedProjection;
 // perform serialization
@@ -106,23 +124,6 @@ if($result === true)
    $who_xmlobjects['droughtMonitor']['toolgroup'] = 1; # type 1 - stand-alone object, 2 - sub-component only, 3 - model container (runnable), 4 - both stand-alone and sub-comp
    $who_xmlobjects['droughtMonitor']['name'] = 'Drought Monitor Object';
    $who_xmlobjects['droughtMonitor']['description'] = 'Gathers and Analyzes Drought Monitoring Info.';
-}
-
-error_log("Creating waterSupplyModelNode<br>");
-#print("Creating Object<br>");
-$obj = new waterSupplyModelNode;
-// perform serialization
-$result = $serializer->serialize($obj);
-#print("Printing Result<br>");
-// check result code and display XML if success
-if($result === true)
-{
-   $xml = $serializer->getSerializedData();
-   $who_xmlobjects['waterSupplyModelNode']['xml'] = $xml;
-   $who_xmlobjects['waterSupplyModelNode']['type'] = '3'; 
-   $who_xmlobjects['waterSupplyModelNode']['toolgroup'] = 9;# type 1 - stand-alone object, 2 - sub-component only, 3 - model container (runnable), 4 - both stand-alone and sub-comp
-   $who_xmlobjects['waterSupplyModelNode']['name'] = 'Water Supply Model Element';
-   $who_xmlobjects['waterSupplyModelNode']['description'] = 'An object that can be used to assemble and run individual hydrologic model components in a concerted fashion.  Includes some pre-determined properties such as Qin, Qout and storage to facilitate linakges';
 }
 
 

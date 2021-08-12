@@ -143,7 +143,7 @@ class dHOMHydroObjectOtherProps extends dHOMHydroObject {
 class dHOMHydroImpoundment extends dHOMHydroObject {
   var $object_class = 'hydroImpoundment';
   var $attach_method = 'contained';
-  var $json2d = TRUE;
+  //var $json2d = TRUE; // only enable this when the main classes support json which for now only subcomps do
   
   public function hiddenFields() {
     $hidden = array_merge(array('propcode', 'propvalue'), parent::hiddenFields());

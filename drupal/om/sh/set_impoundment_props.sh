@@ -19,4 +19,3 @@ template=6389644
 
 # make sure it is using the new discharge_mgd variable 
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid demand
-

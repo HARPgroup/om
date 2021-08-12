@@ -2,10 +2,10 @@
 # This adds common data matrixes from a template that do not get created 
 # by default with the model type plugin
 pid=$1
-template=6390272
+template=6541481
 
 if [ $# -lt 1 ]; then
-  echo 1>&2 "Usage: add_common_waterSystemElement.sh pid [template=$template]"
+  echo 1>&2 "Usage: add_common_waterSupplyModelNode.sh pid [template=$template]"
   exit 2
 fi 
 

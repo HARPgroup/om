@@ -8638,7 +8638,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    $cache_file_exists = $cache_res['cache_file_exists'];
    $cacheable = $cache_res['cacheable'];
    $returnArray['error'] .= $cache_res['error'];
-   error_log("Element $elementid: checkObjectCacheStatus(order = $order, cache_level = $cache_level, cache_id = $cache_id, current_level = $current_level) :: Cache Type: $cache_type - Cacheable - $cacheable ");
+   //error_log("Element $elementid: checkObjectCacheStatus(order = $order, cache_level = $cache_level, cache_id = $cache_id, current_level = $current_level) :: Cache Type: $cache_type - Cacheable - $cacheable ");
    //error_log("Element $elementid: Cache Settings: " . print_r($cache_res,1));
    
    if ( ($cache_type <> 'disabled') and (count($unserobjects) >= 1) ) {
@@ -8870,12 +8870,12 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
       if ( !(strtotime($cache_level)) ) {
          // cache_level is an integer
          $cache_type = 'level';
-         error_log("strtotime($cache_level) Failed: Found CacheType = date $cache_level ");
+         //error_log("strtotime($cache_level) Failed: Found CacheType = date $cache_level ");
          $returnArray['error'] .= "Cache level is an integer<br>";
       } else {
          // cache_level is a date
          $cache_type = 'date';
-         error_log("Found CacheType = date $cache_level ");
+         //error_log("Found CacheType = date $cache_level ");
          $returnArray['error'] .= "Cache level is a date<br>";
       }
    } else {
@@ -8931,7 +8931,7 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
       // verify that the file exists
       $returnArray['error'] .= $cache_sql . "<br>";
       $listobject->querystring = $cache_sql;
-      error_log("Cache SQL: $cache_sql");
+      //error_log("Cache SQL: $cache_sql");
       $listobject->performQuery();
       if ($listobject->numrows > 0) {
          // BEGIN - new method

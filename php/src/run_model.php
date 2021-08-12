@@ -112,7 +112,7 @@ switch ($runtype) {
 //error_reporting(E_ALL);
    // test only uncomment below
    //runCached($runVars['elementid'], $runVars['runid'], $runVars['cache_runid'], $runVars['startdate'], $runVars['enddate'], $runVars['cache_list'], $runVars['cache_level'], array(), array(), true);
-   runCached($runVars['elementid'], $runVars['runid'], $runVars['cache_runid'], $runVars['startdate'], $runVars['enddate'], $runVars['cache_list'], $runVars['cache_level'], array(), $runVars['test_only']);
+   runCached($runVars['elementid'], $runVars['runid'], $runVars['cache_runid'], $runVars['startdate'], $runVars['enddate'], $runVars['cache_list'], $runVars['cache_level'], array(), array(), $runVars['test_only']);
    error_log("Returned from $runtype with " . print_r($runVars,1) . "\n");
    break;
    

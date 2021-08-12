@@ -8871,6 +8871,7 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
       } else {
          // cache_level is a date
          $cache_type = 'date';
+         error_log("Found CacheType = date $cache_level ");
          $returnArray['error'] .= "Cache level is a date<br>";
       }
    } else {

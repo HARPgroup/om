@@ -8861,12 +8861,14 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
    // now, check if this run has been requested with model data caching on (cache_level >= 0)
    // can also perform a check on the cache based on run-date.  If cache_level is a date, then 
    // we use that logic instead
+   error_log("Evaluating intval($strtotime) = $cache_level");
    if ( $cache_level <> -1) {
       $returnArray['error'] .= "Evaluating intval($cache_level) = " . intval($cache_level) . "<br>";
       //if (intval($cache_level) === $cache_level) {
       if ( !(strtotime($cache_level)) ) {
          // cache_level is an integer
          $cache_type = 'level';
+         error_log("strtotime($cache_level) Failed: Found CacheType = date $cache_level ");
          $returnArray['error'] .= "Cache level is an integer<br>";
       } else {
          // cache_level is a date

@@ -1755,6 +1755,7 @@ function runCached($elementid, $runid, $cache_runid, $startdate, $enddate, $cach
     
     // load up all of the things that are in the base model, with caching specified
     error_log("Calling loadModelUsingCached(modeldb, $elementid, $runid, $cache_runid with cache_level = $cache_level");
+    error_log("  with input_props = " . print_r($input_props,1));
     $model_elements = loadModelUsingCached($modeldb, $elementid, $runid, $cache_runid, $input_props, $cache_level, $cache_list, $run_date);
     $error = $model_elements['error'];
     $thisobject = $model_elements['object'];

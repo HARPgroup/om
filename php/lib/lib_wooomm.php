@@ -8929,6 +8929,7 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
       // verify that the file exists
       $returnArray['error'] .= $cache_sql . "<br>";
       $listobject->querystring = $cache_sql;
+      error_log("Cache SQL: $cache_sql");
       $listobject->performQuery();
       if ($listobject->numrows > 0) {
          // BEGIN - new method

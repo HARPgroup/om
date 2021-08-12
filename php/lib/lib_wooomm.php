@@ -1228,7 +1228,8 @@ function loadModelUsingCached($modeldb, $elementid, $runid, $cache_runid, $input
    // *********************************
    // then call the normal unserialize routine which will load remaining objects, 
    // using cached copies if they fit the normal criteria
-   error_log("Calling unSerializeModelObject($elementid, input_props ($input_props[model_startdate], $input_props[model_enddate]), modeldb, $cache_level, $runid) ");
+   error_log("Calling unSerializeModelObject($elementid, input_props, modeldb, $cache_level, $runid) ");
+   error_log("  With input_props = " . print_r($input_props,1));
    $thisobresult = unSerializeModelObject($elementid, $input_props, $modeldb, $cache_level, $runid);
    $thisobject = $thisobresult['object'];
    $components = $thisobresult['complist'];

@@ -93,7 +93,7 @@ furl <- paste(
   sep = '/'
 )
 png(fname)
-barplot(modat$base_demand_mgd ~ modat$month)
+barplot(modat$base_demand_mgd ~ modat$month, xlab="Month", ylab="Base Demand (mgd)")
 dev.off()
 print(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.monthly_demand', 0.0, ds)

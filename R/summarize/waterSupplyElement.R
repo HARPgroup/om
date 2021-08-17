@@ -82,8 +82,21 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logf
 #boxplot(as.numeric(dat$Qreach) ~ dat$year, ylim=c(0,amn))
 
 datdf <- as.data.frame(dat)
-modat <- sqldf("select month, avg(wd_mgd) as wd_mgd from datdf group by month")
+modat <- sqldf("select month, avg(base_demand_mgd) as base_demand_mgd from datdf group by month")
 #barplot(wd_mgd ~ month, data=modat)
+fname <- paste(
+  save_directory,paste0('fig.monthly_demand.', elid, '.', runid, '.png'),
+  sep = '/'
+)
+furl <- paste(
+  save_url,paste0('fig.monthly_demand.',elid, '.', runid, '.png'),
+  sep = '/'
+)
+png(fname)
+barplot(modat$base_demand_mgd ~ modat$month)
+dev.off()
+print(paste("Saved file: ", fname, "with URL", furl))
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.monthly_demand', 0.0, ds)
 
 # Calculate
 wd_mgd <- mean(as.numeric(dat$wd_mgd) )
@@ -472,6 +485,8 @@ ggsave(fname3,plot = unmet_avg, width= 9.5, height=6)
 print('File saved to save_directory')
 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl3, 'fig.unmet_heatmap_amt', 0.0, ds)
+
+
 
 # does this have an impoundment sub-comp and is imp_off = 0?
 cols <- names(dat)

@@ -1446,6 +1446,22 @@ class dHOMSubComp extends dHOMBaseObjectClass {
       }
     }
   }
+  public function getDefaults($entity, &$defaults = array()) {
+    $defaults = parent::getDefaults($entity, $defaults);
+    $defaults += array(
+      'exec_hierarch' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => NULL,
+        'propname' => 'exec_hierarch',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'vardesc' => 'Execution hierarchy (manually defined).  Smaller numbers executed first.  Negative values OK.',
+        'title' => 'Initial Value',
+        'varid' => dh_varkey2varid('om_class_Constant', TRUE),
+      ),
+    );
+    return $defaults;
+  }
   
   public function delete(&$entity) {
     dpm($entity,'plugin delete() method called');

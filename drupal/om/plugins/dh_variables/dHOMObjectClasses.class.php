@@ -1451,11 +1451,11 @@ class dHOMSubComp extends dHOMBaseObjectClass {
     $defaults += array(
       'exec_hierarch' => array(
         'entity_type' => $entity->entityType(),
-        'propcode_default' => NULL,
+        'propvalue_default' => 0,
         'propname' => 'exec_hierarch',
         'singularity' => 'name_singular',
         'featureid' => $entity->identifier(),
-        'vardesc' => 'Execution hierarchy (manually defined).  Smaller numbers executed first.  Negative values OK.',
+        'vardesc' => 'Execution hierarchy (manually defined).  Smaller numbers executed first.  Negative values OK. Zero (0) means use default model hierarchy assessment',
         'title' => 'Execution hierarchy',
         'varid' => dh_varkey2varid('om_class_Constant', TRUE),
       ),

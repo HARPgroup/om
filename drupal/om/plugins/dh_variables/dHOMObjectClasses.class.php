@@ -1337,6 +1337,16 @@ class dHOMModelElement extends dHOMBaseObjectClass {
         'title' => 'Last Run ID',
         'varid' => dh_varkey2varid('om_class_Constant', TRUE),
       ),
+      'defaultval' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => NULL,
+        'propname' => 'defaultval',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'vardesc' => 'Default Value.',
+        'title' => 'Default Value',
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
+      ),
       'cache_date' => array(
         'entity_type' => $entity->entityType(),
         'propvalue_default' => -1, // default to "CBP Phase 5.3" mode 
@@ -1459,6 +1469,16 @@ class dHOMSubComp extends dHOMBaseObjectClass {
         'title' => 'Execution hierarchy',
         'varid' => dh_varkey2varid('om_class_Constant', TRUE),
       ),
+      'defaultval' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => NULL,
+        'propname' => 'defaultval',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'vardesc' => 'Default value.',
+        'title' => 'Default Value',
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
+      ),
     );
     return $defaults;
   }
@@ -1551,8 +1571,8 @@ class dHOMEquation extends dHOMSubComp {
         'propname' => 'defaultval',
         'singularity' => 'name_singular',
         'featureid' => $entity->identifier(),
-        'vardesc' => 'Initial value.',
-        'title' => 'Initial Value',
+        'vardesc' => 'Default Value.',
+        'title' => 'Default Value',
         'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
       ),
       'nonnegative' => array(

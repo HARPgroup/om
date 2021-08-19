@@ -95,7 +95,7 @@ function om_translate_to_dh($om_comp, &$dh_prop) {
       // translate this into the new object class dataMatrix 
       $dh_prop->keycol1 = $om_comp->input; // 
       $dh_prop->lutype1 = $om_comp->lutype; // 
-      $dh_prop->defaultval = $om_comp->defval; // 
+      $om_comp->defaultval = $om_comp->defval; // this class has a non-standard name for defaultval, and also inherits defaultval from the parent class, which results in over-writing during translation.  Set this here to make this progress smoothly later.
       error_log("lookupObject defval prop = $om_comp->defval");
       $table = array();
       // if this has a file set,load it, and translate it into the basic lookupObject format for later translation to a matrix

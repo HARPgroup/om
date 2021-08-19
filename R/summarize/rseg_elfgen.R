@@ -99,7 +99,7 @@ elfgen_confidence <- function(elf,rseg.name,outlet_flow,yaxis_thresh,cuf){
   
 }
 
-elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, ds){
+elfgen_huc <- function(runid, hydroid, huc_level, dataset, scenprop, ds, save_directory = '/var/www/html/data/proj3/out', save_url = 'http://deq1.bse.vt.edu:81/data/proj3/out') {
   breakpt <- 530
   x.metric <- 'erom_q0001e_mean'
   y.metric <- 'aqbio_nt_total'

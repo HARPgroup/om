@@ -1,5 +1,8 @@
+#----------------------------------------------
+site <- "http://deq1.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
+#----------------------------------------------
 # Load Libraries
-basepath='/var/www/R'
+basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 #----------------------------------------------
 #site <- base_url    #Specify the site of interest, either d.bet OR d.dh, taken from the config.R

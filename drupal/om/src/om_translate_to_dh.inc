@@ -91,6 +91,41 @@ function om_translate_to_dh($om_comp, &$dh_prop) {
   }
   
   switch ($om_comp->object_class) {
+    case 'lookupObject':
+      // translate this into the new object class dataMatrix 
+      $dh_prop->keycol1 = $om_comp->input; // 
+      $dh_prop->lutype1 = $om_comp->lutype; // 
+      $dh_prop->defaultval = $om_comp->defval; // 
+      $table = array();
+      // if this has a file set,load it, and translate it into the basic lookupObject format for later translation to a matrix
+      if (strlen($om_comp->filepath) > 0) {
+        if (file_exists($om_comp->filepath)) {
+          $om_comp->lucsv = '';
+          $lu_file = readDelimitedFile($om_comp->filepath);
+          foreach($lu_file as $thiswua) {
+            $key = trim($thiswua[0]);
+            $value = trim($thiswua[1]);
+            $om_comp->lucsv .= $key . ':' .$value;
+          }
+        }
+      }
+      $in = array();
+      foreach (explode(",", $om_comp->lucsv) as $pair) {
+        list($key, $val) = explode(":", $pair);
+        $key = trim($key);
+        $val = trim($val);
+        $in[] = array($key, $val);
+      }
+      if (method_exists($plugin, 'setCSVTableField')) {
+        //error_log("Translating matrix to tablefield" . print_r((array)$om_comp,1));
+        //error_log("Translating matrix to tablefield" . print_r($in,1));
+        error_log("Translating matrix to tablefield");
+        $plugin->setCSVTableField($dh_prop, $in);
+      }
+      $translated = TRUE;
+    break;
+      
+        
     case 'dataMatrix':
       $dh_prop->keycol1 = $om_comp->keycol1;
       $dh_prop->keycol2 = $om_comp->keycol2;
@@ -268,6 +303,7 @@ function om_get_search_model_subprops($entity_type, $featureid, $subprop_name, $
 function om_get_dh_varkey($om_comp) {
   $duplicates = array(
     'USGSGageSubComp' => 'USGSGageObject',
+    'lookupObject' => 'dataMatrix',
   );
   $object_class = 
     isset($duplicates[$om_comp->object_class]) 

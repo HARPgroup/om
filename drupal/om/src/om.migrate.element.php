@@ -131,7 +131,7 @@ foreach ($data as $element) {
     continue;
   }
   if (is_object($om_object)) {
-    $dh_model = om_load_dh_model($query_type, $om_fid, $om_object->name, 'varcode', $om_object->object_class);
+    $dh_model = om_load_dh_model($query_type, $om_fid, $om_object->name, 'varcode', $om_object->object_class, $model_scenario);
     if (is_object($dh_model)) {
       om_object2dh($elid, $om_object, $dh_model, $classes, $one_proc);
     }

@@ -96,6 +96,7 @@ function om_translate_to_dh($om_comp, &$dh_prop) {
       $dh_prop->keycol1 = $om_comp->input; // 
       $dh_prop->lutype1 = $om_comp->lutype; // 
       $dh_prop->defaultval = $om_comp->defval; // 
+      error_log("lookupObject defval prop = $om_comp->defval");
       $table = array();
       // if this has a file set,load it, and translate it into the basic lookupObject format for later translation to a matrix
       if (strlen($om_comp->filepath) > 0) {

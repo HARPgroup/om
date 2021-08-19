@@ -1,5 +1,4 @@
 # Load Libraries
-basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 #----------------------------------------------
 #site <- base_url    #Specify the site of interest, either d.bet OR d.dh, taken from the config.R
@@ -665,7 +664,7 @@ rseg_hydroid<-rseg$featureid
 huc_level <- 'huc8'
 dataset <- 'VAHydro-EDAS'
 
-elfgen_huc(runid, rseg_hydroid, huc_level, dataset, scenprop, token)
+elfgen_huc(runid, rseg_hydroid, huc_level, dataset, scenprop, ds)
 ###############################################
 ###############################################
 

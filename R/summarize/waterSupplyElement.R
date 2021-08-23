@@ -42,6 +42,7 @@ if (syear != eyear) {
   sdate <- as.Date(paste0(syear,"-02-01"))
   edate <- as.Date(paste0(eyear,"-12-31"))
 }
+cols <- names(dat)
 # rename ps_refill_pump_mgd to refill_pump_mgd
 if (!("refill_pump_mgd" %in% cols)) {
   if ("ps_refill_pump_mgd" %in% cols) {
@@ -495,7 +496,6 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl3, 'fig.unmet
 
 
 # does this have an impoundment sub-comp and is imp_off = 0?
-cols <- names(dat)
 # check for local_impoundment, and if so, rename to impoundment for processing
 if("local_impoundment" %in% cols) {
   dat$impoundment_use_remain_mg <- dat$local_impoundment_use_remain_mg

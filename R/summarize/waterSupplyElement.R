@@ -42,6 +42,12 @@ if (syear != eyear) {
   sdate <- as.Date(paste0(syear,"-02-01"))
   edate <- as.Date(paste0(eyear,"-12-31"))
 }
+# rename ps_refill_pump_mgd to refill_pump_mgd
+if (!("refill_pump_mgd" %in% cols)) {
+  if ("ps_refill_pump_mgd" %in% cols) {
+    dat$refill_pump_mgd <- dat$ps_refill_pump_mgd
+  }
+}
 # yrdat will be used for generating the heatmap with calendar years
 yrdat <- dat
 
@@ -503,7 +509,7 @@ if("local_impoundment" %in% cols) {
 if("impoundment" %in% cols) {
   # Plot and analyze impoundment sub-comps
   dat$storage_pct <- as.numeric(dat$impoundment_use_remain_mg) * 3.07 / as.numeric(dat$impoundment_max_usable)
-  #
+  #set the storage percent
   storage_pct <- mean(as.numeric(dat$storage_pct) )
   if (is.na(storage_pct)) {
     usable_pct_p0 <- 0
@@ -561,13 +567,13 @@ if("impoundment" %in% cols) {
   ymx2 <- max(
     datpd$impoundment_demand * 1.547,
     datpd$impoundment_Qout,
-    datpd$ps_refill_pump_mgd,
+    datpd$refill_pump_mgd,
     datpd$impoundment_Qin
     )
   plot(datpd$impoundment_Qin,col='blue', axes=FALSE, xlab="", ylab="",
        ylim=c(0,ymx2))
   lines(datpd$impoundment_Qout,col='darkblue')
-  lines(datpd$ps_refill_pump_mgd * 1.547,col='green')
+  lines(datpd$refill_pump_mgd * 1.547,col='green')
   lines(datpd$impoundment_demand * 1.547,col='red')
   axis(side = 4)
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')

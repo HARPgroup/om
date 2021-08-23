@@ -14,6 +14,7 @@ ln -s /media/model/p6/tmp/wdm/river /opt/model/p6/p6_gb604/tmp/wdm/river
 ln -s /media/model/p6/tmp/wdm/land /opt/model/p6/p6_gb604/tmp/wdm/land
 ln -s /media/model/p6/out /opt/model/p6/p6_gb604/out
 ln -s /media/NAS2/omdata /var/www/html/data
+ln -s /media/NAS2/omdata /var/www/html/data
 
 // Libraries
 

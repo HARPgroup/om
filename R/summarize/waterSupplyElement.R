@@ -144,7 +144,7 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet3
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet7_mgd', unmet7, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet1_mgd', unmet1, ds)
 
-# Intake Flows 
+# Intake Flows
 iflows <- zoo(as.numeric(dat$Qintake), order.by = index(dat));
 uiflows <- group2(iflows, 'calendar')
 Qin30 <- uiflows["30 Day Min"];
@@ -197,17 +197,17 @@ furl <- paste(
 if (sum(datdf$unmet_demand_mgd)==0) {
   # base it on flow since we have no unmet demand.
   dsql <- paste(
-    "select min(month) as dsmo, max(month) as demo 
-     from datdf 
+    "select min(month) as dsmo, max(month) as demo
+     from datdf
      where Qintake <= ", l30_Qintake,
      " and year = ",
     u30_year2
   )
 } else {
   dsql <- paste(
-    "select min(month) as dsmo, max(month) as demo 
-     from datdf 
-     where unmet_demand_mgd > 0 
+    "select min(month) as dsmo, max(month) as demo
+     from datdf
+     where unmet_demand_mgd > 0
      and year = ",
     u30_year2
   )
@@ -229,8 +229,8 @@ if (demo > 12) {
 dsmo <- sprintf('%02i',dsmo)
 demo <- sprintf('%02i',demo)
 ddat2 <- window(
-  dat, 
-  start = as.Date(paste0(dsy, "-", dsmo, "-01")), 
+  dat,
+  start = as.Date(paste0(dsy, "-", dsmo, "-01")),
   end = as.Date(paste0(dey,"-", demo, "-28") )
 );
 
@@ -502,7 +502,7 @@ if("local_impoundment" %in% cols) {
 }
 if("impoundment" %in% cols) {
   # Plot and analyze impoundment sub-comps
-  dat$storage_pct <- dat$impoundment_use_remain_mg * 3.07 / dat$impoundment_max_usable
+  dat$storage_pct <- as.numeric(dat$impoundment_use_remain_mg) * 3.07 / as.numeric(dat$impoundment_max_usable)
   #
   storage_pct <- mean(as.numeric(dat$storage_pct) )
   if (is.na(storage_pct)) {

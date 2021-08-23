@@ -618,7 +618,11 @@ if("impoundment" %in% cols) {
     xlab=paste("Lowest 90 Day Flow Period",pdstart,"to",pdend)
   )
   par(new = TRUE)
-  ymx <- max(datpd$impoundment_Qin, datpd$impoundment_Qout, datpd$wd_mgd * 1.547)
+  ymx <- pmax(
+    max(datpd$impoundment_Qin),
+    max(datpd$impoundment_Qout),
+    max(datpd$wd_mgd * 1.547)
+  )
   plot(datpd$impoundment_Qin,col='blue', axes=FALSE, xlab="", ylab="", ylim=c(0,ymx))
   lines(datpd$impoundment_Qout,col='green')
   lines(datpd$wd_mgd * 1.547,col='red')

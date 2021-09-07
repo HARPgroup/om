@@ -37,7 +37,7 @@ mode(dat) <- 'numeric'
 #  dat,
 #  as.POSIXct(
 #    format(
-#      time(dat), 
+#      time(dat),
 #      format='%Y/%m/%d'),
 #    tz='UTC'
 #  ),
@@ -124,7 +124,7 @@ net_consumption_mgd <- wd_cumulative_mgd - ps_cumulative_mgd
 if (is.na(net_consumption_mgd)) {
   net_consumption_mgd = 0.0
 }
-dat$Qbaseline <- dat$Qout + 
+dat$Qbaseline <- dat$Qout +
   (dat$wd_cumulative_mgd - dat$ps_cumulative_mgd ) * 1.547
 # alter calculation to account for pump store
 if (imp_off == 0) {
@@ -132,20 +132,20 @@ if (imp_off == 0) {
     if (!("ps_cumulative_mgd" %in% cols)) {
       dat$ps_cumulative_mgd <- 0.0
     }
-    dat$Qbaseline <- dat$impoundment_Qin + 
+    dat$Qbaseline <- dat$impoundment_Qin +
       (dat$wd_cumulative_mgd - dat$ps_cumulative_mgd) * 1.547
   }
 }
 
 Qbaseline <- mean(as.numeric(dat$Qbaseline) )
 if (is.na(Qbaseline)) {
-  Qbaseline = Qout + 
+  Qbaseline = Qout +
     (wd_cumulative_mgd - ps_cumulative_mgd ) * 1.547
 }
 # The total flow method of CU calculation
 consumptive_use_frac <- 1.0 - (Qout / Qbaseline)
 dat$consumptive_use_frac <- 1.0 - (dat$Qout / dat$Qbaseline)
-# This method is more appropriate for impoundments that have long 
+# This method is more appropriate for impoundments that have long
 # periods of zero outflow... but the math is not consistent with elfgen
 daily_consumptive_use_frac <-  mean(as.numeric(dat$consumptive_use_frac) )
 if (is.na(daily_consumptive_use_frac)) {
@@ -174,7 +174,7 @@ flows <- aggregate(
   flows,
   as.POSIXct(
     format(
-      time(flows), 
+      time(flows),
       format='%Y/%m/%d'),
     tz='UTC'
   ),
@@ -245,46 +245,46 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet_
 if (syear <= 1990 && eyear >= 2000) {
   sdate_trim <- as.Date(paste0(1990,"-10-01"))
   edate_trim <- as.Date(paste0(2000,"-09-30"))
-  
+
   dat_trim <- window(dat, start = sdate_trim, end = edate_trim);
   # convert to daily
   dat_trim <- aggregate(
     dat_trim,
     as.POSIXct(
       format(
-        time(dat_trim), 
+        time(dat_trim),
         format='%Y/%m/%d'),
       tz='UTC'
     ),
     'mean'
   )
   mode(dat_trim) <- 'numeric'
-  
+
   flows_trim <- zoo(as.numeric(as.character( dat_trim$Qout )), order.by = index(dat_trim));
   loflows_trim <- group2(flows_trim);
   l90_trim <- loflows_trim["90 Day Min"];
   ndx_trim = which.min(as.numeric(l90_trim[,"90 Day Min"]));
   l90_Qout_trim = round(loflows_trim[ndx_trim,]$"90 Day Min",6);
   l90_year_trim = loflows_trim[ndx_trim,]$"year";
-  
+
   if (is.na(l90_trim)) {
     l90_Qout_trim = 0.0
     l90_year_trim = 0
   }
-  
+
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_cc_Qout', l90_Qout_trim, ds)
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_cc_year', l90_year_trim, ds)
-  
+
   l30_trim <- loflows_trim["30 Day Min"];
   ndx_trim = which.min(as.numeric(l30_trim[,"30 Day Min"]));
   l30_Qout_trim = round(loflows_trim[ndx_trim,]$"30 Day Min",6);
   l30_year_trim = loflows_trim[ndx_trim,]$"year";
-  
+
   if (is.na(l30_trim)) {
     l30_Qout_trim = 0.0
     l30_year_trim = 0
   }
-  
+
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_cc_Qout', l30_Qout_trim, ds)
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_cc_year', l30_year_trim, ds)
 }
@@ -292,11 +292,11 @@ if (syear <= 1990 && eyear >= 2000) {
 message("Plotting critical flow periods")
 # does this have an active impoundment sub-comp
 if (imp_off == 0) {
-  
+
   if("impoundment" %in% cols) {
     # Plot and analyze impoundment sub-comps
     dat$storage_pct <- dat$impoundment_use_remain_mg * 3.07 / dat$impoundment_max_usable
-    # 
+    #
     storage_pct <- mean(as.numeric(dat$storage_pct) )
     if (is.na(storage_pct)) {
       usable_pct_p0 <- 0
@@ -319,24 +319,24 @@ if (imp_off == 0) {
       remaining_days_p10 <- remaining_days["10%"]
       remaining_days_p50 <- remaining_days["50%"]
     }
-    
+
     # post em up
     vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, ds)
     vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, ds)
     vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, ds)
-    
+
     vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p0', remaining_days_p0, ds)
     vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p10', remaining_days_p10, ds)
     vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p50', remaining_days_p50, ds)
-    
-    
+
+
     # this has an impoundment.  Plot it up.
     # Now zoom in on critical drought period
     pdstart = as.Date(paste0(l90_year,"-06-01") )
     pdend = as.Date(paste0(l90_year, "-11-15") )
     datpd <- window(
-      dat, 
-      start = pdstart, 
+      dat,
+      start = pdstart,
       end = pdend
     );
     fname <- paste(
@@ -360,10 +360,10 @@ if (imp_off == 0) {
     ymx <- 100
     par(mar = c(8.8,5,0.5,5))
     plot(
-      datpd$storage_pct * 100.0, 
-      ylim=c(ymn,ymx), 
+      datpd$storage_pct * 100.0,
+      ylim=c(ymn,ymx),
       ylab="Reservoir Storage (%)",
-      xlab=paste("Lowest 90 Day Flow Period",pdstart,"to",pdend), 
+      xlab=paste("Lowest 90 Day Flow Period",pdstart,"to",pdend),
       legend=c('Storage', 'Qin', 'Qout', 'Demand (mgd)')
     )
     par(new = TRUE)
@@ -373,21 +373,21 @@ if (imp_off == 0) {
     axis(side = 4)
     mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
     legend("bottom",inset=-0.36, xpd=TRUE, c("Reservoir Storage","Inflow","Outflow","Demand"),
-           col = c("black", "blue", "green","red"), 
-           lty = c(1,1,1,1), 
+           col = c("black", "blue", "green","red"),
+           lty = c(1,1,1,1),
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
     print(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
-    
+
     # l90 2 year
     # this has an impoundment.  Plot it up.
     # Now zoom in on critical drought period
     pdstart = as.Date(paste0( (as.integer(l90_year) - 1),"-01-01") )
     pdend = as.Date(paste0(l90_year, "-12-31") )
     datpd <- window(
-      dat, 
-      start = pdstart, 
+      dat,
+      start = pdstart,
       end = pdend
     );
     fname <- paste(
@@ -411,8 +411,8 @@ if (imp_off == 0) {
     ymx <- 100
     par(mar = c(8.8,5,0.5,5))
     plot(
-      datpd$storage_pct * 100.0, 
-      ylim=c(ymn,ymx), 
+      datpd$storage_pct * 100.0,
+      ylim=c(ymn,ymx),
       ylab="Reservoir Storage (%)",
       xlab=paste("Lowest 90 Day Flow Period",pdstart,"to",pdend)
     )
@@ -423,16 +423,16 @@ if (imp_off == 0) {
     axis(side = 4)
     mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
     legend("bottom",inset=-0.36, xpd=TRUE, c("Reservoir Storage","Inflow","Outflow","Demand"),
-           col = c("black", "blue", "green","red"), 
-           lty = c(1,1,1,1), 
+           col = c("black", "blue", "green","red"),
+           lty = c(1,1,1,1),
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
     print(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, ds)
-    
+
     # All Periods
     # this has an impoundment.  Plot it up.
-    
+
     # Full period Flow duration curve
     datpd <- dat
     fname <- paste(
@@ -456,8 +456,8 @@ if (imp_off == 0) {
     dev.off()
     print(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc.all.', 0.0, ds)
-    
-    
+
+
     # Full period inflow/outflow, res level
     fname <- paste(
       save_directory,
@@ -480,8 +480,8 @@ if (imp_off == 0) {
     ymx <- 100
     par(mar = c(8.8,5,0.5,5))
     plot(
-      datpd$storage_pct * 100.0, 
-      ylim=c(ymn,ymx), 
+      datpd$storage_pct * 100.0,
+      ylim=c(ymn,ymx),
       ylab="Reservoir Storage (%)",
       xlab=paste("Storage and Flows",sdate,"to",edate)
     )
@@ -492,13 +492,13 @@ if (imp_off == 0) {
     axis(side = 4)
     mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
     legend("bottom",inset=-0.36, xpd=TRUE, c("Reservoir Storage","Inflow","Outflow","Demand"),
-           col = c("black", "blue", "green","red"), 
-           lty = c(1,1,1,1), 
+           col = c("black", "blue", "green","red"),
+           lty = c(1,1,1,1),
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
     print(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
-    
+
     # Low Elevation Period
     # Dat for Critical Period
     elevs <- zoo(dat$storage_pct, order.by = index(dat));
@@ -510,8 +510,8 @@ if (imp_off == 0) {
     l90_elev_start = as.Date(paste0(l90_elevyear - 2,"-01-01"))
     l90_elev_end = as.Date(paste0(l90_elevyear,"-12-31"))
     elevdatpd <- window(
-      dat, 
-      start = l90_elev_start, 
+      dat,
+      start = l90_elev_start,
       end = l90_elev_end
     );
     datpd <- elevdatpd
@@ -536,8 +536,8 @@ if (imp_off == 0) {
     ymx <- 100
     par(mar = c(8.8,5,01,5))
     plot(
-      datpd$storage_pct * 100.0,cex.main=1, 
-      ylim=c(ymn,ymx), 
+      datpd$storage_pct * 100.0,cex.main=1,
+      ylim=c(ymn,ymx),
       main="Minimum Modeled Reservoir Storage Period",
       ylab="Reservoir Storage (%)",
       xlab=paste("Model Time Period",l90_elev_start,"to",l90_elev_end)
@@ -549,13 +549,13 @@ if (imp_off == 0) {
     axis(side = 4)
     mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
     legend("bottom",inset=-0.36, xpd=TRUE, c("Reservoir Storage","Inflow","Outflow","Demand"),
-           col = c("black", "blue", "green","red"), 
-           lty = c(1,1,1,1), 
+           col = c("black", "blue", "green","red"),
+           lty = c(1,1,1,1),
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
     print(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
-    
+
   }
 } else {
   # plot Qin, Qout of mainstem, and wd_mgd, and wd_cumulative_mgd
@@ -566,8 +566,8 @@ if (imp_off == 0) {
   pdstart = as.Date(paste0(l90_year,"-06-01") )
   pdend = as.Date(paste0(l90_year, "-11-15") )
   datpd <- window(
-    dat, 
-    start = pdstart, 
+    dat,
+    start = pdstart,
     end = pdend
   );
   fname <- paste(
@@ -605,7 +605,7 @@ if (imp_off == 0) {
   # ymx <- max(cbind(datpd$wd_cumulative_mgd * 1.547, datpd$ps_cumulative_mgd * 1.547))
   ymx <- max(cbind(datpd$wd_cumulative_mgd * 1.547, datpd$ps_cumulative_mgd * 1.547))
   plot(
-    datpd$wd_cumulative_mgd * 1.547,col='red', 
+    datpd$wd_cumulative_mgd * 1.547,col='red',
     axes=FALSE, xlab="", ylab="", ylim=c(0,ymx)
   )
   lines(datpd$ps_cumulative_mgd * 1.547,col='green')
@@ -614,7 +614,7 @@ if (imp_off == 0) {
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_flows.2yr', 0.0, ds)
-  
+
   datpd <- dat
   fname <- paste(
     save_directory,
@@ -643,7 +643,7 @@ if (imp_off == 0) {
   par(new = TRUE)
   ymx <- max(cbind(datpd$wd_cumulative_mgd * 1.547, datpd$ps_cumulative_mgd * 1.547))
   plot(
-    datpd$wd_cumulative_mgd * 1.547,col='red', 
+    datpd$wd_cumulative_mgd * 1.547,col='red',
     axes=FALSE, xlab="", ylab="", ylim=c(0,ymx)
   )
   lines(datpd$ps_cumulative_mgd * 1.547,col='green')
@@ -652,7 +652,7 @@ if (imp_off == 0) {
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.flows.all', 0.0, ds)
-  
+
 }
 
 
@@ -668,7 +668,7 @@ rseg_hydroid<-rseg$featureid
 huc_level <- 'huc8'
 dataset <- 'VAHydro-EDAS'
 
-elfgen_huc(runid, rseg_hydroid, huc_level, dataset, scenprop, ds, save_directory, save_url)
+elfgen_huc(runid, rseg_hydroid, huc_level, dataset, scenprop, ds, save_directory, save_url, site)
 ###############################################
 ###############################################
 

@@ -107,3 +107,5 @@ rm /var/www/html/om/test_order.php
 ln -s /opt/model/om/php/src/test_order.php /var/www/html/om/test_order.php
 rm /var/www/html/om/test_db.php
 ln -s /opt/model/om/php/src/test_db.php /var/www/html/om/test_db.php
+rm /var/www/html/om/fn_getRunFile.php
+ln -s /opt/model/om/php/src/fn_getRunFile.php /var/www/html/om/fn_getRunFile.php

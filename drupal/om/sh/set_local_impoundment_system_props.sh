@@ -31,4 +31,5 @@ drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_prop
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Listen on Parent"
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid zero
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid imp_enabled
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid wd_net_mgd
 

@@ -521,7 +521,7 @@ if("impoundment" %in% cols) {
     usable_pct_p10 <- usable_pcts["10%"]
     usable_pct_p50 <- usable_pcts["50%"]
   }
-  max_pump <- max(datpd$refill_pump_mgd)
+  max_pump <- max(dat$refill_pump_mgd)
   if (max_pump > 0) {
     # this is a pump store
     pump_store = TRUE

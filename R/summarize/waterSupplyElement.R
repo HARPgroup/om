@@ -262,7 +262,7 @@ if (pump_store) {
   flow_ts <- ddat2$impoundment_Qin
   flow_ts_name = "Inflow"
 }
-dev.off()
+
 png(fname)
 par(mar = c(5,5,2,5))
 plot(

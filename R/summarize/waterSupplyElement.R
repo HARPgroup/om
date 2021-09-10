@@ -557,26 +557,46 @@ if("impoundment" %in% cols) {
   ymn <- 0
   ymx <- 100
   par(mar = c(5,5,2,5))
+  par(mar = c(1,5,2,5),mfrow = c(2,1))
   plot(
     datpd$storage_pct * 100.0,
-    ylim=c(ymn,ymx),
+    ylim=c(0,100),
     ylab="Reservoir Storage (%)",
-    xlab=paste("Lowest 90 Day Flow Period",pdstart,"to",pdend)
+    xlab="",
+    main=paste("Storage and Flows",sdate,"to",edate)
   )
-  par(new = TRUE)
-  ymx2 <- pmax(
-    max(datpd$impoundment_demand * 1.547),
-    max(datpd$impoundment_Qout),
-    max(datpd$refill_pump_mgd * 1.547),
-    max(datpd$impoundment_Qin)
+  ymx <- ceiling(
+    pmax(
+      max(datpd$Qreach)
+    )
   )
-  plot(datpd$impoundment_Qin,col='blue', axes=FALSE, xlab="", ylab="",
-       ylim=c(0,ymx2))
-  lines(datpd$impoundment_Qout,col='darkblue')
-  lines(datpd$refill_pump_mgd * 1.547,col='green')
-  lines(datpd$impoundment_demand * 1.547,col='red')
-  axis(side = 4)
-  mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
+  # if this is a pump store, refill_pump_mgd > 0
+  # then, plot Qreach first, overlaying impoundment_Qin
+  plot(
+    datpd$Qreach,
+    col='blue',
+    xlab="",
+    ylab='Flow/Demand (cfs)',
+    #ylim=c(0,ymx),
+    log="y",
+    yaxt="n" # supress labeling till we format
+  )
+  y_ticks <- axTicks(2)
+  y_ticks_fmt <- format(y_ticks, scientific = FALSE)
+  axis(2, at = y_ticks, labels = y_ticks_fmt)
+  ymx <- ceiling(
+    pmax(
+      max(datpd$refill_pump_mgd),
+      max(datpd$impoundment_demand * 1.547)
+    )
+  )
+  #par(new = TRUE)
+  #plot(datpd$refill_pump_mgd * 1.547,col='green',xlab="",ylab="")
+  lines(datpd$refill_pump_mgd * 1.547,col='red')
+  lines(datpd$impoundment_demand * 1.547,col='green')
+  #axis(side = 4)
+  #mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
+
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)

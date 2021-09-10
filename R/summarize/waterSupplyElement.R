@@ -277,11 +277,11 @@ plot(
   xlab="",
   ylab="",
   axes=FALSE,
-  ylim=c(0,max(ddat2$base_demand_mg))
+  ylim=c(0,max(ddat2$base_demand_mgd))
 )
-lines(ddat2$unmetdemand * 1.547,col='red')
+lines(ddat2$unmet_demand_mgd,col='red')
 axis(side = 4)
-mtext(side = 4, line = 3, 'Base/Unmet Demand (cfs)')
+mtext(side = 4, line = 3, 'Base/Unmet Demand (mgd)')
 legend("topleft", c(flow_ts_name,"Base Demand","Unmet"),
        col = c("blue", "green","red"),
        lty = c(1,1,1,1),

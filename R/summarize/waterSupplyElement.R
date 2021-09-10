@@ -43,10 +43,18 @@ if (syear != eyear) {
   edate <- as.Date(paste0(eyear,"-12-31"))
 }
 cols <- names(dat)
+pump_store = FALSE
 # rename ps_refill_pump_mgd to refill_pump_mgd
 if (!("refill_pump_mgd" %in% cols)) {
   if ("ps_refill_pump_mgd" %in% cols) {
     dat$refill_pump_mgd <- dat$ps_refill_pump_mgd
+  }
+}
+if ("refill_pump_mgd" %in% cols) {
+  max_pump <- max(dat$refill_pump_mgd)
+  if (max_pump > 0) {
+    # this is a pump store
+    pump_store = TRUE
   }
 }
 # yrdat will be used for generating the heatmap with calendar years
@@ -247,42 +255,72 @@ ddat2 <- window(
 );
 
 #dmx2 = max(ddat2$Qintake)
-map2<-as.data.frame(ddat2$Qintake + (ddat2$discharge_mgd - ddat2$wd_mgd) * 1.547)
-colnames(map2)<-"flow"
-map2$date <- rownames(map2)
-map2$base_demand_mgd<-ddat2$base_demand_mgd * 1.547
-map2$unmetdemand<-ddat2$unmet_demand_mgd * 1.547
+if (pump_store) {
+  flow_ts <- ddat2$Qintake
+  flow_ts_name = "Source Stream"
+} else {
+  flow_ts <- ddat2$impoundment_Qin
+  flow_ts_name = "Inflow"
+}
+dev.off()
+png(fname)
+par(mar = c(5,5,2,5))
+plot(
+  flow_ts,
+  xlab=paste0("Critical Period: ",u30_year2),
+  ylim=c(0,max(flow_ts)),
+  col="blue"
+)
+par(new = TRUE)
+plot(
+  ddat2$base_demand_mgd,col='green',
+  xlab="",
+  ylab="",
+  axes=FALSE,
+  ylim=c(0,max(ddat2$base_demand_mg))
+)
+lines(ddat2$unmetdemand * 1.547,col='red')
+axis(side = 4)
+mtext(side = 4, line = 3, 'Base/Unmet Demand (cfs)')
+legend("topleft", c(flow_ts_name,"Base Demand","Unmet"),
+       col = c("blue", "green","red"),
+       lty = c(1,1,1,1),
+       bg='white',cex=0.8) #ADD LEGEND
+dev.off()
 
-df <- data.frame(as.Date(map2$date), map2$flow, map2$base_demand_mgd,map2$unmetdemand);
-
-colnames(df)<-c("date","flow","base_demand_mgd","unmetdemand")
-
-#options(scipen=5, width = 1400, height = 950)
-ggplot(df, aes(x=date)) +
-  geom_line(aes(y=flow, color="Flow"), size=0.5) +
-  geom_line(aes(y=base_demand_mgd, colour="Base demand"), size=0.5)+
-  geom_line(aes(y=unmetdemand, colour="Unmet demand"), size=0.5)+
-  theme_bw()+
-  theme(legend.position="top",
-        legend.title=element_blank(),
-        legend.box = "horizontal",
-        legend.background = element_rect(fill="white",
-                                         size=0.5, linetype="solid",
-                                         colour ="white"),
-        legend.text=element_text(size=12),
-        axis.text=element_text(size=12, color = "black"),
-        axis.title=element_text(size=14, color="black"),
-        axis.line = element_line(color = "black",
-                                 size = 0.5, linetype = "solid"),
-        axis.ticks = element_line(color="black"),
-        panel.grid.major=element_line(color = "light grey"),
-        panel.grid.minor=element_blank())+
-  scale_colour_manual(values=c("purple","black","blue"))+
-  guides(colour = guide_legend(override.aes = list(size=5)))+
-  labs(y = "Flow (cfs)", x= paste("Critical Period:",u30_year2, sep=' '))
-#dev.off()
-print(fname)
-ggsave(fname,width=7,height=4.75)
+# map2<-as.data.frame(ddat2$Qintake + (ddat2$discharge_mgd - ddat2$wd_mgd) * 1.547)
+# colnames(map2)<-"flow"
+# map2$date <- rownames(map2)
+# map2$base_demand_mgd<-ddat2$base_demand_mgd * 1.547
+# map2$unmetdemand<-ddat2$unmet_demand_mgd * 1.547
+# df <- data.frame(as.Date(map2$date), map2$flow, map2$base_demand_mgd,map2$unmetdemand);
+# colnames(df)<-c("date","flow","base_demand_mgd","unmetdemand")
+# #options(scipen=5, width = 1400, height = 950)
+# ggplot(df, aes(x=date)) +
+#   geom_line(aes(y=flow, color="Flow"), size=0.5) +
+#   geom_line(aes(y=base_demand_mgd, colour="Base demand"), size=0.5)+
+#   geom_line(aes(y=unmetdemand, colour="Unmet demand"), size=0.5)+
+#   theme_bw()+
+#   theme(legend.position="top",
+#         legend.title=element_blank(),
+#         legend.box = "horizontal",
+#         legend.background = element_rect(fill="white",
+#                                          size=0.5, linetype="solid",
+#                                          colour ="white"),
+#         legend.text=element_text(size=12),
+#         axis.text=element_text(size=12, color = "black"),
+#         axis.title=element_text(size=14, color="black"),
+#         axis.line = element_line(color = "black",
+#                                  size = 0.5, linetype = "solid"),
+#         axis.ticks = element_line(color="black"),
+#         panel.grid.major=element_line(color = "light grey"),
+#         panel.grid.minor=element_blank())+
+#   scale_colour_manual(values=c("purple","black","blue"))+
+#   guides(colour = guide_legend(override.aes = list(size=5)))+
+#   labs(y = "Flow (cfs)", x= paste("Critical Period:",u30_year2, sep=' '))
+# #dev.off()
+# print(fname)
+# ggsave(fname,width=7,height=4.75)
 
 ##### Naming for saving and posting to VAHydro
 
@@ -526,12 +564,6 @@ if("impoundment" %in% cols) {
     usable_pct_p10 <- usable_pcts["10%"]
     usable_pct_p50 <- usable_pcts["50%"]
   }
-  max_pump <- max(dat$refill_pump_mgd)
-  if (max_pump > 0) {
-    # this is a pump store
-    pump_store = TRUE
-  }
-
   # post em up
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, ds)
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, ds)

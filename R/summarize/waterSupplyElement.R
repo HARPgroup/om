@@ -106,6 +106,10 @@ print(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.monthly_demand', 0.0, ds)
 
 # Calculate
+base_demand_mgd <- mean(as.numeric(dat$base_demand_mgd) )
+if (is.na(base_demand_mgd)) {
+  base_demand_mgd = 0.0
+}
 wd_mgd <- mean(as.numeric(dat$wd_mgd) )
 if (is.na(wd_mgd)) {
   wd_mgd = 0.0
@@ -141,7 +145,8 @@ ndx = which.max(as.numeric(unmet1[,"1 Day Max"]));
 unmet1 = round(udflows[ndx,]$"1 Day Max",6);
 
 
-# post em up
+# post em up'
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'base_demand_mgd', base_demand_mgd, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_mgd', wd_mgd, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'gw_demand_mgd', gw_demand_mgd, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet_demand_mgd', unmet_demand_mgd, ds)

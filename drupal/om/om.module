@@ -95,6 +95,8 @@ function om_run_id_options() {
       'Permit Term Max + Proposed Runs (run_mode = 6)' => array(
         '6' => t('Permit Term Max w/Proposed (#6)'),
         '600' => t('Draft Permit Term Max w/Proposed, full time period (#600)'),
+        '6001' => t('Draft Permit Term Max w/Proposed, full time period, alt. 1 (#6001)'),
+        '6002' => t('Draft Permit Term Max w/Proposed, full time period, alt. 2 (#6002)'),
         '601' => t('Draft Permit Term Max w/Proposed - 1998-2002 (#601)'),
         '6011' => t('Draft Permit Term Max w/Proposed - 1998-2002, alt. 1 (#6011)'),
         '6012' => t('Draft Permit Term Max w/Proposed - 1998-2002, alt. 2 (#6012)'),

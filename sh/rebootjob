@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd /var/lib/postgresql
+sudo -u postgres /opt/model/om/sh/startup.model_sessiondata.sh 12
+sudo -u postgres /opt/model/om/sh/startup.model_scratch.sh 12
+
+date >> /home/bse/rebootdate.txt
+mail -s "deq4 reboot" denton@vt.edu < /home/bse/rebootdate.txt
+

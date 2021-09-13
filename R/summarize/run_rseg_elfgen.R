@@ -2,7 +2,7 @@
 site <- "http://deq2.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
 #----------------------------------------------
 # Load Libraries
-basepath='/var/www/R'; 
+basepath='/var/www/R';
 
 source(paste(basepath,'config.R', sep='/'))
 source(paste(om_location,'R/summarize','rseg_elfgen.R',sep='/'))
@@ -37,10 +37,11 @@ dataset <- as.character(argst[4])
 # runid <- as.integer(11)
 # huc_level <- as.character("huc8")
 # dataset <- as.character("VAHydro-EDAS")
-# 
+#
 inputs<-list(pid=pid)
 property<-getProperty(inputs, site)
 hydroid<-property$featureid
 
+elfgen_location <- paste0('/opt/model/elfgen')
 
 elfgen_huc(runid, hydroid, huc_level, dataset)

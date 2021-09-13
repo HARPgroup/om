@@ -43,6 +43,21 @@ if (syear != eyear) {
   edate <- as.Date(paste0(eyear,"-12-31"))
 }
 cols <- names(dat)
+# does this have an impoundment sub-comp and is imp_off = 0?
+# check for local_impoundment, and if so, rename to impoundment for processing
+if("local_impoundment" %in% cols) {
+  dat$impoundment_use_remain_mg <- dat$local_impoundment_use_remain_mg
+  dat$impoundment_max_usable <- dat$local_impoundment_max_usable
+  dat$impoundment_Qin <- dat$local_impoundment_Qin
+  dat$impoundment_Qout <- dat$local_impoundment_Qout
+  dat$impoundment_demand <- dat$local_impoundment_demand
+  dat$impoundment <- dat$local_impoundment
+  cols <- names(dat)
+}
+imp_enabled = FALSE
+if("impoundment" %in% cols) {
+  imp_enabled = TRUE
+}
 pump_store = FALSE
 # rename ps_refill_pump_mgd to refill_pump_mgd
 if (!("refill_pump_mgd" %in% cols)) {
@@ -57,6 +72,7 @@ if ("refill_pump_mgd" %in% cols) {
     pump_store = TRUE
   }
 }
+
 # yrdat will be used for generating the heatmap with calendar years
 yrdat <- dat
 
@@ -258,7 +274,7 @@ ddat2 <- window(
 );
 
 #dmx2 = max(ddat2$Qintake)
-if (pump_store) {
+if (pump_store || !imp_enabled) {
   flow_ts <- ddat2$Qintake
   flow_ts_name = "Source Stream"
 } else {
@@ -539,19 +555,6 @@ print('File saved to save_directory')
 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl3, 'fig.unmet_heatmap_amt', 0.0, ds)
 
-
-
-# does this have an impoundment sub-comp and is imp_off = 0?
-# check for local_impoundment, and if so, rename to impoundment for processing
-if("local_impoundment" %in% cols) {
-  dat$impoundment_use_remain_mg <- dat$local_impoundment_use_remain_mg
-  dat$impoundment_max_usable <- dat$local_impoundment_max_usable
-  dat$impoundment_Qin <- dat$local_impoundment_Qin
-  dat$impoundment_Qout <- dat$local_impoundment_Qout
-  dat$impoundment_demand <- dat$local_impoundment_demand
-  dat$impoundment <- dat$local_impoundment
-  cols <- names(dat)
-}
 if("impoundment" %in% cols) {
   # Plot and analyze impoundment sub-comps
   dat$storage_pct <- as.numeric(dat$impoundment_use_remain_mg) * 3.07 / as.numeric(dat$impoundment_max_usable)

@@ -6852,6 +6852,7 @@ class channelObject extends hydroObject {
       $this->setSingleDataColumnType('length', 'float8', $this->length);
       $this->setSingleDataColumnType('substrateclass', 'varchar(2)', $this->substrateclass);
       $this->setSingleDataColumnType('pdepth', 'float8', $this->pdepth);
+      $this->setSingleDataColumnType('last_S', 'float8', $this->pdepth);
       
       $statenums = array('Qout', 'depth', 'Vout', 'Storage', 'T', 'U', 'Uout','demand', 'pdepth', 'Rin', 'discharge', 'last_discharge', 'last_demand', 'imp_off', 'Qlocal', 'rejected_demand_mgd', 'rejected_demand_pct');
       foreach ($statenums as $thiscol) {
@@ -7001,6 +7002,7 @@ class channelObject extends hydroObject {
        }
     }
     
+    $this->state['last_S'] = $S1;
     $this->state['Qin'] = $I2;
     $this->state['Qlocal'] = $Qlocal;
     $this->state['Vout'] = $Vout;

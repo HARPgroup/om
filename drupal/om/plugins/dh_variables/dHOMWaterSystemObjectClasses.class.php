@@ -320,6 +320,12 @@ class dHOMWaterSystemFlowBy extends dHOMSubComp {
     $hidden = array_merge(array('propvalue', 'propcode'), parent::hiddenFields());
     return $hidden;
   }
+  public function formRowSave(&$form_values, &$entity) {
+    parent::formRowSave($form_values, $entity);
+    //dpm($form_values,'Saving Values');
+    //dpm($entity,'Saving entity');
+    $entity->tscode = $form_values['flowby_eqn']; 
+  }
   
   public function getDefaults($entity, &$defaults = array()) {
     parent::getDefaults($entity, $defaults);

@@ -14,6 +14,7 @@ if [ $# -gt 1 ]; then
 fi 
 
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid custom1;
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid permit_status;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid ps_enabled;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid ps_local_mgd;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid ps_nextdown_mgd;

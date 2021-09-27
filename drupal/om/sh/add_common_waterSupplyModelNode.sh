@@ -18,9 +18,11 @@ drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_prop
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid wd_cumulative_mgd;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid imp_off;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid Qout;
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid custom1
+
 # not yet.  these may vary from normal to subnodal varieties
 #drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Send to Parent"
 #drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Send to Children"
 #drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Listen on Parent"
 #drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Listen to Children"
-
+#

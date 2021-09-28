@@ -100,6 +100,13 @@ wd_mgd <- mean(as.numeric(dat$wd_mgd) )
 if (is.na(wd_mgd)) {
   wd_mgd = 0.0
 }
+wd_imp_child_mgd <- mean(as.numeric(dat$wd_imp_child_mgd) )
+if (is.na(wd_imp_child_mgd)) {
+  wd_imp_child_mgd = 0.0
+}
+# combine these two for reporting
+wd_mgd <- wd_mgd + wd_imp_child_mgd
+
 wd_cumulative_mgd <- mean(as.numeric(dat$wd_cumulative_mgd) )
 if (is.na(wd_cumulative_mgd)) {
   wd_cumulative_mgd = 0.0

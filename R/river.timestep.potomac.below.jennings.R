@@ -3,14 +3,15 @@ source(paste(basepath,'config.R',sep='/'))
 
 elid = 340408  # Below Jennings PU3_4450_4440
 gage_number = '01595800' # NORTH BRANCH POTOMAC RIVER AT BARNUM, WV
-startdate <- "2010-04-01" # this gage was out of commission from 1986-2002
-enddate <- "2010-11-30"
+alt_gage = "01598500"
+startdate <- "1999-04-01"
+enddate <- "1999-11-30"
 
 # Get and format gage data
 gage_data <- gage_import_data_cfs(gage_number, startdate, enddate)
 gage_data <- as.zoo(gage_data, as.POSIXct(gage_data$date,tz="EST"))
-mode(gage_data) <- 'numeric' 
-# Low Flows 
+mode(gage_data) <- 'numeric'
+# Low Flows
 iflows <- zoo(as.numeric(gage_data$flow), order.by = index(gage_data));
 uiflows <- group2(iflows, 'calendar')
 Qin30 <- uiflows["30 Day Min"];
@@ -22,7 +23,7 @@ dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
 mode(dat) <- 'numeric'
 #limit to period
 datpd <- window(dat, start = startdate, end = enddate)
-# Low Flows 
+# Low Flows
 iflows <- zoo(as.numeric(datpd$Qout), order.by = index(datpd));
 uiflows <- group2(iflows, 'calendar')
 Qin30 <- uiflows["30 Day Min"];
@@ -37,9 +38,14 @@ plot(
   main=paste("Daily Timestep, L30:",l30_usgs,"(u)",l30_model,"(m)")
 )
 lines(gage_data$flow, col='blue')
+dat_x <- rbind(
+  c(l30_usgs, quantile(gage_data$flow)),
+  c(l30_model, quantile(datpd$Qout))
+)
+dat_x
 
 
-# runid: 
+# runid:
 # 1131 = hourly, 1998-2002
 # 1151 - 6-hour, 1998-2002
 # 1152 - 4-hour, 1998-2002
@@ -72,13 +78,13 @@ datpd = aggregate(
   datpd,
   as.POSIXct(
     format(
-      time(datpd), 
+      time(datpd),
       format='%Y/%m/%d'),
     tz='UTC'
   ),
   'mean'
 )
-# Low Flows 
+# Low Flows
 iflows <- zoo(as.numeric(datpd$Qout), order.by = index(datpd));
 uiflows <- group2(iflows, 'calendar')
 Qin30 <- uiflows["30 Day Min"];

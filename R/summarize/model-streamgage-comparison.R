@@ -8,6 +8,9 @@ library(stringr)
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 library(dataRetrieval)
+library(hydrotools)
+ds <- RomDataSource$new("http://deq1.bse.vt.edu/d.dh", rest_uname)
+ds$get_token(rest_pw)
 
 save_directory <-  "/var/www/html/data/proj3/out"
 
@@ -22,7 +25,7 @@ riv.seg <- as.character(argst[1])
 runid <- as.integer(argst[2]) # what to store this as
 gage_number <- as.character(argst[3])
 # scenario for the model to compare the gage to vahydro-1.0, CFBASE30Y20180615, p532cal_062211, ...
-mod.scenario <- as.character(argst[4]) 
+mod.scenario <- as.character(argst[4])
 
 # ESSENTIAL INPUTS
 dat.source1 <- 'gage' # cbp_model
@@ -38,7 +41,7 @@ site.or.server <- 'site'
 
 mrun_name <- paste0('runid_', runid)
 # run name for gage
-grun_name <- mrun_name 
+grun_name <- mrun_name
 # Inputs if using USGS gage -- otherwise, can ignore
 message(paste("Retrieving timespan for usgs", gage_number))
 gage_timespan <- get.gage.timespan(gage_number)
@@ -48,7 +51,7 @@ gage <- try(readNWISsite(gage_number))
 # Load the VAHydro watershed entity via a riversegment based hydrocode (useful in testing)
 hydrocode = paste0("vahydrosw_wshed_", riv.seg);
 message(paste("searching for watershed", riv.seg,"with hydrocode", hydrocode))
-feature = om_get_feature(site, hydrocode, 'watershed', 'vahydro')
+feature <- RomFeature$new(ds,list(hydrocode=hydrocode),TRUE)
 hydroid = feature$hydroid
 
 # any allow om_water_model_node, om_model_element as varkeys
@@ -58,7 +61,7 @@ if (gm == FALSE) {
   # create new model
   gage.title <- paste("USGS", gage_number, gage$station_nm, '- Weighted')
   gm <- om_create_model(
-    hydroid, 'dh_feature', gage.title, 'usgs-1.0', 
+    hydroid, 'dh_feature', gage.title, 'usgs-1.0',
     'om_model_element', site, token
   )
 
@@ -129,14 +132,14 @@ mmodel_run <- om_get_set_model_run(mm$pid, mrun_name, site, token)
 gmodel_run <- om_get_set_model_run(gm$pid, grun_name, site, token)
 # stash scaling factor
 scale_info = list(
-  featureid = gmodel_run$pid, 
-  varkey='om_class_Constant', 
-  propname = 'scale_factor', 
+  featureid = gmodel_run$pid,
+  varkey='om_class_Constant',
+  propname = 'scale_factor',
   propvalue = wscale,
   entity_type = 'dh_properties'
 )
 scaleprop <- postProperty(scale_info, site, scaleprop)
-  
+
 all_flow_metrics_2_vahydro(gmodel_run$pid, gage_data_formatted, ds)
 # do we need to do this if the model has already been summarized
 # Test this?

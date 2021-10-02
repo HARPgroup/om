@@ -1420,6 +1420,23 @@ class dHOMSubComp extends dHOMBaseObjectClass {
   // this class has a name, and a description, an exec_hierarchy and other atributes
   // @todo: add basic handling of things other than descriptions
   
+  public function getDefaults($entity, &$defaults = array()) {
+    $defaults = parent::getDefaults($entity, $defaults);
+    $defaults += array(
+      'exec_hierarch' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => NULL,
+        'propname' => 'exec_hierarch',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'vardesc' => 'Execution hierarchy, with lower numbers executed before high numbers.',
+        'title' => 'Initial Value',
+        'varid' => dh_varkey2varid('om_class_Constant', TRUE),
+      ),
+    );
+    return $defaults;
+  }
+  
   public function setAllRemoteProperties($entity, $elid, $path) {
     // this toggles parent method with full object json transfer
     if ($this->json2d) {

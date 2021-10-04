@@ -112,25 +112,6 @@ wscale = 1.0
 if (!is.null(da)) {
   wscale <- as.numeric(as.numeric(da) / as.numeric(gage$drain_area_va))
   gage_data$flow <- as.numeric(gage_data$flow) * wscale
-  gda <- RomProperty$new(
-    ds,list(
-      featureid = hydroid,
-      entity_type = 'dh_feature',
-      varkey = 'om_class_Constant',
-      propname = 'drain_area_va',
-      propvalue = as.numeric(gage$drain_area_va)
-    ), TRUE
-  )
-  wsc <- RomProperty$new(
-    ds,list(
-      featureid = hydroid,
-      entity_type = 'dh_feature',
-      varkey = 'om_class_Constant',
-      propname = 'wscale',
-      propvalue = as.numeric(wscale)
-    ), TRUE
-  )
-  wsc$save(TRUE)
 }
 
 gage.timespan.trimmed <- FALSE
@@ -154,17 +135,45 @@ if (gage.timespan.trimmed == TRUE) {
   mrun_name <- paste0(mrun_name, '_gage_timespan')
   message(paste("Timespans do not overlap, scenario saved as", mrun_name, "with timespan", start.date, "to", end.date))
 }
-mmodel_run <- om_get_set_model_run(mm$pid, mrun_name, site, token)
-gmodel_run <- om_get_set_model_run(gm$pid, grun_name, site, token)
-# stash scaling factor
-scale_info = list(
-  featureid = gmodel_run$pid,
-  varkey='om_class_Constant',
-  propname = 'scale_factor',
-  propvalue = wscale,
-  entity_type = 'dh_properties'
+mmodel_run <- RomProperty$new(
+  ds,list(
+    featureid = mm$pid,
+    entity_type = 'dh_properties',
+    varkey = 'om_scenario',
+    propname = mrun_name
+  ), TRUE
 )
-scaleprop <- postProperty(scale_info, site, scaleprop)
+mmodel_run$save(TRUE)
+gmodel_run <- RomProperty$new(
+  ds,list(
+    featureid = gm$pid,
+    entity_type = 'dh_properties',
+    varkey = 'om_scenario',
+    propname = grun_name
+  ), TRUE
+)
+gmodel_run$save(TRUE)
+# stash scaling factor
+gda <- RomProperty$new(
+  ds,list(
+    featureid = gmodel_run$pid,
+    entity_type = 'dh_properties',
+    varkey = 'om_class_Constant',
+    propname = 'drain_area_va',
+    propvalue = as.numeric(gage$drain_area_va)
+  ), TRUE
+)
+gda$save(TRUE)
+scaleprop <- RomProperty$new(
+  ds,list(
+    featureid = gmodel_run$pid,
+    entity_type = 'dh_properties',
+    varkey = 'om_class_Constant',
+    propname = 'scale_factor',
+    propvalue = as.numeric(wscale)
+  ), TRUE
+)
+scaleprop$save(TRUE)
 
 all_flow_metrics_2_vahydro(gmodel_run$pid, gage_data_formatted, ds)
 # do we need to do this if the model has already been summarized

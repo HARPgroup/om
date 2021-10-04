@@ -55,24 +55,32 @@ feature <- RomFeature$new(ds,list(hydrocode=hydrocode),TRUE)
 hydroid = feature$hydroid
 
 # any allow om_water_model_node, om_model_element as varkeys
-mm <- om_get_model(site, hydroid, 'dh_feature', mod.scenario, 'any')
-gm <- om_get_model(site, hydroid, 'dh_feature', 'usgs-1.0', 'any')
-if (gm == FALSE) {
+mm <- RomProperty$new(
+  ds,list(
+    featureid = hydroid,
+    entity_type = 'dh_feature',
+    propcode = mod.scenario
+  ), TRUE)
+gm <- RomProperty$new(
+  ds,list(
+    featureid = hydroid,
+    entity_type = 'dh_feature',
+    propcode = 'usgs-1.0'
+  ), TRUE)
+
+if (is.na(gm$pid)) {
   # create new model
-  gage.title <- paste("USGS", gage_number, gage$station_nm, '- Weighted')
-  gm <- om_create_model(
-    hydroid, 'dh_feature', gage.title, 'usgs-1.0',
-    'om_model_element', site, token
-  )
+  gm$propname <- paste("USGS", gage_number, gage$station_nm, '- Weighted')
+  gm$save(TRUE)
 
 }
 gage.scenprop.pid <- gm$pid
 
-elid <- om_get_model_elementid(site, mm$pid)
 # run name for model
 # load the model data
 if (substr(mod.scenario,1,7) == 'vahydro') {
   message("Grabbing vahyro model data")
+  elid <- ds$get_prop(slist(propname))
   rawdat <- fn_get_runfile(elid, runid, site = omsite,  cached = FALSE);
   model_data <- vahydro_format_flow_cfs(rawdat)
   # try model timeseries local_channel_area and area_sqmi
@@ -88,12 +96,11 @@ if (substr(mod.scenario,1,7) == 'vahydro') {
   model_data <- model_import_data_cfs(riv.seg, mod.phase, mod.scenario, NULL, NULL)
   # try to get da from the feature
   da = NULL
-  inputs <- list (
+  daprop <-  RomProperty$new(ds, list (
     propname = 'wshed_drainage_area_sqmi',
     featureid = hydroid,
     entity_type = 'dh_feature'
-  )
-  daprop <- getProperty(inputs, site, daprop)
+  ), TRUE)
   da <- as.numeric(daprop$propvalue)
 }
 start.date <- min(model_data$date)
@@ -105,6 +112,25 @@ wscale = 1.0
 if (!is.null(da)) {
   wscale <- as.numeric(as.numeric(da) / as.numeric(gage$drain_area_va))
   gage_data$flow <- as.numeric(gage_data$flow) * wscale
+  gda <- RomProperty$new(
+    ds,list(
+      featureid = hydroid,
+      entity_type = 'dh_feature',
+      varkey = 'om_class_Constant',
+      propname = 'drain_area_va',
+      propvalue = as.numeric(gage$drain_area_va)
+    ), TRUE
+  )
+  wsc <- RomProperty$new(
+    ds,list(
+      featureid = hydroid,
+      entity_type = 'dh_feature',
+      varkey = 'om_class_Constant',
+      propname = 'wscale',
+      propvalue = as.numeric(wscale)
+    ), TRUE
+  )
+  wsc$save(TRUE)
 }
 
 gage.timespan.trimmed <- FALSE

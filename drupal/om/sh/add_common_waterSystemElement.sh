@@ -30,4 +30,4 @@ drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_prop
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid historic_monthly_pct
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Send to Parent"
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Listen on Parent"
-
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid gw_frac

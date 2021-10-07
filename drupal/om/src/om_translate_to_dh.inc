@@ -65,7 +65,7 @@ function om_load_dh_model($query_type, $fid, $model_name, $model_varkey = 'om_mo
       'varkey' => $model_varkey,
     );
     // If the model prop does not exist yet, this will create AND save it.
-    $dh_model = om_model_getSetProperty($values, $search_mode, FALSE); // do not save on creation in case this is a container.
+    $dh_model = om_model_getSetProperty($values, $search_mode); // do not save on creation in case this is a container.
     error_log("Searched mode $search_mode, found Model = $dh_model->propname - $dh_model->propcode ");
   }
   return $dh_model;

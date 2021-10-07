@@ -15,6 +15,9 @@ fi
 
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid base_demand_mgd;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid base_demand_pstatus_mgd;
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid Qintake;
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid unaccounted_losses;
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid unmet_demand_mgd;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid adj_demand_mgd; 
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid drought_response_enabled;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid drought_pct; 

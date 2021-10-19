@@ -241,7 +241,7 @@ if (imp_off == 0) {
     sep = '/'
   )
   png(fname)
-  hydroTSM::fdc(cbind(datpd$impoundment_Qin, datpd$impoundment_Qout),ylab="Q (cfs)")
+  hydroTSM::fdc(cbind(datpd$Qin, datpd$Qout),ylab="Q (cfs)")
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc.all.', 0.0, ds)

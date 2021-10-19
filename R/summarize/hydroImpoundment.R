@@ -241,7 +241,11 @@ if (imp_off == 0) {
     sep = '/'
   )
   png(fname)
-  hydroTSM::fdc(cbind(datpd$Qin, datpd$Qout),ylab="Q (cfs)")
+  hydroTSM::fdc(
+    cbind(datpd$Qin, datpd$Qout),
+    ylab="Q (cfs)",
+    yaxt="n" # supress labeling till we format
+  )
 
   #legend()
   y_ticks <- round(quantile(datpd$Qin, probs=c(0,0.1,0.25,0.5,1.0)),1)

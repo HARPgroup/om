@@ -244,7 +244,7 @@ if (imp_off == 0) {
   hydroTSM::fdc(cbind(datpd$Qin, datpd$Qout),ylab="Q (cfs)")
 
   #legend()
-  y_ticks <- round(quantile(datpd$Qin, probs=c(0,0.1,0.25,0.5,0.75,0.9,1.0)),1)
+  y_ticks <- round(quantile(datpd$Qin, probs=c(0,0.1,0.25,0.5,0.75,1.0)),1)
   y_ticks_fmt <- format(y_ticks, scientific = FALSE)
   axis(2, at = y_ticks, labels = y_ticks_fmt)
 

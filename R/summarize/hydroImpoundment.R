@@ -242,6 +242,12 @@ if (imp_off == 0) {
   )
   png(fname)
   hydroTSM::fdc(cbind(datpd$Qin, datpd$Qout),ylab="Q (cfs)")
+
+  #legend()
+  y_ticks <- quantile(datpd$Qin, probs=c(0,0.1,0.25,0.5,0.75,0.9,1.0))
+  y_ticks_fmt <- format(y_ticks, scientific = FALSE)
+  axis(2, at = y_ticks, labels = y_ticks_fmt)
+
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc.all.', 0.0, ds)

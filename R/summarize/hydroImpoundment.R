@@ -118,8 +118,8 @@ l90_year = loflows[ndx,]$"year";
 l90_start = as.Date(paste0(l90_year - 2,"-01-01"))
 l90_end = as.Date(paste0(l90_year,"-12-31"))
 datpd <- window(
-  dat, 
-  start = l90_start, 
+  dat,
+  start = l90_start,
   end = l90_end
 );
 
@@ -135,8 +135,8 @@ l90_elevyear = loelevs[ndx,]$"year";
 l90_elev_start = as.Date(paste0(l90_elevyear - 2,"-01-01"))
 l90_elev_end = as.Date(paste0(l90_elevyear,"-12-31"))
 elevdatpd <- window(
-  dat, 
-  start = l90_elev_start, 
+  dat,
+  start = l90_elev_start,
   end = l90_elev_end
 );
 
@@ -163,8 +163,8 @@ if (imp_off == 0) {
   ymx <- 100
   par(mar = c(5,5,2,5))
   plot(
-    datpd$pct_use_remain * 100.0, 
-    ylim=c(ymn,ymx), 
+    datpd$pct_use_remain * 100.0,
+    ylim=c(ymn,ymx),
     ylab="Reservoir Storage (%)",
     xlab=paste("Model Flow Period",l90_start,"to",l90_end)
   )
@@ -177,8 +177,8 @@ if (imp_off == 0) {
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
-  
-  
+
+
   # All Periods
   # this has an impoundment.  Plot it up.
   # Now zoom in on critical drought period
@@ -206,8 +206,8 @@ if (imp_off == 0) {
   ymx <- 100
   par(mar = c(5,5,2,5))
   plot(
-    datpd$pct_use_remain * 100.0, 
-    ylim=c(ymn,ymx), 
+    datpd$pct_use_remain * 100.0,
+    ylim=c(ymn,ymx),
     ylab="Reservoir Storage (%)",
     xlab=paste("Full Period",sdate,"to",edate)
   )
@@ -220,8 +220,33 @@ if (imp_off == 0) {
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
-  
-  
+
+
+  # Full period Flow duration curve
+  datpd <- dat
+  fname <- paste(
+    save_directory,
+    paste0(
+      'fig.fdc.all.',
+      elid, '.', runid, '.png'
+    ),
+    sep = '/'
+  )
+  furl <- paste(
+    save_url,
+    paste0(
+      'fig.fdc.all.',
+      elid, '.', runid, '.png'
+    ),
+    sep = '/'
+  )
+  png(fname)
+  hydroTSM::fdc(cbind(datpd$impoundment_Qin, datpd$impoundment_Qout),ylab="Q (cfs)")
+  dev.off()
+  print(paste("Saved file: ", fname, "with URL", furl))
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc.all.', 0.0, ds)
+
+
   # Low Elevation Period
   datpd <- elevdatpd
   fname <- paste(
@@ -247,8 +272,8 @@ if (imp_off == 0) {
   ymx <- 100
   par(mar = c(5,5,2,5))
   plot(
-    datpd$pct_use_remain * 100.0, 
-    ylim=c(ymn,ymx), 
+    datpd$pct_use_remain * 100.0,
+    ylim=c(ymn,ymx),
     main="Minimum Modeled Reservoir Storage Period",
     ylab="Reservoir Storage (%)",
     xlab=paste("Model Time Period",l90_elev_start,"to",l90_elev_end)
@@ -262,5 +287,5 @@ if (imp_off == 0) {
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage', 0.0, ds)
-  
+
 }

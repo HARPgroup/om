@@ -687,6 +687,7 @@ if("impoundment" %in% cols) {
     log="y",
     yaxt="n" # supress labeling till we format
   )
+  #legend()
   y_ticks <- axTicks(2)
   y_ticks_fmt <- format(y_ticks, scientific = FALSE)
   axis(2, at = y_ticks, labels = y_ticks_fmt)

@@ -565,7 +565,8 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
       $expression = new Math_Expression($sEquation);
       //error_log("Expression created");
       try {
-        $result = @$expression->evaluate();
+        //$result = @$expression->evaluate();
+        $result = $expression->evaluate();
       } catch (Math_Expression_Exception_Fatal $e) {
         error_log( 'Error Executing Equation:',  $orig);
         error_log( 'Subbed:' . $sEquation);

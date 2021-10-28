@@ -618,7 +618,7 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
    //if (strpos($sEquation,'Array') === FALSE) {
        //error_log("Expression \"$sEquation\" looks valid  ");
        $expression = new Math_Expression($sEquation);
-       //error_log("Expression created");
+       error_log("Expression created");
         try {
           $result = @$expression->evaluate();
         } catch (Math_Expression_Exception_Fatal $e) {

@@ -573,7 +573,7 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
         error_log( 'Caught exception: ',  $e->getMessage());
       }
       if ($result === FALSE) {
-        error_log( 'Error Executing Equation:',  $orig);
+        error_log( 'Error Executing Equation:' . $orig);
         error_log( 'Subbed:' . $sEquation);
         if ($debug) {
            //error_log("Error processing: $orig -> $sEquation ");

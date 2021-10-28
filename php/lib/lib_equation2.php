@@ -522,61 +522,6 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
 
 */
 
-
-/*
-    // Split the equation on open and close parenthesis characters. Since we're going to be checking for the outmost
-    // parenthesized equation, we're going to need to figure out which is is and recombine the inside equations.
-    $arContents = preg_split('/[\(\)]/', $sEquation);
-    // This matches all open and close parenthesis in the string. We're going to need to
-    // go through this returned array and examine which set of parenthesis forms outmost 
-    // parenthesized expressions
-    preg_match_all('/[\(\)]/', $sEquation, $arParen);
-    
-    // To determine the outmost parenthesized equations (since we could have nested parenthesis)
-    // we use a variable 'stack' to keep track of what level of nested parenthesis we're at. Everytime
-    // we encounter
-    $stack = 0;
-    $start_index = 0;
-    // If there are parenthesis then we should actually perform the search for the outmost equations.
-    if (sizeof($arParen)) {
-        for ($i = 0; $i < sizeof($arParen[0]); $i++) {
-            // Everytime we find an open parenthesis we need to increment the stack variable.
-            // If the stack is at its lowest level, save the index of the open parenthesis so we know where to
-            // combine again when we find the matching close parenthesis.
-            if ($arParen[0][$i] == '(') {
-                if ($stack == 0) { $start_index = $i; }
-                $stack++;
-            }
-            // If we hit a close parenthesis character, we need to decrement the stack. If the stack value reaches
-            // 0 again, this means we've hit a top level parenthesis and we need to recursively call the function
-            // and tell it to evaluate the inner expression.
-            elseif ($arParen[0][$i] == ')') {
-                $stack--;
-                if ($stack == 0) {
-                    $sSubEq = '';
-                    // Here we recombine the inside equation. Since this can also include nested parenthesis, we need
-                    // to take care of that.
-                    for ($j = $start_index+1; $j <= $i; $j++) {
-                        $sSubEq .= $arContents[$j];
-                        if ($j != $i) {
-                            $sSubEq .= $arParen[0][$j];
-                        }
-                    }
-                    // After the function is recursively called enough times, it will evaluate the parenthesized expression
-                    // and return only numerical values which we can use to replace the whole parenthesis equation.
-                    $sReplacedVal = mathProcessor2( $sSubEq, $arData, $debug );
-                    $sEquation = str_replace('('.$sSubEq.')', $sReplacedVal, $sEquation);
-                }
-            }
-        }
-    }
-
-*/
-    
-    // Thus by this point all we're left with is numbers and possible ID values.
-    // All that needs to be done at this point is to replace the IDs with their actual
-    // values from $arData.
-    /*
     # original code 
     # assumes that variables are given in brackets []
     preg_match_all('/\[([^\]]+)\]/', $sEquation, $arRepVals);
@@ -626,14 +571,7 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
           error_log( 'Subbed:' . $sEquation);
           error_log( 'Caught exception: ',  $e->getMessage());
         }
-       if ($result) {
-       //if ( ($expression->_status <> S_ERROR) ) {
-          //$result = @$expression->evaluate();
-          if ($debug) {
-             //error_log("Equation: " . $sEquation . " = " . $result->__toString() . " (" . $result . ")");
-          }
-           return $result->__toString();
-       } else {
+       if ($result === FALSE) {
           error_log( 'Error Executing Equation:',  $orig);
           error_log( 'Subbed:' . $sEquation);
           error_log( 'Caught exception: ',  $e->getMessage());
@@ -641,6 +579,13 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
              //error_log("Error processing: $orig -> $sEquation ");
           }
           return NULL;
+       } else {
+       //if ( ($expression->_status <> S_ERROR) ) {
+          //$result = @$expression->evaluate();
+          if ($debug) {
+             //error_log("Equation: " . $sEquation . " = " . $result->__toString() . " (" . $result . ")");
+          }
+          return $result->__toString();
        }
     } else {
        if ($debug) {

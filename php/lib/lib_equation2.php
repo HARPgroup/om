@@ -191,7 +191,7 @@ class Equation extends modelSubObject {
           } catch (Exception $e) {
             error_log( 'Error Executing Object:',  $this->name);
             error_log( 'Equation:',  $this->equation);
-            error_log( 'Data:',  orint_r($this->arData,1));
+            error_log( 'Data:',  print_r($this->arData,1));
             error_log( 'Caught exception: ',  $e->getMessage());
           }
           break;
@@ -619,7 +619,14 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
        //error_log("Expression \"$sEquation\" looks valid  ");
        $expression = new Math_Expression($sEquation);
        //error_log("Expression created");
-       if ($result = @$expression->evaluate() ) {
+        try {
+          $result = @$expression->evaluate();
+        } catch (Exception $e) {
+          error_log( 'Error Executing Equation:',  $orig);
+          error_log( 'Subbed:' . $sEquation);
+          error_log( 'Caught exception: ',  $e->getMessage());
+        }
+       if ($result) {
        //if ( ($expression->_status <> S_ERROR) ) {
           //$result = @$expression->evaluate();
           if ($debug) {

@@ -625,7 +625,10 @@ function mathProcessor3($sEquation, $arData, $debug = 0) {
   // Remove whitespaces
   $equation = preg_replace('/\s+/', '', $sEquation);
     // substitute + for double --
+    // and - for -+ and +-
   $equation = str_replace('--', '+',$equation); 
+  $equation = str_replace('+-', '-',$equation); 
+  $equation = str_replace('-+', '-',$equation); 
 
 
   $number = '(?:\d+(?:[Ee,.]\d+)?|pi|π)'; // What is a number

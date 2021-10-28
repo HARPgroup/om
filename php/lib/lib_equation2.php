@@ -529,7 +529,7 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
     for ($i = 0; $i < sizeof($arRepVals[0]); $i++) {
         $sEquation = str_replace($arRepVals[0][$i],$arData[$arRepVals[1][$i]], $sEquation);
     }
-    */
+    
     # modified code, by Robert Burgholzer, rburghol@vt.edu, 7-26-2007
     # does not use brackets, on the logic that if we simply order our variable names 
     # by length (descending), and that variable names are not numbers (but may contain numbers) 
@@ -560,33 +560,31 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
         // Or, preferable, use the Math_Expression engine!
         
    if ( (!preg_match("/[a-df-zA-DF-Z]/", $sEquation)) and (strlen(trim($sEquation)) > 0) ) {
-   //if (strpos($sEquation,'Array') === FALSE) {
-       //error_log("Expression \"$sEquation\" looks valid  ");
-       $expression = new Math_Expression($sEquation);
-       //error_log("Expression created");
-        try {
-          $result = @$expression->evaluate();
-        } catch (Math_Expression_Exception_Fatal $e) {
-          error_log( 'Error Executing Equation:',  $orig);
-          error_log( 'Subbed:' . $sEquation);
-          error_log( 'Caught exception: ',  $e->getMessage());
+     //if (strpos($sEquation,'Array') === FALSE) {
+      //error_log("Expression \"$sEquation\" looks valid  ");
+      $expression = new Math_Expression($sEquation);
+      //error_log("Expression created");
+      try {
+        $result = @$expression->evaluate();
+      } catch (Math_Expression_Exception_Fatal $e) {
+        error_log( 'Error Executing Equation:',  $orig);
+        error_log( 'Subbed:' . $sEquation);
+        error_log( 'Caught exception: ',  $e->getMessage());
+      }
+      if ($result === FALSE) {
+        error_log( 'Error Executing Equation:',  $orig);
+        error_log( 'Subbed:' . $sEquation);
+        error_log( 'Caught exception: ',  $e->getMessage());
+        if ($debug) {
+           //error_log("Error processing: $orig -> $sEquation ");
         }
-       if ($result === FALSE) {
-          error_log( 'Error Executing Equation:',  $orig);
-          error_log( 'Subbed:' . $sEquation);
-          error_log( 'Caught exception: ',  $e->getMessage());
-          if ($debug) {
-             //error_log("Error processing: $orig -> $sEquation ");
-          }
-          return NULL;
-       } else {
-       //if ( ($expression->_status <> S_ERROR) ) {
-          //$result = @$expression->evaluate();
-          if ($debug) {
-             //error_log("Equation: " . $sEquation . " = " . $result->__toString() . " (" . $result . ")");
-          }
-          return $result->__toString();
-       }
+        return NULL;
+      } else {
+        if ($debug) {
+           //error_log("Equation: " . $sEquation . " = " . $result->__toString() . " (" . $result . ")");
+        }
+        return $result->__toString();
+      }
     } else {
        if ($debug) {
           //error_log("Error: array variable in Equation: $orig -> $sEquation ");

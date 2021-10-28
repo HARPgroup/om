@@ -621,7 +621,7 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
        //error_log("Expression created");
         try {
           $result = @$expression->evaluate();
-        } catch (Exception $e) {
+        } catch (Math_Expression_Exception_Fatal $e) {
           error_log( 'Error Executing Equation:',  $orig);
           error_log( 'Subbed:' . $sEquation);
           error_log( 'Caught exception: ',  $e->getMessage());

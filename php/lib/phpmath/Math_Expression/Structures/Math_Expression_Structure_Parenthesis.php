@@ -55,6 +55,7 @@ class Math_Expression_Structure_Parenthesis extends Math_Expression_Structure {
           return Math_Expression::handleOperation($obj1, $op, $obj2);
         } else {
           throw new Math_Expression_Exception_Fatal('Unable to recover from an erroneous Math_Expression: ' . $this->_expression);
+          return FALSE;
         }
     }
 

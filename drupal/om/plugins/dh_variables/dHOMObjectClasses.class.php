@@ -1599,7 +1599,7 @@ class dHOMEquation extends dHOMSubComp {
       ),
       'engine' => array(
         'entity_type' => $entity->entityType(),
-        'propcode_default' => 'mathExpression2',
+        'propcode_default' => 'mathProcessor2',
         'propname' => 'engine',
         'singularity' => 'name_singular',
         'featureid' => $entity->identifier(),
@@ -1616,8 +1616,8 @@ class dHOMEquation extends dHOMSubComp {
     $form['propcode']['#title'] = '';
     $form['propcode']['#prefix'] = ' = ';
     $engines = array(
-      'mathExpression2' => "Default",
-      'mathExpression3' => "mathExpression3",
+      'mathProcessor2' => "Default (mathProcessor2)",
+      'mathProcessor3' => "mathProcessor3",
     );
     $form['engine']['#type'] = 'select';
     $form['engine']['#options'] = $engines;

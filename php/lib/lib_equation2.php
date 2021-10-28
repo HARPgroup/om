@@ -551,6 +551,10 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
           $sEquation = str_replace($thisvar,$arData[$thisvar], $sEquation);
        }
     }
+    // substitute + for double --
+    $sEquation = str_replace('--', '+',$sEquation);  
+    $sEquation = str_replace('- -', '+',$sEquation);  
+
     # end code modification
     
     // Now we should strictly have a math equation. We can evaluate all the supported operators
@@ -620,12 +624,15 @@ function mathProcessor3($sEquation, $arData, $debug = 0) {
   # end variable substitution
   // Remove whitespaces
   $equation = preg_replace('/\s+/', '', $sEquation);
+    // substitute + for double --
+  $equation = str_replace('--', '+',$equation); 
+
 
   $number = '(?:\d+(?:[Ee,.]\d+)?|pi|π)'; // What is a number
   $functions = '(?:sinh?|cosh?|tanh?|abs|acosh?|asinh?|atanh?|exp|log10|deg2rad|rad2deg|sqrt|ceil|floor|round)'; // Allowed PHP functions
   $operators = '[+\/*\^%-]'; // Allowed math operators
   $regexp = '/^(('.$number.'|'.$functions.'\s*\((?1)+\)|\((?1)+\))(?:'.$operators.'(?2))?)+$/'; // Final regexp, heavily using recursive patterns
-error_log("Final eq: $equation");
+  error_log("Final eq: $equation");
   if (preg_match($regexp, $equation)) {
     $equation = preg_replace('!pi|π!', 'pi()', $equation); // Replace pi with pi function
     eval('$result = ' . $equation . ';');

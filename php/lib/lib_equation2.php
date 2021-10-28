@@ -406,7 +406,7 @@ class Statistic extends Equation {
             if ($this->debug) {
                $this->logDebug("Current Stack Depth = " . count($this->stack) . ", max depth = $this->stack_depth <br>");
             }
-            error_log("Current Stack Depth = " . count($this->stack) . ", max depth = $this->stack_depth <br>");
+            //error_log("Current Stack Depth = " . count($this->stack) . ", max depth = $this->stack_depth <br>");
             while ( ($this->stack_depth > 0) and (count($this->stack) > 0) and (count($this->stack) > $this->stack_depth) ) {
                $stackdump = array_shift($this->stack);
                if ($this->debug) {

@@ -51,8 +51,13 @@ class Math_Expression_Structure_Parenthesis extends Math_Expression_Structure {
             $obj1 = $result;
             $obj2 = $struct2;
         }
-    
-        return Math_Expression::handleOperation($obj1, $op, $obj2);
+        if ($obj1 instanceOf Math_Expression_Structure) {
+          return Math_Expression::handleOperation($obj1, $op, $obj2);
+        } else {
+          throw new Math_Expression_Exception_Fatal('Unable to recover from an erroneous Math_Expression: ');
+                //throw new Math_Expression_Exception_Fatal('Unable to recover from an erroneous Math_Expression: ' . $this->_expression);
+          return FALSE;
+        }
     }
 
     public function __toString()

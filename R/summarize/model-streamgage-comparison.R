@@ -71,6 +71,7 @@ gm <- RomProperty$new(
 if (is.na(gm$pid)) {
   # create new model
   gm$propname <- paste("USGS", gage_number, gage$station_nm, '- Weighted')
+  gm$varid <- as.integer(ds$get_vardef('om_model_element')$varid)
   gm$save(TRUE)
 
 }

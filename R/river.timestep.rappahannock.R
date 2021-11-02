@@ -28,6 +28,8 @@ iflows <- zoo(as.numeric(dat$Qout), order.by = index(dat));
 uiflows <- group2(iflows, 'calendar')
 Qin90 <- uiflows["90 Day Min"];
 l90_model <- round(min(Qin90["90 Day Min"]));
+mean(dat$Qout)
+mean(gage_data$flow)
 
 
 #limit to period
@@ -47,7 +49,19 @@ dat_x <- rbind(
   c(l90_model, quantile(datpd$Qout))
 )
 dat_x
-
+gagdf <- as.data.frame(gagepd)
+datdf <- as.data.frame(datpd)
+sqldf(
+  "
+    select count(*), 'model' as dset from datdf where Qout < 664
+    UNION
+    select count(*), 'model-60' as dset from datdf where (Qout-40) < 664
+    UNION
+    select count(*), 'model 75%' as dset from datdf where (Qout * 0.75) < 664
+    UNION
+    select count(*), 'usgs' as dset from gagdf where flow < 664
+  "
+)
 
 # runid:
 # 1131 = hourly, 1998-2002
@@ -90,19 +104,62 @@ uiflows <- group2(iflows, 'water')
 Qin90 <- uiflows["90 Day Min"];
 l90_husgs <- round(min(Qin90["90 Day Min"]));
 
-datpd <- window(hdat, start = pstartdate, end = penddate)
-gagepd <- window(gagehdat, start = pstartdate, end = penddate)
 # Plot
-ymx <- max(c(max(datpd$Qout),max(gagedat$flow)))
+ymx <- max(c(max(hdat$Qout),max(gagehdat$flow)))
 plot(
-  datpd$Qout, ylim = c(0,ymx),
+  hdat$Qout, ylim = c(0,ymx),
   ylab="Flow/WD/PS (cfs)",
   xlab=paste("Model vs USGS",pstartdate,"to",penddate),
   main=paste("1Hr2Daily Timestep, L90:",l90_husgs,"(u)",l90_hmodel,"(m)"),
 )
-lines(gagepd$flow, col='blue')
-quantile(datpd$Qout)
-quantile(gagepd$flow)
+lines(gagehdat$flow, col='blue')
+q_cmp <- rbind(
+  quantile(hdat$Qout, probs=c(0,0.05, 0.1,0.25,0.5,0.6,0.75,1.0)),
+  quantile(gagehdat$flow, probs=c(0, 0.05, 0.1,0.25,0.5,0.6,0.75,1.0))
+)
+q_cmp
+
+plot(hdat$Qout ~ gagehdat$flow)
+plot( (0.35 * hdat$Qout) ~ gagehdat$flow)
+
+dat2 <- as.data.frame(cbind(hdat$Qout, gagehdat$flow))
+colnames(dat2) <- c('vahydro', 'usgs')
+dat3 <- as.data.frame(cbind(sort(as.numeric(hdat$Qout)), sort(as.numeric(gagehdat$flow))))
+colnames(dat3) <- c('vahydro', 'usgs')
+dat2low <- sqldf("select * from dat2 where usgs <= 400")
+dat3low <- sqldf("select * from dat3 where usgs <= 800")
+plot( (0.35 * dat2low$vahydro) ~ dat2low$usgs)
+plot( (0.35 * dat3$vahydro) ~ dat3$usgs)
+plot(dat3low$vahydro ~ dat3low$usgs)
+plot(dat3$vahydro ~ dat3$usgs)
+plot( dat2low$vahydro ~ dat2low$usgs)
+sort(dat2low$usgs)
+lm2 <- lm(
+#  dat2low$usgs ~ I(dat2low$vahydro ^ 2)
+#  dat2low$usgs ~ I(dat2low$vahydro ^ 3)
+#  dat2low$usgs ~ dat2low$vahydro
+#  dat2low$usgs ~ I(dat2low$vahydro ^ 0.5)
+#  dat2low$usgs ~ I(log(dat2low$vahydro))
+  dat2low$usgs ~ I(0.35 * dat2low$vahydro)
+  #  dat2low$usgs ~ dat2low$vahydro + I(dat2low$vahydro ^ 2)
+  #  dat2low$usgs ~ dat2low$vahydro + I(dat2low$vahydro ^ 3)
+  #  dat2low$vahydro ~ I(dat2low$usgs ^ 2)
+#  dat2low$vahydro ~ dat2low$usgs + I(dat2low$usgs ^ 2)
+#  dat2low$vahydro ~ dat2low$usgs + I(dat2low$usgs ^ 3)
+)
+summary(lm2)
+
+lm3 <- lm(
+#  dat3low$usgs ~ dat3low$vahydro
+  dat3low$usgs ~ I(dat3low$vahydro - 40)
+#  dat3low$usgs ~ dat3low$vahydro + I(dat3low$vahydro ^ 2)
+)
+summary(lm3)
+
+mean(hdat$Qout)
+mean(gagehdat$flow)
+hydroTSM::fdc(cbind(hdat$Qout, gagehdat$flow))
+
 
 # Plot
 gagepd <-

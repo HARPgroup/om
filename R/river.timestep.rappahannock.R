@@ -128,45 +128,14 @@ dat3 <- as.data.frame(cbind(sort(as.numeric(hdat$Qout)), sort(as.numeric(gagehda
 colnames(dat3) <- c('vahydro', 'usgs')
 dat2low <- sqldf("select * from dat2 where usgs <= 400")
 dat3low <- sqldf("select * from dat3 where usgs <= 800")
-dat4low <- sqldf("select * from dat3 where usgs <= 2000")
 plot( (0.35 * dat2low$vahydro) ~ dat2low$usgs)
 plot( (0.35 * dat3$vahydro) ~ dat3$usgs)
 plot(dat3low$vahydro ~ dat3low$usgs)
 plot(dat3$vahydro ~ dat3$usgs)
 plot( dat2low$vahydro ~ dat2low$usgs)
 sort(dat2low$usgs)
-lm2 <- lm(
-#  dat2low$usgs ~ I(dat2low$vahydro ^ 2)
-#  dat2low$usgs ~ I(dat2low$vahydro ^ 3)
-#  dat2low$usgs ~ dat2low$vahydro
-#  dat2low$usgs ~ I(dat2low$vahydro ^ 0.5)
-#  dat2low$usgs ~ I(log(dat2low$vahydro))
-#  dat2low$usgs ~ I(0.35 * dat2low$vahydro)
-  dat4low$usgs ~ I(dat4low$vahydro)
-  #  dat2low$usgs ~ dat2low$vahydro + I(dat2low$vahydro ^ 2)
-  #  dat2low$usgs ~ dat2low$vahydro + I(dat2low$vahydro ^ 3)
-  #  dat2low$vahydro ~ I(dat2low$usgs ^ 2)
-#  dat2low$vahydro ~ dat2low$usgs + I(dat2low$usgs ^ 2)
-#  dat2low$vahydro ~ dat2low$usgs + I(dat2low$usgs ^ 3)
-)
-summary(lm2)
 
-dat2$vreg <- (-31.645 + (0.795360 * dat2$vahydro))
-dat2$vreg[which(dat2$vreg <0)] <- 0
-quantile(dat2$vreg)
-quantile(dat2$usgs)
-plot(
-  dat2$vahydro ~
-  dat2$usgs
-)
-points(dat2$vreg ~ dat2$vahydro, col="red")
-points(dat2$vreg ~ dat2$usgs, col="purple")
-qprobs <- c(0,0.1,0.25,0.35,0.5,0.6,0.75,1.0)
-rbind(
-  round(quantile(dat2$vahydro, probs=qprobs)),
-  round(quantile(dat2$usgs, probs=qprobs)),
-  round(quantile(dat2$vreg, probs=qprobs))
-)
+dat4low <- sqldf("select * from dat3 where usgs <= 2000")
 
 lm3 <- lm(
 #  dat3low$usgs ~ dat3low$vahydro

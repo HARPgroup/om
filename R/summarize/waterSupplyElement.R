@@ -239,7 +239,7 @@ if (sum(datdf$unmet_demand_mgd)==0) {
     "select min(month) as dsmo, max(month) as demo
      from datdf
      where Qintake <= ", l30_Qintake,
-     " and year = ",
+    " and year = ",
     u30_year2
   )
 } else {
@@ -415,7 +415,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     theme(axis.ticks= element_blank()) +
     theme(plot.title = element_text(size = 12, face = "bold",  hjust = 0.5)) +
     theme(legend.title.align = 0.5)
-
+  
   unmet <- count_grid + new_scale_fill() +
     geom_tile(data = yesum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
     geom_tile(data = mosum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
@@ -423,8 +423,8 @@ if (sum(mosum$count_unmet_days) == 0) {
     geom_text(data = mosum, size = 3.5, color='black', aes(x = month, y = year, label = count_unmet_days)) +
     scale_fill_gradient2(low = "#63D1F4", high = "#8A2BE2", mid="#63D1F4",
                          midpoint = mean(mosum$count_unmet_days), name= 'Total Unmet Days')
-
-
+  
+  
   unmet_avg <- unmet + new_scale_fill()+
     geom_tile(data = yeavg, color='black', aes(x = month, y = year, fill = avg)) +
     geom_tile(data = moavg, color='black', aes(x = month, y = year, fill = avg)) +
@@ -446,7 +446,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     theme(axis.ticks= element_blank()) +
     theme(plot.title = element_text(size = 12, face = "bold",  hjust = 0.5)) +
     theme(legend.title.align = 0.5)
-
+  
   unmet <- count_grid + new_scale_fill() +
     geom_tile(data = yesum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
     geom_tile(data = mosum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
@@ -454,8 +454,8 @@ if (sum(mosum$count_unmet_days) == 0) {
     geom_text(data = mosum, size = 3.5, color='black', aes(x = month, y = year, label = count_unmet_days)) +
     scale_fill_gradient2(low = "#63D1F4", high = "#8A2BE2", mid='#CAB8FF',
                          midpoint = mean(mosum$count_unmet_days), name= 'Total Unmet Days')
-
-
+  
+  
   unmet_avg <- unmet + new_scale_fill()+
     geom_tile(data = yeavg, color='black', aes(x = month, y = year, fill = avg)) +
     geom_tile(data = moavg, color='black', aes(x = month, y = year, fill = avg)) +
@@ -463,7 +463,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     geom_text(data = moavg, size = 3.5, color='black', aes(x = month, y = year, label = avg))+
     scale_fill_gradient2(low = "#FFF8DC", mid = "#FFDEAD", high ="#DEB887",
                          name= 'Average Unmet Days', midpoint = mean(yeavg$avg))
-
+  
 }
 
 
@@ -493,7 +493,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     theme(axis.ticks= element_blank()) +
     theme(plot.title = element_text(size = 12, face = "bold",  hjust = 0.5)) +
     theme(legend.title.align = 0.5)
-
+  
   unmet <- count_grid + new_scale_fill() +
     geom_tile(data = yesum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
     geom_tile(data = mosum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
@@ -501,8 +501,8 @@ if (sum(mosum$count_unmet_days) == 0) {
     geom_text(data = mosum, size = 3.5, color='black', aes(x = month, y = year, label = count_unmet_days)) +
     scale_fill_gradient2(low = "#63D1F4", high = "#8A2BE2", mid="#63D1F4",
                          midpoint = mean(mosum$count_unmet_days), name= 'Total Unmet Days')
-
-
+  
+  
   unmet_avg <- unmet + new_scale_fill()+
     geom_tile(data = yeavg, color='black', aes(x = month, y = year, fill = avg)) +
     geom_tile(data = moavg, color='black', aes(x = month, y = year, fill = avg)) +
@@ -513,7 +513,7 @@ if (sum(mosum$count_unmet_days) == 0) {
 } else{
   count_grid <- ggplot() +
     geom_tile(data=yrmodat, color='black',aes(x = month, y = year, fill = count_unmet_days)) +
-    geom_text(aes(label=paste(yrmodat$count_unmet_days,' / ',round(yrmodat$avg_unmet,1), sep=''),
+    geom_text(aes(label=paste(yrmodat$count_unmet_days,' / ',signif(yrmodat$avg_unmet,digits=1), sep=''),
                   x=yrmodat$month, y= yrmodat$year), size = 3, colour = "black") +
     scale_fill_gradient2(low = "#00cc00", high = "red",mid ='yellow',
                          midpoint = 15, guide = "colourbar",
@@ -525,7 +525,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     theme(axis.ticks= element_blank()) +
     theme(plot.title = element_text(size = 12, face = "bold",  hjust = 0.5)) +
     theme(legend.title.align = 0.5)
-
+  
   unmet <- count_grid + new_scale_fill() +
     geom_tile(data = yesum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
     geom_tile(data = mosum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
@@ -533,8 +533,8 @@ if (sum(mosum$count_unmet_days) == 0) {
     geom_text(data = mosum, size = 3.5, color='black', aes(x = month, y = year, label = count_unmet_days)) +
     scale_fill_gradient2(low = "#63D1F4", high = "#8A2BE2", mid='#CAB8FF',
                          midpoint = mean(mosum$count_unmet_days), name= 'Total Unmet Days')
-
-
+  
+  
   unmet_avg <- unmet + new_scale_fill()+
     geom_tile(data = yeavg, color='black', aes(x = month, y = year, fill = avg)) +
     geom_tile(data = moavg, color='black', aes(x = month, y = year, fill = avg)) +
@@ -542,7 +542,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     geom_text(data = moavg, size = 3.5, color='black', aes(x = month, y = year, label = avg))+
     scale_fill_gradient2(low = "#FFF8DC", mid = "#FFDEAD", high ="#DEB887",
                          name= 'Average Unmet Days', midpoint = mean(yeavg$avg))
-
+  
 }
 
 fname3 <- paste(save_directory,paste0('fig.unmet_heatmap_amt.',elid,'.',runid ,'.png'),sep = '/')
@@ -574,8 +574,8 @@ if("impoundment" %in% cols) {
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, ds)
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, ds)
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, ds)
-
-
+  
+  
   # this has an impoundment.  Plot it up.
   # Now zoom in on critical drought period
   pdstart = as.Date(paste0(l90_year,"-06-01") )
@@ -604,7 +604,7 @@ if("impoundment" %in% cols) {
   png(fname)
   ymn <- 0
   ymx <- 100
-
+  
   par(mar = c(5,5,2,5))
   plot(
     datpd$storage_pct * 100.0,
@@ -627,7 +627,7 @@ if("impoundment" %in% cols) {
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
-
+  
   # l90 2 year
   # this has an impoundment.  Plot it up.
   # Now zoom in on critical drought period
@@ -703,11 +703,11 @@ if("impoundment" %in% cols) {
   lines(datpd$impoundment_demand * 1.547,col='green')
   #axis(side = 4)
   #mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
-
+  
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, ds)
-
+  
   # All Periods
   # this has an impoundment.  Plot it up.
   # Now zoom in on critical drought period
@@ -778,11 +778,11 @@ if("impoundment" %in% cols) {
   lines(datpd$impoundment_demand * 1.547,col='green')
   #axis(side = 4)
   #mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
-
+  
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
-
+  
   # Low Elevation Period
   # Dat for Critical Period
   elevs <- zoo(dat$storage_pct, order.by = index(dat));
@@ -840,5 +840,5 @@ if("impoundment" %in% cols) {
   dev.off()
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
-
+  
 }

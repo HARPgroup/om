@@ -970,24 +970,39 @@ function getCBPLanduseData($listobject, $riversegment, $cbp_scenarioid, $landseg
 }
 
 function setNLCDLanduse($elid, $lu_matrix_name = 'landuse_nlcd', $minyear = 1980, $maxyear = 2050, $shape_elid = -1, $translate = 0) {
-   global $usgsdb;
-   if ($shape_elid > 0) {
-      $wktgeom = getElementShape($shape_elid);
-   } else {
-      $wktgeom = getElementShape($elid);
-   }
-   $lu = getNHDLandUseWKT($usgsdb, $wktgeom, 'acres');
-   $lr = array();
-   foreach ( $lu as $thislu => $thisarea ) {
-      if (substr($thislu,0,4) == 'nlcd') {
-         $lr[] = array('luname'=>$thislu, $minyear => round($thisarea,3), $maxyear => round($thisarea,3));
-      }
-   }
-   if ($translate) {
+  global $usgsdb;
+  if ($shape_elid > 0) {
+    $wktgeom = getElementShape($shape_elid);
+  } else {
+    $shape_elid = $elid;
+    $wktgeom = getElementShape($elid);
+  }
+  $wktsnip = substr($wktgeom, 1, 64);
+  $lu = getNHDLandUseWKT($usgsdb, $wktgeom, 'acres');
+  error_log("Found land use: " . print_r($lu, 1));
+  $lr = array();
+  foreach ( $lu as $thislu => $thisarea ) {
+    if (substr($thislu,0,4) == 'nlcd') {
+       $lr[] = array('luname'=>$thislu, $minyear => round($thisarea,3), $maxyear => round($thisarea,3));
+    }
+  }
+  switch ($translate) {
+    case 1:
+    error_log("Translating NLCD to CBP5 land uses for $elid using geom from $shape_elid (wkt: $wktsnip...) ");
       $lr = translateNLCDtoCBP($lu, $minyear, $maxyear);
-   }
+    break;
+
+    case 'cbp6':
+    error_log("Translating NLCD to CBP6 land uses for $elid using geom from $shape_elid (wkt: $wktsnip...)");
+      $lr = translateNLCDtoCBP6($lu, $minyear, $maxyear);
+    break;
+
+    default:
+    break;
+  }
    setLUMatrix ($elid, $lu_matrix_name, $lr);
 }
+
 
 function translateNLCDtoCBP ($lu, $minyear, $maxyear, $debug = 0) {
    $nlcd_cbp_lumap = array(
@@ -1010,6 +1025,60 @@ function translateNLCDtoCBP ($lu, $minyear, $maxyear, $debug = 0) {
       'nlcd_82' => array('hom'=>1.0),
       'nlcd_84' => array('hyo'=>1.0),
       'nlcd_85' => array('puh'=>1.0),
+      'nlcd_91' => array('for'=>1.0),
+      'nlcd_92' => array('for'=>1.0)
+   );
+
+   if ($debug) {
+      error_log(print_r($lu,1) . "\n");
+   }
+   $lr = array();
+   $maplu = array();
+   foreach ( $lu as $thislu => $thisarea ) {
+      // check for entry in mapping array
+      // if found, perform the map,
+      // then check to see if we already have an entry for it, if so, add it to the total, if not create new entry for this lu class
+      if (substr($thislu,0,4) == 'nlcd') {
+         if (isset($nlcd_cbp_lumap[$thislu])) {
+            foreach ($nlcd_cbp_lumap[$thislu] as $luname => $lupct) {
+               if (!isset($maplu[$luname])) {
+                  $maplu[$luname] = 0.0;
+               }
+               $maplu[$luname] += $thisarea * $lupct;
+            }
+         }
+      }
+
+   }
+   foreach ( $maplu as $thislu => $thisarea ) {
+      $lr[] = array('luname'=>$thislu, $minyear => round($thisarea,3), $maxyear => round($thisarea,3));
+
+   }
+   return $lr;
+}
+
+
+function translateNLCDtoCBP6($lu, $minyear, $maxyear, $debug = 0) {
+   $nlcd_cbp_lumap = array(
+      'nlcd_11' => array('wat'=>1.0),
+      'nlcd_12' => array(),
+      'nlcd_21' => array('ntg'=>0.3, 'mch'=>0.15, 'cnr'=>0.45, 'mci'=>0.1),
+      'nlcd_22' => array('ntg'=>0.1, 'mnr'=>0.45, 'mir'=>0.45),
+      'nlcd_23' => array('mnr'=>1.0),
+      'nlcd_23' => array('mnr'=>1.0),
+      'nlcd_31' => array('mcn'=>1.0),
+      'nlcd_32' => array('ccn'=>1.0), 
+      'nlcd_33' => array('hfr'=>1.0),
+      'nlcd_41' => array('for'=>1.0),
+      'nlcd_42' => array('for'=>1.0),
+      'nlcd_43' => array('for'=>1.0),
+      'nlcd_51' => array('hyw'=>1.0),
+      'nlcd_61' => array('lhy'=>1.0),
+      'nlcd_71' => array('lhy'=>1.0),
+      'nlcd_81' => array('pas'=>1.0),
+      'nlcd_82' => array('gom'=>1.0),
+      'nlcd_84' => array('hom'=>1.0),
+      'nlcd_85' => array('ctg'=>1.0),
       'nlcd_91' => array('for'=>1.0),
       'nlcd_92' => array('for'=>1.0)
    );

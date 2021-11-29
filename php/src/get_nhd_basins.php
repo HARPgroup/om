@@ -6,6 +6,12 @@ if (count($argv) < 3) {
    print("USAGE: php get_nhd_basins.php pointname lat lon [debug=0] [overwrite=0]\n");
    die;
 }
+if ($usgsdb) {
+  error_log("Successfully connected to: " . pg_host($usgs_db));
+} else {
+  error_log(pg_last_error($usgsdb));
+  die;
+}
 list($pointname, $latdd, $londd, $debug, $overwrite) = array($argv[1], $argv[2], $argv[3], $argv[4], $argv[5]);
 $outlet_info = findNHDSegment($usgsdb, $latdd, $londd);
 $outlet = $outlet_info['comid'];

@@ -17,6 +17,8 @@ ln -s /media/NAS2/omdata /var/www/html/data
 ln -s /media/NAS2/omdata /var/www/html/data
 
 // Libraries
+rm /var/www/html/scripts
+ln -s /opt/model/om/scripts /var/www/html/scripts
 
 rm /var/www/html/lib/phpmath 
 ln -s /opt/model/om/php/lib/phpmath /var/www/html/lib/phpmath
@@ -26,6 +28,8 @@ rm /var/www/html/lib/lib_wooomm.php
 ln -s /opt/model/om/php/lib/lib_wooomm.php /var/www/html/lib/lib_wooomm.php
 rm /var/www/html/lib/lib_wooomm.USGS.php
 ln -s /opt/model/om/php/lib/lib_wooomm.USGS.php /var/www/html/lib/lib_wooomm.USGS.php
+rm /var/www/html/lib/lib_nhdplus.php
+ln -s /opt/model/om/php/lib/lib_nhdplus.php /var/www/html/lib/lib_nhdplus.php
 rm /var/www/html/lib/lib_usgs.php
 ln -s /opt/model/om/php/lib/lib_usgs.php /var/www/html/lib/lib_usgs.php
 rm /var/www/html/lib/lib_wooomm.cbp.php

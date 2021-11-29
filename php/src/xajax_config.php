@@ -185,7 +185,7 @@ if ($debug) {
    error_log("Loading database connections");
 }
 // START - set up database connections
-$connstring = "host=$dbip dbname=$dbname user=$dbuser password=$dbpass";
+$connstring = "host=$dbip port=$dbport dbname=$dbname user=$dbuser password=$dbpass";
 $dbconn = pg_connect($connstring, PGSQL_CONNECT_FORCE_NEW);
 
 $listobject = new pgsql_QueryObject;

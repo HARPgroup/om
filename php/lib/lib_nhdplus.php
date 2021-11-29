@@ -46,10 +46,10 @@ function getMergedNHDBasin($hydro_db, $lat, $lon, $extra_basins = 0, $debug = 0,
    $merged_shape = findNHDBasinShape($hydro_db, $outlet);
    // if not, create it anew
    if ($merged_shape === false) {
-      if ($debug) error_log("Shape NOT in NHD+ Merged basin geometry cache .. calculating.\n");
+      error_log("Shape NOT in NHD+ Merged basin geometry cache .. calculating.\n");
       $merged_shape = getMergedNHDShape($hydro_db, $merged_info['flow_segments'],$merged_info['merged_segments'], $debug, $tol, $pct_shrink);
    } else {
-      if ($debug) error_log("Shape located in NHD+ Merged basin geometry cache .. retrieving cached.\n");
+      error_log("Shape located in NHD+ Merged basin geometry cache .. retrieving cached.\n");
    }
    $merged_info['the_geom'] = $merged_shape;
    return $merged_info;

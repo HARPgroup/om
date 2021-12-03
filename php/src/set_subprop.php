@@ -91,7 +91,7 @@ if (is_object($thisobject)) {
     $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
     $innerHTML .= $cresult['innerHTML'];
     $debughtml .= $cresult['debugHTML'];
-    error_log("Only saving single operator");
+    error_log("Saving single operator as ID $operatorid");
     $xml = $cresult['object_xml'];
     // store in database
     $store_result = storeElemOperator($elid, $operatorid, $xml);

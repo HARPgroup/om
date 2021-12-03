@@ -61,6 +61,7 @@ if (is_object($thisobject)) {
       }
       $syobj = new $comp_class;
       $thisobject->addOperator($comp_name, $syobj);
+      error_log("Saving all model operators due to name change or now operator creation");
       $res = saveObjectSubComponents($listobject, $thisobject, $recid, 1, 0);
       // now we reload in case the save caused operators to be re-indexed
       $loadres = unSerializeSingleModelObject($elid);
@@ -90,7 +91,7 @@ if (is_object($thisobject)) {
     $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
     $innerHTML .= $cresult['innerHTML'];
     $debughtml .= $cresult['debugHTML'];
-    //error_log("Serialize result: $debughtml");
+    error_log("Only saving single operator");
     $xml = $cresult['object_xml'];
     // store in database
     $store_result = storeElemOperator($elid, $operatorid, $xml);

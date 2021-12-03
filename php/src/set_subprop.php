@@ -62,7 +62,7 @@ if (is_object($thisobject)) {
       $syobj = new $comp_class;
       $thisobject->addOperator($comp_name, $syobj);
       error_log("Saving all model operators due to name change or now operator creation");
-      $res = saveObjectSubComponents($listobject, $thisobject, $recid, 1, 0);
+      $res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
       // now we reload in case the save caused operators to be re-indexed
       $loadres = unSerializeSingleModelObject($elid);
       $thisobject = $loadres['object'];

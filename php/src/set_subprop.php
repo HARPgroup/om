@@ -36,7 +36,7 @@ if (isset($argv[7])) {
 
 $loadres = unSerializeSingleModelObject($elid);
 $thisobject = $loadres['object'];
-
+$type_change = FALSE;
 if (is_object($thisobject)) {
   // this is a subcomp, so add if need be
   if (in_array($setprop_mode, array('json-2d', 'json-1d'))) {
@@ -58,14 +58,17 @@ if (is_object($thisobject)) {
       error_log("Adding $comp_name of type $comp_class\n");
       if (isset($thisobject->processors[$comp_name])) {
         error_log("This is a component type change requested");
+        $type_change = TRUE;
       }
       $syobj = new $comp_class;
       $thisobject->addOperator($comp_name, $syobj);
-      error_log("Saving all model operators due to name change or new operator creation");
-      $res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
-      // now we reload in case the save caused operators to be re-indexed
-      $loadres = unSerializeSingleModelObject($elid);
-      $thisobject = $loadres['object'];
+      if (!$type_change) {
+        error_log("Saving all model operators due to new operator creation");
+        $res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
+        // now we reload in case the save caused operators to be re-indexed
+        $loadres = unSerializeSingleModelObject($elid);
+        $thisobject = $loadres['object'];
+      }
     } else {
       error_log("$comp_class not in supported " . print_r($supported, 1));
     }

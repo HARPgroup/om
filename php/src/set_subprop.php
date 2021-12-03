@@ -61,7 +61,7 @@ if (is_object($thisobject)) {
       }
       $syobj = new $comp_class;
       $thisobject->addOperator($comp_name, $syobj);
-      error_log("Saving all model operators due to name change or now operator creation");
+      error_log("Saving all model operators due to name change or new operator creation");
       $res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
       // now we reload in case the save caused operators to be re-indexed
       $loadres = unSerializeSingleModelObject($elid);
@@ -88,13 +88,19 @@ if (is_object($thisobject)) {
     $thisobject->processors[$comp_name]->setProp($subprop_name, $subprop_value, $setprop_mode);
     $thisobject->processors[$comp_name]->objectclass = $comp_class;
     $operatorid = array_search($comp_name, array_keys($thisobject->processors));
-    $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
-    $innerHTML .= $cresult['innerHTML'];
-    $debughtml .= $cresult['debugHTML'];
-    error_log("Saving single operator as ID $operatorid");
-    $xml = $cresult['object_xml'];
-    // store in database
-    $store_result = storeElemOperator($elid, $operatorid, $xml);
+    if ($operatorid === FALSE) {
+      error_log("Cannot find operator $comp_name in object $thisobject->name with elementid $elid.");
+    } else {
+      // increment since the key in a php array starts at 0, but postgresql array columns start at 1
+      $operatorid = $operatorid + 1;
+      $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
+      $innerHTML .= $cresult['innerHTML'];
+      $debughtml .= $cresult['debugHTML'];
+      error_log("Saving single operator as ID $operatorid");
+      $xml = $cresult['object_xml'];
+      // store in database
+      $store_result = storeElemOperator($elid, $operatorid, $xml);
+    }
   }
   //error_log("Save result: $result_html");
 }

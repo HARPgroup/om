@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cbp_path="/media/model/p6/out"
 
 if [ $# -lt 2 ]; then
   echo 1>&2 "Usage: create_landuse_table.sh N51045 CFBASE30Y20180615"
@@ -11,7 +11,7 @@ scenario=$2
 
 # i.e. create_landseg_table.sh N51045 JU1_7630_7490 CFBASE30Y20180615
 template="cbp_p6_lseg_runoff_template"
-filename="/media/model/p6/out/land/$scenario/eos/${landseg}_0111-0211-0411.csv"
+filename="$cbp_path/land/$scenario/eos/${landseg}_0111-0211-0411.csv"
 tablename="cbp_p6_${scenario}_${landseg}"
 tablename=`echo $tablename | tr '[:upper:]' '[:lower:]'`
 hdrcols=`head -n 1 $filename`

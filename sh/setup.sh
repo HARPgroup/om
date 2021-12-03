@@ -24,6 +24,8 @@ rm /var/www/html/lib/phpmath
 ln -s /opt/model/om/php/lib/phpmath /var/www/html/lib/phpmath
 rm /var/www/html/lib/lib_hydrology.php
 ln -s /opt/model/om/php/lib/lib_hydrology.php /var/www/html/lib/lib_hydrology.php
+rm /var/www/html/lib/lib_batchmodel.php
+ln -s /opt/model/om/php/lib/lib_batchmodel.php /var/www/html/lib/lib_batchmodel.php
 rm /var/www/html/lib/lib_wooomm.php
 ln -s /opt/model/om/php/lib/lib_wooomm.php /var/www/html/lib/lib_wooomm.php
 rm /var/www/html/lib/lib_wooomm.USGS.php

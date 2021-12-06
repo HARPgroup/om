@@ -638,24 +638,25 @@ class wsp_1tierflowby extends wsp_flowby {
    // this is a general purpose class for a simple flow-by
    // other, more complicated flow-bys will inherit this class
    
-   var $enable_conservation = 0;
-   var $cc_watch = 0.05;
-   var $cc_warning = 0.1;
-   var $cc_emergency = 0.15;
-   var $custom_conservation = 0;
-   var $custom_cons_var = '';
-   var $enable_cfb = 0; // cfb = Conditional Flow By (like, the calculated flowby OR inflow whichever is less
-   var $cfb_condition = 'lt';
-   var $cfb_var = '';
-   var $tier_var = ''; // equivalent to lukey1 in matrix
-   var $lutype1 = 2;
-   var $flowby_value = 0.0;
-   var $flowby_eqn = 0.0;
-   var $name = 'flowby';
-   var $rule_matrix = -1;
-   var $matrix = array();
-   var $value_dbcolumntype = 'float8';
-   var $serialist = 'matrix'; # tells routines to serialize this before storing in XML
+  var $json2d = TRUE;
+  var $enable_conservation = 0;
+  var $cc_watch = 0.05;
+  var $cc_warning = 0.1;
+  var $cc_emergency = 0.15;
+  var $custom_conservation = 0;
+  var $custom_cons_var = '';
+  var $enable_cfb = 0; // cfb = Conditional Flow By (like, the calculated flowby OR inflow whichever is less
+  var $cfb_condition = 'lt';
+  var $cfb_var = '';
+  var $tier_var = ''; // equivalent to lukey1 in matrix
+  var $lutype1 = 2;
+  var $flowby_value = 0.0;
+  var $flowby_eqn = 0.0;
+  var $name = 'flowby';
+  var $rule_matrix = -1;
+  var $matrix = array();
+  var $value_dbcolumntype = 'float8';
+  var $serialist = 'matrix'; # tells routines to serialize this before storing in XML
 
    function showEditForm($formname, $disabled=0) {
       if (is_object($this->listobject)) {

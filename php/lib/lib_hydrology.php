@@ -1015,6 +1015,7 @@ class modelObject {
     $raw_json = $propvalue;
     $json_props = json_decode($propvalue, TRUE);
     foreach ($json_props as $pname => $pvalue) {
+      error_log("Exec: this->setClassProp($pname)");
       if ($pname == 'object_class') {
         continue;
       }

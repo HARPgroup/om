@@ -1015,6 +1015,7 @@ class modelObject {
     $raw_json = $propvalue;
     $json_props = json_decode($propvalue, TRUE);
     foreach ($json_props as $pname => $pvalue) {
+      error_log("Exec: this->setClassProp($pname)");
       if ($pname == 'object_class') {
         continue;
       }
@@ -1022,9 +1023,9 @@ class modelObject {
         if (!is_array($pvalue)) {
           // handle normal attributes
           $this->setClassProp($pname, $pvalue, "");
-          //error_log("Exec: this->setClassProp($pname, $pvalue)");
         } else {
           // handle openmi structured attribute
+          error_log("object_class: $pvalue[object_class]");
           switch ($pvalue['object_class']) {
             //default, flat properties are all for now.
             case NULL:
@@ -2917,7 +2918,7 @@ class modelObject {
 
 class modelSubObject extends modelObject {
   var $wvars = 0;
-
+  
   function wake() {
     parent::wake();
   }

@@ -1496,7 +1496,6 @@ class dHOMSubComp extends dHOMBaseObjectClass {
     // Check path depth - if this is a 1st level sub-comp delete, if not, return 
     switch (count($comp_path)) {
       case 2:
-        list($propname, $parentname) = $path;
         // this is a property on a subcomp of the element
         $setstr = "php delete_subcomp.php $elid $propname ";
       break;

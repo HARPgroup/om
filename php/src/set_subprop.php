@@ -36,7 +36,7 @@ if (isset($argv[7])) {
 
 $loadres = unSerializeSingleModelObject($elid);
 $thisobject = $loadres['object'];
-
+$type_change = FALSE;
 if (is_object($thisobject)) {
   // this is a subcomp, so add if need be
   if (in_array($setprop_mode, array('json-2d', 'json-1d'))) {
@@ -55,15 +55,22 @@ if (is_object($thisobject)) {
       die;
     }
     if (empty($supported) or in_array($comp_class, $supported)) {
-     error_log("Adding $comp_name of type $comp_class\n");
-     if (isset($thisobject->processors[$comp_name])) {
-       error_log("This is a component type change requested");
-     }
-     $syobj = new $comp_class;
-     $thisobject->addOperator($comp_name, $syobj);
-     $res = saveObjectSubComponents($listobject, $thisobject, $recid, 1, 0);
+      error_log("Adding $comp_name of type $comp_class\n");
+      if (isset($thisobject->processors[$comp_name])) {
+        error_log("This is a component type change requested");
+        $type_change = TRUE;
+      }
+      $syobj = new $comp_class;
+      $thisobject->addOperator($comp_name, $syobj);
+      if (!$type_change) {
+        error_log("Saving all model operators due to new operator creation");
+        $res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
+        // now we reload in case the save caused operators to be re-indexed
+        $loadres = unSerializeSingleModelObject($elid);
+        $thisobject = $loadres['object'];
+      }
     } else {
-     error_log("$comp_class not in supported " . print_r($supported, 1));
+      error_log("$comp_class not in supported " . print_r($supported, 1));
     }
   }
 
@@ -83,8 +90,21 @@ if (is_object($thisobject)) {
     error_log("Calling setProp() on $subprop_name");
     $thisobject->processors[$comp_name]->setProp($subprop_name, $subprop_value, $setprop_mode);
     $thisobject->processors[$comp_name]->objectclass = $comp_class;
+    $operatorid = array_search($comp_name, array_keys($thisobject->processors));
+    if ($operatorid === FALSE) {
+      error_log("Cannot find operator $comp_name in object $thisobject->name with elementid $elid.");
+    } else {
+      // increment since the key in a php array starts at 0, but postgresql array columns start at 1
+      $operatorid = $operatorid + 1;
+      $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
+      $innerHTML .= $cresult['innerHTML'];
+      $debughtml .= $cresult['debugHTML'];
+      error_log("Saving single operator as ID $operatorid");
+      $xml = $cresult['object_xml'];
+      // store in database
+      $store_result = storeElemOperator($elid, $operatorid, $xml);
+    }
   }
-  $result_html = saveObjectSubComponents($listobject, $thisobject, $elid );
   //error_log("Save result: $result_html");
 }
    

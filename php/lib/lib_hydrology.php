@@ -1018,14 +1018,15 @@ class modelObject {
       if ($pname == 'object_class') {
         continue;
       }
+      error_log("Exec: this->setClassProp($pname)");
       if (property_exists($this, $pname)) {
         if (!is_array($pvalue)) {
           // handle normal attributes
           $this->setClassProp($pname, $pvalue, "");
-          error_log("Exec: this->setClassProp($pname, $pvalue)");
         } else {
           // handle openmi structured attribute
           switch ($pvalue['object_class']) {
+      error_log("object_class: $pvalue[object_class]");
             //default, flat properties are all for now.
             case NULL:
             case 'textField':

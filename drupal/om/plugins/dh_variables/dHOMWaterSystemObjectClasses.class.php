@@ -404,6 +404,7 @@ class dHOMWaterSystemFlowBy extends dHOMSubComp {
 class dHOMWaterSystemTieredFlowBy extends dHOMDataMatrix {
   var $object_class = 'wsp_1tierflowby';
   var $attach_method = 'contained';
+  var $json2d = TRUE;
   
   public function hiddenFields() {
     $hidden = array_merge(array('propvalue', 'propcode'), parent::hiddenFields());

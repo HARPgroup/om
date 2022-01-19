@@ -27,7 +27,7 @@ $thisobresult = unSerializeModelObject($elementid);
 $thisobject = $thisobresult['object'];
 $thisname = $thisobject->name;
 $thisobject->debug = 0;
-error_log("Returned elemanet named: $thisname ");
+error_log("Returned element named: $thisname ");
 
 
 ?>

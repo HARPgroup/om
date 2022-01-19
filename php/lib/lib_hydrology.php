@@ -2917,7 +2917,7 @@ class modelObject {
 
 class modelSubObject extends modelObject {
   var $wvars = 0;
-
+  
   function wake() {
     parent::wake();
   }

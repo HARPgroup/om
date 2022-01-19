@@ -836,7 +836,7 @@ class wsp_1tierflowby extends wsp_flowby {
         switch ($propname) {
           case 'matrix':
           // this is a simple matrix so needs no extra handling.
-            $this->matrix = $this->assocArrayToMatrix($propvalue, FALSE);
+            $this->assocArrayToMatrix($propvalue, FALSE);
           break;
           default:
             parent::setClassProp($propname, $propvalue, $view);

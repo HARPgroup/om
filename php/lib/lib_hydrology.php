@@ -1022,7 +1022,7 @@ class modelObject {
         if (!is_array($pvalue)) {
           // handle normal attributes
           $this->setClassProp($pname, $pvalue, "");
-          //error_log("Exec: this->setClassProp($pname, $pvalue)");
+          error_log("Exec: this->setClassProp($pname, $pvalue)");
         } else {
           // handle openmi structured attribute
           switch ($pvalue['object_class']) {

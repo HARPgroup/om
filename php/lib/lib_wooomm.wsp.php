@@ -707,26 +707,6 @@ class wsp_1tierflowby extends wsp_flowby {
       // set up the matrix for this element
    }
    
-   function setupMatrix() {
-      $this->rule_matrix = new dataMatrix;
-      $this->rule_matrix->name = 'flowby';
-      $this->rule_matrix->ebug = $this->debug;
-      $this->rule_matrix->wake();
-      $this->rule_matrix->numcols = 2;
-      $this->rule_matrix->fixed_cols = true;
-      $this->rule_matrix->valuetype = 1; // 1 column lookup (col & row)
-      $this->rule_matrix->keycol1 = $this->tier_var; // key for 1st lookup variable
-      $this->rule_matrix->lutype1 = $this->lutype1; // lookup type, default is - stair step
-      // add a row for the header line
-      if ( !is_array($this->matrix) or (count($this->matrix) == 0)) {
-         $this->matrix = array(0,0);
-      }
-      $this->rule_matrix->numrows = count($this->matrix) / 2.0;
-      $this->rule_matrix->matrix = $this->matrix;// map the text mo to a numerical description
-      $this->rule_matrix->formatMatrix();
-      $this->addOperator('rule_matrix', $this->rule_matrix, 0);
-   }
-   
    function sleep() {
       parent::sleep();
       // set up the matrix for this element
@@ -845,33 +825,6 @@ class wsp_1tierflowby extends wsp_flowby {
        break;
      }
    }
-
-   function getProp($propname, $view = '') {
-      //error_log("DataMatrix Property requested: $propname, $view ");
-      $localviews = array('matrix', 'matrix_formatted', 'csv');
-      if (!in_array($view, $localviews)) {
-         return parent::getProp($propname, $view);
-      } else {
-         switch ($view) {
-            case 'matrix':
-               $this->rule_matrix->formatMatrix();
-               //error_log("Returning: " . print_r($this->matrix_formatted,1));
-               return $this->rule_matrix->matrix_formatted;
-            break;
-            case 'matrix_formatted':
-               $this->rule_matrix->formatMatrix();
-               //error_log("Returning: " . print_r($this->matrix_formatted,1));
-               return $this->rule_matrix->matrix_formatted;
-            break;
-				case 'csv':
-               $this->rule_matrix->formatMatrix();
-               //error_log("calling showCWSInfoView () ");
-               //return array2Delimited($this->matrix_rowcol, ',', 1,'unix');
-               return array2Delimited($this->rule_matrix->matrix_formatted, ',', 1,'unix');
-				break;
-         }
-      }
-   }
   
   function setClassProp($propname, $propvalue, $view = '') { 
   // this adds a special handler for items with a "matrix" property.
@@ -882,7 +835,8 @@ class wsp_1tierflowby extends wsp_flowby {
       case 'array':
         switch ($propname) {
           case 'matrix':
-            $this->setupMatrix($propvalue);
+          // this is a simple matrix so needs no extra handling.
+            $this->matrix = $propvalue;
           break;
           default:
             parent::setClassProp($propname, $propvalue, $view);
@@ -893,6 +847,53 @@ class wsp_1tierflowby extends wsp_flowby {
       default:
         parent::setClassProp($propname, $propvalue, $view);
       break;
+    }
+  }
+   
+  function setupMatrix() {
+    $this->rule_matrix = new dataMatrix;
+    $this->rule_matrix->name = 'flowby';
+    $this->rule_matrix->ebug = $this->debug;
+    $this->rule_matrix->wake();
+    $this->rule_matrix->numcols = 2;
+    $this->rule_matrix->fixed_cols = true;
+    $this->rule_matrix->valuetype = 1; // 1 column lookup (col & row)
+    $this->rule_matrix->keycol1 = $this->tier_var; // key for 1st lookup variable
+    $this->rule_matrix->lutype1 = $this->lutype1; // lookup type, default is - stair step
+    // add a row for the header line
+    if ( !is_array($this->matrix) or (count($this->matrix) == 0)) {
+       $this->matrix = array(0,0);
+    }
+    $this->rule_matrix->numrows = count($this->matrix) / 2.0;
+    $this->rule_matrix->matrix = $this->matrix;// map the text mo to a numerical description
+    $this->rule_matrix->formatMatrix();
+    $this->addOperator('rule_matrix', $this->rule_matrix, 0);
+  }
+
+  function getProp($propname, $view = '') {
+    //error_log("DataMatrix Property requested: $propname, $view ");
+    $localviews = array('matrix', 'matrix_formatted', 'csv');
+    if (!in_array($view, $localviews)) {
+       return parent::getProp($propname, $view);
+    } else {
+       switch ($view) {
+          case 'matrix':
+             $this->rule_matrix->formatMatrix();
+             //error_log("Returning: " . print_r($this->matrix_formatted,1));
+             return $this->rule_matrix->matrix_formatted;
+          break;
+          case 'matrix_formatted':
+             $this->rule_matrix->formatMatrix();
+             //error_log("Returning: " . print_r($this->matrix_formatted,1));
+             return $this->rule_matrix->matrix_formatted;
+          break;
+      case 'csv':
+             $this->rule_matrix->formatMatrix();
+             //error_log("calling showCWSInfoView () ");
+             //return array2Delimited($this->matrix_rowcol, ',', 1,'unix');
+             return array2Delimited($this->rule_matrix->matrix_formatted, ',', 1,'unix');
+      break;
+       }
     }
   }
 }

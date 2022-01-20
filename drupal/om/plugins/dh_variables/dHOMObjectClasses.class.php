@@ -851,6 +851,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     // $path will be modified by the methods
     // the property set_remote allows us to disable this functionality, for example
     // if we are doing an insert from an import, we wouldn't want to do this.
+    dpm("synchronize called with elid = $elid, json2d = $json2d, and set_remote = $this->set_remote");
     if (($elid > 0) and (intval($this->set_remote) > 0)) {
       $this->setAllRemoteProperties($entity, $elid, $path);
       if (count($path) == 0) {
@@ -868,7 +869,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
   
   public function setRemoteProp($entity, $elid, $path, $propvalue, $object_class = FALSE, $mode = '') {
     if ( ($this->set_remote === '0') or ($entity->set_remote === 0)) {
-      //error_log("set_remote = FALSE - returning without setting $entity->propname");
+      dpm("set_remote = FALSE - returning without setting $entity->propname");
       return;
     } else {
       //$db = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);

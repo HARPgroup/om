@@ -843,6 +843,14 @@ class wsp_1tierflowby extends wsp_flowby {
           break;
         }
       break;
+       
+      case 'lutype1':
+       $this->lutype1 = $propvalue;
+      break;
+
+      case 'keycol1':
+       $this->tier_var = $propvalue;
+      break;
       
       default:
         parent::setClassProp($propname, $propvalue, $view);

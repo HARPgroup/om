@@ -648,8 +648,9 @@ class wsp_1tierflowby extends wsp_flowby {
   var $enable_cfb = 0; // cfb = Conditional Flow By (like, the calculated flowby OR inflow whichever is less
   var $cfb_condition = 'lt';
   var $cfb_var = '';
-  var $tier_var = ''; // equivalent to lukey1 in matrix
-  var $lutype1 = 2;
+  var $tier_var = ''; // equivalent to keycol1 in matrix
+  var $keycol1 = ''; // this is here to allow setting of property via setPropJSON2d() which checks class properties 
+  var $lutype1 = 2; 
   var $flowby_value = 0.0;
   var $flowby_eqn = 0.0;
   var $name = 'flowby';

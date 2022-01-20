@@ -834,7 +834,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     //}
   }
   
-  public function (synchronize&$entity, $force = FALSE) {
+  public function synchronize(&$entity, $force = FALSE) {
     //dpm($entity, "New synchronize method used");
     // Skip if this is a child of an object that uses json2d for synch,unless $force == TRUE
     $json2d = $this->checkParentJSON($entity);

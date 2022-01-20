@@ -1015,7 +1015,7 @@ class modelObject {
     $raw_json = $propvalue;
     $json_props = json_decode($propvalue, TRUE);
     foreach ($json_props as $pname => $pvalue) {
-      error_log("Exec: this->setClassProp($pname)");
+      //error_log("Exec: this->setClassProp($pname)");
       if ($pname == 'object_class') {
         continue;
       }
@@ -1025,13 +1025,13 @@ class modelObject {
           $this->setClassProp($pname, $pvalue, "");
         } else {
           // handle openmi structured attribute
-          error_log("object_class: $pvalue[object_class]");
+          //error_log("object_class: $pvalue[object_class]");
           switch ($pvalue['object_class']) {
             //default, flat properties are all for now.
             case NULL:
             case 'textField':
               $this->setClassProp($pvalue['name'], $pvalue['value'], "");
-              error_log("Exec: this->setClassProp($pvalue[name], $pvalue[value], \"\")");
+              //error_log("Exec: this->setClassProp($pvalue[name], $pvalue[value], \"\")");
             break;
             case 'table':
             case 'array':

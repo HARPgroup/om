@@ -834,12 +834,13 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     //}
   }
   
-  public function synchronize(&$entity, $force = FALSE) {
+  public function (synchronize&$entity, $force = FALSE) {
     //dpm($entity, "New synchronize method used");
     // Skip if this is a child of an object that uses json2d for synch,unless $force == TRUE
     $json2d = $this->checkParentJSON($entity);
     // we DO want to force if this element has been edited solo, and skip loading the parent.
     // how to verify that, though?
+    dpm("synchronize called with elid = $elid, json2d = $json2d, and set_remote = $this->set_remote");
     if ($json2d and !$force) {
       return;
     }
@@ -851,7 +852,6 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     // $path will be modified by the methods
     // the property set_remote allows us to disable this functionality, for example
     // if we are doing an insert from an import, we wouldn't want to do this.
-    dpm("synchronize called with elid = $elid, json2d = $json2d, and set_remote = $this->set_remote");
     if (($elid > 0) and (intval($this->set_remote) > 0)) {
       $this->setAllRemoteProperties($entity, $elid, $path);
       if (count($path) == 0) {

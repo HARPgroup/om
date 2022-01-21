@@ -49,4 +49,6 @@ error_log("Returned element named: $thisname ");
   // then we implement
     // createClassFromOpenMI() code somewhere else. the importer is the only thing that needs separation of parent/child attributes.
     // could include in export, a list of child specific attributes to facilitate import 
+    // for migrating data, not object class defs, we should indicate if an attribute is read-only, that is, only defined on the class and not migrate those.
+    
 ?>

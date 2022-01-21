@@ -648,8 +648,9 @@ class wsp_1tierflowby extends wsp_flowby {
   var $enable_cfb = 0; // cfb = Conditional Flow By (like, the calculated flowby OR inflow whichever is less
   var $cfb_condition = 'lt';
   var $cfb_var = '';
-  var $tier_var = ''; // equivalent to lukey1 in matrix
-  var $lutype1 = 2;
+  var $tier_var = ''; // equivalent to keycol1 in matrix
+  var $keycol1 = ''; // this is here to allow setting of property via setPropJSON2d() which checks class properties 
+  var $lutype1 = 2; 
   var $flowby_value = 0.0;
   var $flowby_eqn = 0.0;
   var $name = 'flowby';
@@ -831,10 +832,10 @@ class wsp_1tierflowby extends wsp_flowby {
   // arrays have already been parsed by json2d handler that calls this 
   // so we rearrange as 1-d, implode, and call setupMatrix
     error_log("setClassProp ($propname, $view) wsp_1tierflowby propvalue = ". print_r($propvalue,1));
-    switch ($view) {
-      case 'array':
-        switch ($propname) {
-          case 'matrix':
+    switch ($propname) {
+      case 'matrix':
+        switch ($view) {
+          case 'array':
           // this is a simple matrix so needs no extra handling.
             $this->assocArrayToMatrix($propvalue, FALSE);
           break;
@@ -842,6 +843,15 @@ class wsp_1tierflowby extends wsp_flowby {
             parent::setClassProp($propname, $propvalue, $view);
           break;
         }
+      break;
+       
+      case 'lutype1':
+       $this->lutype1 = $propvalue;
+      break;
+
+      case 'keycol1':
+       $this->tier_var = $propvalue;
+       error_log("====> tier_var = $this->tier_var");
       break;
       
       default:

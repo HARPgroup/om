@@ -840,6 +840,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     $json2d = $this->checkParentJSON($entity);
     // we DO want to force if this element has been edited solo, and skip loading the parent.
     // how to verify that, though?
+    //dpm("synchronize called with elid = $elid, json2d = $json2d, and set_remote = $this->set_remote");
     if ($json2d and !$force) {
       return;
     }
@@ -868,7 +869,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
   
   public function setRemoteProp($entity, $elid, $path, $propvalue, $object_class = FALSE, $mode = '') {
     if ( ($this->set_remote === '0') or ($entity->set_remote === 0)) {
-      //error_log("set_remote = FALSE - returning without setting $entity->propname");
+      dpm("set_remote = FALSE - returning without setting $entity->propname");
       return;
     } else {
       //$db = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
@@ -1438,7 +1439,7 @@ class dHOMSubComp extends dHOMBaseObjectClass {
       array_unshift($ppath, $entity->propname);
       //$this->setRemoteProp($entity, $elid, $ppath, "", $this->object_class);
       $exp = $this->exportOpenMI($entity);
-      //dpm($exp,"Using JSON export mode");
+      dpm($exp,"Using JSON export mode");
       $exp_json = addslashes(json_encode($exp[$entity->propname]));
       $this->setRemoteProp($entity, $elid, $ppath, $exp_json, $this->object_class, 'json-2d');
     } else {

@@ -630,7 +630,7 @@ class dHOMWaterSystemPermitStatus extends dHOMtextField {
       'npne' => t('Non-Permitted, Non-Exempt'),
       'proposed' => t('Proposed'),
       'other' => t('Other'),
-      'unknown' => t('Unknown'),
+      'reissue' => t('Reissue'),
     );
     return $fsopts;
   }

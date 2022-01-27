@@ -624,12 +624,13 @@ class dHOMWaterSystemPermitStatus extends dHOMtextField {
   
   public function getOptions() {
     $fsopts = array(
-      'unknown' => t('Unknown'),
       'active' => t('Active'),
+      'exempt' => t('Exempt'),
       'expired' => t('Expired'),
       'npne' => t('Non-Permitted, Non-Exempt'),
       'proposed' => t('Proposed'),
       'other' => t('Other'),
+      'unknown' => t('Unknown'),
     );
     return $fsopts;
   }

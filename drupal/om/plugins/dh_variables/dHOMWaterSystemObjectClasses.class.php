@@ -618,4 +618,33 @@ class dHOMConsumptiveUseFractionsPWS extends dHOMDataMatrix {
     parent::save($entity);
   }
 }
+
+
+class dHOMWaterSystemPermitStatus extends dHOMtextField {
+  
+  public function getOptions() {
+    $fsopts = array(
+      'active' => t('Active'),
+      'exempt' => t('Exempt'),
+      'expired' => t('Expired'),
+      'npne' => t('Non-Permitted, Non-Exempt'),
+      'proposed' => t('Proposed'),
+      'other' => t('Other'),
+      'reissue' => t('Reissue'),
+    );
+    return $fsopts;
+  }
+  
+  public function formRowEdit(&$form, $entity) {
+    parent::formRowEdit($form, $entity);
+    $form['propcode'] = array(
+      '#title' => t($entity->varname),
+      '#type' => 'select',
+      '#description' => 'Permit Status for this entity. Use Other if status not matching.',
+      '#options' => $this->getOptions(),
+      '#default_value' => !empty($entity->propcode) ? $entity->propcode : "",
+    );
+  }
+  
+}
 ?>

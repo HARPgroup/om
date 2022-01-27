@@ -2,7 +2,7 @@
 CREATE EXTENSION plr;
 
 -- Aggregates
-DROP AGGREGATE array_accum(anyelement) ;
+DROP AGGREGATE array_accum(anycompatible) ;
 CREATE AGGREGATE array_accum(
   BASETYPE=anycompatible ,
   SFUNC=array_append,

@@ -4,9 +4,9 @@ CREATE EXTENSION plr;
 -- Aggregates
 DROP AGGREGATE array_accum(anyelement) ;
 CREATE AGGREGATE array_accum(
-  BASETYPE=anyelement,
+  BASETYPE=anycompatible ,
   SFUNC=array_append,
-  STYPE=anyarray,
+  STYPE=anycompatiblearray,
   INITCOND='{}'
 );
 

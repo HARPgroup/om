@@ -22,7 +22,7 @@ $vpdesdb->dbconn = $dbconn;
 $vpdesdb->adminsetuparray = $adminsetuparray;
 
 // new pg 14
-$connstring = "host=192.168.0.20 port=5431 dbname=va_hydro user=$dbuser password=$dbpass";
+$connstring = "host=192.168.0.20 port=5432 dbname=va_hydro user=$dbuser password=$dbpass";
 // new pg 9.5
 //$connstring = "host=192.168.0.20 dbname=va_hydro user=$dbuser password=$dbpass";
 $dbconn = pg_connect($connstring, PGSQL_CONNECT_FORCE_NEW);

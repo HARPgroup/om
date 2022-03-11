@@ -9,6 +9,7 @@ fi
 
 landseg=$1
 scenario=$2
+version=$3
 
 # i.e. create_landseg_table.sh N51045 JU1_7630_7490 CFBASE30Y20180615
 if [ version .eq. "p532c-sova" ]; then

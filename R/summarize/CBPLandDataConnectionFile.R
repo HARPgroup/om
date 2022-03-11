@@ -15,17 +15,29 @@ ds$get_token(rest_pw)
 
 # Now do the stuff
 #pid = 4823212
-#elid = 233571	
+#elid = 233571
 #runid = 11
 argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
 
-omsite = "http://deq2.bse.vt.edu"
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE);
 
-dat <- window(dat, start = as.Date("1984-10-01"), end = as.Date("2014-09-30"));
+syear = as.integer(min(dat$year))
+eyear = as.integer(max(dat$year))
+model_run_start <- min(dat$thisdate)
+model_run_end <- max(dat$thisdate)
+if (syear < (eyear - 2)) {
+  sdate <- as.Date(paste0(syear,"-10-01"))
+  edate <- as.Date(paste0(eyear,"-09-30"))
+  flow_year_type <- 'water'
+} else {
+  sdate <- as.Date(paste0(syear,"-02-01"))
+  edate <- as.Date(paste0(eyear,"-12-31"))
+  flow_year_type <- 'calendar'
+}
+dat <- window(dat, start = sdate, end = edate);
 dat$Runit <- as.numeric(dat$Qout) / as.numeric(dat$area_sqmi)
 Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = as.POSIXct(dat$thisdate));
 

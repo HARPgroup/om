@@ -1,6 +1,6 @@
 #!/bin/bash
 llist="A5110 A51137 A5117"
-version="p532-sova"
+version="p532c-sova"
 for i in $llist; do
   echo create_landseg_table.sh $i CFBASE30Y20180615 $version
   ./create_landseg_table.sh $i CFBASE30Y20180615 $version

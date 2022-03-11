@@ -2,7 +2,8 @@
 
 
 if [ $# -lt 2 ]; then
-  echo 1>&2 "Usage: create_landuse_table.sh N51045 CFBASE30Y20180615"
+  echo 1>&2 "Usage: create_landuse_table.sh landseg scenario [version=p6,p532c-sova]"
+  echo 1>&2 "Usage: create_landuse_table.sh N51045 CFBASE30Y20180615 p6"
   exit 2
 fi 
 
@@ -10,7 +11,11 @@ landseg=$1
 scenario=$2
 
 # i.e. create_landseg_table.sh N51045 JU1_7630_7490 CFBASE30Y20180615
-template="cbp_p6_lseg_runoff_template"
+if [ version .eq. "p532c-sova" ]; then
+  template="cbp_p5_lseg_runoff_template"
+else 
+  template="cbp_p6_lseg_runoff_template"
+fi
 filename="/media/model/p6/out/land/$scenario/eos/${landseg}_0111-0211-0411.csv"
 tablename="cbp_p6_${scenario}_${landseg}"
 tablename=`echo $tablename | tr '[:upper:]' '[:lower:]'`

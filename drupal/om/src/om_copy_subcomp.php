@@ -106,6 +106,7 @@ foreach ($data as $element) {
       $link = om_dh_unstashlink($src_entity, $dcc, 'om_element_connection');
       // do a final save if the link calls for it
       $copy->save();
+      // should try to reset the link on the copy to "never save" if desired - default behavior SHOULD be to reset to never save 
     }
   }
 }

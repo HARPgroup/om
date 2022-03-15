@@ -1225,7 +1225,7 @@ class dHOMElementConnect extends dHOMBaseObjectClass {
   }
   public function save(&$entity) {
     parent::save($entity);
-    if ($entity->propcode == 'pull_once') {
+    if ($entity->propcode === 'pull_once') {
       error_log("Entity with featureid = $entity->featureid, and pid = $entity->pid has propcode '$entity->propcode'");
       // pull from remote, then set this back to previous entity value 
       $this->pullFromRemote($entity);

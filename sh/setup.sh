@@ -1,5 +1,8 @@
 #!/bin/sh
 # Set up scripts
+# put landseg creator, which now looks for hspf_config to determine which data set to use
+cp create_landseg_table.sh /usr/local/bin/
+
 # All
 sudo chown www-data:allmodelers www/om/cache
 # set up cbp to www link

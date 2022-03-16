@@ -1,28 +1,31 @@
 #!/bin/bash
-cbp_path="/media/model/p6/out"
+. hspf_config
 
 if [ $# -lt 2 ]; then
-  echo 1>&2 "Usage: create_landuse_table.sh landseg scenario [version=p6,p532c-sova]"
-  echo 1>&2 "Usage: create_landuse_table.sh N51045 CFBASE30Y20180615 p6"
+  echo 1>&2 "Usage: create_landuse_table.sh landseg scenario"
+  echo 1>&2 "Usage: create_landuse_table.sh N51045 CFBASE30Y20180615 "
   exit 2
 fi 
 
 landseg=$1
 scenario=$2
-version=$3
 
 # i.e. create_landseg_table.sh N51045 JU1_7630_7490 CFBASE30Y20180615
-if [ version .eq. "p532c-sova" ]; then
-  template="cbp_p5_lseg_runoff_template"
+if [ -z "$CBP_EXPORT_DIR" ]; then 
+  echo "Could not find CBP_EXPORT var or could not find file hspf.config on path or in /etc/ dir"
+  echo "Run this script from a path containing hspf.config to set vars: CBP_RO_TEMPLATE & CBP_EXPORT_DIR"
 else 
-  template="cbp_p6_lseg_runoff_template"
+  template=$CBP_RO_TEMPLATE
+  cbp_path=$CBP_EXPORT_DIR
 fi
 filename="$cbp_path/land/$scenario/eos/${landseg}_0111-0211-0411.csv"
 tablename="cbp_p6_${scenario}_${landseg}"
 tablename=`echo $tablename | tr '[:upper:]' '[:lower:]'`
 hdrcols=`head -n 1 $filename`
 
-echo "Populating $tablename "
+template_table_file=`basename $CBP_RO_TEMPLATE`
+template=`echo "$template_table_file" | cut -d'.' -f1`
+echo "Populating $tablename from $template"
 
 set -f
 csql=" create table $tablename as select * from $template limit 0;"

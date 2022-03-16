@@ -9,6 +9,9 @@ sudo chown www-data:allmodelers www/om/cache
 ln -s /opt/model/p53/p532c-sova/out /opt/model/p53/p532c-sova/tmp/out       
 # Make folder always have specific owner and group 
 
+# link drupal module in
+rm /var/www/html/d.dh/modules/om
+ln -s /opt/model/om/drupal/om /var/www/html/d.dh/modules/om
 
 # NAS big links
 sudo mount deqnas:/data /media/NAS

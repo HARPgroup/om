@@ -584,6 +584,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
 //   var $feed_address = 'http://deq1.bse.vt.edu/wooommdev/remote/rss_cbp_land_data.php?actiontype=4';
   var $filepath = '/tmp/text';
   var $modelpath = '/media/text';
+  var $json2d = TRUE;
 
   // element for connecting to land use parameters, and outputs, 
   // with a facility for multiplying outputs by the land use areas DataMatrix

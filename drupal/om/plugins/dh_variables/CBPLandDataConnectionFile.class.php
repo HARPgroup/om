@@ -13,6 +13,7 @@ class dHOMCBPLandDataConnection extends dHOMModelElement {
 class dHOMCBPLandDataConnectionFile extends dHOMModelElement {
   var $object_class = 'CBPLandDataConnectionFile';
   var $om_template_id = 340398; // remote server template ID, set FALSE if not used.
+  var $json2d = TRUE; // use JSON 2d for all remote syncs, much faster
   
   public function getDefaults($entity, &$defaults = array()) {
     // needs:

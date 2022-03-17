@@ -37,6 +37,8 @@ if ($pid <> NULL) {
       // this asks for bare json export, not encapsulated as a self-named component 
       $exp = $exp[$prop->propname];
     case 'json':
+      // this leaves the output encapsulated in a named array, useful for outputting 
+      // multiple objects in a single export for eample if we were loading out a full model run
     default:
       drupal_json_output($exp);
       drupal_exit();

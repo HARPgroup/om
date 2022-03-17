@@ -37,4 +37,5 @@ $thisobject->setProp('all', $openmi_json, 'json-2d');
 //error_log("Finished.\n");
 saveModelObject($elementid, $thisobject, array('name' => $thisobject->name));
 
+error_log("Equation: " . $thisobject->processors['Qlocal']->equation);
 ?>

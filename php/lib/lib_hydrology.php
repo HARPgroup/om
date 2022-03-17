@@ -1071,6 +1071,7 @@ class modelObject {
       $object_class = $prop->object_class;
       if ($pvalue['object_class'] <> $object_class) {
         $prop = FALSE;
+      }
     }
     // if either is true, we insert a brand new object 
     if ($prop === FALSE) {

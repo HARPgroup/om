@@ -1081,6 +1081,7 @@ class modelObject {
       }
       $syobj = new $object_class;
       $this->addOperator($pname, $syobj);
+      error_log("Added $pname as component type $object_class .");
       // re-retrieve to make sure that the object is not cloned.
       $prop = $this->getProp($pname, '');
       // recursively calls setPropJSON2d on the subcomp.

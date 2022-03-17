@@ -17,7 +17,7 @@ if (count($args) >= 3) {
   $src_id = $args[1];
   $dest_id = $args[2];
 } else {
-  print("Usage: php copy_subcomps.php query_type src_id dest_id [all/sub1[|newname],sub2,...] [cascade=0/1] \n");
+  print("Usage: php om_create_runoff.php query_type src_id dest_id [all/sub1[|newname],sub2,...] [cascade=0/1] \n");
   die;
 }
 

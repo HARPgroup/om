@@ -674,6 +674,21 @@ function om_setprop($elementid, $propname, $propval) {
   return $elid;
 }
 
+function om_set_element($elementid, $entity) {
+  global $php_path;
+  $exp = $this->exportOpenMI($entity);
+  //dpm($exp,"Using JSON export mode");
+  $exp_json = addslashes(json_encode($exp[$entity->propname]));
+  $cmd = "cd $php_path \n";
+  $cmd .= "php set_element.php $elementid \"$exp_json\"";
+  //dpm( $php_path, "Exec Path ");
+  //dpm( $cmd, "Executing ");
+  error_log("$cmd");
+  $elid = shell_exec($cmd);
+  return $elid;
+}
+
+
 function om_get_model_status($elementid, $mins = 120, $format = '') {
   // use format = 'list' to see the raw liostobject (default for no elementid)
   $path = "/var/www/html/om/"; // @todo: put this in the module settings somewhere

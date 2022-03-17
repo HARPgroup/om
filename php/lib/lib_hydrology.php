@@ -1055,6 +1055,9 @@ class modelObject {
   
   function applyJSONComponentArray($pname, $pvalue) {
     // this is not a property on the base class, look for processors
+    $skips = array('id', 'om_element_connection', 'host');
+    // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 
+    
     error_log("Notice: Looking to add $pname as processor ");
     if (!is_array($pvalue)) {
       error_log("Warning: Skipping component $pname because json did not have array. ");

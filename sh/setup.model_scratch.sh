@@ -27,4 +27,5 @@ echo "CREATE EXTENSION postgis;" | psql model_scratch -p $db_port
 
 # Set up runoff tempalte db
 cat cbp_p6_lseg_runoff_template.sql | psql model_scratch -p $db_port
+cat cbp_p5_lseg_runoff_template.sql | psql model_scratch -p $db_port
 

@@ -1084,9 +1084,10 @@ class modelObject {
       error_log("Added $pname as component type $object_class .");
       // re-retrieve to make sure that the object is not cloned.
       $prop = $this->getProp($pname, '');
-      // recursively calls setPropJSON2d on the subcomp.
-      $prop->setPropJSON2d($pname, $pvalue, 'json_decoded');
     }
+    // recursively calls setPropJSON2d on the subcomp.
+    error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");
+    $prop->setPropJSON2d($pname, $pvalue, 'json_decoded');
     // Now, we should have an object set in $this->processors
     // Load the object and call 
   }

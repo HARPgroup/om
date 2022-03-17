@@ -1070,7 +1070,12 @@ class modelObject {
       } else {
         // this is not a property on the base class, look for processors
         error_log("Warning: Skipping $pname not found on class -- setProp cannot yet add processors with json-2d ");
-        
+        continue;
+        // @todo: include plumbing from set_subprop.php to handle robust json property setting.
+        // Does a sub-comp of this name exist? Or, is this an object_class change?
+          // if either is true, we insert a brand new object 
+        // Now, we should have an object set in $this->processors
+        // Load the object and call 
       }
     }
   }

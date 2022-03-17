@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jama_1924',['JAMA',['../namespaceJAMA.html',1,'']]]
+  ['jama_1927',['JAMA',['../namespaceJAMA.html',1,'']]]
 ];

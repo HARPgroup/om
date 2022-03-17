@@ -379,8 +379,7 @@ Inheritance diagram for model\+Object\+:
 \mbox{\Hypertarget{classmodelObject_ac5370de8563048a71c7526bc5dca81ea}\label{classmodelObject_ac5370de8563048a71c7526bc5dca81ea}} 
 {\bfseries append\+State\+Var} (\$varname, \$varvalues, \$action=\textquotesingle{}append\textquotesingle{}, \$method=\textquotesingle{}guess\textquotesingle{})
 \item 
-\mbox{\Hypertarget{classmodelObject_ab1546edfc3238ce3a29b34ea7bcb4832}\label{classmodelObject_ab1546edfc3238ce3a29b34ea7bcb4832}} 
-{\bfseries set\+Prop} (\$propname, \$propvalue, \$view=\textquotesingle{}\textquotesingle{})
+\mbox{\hyperlink{classmodelObject_ab1546edfc3238ce3a29b34ea7bcb4832}{set\+Prop}} (\$propname, \$propvalue, \$view=\textquotesingle{}\textquotesingle{})
 \item 
 \mbox{\Hypertarget{classmodelObject_aa7c9538cdd062206d1e79d849f386361}\label{classmodelObject_aa7c9538cdd062206d1e79d849f386361}} 
 {\bfseries set\+Prop\+J\+S\+O\+N2d} (\$propname, \$propvalue, \$view=\textquotesingle{}\textquotesingle{})
@@ -926,6 +925,20 @@ Inheritance diagram for model\+Object\+:
 {\bfseries \$mode\+\_\+global} = F\+A\+L\+SE
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmodelObject_ab1546edfc3238ce3a29b34ea7bcb4832}\label{classmodelObject_ab1546edfc3238ce3a29b34ea7bcb4832}} 
+\index{modelObject@{modelObject}!setProp@{setProp}}
+\index{setProp@{setProp}!modelObject@{modelObject}}
+\doxysubsubsection{\texorpdfstring{setProp()}{setProp()}}
+{\footnotesize\ttfamily model\+Object\+::set\+Prop (\begin{DoxyParamCaption}\item[{}]{\$propname,  }\item[{}]{\$propvalue,  }\item[{}]{\$view = {\ttfamily \textquotesingle{}\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Set any property on the object. 3 main types of properties are supported\+:
+\begin{DoxyItemize}
+\item A simple un-\/typed attribute of the class itself (i.\+e., declared with \textquotesingle{}var \$propname;\textquotesingle{} in the class body.
+\item A sub-\/component type property. These are auto-\/detected by matching their name in the array \$this-\/$>$processors\mbox{[}\mbox{]}
+\item A J\+S\+ON string object. This calls method set\+Prop\+J\+S\+O\+N2d which can theoretically handle a complex J\+S\+ON object representing the entire object class itself. See model\+Object\+::set\+Prop\+J\+S\+O\+N2d() Pane for annual reporting submittal. 
+\end{DoxyItemize}
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

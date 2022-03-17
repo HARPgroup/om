@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * Base class definitions for OM model objects.
+ */
+ 
 if (!function_exists('green_ampt')) {
    include_once('./lib_hydro.php');
 }
@@ -976,7 +981,14 @@ class modelObject {
        }
     }
   }
-
+  
+  /**
+   * Set any property on the object.  3 main types of properties are supported:
+   * - A simple un-typed attribute of the class itself (i.e., declared with 'var $propname;' in the class body.
+   * - A sub-component type property.  These are auto-detected by matching their name in the array $this->processors[] 
+   * - A JSON string object.  This calls method setPropJSON2d which can theoretically handle a complex JSON object representing the entire object class itself. See modelObject::setPropJSON2d()
+   * Pane for annual reporting submittal.
+   */
   function setProp($propname, $propvalue, $view = '') {
     // sets a specific state variable to a specific value
     switch ($view) {

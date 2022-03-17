@@ -852,7 +852,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
         $exp = $this->exportOpenMI($entity);
         dpm($exp,"Using JSON export mode");
         $exp_json = addslashes(json_encode($exp[$entity->propname]));
-        om_set_element($elid, $entity);
+        om_set_element($elid, $exp_json);
         return;
       }
     }

@@ -1,0 +1,365 @@
+\hypertarget{classPEAR__Downloader}{}\doxysection{P\+E\+A\+R\+\_\+\+Downloader Class Reference}
+\label{classPEAR__Downloader}\index{PEAR\_Downloader@{PEAR\_Downloader}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Downloader\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Downloader\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_ac5b139f07e903aa10d22322455f20a4c}{P\+E\+A\+R\+\_\+\+Downloader}} (\&\$ui, \$options, \&\$config)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_a73aa2db70e2bb988bc483a7528330c4c}{discover}} (\$\mbox{\hyperlink{classchannel}{channel}})
+\item 
+\& \mbox{\hyperlink{classPEAR__Downloader_a0db8dc4175a20a4dc2674b95a5cad147}{new\+Downloader\+Package}} (\&\$t)
+\item 
+\& \mbox{\hyperlink{classPEAR__Downloader_a4824fd0fc076bc28f7867b0aedf4a681}{get\+Dependency2\+Object}} (\&\$c, \$i, \$p, \$s)
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a1e2f508434c542aa1ea7cdc162eb94a1}\label{classPEAR__Downloader_a1e2f508434c542aa1ea7cdc162eb94a1}} 
+\& {\bfseries download} (\$params)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_a652e925c83404163311a2f158f771aba}{analyze\+Dependencies}} (\&\$params, \$force=false)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_ada3894e884a0ef4df02420fe5559745a}{get\+Download\+Dir}} ()
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a873778df5b1b9dacb2eef643b74fbf55}\label{classPEAR__Downloader_a873778df5b1b9dacb2eef643b74fbf55}} 
+{\bfseries set\+Download\+Dir} (\$dir)
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a06c9528404965453ba4ebb6a0d116c55}\label{classPEAR__Downloader_a06c9528404965453ba4ebb6a0d116c55}} 
+{\bfseries config\+Set} (\$key, \$value, \$layer=\textquotesingle{}user\textquotesingle{}, \$\mbox{\hyperlink{classchannel}{channel}}=false)
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_ae50c787ffd231b50dd6598a2655f10fc}\label{classPEAR__Downloader_ae50c787ffd231b50dd6598a2655f10fc}} 
+{\bfseries set\+Options} (\$options)
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a45c3e6635ed63760bcde6af10995d87a}\label{classPEAR__Downloader_a45c3e6635ed63760bcde6af10995d87a}} 
+{\bfseries get\+Options} ()
+\item 
+\& \mbox{\hyperlink{classPEAR__Downloader_a7679def758c38386deeddc32dd1eb51f}{get\+Packagefile\+Object}} (\&\$c, \$d, \$t=false)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_ace7b612df4b41c6709eddf78fa5bd5f2}{\+\_\+get\+Package\+Download\+Url}} (\$parr)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_a5bbbd5b8f41d15407615d3bd0b4c8d8b}{\+\_\+get\+Dep\+Package\+Download\+Url}} (\$dep, \$parr)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_ae8a5aaf8d81f095e90818521717841ca}{get\+Package\+Download\+Url}} (\$package, \$version=null, \$\mbox{\hyperlink{classchannel}{channel}}=false)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_a6eb59803df3c95c904d6c487527d4dc3}{get\+Downloaded\+Packages}} ()
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a5fdb9c8a516e18521381cb39c25ff88c}\label{classPEAR__Downloader_a5fdb9c8a516e18521381cb39c25ff88c}} 
+{\bfseries \+\_\+download\+Callback} (\$msg, \$params=null)
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a99a893852d07c1e184847127719c2c4a}\label{classPEAR__Downloader_a99a893852d07c1e184847127719c2c4a}} 
+{\bfseries \+\_\+prepend\+Path} (\$path, \$prepend)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_a86f6c2965929f00212062f078937c25a}{push\+Error}} (\$errmsg, \$code=-\/1)
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a5ec5e491e751bd53769eeb3fef96891c}\label{classPEAR__Downloader_a5ec5e491e751bd53769eeb3fef96891c}} 
+{\bfseries get\+Error\+Msgs} ()
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_acb7abd6f707e822e0ef33db7b50e68cb}{sort\+Pkg\+Deps}} (\&\$packages, \$uninstall=false)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_adb3db70e71fbfab45997743f3855531a}{sort\+Packages\+For\+Install}} (\&\$packages)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_a92cfce7e84d28838debd6840a47d25c0}{\+\_\+detect\+Dep\+Cycle}} (\&\$deplinks)
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a642ed70f38545fa7fc8729cd91b2b184}\label{classPEAR__Downloader_a642ed70f38545fa7fc8729cd91b2b184}} 
+{\bfseries \+\_\+test\+Cycle} (\$test, \$deplinks, \$dep)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_ad2b7d4245adfd5b51ed0bc09a70a3917}{\+\_\+setup\+Graph}} (\$t, \$reg, \&\$deplinks, \&\$nodes, \$package)
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a0528479a8a9e213564d77c560bd2293e}\label{classPEAR__Downloader_a0528479a8a9e213564d77c560bd2293e}} 
+{\bfseries \+\_\+depends\+On} (\$a, \$b)
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a3712cc3f659535f8bbff90d0e214a544}\label{classPEAR__Downloader_a3712cc3f659535f8bbff90d0e214a544}} 
+{\bfseries \+\_\+check\+Dep\+Tree} (\$\mbox{\hyperlink{classchannel}{channel}}, \$package, \$b, \$checked=array())
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a83b2ec91f67f9013d60a64f046e35ac4}\label{classPEAR__Downloader_a83b2ec91f67f9013d60a64f046e35ac4}} 
+{\bfseries \+\_\+sort\+Install} (\$a, \$b)
+\item 
+\mbox{\hyperlink{classPEAR__Downloader_a63e1fa054a13abc5307b6dfcd0e259fe}{download\+Http}} (\$url, \&\$ui, \$save\+\_\+dir=\textquotesingle{}.\textquotesingle{}, \$callback=null, \$lastmodified=null, \$accept=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a0a7a894b9287a138c2c08608c893043e}\label{classPEAR__Downloader_a0a7a894b9287a138c2c08608c893043e}} 
+{\bfseries \$\+\_\+registry}
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a40393ec07ba7306c20ceba7de411253d}\label{classPEAR__Downloader_a40393ec07ba7306c20ceba7de411253d}} 
+{\bfseries \$\+\_\+remote}
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a4eb3afcc574049ef0d80e8a5179401fe}\label{classPEAR__Downloader_a4eb3afcc574049ef0d80e8a5179401fe}} 
+{\bfseries \$\+\_\+preferred\+State}
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a7b70235d364d462c4a21b1827217f745}\label{classPEAR__Downloader_a7b70235d364d462c4a21b1827217f745}} 
+{\bfseries \$\+\_\+options}
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a359dab78c0cf68e506f5083906e7f4f1}\label{classPEAR__Downloader_a359dab78c0cf68e506f5083906e7f4f1}} 
+{\bfseries \$\+\_\+downloaded\+Packages} = array()
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a1e096fcc3f85a7127c9591d919b2082d}\label{classPEAR__Downloader_a1e096fcc3f85a7127c9591d919b2082d}} 
+{\bfseries \$\+\_\+to\+Download} = array()
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a15edc052abbcbf904fdc629f019a6b9c}\label{classPEAR__Downloader_a15edc052abbcbf904fdc629f019a6b9c}} 
+{\bfseries \$\+\_\+installed} = array()
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a39e80227265c97dce85d9e846060c168}\label{classPEAR__Downloader_a39e80227265c97dce85d9e846060c168}} 
+{\bfseries \$\+\_\+error\+Stack} = array()
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_ad59d872fb8433aaa3cc67f50bc74e8a5}\label{classPEAR__Downloader_ad59d872fb8433aaa3cc67f50bc74e8a5}} 
+{\bfseries \$\+\_\+internal\+Download} = false
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a287ca5de3478566361b89b1d08bbacd2}\label{classPEAR__Downloader_a287ca5de3478566361b89b1d08bbacd2}} 
+{\bfseries \$\+\_\+package\+Sort\+Tree}
+\item 
+\mbox{\Hypertarget{classPEAR__Downloader_a1bf4939942504180685b5f36b2523321}\label{classPEAR__Downloader_a1bf4939942504180685b5f36b2523321}} 
+{\bfseries \$\+\_\+download\+Dir}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Downloader_a92cfce7e84d28838debd6840a47d25c0}\label{classPEAR__Downloader_a92cfce7e84d28838debd6840a47d25c0}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!\_detectDepCycle@{\_detectDepCycle}}
+\index{\_detectDepCycle@{\_detectDepCycle}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{\_detectDepCycle()}{\_detectDepCycle()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::\+\_\+detect\+Dep\+Cycle (\begin{DoxyParamCaption}\item[{\&}]{\$deplinks }\end{DoxyParamCaption})}
+
+Detect recursive links between dependencies and break the cycles
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & @access private \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Downloader_a5bbbd5b8f41d15407615d3bd0b4c8d8b}\label{classPEAR__Downloader_a5bbbd5b8f41d15407615d3bd0b4c8d8b}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!\_getDepPackageDownloadUrl@{\_getDepPackageDownloadUrl}}
+\index{\_getDepPackageDownloadUrl@{\_getDepPackageDownloadUrl}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{\_getDepPackageDownloadUrl()}{\_getDepPackageDownloadUrl()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::\+\_\+get\+Dep\+Package\+Download\+Url (\begin{DoxyParamCaption}\item[{}]{\$dep,  }\item[{}]{\$parr }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & dependency array @access private \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Downloader_ace7b612df4b41c6709eddf78fa5bd5f2}\label{classPEAR__Downloader_ace7b612df4b41c6709eddf78fa5bd5f2}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!\_getPackageDownloadUrl@{\_getPackageDownloadUrl}}
+\index{\_getPackageDownloadUrl@{\_getPackageDownloadUrl}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{\_getPackageDownloadUrl()}{\_getPackageDownloadUrl()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::\+\_\+get\+Package\+Download\+Url (\begin{DoxyParamCaption}\item[{}]{\$parr }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & output of \mbox{\hyperlink{}{parse\+Package\+Name()}} @access private \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Downloader_ad2b7d4245adfd5b51ed0bc09a70a3917}\label{classPEAR__Downloader_ad2b7d4245adfd5b51ed0bc09a70a3917}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!\_setupGraph@{\_setupGraph}}
+\index{\_setupGraph@{\_setupGraph}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{\_setupGraph()}{\_setupGraph()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::\+\_\+setup\+Graph (\begin{DoxyParamCaption}\item[{}]{\$t,  }\item[{}]{\$reg,  }\item[{\&}]{\$deplinks,  }\item[{\&}]{\$nodes,  }\item[{}]{\$package }\end{DoxyParamCaption})}
+
+Set up the dependency for installation parsing
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$t} & dependency information \\
+\hline
+\mbox{\hyperlink{classPEAR__Registry}{P\+E\+A\+R\+\_\+\+Registry}} & {\em \$reg} & \\
+\hline
+array & {\em \$deplinks} & list of dependency links already established \\
+\hline
+array & {\em \$nodes} & all existing package nodes \\
+\hline
+string & {\em \$package} & parent package name @access private \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Downloader_a652e925c83404163311a2f158f771aba}\label{classPEAR__Downloader_a652e925c83404163311a2f158f771aba}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!analyzeDependencies@{analyzeDependencies}}
+\index{analyzeDependencies@{analyzeDependencies}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{analyzeDependencies()}{analyzeDependencies()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::analyze\+Dependencies (\begin{DoxyParamCaption}\item[{\&}]{\$params,  }\item[{}]{\$force = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & all packages to be installed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Downloader_a73aa2db70e2bb988bc483a7528330c4c}\label{classPEAR__Downloader_a73aa2db70e2bb988bc483a7528330c4c}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!discover@{discover}}
+\index{discover@{discover}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{discover()}{discover()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::discover (\begin{DoxyParamCaption}\item[{}]{\$channel }\end{DoxyParamCaption})}
+
+Attempt to discover a channel\textquotesingle{}s remote capabilities from its server name 
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Downloader_a63e1fa054a13abc5307b6dfcd0e259fe}\label{classPEAR__Downloader_a63e1fa054a13abc5307b6dfcd0e259fe}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!downloadHttp@{downloadHttp}}
+\index{downloadHttp@{downloadHttp}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{downloadHttp()}{downloadHttp()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::download\+Http (\begin{DoxyParamCaption}\item[{}]{\$url,  }\item[{\&}]{\$ui,  }\item[{}]{\$save\+\_\+dir = {\ttfamily \textquotesingle{}.\textquotesingle{}},  }\item[{}]{\$callback = {\ttfamily null},  }\item[{}]{\$lastmodified = {\ttfamily null},  }\item[{}]{\$accept = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Download a file through H\+T\+TP. Considers suggested file name in Content-\/disposition\+: header and can run a callback function for different events. The callback will be called with two parameters\+: the callback type, and parameters. The implemented callback types are\+:
+
+\textquotesingle{}setup\textquotesingle{} called at the very beginning, parameter is a UI object that should be used for all output \textquotesingle{}message\textquotesingle{} the parameter is a string with an informational message \textquotesingle{}saveas\textquotesingle{} may be used to save with a different file name, the parameter is the filename that is about to be used. If a \textquotesingle{}saveas\textquotesingle{} callback returns a non-\/empty string, that file name will be used as the filename instead. Note that \$save\+\_\+dir will not be affected by this, only the basename of the file. \textquotesingle{}start\textquotesingle{} download is starting, parameter is number of bytes that are expected, or -\/1 if unknown \textquotesingle{}bytesread\textquotesingle{} parameter is the number of bytes read so far \textquotesingle{}done\textquotesingle{} download is complete, parameter is the total number of bytes read \textquotesingle{}connfailed\textquotesingle{} if the T\+C\+P/\+S\+SL connection fails, this callback is called with array(host,port,errno,errmsg) \textquotesingle{}writefailed\textquotesingle{} if writing to disk fails, this callback is called with array(destfile,errmsg)
+
+If an H\+T\+TP proxy has been configured (http\+\_\+proxy P\+E\+A\+R\+\_\+\+Config setting), the proxy will be used.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$url} & the U\+RL to download \\
+\hline
+object & {\em \$ui} & P\+E\+A\+R\+\_\+\+Frontend\+\_\+$\ast$ instance \\
+\hline
+object & {\em \$config} & P\+E\+A\+R\+\_\+\+Config instance \\
+\hline
+string & {\em \$save\+\_\+dir} & directory to save file in \\
+\hline
+mixed & {\em \$callback} & function/method to call for status updates \\
+\hline
+false | string | array & {\em \$lastmodified} & header values to check against for caching use false to return the header values from this download \\
+\hline
+false | array & {\em \$accept} & Accept headers to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$array Returns the full path of the downloaded file or a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error on failure. If the error is caused by socket-\/related errors, the error object will have the fsockopen error code available through get\+Code(). If caching is requested, then return the header values.
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Downloader_a4824fd0fc076bc28f7867b0aedf4a681}\label{classPEAR__Downloader_a4824fd0fc076bc28f7867b0aedf4a681}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!getDependency2Object@{getDependency2Object}}
+\index{getDependency2Object@{getDependency2Object}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{getDependency2Object()}{getDependency2Object()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Downloader\+::get\+Dependency2\+Object (\begin{DoxyParamCaption}\item[{\&}]{\$c,  }\item[{}]{\$i,  }\item[{}]{\$p,  }\item[{}]{\$s }\end{DoxyParamCaption})}
+
+For simpler unit-\/testing 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+{\em array} & \\
+\hline
+{\em array} & \\
+\hline
+{\em int} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Downloader_ada3894e884a0ef4df02420fe5559745a}\label{classPEAR__Downloader_ada3894e884a0ef4df02420fe5559745a}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!getDownloadDir@{getDownloadDir}}
+\index{getDownloadDir@{getDownloadDir}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{getDownloadDir()}{getDownloadDir()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::get\+Download\+Dir (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retrieve the directory that downloads will happen in @access private \begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Downloader_a6eb59803df3c95c904d6c487527d4dc3}\label{classPEAR__Downloader_a6eb59803df3c95c904d6c487527d4dc3}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!getDownloadedPackages@{getDownloadedPackages}}
+\index{getDownloadedPackages@{getDownloadedPackages}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{getDownloadedPackages()}{getDownloadedPackages()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::get\+Downloaded\+Packages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retrieve a list of downloaded packages after a call to \mbox{\hyperlink{}{download()}}.
+
+Also resets the list of downloaded packages. \begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Downloader_ae8a5aaf8d81f095e90818521717841ca}\label{classPEAR__Downloader_ae8a5aaf8d81f095e90818521717841ca}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!getPackageDownloadUrl@{getPackageDownloadUrl}}
+\index{getPackageDownloadUrl@{getPackageDownloadUrl}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{getPackageDownloadUrl()}{getPackageDownloadUrl()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::get\+Package\+Download\+Url (\begin{DoxyParamCaption}\item[{}]{\$package,  }\item[{}]{\$version = {\ttfamily null},  }\item[{}]{\$channel = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000020}{Deprecated}}]in favor of \+\_\+get\+Package\+Download\+Url \end{DoxyRefDesc}
+\mbox{\Hypertarget{classPEAR__Downloader_a7679def758c38386deeddc32dd1eb51f}\label{classPEAR__Downloader_a7679def758c38386deeddc32dd1eb51f}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!getPackagefileObject@{getPackagefileObject}}
+\index{getPackagefileObject@{getPackagefileObject}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{getPackagefileObject()}{getPackagefileObject()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Downloader\+::get\+Packagefile\+Object (\begin{DoxyParamCaption}\item[{\&}]{\$c,  }\item[{}]{\$d,  }\item[{}]{\$t = {\ttfamily false} }\end{DoxyParamCaption})}
+
+For simpler unit-\/testing 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+{\em int} & \\
+\hline
+{\em string} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Downloader_a0db8dc4175a20a4dc2674b95a5cad147}\label{classPEAR__Downloader_a0db8dc4175a20a4dc2674b95a5cad147}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!newDownloaderPackage@{newDownloaderPackage}}
+\index{newDownloaderPackage@{newDownloaderPackage}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{newDownloaderPackage()}{newDownloaderPackage()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Downloader\+::new\+Downloader\+Package (\begin{DoxyParamCaption}\item[{\&}]{\$t }\end{DoxyParamCaption})}
+
+For simpler unit-\/testing 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__Downloader}{P\+E\+A\+R\+\_\+\+Downloader}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPEAR__Downloader__Package}{P\+E\+A\+R\+\_\+\+Downloader\+\_\+\+Package}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Downloader_ac5b139f07e903aa10d22322455f20a4c}\label{classPEAR__Downloader_ac5b139f07e903aa10d22322455f20a4c}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!PEAR\_Downloader@{PEAR\_Downloader}}
+\index{PEAR\_Downloader@{PEAR\_Downloader}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{PEAR\_Downloader()}{PEAR\_Downloader()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::\+P\+E\+A\+R\+\_\+\+Downloader (\begin{DoxyParamCaption}\item[{\&}]{\$ui,  }\item[{}]{\$options,  }\item[{\&}]{\$config }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Frontend\+\_\+$\ast$} & \\
+\hline
+{\em array} & \\
+\hline
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Downloader_a86f6c2965929f00212062f078937c25a}\label{classPEAR__Downloader_a86f6c2965929f00212062f078937c25a}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!pushError@{pushError}}
+\index{pushError@{pushError}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{pushError()}{pushError()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::push\+Error (\begin{DoxyParamCaption}\item[{}]{\$errmsg,  }\item[{}]{\$code = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+{\em integer} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Downloader_adb3db70e71fbfab45997743f3855531a}\label{classPEAR__Downloader_adb3db70e71fbfab45997743f3855531a}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!sortPackagesForInstall@{sortPackagesForInstall}}
+\index{sortPackagesForInstall@{sortPackagesForInstall}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{sortPackagesForInstall()}{sortPackagesForInstall()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::sort\+Packages\+For\+Install (\begin{DoxyParamCaption}\item[{\&}]{\$packages }\end{DoxyParamCaption})}
+
+Sort a list of arrays of array(downloaded packagefilename) by dependency.
+
+This uses the topological sort method from graph theory, and the Structures\+\_\+\+Graph package to properly sort dependencies for installation. 
+\begin{DoxyParams}{Parameters}
+{\em array} & an array of downloaded P\+E\+A\+R\+\_\+\+Downloader\+\_\+\+Packages \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array array of array(packagefilename, package.\+xml contents) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Downloader_acb7abd6f707e822e0ef33db7b50e68cb}\label{classPEAR__Downloader_acb7abd6f707e822e0ef33db7b50e68cb}} 
+\index{PEAR\_Downloader@{PEAR\_Downloader}!sortPkgDeps@{sortPkgDeps}}
+\index{sortPkgDeps@{sortPkgDeps}!PEAR\_Downloader@{PEAR\_Downloader}}
+\doxysubsubsection{\texorpdfstring{sortPkgDeps()}{sortPkgDeps()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Downloader\+::sort\+Pkg\+Deps (\begin{DoxyParamCaption}\item[{\&}]{\$packages,  }\item[{}]{\$uninstall = {\ttfamily false} }\end{DoxyParamCaption})}
+
+for BC 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/Downloader.\+php\end{DoxyCompactItemize}

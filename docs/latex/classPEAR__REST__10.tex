@@ -1,0 +1,116 @@
+\hypertarget{classPEAR__REST__10}{}\doxysection{P\+E\+A\+R\+\_\+\+R\+E\+S\+T\+\_\+10 Class Reference}
+\label{classPEAR__REST__10}\index{PEAR\_REST\_10@{PEAR\_REST\_10}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__REST__10_af2dbd2b8ef76b94f92f2bea831fc05b4}\label{classPEAR__REST__10_af2dbd2b8ef76b94f92f2bea831fc05b4}} 
+{\bfseries P\+E\+A\+R\+\_\+\+R\+E\+S\+T\+\_\+10} (\$config, \$options=array())
+\item 
+\mbox{\hyperlink{classPEAR__REST__10_ae3403a52182843eb07d8398b468bc3d9}{get\+Download\+U\+RL}} (\$base, \$packageinfo, \$prefstate, \$installed)
+\item 
+\mbox{\Hypertarget{classPEAR__REST__10_ac80a0c70760205f92cf7ee4ea63e2949}\label{classPEAR__REST__10_ac80a0c70760205f92cf7ee4ea63e2949}} 
+{\bfseries get\+Dep\+Download\+U\+RL} (\$base, \$xsdversion, \$dependency, \$deppackage, \$prefstate=\textquotesingle{}stable\textquotesingle{}, \$installed=false)
+\item 
+\mbox{\hyperlink{classPEAR__REST__10_ad19066f4bcc3424914307a51847d47f9}{\+\_\+return\+Download\+U\+RL}} (\$base, \$package, \$release, \$info, \$found)
+\item 
+\mbox{\Hypertarget{classPEAR__REST__10_a1803f6673fec9a0bf8bcb6fa697e9532}\label{classPEAR__REST__10_a1803f6673fec9a0bf8bcb6fa697e9532}} 
+{\bfseries list\+Packages} (\$base)
+\item 
+\mbox{\Hypertarget{classPEAR__REST__10_ace35417c88c0e8988639f30dd75cc94e}\label{classPEAR__REST__10_ace35417c88c0e8988639f30dd75cc94e}} 
+{\bfseries list\+All} (\$base, \$dostable, \$basic=true, \$searchpackage=false, \$searchsummary=false)
+\item 
+\mbox{\Hypertarget{classPEAR__REST__10_a1f648580005f6c73f3fbd21da6891aef}\label{classPEAR__REST__10_a1f648580005f6c73f3fbd21da6891aef}} 
+{\bfseries list\+Latest\+Upgrades} (\$base, \$state, \$installed, \$\mbox{\hyperlink{classchannel}{channel}}, \&\$reg)
+\item 
+\mbox{\Hypertarget{classPEAR__REST__10_ae0b7b5d46b9c06941f94bc589a43ec97}\label{classPEAR__REST__10_ae0b7b5d46b9c06941f94bc589a43ec97}} 
+{\bfseries package\+Info} (\$base, \$package)
+\item 
+\mbox{\hyperlink{classPEAR__REST__10_a1be2a6a22fcc6e249aa82fd8acacf363}{better\+States}} (\$state, \$include=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__REST__10_a96a1bf1c19709ccd590c08d47b5d70af}\label{classPEAR__REST__10_a96a1bf1c19709ccd590c08d47b5d70af}} 
+{\bfseries \$\+\_\+rest}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__REST__10_ad19066f4bcc3424914307a51847d47f9}\label{classPEAR__REST__10_ad19066f4bcc3424914307a51847d47f9}} 
+\index{PEAR\_REST\_10@{PEAR\_REST\_10}!\_returnDownloadURL@{\_returnDownloadURL}}
+\index{\_returnDownloadURL@{\_returnDownloadURL}!PEAR\_REST\_10@{PEAR\_REST\_10}}
+\doxysubsubsection{\texorpdfstring{\_returnDownloadURL()}{\_returnDownloadURL()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+R\+E\+S\+T\+\_\+10\+::\+\_\+return\+Download\+U\+RL (\begin{DoxyParamCaption}\item[{}]{\$base,  }\item[{}]{\$package,  }\item[{}]{\$release,  }\item[{}]{\$info,  }\item[{}]{\$found }\end{DoxyParamCaption})}
+
+Take raw data and return the array needed for processing a download U\+RL
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$base} & R\+E\+ST base uri \\
+\hline
+string & {\em \$package} & Package name \\
+\hline
+array & {\em \$release} & an array of format array(\textquotesingle{}v\textquotesingle{} =$>$ version, \textquotesingle{}s\textquotesingle{} =$>$ state) describing the release to download \\
+\hline
+array & {\em \$info} & list of all releases as defined by allreleases.\+xml \\
+\hline
+bool & {\em \$found} & determines whether the release was found or this is the next best alternative \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array$\vert$\+P\+E\+A\+R\+\_\+\+Error @access private 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__REST__10_a1be2a6a22fcc6e249aa82fd8acacf363}\label{classPEAR__REST__10_a1be2a6a22fcc6e249aa82fd8acacf363}} 
+\index{PEAR\_REST\_10@{PEAR\_REST\_10}!betterStates@{betterStates}}
+\index{betterStates@{betterStates}!PEAR\_REST\_10@{PEAR\_REST\_10}}
+\doxysubsubsection{\texorpdfstring{betterStates()}{betterStates()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+R\+E\+S\+T\+\_\+10\+::better\+States (\begin{DoxyParamCaption}\item[{}]{\$state,  }\item[{}]{\$include = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Return an array containing all of the states that are more stable than or equal to the passed in state
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & Release state \\
+\hline
+{\em boolean} & Determines whether to include \$state in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false$\vert$array False if \$state is not a valid release state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__REST__10_ae3403a52182843eb07d8398b468bc3d9}\label{classPEAR__REST__10_ae3403a52182843eb07d8398b468bc3d9}} 
+\index{PEAR\_REST\_10@{PEAR\_REST\_10}!getDownloadURL@{getDownloadURL}}
+\index{getDownloadURL@{getDownloadURL}!PEAR\_REST\_10@{PEAR\_REST\_10}}
+\doxysubsubsection{\texorpdfstring{getDownloadURL()}{getDownloadURL()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+R\+E\+S\+T\+\_\+10\+::get\+Download\+U\+RL (\begin{DoxyParamCaption}\item[{}]{\$base,  }\item[{}]{\$packageinfo,  }\item[{}]{\$prefstate,  }\item[{}]{\$installed }\end{DoxyParamCaption})}
+
+Retrieve information about a remote package to be downloaded from a R\+E\+ST server
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$base} & The uri to prepend to all R\+E\+ST calls \\
+\hline
+array & {\em \$packageinfo} & an array of format\+: 
+\begin{DoxyPre}
+ array(
+  'package' => 'packagename',
+  'channel' => 'channelname',
+ ['state' => 'alpha' (or valid state),]
+ -\/or-\/
+ ['version' => '1.whatever']
+\end{DoxyPre}
+ \\
+\hline
+string & {\em \$prefstate} & Current preferred\+\_\+state config variable value \\
+\hline
+bool & {\em \$installed} & the installed version of this package to compare against \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array$\vert$false$\vert$\+P\+E\+A\+R\+\_\+\+Error see \mbox{\hyperlink{classPEAR__REST__10_ad19066f4bcc3424914307a51847d47f9}{\+\_\+return\+Download\+U\+R\+L()}} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+R\+E\+S\+T/10.\+php\end{DoxyCompactItemize}

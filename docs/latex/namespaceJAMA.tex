@@ -1,0 +1,78 @@
+\hypertarget{namespaceJAMA}{}\doxysection{J\+A\+MA Namespace Reference}
+\label{namespaceJAMA}\index{JAMA@{JAMA}}
+
+
+\doxysubsection{Detailed Description}
+Cholesky decomposition class
+
+For a symmetric, positive definite matrix A, the Cholesky decomposition is an lower triangular matrix L so that A = L$\ast$L\textquotesingle{}.
+
+If the matrix is not symmetric or positive definite, the constructor returns a partial decomposition and sets an internal flag that may be queried by the is\+S\+P\+D() method.
+
+\begin{DoxyAuthor}{Author}
+Paul Meagher 
+
+Michael Bommarito 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+2
+\end{DoxyVersion}
+Class to obtain eigenvalues and eigenvectors of a real matrix.
+
+If A is symmetric, then A = V$\ast$\+D$\ast$V\textquotesingle{} where the eigenvalue matrix D is diagonal and the eigenvector matrix V is orthogonal (i.\+e. A = V.\+times(D.\+times(V.\+transpose())) and V.\+times(V.\+transpose()) equals the identity matrix).
+
+If A is not symmetric, then the eigenvalue matrix D is block diagonal with the real eigenvalues in 1-\/by-\/1 blocks and any complex eigenvalues, lambda + i$\ast$mu, in 2-\/by-\/2 blocks, \mbox{[}lambda, mu; -\/mu, lambda\mbox{]}. The columns of V represent the eigenvectors in the sense that A$\ast$V = V$\ast$D, i.\+e. A.\+times(\+V) equals V.\+times(\+D). The matrix V may be badly conditioned, or even singular, so the validity of the equation A = V$\ast$\+D$\ast$inverse(V) depends upon V.\+cond().
+
+\begin{DoxyAuthor}{Author}
+Paul Meagher @license \mbox{\hyperlink{categoryPHP}{P\+HP}} v3.\+0 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1
+\end{DoxyVersion}
+For an m-\/by-\/n matrix A with m $>$= n, the LU decomposition is an m-\/by-\/n unit lower triangular matrix L, an n-\/by-\/n upper triangular matrix U, and a permutation vector piv of length m so that A(piv,\+:) = L$\ast$U. If m $<$ n, then L is m-\/by-\/m and U is m-\/by-\/n.
+
+The LU decompostion with pivoting always exists, even if the matrix is singular, so the constructor will never fail. The primary use of the LU decomposition is in the solution of square systems of simultaneous linear equations. This will fail if is\+Nonsingular() returns false.
+
+\begin{DoxyAuthor}{Author}
+Paul Meagher 
+
+Bartosz Matosiuk 
+
+Michael Bommarito 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1 @license \mbox{\hyperlink{categoryPHP}{P\+HP}} v3.\+0
+\end{DoxyVersion}
+For an m-\/by-\/n matrix A with m $>$= n, the QR decomposition is an m-\/by-\/n orthogonal matrix Q and an n-\/by-\/n upper triangular matrix R so that A = Q$\ast$R.
+
+The QR decompostion always exists, even if the matrix does not have full rank, so the constructor will never fail. The primary use of the QR decomposition is in the least squares solution of nonsquare systems of simultaneous linear equations. This will fail if is\+Full\+Rank() returns false.
+
+\begin{DoxyAuthor}{Author}
+Paul Meagher @license \mbox{\hyperlink{categoryPHP}{P\+HP}} v3.\+0 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1
+\end{DoxyVersion}
+For an m-\/by-\/n matrix A with m $>$= n, the singular value decomposition is an m-\/by-\/n orthogonal matrix U, an n-\/by-\/n diagonal matrix S, and an n-\/by-\/n orthogonal matrix V so that A = U$\ast$\+S$\ast$V\textquotesingle{}.
+
+The singular values, sigma\mbox{[}\$k\mbox{]} = S\mbox{[}\$k\mbox{]}\mbox{[}\$k\mbox{]}, are ordered so that sigma\mbox{[}0\mbox{]} $>$= sigma\mbox{[}1\mbox{]} $>$= ... $>$= sigma\mbox{[}n-\/1\mbox{]}.
+
+The singular value decompostion always exists, so the constructor will never fail. The matrix condition number and the effective numerical rank can be computed from this decomposition.
+
+\begin{DoxyAuthor}{Author}
+Paul Meagher @license \mbox{\hyperlink{categoryPHP}{P\+HP}} v3.\+0 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1
+\end{DoxyVersion}
+Error handling \begin{DoxyAuthor}{Author}
+Michael Bommarito 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+01292005
+\end{DoxyVersion}
+Pythagorean Theorem\+:
+
+a = 3 b = 4 r = sqrt(square(a) + square(b)) r = 5
+
+r = sqrt(a$^\wedge$2 + b$^\wedge$2) without under/overflow. 

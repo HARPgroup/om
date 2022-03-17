@@ -1,0 +1,249 @@
+\hypertarget{classDB__storage}{}\doxysection{D\+B\+\_\+storage Class Reference}
+\label{classDB__storage}\index{DB\_storage@{DB\_storage}}
+
+
+Inheritance diagram for D\+B\+\_\+storage\+:
+% FIG 0
+
+
+Collaboration diagram for D\+B\+\_\+storage\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__storage_acc3b6d208e532891c899f58b8698395d}{D\+B\+\_\+storage}} (\$table, \$keycolumn, \&\$dbh, \$validator=null)
+\item 
+\mbox{\hyperlink{classDB__storage_ab5bfee3d171e2192f9b2ceae4f04ae87}{\+\_\+make\+Where}} (\$keyval=null)
+\item 
+\mbox{\hyperlink{classDB__storage_a1036a9e47a5c9e42bb5d09f5469bd27c}{setup}} (\$keyval)
+\item 
+\mbox{\hyperlink{classDB__storage_a4bfc272a6b35c4fcbc567b330c1b502e}{insert}} (\$newpk)
+\item 
+\mbox{\hyperlink{classDB__storage_a2fd072718308b96ce8299fc6e5f6ecd9}{to\+String}} ()
+\item 
+\mbox{\hyperlink{classDB__storage_a5685ae9fb01349b9a3b16fe76b6e4cef}{dump}} ()
+\item 
+\& \mbox{\hyperlink{classDB__storage_a93d5ea05399615e16d6fe6b817363939}{create}} (\$table, \&\$data)
+\item 
+\mbox{\hyperlink{classDB__storage_a3804d6a8f683c7236107ee93e162c955}{set}} (\$property, \$newvalue)
+\item 
+\& \mbox{\hyperlink{classDB__storage_ae9b01309ae3d0885038f732731c07a32}{get}} (\$property)
+\item 
+\mbox{\hyperlink{classDB__storage_a122dcd9f14d4b3b5ff0b5f29aa905a45}{\+\_\+\+D\+B\+\_\+storage}} ()
+\item 
+\mbox{\hyperlink{classDB__storage_a72cc27e26143e561faff4a7574a79aba}{store}} ()
+\item 
+\mbox{\hyperlink{classDB__storage_aa0434a3db30358320da2d24dfbd4e109}{remove}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__storage_a279c600d1ee5156050929ec709dc4987}{\$\+\_\+table}} = null
+\item 
+\mbox{\hyperlink{classDB__storage_a2adbaafb1a0fe088731b8bcaf02a9379}{\$\+\_\+keycolumn}} = null
+\item 
+\mbox{\hyperlink{classDB__storage_a81f72cb167db4cb932d90349ce000926}{\$\+\_\+dbh}} = null
+\item 
+\mbox{\hyperlink{classDB__storage_aa8244456f9ef243e648e0ca8dc4fb775}{\$\+\_\+properties}} = array()
+\item 
+\mbox{\hyperlink{classDB__storage_adfd96790f2d8fa29ecda8a2ae37cb7a1}{\$\+\_\+changes}} = array()
+\item 
+\mbox{\hyperlink{classDB__storage_a2c92453b972d378ec5444f5d4af85b3c}{\$\+\_\+readonly}} = false
+\item 
+\mbox{\hyperlink{classDB__storage_a7aef9839645ae8aa83110b458fd62e1d}{\$\+\_\+validator}} = null
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__storage_a122dcd9f14d4b3b5ff0b5f29aa905a45}\label{classDB__storage_a122dcd9f14d4b3b5ff0b5f29aa905a45}} 
+\index{DB\_storage@{DB\_storage}!\_DB\_storage@{\_DB\_storage}}
+\index{\_DB\_storage@{\_DB\_storage}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{\_DB\_storage()}{\_DB\_storage()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\+\_\+\+D\+B\+\_\+storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor, calls \mbox{\hyperlink{classDB__storage_a72cc27e26143e561faff4a7574a79aba}{D\+B\+\_\+storage\+::store()}} if there are changes that are to be kept. \mbox{\Hypertarget{classDB__storage_ab5bfee3d171e2192f9b2ceae4f04ae87}\label{classDB__storage_ab5bfee3d171e2192f9b2ceae4f04ae87}} 
+\index{DB\_storage@{DB\_storage}!\_makeWhere@{\_makeWhere}}
+\index{\_makeWhere@{\_makeWhere}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{\_makeWhere()}{\_makeWhere()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\+\_\+make\+Where (\begin{DoxyParamCaption}\item[{}]{\$keyval = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Utility method to build a \char`\"{}\+W\+H\+E\+R\+E\char`\"{} clause to locate ourselves in the table.
+
+X\+XX future improvement\+: use rowids?
+
+@access private \mbox{\Hypertarget{classDB__storage_a93d5ea05399615e16d6fe6b817363939}\label{classDB__storage_a93d5ea05399615e16d6fe6b817363939}} 
+\index{DB\_storage@{DB\_storage}!create@{create}}
+\index{create@{create}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \& D\+B\+\_\+storage\+::create (\begin{DoxyParamCaption}\item[{}]{\$table,  }\item[{\&}]{\$data }\end{DoxyParamCaption})}
+
+Static method used to create new \mbox{\hyperlink{classDB}{DB}} storage objects. 
+\begin{DoxyParams}{Parameters}
+{\em \$data} & assoc. array where the keys are the names of properties/columns \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object a new instance of \mbox{\hyperlink{classDB__storage}{D\+B\+\_\+storage}} or a subclass of it 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__storage_acc3b6d208e532891c899f58b8698395d}\label{classDB__storage_acc3b6d208e532891c899f58b8698395d}} 
+\index{DB\_storage@{DB\_storage}!DB\_storage@{DB\_storage}}
+\index{DB\_storage@{DB\_storage}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{DB\_storage()}{DB\_storage()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\+D\+B\+\_\+storage (\begin{DoxyParamCaption}\item[{}]{\$table,  }\item[{}]{\$keycolumn,  }\item[{\&}]{\$dbh,  }\item[{}]{\$validator = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$table} & string the name of the database table\\
+\hline
+{\em \$keycolumn} & mixed string with name of key column, or array of strings if the table has a primary key of more than one column\\
+\hline
+{\em \$dbh} & object database connection object\\
+\hline
+{\em \$validator} & mixed function or method used to validate each new value, called with three parameters\+: the name of the field/column that is changing, a reference to the new value and a reference to this object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDB__storage_a5685ae9fb01349b9a3b16fe76b6e4cef}\label{classDB__storage_a5685ae9fb01349b9a3b16fe76b6e4cef}} 
+\index{DB\_storage@{DB\_storage}!dump@{dump}}
+\index{dump@{dump}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{dump()}{dump()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::dump (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Dump the contents of this object to \char`\"{}standard output\char`\"{}. \mbox{\Hypertarget{classDB__storage_ae9b01309ae3d0885038f732731c07a32}\label{classDB__storage_ae9b01309ae3d0885038f732731c07a32}} 
+\index{DB\_storage@{DB\_storage}!get@{get}}
+\index{get@{get}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \& D\+B\+\_\+storage\+::get (\begin{DoxyParamCaption}\item[{}]{\$property }\end{DoxyParamCaption})}
+
+Fetch an attribute value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & attribute name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+attribute contents, or null if the attribute name is unknown 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__storage_a4bfc272a6b35c4fcbc567b330c1b502e}\label{classDB__storage_a4bfc272a6b35c4fcbc567b330c1b502e}} 
+\index{DB\_storage@{DB\_storage}!insert@{insert}}
+\index{insert@{insert}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::insert (\begin{DoxyParamCaption}\item[{}]{\$newpk }\end{DoxyParamCaption})}
+
+Create a new (empty) row in the configured table for this object. \mbox{\Hypertarget{classDB__storage_aa0434a3db30358320da2d24dfbd4e109}\label{classDB__storage_aa0434a3db30358320da2d24dfbd4e109}} 
+\index{DB\_storage@{DB\_storage}!remove@{remove}}
+\index{remove@{remove}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Remove the row represented by this object from the database.
+
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK or a \mbox{\hyperlink{classDB}{DB}} error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__storage_a3804d6a8f683c7236107ee93e162c955}\label{classDB__storage_a3804d6a8f683c7236107ee93e162c955}} 
+\index{DB\_storage@{DB\_storage}!set@{set}}
+\index{set@{set}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::set (\begin{DoxyParamCaption}\item[{}]{\$property,  }\item[{}]{\$newvalue }\end{DoxyParamCaption})}
+
+Loads data into this object from the given query. If this object already contains table data, changes will be saved and the object re-\/initialized first.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$query} & S\+QL query\\
+\hline
+{\em \$params} & parameter list in case you want to use prepare/execute mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success, D\+B\+\_\+\+W\+A\+R\+N\+I\+N\+G\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+LY if the returned object is read-\/only (because the object\textquotesingle{}s specified key column was not found among the columns returned by \$query), or another \mbox{\hyperlink{classDB}{DB}} error code in case of errors. Modify an attriute value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__storage_a1036a9e47a5c9e42bb5d09f5469bd27c}\label{classDB__storage_a1036a9e47a5c9e42bb5d09f5469bd27c}} 
+\index{DB\_storage@{DB\_storage}!setup@{setup}}
+\index{setup@{setup}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::setup (\begin{DoxyParamCaption}\item[{}]{\$keyval }\end{DoxyParamCaption})}
+
+Method used to initialize a \mbox{\hyperlink{classDB__storage}{D\+B\+\_\+storage}} object from the configured table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$keyval} & mixed the key\mbox{[}s\mbox{]} of the row to fetch (string or array)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success, a \mbox{\hyperlink{classDB}{DB}} error if not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__storage_a72cc27e26143e561faff4a7574a79aba}\label{classDB__storage_a72cc27e26143e561faff4a7574a79aba}} 
+\index{DB\_storage@{DB\_storage}!store@{store}}
+\index{store@{store}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{store()}{store()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::store (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Stores changes to this object in the database.
+
+\begin{DoxyReturn}{Returns}
+D\+B\+\_\+\+OK or a \mbox{\hyperlink{classDB}{DB}} error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__storage_a2fd072718308b96ce8299fc6e5f6ecd9}\label{classDB__storage_a2fd072718308b96ce8299fc6e5f6ecd9}} 
+\index{DB\_storage@{DB\_storage}!toString@{toString}}
+\index{toString@{toString}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Output a simple description of this \mbox{\hyperlink{classDB__storage}{D\+B\+\_\+storage}} object. \begin{DoxyReturn}{Returns}
+string object description 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__storage_adfd96790f2d8fa29ecda8a2ae37cb7a1}\label{classDB__storage_adfd96790f2d8fa29ecda8a2ae37cb7a1}} 
+\index{DB\_storage@{DB\_storage}!\$\_changes@{\$\_changes}}
+\index{\$\_changes@{\$\_changes}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{\$\_changes}{$\_changes}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\$\+\_\+changes = array()}
+
+an assoc with the names of the properties in this object that have been changed since they were fetched from the database \mbox{\Hypertarget{classDB__storage_a81f72cb167db4cb932d90349ce000926}\label{classDB__storage_a81f72cb167db4cb932d90349ce000926}} 
+\index{DB\_storage@{DB\_storage}!\$\_dbh@{\$\_dbh}}
+\index{\$\_dbh@{\$\_dbh}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{\$\_dbh}{$\_dbh}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\$\+\_\+dbh = null}
+
+\mbox{\hyperlink{classDB}{DB}} connection handle used for all transactions \mbox{\Hypertarget{classDB__storage_a2adbaafb1a0fe088731b8bcaf02a9379}\label{classDB__storage_a2adbaafb1a0fe088731b8bcaf02a9379}} 
+\index{DB\_storage@{DB\_storage}!\$\_keycolumn@{\$\_keycolumn}}
+\index{\$\_keycolumn@{\$\_keycolumn}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{\$\_keycolumn}{$\_keycolumn}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\$\+\_\+keycolumn = null}
+
+which column(s) in the table contains primary keys, can be a string for single-\/column primary keys, or an array of strings for multiple-\/column primary keys \mbox{\Hypertarget{classDB__storage_aa8244456f9ef243e648e0ca8dc4fb775}\label{classDB__storage_aa8244456f9ef243e648e0ca8dc4fb775}} 
+\index{DB\_storage@{DB\_storage}!\$\_properties@{\$\_properties}}
+\index{\$\_properties@{\$\_properties}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{\$\_properties}{$\_properties}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\$\+\_\+properties = array()}
+
+an assoc with the names of database fields stored as properties in this object \mbox{\Hypertarget{classDB__storage_a2c92453b972d378ec5444f5d4af85b3c}\label{classDB__storage_a2c92453b972d378ec5444f5d4af85b3c}} 
+\index{DB\_storage@{DB\_storage}!\$\_readonly@{\$\_readonly}}
+\index{\$\_readonly@{\$\_readonly}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{\$\_readonly}{$\_readonly}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\$\+\_\+readonly = false}
+
+flag that decides if data in this object can be changed. objects that don\textquotesingle{}t have their table\textquotesingle{}s key column in their property lists will be flagged as read-\/only. \mbox{\Hypertarget{classDB__storage_a279c600d1ee5156050929ec709dc4987}\label{classDB__storage_a279c600d1ee5156050929ec709dc4987}} 
+\index{DB\_storage@{DB\_storage}!\$\_table@{\$\_table}}
+\index{\$\_table@{\$\_table}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{\$\_table}{$\_table}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\$\+\_\+table = null}
+
+the name of the table (or view, if the backend database supports updates in views) we hold data from \mbox{\Hypertarget{classDB__storage_a7aef9839645ae8aa83110b458fd62e1d}\label{classDB__storage_a7aef9839645ae8aa83110b458fd62e1d}} 
+\index{DB\_storage@{DB\_storage}!\$\_validator@{\$\_validator}}
+\index{\$\_validator@{\$\_validator}!DB\_storage@{DB\_storage}}
+\doxysubsubsection{\texorpdfstring{\$\_validator}{$\_validator}}
+{\footnotesize\ttfamily D\+B\+\_\+storage\+::\$\+\_\+validator = null}
+
+function or method that implements a validator for fields that are set, this validator function returns true if the field is valid, false if not 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+D\+B/storage.\+php\end{DoxyCompactItemize}

@@ -1,0 +1,174 @@
+\hypertarget{classDB}{}\doxysection{DB Class Reference}
+\label{classDB}\index{DB@{DB}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\& \mbox{\hyperlink{classDB_aef1856c20d4c39e97aaa0cfd30511e18}{factory}} (\$type, \$options=false)
+\item 
+\& \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{connect}} (\$dsn, \$options=array())
+\item 
+\mbox{\hyperlink{classDB_a92431aa580c180c84381be0e53133b43}{api\+Version}} ()
+\item 
+\mbox{\hyperlink{classDB_a6bc5d2051c4fc422ffa4edf4b1a3612b}{is\+Error}} (\$value)
+\item 
+\mbox{\hyperlink{classDB_a7d6d62d3bd215307d206c6b911785e5f}{is\+Connection}} (\$value)
+\item 
+\mbox{\hyperlink{classDB_a93ef4403e299a1f56c650abaecf2e396}{is\+Manip}} (\$query)
+\item 
+\mbox{\hyperlink{classDB_ab94dcfb7d5132fd5544e7f6c6513a9cd}{error\+Message}} (\$value)
+\item 
+\mbox{\Hypertarget{classDB_aa23dbf0c20e9d39c53c572872ab7bd92}\label{classDB_aa23dbf0c20e9d39c53c572872ab7bd92}} 
+{\bfseries parse\+D\+SN} (\$dsn)
+\item 
+\mbox{\hyperlink{classDB_ad513ad52e1fe71f45baa8d207ca613b1}{get\+D\+S\+N\+String}} (\$dsn, \$hide\+Password)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB_a92431aa580c180c84381be0e53133b43}\label{classDB_a92431aa580c180c84381be0e53133b43}} 
+\index{DB@{DB}!apiVersion@{apiVersion}}
+\index{apiVersion@{apiVersion}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{apiVersion()}{apiVersion()}}
+{\footnotesize\ttfamily D\+B\+::api\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return the \mbox{\hyperlink{classDB}{DB}} A\+PI version
+
+\begin{DoxyReturn}{Returns}
+string the \mbox{\hyperlink{classDB}{DB}} A\+PI version number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB_aeb85aee47641c578522883780a06f7e2}\label{classDB_aeb85aee47641c578522883780a06f7e2}} 
+\index{DB@{DB}!connect@{connect}}
+\index{connect@{connect}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily \& D\+B\+::connect (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$options = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+Create a new \mbox{\hyperlink{classDB}{DB}} object including a connection to the specified database
+
+Example 1. {\ttfamily  require\+\_\+once \textquotesingle{}D\+B.\+php\textquotesingle{};}
+
+{\ttfamily \$dsn = \textquotesingle{}pgsql\+://user\+:password@host/database\textquotesingle{}; \$options = array( \textquotesingle{}debug\textquotesingle{} =$>$ 2, \textquotesingle{}portability\textquotesingle{} =$>$ D\+B\+\_\+\+P\+O\+R\+T\+A\+B\+I\+L\+I\+T\+Y\+\_\+\+A\+LL, );}
+
+{\ttfamily \$db =\& \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect}}(\$dsn, \$options); if (\mbox{\hyperlink{classPEAR_aa2608099ea852b3e982928aab10482ba}{P\+E\+A\+R\+::is\+Error}}(\$db)) \{ die(\$db-\/$>$get\+Message()); \} }
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$dsn} & the string \char`\"{}data source name\char`\"{} or array in the format returned by D\+B\+::parse\+D\+S\+N() \\
+\hline
+array & {\em \$options} & an associative array of option names and values\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object a new \mbox{\hyperlink{classDB}{DB}} object. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+@uses \mbox{\hyperlink{classDB__dbase_ab3c2678e036d4d58d69e2878ce2cba53}{D\+B\+\_\+dbase\+::connect()}}, \mbox{\hyperlink{classDB__fbsql_a70a233a6be77b9c8720e740f6354ffa0}{D\+B\+\_\+fbsql\+::connect()}}, \mbox{\hyperlink{classDB__ibase_a4bac8453cee5ce532b44b3e5741b2556}{D\+B\+\_\+ibase\+::connect()}}, \mbox{\hyperlink{classDB__ifx_a95d7b4adef2e0633219a3335916360bc}{D\+B\+\_\+ifx\+::connect()}}, \mbox{\hyperlink{classDB__msql_ab29e4dda18980f36a015d731bcf2c3c3}{D\+B\+\_\+msql\+::connect()}}, \mbox{\hyperlink{classDB__mssql_a1d0bb821e0f0acd0064c1aee5a6c6f77}{D\+B\+\_\+mssql\+::connect()}}, \mbox{\hyperlink{classDB__mysql_a6455d2b995f800fa1387f6d0ff2ea53b}{D\+B\+\_\+mysql\+::connect()}}, \mbox{\hyperlink{classDB__mysqli_a0918b55a7e98349c5cd52a5495302880}{D\+B\+\_\+mysqli\+::connect()}}, \mbox{\hyperlink{classDB__oci8_a8d984712e4c1d1b3a3fc602a3b7fe6f8}{D\+B\+\_\+oci8\+::connect()}}, \mbox{\hyperlink{classDB__odbc_ac04bd2b477d960e01b28fdc3a86e56d3}{D\+B\+\_\+odbc\+::connect()}}, \mbox{\hyperlink{classDB__pgsql_a83d5a6d5c12435f6ae996ca9cca94e7e}{D\+B\+\_\+pgsql\+::connect()}}, \mbox{\hyperlink{classDB__sqlite_afd8e0229bd5fbb9dae9ff48daca3aa12}{D\+B\+\_\+sqlite\+::connect()}}, \mbox{\hyperlink{classDB__sybase_a6ec4f175116157843e1e87d31065a790}{D\+B\+\_\+sybase\+::connect()}}
+
+@uses D\+B\+::parse\+D\+S\+N(), \mbox{\hyperlink{classDB__common_a81b5267f14a138091ce8b5d02e985a75}{D\+B\+\_\+common\+::set\+Option()}}, \mbox{\hyperlink{classPEAR_aa2608099ea852b3e982928aab10482ba}{P\+E\+A\+R\+::is\+Error()}} \mbox{\Hypertarget{classDB_ab94dcfb7d5132fd5544e7f6c6513a9cd}\label{classDB_ab94dcfb7d5132fd5544e7f6c6513a9cd}} 
+\index{DB@{DB}!errorMessage@{errorMessage}}
+\index{errorMessage@{errorMessage}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{errorMessage()}{errorMessage()}}
+{\footnotesize\ttfamily D\+B\+::error\+Message (\begin{DoxyParamCaption}\item[{}]{\$value }\end{DoxyParamCaption})}
+
+Return a textual error message for a \mbox{\hyperlink{classDB}{DB}} error code
+
+
+\begin{DoxyParams}[1]{Parameters}
+integer & {\em \$value} & the \mbox{\hyperlink{classDB}{DB}} error code\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the error message or false if the error code was not recognized 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB_aef1856c20d4c39e97aaa0cfd30511e18}\label{classDB_aef1856c20d4c39e97aaa0cfd30511e18}} 
+\index{DB@{DB}!factory@{factory}}
+\index{factory@{factory}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{factory()}{factory()}}
+{\footnotesize\ttfamily \& D\+B\+::factory (\begin{DoxyParamCaption}\item[{}]{\$type,  }\item[{}]{\$options = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Create a new \mbox{\hyperlink{classDB}{DB}} object for the specified database type but don\textquotesingle{}t connect to the database
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$type} & the database type (eg \char`\"{}mysql\char`\"{}) \\
+\hline
+array & {\em \$options} & an associative array of option names and values\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object a new \mbox{\hyperlink{classDB}{DB}} object. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a81b5267f14a138091ce8b5d02e985a75}{D\+B\+\_\+common\+::set\+Option()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB_ad513ad52e1fe71f45baa8d207ca613b1}\label{classDB_ad513ad52e1fe71f45baa8d207ca613b1}} 
+\index{DB@{DB}!getDSNString@{getDSNString}}
+\index{getDSNString@{getDSNString}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{getDSNString()}{getDSNString()}}
+{\footnotesize\ttfamily D\+B\+::get\+D\+S\+N\+String (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$hide\+Password }\end{DoxyParamCaption})}
+
+Returns the given D\+SN in a string format suitable for output.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array$\vert$string} & the D\+SN to parse and format \\
+\hline
+{\em boolean} & true to hide the password, false to include it \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB_a7d6d62d3bd215307d206c6b911785e5f}\label{classDB_a7d6d62d3bd215307d206c6b911785e5f}} 
+\index{DB@{DB}!isConnection@{isConnection}}
+\index{isConnection@{isConnection}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{isConnection()}{isConnection()}}
+{\footnotesize\ttfamily D\+B\+::is\+Connection (\begin{DoxyParamCaption}\item[{}]{\$value }\end{DoxyParamCaption})}
+
+Determines if a value is a D\+B\+\_\+$<$driver$>$ object
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$value} & the value to test\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool whether \$value is a D\+B\+\_\+$<$driver$>$ object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB_a6bc5d2051c4fc422ffa4edf4b1a3612b}\label{classDB_a6bc5d2051c4fc422ffa4edf4b1a3612b}} 
+\index{DB@{DB}!isError@{isError}}
+\index{isError@{isError}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{isError()}{isError()}}
+{\footnotesize\ttfamily D\+B\+::is\+Error (\begin{DoxyParamCaption}\item[{}]{\$value }\end{DoxyParamCaption})}
+
+Determines if a variable is a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$value} & the variable to check\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool whether \$value is \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB_a93ef4403e299a1f56c650abaecf2e396}\label{classDB_a93ef4403e299a1f56c650abaecf2e396}} 
+\index{DB@{DB}!isManip@{isManip}}
+\index{isManip@{isManip}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{isManip()}{isManip()}}
+{\footnotesize\ttfamily D\+B\+::is\+Manip (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Tell whether a query is a data manipulation or data definition query
+
+Examples of data manipulation queries are I\+N\+S\+E\+RT, U\+P\+D\+A\+TE and D\+E\+L\+E\+TE. Examples of data definition queries are C\+R\+E\+A\+TE, D\+R\+OP, A\+L\+T\+ER, G\+R\+A\+NT, R\+E\+V\+O\+KE.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$query} & the query\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean whether \$query is a data manipulation query 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/D\+B.\+php\end{DoxyCompactItemize}

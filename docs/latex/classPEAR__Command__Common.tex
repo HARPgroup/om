@@ -1,0 +1,157 @@
+\hypertarget{classPEAR__Command__Common}{}\doxysection{P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common Class Reference}
+\label{classPEAR__Command__Common}\index{PEAR\_Command\_Common@{PEAR\_Command\_Common}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Command__Common_a729f5fd6e432b12a7e8f4a9ae34d7c37}{P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common}} (\&\$ui, \&\$config)
+\item 
+\mbox{\hyperlink{classPEAR__Command__Common_ab10572355037c272a68e7ebed508e113}{get\+Commands}} ()
+\item 
+\mbox{\hyperlink{classPEAR__Command__Common_a2cb886fbf9584cafe12de3077abc53d1}{get\+Shortcuts}} ()
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Common_add4ab00fb6da2e72d2c8510602946401}\label{classPEAR__Command__Common_add4ab00fb6da2e72d2c8510602946401}} 
+{\bfseries get\+Options} (\$command)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Common_aa7f781025c92227d78244bb8d85cf587}\label{classPEAR__Command__Common_aa7f781025c92227d78244bb8d85cf587}} 
+{\bfseries get\+Getopt\+Args} (\$command, \&\$short\+\_\+args, \&\$long\+\_\+args)
+\item 
+\mbox{\hyperlink{classPEAR__Command__Common_a44e31cd502b5eb8815170cb2b4343391}{get\+Help}} (\$command)
+\item 
+\mbox{\hyperlink{classPEAR__Command__Common_a425792574693d38e52166f9256017a64}{get\+Help\+Args}} (\$command)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Common_a29fc623742e80388eb67469806626b7a}\label{classPEAR__Command__Common_a29fc623742e80388eb67469806626b7a}} 
+{\bfseries run} (\$command, \$options, \$params)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Common_a36f6be80dd3de018cfcec06956274bd6}\label{classPEAR__Command__Common_a36f6be80dd3de018cfcec06956274bd6}} 
+{\bfseries \$config}
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Common_aa296d3eecc7b8383859f36e4625a316e}\label{classPEAR__Command__Common_aa296d3eecc7b8383859f36e4625a316e}} 
+{\bfseries \$\+\_\+registry}
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Common_abe4f1f073a8d48896ff18e6399ba46d0}\label{classPEAR__Command__Common_abe4f1f073a8d48896ff18e6399ba46d0}} 
+{\bfseries \$ui}
+\item 
+{\bfseries \$\+\_\+deps\+\_\+rel\+\_\+trans}
+\item 
+{\bfseries \$\+\_\+deps\+\_\+type\+\_\+trans}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Command__Common_ab10572355037c272a68e7ebed508e113}\label{classPEAR__Command__Common_ab10572355037c272a68e7ebed508e113}} 
+\index{PEAR\_Command\_Common@{PEAR\_Command\_Common}!getCommands@{getCommands}}
+\index{getCommands@{getCommands}!PEAR\_Command\_Common@{PEAR\_Command\_Common}}
+\doxysubsubsection{\texorpdfstring{getCommands()}{getCommands()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common\+::get\+Commands (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return a list of all the commands defined by this class. \begin{DoxyReturn}{Returns}
+array list of commands @access public 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Command__Common_a44e31cd502b5eb8815170cb2b4343391}\label{classPEAR__Command__Common_a44e31cd502b5eb8815170cb2b4343391}} 
+\index{PEAR\_Command\_Common@{PEAR\_Command\_Common}!getHelp@{getHelp}}
+\index{getHelp@{getHelp}!PEAR\_Command\_Common@{PEAR\_Command\_Common}}
+\doxysubsubsection{\texorpdfstring{getHelp()}{getHelp()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common\+::get\+Help (\begin{DoxyParamCaption}\item[{}]{\$command }\end{DoxyParamCaption})}
+
+Returns the help message for the given command
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$command} & The command \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed A fail string if the command does not have help or a two elements array containing \mbox{[}0\mbox{]}=$>$help string, \mbox{[}1\mbox{]}=$>$ help string for the accepted cmd args 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Command__Common_a425792574693d38e52166f9256017a64}\label{classPEAR__Command__Common_a425792574693d38e52166f9256017a64}} 
+\index{PEAR\_Command\_Common@{PEAR\_Command\_Common}!getHelpArgs@{getHelpArgs}}
+\index{getHelpArgs@{getHelpArgs}!PEAR\_Command\_Common@{PEAR\_Command\_Common}}
+\doxysubsubsection{\texorpdfstring{getHelpArgs()}{getHelpArgs()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common\+::get\+Help\+Args (\begin{DoxyParamCaption}\item[{}]{\$command }\end{DoxyParamCaption})}
+
+Returns the help for the accepted arguments of a command
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$command} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string The help string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Command__Common_a2cb886fbf9584cafe12de3077abc53d1}\label{classPEAR__Command__Common_a2cb886fbf9584cafe12de3077abc53d1}} 
+\index{PEAR\_Command\_Common@{PEAR\_Command\_Common}!getShortcuts@{getShortcuts}}
+\index{getShortcuts@{getShortcuts}!PEAR\_Command\_Common@{PEAR\_Command\_Common}}
+\doxysubsubsection{\texorpdfstring{getShortcuts()}{getShortcuts()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common\+::get\+Shortcuts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return a list of all the command shortcuts defined by this class. \begin{DoxyReturn}{Returns}
+array shortcut =$>$ command @access public 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Command__Common_a729f5fd6e432b12a7e8f4a9ae34d7c37}\label{classPEAR__Command__Common_a729f5fd6e432b12a7e8f4a9ae34d7c37}} 
+\index{PEAR\_Command\_Common@{PEAR\_Command\_Common}!PEAR\_Command\_Common@{PEAR\_Command\_Common}}
+\index{PEAR\_Command\_Common@{PEAR\_Command\_Common}!PEAR\_Command\_Common@{PEAR\_Command\_Common}}
+\doxysubsubsection{\texorpdfstring{PEAR\_Command\_Common()}{PEAR\_Command\_Common()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common\+::\+P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common (\begin{DoxyParamCaption}\item[{\&}]{\$ui,  }\item[{\&}]{\$config }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classPEAR__Command__Common}{P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common}} constructor.
+
+@access public 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPEAR__Command__Common_ac7fc04c3aa2de0d77a2a4eab11d68ddc}\label{classPEAR__Command__Common_ac7fc04c3aa2de0d77a2a4eab11d68ddc}} 
+\index{PEAR\_Command\_Common@{PEAR\_Command\_Common}!\$\_deps\_rel\_trans@{\$\_deps\_rel\_trans}}
+\index{\$\_deps\_rel\_trans@{\$\_deps\_rel\_trans}!PEAR\_Command\_Common@{PEAR\_Command\_Common}}
+\doxysubsubsection{\texorpdfstring{\$\_deps\_rel\_trans}{$\_deps\_rel\_trans}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common\+::\$\+\_\+deps\+\_\+rel\+\_\+trans}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{                                 \textcolor{stringliteral}{'lt'} => \textcolor{charliteral}{'<'},}
+\DoxyCodeLine{                                 \textcolor{stringliteral}{'le'} => \textcolor{stringliteral}{'<='},}
+\DoxyCodeLine{                                 \textcolor{stringliteral}{'eq'} => \textcolor{charliteral}{'='},}
+\DoxyCodeLine{                                 \textcolor{stringliteral}{'ne'} => \textcolor{stringliteral}{'!='},}
+\DoxyCodeLine{                                 \textcolor{stringliteral}{'gt'} => \textcolor{charliteral}{'>'},}
+\DoxyCodeLine{                                 \textcolor{stringliteral}{'ge'} => \textcolor{stringliteral}{'>='},}
+\DoxyCodeLine{                                 \textcolor{stringliteral}{'has'} => \textcolor{stringliteral}{'=='}}
+\DoxyCodeLine{                                 )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPEAR__Command__Common_af68560f8791e09c36c129cb71724ee65}\label{classPEAR__Command__Common_af68560f8791e09c36c129cb71724ee65}} 
+\index{PEAR\_Command\_Common@{PEAR\_Command\_Common}!\$\_deps\_type\_trans@{\$\_deps\_type\_trans}}
+\index{\$\_deps\_type\_trans@{\$\_deps\_type\_trans}!PEAR\_Command\_Common@{PEAR\_Command\_Common}}
+\doxysubsubsection{\texorpdfstring{\$\_deps\_type\_trans}{$\_deps\_type\_trans}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Common\+::\$\+\_\+deps\+\_\+type\+\_\+trans}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{                                  \textcolor{stringliteral}{'pkg'} => \textcolor{stringliteral}{'package'},}
+\DoxyCodeLine{                                  \textcolor{stringliteral}{'ext'} => \textcolor{stringliteral}{'extension'},}
+\DoxyCodeLine{                                  \textcolor{stringliteral}{'php'} => \textcolor{stringliteral}{'PHP'},}
+\DoxyCodeLine{                                  \textcolor{stringliteral}{'prog'} => \textcolor{stringliteral}{'external program'},}
+\DoxyCodeLine{                                  \textcolor{stringliteral}{'ldlib'} => \textcolor{stringliteral}{'external library for linking'},}
+\DoxyCodeLine{                                  \textcolor{stringliteral}{'rtlib'} => \textcolor{stringliteral}{'external runtime library'},}
+\DoxyCodeLine{                                  \textcolor{stringliteral}{'os'} => \textcolor{stringliteral}{'operating system'},}
+\DoxyCodeLine{                                  \textcolor{stringliteral}{'websrv'} => \textcolor{stringliteral}{'web server'},}
+\DoxyCodeLine{                                  \textcolor{stringliteral}{'sapi'} => \textcolor{stringliteral}{'SAPI backend'}}
+\DoxyCodeLine{                                  )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Command/Common.\+php\end{DoxyCompactItemize}

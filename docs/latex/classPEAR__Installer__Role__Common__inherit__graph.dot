@@ -1,0 +1,22 @@
+digraph "PEAR_Installer_Role_Common"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="PEAR_Installer_Role\l_Common",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="PEAR_Installer_Role_Data",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPEAR__Installer__Role__Data.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="PEAR_Installer_Role_Doc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPEAR__Installer__Role__Doc.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="PEAR_Installer_Role_Ext",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPEAR__Installer__Role__Ext.html",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="PEAR_Installer_Role_Php",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPEAR__Installer__Role__Php.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="PEAR_Installer_Role\l_Script",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPEAR__Installer__Role__Script.html",tooltip=" "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="PEAR_Installer_Role_Src",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPEAR__Installer__Role__Src.html",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="PEAR_Installer_Role_Test",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPEAR__Installer__Role__Test.html",tooltip=" "];
+}

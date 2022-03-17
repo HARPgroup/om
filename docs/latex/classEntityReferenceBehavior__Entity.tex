@@ -1,0 +1,78 @@
+\hypertarget{classEntityReferenceBehavior__Entity}{}\doxysection{Entity\+Reference\+Behavior\+\_\+\+Entity Class Reference}
+\label{classEntityReferenceBehavior__Entity}\index{EntityReferenceBehavior\_Entity@{EntityReferenceBehavior\_Entity}}
+
+
+Inheritance diagram for Entity\+Reference\+Behavior\+\_\+\+Entity\+:
+% FIG 0
+
+
+Collaboration diagram for Entity\+Reference\+Behavior\+\_\+\+Entity\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEntityReferenceBehavior__Entity_a1c8e1cc9c1ea877c336b960e5334921c}\label{classEntityReferenceBehavior__Entity_a1c8e1cc9c1ea877c336b960e5334921c}} 
+{\bfseries schema\+\_\+alter} (\&\$schema, \$field)
+\item 
+\mbox{\Hypertarget{classEntityReferenceBehavior__Entity_a9b86eeefb6652907fc99234254f1c0e0}\label{classEntityReferenceBehavior__Entity_a9b86eeefb6652907fc99234254f1c0e0}} 
+{\bfseries schema\+\_\+retrofit} (\$field)
+\item 
+\mbox{\Hypertarget{classEntityReferenceBehavior__Entity_a88dfa18776bf29d3e89ad66539dd6b8c}\label{classEntityReferenceBehavior__Entity_a88dfa18776bf29d3e89ad66539dd6b8c}} 
+{\bfseries views\+\_\+data\+\_\+alter} (\&\$data, \$field)
+\item 
+\mbox{\Hypertarget{classEntityReferenceBehavior__Entity_aa5b0352d9f52776d718e1de4672e3b7a}\label{classEntityReferenceBehavior__Entity_aa5b0352d9f52776d718e1de4672e3b7a}} 
+{\bfseries presave} (\$entity\+\_\+type, \$entity, \$field, \$instance, \$langcode, \&\$items)
+\item 
+\mbox{\hyperlink{classEntityReferenceBehavior__Entity_a37a76a0b09676e6aaccd77bf71996171}{update}} (\$entity\+\_\+type, \$entity, \$field, \$instance, \$langcode, \&\$items)
+\item 
+\mbox{\hyperlink{classEntityReferenceBehavior__Entity_a3b442e48cb5ed2d4c324bed6755e655d}{post\+Update}} (\$entity\+\_\+type, \$entity, \$field, \$instance)
+\item 
+\mbox{\hyperlink{classEntityReferenceBehavior__Entity_a8835653a267d28e5221e4d213499a9b0}{delete}} (\$entity\+\_\+type, \$entity, \$field, \$instance, \$langcode, \&\$items)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEntityReferenceBehavior__Entity_ad509adba709bf079a8691d54238c8a1e}\label{classEntityReferenceBehavior__Entity_ad509adba709bf079a8691d54238c8a1e}} 
+{\bfseries \$pairs} = array()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEntityReferenceBehavior__Entity_a8835653a267d28e5221e4d213499a9b0}\label{classEntityReferenceBehavior__Entity_a8835653a267d28e5221e4d213499a9b0}} 
+\index{EntityReferenceBehavior\_Entity@{EntityReferenceBehavior\_Entity}!delete@{delete}}
+\index{delete@{delete}!EntityReferenceBehavior\_Entity@{EntityReferenceBehavior\_Entity}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily Entity\+Reference\+Behavior\+\_\+\+Entity\+::delete (\begin{DoxyParamCaption}\item[{}]{\$entity\+\_\+type,  }\item[{}]{\$entity,  }\item[{}]{\$field,  }\item[{}]{\$instance,  }\item[{}]{\$langcode,  }\item[{\&}]{\$items }\end{DoxyParamCaption})}
+
+Act before deleting an entity with an entity reference field.
+
+\begin{DoxySeeAlso}{See also}
+hook\+\_\+field\+\_\+delete() 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classEntityReferenceBehavior__Entity_a3b442e48cb5ed2d4c324bed6755e655d}\label{classEntityReferenceBehavior__Entity_a3b442e48cb5ed2d4c324bed6755e655d}} 
+\index{EntityReferenceBehavior\_Entity@{EntityReferenceBehavior\_Entity}!postUpdate@{postUpdate}}
+\index{postUpdate@{postUpdate}!EntityReferenceBehavior\_Entity@{EntityReferenceBehavior\_Entity}}
+\doxysubsubsection{\texorpdfstring{postUpdate()}{postUpdate()}}
+{\footnotesize\ttfamily Entity\+Reference\+Behavior\+\_\+\+Entity\+::post\+Update (\begin{DoxyParamCaption}\item[{}]{\$entity\+\_\+type,  }\item[{}]{\$entity,  }\item[{}]{\$field,  }\item[{}]{\$instance }\end{DoxyParamCaption})}
+
+Act after updating an entity reference field.
+
+\begin{DoxySeeAlso}{See also}
+hook\+\_\+field\+\_\+attach\+\_\+update() 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classEntityReferenceBehavior__Entity_a37a76a0b09676e6aaccd77bf71996171}\label{classEntityReferenceBehavior__Entity_a37a76a0b09676e6aaccd77bf71996171}} 
+\index{EntityReferenceBehavior\_Entity@{EntityReferenceBehavior\_Entity}!update@{update}}
+\index{update@{update}!EntityReferenceBehavior\_Entity@{EntityReferenceBehavior\_Entity}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily Entity\+Reference\+Behavior\+\_\+\+Entity\+::update (\begin{DoxyParamCaption}\item[{}]{\$entity\+\_\+type,  }\item[{}]{\$entity,  }\item[{}]{\$field,  }\item[{}]{\$instance,  }\item[{}]{\$langcode,  }\item[{\&}]{\$items }\end{DoxyParamCaption})}
+
+Act before updating an entity reference field.
+
+\begin{DoxySeeAlso}{See also}
+hook\+\_\+field\+\_\+update() 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+drupal/om/plugins/entityreference/behavior/Entity\+Reference\+Behavior\+\_\+\+Entity.\+class.\+php\end{DoxyCompactItemize}

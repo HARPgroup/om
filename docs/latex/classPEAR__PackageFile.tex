@@ -1,0 +1,245 @@
+\hypertarget{classPEAR__PackageFile}{}\doxysection{P\+E\+A\+R\+\_\+\+Package\+File Class Reference}
+\label{classPEAR__PackageFile}\index{PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile_af29917251632b0a480091f2643d53964}{P\+E\+A\+R\+\_\+\+Package\+File}} (\&\$config, \$debug=false, \$tmpdir=false)
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile_a708cc4600c8d88d991910c7723806d08}{raw\+Return}} ()
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile_a2772d89079263cdff49174e2b62cc511}\label{classPEAR__PackageFile_a2772d89079263cdff49174e2b62cc511}} 
+{\bfseries set\+Logger} (\&\$l)
+\item 
+\& \mbox{\hyperlink{classPEAR__PackageFile_a69303816fc9f58c415d9b955cf203946}{parser\+Factory}} (\$version)
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile_a7a440618648681914b8f43e174c83562}{get\+Class\+Prefix}} ()
+\item 
+\& \mbox{\hyperlink{classPEAR__PackageFile_acc609434badbb20de52d87adc46476ec}{factory}} (\$version)
+\item 
+\& \mbox{\hyperlink{classPEAR__PackageFile_a8ef037f0ecd4c65e0568a52d1b168d11}{from\+Array}} (\$arr)
+\item 
+\& \mbox{\hyperlink{classPEAR__PackageFile_ad68b495ea11a6c12211a876876b6477f}{from\+Xml\+String}} (\$data, \$state, \$file, \$archive=false)
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile_a53507427a0da2258fbd00bc2df2a61e9}{add\+Temp\+File}} (\$file)
+\item 
+\& \mbox{\hyperlink{classPEAR__PackageFile_ae7e80a6b33f21bff0b21d53965ec7381}{from\+Tgz\+File}} (\$file, \$state)
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile_af4317645f54d794b6a93224a821d9078}{\+\_\+extract\+Errors}} (\$err=null)
+\item 
+\& \mbox{\hyperlink{classPEAR__PackageFile_adcf604c77682d516f3db30bb119be9cc}{from\+Package\+File}} (\$descfile, \$state, \$archive=false)
+\item 
+\& \mbox{\hyperlink{classPEAR__PackageFile_ae4fee5892cbcdb02b552d01cd1fbb49e}{from\+Any\+File}} (\$info, \$state)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile_aa9269682fc88d6f5ee2f6349e3377739}\label{classPEAR__PackageFile_aa9269682fc88d6f5ee2f6349e3377739}} 
+{\bfseries \$\+\_\+config}
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile_a513ac6e2386f6d80a5413a5b00408c7d}\label{classPEAR__PackageFile_a513ac6e2386f6d80a5413a5b00408c7d}} 
+{\bfseries \$\+\_\+debug}
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile_ab3b52a9878068f1cc11b5f23283c60ef}\label{classPEAR__PackageFile_ab3b52a9878068f1cc11b5f23283c60ef}} 
+{\bfseries \$\+\_\+tmpdir}
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile_a51cc107f91f0e348f48f6ef5664f3d19}\label{classPEAR__PackageFile_a51cc107f91f0e348f48f6ef5664f3d19}} 
+{\bfseries \$\+\_\+logger} = false
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile_abc2dc7347ffab6d511f9fda21dddb162}\label{classPEAR__PackageFile_abc2dc7347ffab6d511f9fda21dddb162}} 
+{\bfseries \$\+\_\+raw\+Return} = false
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile_a11964857efa61d3384ebdd634b50b562}\label{classPEAR__PackageFile_a11964857efa61d3384ebdd634b50b562}} 
+{\bfseries \$\+\_\+extract\+Errors} = array()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__PackageFile_af4317645f54d794b6a93224a821d9078}\label{classPEAR__PackageFile_af4317645f54d794b6a93224a821d9078}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!\_extractErrors@{\_extractErrors}}
+\index{\_extractErrors@{\_extractErrors}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{\_extractErrors()}{\_extractErrors()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+::\+\_\+extract\+Errors (\begin{DoxyParamCaption}\item[{}]{\$err = {\ttfamily null} }\end{DoxyParamCaption})}
+
+helper callback for extracting \mbox{\hyperlink{classArchive__Tar}{Archive\+\_\+\+Tar}} errors
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} | null & {\em \$err} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array @access private 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_a53507427a0da2258fbd00bc2df2a61e9}\label{classPEAR__PackageFile_a53507427a0da2258fbd00bc2df2a61e9}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!addTempFile@{addTempFile}}
+\index{addTempFile@{addTempFile}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{addTempFile()}{addTempFile()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+::add\+Temp\+File (\begin{DoxyParamCaption}\item[{}]{\$file }\end{DoxyParamCaption})}
+
+Register a temporary file or directory. When the destructor is executed, all registered temporary files and directories are removed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$file} & name of file or directory \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_acc609434badbb20de52d87adc46476ec}\label{classPEAR__PackageFile_acc609434badbb20de52d87adc46476ec}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!factory@{factory}}
+\index{factory@{factory}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{factory()}{factory()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Package\+File\+::factory (\begin{DoxyParamCaption}\item[{}]{\$version }\end{DoxyParamCaption})}
+
+Create a P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v$\ast$ of a given version. 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$version} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_ae4fee5892cbcdb02b552d01cd1fbb49e}\label{classPEAR__PackageFile_ae4fee5892cbcdb02b552d01cd1fbb49e}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!fromAnyFile@{fromAnyFile}}
+\index{fromAnyFile@{fromAnyFile}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{fromAnyFile()}{fromAnyFile()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Package\+File\+::from\+Any\+File (\begin{DoxyParamCaption}\item[{}]{\$info,  }\item[{}]{\$state }\end{DoxyParamCaption})}
+
+Create a P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v$\ast$ from a .tgz archive or package.\+xml file.
+
+This method is able to extract information about a package from a .tgz archive or from a X\+ML package definition file.
+
+@access public 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$info} & file name \\
+\hline
+int & {\em \$state} & package state (one of P\+E\+A\+R\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+$\ast$ constants) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2 @uses \mbox{\hyperlink{classPEAR__PackageFile_adcf604c77682d516f3db30bb119be9cc}{from\+Package\+File()}} if the file appears to be X\+ML @uses \mbox{\hyperlink{classPEAR__PackageFile_ae7e80a6b33f21bff0b21d53965ec7381}{from\+Tgz\+File()}} to load all non-\/\+X\+ML files 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_a8ef037f0ecd4c65e0568a52d1b168d11}\label{classPEAR__PackageFile_a8ef037f0ecd4c65e0568a52d1b168d11}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!fromArray@{fromArray}}
+\index{fromArray@{fromArray}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{fromArray()}{fromArray()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Package\+File\+::from\+Array (\begin{DoxyParamCaption}\item[{}]{\$arr }\end{DoxyParamCaption})}
+
+Create a P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v$\ast$ from its to\+Array() method
+
+W\+A\+R\+N\+I\+NG\+: no validation is performed, the array is assumed to be valid, always parse from xml if you want validation. 
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$arr} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Package\+File\+Manager\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+Manager\+\_\+v2 @uses \mbox{\hyperlink{classPEAR__PackageFile_acc609434badbb20de52d87adc46476ec}{factory()}} to construct the returned object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_adcf604c77682d516f3db30bb119be9cc}\label{classPEAR__PackageFile_adcf604c77682d516f3db30bb119be9cc}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!fromPackageFile@{fromPackageFile}}
+\index{fromPackageFile@{fromPackageFile}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{fromPackageFile()}{fromPackageFile()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Package\+File\+::from\+Package\+File (\begin{DoxyParamCaption}\item[{}]{\$descfile,  }\item[{}]{\$state,  }\item[{}]{\$archive = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Create a P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v$\ast$ from a package.\+xml file.
+
+@access public 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$descfile} & name of package xml file \\
+\hline
+int & {\em \$state} & package state (one of P\+E\+A\+R\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+$\ast$ constants) \\
+\hline
+string | false & {\em \$archive} & name of the archive this package.\+xml came from, if any \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2 @uses \mbox{\hyperlink{classPEAR__PackageFile_ad68b495ea11a6c12211a876876b6477f}{P\+E\+A\+R\+\_\+\+Package\+File\+::from\+Xml\+String}} to create the oject after the X\+ML is loaded from the package.\+xml file. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_ae7e80a6b33f21bff0b21d53965ec7381}\label{classPEAR__PackageFile_ae7e80a6b33f21bff0b21d53965ec7381}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!fromTgzFile@{fromTgzFile}}
+\index{fromTgzFile@{fromTgzFile}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{fromTgzFile()}{fromTgzFile()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Package\+File\+::from\+Tgz\+File (\begin{DoxyParamCaption}\item[{}]{\$file,  }\item[{}]{\$state }\end{DoxyParamCaption})}
+
+Create a P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v$\ast$ from a compresed Tar or Tgz file. @access public 
+\begin{DoxyParams}{Parameters}
+{\em string} & contents of package.\+xml file \\
+\hline
+{\em int} & package state (one of P\+E\+A\+R\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+$\ast$ constants) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2 @using \mbox{\hyperlink{classArchive__Tar}{Archive\+\_\+\+Tar}} to extract the files @using \mbox{\hyperlink{classPEAR__PackageFile_adcf604c77682d516f3db30bb119be9cc}{from\+Package\+File()}} to load the package after the package.\+xml file is extracted. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_ad68b495ea11a6c12211a876876b6477f}\label{classPEAR__PackageFile_ad68b495ea11a6c12211a876876b6477f}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!fromXmlString@{fromXmlString}}
+\index{fromXmlString@{fromXmlString}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{fromXmlString()}{fromXmlString()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Package\+File\+::from\+Xml\+String (\begin{DoxyParamCaption}\item[{}]{\$data,  }\item[{}]{\$state,  }\item[{}]{\$file,  }\item[{}]{\$archive = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Create a P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v$\ast$ from an X\+ML string. @access public 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & contents of package.\+xml file \\
+\hline
+int & {\em \$state} & package state (one of P\+E\+A\+R\+\_\+\+V\+A\+L\+I\+D\+A\+T\+E\+\_\+$\ast$ constants) \\
+\hline
+string & {\em \$file} & full path to the package.\+xml file (and the files it references) \\
+\hline
+string & {\em \$archive} & optional name of the archive that the X\+ML was extracted from, if any \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2 @uses \mbox{\hyperlink{classPEAR__PackageFile_a69303816fc9f58c415d9b955cf203946}{parser\+Factory()}} to construct a parser to load the package. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_a7a440618648681914b8f43e174c83562}\label{classPEAR__PackageFile_a7a440618648681914b8f43e174c83562}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!getClassPrefix@{getClassPrefix}}
+\index{getClassPrefix@{getClassPrefix}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{getClassPrefix()}{getClassPrefix()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+::get\+Class\+Prefix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+For simpler unit-\/testing \begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_a69303816fc9f58c415d9b955cf203946}\label{classPEAR__PackageFile_a69303816fc9f58c415d9b955cf203946}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!parserFactory@{parserFactory}}
+\index{parserFactory@{parserFactory}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{parserFactory()}{parserFactory()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Package\+File\+::parser\+Factory (\begin{DoxyParamCaption}\item[{}]{\$version }\end{DoxyParamCaption})}
+
+Create a P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v$\ast$ of a given version. 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$version} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile_af29917251632b0a480091f2643d53964}\label{classPEAR__PackageFile_af29917251632b0a480091f2643d53964}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{PEAR\_PackageFile()}{PEAR\_PackageFile()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+::\+P\+E\+A\+R\+\_\+\+Package\+File (\begin{DoxyParamCaption}\item[{\&}]{\$config,  }\item[{}]{\$debug = {\ttfamily false},  }\item[{}]{\$tmpdir = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Parameters}
+P\+E\+A\+R\+\_\+\+Config & {\em \$config} & \\
+\hline
+ & {\em ?} & \$debug \\
+\hline
+ & {\em string} & @tmpdir Optional temporary directory for uncompressing files \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__PackageFile_a708cc4600c8d88d991910c7723806d08}\label{classPEAR__PackageFile_a708cc4600c8d88d991910c7723806d08}} 
+\index{PEAR\_PackageFile@{PEAR\_PackageFile}!rawReturn@{rawReturn}}
+\index{rawReturn@{rawReturn}!PEAR\_PackageFile@{PEAR\_PackageFile}}
+\doxysubsubsection{\texorpdfstring{rawReturn()}{rawReturn()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+::raw\+Return (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Turn off validation -\/ return a parsed package.\+xml without checking it
+
+This is used by the package-\/validate command 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/Package\+File.\+php\end{DoxyCompactItemize}

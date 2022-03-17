@@ -1,0 +1,50 @@
+\hypertarget{classBezier}{}\doxysection{Bezier Class Reference}
+\label{classBezier}\index{Bezier@{Bezier}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBezier_ae030769c8054f04b87d3dce6d5e2ddcc}\label{classBezier_ae030769c8054f04b87d3dce6d5e2ddcc}} 
+{\bfseries \+\_\+\+\_\+construct} (\$datax, \$datay, \$attraction\+\_\+factor=1)
+\item 
+\mbox{\hyperlink{classBezier_ae8f75a46383fa8856a6e7b1d2f74c56d}{Get}} (\$steps)
+\item 
+\mbox{\hyperlink{classBezier_a2a82ee17f650e6eb4bd69a1476933cb5}{Get\+Point}} (\$mu)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBezier_ae8f75a46383fa8856a6e7b1d2f74c56d}\label{classBezier_ae8f75a46383fa8856a6e7b1d2f74c56d}} 
+\index{Bezier@{Bezier}!Get@{Get}}
+\index{Get@{Get}!Bezier@{Bezier}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily Bezier\+::\+Get (\begin{DoxyParamCaption}\item[{}]{\$steps }\end{DoxyParamCaption})}
+
+Return a set of data points that specifies the bezier curve with \$steps points 
+\begin{DoxyParams}{Parameters}
+{\em \$steps} & Number of new points to return \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array(\$datax, \$datay) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBezier_a2a82ee17f650e6eb4bd69a1476933cb5}\label{classBezier_a2a82ee17f650e6eb4bd69a1476933cb5}} 
+\index{Bezier@{Bezier}!GetPoint@{GetPoint}}
+\index{GetPoint@{GetPoint}!Bezier@{Bezier}}
+\doxysubsubsection{\texorpdfstring{GetPoint()}{GetPoint()}}
+{\footnotesize\ttfamily Bezier\+::\+Get\+Point (\begin{DoxyParamCaption}\item[{}]{\$mu }\end{DoxyParamCaption})}
+
+Return one point on the bezier curve. \$mu is the position on the curve where \$mu is in the range 0 \$mu $<$ 1 where 0 is tha start point and 1 is the end point. Note that every newly computed point depends on all the existing points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$mu} & Position on the bezier curve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array(\$x, \$y) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+drupal/om/lib/jpgraph/jpgraph\+\_\+regstat.\+php\end{DoxyCompactItemize}

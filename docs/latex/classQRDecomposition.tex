@@ -1,0 +1,104 @@
+\hypertarget{classQRDecomposition}{}\doxysection{Q\+R\+Decomposition Class Reference}
+\label{classQRDecomposition}\index{QRDecomposition@{QRDecomposition}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classQRDecomposition_ad626f0b355adc997e7972ae97fb1ceda}{Q\+R\+Decomposition}} (\$A)
+\item 
+\mbox{\hyperlink{classQRDecomposition_a78eb4ad59ef20ff51c5465acc214866c}{is\+Full\+Rank}} ()
+\item 
+\mbox{\hyperlink{classQRDecomposition_ae134cbb5935691984ecfce4016166dc9}{getH}} ()
+\item 
+\mbox{\hyperlink{classQRDecomposition_a6ec7a8cc103b18950691333ab0ee1ab1}{getR}} ()
+\item 
+\mbox{\hyperlink{classQRDecomposition_aa8da101ed9b7d2ed26e2f83d9fcdcd72}{getQ}} ()
+\item 
+\mbox{\hyperlink{classQRDecomposition_ae6d7b9d4c04f85ce5a2e6f01dd57e3d3}{solve}} (\$B)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classQRDecomposition_ab04356da23dc1d7c0e18654002f4be1e}\label{classQRDecomposition_ab04356da23dc1d7c0e18654002f4be1e}} 
+{\bfseries \$\+QR} = array()
+\item 
+\mbox{\Hypertarget{classQRDecomposition_af2ad6a64a92a5433d58bb125282b0225}\label{classQRDecomposition_af2ad6a64a92a5433d58bb125282b0225}} 
+{\bfseries \$m}
+\item 
+\mbox{\Hypertarget{classQRDecomposition_a25281a47c79b9c0f99656a1ccc497a4a}\label{classQRDecomposition_a25281a47c79b9c0f99656a1ccc497a4a}} 
+{\bfseries \$n}
+\item 
+\mbox{\Hypertarget{classQRDecomposition_a0d16133b10f8e54febecbb269bcef3f4}\label{classQRDecomposition_a0d16133b10f8e54febecbb269bcef3f4}} 
+{\bfseries \$\+Rdiag} = array()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classQRDecomposition_ae134cbb5935691984ecfce4016166dc9}\label{classQRDecomposition_ae134cbb5935691984ecfce4016166dc9}} 
+\index{QRDecomposition@{QRDecomposition}!getH@{getH}}
+\index{getH@{getH}!QRDecomposition@{QRDecomposition}}
+\doxysubsubsection{\texorpdfstring{getH()}{getH()}}
+{\footnotesize\ttfamily Q\+R\+Decomposition\+::getH (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return the Householder vectors \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classMatrix}{Matrix}} Lower trapezoidal matrix whose columns define the reflections 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classQRDecomposition_aa8da101ed9b7d2ed26e2f83d9fcdcd72}\label{classQRDecomposition_aa8da101ed9b7d2ed26e2f83d9fcdcd72}} 
+\index{QRDecomposition@{QRDecomposition}!getQ@{getQ}}
+\index{getQ@{getQ}!QRDecomposition@{QRDecomposition}}
+\doxysubsubsection{\texorpdfstring{getQ()}{getQ()}}
+{\footnotesize\ttfamily Q\+R\+Decomposition\+::getQ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Generate and return the (economy-\/sized) orthogonal factor \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classMatrix}{Matrix}} orthogonal factor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classQRDecomposition_a6ec7a8cc103b18950691333ab0ee1ab1}\label{classQRDecomposition_a6ec7a8cc103b18950691333ab0ee1ab1}} 
+\index{QRDecomposition@{QRDecomposition}!getR@{getR}}
+\index{getR@{getR}!QRDecomposition@{QRDecomposition}}
+\doxysubsubsection{\texorpdfstring{getR()}{getR()}}
+{\footnotesize\ttfamily Q\+R\+Decomposition\+::getR (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return the upper triangular factor \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classMatrix}{Matrix}} upper triangular factor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classQRDecomposition_a78eb4ad59ef20ff51c5465acc214866c}\label{classQRDecomposition_a78eb4ad59ef20ff51c5465acc214866c}} 
+\index{QRDecomposition@{QRDecomposition}!isFullRank@{isFullRank}}
+\index{isFullRank@{isFullRank}!QRDecomposition@{QRDecomposition}}
+\doxysubsubsection{\texorpdfstring{isFullRank()}{isFullRank()}}
+{\footnotesize\ttfamily Q\+R\+Decomposition\+::is\+Full\+Rank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Is the matrix full rank? \begin{DoxyReturn}{Returns}
+boolean true if R, and hence A, has full rank, else false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classQRDecomposition_ad626f0b355adc997e7972ae97fb1ceda}\label{classQRDecomposition_ad626f0b355adc997e7972ae97fb1ceda}} 
+\index{QRDecomposition@{QRDecomposition}!QRDecomposition@{QRDecomposition}}
+\index{QRDecomposition@{QRDecomposition}!QRDecomposition@{QRDecomposition}}
+\doxysubsubsection{\texorpdfstring{QRDecomposition()}{QRDecomposition()}}
+{\footnotesize\ttfamily Q\+R\+Decomposition\+::\+Q\+R\+Decomposition (\begin{DoxyParamCaption}\item[{}]{\$A }\end{DoxyParamCaption})}
+
+QR Decomposition computed by Householder reflections. 
+\begin{DoxyParams}[1]{Parameters}
+matrix & {\em \$A} & Rectangular matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Structure to access R and the Householder vectors and compute Q. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classQRDecomposition_ae6d7b9d4c04f85ce5a2e6f01dd57e3d3}\label{classQRDecomposition_ae6d7b9d4c04f85ce5a2e6f01dd57e3d3}} 
+\index{QRDecomposition@{QRDecomposition}!solve@{solve}}
+\index{solve@{solve}!QRDecomposition@{QRDecomposition}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily Q\+R\+Decomposition\+::solve (\begin{DoxyParamCaption}\item[{}]{\$B }\end{DoxyParamCaption})}
+
+Least squares solution of A$\ast$X = B 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{classMatrix}{Matrix}} & {\em \$B} & A \mbox{\hyperlink{classMatrix}{Matrix}} with as many rows as A and any number of columns. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classMatrix}{Matrix}} \mbox{\hyperlink{classMatrix}{Matrix}} that minimizes the two norm of Q$\ast$\+R$\ast$\+X-\/B. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/phpmath/Q\+R\+Decomposition.\+php\end{DoxyCompactItemize}

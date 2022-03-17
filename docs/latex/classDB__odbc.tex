@@ -1,0 +1,561 @@
+\hypertarget{classDB__odbc}{}\doxysection{D\+B\+\_\+odbc Class Reference}
+\label{classDB__odbc}\index{DB\_odbc@{DB\_odbc}}
+
+
+Inheritance diagram for D\+B\+\_\+odbc\+:
+% FIG 0
+
+
+Collaboration diagram for D\+B\+\_\+odbc\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__odbc_acea2716e27841063682bf84b3fb4c145}{D\+B\+\_\+odbc}} ()
+\item 
+\mbox{\hyperlink{classDB__odbc_ac04bd2b477d960e01b28fdc3a86e56d3}{connect}} (\$dsn, \$persistent=false)
+\item 
+\mbox{\hyperlink{classDB__odbc_a172a0f88235dd810199d5ef9cd28cb45}{disconnect}} ()
+\item 
+\mbox{\hyperlink{classDB__odbc_ad5c444cde64eb69310e243e7b857956b}{simple\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\mbox{\hyperlink{classDB__odbc_afecceb741a967f0fd6bd34b99127c656}{next\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__odbc_a8add733476763e09d52233660942c174}{fetch\+Into}} (\$result, \&\$arr, \$fetchmode, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__odbc_a86b7bd92d900a59950baa4fe7e100f59}{free\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__odbc_aa17b0ac09199c94e8fcb2540be1185a4}{num\+Cols}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__odbc_a1d6d566ddcda7eff8a92cc4f5dd4cc9a}{affected\+Rows}} ()
+\item 
+\mbox{\hyperlink{classDB__odbc_a5a9356c0ef481e47716750cb448595e0}{num\+Rows}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__odbc_ae38527378b2965ee6feec4a15d2eb3b8}{quote\+Identifier}} (\$str)
+\item 
+\mbox{\hyperlink{classDB__odbc_a99c8a2f948403fffc7053b2213216bc7}{quote}} (\$str)
+\item 
+\mbox{\hyperlink{classDB__odbc_a67edf4238da62cd362894517ca260980}{next\+Id}} (\$seq\+\_\+name, \$ondemand=true)
+\item 
+\mbox{\hyperlink{classDB__odbc_af30d65a5efa739c674066c9da5439b92}{create\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__odbc_a9b6c0ab901938ec65e0fa6dc228a8032}{drop\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__odbc_a6322690f621f5d62745aedf1131f018b}{auto\+Commit}} (\$onoff=false)
+\item 
+\mbox{\hyperlink{classDB__odbc_a8f36a8466a809f59ad22540e7e1bfcb6}{commit}} ()
+\item 
+\mbox{\hyperlink{classDB__odbc_a6a60c10988decdfead2fc522e692728a}{rollback}} ()
+\item 
+\mbox{\hyperlink{classDB__odbc_a4cdf82314a12c2e4bc5f332d6895c26e}{odbc\+Raise\+Error}} (\$errno=null)
+\item 
+\mbox{\hyperlink{classDB__odbc_a81799025f30e602fa090708bc1cea644}{error\+Native}} ()
+\item 
+\mbox{\hyperlink{classDB__odbc_ae3cc8beb6e8b7a33e40e8a22ff9dead2}{table\+Info}} (\$result, \$mode=null)
+\item 
+\mbox{\hyperlink{classDB__odbc_afde6108fb98aa08d3c35725ac27d1c35}{get\+Special\+Query}} (\$type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDB__odbc_a8064ee370c0087285400c4539f6caf70}\label{classDB__odbc_a8064ee370c0087285400c4539f6caf70}} 
+{\bfseries \$phptype} = \textquotesingle{}odbc\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classDB__odbc_affe96311319a9d47332cef14c808f186}\label{classDB__odbc_affe96311319a9d47332cef14c808f186}} 
+{\bfseries \$dbsyntax} = \textquotesingle{}sql92\textquotesingle{}
+\item 
+{\bfseries \$features}
+\item 
+\mbox{\Hypertarget{classDB__odbc_af4b845c94472c0545c0e6279cd414ab7}\label{classDB__odbc_af4b845c94472c0545c0e6279cd414ab7}} 
+{\bfseries \$errorcode\+\_\+map}
+\item 
+\mbox{\Hypertarget{classDB__odbc_a6944040543dbb22407f063bf176b5caf}\label{classDB__odbc_a6944040543dbb22407f063bf176b5caf}} 
+{\bfseries \$connection}
+\item 
+\mbox{\Hypertarget{classDB__odbc_a6be8a46e3e49e833ab2c7758664e90d7}\label{classDB__odbc_a6be8a46e3e49e833ab2c7758664e90d7}} 
+{\bfseries \$dsn} = array()
+\item 
+\mbox{\Hypertarget{classDB__odbc_afe7e1d4d259a2da8908c8f972e9a4160}\label{classDB__odbc_afe7e1d4d259a2da8908c8f972e9a4160}} 
+{\bfseries \$affected} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__odbc_a1d6d566ddcda7eff8a92cc4f5dd4cc9a}\label{classDB__odbc_a1d6d566ddcda7eff8a92cc4f5dd4cc9a}} 
+\index{DB\_odbc@{DB\_odbc}!affectedRows@{affectedRows}}
+\index{affectedRows@{affectedRows}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{affectedRows()}{affectedRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::affected\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determines the number of rows affected by a data maniuplation query
+
+0 is returned for queries that don\textquotesingle{}t manipulate data.
+
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a05a802d72feb861012eb7ebfdbe00e84}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_a6322690f621f5d62745aedf1131f018b}\label{classDB__odbc_a6322690f621f5d62745aedf1131f018b}} 
+\index{DB\_odbc@{DB\_odbc}!autoCommit@{autoCommit}}
+\index{autoCommit@{autoCommit}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{autoCommit()}{autoCommit()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::auto\+Commit (\begin{DoxyParamCaption}\item[{}]{\$onoff = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Enables or disables automatic commits
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$onoff} & true turns it on, false turns it off\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object if the driver doesn\textquotesingle{}t support auto-\/committing transactions. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ad28b0f99a6bc3cdbf921804ec7720078}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_a8f36a8466a809f59ad22540e7e1bfcb6}\label{classDB__odbc_a8f36a8466a809f59ad22540e7e1bfcb6}} 
+\index{DB\_odbc@{DB\_odbc}!commit@{commit}}
+\index{commit@{commit}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Commits the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a36868fcbeee42d96e00faeac7e82cb81}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_ac04bd2b477d960e01b28fdc3a86e56d3}\label{classDB__odbc_ac04bd2b477d960e01b28fdc3a86e56d3}} 
+\index{DB\_odbc@{DB\_odbc}!connect@{connect}}
+\index{connect@{connect}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::connect (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$persistent = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Connect to the database server, log in and open the database
+
+Don\textquotesingle{}t call this method directly. Use \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect()}} instead.
+
+\mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}}\textquotesingle{}s odbc driver supports the following extra D\+SN options\+:
+\begin{DoxyItemize}
+\item cursor The type of cursor to be used for this connection.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$dsn} & the data source name \\
+\hline
+bool & {\em \$persistent} & should the connection be persistent?\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__odbc_af30d65a5efa739c674066c9da5439b92}\label{classDB__odbc_af30d65a5efa739c674066c9da5439b92}} 
+\index{DB\_odbc@{DB\_odbc}!createSequence@{createSequence}}
+\index{createSequence@{createSequence}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{createSequence()}{createSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::create\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Creates a new sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the new sequence\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+odbc\+::next\+I\+D(), \mbox{\hyperlink{classDB__odbc_a9b6c0ab901938ec65e0fa6dc228a8032}{D\+B\+\_\+odbc\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_acea2716e27841063682bf84b3fb4c145}\label{classDB__odbc_acea2716e27841063682bf84b3fb4c145}} 
+\index{DB\_odbc@{DB\_odbc}!DB\_odbc@{DB\_odbc}}
+\index{DB\_odbc@{DB\_odbc}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{DB\_odbc()}{DB\_odbc()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::\+D\+B\+\_\+odbc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This constructor calls {\ttfamily \$this-\/$>$\mbox{\hyperlink{classDB__common_aa5163360915c02c99d8d048b4728c3cc}{D\+B\+\_\+common()}}}
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__odbc_a172a0f88235dd810199d5ef9cd28cb45}\label{classDB__odbc_a172a0f88235dd810199d5ef9cd28cb45}} 
+\index{DB\_odbc@{DB\_odbc}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disconnects from the database server
+
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__odbc_a9b6c0ab901938ec65e0fa6dc228a8032}\label{classDB__odbc_a9b6c0ab901938ec65e0fa6dc228a8032}} 
+\index{DB\_odbc@{DB\_odbc}!dropSequence@{dropSequence}}
+\index{dropSequence@{dropSequence}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{dropSequence()}{dropSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::drop\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Deletes a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence to be deleted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common\+::drop\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+odbc\+::next\+I\+D(), \mbox{\hyperlink{classDB__odbc_af30d65a5efa739c674066c9da5439b92}{D\+B\+\_\+odbc\+::create\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_a81799025f30e602fa090708bc1cea644}\label{classDB__odbc_a81799025f30e602fa090708bc1cea644}} 
+\index{DB\_odbc@{DB\_odbc}!errorNative@{errorNative}}
+\index{errorNative@{errorNative}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{errorNative()}{errorNative()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::error\+Native (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the D\+B\+MS\textquotesingle{} native error code and message produced by the last query
+
+\begin{DoxyReturn}{Returns}
+string the D\+B\+MS\textquotesingle{} error code and message 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a5b451dc88229cf12de5a0845ba53a377}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_a8add733476763e09d52233660942c174}\label{classDB__odbc_a8add733476763e09d52233660942c174}} 
+\index{DB\_odbc@{DB\_odbc}!fetchInto@{fetchInto}}
+\index{fetchInto@{fetchInto}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{fetchInto()}{fetchInto()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::fetch\+Into (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{\&}]{\$arr,  }\item[{}]{\$fetchmode,  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Places a row from the result set into the given array
+
+Formating of the array and the data therein are configurable. See \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} for more information.
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & the query result resource \\
+\hline
+array & {\em \$arr} & the referenced array to put the data in \\
+\hline
+int & {\em \$fetchmode} & how the resulting array should be indexed \\
+\hline
+int & {\em \$rownum} & the row number to fetch (0 = first row)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK on success, N\+U\+LL when the end of a result set is reached or on failure
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__odbc_a86b7bd92d900a59950baa4fe7e100f59}\label{classDB__odbc_a86b7bd92d900a59950baa4fe7e100f59}} 
+\index{DB\_odbc@{DB\_odbc}!freeResult@{freeResult}}
+\index{freeResult@{freeResult}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{freeResult()}{freeResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::free\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Deletes the result set and frees the memory occupied by the result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE if \$result is invalid
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__odbc_afde6108fb98aa08d3c35725ac27d1c35}\label{classDB__odbc_afde6108fb98aa08d3c35725ac27d1c35}} 
+\index{DB\_odbc@{DB\_odbc}!getSpecialQuery@{getSpecialQuery}}
+\index{getSpecialQuery@{getSpecialQuery}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{getSpecialQuery()}{getSpecialQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::get\+Special\+Query (\begin{DoxyParamCaption}\item[{}]{\$type }\end{DoxyParamCaption})}
+
+Obtains the query string needed for listing a given type of objects
+
+Thanks to \href{mailto:symbol1@gmail.com}{\texttt{ symbol1@gmail.\+com}} and \href{mailto:Philippe.Jausions@11abacus.com}{\texttt{ Philippe.\+Jausions@11abacus.\+com}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$type} & the kind of objects you want to retrieve\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the list of objects requested
+\end{DoxyReturn}
+@access protected \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a822d61267fea12aebe53a4a33bf9015d}{D\+B\+\_\+common\+::get\+List\+Of()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+7.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a2550ff7e5023d193614ab722d9aa3eb9}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_a67edf4238da62cd362894517ca260980}\label{classDB__odbc_a67edf4238da62cd362894517ca260980}} 
+\index{DB\_odbc@{DB\_odbc}!nextId@{nextId}}
+\index{nextId@{nextId}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{nextId()}{nextId()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::next\+Id (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name,  }\item[{}]{\$ondemand = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Returns the next free id in a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence \\
+\hline
+boolean & {\em \$ondemand} & when true, the seqence is automatically created if it does not exist\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the next id number in the sequence. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+D\+B\+\_\+common\+::next\+I\+D(), \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, \mbox{\hyperlink{classDB__odbc_af30d65a5efa739c674066c9da5439b92}{D\+B\+\_\+odbc\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__odbc_a9b6c0ab901938ec65e0fa6dc228a8032}{D\+B\+\_\+odbc\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ae654bec375517d041f1920ab0cc4703b}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_afecceb741a967f0fd6bd34b99127c656}\label{classDB__odbc_afecceb741a967f0fd6bd34b99127c656}} 
+\index{DB\_odbc@{DB\_odbc}!nextResult@{nextResult}}
+\index{nextResult@{nextResult}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{nextResult()}{nextResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::next\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Move the internal odbc result pointer to the next available result
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & valid fbsql result resource\\
+\hline
+\end{DoxyParams}
+@access public
+
+\begin{DoxyReturn}{Returns}
+true if a result is available otherwise return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__odbc_aa17b0ac09199c94e8fcb2540be1185a4}\label{classDB__odbc_aa17b0ac09199c94e8fcb2540be1185a4}} 
+\index{DB\_odbc@{DB\_odbc}!numCols@{numCols}}
+\index{numCols@{numCols}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{numCols()}{numCols()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::num\+Cols (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of columns in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of columns. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__odbc_a5a9356c0ef481e47716750cb448595e0}\label{classDB__odbc_a5a9356c0ef481e47716750cb448595e0}} 
+\index{DB\_odbc@{DB\_odbc}!numRows@{numRows}}
+\index{numRows@{numRows}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{numRows()}{numRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::num\+Rows (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of rows in a result set
+
+Not all O\+D\+BC drivers support this functionality. If they don\textquotesingle{}t a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object for D\+B\+\_\+\+E\+R\+R\+O\+R\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+ED is returned.
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a605433b6d3412f7d2c24287553965382}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_a4cdf82314a12c2e4bc5f332d6895c26e}\label{classDB__odbc_a4cdf82314a12c2e4bc5f332d6895c26e}} 
+\index{DB\_odbc@{DB\_odbc}!odbcRaiseError@{odbcRaiseError}}
+\index{odbcRaiseError@{odbcRaiseError}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{odbcRaiseError()}{odbcRaiseError()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::odbc\+Raise\+Error (\begin{DoxyParamCaption}\item[{}]{\$errno = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Produces a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object regarding the current problem
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$errno} & if the error is being manually raised pass a D\+B\+\_\+\+E\+R\+R\+O\+R$\ast$ constant here. If this isn\textquotesingle{}t passed the error information gathered from the D\+B\+MS.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a3b60dee1050625ee683af046033bbe26}{D\+B\+\_\+common\+::raise\+Error()}}, \mbox{\hyperlink{classDB__odbc_a81799025f30e602fa090708bc1cea644}{D\+B\+\_\+odbc\+::error\+Native()}}, \mbox{\hyperlink{classDB__common_a94d409cd5836c29a3b4fc90b45ed3364}{D\+B\+\_\+common\+::error\+Code()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__odbc_a99c8a2f948403fffc7053b2213216bc7}\label{classDB__odbc_a99c8a2f948403fffc7053b2213216bc7}} 
+\index{DB\_odbc@{DB\_odbc}!quote@{quote}}
+\index{quote@{quote}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{quote()}{quote()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::quote (\begin{DoxyParamCaption}\item[{}]{\$str }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000006}{Deprecated}}]Deprecated in release 1.\+6.\+0 \end{DoxyRefDesc}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ac7ed58cc83e804a589c04dc13ec9c0ff}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_ae38527378b2965ee6feec4a15d2eb3b8}\label{classDB__odbc_ae38527378b2965ee6feec4a15d2eb3b8}} 
+\index{DB\_odbc@{DB\_odbc}!quoteIdentifier@{quoteIdentifier}}
+\index{quoteIdentifier@{quoteIdentifier}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{quoteIdentifier()}{quoteIdentifier()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::quote\+Identifier (\begin{DoxyParamCaption}\item[{}]{\$str }\end{DoxyParamCaption})}
+
+Quotes a string so it can be safely used as a table or column name
+
+Use \textquotesingle{}mssql\textquotesingle{} as the dbsyntax in the \mbox{\hyperlink{classDB}{DB}} D\+SN only if you\textquotesingle{}ve unchecked \char`\"{}\+Use A\+N\+S\+I quoted identifiers\char`\"{} when setting up the O\+D\+BC data source.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$str} & identifier name to be quoted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string quoted identifier string
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ac244ef9aea1db0f25d5fd6c6f1742605}{D\+B\+\_\+common\+::quote\+Identifier()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+6.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ac244ef9aea1db0f25d5fd6c6f1742605}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_a6a60c10988decdfead2fc522e692728a}\label{classDB__odbc_a6a60c10988decdfead2fc522e692728a}} 
+\index{DB\_odbc@{DB\_odbc}!rollback@{rollback}}
+\index{rollback@{rollback}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{rollback()}{rollback()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::rollback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reverts the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a03b635b3130360516cb504b7f6095891}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__odbc_ad5c444cde64eb69310e243e7b857956b}\label{classDB__odbc_ad5c444cde64eb69310e243e7b857956b}} 
+\index{DB\_odbc@{DB\_odbc}!simpleQuery@{simpleQuery}}
+\index{simpleQuery@{simpleQuery}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{simpleQuery()}{simpleQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::simple\+Query (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Sends a query to the database server
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & the S\+QL query string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed + a \mbox{\hyperlink{categoryPHP}{P\+HP}} result resrouce for successful S\+E\+L\+E\+CT queries
+\begin{DoxyItemize}
+\item the D\+B\+\_\+\+OK constant for other successful queries
+\item a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__odbc_ae3cc8beb6e8b7a33e40e8a22ff9dead2}\label{classDB__odbc_ae3cc8beb6e8b7a33e40e8a22ff9dead2}} 
+\index{DB\_odbc@{DB\_odbc}!tableInfo@{tableInfo}}
+\index{tableInfo@{tableInfo}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{tableInfo()}{tableInfo()}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::table\+Info (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{}]{\$mode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Returns information about a table or a result set
+
+
+\begin{DoxyParams}[1]{Parameters}
+object | string & {\em \$result} & \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} object from a query or a string containing the name of a table. While this also accepts a query result resource identifier, this behavior is deprecated. \\
+\hline
+int & {\em \$mode} & a valid table\+Info mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array an associative array with the information requested. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common\+::table\+Info()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+7.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__odbc_ae22a1dc4043e7fc387c823b6907f0e45}\label{classDB__odbc_ae22a1dc4043e7fc387c823b6907f0e45}} 
+\index{DB\_odbc@{DB\_odbc}!\$features@{\$features}}
+\index{\$features@{\$features}!DB\_odbc@{DB\_odbc}}
+\doxysubsubsection{\texorpdfstring{\$features}{$features}}
+{\footnotesize\ttfamily D\+B\+\_\+odbc\+::\$features}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'limit'}         => \textcolor{stringliteral}{'emulate'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'new\_link'}      => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'numrows'}       => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'pconnect'}      => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'prepare'}       => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'ssl'}           => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'transactions'}  => \textcolor{keyword}{false},}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+D\+B/odbc.\+php\end{DoxyCompactItemize}

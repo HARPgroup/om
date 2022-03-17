@@ -1,0 +1,98 @@
+\hypertarget{classPEAR__Task__Windowseol}{}\doxysection{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Windowseol Class Reference}
+\label{classPEAR__Task__Windowseol}\index{PEAR\_Task\_Windowseol@{PEAR\_Task\_Windowseol}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Task\+\_\+\+Windowseol\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Task\+\_\+\+Windowseol\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Windowseol_a12d252af2aec6c682aeeb8378f12cb4d}{init}} (\$xml, \$attribs)
+\item 
+\mbox{\hyperlink{classPEAR__Task__Windowseol_a3f30b60723533c70566a39448189505b}{start\+Session}} (\$pkg, \$contents, \$dest)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Windowseol_abe8f8280cf9c5592b33d8455090ed88e}{validate\+Xml}} (\$pkg, \$xml, \&\$config, \$file\+Xml)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Windowseol_ac08cb325353223bb29e308a34fc77ed0}\label{classPEAR__Task__Windowseol_ac08cb325353223bb29e308a34fc77ed0}} 
+{\bfseries \$type} = \textquotesingle{}simple\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Windowseol_a63a79cb1d52a0297645c8b9a235fdfc9}\label{classPEAR__Task__Windowseol_a63a79cb1d52a0297645c8b9a235fdfc9}} 
+{\bfseries \$phase} = P\+E\+A\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+A\+C\+K\+A\+GE
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Windowseol_a0ce5417ee131670c655a0313dbd15c7e}\label{classPEAR__Task__Windowseol_a0ce5417ee131670c655a0313dbd15c7e}} 
+{\bfseries \$\+\_\+replacements}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Task__Windowseol_a12d252af2aec6c682aeeb8378f12cb4d}\label{classPEAR__Task__Windowseol_a12d252af2aec6c682aeeb8378f12cb4d}} 
+\index{PEAR\_Task\_Windowseol@{PEAR\_Task\_Windowseol}!init@{init}}
+\index{init@{init}!PEAR\_Task\_Windowseol@{PEAR\_Task\_Windowseol}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Windowseol\+::init (\begin{DoxyParamCaption}\item[{}]{\$xml,  }\item[{}]{\$attribs }\end{DoxyParamCaption})}
+
+Initialize a task instance with the parameters 
+\begin{DoxyParams}{Parameters}
+{\em array} & raw, parsed xml \\
+\hline
+{\em unused} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Task__Windowseol_a3f30b60723533c70566a39448189505b}\label{classPEAR__Task__Windowseol_a3f30b60723533c70566a39448189505b}} 
+\index{PEAR\_Task\_Windowseol@{PEAR\_Task\_Windowseol}!startSession@{startSession}}
+\index{startSession@{startSession}!PEAR\_Task\_Windowseol@{PEAR\_Task\_Windowseol}}
+\doxysubsubsection{\texorpdfstring{startSession()}{startSession()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Windowseol\+::start\+Session (\begin{DoxyParamCaption}\item[{}]{\$pkg,  }\item[{}]{\$contents,  }\item[{}]{\$dest }\end{DoxyParamCaption})}
+
+Replace all line endings with windows line endings
+
+See \mbox{\hyperlink{classPEAR__Task__Windowseol_abe8f8280cf9c5592b33d8455090ed88e}{validate\+Xml()}} source for the complete list of allowed fields 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2} & \\
+\hline
+{\em string} & file contents \\
+\hline
+{\em string} & the eventual final file location (informational only) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$false$\vert$\+P\+E\+A\+R\+\_\+\+Error false to skip this file, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} to fail (use \$this-\/$>$throw\+Error), otherwise return the new contents 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classPEAR__Task__Common_a96f54d4e7a2b51c341e28baf0bac628f}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common}}.
+
+\mbox{\Hypertarget{classPEAR__Task__Windowseol_abe8f8280cf9c5592b33d8455090ed88e}\label{classPEAR__Task__Windowseol_abe8f8280cf9c5592b33d8455090ed88e}} 
+\index{PEAR\_Task\_Windowseol@{PEAR\_Task\_Windowseol}!validateXml@{validateXml}}
+\index{validateXml@{validateXml}!PEAR\_Task\_Windowseol@{PEAR\_Task\_Windowseol}}
+\doxysubsubsection{\texorpdfstring{validateXml()}{validateXml()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Windowseol\+::validate\+Xml (\begin{DoxyParamCaption}\item[{}]{\$pkg,  }\item[{}]{\$xml,  }\item[{\&}]{\$config,  }\item[{}]{\$file\+Xml }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Validate the raw xml at parsing-\/time. 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__PackageFile__v2}{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2}}} & \\
+\hline
+{\em array} & raw, parsed xml \\
+\hline
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classPEAR__Task__Common_a0b5c1084bbc22adcfe910195153fdb08}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Task/Windowseol.\+php\end{DoxyCompactItemize}

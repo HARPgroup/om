@@ -1,0 +1,674 @@
+\hypertarget{classDB__ibase}{}\doxysection{D\+B\+\_\+ibase Class Reference}
+\label{classDB__ibase}\index{DB\_ibase@{DB\_ibase}}
+
+
+Inheritance diagram for D\+B\+\_\+ibase\+:
+% FIG 0
+
+
+Collaboration diagram for D\+B\+\_\+ibase\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__ibase_a895388695af2e43d9cb1aa0391450fd3}{D\+B\+\_\+ibase}} ()
+\item 
+\mbox{\hyperlink{classDB__ibase_a4bac8453cee5ce532b44b3e5741b2556}{connect}} (\$dsn, \$persistent=false)
+\item 
+\mbox{\hyperlink{classDB__ibase_ab074a39fb8c92e2c21542b1e0c0ce8fc}{disconnect}} ()
+\item 
+\mbox{\hyperlink{classDB__ibase_a4c13f390cd8b9c52f83d4866aa5fb597}{simple\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\mbox{\hyperlink{classDB__ibase_ad0589213fe79d2da17f854e20047bdd1}{modify\+Limit\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}}, \$from, \$count, \$params=array())
+\item 
+\mbox{\hyperlink{classDB__ibase_a8abc88a53b454d1a1848817423ab3551}{next\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__ibase_a89e102f078e9f4090488d04e58dd75c5}{fetch\+Into}} (\$result, \&\$arr, \$fetchmode, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__ibase_a86b129ec2153be9058f573dafd6c29d8}{free\+Result}} (\$result)
+\item 
+\mbox{\Hypertarget{classDB__ibase_a4c9836d12f022b71f996ccd5f8e65d2e}\label{classDB__ibase_a4c9836d12f022b71f996ccd5f8e65d2e}} 
+{\bfseries free\+Query} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\mbox{\hyperlink{classDB__ibase_a01171500ed1f6cd50038e0067b43e3d7}{affected\+Rows}} ()
+\item 
+\mbox{\hyperlink{classDB__ibase_a066e9f1b25a949dec3054a9b67089971}{num\+Cols}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__ibase_a5330a04a6b056eecf7dbe1fc0ced25e9}{prepare}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\& \mbox{\hyperlink{classDB__ibase_ac62b6267fd44ace8de5a1087b759096e}{execute}} (\$stmt, \$data=array())
+\item 
+\mbox{\hyperlink{classDB__ibase_acb353c3e13d4bec547db09c330c584a9}{free\+Prepared}} (\$stmt, \$free\+\_\+resource=true)
+\item 
+\mbox{\hyperlink{classDB__ibase_a001775fafe7173cb1f7eaf1794b19d1b}{auto\+Commit}} (\$onoff=false)
+\item 
+\mbox{\hyperlink{classDB__ibase_a99c7b5f698d258e2fdc52be3b10df4f4}{commit}} ()
+\item 
+\mbox{\hyperlink{classDB__ibase_aca79e0136cb3b23fb7cb3e44b47932bd}{rollback}} ()
+\item 
+\mbox{\Hypertarget{classDB__ibase_a368c31fee59bb5c14938de6f5a0f055b}\label{classDB__ibase_a368c31fee59bb5c14938de6f5a0f055b}} 
+{\bfseries transaction\+Init} (\$trans\+\_\+args=0)
+\item 
+\mbox{\hyperlink{classDB__ibase_a53235112b2c4acd491e28cc10739664f}{next\+Id}} (\$seq\+\_\+name, \$ondemand=true)
+\item 
+\mbox{\hyperlink{classDB__ibase_a68f9b66c16ba70a2ceecb89f13c7101a}{create\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__ibase_ad7cf8bbab6f45abd5dc3d65049433bcb}{drop\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__ibase_abc497d7f2b7207e582435481b13108cb}{\+\_\+ibase\+Field\+Flags}} (\$field\+\_\+name, \$table\+\_\+name)
+\item 
+\& \mbox{\hyperlink{classDB__ibase_a4e33344c39ff711a7237c729bab35cee}{ibase\+Raise\+Error}} (\$errno=null)
+\item 
+\mbox{\hyperlink{classDB__ibase_a45db54dead09c5604f3b6745c550a441}{error\+Native}} ()
+\item 
+\mbox{\hyperlink{classDB__ibase_a9c9e8ebc5f47d576eafd8804c55f5b79}{error\+Code}} (\$nativecode=null)
+\item 
+\mbox{\hyperlink{classDB__ibase_ac719ad4a939c94604b4b9b96dd31aa02}{table\+Info}} (\$result, \$mode=null)
+\item 
+\mbox{\hyperlink{classDB__ibase_a40dad9c617eded7db06e6eb9d8f9c2d7}{get\+Special\+Query}} (\$type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDB__ibase_a9ea59c7bed665137bf29fd9a67afa517}\label{classDB__ibase_a9ea59c7bed665137bf29fd9a67afa517}} 
+{\bfseries \$phptype} = \textquotesingle{}ibase\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classDB__ibase_a67771916309062c0536ee211339935a9}\label{classDB__ibase_a67771916309062c0536ee211339935a9}} 
+{\bfseries \$dbsyntax} = \textquotesingle{}ibase\textquotesingle{}
+\item 
+{\bfseries \$features}
+\item 
+\mbox{\Hypertarget{classDB__ibase_a5696485d2a267eb3cd9c2cad7d3952ec}\label{classDB__ibase_a5696485d2a267eb3cd9c2cad7d3952ec}} 
+{\bfseries \$errorcode\+\_\+map}
+\item 
+\mbox{\Hypertarget{classDB__ibase_a90e9b5ccd2f18e7b07947f84132c6b62}\label{classDB__ibase_a90e9b5ccd2f18e7b07947f84132c6b62}} 
+{\bfseries \$connection}
+\item 
+\mbox{\Hypertarget{classDB__ibase_a142d57f865e00fc4712936bc23ca0857}\label{classDB__ibase_a142d57f865e00fc4712936bc23ca0857}} 
+{\bfseries \$dsn} = array()
+\item 
+\mbox{\Hypertarget{classDB__ibase_a81e9958a545fb4c59843726310f65967}\label{classDB__ibase_a81e9958a545fb4c59843726310f65967}} 
+{\bfseries \$affected} = 0
+\item 
+\mbox{\Hypertarget{classDB__ibase_a57428d653af0d71d67c6c8dcfb1fefa1}\label{classDB__ibase_a57428d653af0d71d67c6c8dcfb1fefa1}} 
+{\bfseries \$autocommit} = true
+\item 
+\mbox{\hyperlink{classDB__ibase_af2522caaf2b749b004513bbf3416f43e}{\$last\+\_\+stmt}}
+\item 
+\mbox{\Hypertarget{classDB__ibase_af06c68f3800dd02cab76ad0c2c26a786}\label{classDB__ibase_af06c68f3800dd02cab76ad0c2c26a786}} 
+{\bfseries \$manip\+\_\+query} = array()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__ibase_abc497d7f2b7207e582435481b13108cb}\label{classDB__ibase_abc497d7f2b7207e582435481b13108cb}} 
+\index{DB\_ibase@{DB\_ibase}!\_ibaseFieldFlags@{\_ibaseFieldFlags}}
+\index{\_ibaseFieldFlags@{\_ibaseFieldFlags}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{\_ibaseFieldFlags()}{\_ibaseFieldFlags()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::\+\_\+ibase\+Field\+Flags (\begin{DoxyParamCaption}\item[{}]{\$field\+\_\+name,  }\item[{}]{\$table\+\_\+name }\end{DoxyParamCaption})}
+
+Get the column\textquotesingle{}s flags
+
+Supports \char`\"{}primary\+\_\+key\char`\"{}, \char`\"{}unique\+\_\+key\char`\"{}, \char`\"{}not\+\_\+null\char`\"{}, \char`\"{}default\char`\"{}, \char`\"{}computed\char`\"{} and \char`\"{}blob\char`\"{}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$field\+\_\+name} & the name of the field \\
+\hline
+string & {\em \$table\+\_\+name} & the name of the table\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the flags
+\end{DoxyReturn}
+@access private \mbox{\Hypertarget{classDB__ibase_a01171500ed1f6cd50038e0067b43e3d7}\label{classDB__ibase_a01171500ed1f6cd50038e0067b43e3d7}} 
+\index{DB\_ibase@{DB\_ibase}!affectedRows@{affectedRows}}
+\index{affectedRows@{affectedRows}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{affectedRows()}{affectedRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::affected\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determines the number of rows affected by a data maniuplation query
+
+0 is returned for queries that don\textquotesingle{}t manipulate data.
+
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a05a802d72feb861012eb7ebfdbe00e84}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a001775fafe7173cb1f7eaf1794b19d1b}\label{classDB__ibase_a001775fafe7173cb1f7eaf1794b19d1b}} 
+\index{DB\_ibase@{DB\_ibase}!autoCommit@{autoCommit}}
+\index{autoCommit@{autoCommit}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{autoCommit()}{autoCommit()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::auto\+Commit (\begin{DoxyParamCaption}\item[{}]{\$onoff = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Enables or disables automatic commits
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$onoff} & true turns it on, false turns it off\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object if the driver doesn\textquotesingle{}t support auto-\/committing transactions. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ad28b0f99a6bc3cdbf921804ec7720078}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a99c7b5f698d258e2fdc52be3b10df4f4}\label{classDB__ibase_a99c7b5f698d258e2fdc52be3b10df4f4}} 
+\index{DB\_ibase@{DB\_ibase}!commit@{commit}}
+\index{commit@{commit}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Commits the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a36868fcbeee42d96e00faeac7e82cb81}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a4bac8453cee5ce532b44b3e5741b2556}\label{classDB__ibase_a4bac8453cee5ce532b44b3e5741b2556}} 
+\index{DB\_ibase@{DB\_ibase}!connect@{connect}}
+\index{connect@{connect}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::connect (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$persistent = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Connect to the database server, log in and open the database
+
+Don\textquotesingle{}t call this method directly. Use \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect()}} instead.
+
+\mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}}\textquotesingle{}s ibase driver supports the following extra D\+SN options\+:
+\begin{DoxyItemize}
+\item buffers The number of database buffers to allocate for the server-\/side cache.
+\item charset The default character set for a database.
+\item dialect The default S\+QL dialect for any statement executed within a connection. Defaults to the highest one supported by client libraries. Functional only with Inter\+Base 6 and up.
+\item role Functional only with Inter\+Base 5 and up.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$dsn} & the data source name \\
+\hline
+bool & {\em \$persistent} & should the connection be persistent?\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ibase_a68f9b66c16ba70a2ceecb89f13c7101a}\label{classDB__ibase_a68f9b66c16ba70a2ceecb89f13c7101a}} 
+\index{DB\_ibase@{DB\_ibase}!createSequence@{createSequence}}
+\index{createSequence@{createSequence}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{createSequence()}{createSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::create\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Creates a new sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the new sequence\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+ibase\+::next\+I\+D(), \mbox{\hyperlink{classDB__ibase_ad7cf8bbab6f45abd5dc3d65049433bcb}{D\+B\+\_\+ibase\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a895388695af2e43d9cb1aa0391450fd3}\label{classDB__ibase_a895388695af2e43d9cb1aa0391450fd3}} 
+\index{DB\_ibase@{DB\_ibase}!DB\_ibase@{DB\_ibase}}
+\index{DB\_ibase@{DB\_ibase}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{DB\_ibase()}{DB\_ibase()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::\+D\+B\+\_\+ibase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This constructor calls {\ttfamily \$this-\/$>$\mbox{\hyperlink{classDB__common_aa5163360915c02c99d8d048b4728c3cc}{D\+B\+\_\+common()}}}
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ibase_ab074a39fb8c92e2c21542b1e0c0ce8fc}\label{classDB__ibase_ab074a39fb8c92e2c21542b1e0c0ce8fc}} 
+\index{DB\_ibase@{DB\_ibase}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disconnects from the database server
+
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ibase_ad7cf8bbab6f45abd5dc3d65049433bcb}\label{classDB__ibase_ad7cf8bbab6f45abd5dc3d65049433bcb}} 
+\index{DB\_ibase@{DB\_ibase}!dropSequence@{dropSequence}}
+\index{dropSequence@{dropSequence}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{dropSequence()}{dropSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::drop\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Deletes a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence to be deleted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common\+::drop\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+ibase\+::next\+I\+D(), \mbox{\hyperlink{classDB__ibase_a68f9b66c16ba70a2ceecb89f13c7101a}{D\+B\+\_\+ibase\+::create\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a9c9e8ebc5f47d576eafd8804c55f5b79}\label{classDB__ibase_a9c9e8ebc5f47d576eafd8804c55f5b79}} 
+\index{DB\_ibase@{DB\_ibase}!errorCode@{errorCode}}
+\index{errorCode@{errorCode}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{errorCode()}{errorCode()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::error\+Code (\begin{DoxyParamCaption}\item[{}]{\$nativecode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Maps native error codes to \mbox{\hyperlink{classDB}{DB}}\textquotesingle{}s portable ones
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$nativecode} & the error code returned by the D\+B\+MS\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the portable \mbox{\hyperlink{classDB}{DB}} error code. Return D\+B\+\_\+\+E\+R\+R\+OR if the current driver doesn\textquotesingle{}t have a mapping for the \$nativecode submitted.
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+7.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a94d409cd5836c29a3b4fc90b45ed3364}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a45db54dead09c5604f3b6745c550a441}\label{classDB__ibase_a45db54dead09c5604f3b6745c550a441}} 
+\index{DB\_ibase@{DB\_ibase}!errorNative@{errorNative}}
+\index{errorNative@{errorNative}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{errorNative()}{errorNative()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::error\+Native (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the D\+B\+MS\textquotesingle{} native error code produced by the last query
+
+\begin{DoxyReturn}{Returns}
+int the D\+B\+MS\textquotesingle{} error code. N\+U\+LL if there is no error code.
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+7.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a5b451dc88229cf12de5a0845ba53a377}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_ac62b6267fd44ace8de5a1087b759096e}\label{classDB__ibase_ac62b6267fd44ace8de5a1087b759096e}} 
+\index{DB\_ibase@{DB\_ibase}!execute@{execute}}
+\index{execute@{execute}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \& D\+B\+\_\+ibase\+::execute (\begin{DoxyParamCaption}\item[{}]{\$stmt,  }\item[{}]{\$data = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+Executes a \mbox{\hyperlink{classDB}{DB}} statement prepared with \mbox{\hyperlink{classDB__ibase_a5330a04a6b056eecf7dbe1fc0ced25e9}{prepare()}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$stmt} & a \mbox{\hyperlink{classDB}{DB}} statement resource returned from \mbox{\hyperlink{classDB__ibase_a5330a04a6b056eecf7dbe1fc0ced25e9}{prepare()}} \\
+\hline
+mixed & {\em \$data} & array, string or numeric data to be used in execution of the statement. Quantity of items passed must match quantity of placeholders in query\+: meaning 1 for non-\/array items or the quantity of elements in the array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object a new D\+B\+\_\+\+Result or a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} when fail 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__ibase_a5330a04a6b056eecf7dbe1fc0ced25e9}{D\+B\+\_\+ibase\+::prepare()}} @access public 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a668870fe685622c5c394539db4fb5087}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a89e102f078e9f4090488d04e58dd75c5}\label{classDB__ibase_a89e102f078e9f4090488d04e58dd75c5}} 
+\index{DB\_ibase@{DB\_ibase}!fetchInto@{fetchInto}}
+\index{fetchInto@{fetchInto}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{fetchInto()}{fetchInto()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::fetch\+Into (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{\&}]{\$arr,  }\item[{}]{\$fetchmode,  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Places a row from the result set into the given array
+
+Formating of the array and the data therein are configurable. See \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} for more information.
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & the query result resource \\
+\hline
+array & {\em \$arr} & the referenced array to put the data in \\
+\hline
+int & {\em \$fetchmode} & how the resulting array should be indexed \\
+\hline
+int & {\em \$rownum} & the row number to fetch (0 = first row)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK on success, N\+U\+LL when the end of a result set is reached or on failure
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__ibase_acb353c3e13d4bec547db09c330c584a9}\label{classDB__ibase_acb353c3e13d4bec547db09c330c584a9}} 
+\index{DB\_ibase@{DB\_ibase}!freePrepared@{freePrepared}}
+\index{freePrepared@{freePrepared}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{freePrepared()}{freePrepared()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::free\+Prepared (\begin{DoxyParamCaption}\item[{}]{\$stmt,  }\item[{}]{\$free\+\_\+resource = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Frees the internal resources associated with a prepared query
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$stmt} & the prepared statement\textquotesingle{}s \mbox{\hyperlink{categoryPHP}{P\+HP}} resource \\
+\hline
+bool & {\em \$free\+\_\+resource} & should the \mbox{\hyperlink{categoryPHP}{P\+HP}} resource be freed too? Use false if you need to get data from the result set later.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE if \$result is invalid
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__ibase_a5330a04a6b056eecf7dbe1fc0ced25e9}{D\+B\+\_\+ibase\+::prepare()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_adad94ce3c1fd7513c46ac509b9a98602}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a86b129ec2153be9058f573dafd6c29d8}\label{classDB__ibase_a86b129ec2153be9058f573dafd6c29d8}} 
+\index{DB\_ibase@{DB\_ibase}!freeResult@{freeResult}}
+\index{freeResult@{freeResult}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{freeResult()}{freeResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::free\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Deletes the result set and frees the memory occupied by the result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE if \$result is invalid
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__ibase_a40dad9c617eded7db06e6eb9d8f9c2d7}\label{classDB__ibase_a40dad9c617eded7db06e6eb9d8f9c2d7}} 
+\index{DB\_ibase@{DB\_ibase}!getSpecialQuery@{getSpecialQuery}}
+\index{getSpecialQuery@{getSpecialQuery}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{getSpecialQuery()}{getSpecialQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::get\+Special\+Query (\begin{DoxyParamCaption}\item[{}]{\$type }\end{DoxyParamCaption})}
+
+Obtains the query string needed for listing a given type of objects
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$type} & the kind of objects you want to retrieve\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the S\+QL query string or null if the driver doesn\textquotesingle{}t support the object type requested
+\end{DoxyReturn}
+@access protected \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a822d61267fea12aebe53a4a33bf9015d}{D\+B\+\_\+common\+::get\+List\+Of()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a2550ff7e5023d193614ab722d9aa3eb9}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a4e33344c39ff711a7237c729bab35cee}\label{classDB__ibase_a4e33344c39ff711a7237c729bab35cee}} 
+\index{DB\_ibase@{DB\_ibase}!ibaseRaiseError@{ibaseRaiseError}}
+\index{ibaseRaiseError@{ibaseRaiseError}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{ibaseRaiseError()}{ibaseRaiseError()}}
+{\footnotesize\ttfamily \& D\+B\+\_\+ibase\+::ibase\+Raise\+Error (\begin{DoxyParamCaption}\item[{}]{\$errno = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Produces a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object regarding the current problem
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$errno} & if the error is being manually raised pass a D\+B\+\_\+\+E\+R\+R\+O\+R$\ast$ constant here. If this isn\textquotesingle{}t passed the error information gathered from the D\+B\+MS.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a3b60dee1050625ee683af046033bbe26}{D\+B\+\_\+common\+::raise\+Error()}}, \mbox{\hyperlink{classDB__ibase_a45db54dead09c5604f3b6745c550a441}{D\+B\+\_\+ibase\+::error\+Native()}}, \mbox{\hyperlink{classDB__ibase_a9c9e8ebc5f47d576eafd8804c55f5b79}{D\+B\+\_\+ibase\+::error\+Code()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__ibase_ad0589213fe79d2da17f854e20047bdd1}\label{classDB__ibase_ad0589213fe79d2da17f854e20047bdd1}} 
+\index{DB\_ibase@{DB\_ibase}!modifyLimitQuery@{modifyLimitQuery}}
+\index{modifyLimitQuery@{modifyLimitQuery}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{modifyLimitQuery()}{modifyLimitQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::modify\+Limit\+Query (\begin{DoxyParamCaption}\item[{}]{\$query,  }\item[{}]{\$from,  }\item[{}]{\$count,  }\item[{}]{\$params = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+Adds L\+I\+M\+IT clauses to a query string according to current D\+B\+MS standards
+
+Only works with Firebird.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$query} & the query to modify \\
+\hline
+int & {\em \$from} & the row to start to fetching (0 = the first row) \\
+\hline
+int & {\em \$count} & the numbers of rows to fetch \\
+\hline
+mixed & {\em \$params} & array, string or numeric data to be used in execution of the statement. Quantity of items passed must match quantity of placeholders in query\+: meaning 1 placeholder for non-\/array parameters or 1 placeholder per array element.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the query string with L\+I\+M\+IT clauses added
+\end{DoxyReturn}
+@access protected 
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a011e994cb95ac8c332c1a61071b49329}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a53235112b2c4acd491e28cc10739664f}\label{classDB__ibase_a53235112b2c4acd491e28cc10739664f}} 
+\index{DB\_ibase@{DB\_ibase}!nextId@{nextId}}
+\index{nextId@{nextId}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{nextId()}{nextId()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::next\+Id (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name,  }\item[{}]{\$ondemand = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Returns the next free id in a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence \\
+\hline
+boolean & {\em \$ondemand} & when true, the seqence is automatically created if it does not exist\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the next id number in the sequence. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+D\+B\+\_\+common\+::next\+I\+D(), \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, \mbox{\hyperlink{classDB__ibase_a68f9b66c16ba70a2ceecb89f13c7101a}{D\+B\+\_\+ibase\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__ibase_ad7cf8bbab6f45abd5dc3d65049433bcb}{D\+B\+\_\+ibase\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ae654bec375517d041f1920ab0cc4703b}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a8abc88a53b454d1a1848817423ab3551}\label{classDB__ibase_a8abc88a53b454d1a1848817423ab3551}} 
+\index{DB\_ibase@{DB\_ibase}!nextResult@{nextResult}}
+\index{nextResult@{nextResult}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{nextResult()}{nextResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::next\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Move the internal ibase result pointer to the next available result
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & valid fbsql result resource\\
+\hline
+\end{DoxyParams}
+@access public
+
+\begin{DoxyReturn}{Returns}
+true if a result is available otherwise return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ibase_a066e9f1b25a949dec3054a9b67089971}\label{classDB__ibase_a066e9f1b25a949dec3054a9b67089971}} 
+\index{DB\_ibase@{DB\_ibase}!numCols@{numCols}}
+\index{numCols@{numCols}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{numCols()}{numCols()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::num\+Cols (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of columns in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of columns. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__ibase_a5330a04a6b056eecf7dbe1fc0ced25e9}\label{classDB__ibase_a5330a04a6b056eecf7dbe1fc0ced25e9}} 
+\index{DB\_ibase@{DB\_ibase}!prepare@{prepare}}
+\index{prepare@{prepare}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{prepare()}{prepare()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::prepare (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Prepares a query for multiple execution with \mbox{\hyperlink{classDB__ibase_ac62b6267fd44ace8de5a1087b759096e}{execute()}}.
+
+\mbox{\hyperlink{classDB__ibase_a5330a04a6b056eecf7dbe1fc0ced25e9}{prepare()}} requires a generic query as string like {\ttfamily  I\+N\+S\+E\+RT I\+N\+TO numbers V\+A\+L\+U\+ES (?, ?, ?) }. The {\ttfamily ?} characters are placeholders.
+
+Three types of placeholders can be used\+:
+\begin{DoxyItemize}
+\item {\ttfamily ?} a quoted scalar value, i.\+e. strings, integers
+\item {\ttfamily !} value is inserted \textquotesingle{}as is\textquotesingle{}
+\item {\ttfamily \&} requires a file name. The file\textquotesingle{}s contents get inserted into the query (i.\+e. saving binary data in a db)
+\end{DoxyItemize}
+
+Use backslashes to escape placeholder characters if you don\textquotesingle{}t want them to be interpreted as placeholders. Example\+: {\ttfamily  \char`\"{}\+U\+P\+D\+A\+T\+E foo S\+E\+T col=? W\+H\+E\+R\+E col=\textquotesingle{}over \textbackslash{}\& under\textquotesingle{}\char`\"{} }
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$query} & query to be prepared \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed \mbox{\hyperlink{classDB}{DB}} statement resource on success. \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a7c128dd46a57642cddb9c466f2ad6012}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_aca79e0136cb3b23fb7cb3e44b47932bd}\label{classDB__ibase_aca79e0136cb3b23fb7cb3e44b47932bd}} 
+\index{DB\_ibase@{DB\_ibase}!rollback@{rollback}}
+\index{rollback@{rollback}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{rollback()}{rollback()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::rollback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reverts the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a03b635b3130360516cb504b7f6095891}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ibase_a4c13f390cd8b9c52f83d4866aa5fb597}\label{classDB__ibase_a4c13f390cd8b9c52f83d4866aa5fb597}} 
+\index{DB\_ibase@{DB\_ibase}!simpleQuery@{simpleQuery}}
+\index{simpleQuery@{simpleQuery}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{simpleQuery()}{simpleQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::simple\+Query (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Sends a query to the database server
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & the S\+QL query string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed + a \mbox{\hyperlink{categoryPHP}{P\+HP}} result resrouce for successful S\+E\+L\+E\+CT queries
+\begin{DoxyItemize}
+\item the D\+B\+\_\+\+OK constant for other successful queries
+\item a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ibase_ac719ad4a939c94604b4b9b96dd31aa02}\label{classDB__ibase_ac719ad4a939c94604b4b9b96dd31aa02}} 
+\index{DB\_ibase@{DB\_ibase}!tableInfo@{tableInfo}}
+\index{tableInfo@{tableInfo}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{tableInfo()}{tableInfo()}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::table\+Info (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{}]{\$mode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Returns information about a table or a result set
+
+N\+O\+TE\+: only supports \textquotesingle{}table\textquotesingle{} and \textquotesingle{}flags\textquotesingle{} if {\itshape \$result} is a table name.
+
+
+\begin{DoxyParams}[1]{Parameters}
+object | string & {\em \$result} & \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} object from a query or a string containing the name of a table. While this also accepts a query result resource identifier, this behavior is deprecated. \\
+\hline
+int & {\em \$mode} & a valid table\+Info mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array an associative array with the information requested. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common\+::table\+Info()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__ibase_a04b5128f0a08acfc525bd3aa472cebbf}\label{classDB__ibase_a04b5128f0a08acfc525bd3aa472cebbf}} 
+\index{DB\_ibase@{DB\_ibase}!\$features@{\$features}}
+\index{\$features@{\$features}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{\$features}{$features}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::\$features}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'limit'}         => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'new\_link'}      => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'numrows'}       => \textcolor{stringliteral}{'emulate'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'pconnect'}      => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'prepare'}       => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'ssl'}           => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'transactions'}  => \textcolor{keyword}{true},}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__ibase_af2522caaf2b749b004513bbf3416f43e}\label{classDB__ibase_af2522caaf2b749b004513bbf3416f43e}} 
+\index{DB\_ibase@{DB\_ibase}!\$last\_stmt@{\$last\_stmt}}
+\index{\$last\_stmt@{\$last\_stmt}!DB\_ibase@{DB\_ibase}}
+\doxysubsubsection{\texorpdfstring{\$last\_stmt}{$last\_stmt}}
+{\footnotesize\ttfamily D\+B\+\_\+ibase\+::\$last\+\_\+stmt}
+
+The prepared statement handle from the most recently executed statement
+
+\{ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+D\+B/ibase.\+php\end{DoxyCompactItemize}

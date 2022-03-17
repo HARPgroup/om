@@ -1,0 +1,159 @@
+\hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter}{}\doxysection{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter Class Reference}
+\label{classSpreadsheet__Excel__Writer__BIFFwriter}\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+
+
+Inheritance diagram for Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+:
+% FIG 0
+
+
+Collaboration diagram for Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__BIFFwriter_a59671227c8c11065fb62eb96f3f45849}{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__BIFFwriter_adfc2cab1bb50a875fffc86155cd5b2db}{\+\_\+set\+Byte\+Order}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__BIFFwriter_a7a2c0aa0f76f0c7124202592d88e90ab}{\+\_\+prepend}} (\$data)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__BIFFwriter_ae3ac34816f916fdb95ed5010f80ebe24}{\+\_\+append}} (\$data)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__BIFFwriter_a3c7fb32599612590198195374595a6e5}{\+\_\+store\+Bof}} (\$type)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__BIFFwriter_a9edd4d93b4e91e669925f2c56f13dd93}{\+\_\+store\+Eof}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__BIFFwriter_a48476a42c6ab16ea298e1c91b966f26e}{\+\_\+add\+Continue}} (\$data)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__BIFFwriter_a55bfb1ba7dacd31c7d66a149325850fc}{set\+Temp\+Dir}} (\$dir)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_af7b9bad27356657ec937ef9c5df04a1a}\label{classSpreadsheet__Excel__Writer__BIFFwriter_af7b9bad27356657ec937ef9c5df04a1a}} 
+{\bfseries \$\+\_\+\+B\+I\+F\+F\+\_\+version} = 0x0500
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_a90797ec86603f9f3e348a293fd72c71d}\label{classSpreadsheet__Excel__Writer__BIFFwriter_a90797ec86603f9f3e348a293fd72c71d}} 
+{\bfseries \$\+\_\+byte\+\_\+order}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_afc3ff4f514548c184a6d82d0e423717b}\label{classSpreadsheet__Excel__Writer__BIFFwriter_afc3ff4f514548c184a6d82d0e423717b}} 
+{\bfseries \$\+\_\+data}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_a84a253be8d72e3132e66aa3769b0f7f0}\label{classSpreadsheet__Excel__Writer__BIFFwriter_a84a253be8d72e3132e66aa3769b0f7f0}} 
+{\bfseries \$\+\_\+datasize}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_acd145d904e39ad181b9624468c0e4ab0}\label{classSpreadsheet__Excel__Writer__BIFFwriter_acd145d904e39ad181b9624468c0e4ab0}} 
+{\bfseries \$\+\_\+limit}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_a2626f819682298ee9123cd292b806dab}\label{classSpreadsheet__Excel__Writer__BIFFwriter_a2626f819682298ee9123cd292b806dab}} 
+{\bfseries \$\+\_\+tmp\+\_\+dir}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_a48476a42c6ab16ea298e1c91b966f26e}\label{classSpreadsheet__Excel__Writer__BIFFwriter_a48476a42c6ab16ea298e1c91b966f26e}} 
+\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}!\_addContinue@{\_addContinue}}
+\index{\_addContinue@{\_addContinue}!Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+\doxysubsubsection{\texorpdfstring{\_addContinue()}{\_addContinue()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+::\+\_\+add\+Continue (\begin{DoxyParamCaption}\item[{}]{\$data }\end{DoxyParamCaption})}
+
+Excel limits the size of B\+I\+FF records. In Excel 5 the limit is 2084 bytes. In Excel 97 the limit is 8228 bytes. Records that are longer than these limits must be split up into C\+O\+N\+T\+I\+N\+UE blocks.
+
+This function takes a long B\+I\+FF record and inserts C\+O\+N\+T\+I\+N\+UE records as necessary.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & The original binary data to be written \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string A very convenient string of continue blocks @access private 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_ae3ac34816f916fdb95ed5010f80ebe24}\label{classSpreadsheet__Excel__Writer__BIFFwriter_ae3ac34816f916fdb95ed5010f80ebe24}} 
+\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}!\_append@{\_append}}
+\index{\_append@{\_append}!Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+\doxysubsubsection{\texorpdfstring{\_append()}{\_append()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+::\+\_\+append (\begin{DoxyParamCaption}\item[{}]{\$data }\end{DoxyParamCaption})}
+
+General storage function
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & binary data to append @access private \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classSpreadsheet__Excel__Writer__Worksheet_a616a633181cfc7073d12c1764204d96d}{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Worksheet}}.
+
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_a7a2c0aa0f76f0c7124202592d88e90ab}\label{classSpreadsheet__Excel__Writer__BIFFwriter_a7a2c0aa0f76f0c7124202592d88e90ab}} 
+\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}!\_prepend@{\_prepend}}
+\index{\_prepend@{\_prepend}!Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+\doxysubsubsection{\texorpdfstring{\_prepend()}{\_prepend()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+::\+\_\+prepend (\begin{DoxyParamCaption}\item[{}]{\$data }\end{DoxyParamCaption})}
+
+General storage function
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & binary data to prepend @access private \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_adfc2cab1bb50a875fffc86155cd5b2db}\label{classSpreadsheet__Excel__Writer__BIFFwriter_adfc2cab1bb50a875fffc86155cd5b2db}} 
+\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}!\_setByteOrder@{\_setByteOrder}}
+\index{\_setByteOrder@{\_setByteOrder}!Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+\doxysubsubsection{\texorpdfstring{\_setByteOrder()}{\_setByteOrder()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+::\+\_\+set\+Byte\+Order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determine the byte order and store it as class data to avoid recalculating it for each call to new().
+
+@access private \mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_a3c7fb32599612590198195374595a6e5}\label{classSpreadsheet__Excel__Writer__BIFFwriter_a3c7fb32599612590198195374595a6e5}} 
+\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}!\_storeBof@{\_storeBof}}
+\index{\_storeBof@{\_storeBof}!Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+\doxysubsubsection{\texorpdfstring{\_storeBof()}{\_storeBof()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+::\+\_\+store\+Bof (\begin{DoxyParamCaption}\item[{}]{\$type }\end{DoxyParamCaption})}
+
+Writes Excel B\+OF record to indicate the beginning of a stream or sub-\/stream in the B\+I\+FF file.
+
+
+\begin{DoxyParams}[1]{Parameters}
+integer & {\em \$type} & Type of B\+I\+FF file to write\+: 0x0005 Workbook, 0x0010 Worksheet. @access private \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_a9edd4d93b4e91e669925f2c56f13dd93}\label{classSpreadsheet__Excel__Writer__BIFFwriter_a9edd4d93b4e91e669925f2c56f13dd93}} 
+\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}!\_storeEof@{\_storeEof}}
+\index{\_storeEof@{\_storeEof}!Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+\doxysubsubsection{\texorpdfstring{\_storeEof()}{\_storeEof()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+::\+\_\+store\+Eof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Writes Excel E\+OF record to indicate the end of a B\+I\+FF stream.
+
+@access private \mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_a55bfb1ba7dacd31c7d66a149325850fc}\label{classSpreadsheet__Excel__Writer__BIFFwriter_a55bfb1ba7dacd31c7d66a149325850fc}} 
+\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}!setTempDir@{setTempDir}}
+\index{setTempDir@{setTempDir}!Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+\doxysubsubsection{\texorpdfstring{setTempDir()}{setTempDir()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+::set\+Temp\+Dir (\begin{DoxyParamCaption}\item[{}]{\$dir }\end{DoxyParamCaption})}
+
+Sets the temp dir used for storing the O\+LE file
+
+@access public 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$dir} & The dir to be used as temp dir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if given dir is valid, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__BIFFwriter_a59671227c8c11065fb62eb96f3f45849}\label{classSpreadsheet__Excel__Writer__BIFFwriter_a59671227c8c11065fb62eb96f3f45849}} 
+\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}!Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+\index{Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}!Spreadsheet\_Excel\_Writer\_BIFFwriter@{Spreadsheet\_Excel\_Writer\_BIFFwriter}}
+\doxysubsubsection{\texorpdfstring{Spreadsheet\_Excel\_Writer\_BIFFwriter()}{Spreadsheet\_Excel\_Writer\_BIFFwriter()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter\+::\+Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+B\+I\+F\+Fwriter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor
+
+@access public 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+Spreadsheet/\+Excel/\+Writer/B\+I\+F\+Fwriter.\+php\end{DoxyCompactItemize}

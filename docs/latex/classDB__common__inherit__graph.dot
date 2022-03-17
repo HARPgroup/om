@@ -1,0 +1,36 @@
+digraph "DB_common"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="DB_common",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="PEAR",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPEAR.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="DB_dbase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__dbase.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="DB_fbsql",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__fbsql.html",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="DB_ibase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__ibase.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="DB_ifx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__ifx.html",tooltip=" "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="DB_msql",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__msql.html",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="DB_mssql",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__mssql.html",tooltip=" "];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="DB_mysql",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__mysql.html",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="DB_mysqli",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__mysqli.html",tooltip=" "];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="DB_oci8",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__oci8.html",tooltip=" "];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="DB_odbc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__odbc.html",tooltip=" "];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="DB_pgsql",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__pgsql.html",tooltip=" "];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="DB_sqlite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__sqlite.html",tooltip=" "];
+  Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="DB_sybase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDB__sybase.html",tooltip=" "];
+}

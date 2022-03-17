@@ -1,0 +1,156 @@
+\hypertarget{classTestMatrix}{}\doxysection{Test\+Matrix Class Reference}
+\label{classTestMatrix}\index{TestMatrix@{TestMatrix}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTestMatrix_aa7fbaf0bf8cedea1a11395ffab7150c3}{Test\+Matrix}} ()
+\item 
+\mbox{\hyperlink{classTestMatrix_ab600b518a5efe5623ca0f4cb3b7964aa}{try\+\_\+success}} (\$s, \$e=\char`\"{}\char`\"{})
+\item 
+\mbox{\hyperlink{classTestMatrix_a5abf2592e931102af1717619965a300f}{try\+\_\+failure}} (\$count, \$s, \$e=\char`\"{}\char`\"{})
+\item 
+\mbox{\hyperlink{classTestMatrix_aa003e264c1988b0e14cadd314d66b214}{try\+\_\+warning}} (\$count, \$s, \$e=\char`\"{}\char`\"{})
+\item 
+\mbox{\hyperlink{classTestMatrix_a27b605545e8492bfb790a6a45aa7f735}{check\+Scalars}} (\$x, \$y)
+\item 
+\mbox{\hyperlink{classTestMatrix_abcc6ec65fc0d5191c4fdc2ebbfcc26f5}{check\+Vectors}} (\$x, \$y)
+\item 
+\mbox{\hyperlink{classTestMatrix_a531602feac54be32281fb8c9a1ff66c2}{check\+Arrays}} (\$x, \$y)
+\item 
+\mbox{\hyperlink{classTestMatrix_aa0a03c8b87f91313dea415f883c68adb}{check\+Matrices}} (\$X=null, \$Y=null)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTestMatrix_a531602feac54be32281fb8c9a1ff66c2}\label{classTestMatrix_a531602feac54be32281fb8c9a1ff66c2}} 
+\index{TestMatrix@{TestMatrix}!checkArrays@{checkArrays}}
+\index{checkArrays@{checkArrays}!TestMatrix@{TestMatrix}}
+\doxysubsubsection{\texorpdfstring{checkArrays()}{checkArrays()}}
+{\footnotesize\ttfamily Test\+Matrix\+::check\+Arrays (\begin{DoxyParamCaption}\item[{}]{\$x,  }\item[{}]{\$y }\end{DoxyParamCaption})}
+
+Check norm of difference of \char`\"{}arrays\char`\"{}. 
+\begin{DoxyParams}[1]{Parameters}
+float & {\em \$x,\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]}} & \\
+\hline
+float & {\em \$y,\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]}} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTestMatrix_aa0a03c8b87f91313dea415f883c68adb}\label{classTestMatrix_aa0a03c8b87f91313dea415f883c68adb}} 
+\index{TestMatrix@{TestMatrix}!checkMatrices@{checkMatrices}}
+\index{checkMatrices@{checkMatrices}!TestMatrix@{TestMatrix}}
+\doxysubsubsection{\texorpdfstring{checkMatrices()}{checkMatrices()}}
+{\footnotesize\ttfamily Test\+Matrix\+::check\+Matrices (\begin{DoxyParamCaption}\item[{}]{\$X = {\ttfamily null},  }\item[{}]{\$Y = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Check norm of difference of \char`\"{}matrices\char`\"{}. 
+\begin{DoxyParams}[1]{Parameters}
+matrix & {\em \$X} & \\
+\hline
+matrix & {\em \$Y} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTestMatrix_a27b605545e8492bfb790a6a45aa7f735}\label{classTestMatrix_a27b605545e8492bfb790a6a45aa7f735}} 
+\index{TestMatrix@{TestMatrix}!checkScalars@{checkScalars}}
+\index{checkScalars@{checkScalars}!TestMatrix@{TestMatrix}}
+\doxysubsubsection{\texorpdfstring{checkScalars()}{checkScalars()}}
+{\footnotesize\ttfamily Test\+Matrix\+::check\+Scalars (\begin{DoxyParamCaption}\item[{}]{\$x,  }\item[{}]{\$y }\end{DoxyParamCaption})}
+
+Check magnitude of difference of \char`\"{}scalars\char`\"{}. 
+\begin{DoxyParams}[1]{Parameters}
+float & {\em \$x} & \\
+\hline
+float & {\em \$y} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTestMatrix_abcc6ec65fc0d5191c4fdc2ebbfcc26f5}\label{classTestMatrix_abcc6ec65fc0d5191c4fdc2ebbfcc26f5}} 
+\index{TestMatrix@{TestMatrix}!checkVectors@{checkVectors}}
+\index{checkVectors@{checkVectors}!TestMatrix@{TestMatrix}}
+\doxysubsubsection{\texorpdfstring{checkVectors()}{checkVectors()}}
+{\footnotesize\ttfamily Test\+Matrix\+::check\+Vectors (\begin{DoxyParamCaption}\item[{}]{\$x,  }\item[{}]{\$y }\end{DoxyParamCaption})}
+
+Check norm of difference of \char`\"{}vectors\char`\"{}. 
+\begin{DoxyParams}[1]{Parameters}
+float & {\em \$x,\mbox{[}$\,$\mbox{]}} & \\
+\hline
+float & {\em \$y,\mbox{[}$\,$\mbox{]}} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTestMatrix_aa7fbaf0bf8cedea1a11395ffab7150c3}\label{classTestMatrix_aa7fbaf0bf8cedea1a11395ffab7150c3}} 
+\index{TestMatrix@{TestMatrix}!TestMatrix@{TestMatrix}}
+\index{TestMatrix@{TestMatrix}!TestMatrix@{TestMatrix}}
+\doxysubsubsection{\texorpdfstring{TestMatrix()}{TestMatrix()}}
+{\footnotesize\ttfamily Test\+Matrix\+::\+Test\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Test matrix methods
+
+Constructors and constructor-\/like methods\+:
+
+\mbox{\hyperlink{classMatrix}{Matrix(double\mbox{[}$\,$\mbox{]}, int)}} \mbox{\hyperlink{classMatrix}{Matrix(double\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]})}} ~\newline
+ \mbox{\hyperlink{classMatrix}{Matrix(int, int)}} \mbox{\hyperlink{classMatrix}{Matrix(int, int, double)}} \mbox{\hyperlink{classMatrix}{Matrix(int, int, double\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]})}} construct\+With\+Copy(double\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]}) random(int,int) identity(int)
+
+check that construct\+With\+Copy behaves properly
+
+Access Methods\+:
+
+get\+Column\+Dimension() get\+Row\+Dimension() get\+Array() get\+Array\+Copy() get\+Column\+Packed\+Copy() get\+Row\+Packed\+Copy() get(int,int) get\+Matrix(int,int,int,int) get\+Matrix(int,int,int\mbox{[}$\,$\mbox{]}) get\+Matrix(int\mbox{[}$\,$\mbox{]},int,int) get\+Matrix(int\mbox{[}$\,$\mbox{]},int\mbox{[}$\,$\mbox{]}) set(int,int,double) set\+Matrix(int,int,int,int,\+Matrix) set\+Matrix(int,int,int\mbox{[}$\,$\mbox{]},\+Matrix) set\+Matrix(int\mbox{[}$\,$\mbox{]},int,int,\+Matrix) set\+Matrix(int\mbox{[}$\,$\mbox{]},int\mbox{[}$\,$\mbox{]},\+Matrix)
+
+Array-\/like methods\+: minus minus\+Equals plus plus\+Equals array\+Left\+Divide array\+Left\+Divide\+Equals array\+Right\+Divide array\+Right\+Divide\+Equals array\+Times array\+Times\+Equals uminus
+
+I/O methods\+: read print serializable\+: write\+Object read\+Object
+
+Test linear algebra methods\mbox{\Hypertarget{classTestMatrix_a5abf2592e931102af1717619965a300f}\label{classTestMatrix_a5abf2592e931102af1717619965a300f}} 
+\index{TestMatrix@{TestMatrix}!try\_failure@{try\_failure}}
+\index{try\_failure@{try\_failure}!TestMatrix@{TestMatrix}}
+\doxysubsubsection{\texorpdfstring{try\_failure()}{try\_failure()}}
+{\footnotesize\ttfamily Test\+Matrix\+::try\+\_\+failure (\begin{DoxyParamCaption}\item[{}]{\$count,  }\item[{}]{\$s,  }\item[{}]{\$e = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+Print appropriate messages for unsuccessful outcome try 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$count} & \\
+\hline
+string & {\em \$s} & \\
+\hline
+string & {\em \$e} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int incremented counter ~\newline
+ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTestMatrix_ab600b518a5efe5623ca0f4cb3b7964aa}\label{classTestMatrix_ab600b518a5efe5623ca0f4cb3b7964aa}} 
+\index{TestMatrix@{TestMatrix}!try\_success@{try\_success}}
+\index{try\_success@{try\_success}!TestMatrix@{TestMatrix}}
+\doxysubsubsection{\texorpdfstring{try\_success()}{try\_success()}}
+{\footnotesize\ttfamily Test\+Matrix\+::try\+\_\+success (\begin{DoxyParamCaption}\item[{}]{\$s,  }\item[{}]{\$e = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+Print appropriate messages for successful outcome try 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$s} & \\
+\hline
+string & {\em \$e} & ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTestMatrix_aa003e264c1988b0e14cadd314d66b214}\label{classTestMatrix_aa003e264c1988b0e14cadd314d66b214}} 
+\index{TestMatrix@{TestMatrix}!try\_warning@{try\_warning}}
+\index{try\_warning@{try\_warning}!TestMatrix@{TestMatrix}}
+\doxysubsubsection{\texorpdfstring{try\_warning()}{try\_warning()}}
+{\footnotesize\ttfamily Test\+Matrix\+::try\+\_\+warning (\begin{DoxyParamCaption}\item[{}]{\$count,  }\item[{}]{\$s,  }\item[{}]{\$e = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+Print appropriate messages for unsuccessful outcome try 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$count} & \\
+\hline
+string & {\em \$s} & \\
+\hline
+string & {\em \$e} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int incremented counter ~\newline
+ 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/phpmath/test/Test\+Matrix.\+php\end{DoxyCompactItemize}

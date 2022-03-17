@@ -1,0 +1,189 @@
+\hypertarget{classPEAR__Command}{}\doxysection{P\+E\+A\+R\+\_\+\+Command Class Reference}
+\label{classPEAR__Command}\index{PEAR\_Command@{PEAR\_Command}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__Command_a568c638c684b51e6adbbd31c3a5c62bd}\label{classPEAR__Command_a568c638c684b51e6adbbd31c3a5c62bd}} 
+\& {\bfseries get\+Object} (\$command)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\& \mbox{\hyperlink{classPEAR__Command_aa6b4427c5b8a311c4a81cfc8e40ce0a2}{factory}} (\$command, \&\$config)
+\item 
+\& \mbox{\hyperlink{classPEAR__Command_adf67b294071a562e2c4d8ebb4d1bd852}{get\+Frontend\+Object}} ()
+\item 
+\& \mbox{\hyperlink{classPEAR__Command_a5663b1fc1d2205e83186338cc942bdd0}{set\+Frontend\+Class}} (\$uiclass)
+\item 
+\mbox{\hyperlink{classPEAR__Command_af6a0ef075c0f053d62b34a5624232575}{set\+Frontend\+Type}} (\$uitype)
+\item 
+\mbox{\hyperlink{classPEAR__Command_ab7943db8905010df1adac750e4ebb8d5}{register\+Commands}} (\$merge=false, \$dir=null)
+\item 
+\mbox{\hyperlink{classPEAR__Command_aac2bb3bee39441784af8068edde93868}{get\+Commands}} ()
+\item 
+\mbox{\hyperlink{classPEAR__Command_a3264256ad3deb5426a0bf2cb609f428b}{get\+Shortcuts}} ()
+\item 
+\mbox{\hyperlink{classPEAR__Command_a2b6a62e435073b24b606ffd1a175b162}{get\+Getopt\+Args}} (\$command, \&\$short\+\_\+args, \&\$long\+\_\+args)
+\item 
+\mbox{\hyperlink{classPEAR__Command_a3aca96d5f888e8405eb8891f65c6905b}{get\+Description}} (\$command)
+\item 
+\mbox{\hyperlink{classPEAR__Command_a3ea6f4e40c43647e30da9dac131c6208}{get\+Help}} (\$command)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Command_aa6b4427c5b8a311c4a81cfc8e40ce0a2}\label{classPEAR__Command_aa6b4427c5b8a311c4a81cfc8e40ce0a2}} 
+\index{PEAR\_Command@{PEAR\_Command}!factory@{factory}}
+\index{factory@{factory}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{factory()}{factory()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Command\+::factory (\begin{DoxyParamCaption}\item[{}]{\$command,  }\item[{\&}]{\$config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get the right object for executing a command.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$command} & The name of the command \\
+\hline
+object & {\em \$config} & Instance of P\+E\+A\+R\+\_\+\+Config object\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the command object or a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Command_aac2bb3bee39441784af8068edde93868}\label{classPEAR__Command_aac2bb3bee39441784af8068edde93868}} 
+\index{PEAR\_Command@{PEAR\_Command}!getCommands@{getCommands}}
+\index{getCommands@{getCommands}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{getCommands()}{getCommands()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+::get\+Commands (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get the list of currently supported commands, and what classes implement them.
+
+\begin{DoxyReturn}{Returns}
+array command =$>$ implementing class
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Command_a3aca96d5f888e8405eb8891f65c6905b}\label{classPEAR__Command_a3aca96d5f888e8405eb8891f65c6905b}} 
+\index{PEAR\_Command@{PEAR\_Command}!getDescription@{getDescription}}
+\index{getDescription@{getDescription}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{getDescription()}{getDescription()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+::get\+Description (\begin{DoxyParamCaption}\item[{}]{\$command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get description for a command.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$command} & Name of the command\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string command description
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Command_adf67b294071a562e2c4d8ebb4d1bd852}\label{classPEAR__Command_adf67b294071a562e2c4d8ebb4d1bd852}} 
+\index{PEAR\_Command@{PEAR\_Command}!getFrontendObject@{getFrontendObject}}
+\index{getFrontendObject@{getFrontendObject}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{getFrontendObject()}{getFrontendObject()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Command\+::get\+Frontend\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get instance of frontend object.
+
+\begin{DoxyReturn}{Returns}
+object$\vert$\+P\+E\+A\+R\+\_\+\+Error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Command_a2b6a62e435073b24b606ffd1a175b162}\label{classPEAR__Command_a2b6a62e435073b24b606ffd1a175b162}} 
+\index{PEAR\_Command@{PEAR\_Command}!getGetoptArgs@{getGetoptArgs}}
+\index{getGetoptArgs@{getGetoptArgs}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{getGetoptArgs()}{getGetoptArgs()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+::get\+Getopt\+Args (\begin{DoxyParamCaption}\item[{}]{\$command,  }\item[{\&}]{\$short\+\_\+args,  }\item[{\&}]{\$long\+\_\+args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Compiles arguments for getopt.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$command} & command to get optstring for \\
+\hline
+string & {\em \$short\+\_\+args} & (reference) short getopt format \\
+\hline
+array & {\em \$long\+\_\+args} & (reference) long getopt format\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Command_a3ea6f4e40c43647e30da9dac131c6208}\label{classPEAR__Command_a3ea6f4e40c43647e30da9dac131c6208}} 
+\index{PEAR\_Command@{PEAR\_Command}!getHelp@{getHelp}}
+\index{getHelp@{getHelp}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{getHelp()}{getHelp()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+::get\+Help (\begin{DoxyParamCaption}\item[{}]{\$command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get help for command.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$command} & Name of the command to return help for\\
+\hline
+\end{DoxyParams}
+@access public \mbox{\Hypertarget{classPEAR__Command_a3264256ad3deb5426a0bf2cb609f428b}\label{classPEAR__Command_a3264256ad3deb5426a0bf2cb609f428b}} 
+\index{PEAR\_Command@{PEAR\_Command}!getShortcuts@{getShortcuts}}
+\index{getShortcuts@{getShortcuts}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{getShortcuts()}{getShortcuts()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+::get\+Shortcuts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get the list of command shortcuts.
+
+\begin{DoxyReturn}{Returns}
+array shortcut =$>$ command
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Command_ab7943db8905010df1adac750e4ebb8d5}\label{classPEAR__Command_ab7943db8905010df1adac750e4ebb8d5}} 
+\index{PEAR\_Command@{PEAR\_Command}!registerCommands@{registerCommands}}
+\index{registerCommands@{registerCommands}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{registerCommands()}{registerCommands()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+::register\+Commands (\begin{DoxyParamCaption}\item[{}]{\$merge = {\ttfamily false},  }\item[{}]{\$dir = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Scan through the Command directory looking for classes and see what commands they implement.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bool} & (optional) if F\+A\+L\+SE (default), the new list of commands should replace the current one. If T\+R\+UE, new entries will be merged with old.\\
+\hline
+{\em string} & (optional) where (what directory) to look for classes, defaults to the Command subdirectory of the directory from where this file ({\bfseries{F\+I\+LE}}) is included.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error on failure
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Command_a5663b1fc1d2205e83186338cc942bdd0}\label{classPEAR__Command_a5663b1fc1d2205e83186338cc942bdd0}} 
+\index{PEAR\_Command@{PEAR\_Command}!setFrontendClass@{setFrontendClass}}
+\index{setFrontendClass@{setFrontendClass}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{setFrontendClass()}{setFrontendClass()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Command\+::set\+Frontend\+Class (\begin{DoxyParamCaption}\item[{}]{\$uiclass }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Load current frontend class.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$uiclass} & Name of class implementing the frontend\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the frontend object, or a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Command_af6a0ef075c0f053d62b34a5624232575}\label{classPEAR__Command_af6a0ef075c0f053d62b34a5624232575}} 
+\index{PEAR\_Command@{PEAR\_Command}!setFrontendType@{setFrontendType}}
+\index{setFrontendType@{setFrontendType}!PEAR\_Command@{PEAR\_Command}}
+\doxysubsubsection{\texorpdfstring{setFrontendType()}{setFrontendType()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+::set\+Frontend\+Type (\begin{DoxyParamCaption}\item[{}]{\$uitype }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Set current frontend.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$uitype} & Name of the frontend type (for example \char`\"{}\+C\+L\+I\char`\"{})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the frontend object, or a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/Command.\+php\end{DoxyCompactItemize}

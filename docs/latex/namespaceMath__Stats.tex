@@ -1,0 +1,61 @@
+\hypertarget{namespaceMath__Stats}{}\doxysection{Math\+\_\+\+Stats Namespace Reference}
+\label{namespaceMath__Stats}\index{Math\_Stats@{Math\_Stats}}
+
+
+\doxysubsection{Detailed Description}
+A class to calculate descriptive statistics from a data set. Data sets can be simple arrays of data, or a cummulative hash. The second form is useful when passing large data set, for example the data set\+:
+
+
+\begin{DoxyPre}
+\$data1 = array (1,2,1,1,1,1,3,3,4.1,3,2,2,4.1,1,1,2,3,3,2,2,1,1,2,2);
+\end{DoxyPre}
+
+
+can be epxressed more compactly as\+:
+
+
+\begin{DoxyPre}
+\$data2 = array('1'=>9, '2'=>8, '3'=>5, '4.1'=>2);
+\end{DoxyPre}
+
+
+Example of use\+:
+
+
+\begin{DoxyPre}
+include\_once 'Math/Stats.php';
+\$s = new Math\_Stats();
+\$s-\/>setData(\$data1);
+// or
+// \$s-\/>setData(\$data2, STATS\_DATA\_CUMMULATIVE);
+\$stats = \$s-\/>calcBasic();
+echo 'Mean: '.\$stats['mean'].' StDev: '.\$stats['stdev'].' ~\newline
+~\newline
+';\end{DoxyPre}
+
+
+
+\begin{DoxyPre}// using data with nulls
+// first ignoring them:
+\$data3 = array(1.2, 'foo', 2.4, 3.1, 4.2, 3.2, null, 5.1, 6.2);
+\$s-\/>setNullOption(STATS\_IGNORE\_NULL);
+\$s-\/>setData(\$data3);
+\$stats3 = \$s-\/>calcFull();\end{DoxyPre}
+
+
+
+\begin{DoxyPre}// and then assuming nulls == 0
+\$s-\/>setNullOption(STATS\_USE\_NULL\_AS\_ZERO);
+\$s-\/>setData(\$data3);
+\$stats3 = \$s-\/>calcFull();
+\end{DoxyPre}
+
+
+Originally this class was part of Num\+P\+HP (Numeric \mbox{\hyperlink{categoryPHP}{P\+HP}} package)
+
+\begin{DoxyAuthor}{Author}
+Jesus M. Castagnetto \href{mailto:jmcastagnetto@php.net}{\texttt{ jmcastagnetto@php.\+net}} 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+8 @access public 
+\end{DoxyVersion}

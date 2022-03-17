@@ -1,0 +1,55 @@
+\hypertarget{classMeshInterpolate}{}\doxysection{Mesh\+Interpolate Class Reference}
+\label{classMeshInterpolate}\index{MeshInterpolate@{MeshInterpolate}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMeshInterpolate_af38134ca51aa2ffb4807be94b6ff1f9e}{Int\+Square}} ( \$a\+Row, \$a\+Col, \$a\+Factor)
+\item 
+\mbox{\hyperlink{classMeshInterpolate_ae16ddb38768769b36944e5d34dcc53f9}{Linear}} (\&\$a\+Data, \$a\+Int\+Factor)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility class to interpolate a given data matrix 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMeshInterpolate_af38134ca51aa2ffb4807be94b6ff1f9e}\label{classMeshInterpolate_af38134ca51aa2ffb4807be94b6ff1f9e}} 
+\index{MeshInterpolate@{MeshInterpolate}!IntSquare@{IntSquare}}
+\index{IntSquare@{IntSquare}!MeshInterpolate@{MeshInterpolate}}
+\doxysubsubsection{\texorpdfstring{IntSquare()}{IntSquare()}}
+{\footnotesize\ttfamily Mesh\+Interpolate\+::\+Int\+Square (\begin{DoxyParamCaption}\item[{}]{\$a\+Row,  }\item[{}]{\$a\+Col,  }\item[{}]{\$a\+Factor }\end{DoxyParamCaption})}
+
+Calculate the mid points of the given rectangle which has its top left corner at \$row,\$col. The \$a\+Factordecides how many spliots should be done. i.\+e. how many more divisions should be done recursively
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$row} & Top left corner of square to work with \\
+\hline
+{\em \$col} & Top left corner of square to work with \$param \$a\+Factor In how many subsquare should we split this square. A value of 1 indicates that no action \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMeshInterpolate_ae16ddb38768769b36944e5d34dcc53f9}\label{classMeshInterpolate_ae16ddb38768769b36944e5d34dcc53f9}} 
+\index{MeshInterpolate@{MeshInterpolate}!Linear@{Linear}}
+\index{Linear@{Linear}!MeshInterpolate@{MeshInterpolate}}
+\doxysubsubsection{\texorpdfstring{Linear()}{Linear()}}
+{\footnotesize\ttfamily Mesh\+Interpolate\+::\+Linear (\begin{DoxyParamCaption}\item[{\&}]{\$a\+Data,  }\item[{}]{\$a\+Int\+Factor }\end{DoxyParamCaption})}
+
+Interpolate values in a matrice so that the total number of data points in vert and horizontal axis are \$a\+Int\+Nbr more. For example \$a\+Int\+Nbr=2 will make the data matrice have tiwce as many vertical and horizontal dta points.
+
+Note\+: This will blow up the matrcide in memory size in the order of \$a\+In\+Nbr$^\wedge$2
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$} & \&\$a\+Data The original data matricde \\
+\hline
+{\em \$a\+In\+Nbr} & Interpolation factor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the interpolated matrice 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+drupal/om/lib/jpgraph/jpgraph\+\_\+meshinterpolate.\+inc.\+php\end{DoxyCompactItemize}

@@ -1,0 +1,95 @@
+\hypertarget{classPEAR__Command__Install}{}\doxysection{P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install Class Reference}
+\label{classPEAR__Command__Install}\index{PEAR\_Command\_Install@{PEAR\_Command\_Install}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Command__Install_af475ff40382fc8dc30fbaa06873e7a1d}{P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install}} (\&\$ui, \&\$config)
+\item 
+\& \mbox{\hyperlink{classPEAR__Command__Install_a148feff80e83b0eaecaa65fdbe92eff6}{get\+Downloader}} (\&\$ui, \$options, \&\$config)
+\item 
+\& \mbox{\hyperlink{classPEAR__Command__Install_ac547fb78c04eb4d91b250c159d3a6ba4}{get\+Installer}} (\&\$ui)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Install_a629869654c4a851fa5016ce6022210b4}\label{classPEAR__Command__Install_a629869654c4a851fa5016ce6022210b4}} 
+{\bfseries enable\+Extension} (\$binaries, \$type)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Install_ae238fbb390c89fee3923b7e2c7bd7f12}\label{classPEAR__Command__Install_ae238fbb390c89fee3923b7e2c7bd7f12}} 
+{\bfseries disable\+Extension} (\$binaries, \$type)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Install_a2712a1b03d8d48b8c9ea1f0fd3d982e6}\label{classPEAR__Command__Install_a2712a1b03d8d48b8c9ea1f0fd3d982e6}} 
+{\bfseries \+\_\+parse\+Ini} (\$filename)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Install_ab954c7c28859f4705a172a2f4c796ff9}\label{classPEAR__Command__Install_ab954c7c28859f4705a172a2f4c796ff9}} 
+{\bfseries do\+Install} (\$command, \$options, \$params)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Install_a2efe39bc26497abc5f78c2e6bac7dbb0}\label{classPEAR__Command__Install_a2efe39bc26497abc5f78c2e6bac7dbb0}} 
+{\bfseries do\+Upgrade\+All} (\$command, \$options, \$params)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Install_aa380dd8dfbbd922c8419c3b7692b56f5}\label{classPEAR__Command__Install_aa380dd8dfbbd922c8419c3b7692b56f5}} 
+{\bfseries do\+Uninstall} (\$command, \$options, \$params)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Install_ac156ddab92400e0fa0fad92064a9c15d}\label{classPEAR__Command__Install_ac156ddab92400e0fa0fad92064a9c15d}} 
+{\bfseries do\+Bundle} (\$command, \$options, \$params)
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Install_ab3fc7587e758d455a8d72b5fab454f80}\label{classPEAR__Command__Install_ab3fc7587e758d455a8d72b5fab454f80}} 
+{\bfseries do\+Run\+Scripts} (\$command, \$options, \$params)
+\item 
+\mbox{\hyperlink{classPEAR__Command__Install_a4819d4481ba6522313c1c41aef459cab}{\+\_\+filter\+Uptodate\+Packages}} (\$packages, \$command)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__Command__Install_adda7f81838022368f747e6d879924254}\label{classPEAR__Command__Install_adda7f81838022368f747e6d879924254}} 
+{\bfseries \$commands}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Command__Install_a4819d4481ba6522313c1c41aef459cab}\label{classPEAR__Command__Install_a4819d4481ba6522313c1c41aef459cab}} 
+\index{PEAR\_Command\_Install@{PEAR\_Command\_Install}!\_filterUptodatePackages@{\_filterUptodatePackages}}
+\index{\_filterUptodatePackages@{\_filterUptodatePackages}!PEAR\_Command\_Install@{PEAR\_Command\_Install}}
+\doxysubsubsection{\texorpdfstring{\_filterUptodatePackages()}{\_filterUptodatePackages()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install\+::\+\_\+filter\+Uptodate\+Packages (\begin{DoxyParamCaption}\item[{}]{\$packages,  }\item[{}]{\$command }\end{DoxyParamCaption})}
+
+Given a list of packages, filter out those ones that are already up to date
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$packages} & packages, in parsed array format ! \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list of packages that can be upgraded 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Command__Install_a148feff80e83b0eaecaa65fdbe92eff6}\label{classPEAR__Command__Install_a148feff80e83b0eaecaa65fdbe92eff6}} 
+\index{PEAR\_Command\_Install@{PEAR\_Command\_Install}!getDownloader@{getDownloader}}
+\index{getDownloader@{getDownloader}!PEAR\_Command\_Install@{PEAR\_Command\_Install}}
+\doxysubsubsection{\texorpdfstring{getDownloader()}{getDownloader()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install\+::get\+Downloader (\begin{DoxyParamCaption}\item[{\&}]{\$ui,  }\item[{}]{\$options,  }\item[{\&}]{\$config }\end{DoxyParamCaption})}
+
+For unit testing purposes \mbox{\Hypertarget{classPEAR__Command__Install_ac547fb78c04eb4d91b250c159d3a6ba4}\label{classPEAR__Command__Install_ac547fb78c04eb4d91b250c159d3a6ba4}} 
+\index{PEAR\_Command\_Install@{PEAR\_Command\_Install}!getInstaller@{getInstaller}}
+\index{getInstaller@{getInstaller}!PEAR\_Command\_Install@{PEAR\_Command\_Install}}
+\doxysubsubsection{\texorpdfstring{getInstaller()}{getInstaller()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install\+::get\+Installer (\begin{DoxyParamCaption}\item[{\&}]{\$ui }\end{DoxyParamCaption})}
+
+For unit testing purposes \mbox{\Hypertarget{classPEAR__Command__Install_af475ff40382fc8dc30fbaa06873e7a1d}\label{classPEAR__Command__Install_af475ff40382fc8dc30fbaa06873e7a1d}} 
+\index{PEAR\_Command\_Install@{PEAR\_Command\_Install}!PEAR\_Command\_Install@{PEAR\_Command\_Install}}
+\index{PEAR\_Command\_Install@{PEAR\_Command\_Install}!PEAR\_Command\_Install@{PEAR\_Command\_Install}}
+\doxysubsubsection{\texorpdfstring{PEAR\_Command\_Install()}{PEAR\_Command\_Install()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install\+::\+P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install (\begin{DoxyParamCaption}\item[{\&}]{\$ui,  }\item[{\&}]{\$config }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classPEAR__Command__Install}{P\+E\+A\+R\+\_\+\+Command\+\_\+\+Install}} constructor.
+
+@access public 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Command/Install.\+php\end{DoxyCompactItemize}

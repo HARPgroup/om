@@ -1,0 +1,121 @@
+\hypertarget{classPEAR__REST}{}\doxysection{P\+E\+A\+R\+\_\+\+R\+E\+ST Class Reference}
+\label{classPEAR__REST}\index{PEAR\_REST@{PEAR\_REST}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__REST_adf3958a8ed7335758e8977c1c8c1b0c8}\label{classPEAR__REST_adf3958a8ed7335758e8977c1c8c1b0c8}} 
+{\bfseries P\+E\+A\+R\+\_\+\+R\+E\+ST} (\&\$config, \$options=array())
+\item 
+\mbox{\hyperlink{classPEAR__REST_a4383a536762690fd47b9323ed6980eae}{retrieve\+Cache\+First}} (\$url, \$accept=false, \$forcestring=false)
+\item 
+\mbox{\hyperlink{classPEAR__REST_a2239b92abb89c67311dba83a140661f5}{retrieve\+Data}} (\$url, \$accept=false, \$forcestring=false)
+\item 
+\mbox{\Hypertarget{classPEAR__REST_a0364764d5fcc0eb2d95ecca058d63177}\label{classPEAR__REST_a0364764d5fcc0eb2d95ecca058d63177}} 
+{\bfseries use\+Local\+Cache} (\$url, \$cacheid=null)
+\item 
+\mbox{\Hypertarget{classPEAR__REST_ad5f2e41d3f6114546ebbb18842d05c56}\label{classPEAR__REST_ad5f2e41d3f6114546ebbb18842d05c56}} 
+{\bfseries get\+Cache\+Id} (\$url)
+\item 
+\mbox{\Hypertarget{classPEAR__REST_a7e51fb335abaad2170def567df75b47a}\label{classPEAR__REST_a7e51fb335abaad2170def567df75b47a}} 
+{\bfseries get\+Cache} (\$url)
+\item 
+\mbox{\hyperlink{classPEAR__REST_a7864e037d3c661643040db02800a35aa}{save\+Cache}} (\$url, \$contents, \$lastmodified, \$nochange=false, \$cacheid=null)
+\item 
+\mbox{\hyperlink{classPEAR__REST_a6ffeb8d88aa229356dc8ff7fa5d1e473}{download\+Http}} (\$url, \$lastmodified=null, \$accept=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__REST_aa950b26b086b1e931f30ddee22e6a237}\label{classPEAR__REST_aa950b26b086b1e931f30ddee22e6a237}} 
+{\bfseries \$config}
+\item 
+\mbox{\Hypertarget{classPEAR__REST_a76713debe3ec8f68c0c2bd86c9a3bb1e}\label{classPEAR__REST_a76713debe3ec8f68c0c2bd86c9a3bb1e}} 
+{\bfseries \$\+\_\+options}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__REST_a6ffeb8d88aa229356dc8ff7fa5d1e473}\label{classPEAR__REST_a6ffeb8d88aa229356dc8ff7fa5d1e473}} 
+\index{PEAR\_REST@{PEAR\_REST}!downloadHttp@{downloadHttp}}
+\index{downloadHttp@{downloadHttp}!PEAR\_REST@{PEAR\_REST}}
+\doxysubsubsection{\texorpdfstring{downloadHttp()}{downloadHttp()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+R\+E\+S\+T\+::download\+Http (\begin{DoxyParamCaption}\item[{}]{\$url,  }\item[{}]{\$lastmodified = {\ttfamily null},  }\item[{}]{\$accept = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Efficiently Download a file through H\+T\+TP. Returns downloaded file as a string in-\/memory This is best used for small files
+
+If an H\+T\+TP proxy has been configured (http\+\_\+proxy P\+E\+A\+R\+\_\+\+Config setting), the proxy will be used.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$url} & the U\+RL to download \\
+\hline
+string & {\em \$save\+\_\+dir} & directory to save file in \\
+\hline
+false | string | array & {\em \$lastmodified} & header values to check against for caching use false to return the header values from this download \\
+\hline
+false | array & {\em \$accept} & Accept headers to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$array Returns the contents of the downloaded file or a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error on failure. If the error is caused by socket-\/related errors, the error object will have the fsockopen error code available through get\+Code(). If caching is requested, then return the header values.
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__REST_a4383a536762690fd47b9323ed6980eae}\label{classPEAR__REST_a4383a536762690fd47b9323ed6980eae}} 
+\index{PEAR\_REST@{PEAR\_REST}!retrieveCacheFirst@{retrieveCacheFirst}}
+\index{retrieveCacheFirst@{retrieveCacheFirst}!PEAR\_REST@{PEAR\_REST}}
+\doxysubsubsection{\texorpdfstring{retrieveCacheFirst()}{retrieveCacheFirst()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+R\+E\+S\+T\+::retrieve\+Cache\+First (\begin{DoxyParamCaption}\item[{}]{\$url,  }\item[{}]{\$accept = {\ttfamily false},  }\item[{}]{\$forcestring = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Retrieve R\+E\+ST data, but always retrieve the local cache if it is available.
+
+This is useful for elements that should never change, such as information on a particular release 
+\begin{DoxyParams}{Parameters}
+{\em string} & full U\+RL to this resource \\
+\hline
+{\em array$\vert$false} & contents of the accept-\/encoding header \\
+\hline
+{\em boolean} & if true, xml will be returned as a string, otherwise, xml will be parsed using \mbox{\hyperlink{classPEAR__XMLParser}{P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__REST_a2239b92abb89c67311dba83a140661f5}\label{classPEAR__REST_a2239b92abb89c67311dba83a140661f5}} 
+\index{PEAR\_REST@{PEAR\_REST}!retrieveData@{retrieveData}}
+\index{retrieveData@{retrieveData}!PEAR\_REST@{PEAR\_REST}}
+\doxysubsubsection{\texorpdfstring{retrieveData()}{retrieveData()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+R\+E\+S\+T\+::retrieve\+Data (\begin{DoxyParamCaption}\item[{}]{\$url,  }\item[{}]{\$accept = {\ttfamily false},  }\item[{}]{\$forcestring = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Retrieve a remote R\+E\+ST resource 
+\begin{DoxyParams}{Parameters}
+{\em string} & full U\+RL to this resource \\
+\hline
+{\em array$\vert$false} & contents of the accept-\/encoding header \\
+\hline
+{\em boolean} & if true, xml will be returned as a string, otherwise, xml will be parsed using \mbox{\hyperlink{classPEAR__XMLParser}{P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__REST_a7864e037d3c661643040db02800a35aa}\label{classPEAR__REST_a7864e037d3c661643040db02800a35aa}} 
+\index{PEAR\_REST@{PEAR\_REST}!saveCache@{saveCache}}
+\index{saveCache@{saveCache}!PEAR\_REST@{PEAR\_REST}}
+\doxysubsubsection{\texorpdfstring{saveCache()}{saveCache()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+R\+E\+S\+T\+::save\+Cache (\begin{DoxyParamCaption}\item[{}]{\$url,  }\item[{}]{\$contents,  }\item[{}]{\$lastmodified,  }\item[{}]{\$nochange = {\ttfamily false},  }\item[{}]{\$cacheid = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & full U\+RL to R\+E\+ST resource \\
+\hline
+{\em string} & original contents of the R\+E\+ST resource \\
+\hline
+{\em array} & H\+T\+TP Last-\/\+Modified and E\+Tag headers \\
+\hline
+{\em bool} & if true, then the cache id file should be regenerated to trigger a new time-\/to-\/live value \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/R\+E\+S\+T.\+php\end{DoxyCompactItemize}

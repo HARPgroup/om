@@ -1,0 +1,136 @@
+\hypertarget{classPEAR__Installer__Role}{}\doxysection{P\+E\+A\+R\+\_\+\+Installer\+\_\+\+Role Class Reference}
+\label{classPEAR__Installer__Role}\index{PEAR\_Installer\_Role@{PEAR\_Installer\_Role}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Installer__Role_a7fe4a3b737e324739eb17a54d92dbf29}{initialize\+Config}} (\&\$config)
+\item 
+\& \mbox{\hyperlink{classPEAR__Installer__Role_a394b44c36e4dce3406aee5ca1a491cac}{factory}} (\$pkg, \$role, \&\$config)
+\item 
+\mbox{\hyperlink{classPEAR__Installer__Role_a912399d23fa07ed64a12cab43289d2d7}{get\+Valid\+Roles}} (\$release, \$clear=false)
+\item 
+\mbox{\hyperlink{classPEAR__Installer__Role_a3c4231fe04af7d3f5a3c0deeafd4ad08}{get\+Installable\+Roles}} (\$clear=false)
+\item 
+\mbox{\hyperlink{classPEAR__Installer__Role_ae4cce649abe51f5b524193c3ef69603f}{get\+Baseinstall\+Roles}} (\$clear=false)
+\item 
+\mbox{\hyperlink{classPEAR__Installer__Role_a28a5ccabd7f304750b29ef57a2413671}{get\+Php\+Roles}} (\$clear=false)
+\item 
+\mbox{\hyperlink{classPEAR__Installer__Role_aed5c9673fe9f60ee6d844f91a42205ed}{register\+Roles}} (\$dir=null)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Installer__Role_a394b44c36e4dce3406aee5ca1a491cac}\label{classPEAR__Installer__Role_a394b44c36e4dce3406aee5ca1a491cac}} 
+\index{PEAR\_Installer\_Role@{PEAR\_Installer\_Role}!factory@{factory}}
+\index{factory@{factory}!PEAR\_Installer\_Role@{PEAR\_Installer\_Role}}
+\doxysubsubsection{\texorpdfstring{factory()}{factory()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Installer\+\_\+\+Role\+::factory (\begin{DoxyParamCaption}\item[{}]{\$pkg,  }\item[{}]{\$role,  }\item[{\&}]{\$config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__PackageFile__v2}{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2}}} & \\
+\hline
+{\em string} & role name \\
+\hline
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPEAR__Installer__Role__Common}{P\+E\+A\+R\+\_\+\+Installer\+\_\+\+Role\+\_\+\+Common}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Installer__Role_ae4cce649abe51f5b524193c3ef69603f}\label{classPEAR__Installer__Role_ae4cce649abe51f5b524193c3ef69603f}} 
+\index{PEAR\_Installer\_Role@{PEAR\_Installer\_Role}!getBaseinstallRoles@{getBaseinstallRoles}}
+\index{getBaseinstallRoles@{getBaseinstallRoles}!PEAR\_Installer\_Role@{PEAR\_Installer\_Role}}
+\doxysubsubsection{\texorpdfstring{getBaseinstallRoles()}{getBaseinstallRoles()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Installer\+\_\+\+Role\+::get\+Baseinstall\+Roles (\begin{DoxyParamCaption}\item[{}]{\$clear = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Return an array of roles that are affected by the baseinstalldir attribute
+
+Most roles ignore this attribute, and instead install directly into\+: Package\+Name/filepath so a tests file tests/file.\+phpt is installed into Package\+Name/tests/filepath.\+php 
+\begin{DoxyParams}{Parameters}
+{\em bool} & clear cache \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Installer__Role_a3c4231fe04af7d3f5a3c0deeafd4ad08}\label{classPEAR__Installer__Role_a3c4231fe04af7d3f5a3c0deeafd4ad08}} 
+\index{PEAR\_Installer\_Role@{PEAR\_Installer\_Role}!getInstallableRoles@{getInstallableRoles}}
+\index{getInstallableRoles@{getInstallableRoles}!PEAR\_Installer\_Role@{PEAR\_Installer\_Role}}
+\doxysubsubsection{\texorpdfstring{getInstallableRoles()}{getInstallableRoles()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Installer\+\_\+\+Role\+::get\+Installable\+Roles (\begin{DoxyParamCaption}\item[{}]{\$clear = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get a list of roles that require their files to be installed
+
+Most roles must be installed, but src and package roles, for instance are pseudo-\/roles. src files are compiled into a new extension. Package roles are actually fully bundled releases of a package 
+\begin{DoxyParams}{Parameters}
+{\em bool} & clear cache \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Installer__Role_a28a5ccabd7f304750b29ef57a2413671}\label{classPEAR__Installer__Role_a28a5ccabd7f304750b29ef57a2413671}} 
+\index{PEAR\_Installer\_Role@{PEAR\_Installer\_Role}!getPhpRoles@{getPhpRoles}}
+\index{getPhpRoles@{getPhpRoles}!PEAR\_Installer\_Role@{PEAR\_Installer\_Role}}
+\doxysubsubsection{\texorpdfstring{getPhpRoles()}{getPhpRoles()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Installer\+\_\+\+Role\+::get\+Php\+Roles (\begin{DoxyParamCaption}\item[{}]{\$clear = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Return an array of file roles that should be analyzed for \mbox{\hyperlink{categoryPHP}{P\+HP}} content at package time, like the \char`\"{}php\char`\"{} role. 
+\begin{DoxyParams}{Parameters}
+{\em bool} & clear cache \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Installer__Role_a912399d23fa07ed64a12cab43289d2d7}\label{classPEAR__Installer__Role_a912399d23fa07ed64a12cab43289d2d7}} 
+\index{PEAR\_Installer\_Role@{PEAR\_Installer\_Role}!getValidRoles@{getValidRoles}}
+\index{getValidRoles@{getValidRoles}!PEAR\_Installer\_Role@{PEAR\_Installer\_Role}}
+\doxysubsubsection{\texorpdfstring{getValidRoles()}{getValidRoles()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Installer\+\_\+\+Role\+::get\+Valid\+Roles (\begin{DoxyParamCaption}\item[{}]{\$release,  }\item[{}]{\$clear = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get a list of file roles that are valid for the particular release type.
+
+For instance, src files serve no purpose in regular php releases. 
+\begin{DoxyParams}{Parameters}
+{\em string} & \\
+\hline
+{\em bool} & clear cache \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Installer__Role_a7fe4a3b737e324739eb17a54d92dbf29}\label{classPEAR__Installer__Role_a7fe4a3b737e324739eb17a54d92dbf29}} 
+\index{PEAR\_Installer\_Role@{PEAR\_Installer\_Role}!initializeConfig@{initializeConfig}}
+\index{initializeConfig@{initializeConfig}!PEAR\_Installer\_Role@{PEAR\_Installer\_Role}}
+\doxysubsubsection{\texorpdfstring{initializeConfig()}{initializeConfig()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Installer\+\_\+\+Role\+::initialize\+Config (\begin{DoxyParamCaption}\item[{\&}]{\$config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Set up any additional configuration variables that file roles require
+
+Never call this directly, it is called by the P\+E\+A\+R\+\_\+\+Config constructor 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Config} & @access private \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Installer__Role_aed5c9673fe9f60ee6d844f91a42205ed}\label{classPEAR__Installer__Role_aed5c9673fe9f60ee6d844f91a42205ed}} 
+\index{PEAR\_Installer\_Role@{PEAR\_Installer\_Role}!registerRoles@{registerRoles}}
+\index{registerRoles@{registerRoles}!PEAR\_Installer\_Role@{PEAR\_Installer\_Role}}
+\doxysubsubsection{\texorpdfstring{registerRoles()}{registerRoles()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Installer\+\_\+\+Role\+::register\+Roles (\begin{DoxyParamCaption}\item[{}]{\$dir = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Scan through the Command directory looking for classes and see what commands they implement. 
+\begin{DoxyParams}{Parameters}
+{\em string} & which directory to look for classes, defaults to the Installer/\+Roles subdirectory of the directory from where this file ({\bfseries{F\+I\+LE}}) is included.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error on failure @access public 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Installer/Role.\+php\end{DoxyCompactItemize}

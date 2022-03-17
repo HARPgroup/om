@@ -1,0 +1,32 @@
+digraph "dataConnectionObject"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="dataConnectionObject",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="timeSeriesInput",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtimeSeriesInput.html",tooltip=" "];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="modelObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmodelObject.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="CBPDataConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCBPDataConnection.html",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="dataConnectionSubObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdataConnectionSubObject.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="noaaGriddedPrecip",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnoaaGriddedPrecip.html",tooltip=" "];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="wsp_waterUserOld",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classwsp__waterUserOld.html",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="XMLDataConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classXMLDataConnection.html",tooltip=" "];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="CBPLandDataConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCBPLandDataConnection.html",tooltip=" "];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="CBPLandDataConnection_sub",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCBPLandDataConnection__sub.html",tooltip=" "];
+  Node8 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="CBPLandDataConnectionBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCBPLandDataConnectionBase.html",tooltip=" "];
+  Node8 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="RSSDataConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRSSDataConnection.html",tooltip=" "];
+  Node8 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="wsp_VWUDSData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classwsp__VWUDSData.html",tooltip=" "];
+}

@@ -1,0 +1,110 @@
+\hypertarget{classPEAR__Command__Mirror}{}\doxysection{P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror Class Reference}
+\label{classPEAR__Command__Mirror}\index{PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Command__Mirror_a33c2387eb6cd0f34ac4acd0056e99d20}{P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror}} (\&\$ui, \&\$config)
+\item 
+\& \mbox{\hyperlink{classPEAR__Command__Mirror_a193948e01ef97f9af44cc98505a6c338}{factory}} (\$a)
+\item 
+\mbox{\hyperlink{classPEAR__Command__Mirror_acfb338f91304a5eb007a5f6d3876841d}{do\+Download\+All}} (\$command, \$options, \$params)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \$commands}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Command__Mirror_acfb338f91304a5eb007a5f6d3876841d}\label{classPEAR__Command__Mirror_acfb338f91304a5eb007a5f6d3876841d}} 
+\index{PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}!doDownloadAll@{doDownloadAll}}
+\index{doDownloadAll@{doDownloadAll}!PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}}
+\doxysubsubsection{\texorpdfstring{doDownloadAll()}{doDownloadAll()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror\+::do\+Download\+All (\begin{DoxyParamCaption}\item[{}]{\$command,  }\item[{}]{\$options,  }\item[{}]{\$params }\end{DoxyParamCaption})}
+
+retrieves a list of avaible Packages from master server and downloads them
+
+@access public 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$command} & the command \\
+\hline
+array & {\em \$options} & the command options before the command \\
+\hline
+array & {\em \$params} & the stuff after the command name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true if succesful 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}}} & \\
+\hline
+\end{DoxyExceptions}
+Error handling not necessary, because already done by the download command\mbox{\Hypertarget{classPEAR__Command__Mirror_a193948e01ef97f9af44cc98505a6c338}\label{classPEAR__Command__Mirror_a193948e01ef97f9af44cc98505a6c338}} 
+\index{PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}!factory@{factory}}
+\index{factory@{factory}!PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}}
+\doxysubsubsection{\texorpdfstring{factory()}{factory()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror\+::factory (\begin{DoxyParamCaption}\item[{}]{\$a }\end{DoxyParamCaption})}
+
+For unit-\/testing \mbox{\Hypertarget{classPEAR__Command__Mirror_a33c2387eb6cd0f34ac4acd0056e99d20}\label{classPEAR__Command__Mirror_a33c2387eb6cd0f34ac4acd0056e99d20}} 
+\index{PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}!PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}}
+\index{PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}!PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}}
+\doxysubsubsection{\texorpdfstring{PEAR\_Command\_Mirror()}{PEAR\_Command\_Mirror()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror\+::\+P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror (\begin{DoxyParamCaption}\item[{\&}]{\$ui,  }\item[{\&}]{\$config }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classPEAR__Command__Mirror}{P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror}} constructor.
+
+@access public 
+\begin{DoxyParams}{Parameters}
+{\em object} & \mbox{\hyperlink{classPEAR__Frontend}{P\+E\+A\+R\+\_\+\+Frontend}} a reference to an frontend \\
+\hline
+{\em object} & P\+E\+A\+R\+\_\+\+Config a reference to the configuration data \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPEAR__Command__Mirror_a4ad8b7a5ebb70c7da7ca2ec677ba2131}\label{classPEAR__Command__Mirror_a4ad8b7a5ebb70c7da7ca2ec677ba2131}} 
+\index{PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}!\$commands@{\$commands}}
+\index{\$commands@{\$commands}!PEAR\_Command\_Mirror@{PEAR\_Command\_Mirror}}
+\doxysubsubsection{\texorpdfstring{\$commands}{$commands}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Command\+\_\+\+Mirror\+::\$commands}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'download-\/all'} => array(}
+\DoxyCodeLine{            \textcolor{stringliteral}{'summary'} => \textcolor{stringliteral}{'Downloads each available package from the default channel'},}
+\DoxyCodeLine{            \textcolor{stringliteral}{'function'} => \textcolor{stringliteral}{'doDownloadAll'},}
+\DoxyCodeLine{            \textcolor{stringliteral}{'shortcut'} => \textcolor{stringliteral}{'da'},}
+\DoxyCodeLine{            \textcolor{stringliteral}{'options'} => array(}
+\DoxyCodeLine{                \textcolor{stringliteral}{'channel'} =>}
+\DoxyCodeLine{                    array(}
+\DoxyCodeLine{                    \textcolor{stringliteral}{'shortopt'} => \textcolor{charliteral}{'c'},}
+\DoxyCodeLine{                    \textcolor{stringliteral}{'doc'} => \textcolor{stringliteral}{'specify a channel other than the default channel'},}
+\DoxyCodeLine{                    \textcolor{stringliteral}{'arg'} => \textcolor{stringliteral}{'CHAN'},}
+\DoxyCodeLine{                    ),}
+\DoxyCodeLine{                ),}
+\DoxyCodeLine{            \textcolor{stringliteral}{'doc'} => \textcolor{stringliteral}{'}}
+\DoxyCodeLine{\textcolor{stringliteral}{Requests a list of available packages from the default channel (\{config default\_channel\})}}
+\DoxyCodeLine{\textcolor{stringliteral}{and downloads them to current working directory.  Note: only}}
+\DoxyCodeLine{\textcolor{stringliteral}{packages within preferred\_state (\{config preferred\_state\}) will be downloaded'}}
+\DoxyCodeLine{            ),}
+\DoxyCodeLine{        )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Command/Mirror.\+php\end{DoxyCompactItemize}

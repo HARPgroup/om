@@ -1,0 +1,29 @@
+\hypertarget{protocolhostspec-p}{}\doxysection{$<$hostspec$>$ Protocol Reference}
+\label{protocolhostspec-p}\index{$<$hostspec$>$@{$<$hostspec$>$}}
+
+
+\doxysubsection{Detailed Description}
+=0644 phptype\+://username\+:password@hostspec/database\+\_\+name phptype\+://username\+:password@hostspec phptype\+://username@hostspec phptype\+://hostspec/database phptype\+://hostspec phptype(dbsyntax) phptype 
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$dsn} & Data Source Name to be parsed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array an associative array with the following keys\+:
+\begin{DoxyItemize}
+\item phptype\+: Database backend used in \mbox{\hyperlink{categoryPHP}{P\+HP}} (mysql, odbc etc.)
+\item dbsyntax\+: Database used with regards to S\+QL syntax etc.
+\item protocol\+: Communication protocol to use (tcp, unix etc.)
+\item \mbox{\hyperlink{protocolhostspec-p}{hostspec}}\+: Host specification (hostname\mbox{[}\+:port\mbox{]})
+\item database\+: Database to use on the D\+B\+MS server
+\item username\+: User name for login
+\item password\+: Password for login 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+
+The documentation for this protocol was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/D\+B.\+php\end{DoxyCompactItemize}

@@ -1,0 +1,20 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node340 [label="Exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node340 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="JpGraphException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classJpGraphException.html",tooltip=" "];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="JpGraphExceptionL",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classJpGraphExceptionL.html",tooltip=" "];
+  Node340 -> Node343 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node343 [label="Math_Expression_Exception\l_Fatal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMath__Expression__Exception__Fatal.html",tooltip=" "];
+  Node340 -> Node344 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node344 [label="Math_Expression_Exception\l_Syntax",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMath__Expression__Exception__Syntax.html",tooltip=" "];
+  Node340 -> Node345 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node345 [label="Math_Expression_Exception\l_UnhandledOperator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMath__Expression__Exception__UnhandledOperator.html",tooltip=" "];
+  Node340 -> Node346 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node346 [label="PEAR_Exception",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPEAR__Exception.html",tooltip=" "];
+}

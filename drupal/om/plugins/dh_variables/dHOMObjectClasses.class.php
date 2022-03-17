@@ -1396,12 +1396,14 @@ class dHOMModelElement extends dHOMBaseObjectClass {
     // special render handlers when displaying in a grouped property block
     //dpm($entity, 'entity');
     parent::formRowEdit($form, $entity);
+    /*
     // add special save mode 
     $opts = array(0=>'FALSE', 1=>'TRUE');
     $form['new_save'] = array();
     $form['new_save']['#options'] = $opts;
     $form['new_save']['#title'] = 'Use New All JSON object saving?';
     $form['new_save']['#type'] = 'select';
+    */
   }
 }
 

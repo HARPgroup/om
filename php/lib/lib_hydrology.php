@@ -153,6 +153,8 @@ class modelObject {
   var $prop_desc = array();
   var $multivar = 0; // this is for sub-components, is the variable a "multivar", in other words, does it create more than one?
   var $multivarnames = array(); // for use if multivar
+  // json object loading enabled.
+  var $json2d = TRUE;
 
   function init() {
     if ($this->debug) {

@@ -1066,7 +1066,7 @@ class modelObject {
     }
     // @todo: include plumbing from set_subprop.php to handle robust json property setting.
     // Does a sub-comp of this name exist? Or, is this an object_class change?
-    $prop = $this->getProp($pname, '');
+    $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
     if (is_object($prop)) {
       $object_class = $prop->object_class;
       if ($pvalue['object_class'] <> $object_class) {
@@ -1083,7 +1083,7 @@ class modelObject {
       $this->addOperator($pname, $syobj);
       error_log("Added $pname as component type $object_class .");
       // re-retrieve to make sure that the object is not cloned.
-      $prop = $this->getProp($pname, '');
+      $prop = $this->processors[$pname];
     }
     // recursively calls setPropJSON2d on the subcomp.
     error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");

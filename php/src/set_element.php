@@ -24,7 +24,7 @@ list($script, $elid, $openmi_json) = $argv;
 $elid = 340268;
 $openmi_json = file_get_contents('https://raw.githubusercontent.com/HARPgroup/om/master/data/json/difficult_run.json');
 
-
+error_log("Calling unSerializeSingleModelObject($elid)"); 
 $loadres = unSerializeSingleModelObject($elid);
 $thisobject = $loadres['object'];
 $thisobject->setProp('all', $openmi_json, 'json-2d');

@@ -27,6 +27,7 @@ $openmi_json = file_get_contents('https://raw.githubusercontent.com/HARPgroup/om
 error_log("Calling unSerializeSingleModelObject($elid)"); 
 $loadres = unSerializeSingleModelObject($elid);
 $thisobject = $loadres['object'];
+error_log("Retrieved $thisobject->name"); 
 $thisobject->setProp('all', $openmi_json, 'json-2d');
 // @todo: handle these for now we just want to see if it works 
 //saveModelObject($elid, $thisobject, array('name' => $thisobject->name));

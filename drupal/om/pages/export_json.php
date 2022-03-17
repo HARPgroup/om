@@ -8,7 +8,7 @@ if (isset($a[2])) {
   $pid = $a[2];
   $mode = $a[3];
 } else {
-  echo "Usage: /[pid]/mode(json,vardef,debug)<br>";
+  echo "Usage: /[pid]/mode(json,single_json,vardef,debug)<br>";
 }
 if ($pid <> NULL) {
   $prop = entity_load_single('dh_properties', $pid);
@@ -33,6 +33,9 @@ if ($pid <> NULL) {
       echo "<pre>$vars_json</pre>";
       echo "<pre>$exp_json</pre>";
     break;
+    case 'single_json':
+      // this asks for bare json export, not encapsulated as a self-named component 
+      $exp = $exp[$prop->propname];
     case 'json':
     default:
       drupal_json_output($exp);

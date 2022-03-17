@@ -1055,7 +1055,7 @@ class modelObject {
   
   function applyJSONComponentArray($pname, $pvalue) {
     // this is not a property on the base class, look for processors
-    error_log("Warning: Skipping $pname not found on class -- setProp cannot yet add processors with json-2d ");
+    error_log("Notice: Looking to add $pname as processor ");
     if (!is_array($pvalue)) {
       error_log("Warning: Skipping component $pname because json did not have array. ");
       return;

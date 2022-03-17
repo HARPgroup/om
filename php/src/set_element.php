@@ -20,6 +20,10 @@ if ( count($argv) < 5 ) {
 
 list($script, $elid, $openmi_json) = $argv;
 
+// for now we over-ride and get hard coded file
+$elid = 340268;
+$openmi_json = file_get_contents('https://raw.githubusercontent.com/HARPgroup/om/master/data/json/difficult_run.json');
+
 
 $loadres = unSerializeSingleModelObject($elid);
 $thisobject = $loadres['object'];

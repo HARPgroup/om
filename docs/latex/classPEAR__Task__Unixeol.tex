@@ -1,0 +1,98 @@
+\hypertarget{classPEAR__Task__Unixeol}{}\doxysection{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Unixeol Class Reference}
+\label{classPEAR__Task__Unixeol}\index{PEAR\_Task\_Unixeol@{PEAR\_Task\_Unixeol}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Task\+\_\+\+Unixeol\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Task\+\_\+\+Unixeol\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Unixeol_a08a2075cceddece5adbc61f5520f9676}{init}} (\$xml, \$attribs)
+\item 
+\mbox{\hyperlink{classPEAR__Task__Unixeol_a06fb57f655e0ffae3481c37c1a401c06}{start\+Session}} (\$pkg, \$contents, \$dest)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Unixeol_a87ddcde1431ba0015df575728c3eead8}{validate\+Xml}} (\$pkg, \$xml, \&\$config, \$file\+Xml)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Unixeol_ae7f9a3da8c1f744de7d00302e234b3dd}\label{classPEAR__Task__Unixeol_ae7f9a3da8c1f744de7d00302e234b3dd}} 
+{\bfseries \$type} = \textquotesingle{}simple\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Unixeol_a5fd2493d0bb1c66b312787e0c1eae8cf}\label{classPEAR__Task__Unixeol_a5fd2493d0bb1c66b312787e0c1eae8cf}} 
+{\bfseries \$phase} = P\+E\+A\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+A\+C\+K\+A\+GE
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Unixeol_a6a871c3f8341b5af37f852cd10866181}\label{classPEAR__Task__Unixeol_a6a871c3f8341b5af37f852cd10866181}} 
+{\bfseries \$\+\_\+replacements}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Task__Unixeol_a08a2075cceddece5adbc61f5520f9676}\label{classPEAR__Task__Unixeol_a08a2075cceddece5adbc61f5520f9676}} 
+\index{PEAR\_Task\_Unixeol@{PEAR\_Task\_Unixeol}!init@{init}}
+\index{init@{init}!PEAR\_Task\_Unixeol@{PEAR\_Task\_Unixeol}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Unixeol\+::init (\begin{DoxyParamCaption}\item[{}]{\$xml,  }\item[{}]{\$attribs }\end{DoxyParamCaption})}
+
+Initialize a task instance with the parameters 
+\begin{DoxyParams}{Parameters}
+{\em array} & raw, parsed xml \\
+\hline
+{\em unused} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Task__Unixeol_a06fb57f655e0ffae3481c37c1a401c06}\label{classPEAR__Task__Unixeol_a06fb57f655e0ffae3481c37c1a401c06}} 
+\index{PEAR\_Task\_Unixeol@{PEAR\_Task\_Unixeol}!startSession@{startSession}}
+\index{startSession@{startSession}!PEAR\_Task\_Unixeol@{PEAR\_Task\_Unixeol}}
+\doxysubsubsection{\texorpdfstring{startSession()}{startSession()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Unixeol\+::start\+Session (\begin{DoxyParamCaption}\item[{}]{\$pkg,  }\item[{}]{\$contents,  }\item[{}]{\$dest }\end{DoxyParamCaption})}
+
+Replace all line endings with line endings customized for the current OS
+
+See \mbox{\hyperlink{classPEAR__Task__Unixeol_a87ddcde1431ba0015df575728c3eead8}{validate\+Xml()}} source for the complete list of allowed fields 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2} & \\
+\hline
+{\em string} & file contents \\
+\hline
+{\em string} & the eventual final file location (informational only) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$false$\vert$\+P\+E\+A\+R\+\_\+\+Error false to skip this file, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} to fail (use \$this-\/$>$throw\+Error), otherwise return the new contents 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classPEAR__Task__Common_a96f54d4e7a2b51c341e28baf0bac628f}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common}}.
+
+\mbox{\Hypertarget{classPEAR__Task__Unixeol_a87ddcde1431ba0015df575728c3eead8}\label{classPEAR__Task__Unixeol_a87ddcde1431ba0015df575728c3eead8}} 
+\index{PEAR\_Task\_Unixeol@{PEAR\_Task\_Unixeol}!validateXml@{validateXml}}
+\index{validateXml@{validateXml}!PEAR\_Task\_Unixeol@{PEAR\_Task\_Unixeol}}
+\doxysubsubsection{\texorpdfstring{validateXml()}{validateXml()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Unixeol\+::validate\+Xml (\begin{DoxyParamCaption}\item[{}]{\$pkg,  }\item[{}]{\$xml,  }\item[{\&}]{\$config,  }\item[{}]{\$file\+Xml }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Validate the raw xml at parsing-\/time. 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__PackageFile__v2}{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2}}} & \\
+\hline
+{\em array} & raw, parsed xml \\
+\hline
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classPEAR__Task__Common_a0b5c1084bbc22adcfe910195153fdb08}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Task/Unixeol.\+php\end{DoxyCompactItemize}

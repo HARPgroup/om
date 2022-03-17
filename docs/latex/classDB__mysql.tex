@@ -1,0 +1,705 @@
+\hypertarget{classDB__mysql}{}\doxysection{D\+B\+\_\+mysql Class Reference}
+\label{classDB__mysql}\index{DB\_mysql@{DB\_mysql}}
+
+
+Inheritance diagram for D\+B\+\_\+mysql\+:
+% FIG 0
+
+
+Collaboration diagram for D\+B\+\_\+mysql\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__mysql_aa6a927f0e0fd3085a7fd88141d7a2cdf}{D\+B\+\_\+mysql}} ()
+\item 
+\mbox{\hyperlink{classDB__mysql_a6455d2b995f800fa1387f6d0ff2ea53b}{connect}} (\$dsn, \$persistent=false)
+\item 
+\mbox{\hyperlink{classDB__mysql_a3115edb473ac09f65cf4944ae31c90e6}{disconnect}} ()
+\item 
+\mbox{\hyperlink{classDB__mysql_a5a4212cb23ccdc03fc4fa8d9d2fb5e33}{simple\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\mbox{\hyperlink{classDB__mysql_a4c4e127553b3933223749f14ee61087a}{next\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__mysql_a55d93d03a1f8abf657cc723a24aa603a}{fetch\+Into}} (\$result, \&\$arr, \$fetchmode, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__mysql_a3787ca8510c20fdb3fdf4a6a90f72465}{free\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__mysql_aa0eceb08101bdaf475110b744912c5a6}{num\+Cols}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__mysql_a300020757da8030d123b089a2570fdef}{num\+Rows}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__mysql_a47086eee5ee52b81283a49ee3d5930bb}{auto\+Commit}} (\$onoff=false)
+\item 
+\mbox{\hyperlink{classDB__mysql_aeb5683a97dcc271c966c7da7e6fe5b35}{commit}} ()
+\item 
+\mbox{\hyperlink{classDB__mysql_a84296d6e5d1f570959def402099f720b}{rollback}} ()
+\item 
+\mbox{\hyperlink{classDB__mysql_a1812cdd2ef7868361e8e6a7a121204ed}{affected\+Rows}} ()
+\item 
+\mbox{\hyperlink{classDB__mysql_a6180147161fdf79089c9d1e32eceb57a}{next\+Id}} (\$seq\+\_\+name, \$ondemand=true)
+\item 
+\mbox{\hyperlink{classDB__mysql_a637d7d6710d9066a22e7b857e9035905}{create\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__mysql_a9c480574a8c246c60bd455aafae07f3e}{drop\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__mysql_a0940e54d44de8f2ed0ba78e84370fb93}{\+\_\+\+B\+Csequence}} (\$seqname)
+\item 
+\mbox{\hyperlink{classDB__mysql_a153232e7cb3803dbe5f3af668a6eb846}{quote\+Identifier}} (\$str)
+\item 
+\mbox{\hyperlink{classDB__mysql_ac003af7319df2bf713eae34bdc61ad5c}{quote}} (\$str)
+\item 
+\mbox{\hyperlink{classDB__mysql_a7dce056403fdf11e26e299b61a8d713f}{escape\+Simple}} (\$str)
+\item 
+\mbox{\hyperlink{classDB__mysql_a16dd5178dc56394cf212671785d3e2f8}{modify\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\mbox{\hyperlink{classDB__mysql_adacdd945d90ed0457c5cb3ce489c7a89}{modify\+Limit\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}}, \$from, \$count, \$params=array())
+\item 
+\mbox{\hyperlink{classDB__mysql_ae5063d305a834fbaf57a1e079e3b2138}{mysql\+Raise\+Error}} (\$errno=null)
+\item 
+\mbox{\hyperlink{classDB__mysql_a8e750dc2252c2bc434322d2f991b3f7f}{error\+Native}} ()
+\item 
+\mbox{\hyperlink{classDB__mysql_a633ac385fea2e805c218d9263a4019c8}{table\+Info}} (\$result, \$mode=null)
+\item 
+\mbox{\hyperlink{classDB__mysql_a7c72e6ebf376d9ad3b1202e2bf4b420e}{get\+Special\+Query}} (\$type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDB__mysql_a19ec58b385db4bd53f3a40a6506dd2a8}\label{classDB__mysql_a19ec58b385db4bd53f3a40a6506dd2a8}} 
+{\bfseries \$phptype} = \textquotesingle{}mysql\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classDB__mysql_adf4da9d07eb1fcc3ecfe29ba4bb5e6af}\label{classDB__mysql_adf4da9d07eb1fcc3ecfe29ba4bb5e6af}} 
+{\bfseries \$dbsyntax} = \textquotesingle{}mysql\textquotesingle{}
+\item 
+{\bfseries \$features}
+\item 
+{\bfseries \$errorcode\+\_\+map}
+\item 
+\mbox{\Hypertarget{classDB__mysql_a91963327eca3d80ee84768c3e1cf75c1}\label{classDB__mysql_a91963327eca3d80ee84768c3e1cf75c1}} 
+{\bfseries \$connection}
+\item 
+\mbox{\Hypertarget{classDB__mysql_a4f39f0089d8d3044a1437f8a5c188311}\label{classDB__mysql_a4f39f0089d8d3044a1437f8a5c188311}} 
+{\bfseries \$dsn} = array()
+\item 
+\mbox{\Hypertarget{classDB__mysql_a2031b8ac83e5c323c85b00171cbb8033}\label{classDB__mysql_a2031b8ac83e5c323c85b00171cbb8033}} 
+{\bfseries \$autocommit} = true
+\item 
+\mbox{\hyperlink{classDB__mysql_ab9cf7c786a0301fc47c92fbaa8139e35}{\$transaction\+\_\+opcount}} = 0
+\item 
+\mbox{\Hypertarget{classDB__mysql_a8705b1f3634250b0e83c2561502a2a1b}\label{classDB__mysql_a8705b1f3634250b0e83c2561502a2a1b}} 
+{\bfseries \$\+\_\+db} = \textquotesingle{}\textquotesingle{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__mysql_a0940e54d44de8f2ed0ba78e84370fb93}\label{classDB__mysql_a0940e54d44de8f2ed0ba78e84370fb93}} 
+\index{DB\_mysql@{DB\_mysql}!\_BCsequence@{\_BCsequence}}
+\index{\_BCsequence@{\_BCsequence}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{\_BCsequence()}{\_BCsequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::\+\_\+\+B\+Csequence (\begin{DoxyParamCaption}\item[{}]{\$seqname }\end{DoxyParamCaption})}
+
+Backwards compatibility with old sequence emulation implementation (clean up the dupes)
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seqname} & the sequence name to clean up\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+@access private \mbox{\Hypertarget{classDB__mysql_a1812cdd2ef7868361e8e6a7a121204ed}\label{classDB__mysql_a1812cdd2ef7868361e8e6a7a121204ed}} 
+\index{DB\_mysql@{DB\_mysql}!affectedRows@{affectedRows}}
+\index{affectedRows@{affectedRows}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{affectedRows()}{affectedRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::affected\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determines the number of rows affected by a data maniuplation query
+
+0 is returned for queries that don\textquotesingle{}t manipulate data.
+
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a05a802d72feb861012eb7ebfdbe00e84}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a47086eee5ee52b81283a49ee3d5930bb}\label{classDB__mysql_a47086eee5ee52b81283a49ee3d5930bb}} 
+\index{DB\_mysql@{DB\_mysql}!autoCommit@{autoCommit}}
+\index{autoCommit@{autoCommit}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{autoCommit()}{autoCommit()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::auto\+Commit (\begin{DoxyParamCaption}\item[{}]{\$onoff = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Enables or disables automatic commits
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$onoff} & true turns it on, false turns it off\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object if the driver doesn\textquotesingle{}t support auto-\/committing transactions. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ad28b0f99a6bc3cdbf921804ec7720078}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_aeb5683a97dcc271c966c7da7e6fe5b35}\label{classDB__mysql_aeb5683a97dcc271c966c7da7e6fe5b35}} 
+\index{DB\_mysql@{DB\_mysql}!commit@{commit}}
+\index{commit@{commit}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Commits the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a36868fcbeee42d96e00faeac7e82cb81}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a6455d2b995f800fa1387f6d0ff2ea53b}\label{classDB__mysql_a6455d2b995f800fa1387f6d0ff2ea53b}} 
+\index{DB\_mysql@{DB\_mysql}!connect@{connect}}
+\index{connect@{connect}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::connect (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$persistent = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Connect to the database server, log in and open the database
+
+Don\textquotesingle{}t call this method directly. Use \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect()}} instead.
+
+\mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}}\textquotesingle{}s mysql driver supports the following extra D\+SN options\+:
+\begin{DoxyItemize}
+\item new\+\_\+link If set to true, causes subsequent calls to \mbox{\hyperlink{classDB__mysql_a6455d2b995f800fa1387f6d0ff2ea53b}{connect()}} to return a new connection link instead of the existing one. W\+A\+R\+N\+I\+NG\+: this is not portable to other D\+B\+MS\textquotesingle{}s. Available since \mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}} 1.\+7.\+0.
+\item client\+\_\+flags Any combination of M\+Y\+S\+Q\+L\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+$\ast$ constants. Only used if \mbox{\hyperlink{categoryPHP}{P\+HP}} is at version 4.\+3.\+0 or greater. Available since \mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}} 1.\+7.\+0.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$dsn} & the data source name \\
+\hline
+bool & {\em \$persistent} & should the connection be persistent?\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mysql_a637d7d6710d9066a22e7b857e9035905}\label{classDB__mysql_a637d7d6710d9066a22e7b857e9035905}} 
+\index{DB\_mysql@{DB\_mysql}!createSequence@{createSequence}}
+\index{createSequence@{createSequence}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{createSequence()}{createSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::create\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Creates a new sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the new sequence\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+mysql\+::next\+I\+D(), \mbox{\hyperlink{classDB__mysql_a9c480574a8c246c60bd455aafae07f3e}{D\+B\+\_\+mysql\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_aa6a927f0e0fd3085a7fd88141d7a2cdf}\label{classDB__mysql_aa6a927f0e0fd3085a7fd88141d7a2cdf}} 
+\index{DB\_mysql@{DB\_mysql}!DB\_mysql@{DB\_mysql}}
+\index{DB\_mysql@{DB\_mysql}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{DB\_mysql()}{DB\_mysql()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::\+D\+B\+\_\+mysql (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This constructor calls {\ttfamily \$this-\/$>$\mbox{\hyperlink{classDB__common_aa5163360915c02c99d8d048b4728c3cc}{D\+B\+\_\+common()}}}
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mysql_a3115edb473ac09f65cf4944ae31c90e6}\label{classDB__mysql_a3115edb473ac09f65cf4944ae31c90e6}} 
+\index{DB\_mysql@{DB\_mysql}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disconnects from the database server
+
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mysql_a9c480574a8c246c60bd455aafae07f3e}\label{classDB__mysql_a9c480574a8c246c60bd455aafae07f3e}} 
+\index{DB\_mysql@{DB\_mysql}!dropSequence@{dropSequence}}
+\index{dropSequence@{dropSequence}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{dropSequence()}{dropSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::drop\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Deletes a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence to be deleted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common\+::drop\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+mysql\+::next\+I\+D(), \mbox{\hyperlink{classDB__mysql_a637d7d6710d9066a22e7b857e9035905}{D\+B\+\_\+mysql\+::create\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a8e750dc2252c2bc434322d2f991b3f7f}\label{classDB__mysql_a8e750dc2252c2bc434322d2f991b3f7f}} 
+\index{DB\_mysql@{DB\_mysql}!errorNative@{errorNative}}
+\index{errorNative@{errorNative}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{errorNative()}{errorNative()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::error\+Native (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the D\+B\+MS\textquotesingle{} native error code produced by the last query
+
+\begin{DoxyReturn}{Returns}
+int the D\+B\+MS\textquotesingle{} error code 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a5b451dc88229cf12de5a0845ba53a377}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a7dce056403fdf11e26e299b61a8d713f}\label{classDB__mysql_a7dce056403fdf11e26e299b61a8d713f}} 
+\index{DB\_mysql@{DB\_mysql}!escapeSimple@{escapeSimple}}
+\index{escapeSimple@{escapeSimple}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{escapeSimple()}{escapeSimple()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::escape\+Simple (\begin{DoxyParamCaption}\item[{}]{\$str }\end{DoxyParamCaption})}
+
+Escapes a string according to the current D\+B\+MS\textquotesingle{}s standards
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$str} & the string to be escaped\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the escaped string
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a75285540e4848bff4ff4ac65328920df}{D\+B\+\_\+common\+::quote\+Smart()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+6.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ad9d52fe094ea4954e2bda33f159d59fa}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a55d93d03a1f8abf657cc723a24aa603a}\label{classDB__mysql_a55d93d03a1f8abf657cc723a24aa603a}} 
+\index{DB\_mysql@{DB\_mysql}!fetchInto@{fetchInto}}
+\index{fetchInto@{fetchInto}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{fetchInto()}{fetchInto()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::fetch\+Into (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{\&}]{\$arr,  }\item[{}]{\$fetchmode,  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Places a row from the result set into the given array
+
+Formating of the array and the data therein are configurable. See \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} for more information.
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & the query result resource \\
+\hline
+array & {\em \$arr} & the referenced array to put the data in \\
+\hline
+int & {\em \$fetchmode} & how the resulting array should be indexed \\
+\hline
+int & {\em \$rownum} & the row number to fetch (0 = first row)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK on success, N\+U\+LL when the end of a result set is reached or on failure
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__mysql_a3787ca8510c20fdb3fdf4a6a90f72465}\label{classDB__mysql_a3787ca8510c20fdb3fdf4a6a90f72465}} 
+\index{DB\_mysql@{DB\_mysql}!freeResult@{freeResult}}
+\index{freeResult@{freeResult}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{freeResult()}{freeResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::free\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Deletes the result set and frees the memory occupied by the result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE if \$result is invalid
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__mysql_a7c72e6ebf376d9ad3b1202e2bf4b420e}\label{classDB__mysql_a7c72e6ebf376d9ad3b1202e2bf4b420e}} 
+\index{DB\_mysql@{DB\_mysql}!getSpecialQuery@{getSpecialQuery}}
+\index{getSpecialQuery@{getSpecialQuery}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{getSpecialQuery()}{getSpecialQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::get\+Special\+Query (\begin{DoxyParamCaption}\item[{}]{\$type }\end{DoxyParamCaption})}
+
+Obtains the query string needed for listing a given type of objects
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$type} & the kind of objects you want to retrieve\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the S\+QL query string or null if the driver doesn\textquotesingle{}t support the object type requested
+\end{DoxyReturn}
+@access protected \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a822d61267fea12aebe53a4a33bf9015d}{D\+B\+\_\+common\+::get\+List\+Of()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a2550ff7e5023d193614ab722d9aa3eb9}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_adacdd945d90ed0457c5cb3ce489c7a89}\label{classDB__mysql_adacdd945d90ed0457c5cb3ce489c7a89}} 
+\index{DB\_mysql@{DB\_mysql}!modifyLimitQuery@{modifyLimitQuery}}
+\index{modifyLimitQuery@{modifyLimitQuery}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{modifyLimitQuery()}{modifyLimitQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::modify\+Limit\+Query (\begin{DoxyParamCaption}\item[{}]{\$query,  }\item[{}]{\$from,  }\item[{}]{\$count,  }\item[{}]{\$params = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+Adds L\+I\+M\+IT clauses to a query string according to current D\+B\+MS standards
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$query} & the query to modify \\
+\hline
+int & {\em \$from} & the row to start to fetching (0 = the first row) \\
+\hline
+int & {\em \$count} & the numbers of rows to fetch \\
+\hline
+mixed & {\em \$params} & array, string or numeric data to be used in execution of the statement. Quantity of items passed must match quantity of placeholders in query\+: meaning 1 placeholder for non-\/array parameters or 1 placeholder per array element.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the query string with L\+I\+M\+IT clauses added
+\end{DoxyReturn}
+@access protected 
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a011e994cb95ac8c332c1a61071b49329}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a16dd5178dc56394cf212671785d3e2f8}\label{classDB__mysql_a16dd5178dc56394cf212671785d3e2f8}} 
+\index{DB\_mysql@{DB\_mysql}!modifyQuery@{modifyQuery}}
+\index{modifyQuery@{modifyQuery}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{modifyQuery()}{modifyQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::modify\+Query (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Changes a query string for various D\+B\+MS specific reasons
+
+This little hack lets you know how many rows were deleted when running a \char`\"{}\+D\+E\+L\+E\+T\+E F\+R\+O\+M table\char`\"{} query. Only implemented if the D\+B\+\_\+\+P\+O\+R\+T\+A\+B\+I\+L\+I\+T\+Y\+\_\+\+D\+E\+L\+E\+T\+E\+\_\+\+C\+O\+U\+NT portability option is on.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$query} & the query string to modify\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the modified query string
+\end{DoxyReturn}
+@access protected \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a81b5267f14a138091ce8b5d02e985a75}{D\+B\+\_\+common\+::set\+Option()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a1451e3bc89d841792dd9a0ea3ffc57cd}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_ae5063d305a834fbaf57a1e079e3b2138}\label{classDB__mysql_ae5063d305a834fbaf57a1e079e3b2138}} 
+\index{DB\_mysql@{DB\_mysql}!mysqlRaiseError@{mysqlRaiseError}}
+\index{mysqlRaiseError@{mysqlRaiseError}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{mysqlRaiseError()}{mysqlRaiseError()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::mysql\+Raise\+Error (\begin{DoxyParamCaption}\item[{}]{\$errno = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Produces a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object regarding the current problem
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$errno} & if the error is being manually raised pass a D\+B\+\_\+\+E\+R\+R\+O\+R$\ast$ constant here. If this isn\textquotesingle{}t passed the error information gathered from the D\+B\+MS.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a3b60dee1050625ee683af046033bbe26}{D\+B\+\_\+common\+::raise\+Error()}}, \mbox{\hyperlink{classDB__mysql_a8e750dc2252c2bc434322d2f991b3f7f}{D\+B\+\_\+mysql\+::error\+Native()}}, \mbox{\hyperlink{classDB__common_a94d409cd5836c29a3b4fc90b45ed3364}{D\+B\+\_\+common\+::error\+Code()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__mysql_a6180147161fdf79089c9d1e32eceb57a}\label{classDB__mysql_a6180147161fdf79089c9d1e32eceb57a}} 
+\index{DB\_mysql@{DB\_mysql}!nextId@{nextId}}
+\index{nextId@{nextId}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{nextId()}{nextId()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::next\+Id (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name,  }\item[{}]{\$ondemand = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Returns the next free id in a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence \\
+\hline
+boolean & {\em \$ondemand} & when true, the seqence is automatically created if it does not exist\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the next id number in the sequence. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+D\+B\+\_\+common\+::next\+I\+D(), \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, \mbox{\hyperlink{classDB__mysql_a637d7d6710d9066a22e7b857e9035905}{D\+B\+\_\+mysql\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__mysql_a9c480574a8c246c60bd455aafae07f3e}{D\+B\+\_\+mysql\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ae654bec375517d041f1920ab0cc4703b}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a4c4e127553b3933223749f14ee61087a}\label{classDB__mysql_a4c4e127553b3933223749f14ee61087a}} 
+\index{DB\_mysql@{DB\_mysql}!nextResult@{nextResult}}
+\index{nextResult@{nextResult}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{nextResult()}{nextResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::next\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Move the internal mysql result pointer to the next available result
+
+This method has not been implemented yet.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & valid sql result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mysql_aa0eceb08101bdaf475110b744912c5a6}\label{classDB__mysql_aa0eceb08101bdaf475110b744912c5a6}} 
+\index{DB\_mysql@{DB\_mysql}!numCols@{numCols}}
+\index{numCols@{numCols}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{numCols()}{numCols()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::num\+Cols (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of columns in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of columns. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__mysql_a300020757da8030d123b089a2570fdef}\label{classDB__mysql_a300020757da8030d123b089a2570fdef}} 
+\index{DB\_mysql@{DB\_mysql}!numRows@{numRows}}
+\index{numRows@{numRows}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{numRows()}{numRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::num\+Rows (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of rows in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a605433b6d3412f7d2c24287553965382}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_ac003af7319df2bf713eae34bdc61ad5c}\label{classDB__mysql_ac003af7319df2bf713eae34bdc61ad5c}} 
+\index{DB\_mysql@{DB\_mysql}!quote@{quote}}
+\index{quote@{quote}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{quote()}{quote()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::quote (\begin{DoxyParamCaption}\item[{}]{\$str }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000005}{Deprecated}}]Deprecated in release 1.\+6.\+0 \end{DoxyRefDesc}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ac7ed58cc83e804a589c04dc13ec9c0ff}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a153232e7cb3803dbe5f3af668a6eb846}\label{classDB__mysql_a153232e7cb3803dbe5f3af668a6eb846}} 
+\index{DB\_mysql@{DB\_mysql}!quoteIdentifier@{quoteIdentifier}}
+\index{quoteIdentifier@{quoteIdentifier}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{quoteIdentifier()}{quoteIdentifier()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::quote\+Identifier (\begin{DoxyParamCaption}\item[{}]{\$str }\end{DoxyParamCaption})}
+
+Quotes a string so it can be safely used as a table or column name (W\+A\+R\+N\+I\+NG\+: using names that require this is a R\+E\+A\+L\+LY B\+AD I\+D\+EA)
+
+W\+A\+R\+N\+I\+NG\+: Older versions of My\+S\+QL can\textquotesingle{}t handle the backtick character ({\ttfamily \`{}}) in table or column names.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$str} & identifier name to be quoted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string quoted identifier string
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ac244ef9aea1db0f25d5fd6c6f1742605}{D\+B\+\_\+common\+::quote\+Identifier()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+6.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ac244ef9aea1db0f25d5fd6c6f1742605}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a84296d6e5d1f570959def402099f720b}\label{classDB__mysql_a84296d6e5d1f570959def402099f720b}} 
+\index{DB\_mysql@{DB\_mysql}!rollback@{rollback}}
+\index{rollback@{rollback}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{rollback()}{rollback()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::rollback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reverts the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a03b635b3130360516cb504b7f6095891}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mysql_a5a4212cb23ccdc03fc4fa8d9d2fb5e33}\label{classDB__mysql_a5a4212cb23ccdc03fc4fa8d9d2fb5e33}} 
+\index{DB\_mysql@{DB\_mysql}!simpleQuery@{simpleQuery}}
+\index{simpleQuery@{simpleQuery}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{simpleQuery()}{simpleQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::simple\+Query (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Sends a query to the database server
+
+Generally uses mysql\+\_\+query(). If you want to use mysql\+\_\+unbuffered\+\_\+query() set the \char`\"{}result\+\_\+buffering\char`\"{} option to 0 using set\+Options(). This option was added in Release 1.\+7.\+0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & the S\+QL query string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed + a \mbox{\hyperlink{categoryPHP}{P\+HP}} result resrouce for successful S\+E\+L\+E\+CT queries
+\begin{DoxyItemize}
+\item the D\+B\+\_\+\+OK constant for other successful queries
+\item a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mysql_a633ac385fea2e805c218d9263a4019c8}\label{classDB__mysql_a633ac385fea2e805c218d9263a4019c8}} 
+\index{DB\_mysql@{DB\_mysql}!tableInfo@{tableInfo}}
+\index{tableInfo@{tableInfo}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{tableInfo()}{tableInfo()}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::table\+Info (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{}]{\$mode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Returns information about a table or a result set
+
+
+\begin{DoxyParams}[1]{Parameters}
+object | string & {\em \$result} & \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} object from a query or a string containing the name of a table. While this also accepts a query result resource identifier, this behavior is deprecated. \\
+\hline
+int & {\em \$mode} & a valid table\+Info mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array an associative array with the information requested. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common\+::table\+Info()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__mysql_af1fda759bea7c0543b5c267d4bd4c97b}\label{classDB__mysql_af1fda759bea7c0543b5c267d4bd4c97b}} 
+\index{DB\_mysql@{DB\_mysql}!\$errorcode\_map@{\$errorcode\_map}}
+\index{\$errorcode\_map@{\$errorcode\_map}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{\$errorcode\_map}{$errorcode\_map}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::\$errorcode\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        1004 => DB\_ERROR\_CANNOT\_CREATE,}
+\DoxyCodeLine{        1005 => DB\_ERROR\_CANNOT\_CREATE,}
+\DoxyCodeLine{        1006 => DB\_ERROR\_CANNOT\_CREATE,}
+\DoxyCodeLine{        1007 => DB\_ERROR\_ALREADY\_EXISTS,}
+\DoxyCodeLine{        1008 => DB\_ERROR\_CANNOT\_DROP,}
+\DoxyCodeLine{        1022 => DB\_ERROR\_ALREADY\_EXISTS,}
+\DoxyCodeLine{        1044 => DB\_ERROR\_ACCESS\_VIOLATION,}
+\DoxyCodeLine{        1046 => DB\_ERROR\_NODBSELECTED,}
+\DoxyCodeLine{        1048 => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        1049 => DB\_ERROR\_NOSUCHDB,}
+\DoxyCodeLine{        1050 => DB\_ERROR\_ALREADY\_EXISTS,}
+\DoxyCodeLine{        1051 => DB\_ERROR\_NOSUCHTABLE,}
+\DoxyCodeLine{        1054 => DB\_ERROR\_NOSUCHFIELD,}
+\DoxyCodeLine{        1061 => DB\_ERROR\_ALREADY\_EXISTS,}
+\DoxyCodeLine{        1062 => DB\_ERROR\_ALREADY\_EXISTS,}
+\DoxyCodeLine{        1064 => DB\_ERROR\_SYNTAX,}
+\DoxyCodeLine{        1091 => DB\_ERROR\_NOT\_FOUND,}
+\DoxyCodeLine{        1100 => DB\_ERROR\_NOT\_LOCKED,}
+\DoxyCodeLine{        1136 => DB\_ERROR\_VALUE\_COUNT\_ON\_ROW,}
+\DoxyCodeLine{        1142 => DB\_ERROR\_ACCESS\_VIOLATION,}
+\DoxyCodeLine{        1146 => DB\_ERROR\_NOSUCHTABLE,}
+\DoxyCodeLine{        1216 => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        1217 => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        1356 => DB\_ERROR\_DIVZERO,}
+\DoxyCodeLine{        1451 => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        1452 => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__mysql_a2d28028343a01d938d137fef73b27ff1}\label{classDB__mysql_a2d28028343a01d938d137fef73b27ff1}} 
+\index{DB\_mysql@{DB\_mysql}!\$features@{\$features}}
+\index{\$features@{\$features}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{\$features}{$features}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::\$features}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'limit'}         => \textcolor{stringliteral}{'alter'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'new\_link'}      => \textcolor{stringliteral}{'4.2.0'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'numrows'}       => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'pconnect'}      => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'prepare'}       => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'ssl'}           => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'transactions'}  => \textcolor{keyword}{true},}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__mysql_ab9cf7c786a0301fc47c92fbaa8139e35}\label{classDB__mysql_ab9cf7c786a0301fc47c92fbaa8139e35}} 
+\index{DB\_mysql@{DB\_mysql}!\$transaction\_opcount@{\$transaction\_opcount}}
+\index{\$transaction\_opcount@{\$transaction\_opcount}!DB\_mysql@{DB\_mysql}}
+\doxysubsubsection{\texorpdfstring{\$transaction\_opcount}{$transaction\_opcount}}
+{\footnotesize\ttfamily D\+B\+\_\+mysql\+::\$transaction\+\_\+opcount = 0}
+
+The quantity of transactions begun
+
+\{ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+D\+B/mysql.\+php\end{DoxyCompactItemize}

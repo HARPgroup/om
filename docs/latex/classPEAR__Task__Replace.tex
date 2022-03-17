@@ -1,0 +1,98 @@
+\hypertarget{classPEAR__Task__Replace}{}\doxysection{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Replace Class Reference}
+\label{classPEAR__Task__Replace}\index{PEAR\_Task\_Replace@{PEAR\_Task\_Replace}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Task\+\_\+\+Replace\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Task\+\_\+\+Replace\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Replace_a471d85b098fe780e7149d2539c5fcfc9}{init}} (\$xml, \$attribs)
+\item 
+\mbox{\hyperlink{classPEAR__Task__Replace_a27fdbca9dfb4fb3ac102ad7300b8c8f5}{start\+Session}} (\$pkg, \$contents, \$dest)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Replace_a9ed9c1af51b5125f3092350ecd565cde}{validate\+Xml}} (\$pkg, \$xml, \&\$config, \$file\+Xml)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Replace_a3e4d6bf5c2652770dd2b4607bcedda65}\label{classPEAR__Task__Replace_a3e4d6bf5c2652770dd2b4607bcedda65}} 
+{\bfseries \$type} = \textquotesingle{}simple\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Replace_a179b85f90277d1ef538cd4cb2d32ef51}\label{classPEAR__Task__Replace_a179b85f90277d1ef538cd4cb2d32ef51}} 
+{\bfseries \$phase} = P\+E\+A\+R\+\_\+\+T\+A\+S\+K\+\_\+\+P\+A\+C\+K\+A\+G\+E\+A\+N\+D\+I\+N\+S\+T\+A\+LL
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Replace_a34b621aeef0d0e7a0a941f5dd62ab2dc}\label{classPEAR__Task__Replace_a34b621aeef0d0e7a0a941f5dd62ab2dc}} 
+{\bfseries \$\+\_\+replacements}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Task__Replace_a471d85b098fe780e7149d2539c5fcfc9}\label{classPEAR__Task__Replace_a471d85b098fe780e7149d2539c5fcfc9}} 
+\index{PEAR\_Task\_Replace@{PEAR\_Task\_Replace}!init@{init}}
+\index{init@{init}!PEAR\_Task\_Replace@{PEAR\_Task\_Replace}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Replace\+::init (\begin{DoxyParamCaption}\item[{}]{\$xml,  }\item[{}]{\$attribs }\end{DoxyParamCaption})}
+
+Initialize a task instance with the parameters 
+\begin{DoxyParams}{Parameters}
+{\em array} & raw, parsed xml \\
+\hline
+{\em unused} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Task__Replace_a27fdbca9dfb4fb3ac102ad7300b8c8f5}\label{classPEAR__Task__Replace_a27fdbca9dfb4fb3ac102ad7300b8c8f5}} 
+\index{PEAR\_Task\_Replace@{PEAR\_Task\_Replace}!startSession@{startSession}}
+\index{startSession@{startSession}!PEAR\_Task\_Replace@{PEAR\_Task\_Replace}}
+\doxysubsubsection{\texorpdfstring{startSession()}{startSession()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Replace\+::start\+Session (\begin{DoxyParamCaption}\item[{}]{\$pkg,  }\item[{}]{\$contents,  }\item[{}]{\$dest }\end{DoxyParamCaption})}
+
+Do a package.\+xml 1.\+0 replacement, with additional package-\/info fields available
+
+See \mbox{\hyperlink{classPEAR__Task__Replace_a9ed9c1af51b5125f3092350ecd565cde}{validate\+Xml()}} source for the complete list of allowed fields 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2} & \\
+\hline
+{\em string} & file contents \\
+\hline
+{\em string} & the eventual final file location (informational only) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$false$\vert$\+P\+E\+A\+R\+\_\+\+Error false to skip this file, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} to fail (use \$this-\/$>$throw\+Error), otherwise return the new contents 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classPEAR__Task__Common_a96f54d4e7a2b51c341e28baf0bac628f}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common}}.
+
+\mbox{\Hypertarget{classPEAR__Task__Replace_a9ed9c1af51b5125f3092350ecd565cde}\label{classPEAR__Task__Replace_a9ed9c1af51b5125f3092350ecd565cde}} 
+\index{PEAR\_Task\_Replace@{PEAR\_Task\_Replace}!validateXml@{validateXml}}
+\index{validateXml@{validateXml}!PEAR\_Task\_Replace@{PEAR\_Task\_Replace}}
+\doxysubsubsection{\texorpdfstring{validateXml()}{validateXml()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Replace\+::validate\+Xml (\begin{DoxyParamCaption}\item[{}]{\$pkg,  }\item[{}]{\$xml,  }\item[{\&}]{\$config,  }\item[{}]{\$file\+Xml }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Validate the raw xml at parsing-\/time. 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__PackageFile__v2}{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2}}} & \\
+\hline
+{\em array} & raw, parsed xml \\
+\hline
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classPEAR__Task__Common_a0b5c1084bbc22adcfe910195153fdb08}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Task/Replace.\+php\end{DoxyCompactItemize}

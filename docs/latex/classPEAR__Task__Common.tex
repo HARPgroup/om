@@ -1,0 +1,215 @@
+\hypertarget{classPEAR__Task__Common}{}\doxysection{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common Class Reference}
+\label{classPEAR__Task__Common}\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_ab7cc3318334621423edaede13c5bf08f}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common}} (\&\$config, \&\$logger, \$phase)
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_a02d18ddd37d256c8c83931647c11be0c}{init}} (\$xml, \$file\+Attributes, \$last\+Version)
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_a96f54d4e7a2b51c341e28baf0bac628f}{start\+Session}} (\$pkg, \$contents, \$dest)
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_a0dc5a501e79c095a8076c22255abea06}{is\+Script}} ()
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Common_a5fac09d6159be523d8b03b57932c178f}\label{classPEAR__Task__Common_a5fac09d6159be523d8b03b57932c178f}} 
+{\bfseries throw\+Error} (\$msg, \$code=-\/1)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_a0b5c1084bbc22adcfe910195153fdb08}{validate\+Xml}} (\$pkg, \$xml, \&\$config, \$file\+Xml)
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_a717f6e118a8033b39914f2b44b9bf2c0}{run}} (\$tasks)
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_aec8d007825e469c8413f55de990bb28f}{has\+Postinstall\+Tasks}} ()
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_ad9367e16bdca6dc4a2bd17ce4fc54ab5}{run\+Postinstall\+Tasks}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_a373e75a3b27e897142360b08ea617916}{\$type}} = \textquotesingle{}simple\textquotesingle{}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_a9b90b6176322778d46bf87cfa8299191}{\$phase}} = P\+E\+A\+R\+\_\+\+T\+A\+S\+K\+\_\+\+I\+N\+S\+T\+A\+LL
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_a6f74f577ce7dc03d670e4ec04e3cc778}{\$config}}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_aec911934c392dcc6e62d2300c774f93b}{\$registry}}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_abc299ef224e172978a6099706685a44b}{\$logger}}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Common_a814e8bf24d1454d3ac0808a8f74207f1}{\$installphase}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Task__Common_aec8d007825e469c8413f55de990bb28f}\label{classPEAR__Task__Common_aec8d007825e469c8413f55de990bb28f}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!hasPostinstallTasks@{hasPostinstallTasks}}
+\index{hasPostinstallTasks@{hasPostinstallTasks}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{hasPostinstallTasks()}{hasPostinstallTasks()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::has\+Postinstall\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+@final \mbox{\Hypertarget{classPEAR__Task__Common_a02d18ddd37d256c8c83931647c11be0c}\label{classPEAR__Task__Common_a02d18ddd37d256c8c83931647c11be0c}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!init@{init}}
+\index{init@{init}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::init (\begin{DoxyParamCaption}\item[{}]{\$xml,  }\item[{}]{\$file\+Attributes,  }\item[{}]{\$last\+Version }\end{DoxyParamCaption})}
+
+Initialize a task instance with the parameters 
+\begin{DoxyParams}{Parameters}
+{\em array} & raw, parsed xml \\
+\hline
+{\em array} & attributes from the $<$file$>$ tag containing this task \\
+\hline
+{\em string$\vert$null} & last installed version of this package @abstract \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classPEAR__Task__Postinstallscript_a9a166d45aa63620530433d6e62bd9b25}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript}}.
+
+\mbox{\Hypertarget{classPEAR__Task__Common_a0dc5a501e79c095a8076c22255abea06}\label{classPEAR__Task__Common_a0dc5a501e79c095a8076c22255abea06}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!isScript@{isScript}}
+\index{isScript@{isScript}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{isScript()}{isScript()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::is\+Script (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determines whether a role is a script \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Task__Common_ab7cc3318334621423edaede13c5bf08f}\label{classPEAR__Task__Common_ab7cc3318334621423edaede13c5bf08f}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{PEAR\_Task\_Common()}{PEAR\_Task\_Common()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::\+P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common (\begin{DoxyParamCaption}\item[{\&}]{\$config,  }\item[{\&}]{\$logger,  }\item[{}]{\$phase }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+{\em \mbox{\hyperlink{classPEAR__Common}{P\+E\+A\+R\+\_\+\+Common}}} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Task__Common_a717f6e118a8033b39914f2b44b9bf2c0}\label{classPEAR__Task__Common_a717f6e118a8033b39914f2b44b9bf2c0}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!run@{run}}
+\index{run@{run}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::run (\begin{DoxyParamCaption}\item[{}]{\$tasks }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+This method is used to process each of the tasks for a particular multiple class type. Simple tasks need not implement this method. 
+\begin{DoxyParams}{Parameters}
+{\em array} & an array of tasks @access protected\\
+\hline
+\end{DoxyParams}
+@abstract \mbox{\Hypertarget{classPEAR__Task__Common_ad9367e16bdca6dc4a2bd17ce4fc54ab5}\label{classPEAR__Task__Common_ad9367e16bdca6dc4a2bd17ce4fc54ab5}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!runPostinstallTasks@{runPostinstallTasks}}
+\index{runPostinstallTasks@{runPostinstallTasks}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{runPostinstallTasks()}{runPostinstallTasks()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::run\+Postinstall\+Tasks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+@final \mbox{\Hypertarget{classPEAR__Task__Common_a96f54d4e7a2b51c341e28baf0bac628f}\label{classPEAR__Task__Common_a96f54d4e7a2b51c341e28baf0bac628f}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!startSession@{startSession}}
+\index{startSession@{startSession}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{startSession()}{startSession()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::start\+Session (\begin{DoxyParamCaption}\item[{}]{\$pkg,  }\item[{}]{\$contents,  }\item[{}]{\$dest }\end{DoxyParamCaption})}
+
+Begin a task processing session. All multiple tasks will be processed after each file has been successfully installed, all simple tasks should perform their task here and return any errors using the custom throw\+Error() method to allow forward compatibility
+
+This method M\+U\+ST N\+OT write out any changes to disk 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__PackageFile__v2}{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2}}} & \\
+\hline
+{\em string} & file contents \\
+\hline
+{\em string} & the eventual final file location (informational only) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$false$\vert$\+P\+E\+A\+R\+\_\+\+Error false to skip this file, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} to fail (use \$this-\/$>$throw\+Error), otherwise return the new contents @abstract 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classPEAR__Task__Replace_a27fdbca9dfb4fb3ac102ad7300b8c8f5}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Replace}}, \mbox{\hyperlink{classPEAR__Task__Unixeol_a06fb57f655e0ffae3481c37c1a401c06}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Unixeol}}, and \mbox{\hyperlink{classPEAR__Task__Windowseol_a3f30b60723533c70566a39448189505b}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Windowseol}}.
+
+\mbox{\Hypertarget{classPEAR__Task__Common_a0b5c1084bbc22adcfe910195153fdb08}\label{classPEAR__Task__Common_a0b5c1084bbc22adcfe910195153fdb08}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!validateXml@{validateXml}}
+\index{validateXml@{validateXml}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{validateXml()}{validateXml()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::validate\+Xml (\begin{DoxyParamCaption}\item[{}]{\$pkg,  }\item[{}]{\$xml,  }\item[{\&}]{\$config,  }\item[{}]{\$file\+Xml }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Validate the basic contents of a task tag. 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__PackageFile__v2}{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2}}} & \\
+\hline
+{\em array} & \\
+\hline
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+{\em array} & the entire parsed $<$file$>$ tag \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true$\vert$array On error, return an array in format\+: array(P\+E\+A\+R\+\_\+\+T\+A\+S\+K\+\_\+\+E\+R\+R\+O\+R\+\_\+???\mbox{[}, param1\mbox{]}\mbox{[}, param2\mbox{]}\mbox{[}, ...\mbox{]})
+\end{DoxyReturn}
+For P\+E\+A\+R\+\_\+\+T\+A\+S\+K\+\_\+\+E\+R\+R\+O\+R\+\_\+\+M\+I\+S\+S\+I\+N\+G\+\_\+\+A\+T\+T\+R\+IB, pass the attribute name in For P\+E\+A\+R\+\_\+\+T\+A\+S\+K\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+R\+O\+N\+G\+\_\+\+A\+T\+T\+R\+I\+B\+\_\+\+V\+A\+L\+UE, pass the attribute name and an array of legal values in
+
+@abstract 
+
+Reimplemented in \mbox{\hyperlink{classPEAR__Task__Postinstallscript_a35cac313625bed84919571d739ea7f5b}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript}}, \mbox{\hyperlink{classPEAR__Task__Replace_a9ed9c1af51b5125f3092350ecd565cde}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Replace}}, \mbox{\hyperlink{classPEAR__Task__Unixeol_a87ddcde1431ba0015df575728c3eead8}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Unixeol}}, and \mbox{\hyperlink{classPEAR__Task__Windowseol_abe8f8280cf9c5592b33d8455090ed88e}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Windowseol}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPEAR__Task__Common_a6f74f577ce7dc03d670e4ec04e3cc778}\label{classPEAR__Task__Common_a6f74f577ce7dc03d670e4ec04e3cc778}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!\$config@{\$config}}
+\index{\$config@{\$config}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{\$config}{$config}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::\$config}
+
+@access protected \mbox{\Hypertarget{classPEAR__Task__Common_a814e8bf24d1454d3ac0808a8f74207f1}\label{classPEAR__Task__Common_a814e8bf24d1454d3ac0808a8f74207f1}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!\$installphase@{\$installphase}}
+\index{\$installphase@{\$installphase}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{\$installphase}{$installphase}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::\$installphase}
+
+@access protected \mbox{\Hypertarget{classPEAR__Task__Common_abc299ef224e172978a6099706685a44b}\label{classPEAR__Task__Common_abc299ef224e172978a6099706685a44b}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!\$logger@{\$logger}}
+\index{\$logger@{\$logger}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{\$logger}{$logger}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::\$logger}
+
+@access protected \mbox{\Hypertarget{classPEAR__Task__Common_a9b90b6176322778d46bf87cfa8299191}\label{classPEAR__Task__Common_a9b90b6176322778d46bf87cfa8299191}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!\$phase@{\$phase}}
+\index{\$phase@{\$phase}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{\$phase}{$phase}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::\$phase = P\+E\+A\+R\+\_\+\+T\+A\+S\+K\+\_\+\+I\+N\+S\+T\+A\+LL}
+
+Determines which install phase this task is executed under \mbox{\Hypertarget{classPEAR__Task__Common_aec911934c392dcc6e62d2300c774f93b}\label{classPEAR__Task__Common_aec911934c392dcc6e62d2300c774f93b}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!\$registry@{\$registry}}
+\index{\$registry@{\$registry}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{\$registry}{$registry}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::\$registry}
+
+@access protected \mbox{\Hypertarget{classPEAR__Task__Common_a373e75a3b27e897142360b08ea617916}\label{classPEAR__Task__Common_a373e75a3b27e897142360b08ea617916}} 
+\index{PEAR\_Task\_Common@{PEAR\_Task\_Common}!\$type@{\$type}}
+\index{\$type@{\$type}!PEAR\_Task\_Common@{PEAR\_Task\_Common}}
+\doxysubsubsection{\texorpdfstring{\$type}{$type}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Common\+::\$type = \textquotesingle{}simple\textquotesingle{}}
+
+Valid types for this version are \textquotesingle{}simple\textquotesingle{} and \textquotesingle{}multiple\textquotesingle{}
+
+
+\begin{DoxyItemize}
+\item simple tasks operate on the contents of a file and write out changes to disk
+\item multiple tasks operate on the contents of many files and write out the changes directly to disk
+\end{DoxyItemize}
+
+Child task classes must override this property. @access protected 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Task/Common.\+php\end{DoxyCompactItemize}

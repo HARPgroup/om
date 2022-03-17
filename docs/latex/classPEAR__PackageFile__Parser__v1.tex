@@ -1,0 +1,138 @@
+\hypertarget{classPEAR__PackageFile__Parser__v1}{}\doxysection{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v1 Class Reference}
+\label{classPEAR__PackageFile__Parser__v1}\index{PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile__Parser__v1_afe51993cd0c5cce960c40ecec19963f3}{from\+V2}} (\$packagefile)
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_a3aa0c519d5605a4adfbac089dd10eae4}\label{classPEAR__PackageFile__Parser__v1_a3aa0c519d5605a4adfbac089dd10eae4}} 
+{\bfseries set\+Config} (\&\$c)
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_acd9d2a3e9ba61951da4c46ee863689ff}\label{classPEAR__PackageFile__Parser__v1_acd9d2a3e9ba61951da4c46ee863689ff}} 
+{\bfseries set\+Logger} (\&\$l)
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile__Parser__v1_aa1fc258ebbbef6bb1a38e5a94e0b86e6}{parse}} (\$data, \$file, \$archive=false)
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile__Parser__v1_a93d9829d58eb6cf6583e5da9c1d09f40}{\+\_\+un\+Indent}} (\$str)
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile__Parser__v1_a0bbe0fde8ee6b4c644e88176f7748497}{\+\_\+element\+\_\+start\+\_\+1\+\_\+0}} (\$xp, \$name, \$attribs)
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile__Parser__v1_a57dc6ba52c5daf86aff6fa3950b6b457}{\+\_\+element\+\_\+end\+\_\+1\+\_\+0}} (\$xp, \$name)
+\item 
+\mbox{\hyperlink{classPEAR__PackageFile__Parser__v1_a03e151a708d9211d4c22e4ae0990ac0a}{\+\_\+pkginfo\+\_\+cdata\+\_\+1\+\_\+0}} (\$xp, \$data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_a69c731b8e6a9e38fa0522772418facaf}\label{classPEAR__PackageFile__Parser__v1_a69c731b8e6a9e38fa0522772418facaf}} 
+{\bfseries \$\+\_\+registry}
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_aed17ca9cfb44f3beecdc358b029262ec}\label{classPEAR__PackageFile__Parser__v1_aed17ca9cfb44f3beecdc358b029262ec}} 
+{\bfseries \$\+\_\+config}
+\item 
+\mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_ad32c1e165d8095f5b5e1a6a19a693fed}\label{classPEAR__PackageFile__Parser__v1_ad32c1e165d8095f5b5e1a6a19a693fed}} 
+{\bfseries \$\+\_\+logger}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_a57dc6ba52c5daf86aff6fa3950b6b457}\label{classPEAR__PackageFile__Parser__v1_a57dc6ba52c5daf86aff6fa3950b6b457}} 
+\index{PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}!\_element\_end\_1\_0@{\_element\_end\_1\_0}}
+\index{\_element\_end\_1\_0@{\_element\_end\_1\_0}!PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}}
+\doxysubsubsection{\texorpdfstring{\_element\_end\_1\_0()}{\_element\_end\_1\_0()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v1\+::\+\_\+element\+\_\+end\+\_\+1\+\_\+0 (\begin{DoxyParamCaption}\item[{}]{\$xp,  }\item[{}]{\$name }\end{DoxyParamCaption})}
+
+X\+ML parser callback for ending elements. Used for version 1.\+0 packages.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$xp} & X\+ML parser resource \\
+\hline
+string & {\em \$name} & name of ending element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+@access private \mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_a0bbe0fde8ee6b4c644e88176f7748497}\label{classPEAR__PackageFile__Parser__v1_a0bbe0fde8ee6b4c644e88176f7748497}} 
+\index{PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}!\_element\_start\_1\_0@{\_element\_start\_1\_0}}
+\index{\_element\_start\_1\_0@{\_element\_start\_1\_0}!PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}}
+\doxysubsubsection{\texorpdfstring{\_element\_start\_1\_0()}{\_element\_start\_1\_0()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v1\+::\+\_\+element\+\_\+start\+\_\+1\+\_\+0 (\begin{DoxyParamCaption}\item[{}]{\$xp,  }\item[{}]{\$name,  }\item[{}]{\$attribs }\end{DoxyParamCaption})}
+
+X\+ML parser callback for ending elements. Used for version 1.\+0 packages.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$xp} & X\+ML parser resource \\
+\hline
+string & {\em \$name} & name of ending element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+@access private \mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_a03e151a708d9211d4c22e4ae0990ac0a}\label{classPEAR__PackageFile__Parser__v1_a03e151a708d9211d4c22e4ae0990ac0a}} 
+\index{PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}!\_pkginfo\_cdata\_1\_0@{\_pkginfo\_cdata\_1\_0}}
+\index{\_pkginfo\_cdata\_1\_0@{\_pkginfo\_cdata\_1\_0}!PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}}
+\doxysubsubsection{\texorpdfstring{\_pkginfo\_cdata\_1\_0()}{\_pkginfo\_cdata\_1\_0()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v1\+::\+\_\+pkginfo\+\_\+cdata\+\_\+1\+\_\+0 (\begin{DoxyParamCaption}\item[{}]{\$xp,  }\item[{}]{\$data }\end{DoxyParamCaption})}
+
+X\+ML parser callback for character data. Used for version 1.\+0 packages.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$xp} & X\+ML parser resource \\
+\hline
+string & {\em \$name} & character data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+@access private \mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_a93d9829d58eb6cf6583e5da9c1d09f40}\label{classPEAR__PackageFile__Parser__v1_a93d9829d58eb6cf6583e5da9c1d09f40}} 
+\index{PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}!\_unIndent@{\_unIndent}}
+\index{\_unIndent@{\_unIndent}!PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}}
+\doxysubsubsection{\texorpdfstring{\_unIndent()}{\_unIndent()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v1\+::\+\_\+un\+Indent (\begin{DoxyParamCaption}\item[{}]{\$str }\end{DoxyParamCaption})}
+
+Unindent given string
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$str} & The string that has to be unindented. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string @access private 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_afe51993cd0c5cce960c40ecec19963f3}\label{classPEAR__PackageFile__Parser__v1_afe51993cd0c5cce960c40ecec19963f3}} 
+\index{PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}!fromV2@{fromV2}}
+\index{fromV2@{fromV2}!PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}}
+\doxysubsubsection{\texorpdfstring{fromV2()}{fromV2()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v1\+::from\+V2 (\begin{DoxyParamCaption}\item[{}]{\$packagefile }\end{DoxyParamCaption})}
+
+BC hack to allow \mbox{\hyperlink{classPEAR__Common_a4bf50c15fb8dddc2807afc02d9b6f247}{P\+E\+A\+R\+\_\+\+Common\+::info\+From\+String()}} to sort of work with the version 2.\+0 format -\/ there\textquotesingle{}s no filelist though 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__PackageFile__v2}{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2}}} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__PackageFile__Parser__v1_aa1fc258ebbbef6bb1a38e5a94e0b86e6}\label{classPEAR__PackageFile__Parser__v1_aa1fc258ebbbef6bb1a38e5a94e0b86e6}} 
+\index{PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}!parse@{parse}}
+\index{parse@{parse}!PEAR\_PackageFile\_Parser\_v1@{PEAR\_PackageFile\_Parser\_v1}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v1\+::parse (\begin{DoxyParamCaption}\item[{}]{\$data,  }\item[{}]{\$file,  }\item[{}]{\$archive = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & contents of package.\+xml file, version 1.\+0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool success of parsing 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Package\+File/\+Parser/v1.\+php\end{DoxyCompactItemize}

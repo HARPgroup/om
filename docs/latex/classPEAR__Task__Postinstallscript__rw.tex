@@ -1,0 +1,125 @@
+\hypertarget{classPEAR__Task__Postinstallscript__rw}{}\doxysection{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw Class Reference}
+\label{classPEAR__Task__Postinstallscript__rw}\index{PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_abbdc89d4d7a1e4e9ffcefd90251ea366}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw}} (\&\$pkg, \&\$config, \&\$logger, \$file\+Xml)
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Postinstallscript__rw_a8da8715768155db96044e90bcbfafbd7}\label{classPEAR__Task__Postinstallscript__rw_a8da8715768155db96044e90bcbfafbd7}} 
+{\bfseries validate} ()
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Postinstallscript__rw_a35cfa99d89c6c1a41c3906b1b6444ed9}\label{classPEAR__Task__Postinstallscript__rw_a35cfa99d89c6c1a41c3906b1b6444ed9}} 
+{\bfseries get\+Name} ()
+\item 
+\mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_aca8e434ea987206ee44e73a934f14e39}{add\+Param\+Group}} (\$id, \$params=false, \$instructions=false)
+\item 
+\mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_af2b6652e28e94119e9f2bbef399a3854}{add\+Condition\+Type\+Group}} (\$id, \$oldgroup, \$param, \$value, \$conditiontype=\textquotesingle{}=\textquotesingle{}, \$params=false, \$instructions=false)
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Postinstallscript__rw_a56e0e973751b94e75630a57e7c72e8bc}\label{classPEAR__Task__Postinstallscript__rw_a56e0e973751b94e75630a57e7c72e8bc}} 
+{\bfseries get\+Xml} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_ac6f420561382c882e5468d0d4b27811d}{get\+Param}} (\$name, \$prompt, \$type=\textquotesingle{}string\textquotesingle{}, \$default=null)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__Task__Postinstallscript__rw_aefe66933730c30fdde1de4d59ee6cc20}\label{classPEAR__Task__Postinstallscript__rw_aefe66933730c30fdde1de4d59ee6cc20}} 
+{\bfseries \$\+\_\+pkg}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Task__Postinstallscript__rw_af2b6652e28e94119e9f2bbef399a3854}\label{classPEAR__Task__Postinstallscript__rw_af2b6652e28e94119e9f2bbef399a3854}} 
+\index{PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}!addConditionTypeGroup@{addConditionTypeGroup}}
+\index{addConditionTypeGroup@{addConditionTypeGroup}!PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}}
+\doxysubsubsection{\texorpdfstring{addConditionTypeGroup()}{addConditionTypeGroup()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw\+::add\+Condition\+Type\+Group (\begin{DoxyParamCaption}\item[{}]{\$id,  }\item[{}]{\$oldgroup,  }\item[{}]{\$param,  }\item[{}]{\$value,  }\item[{}]{\$conditiontype = {\ttfamily \textquotesingle{}=\textquotesingle{}},  }\item[{}]{\$params = {\ttfamily false},  }\item[{}]{\$instructions = {\ttfamily false} }\end{DoxyParamCaption})}
+
+add a complex $<$paramgroup$>$ to the post-\/install script with conditions
+
+This inserts a $<$paramgroup$>$ with
+
+Order is significant, so call this method in the same sequence the users should see the paramgroups. The \$params parameter should either be the result of a call to \mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_ac6f420561382c882e5468d0d4b27811d}{get\+Param()}} or an array of calls to \mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_ac6f420561382c882e5468d0d4b27811d}{get\+Param()}}.
+
+Use \mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_aca8e434ea987206ee44e73a934f14e39}{add\+Param\+Group()}} to add a simple $<$paramgroup$>$
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$id} & $<$paramgroup$>$ id as seen by the script \\
+\hline
+string & {\em \$oldgroup} & $<$paramgroup$>$ id of the section referenced by $<$conditiontype$>$ \\
+\hline
+string & {\em \$param} & name of the  from the older section referenced by $<$contitiontype$>$ \\
+\hline
+string & {\em \$value} & value to match of the parameter \\
+\hline
+string & {\em \$conditiontype} & one of \textquotesingle{}=\textquotesingle{}, \textquotesingle{}!=\textquotesingle{}, \textquotesingle{}preg\+\_\+match\textquotesingle{} \\
+\hline
+array | false & {\em \$params} & array of \mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_ac6f420561382c882e5468d0d4b27811d}{get\+Param()}} calls, or false for no params \\
+\hline
+string | false & {\em \$instructions} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Task__Postinstallscript__rw_aca8e434ea987206ee44e73a934f14e39}\label{classPEAR__Task__Postinstallscript__rw_aca8e434ea987206ee44e73a934f14e39}} 
+\index{PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}!addParamGroup@{addParamGroup}}
+\index{addParamGroup@{addParamGroup}!PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}}
+\doxysubsubsection{\texorpdfstring{addParamGroup()}{addParamGroup()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw\+::add\+Param\+Group (\begin{DoxyParamCaption}\item[{}]{\$id,  }\item[{}]{\$params = {\ttfamily false},  }\item[{}]{\$instructions = {\ttfamily false} }\end{DoxyParamCaption})}
+
+add a simple $<$paramgroup$>$ to the post-\/install script
+
+Order is significant, so call this method in the same sequence the users should see the paramgroups. The \$params parameter should either be the result of a call to \mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_ac6f420561382c882e5468d0d4b27811d}{get\+Param()}} or an array of calls to \mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_ac6f420561382c882e5468d0d4b27811d}{get\+Param()}}.
+
+Use \mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_af2b6652e28e94119e9f2bbef399a3854}{add\+Condition\+Type\+Group()}} to add a $<$paramgroup$>$ containing a $<$conditiontype$>$ tag 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$id} & $<$paramgroup$>$ id as seen by the script \\
+\hline
+array | false & {\em \$params} & array of \mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw_ac6f420561382c882e5468d0d4b27811d}{get\+Param()}} calls, or false for no params \\
+\hline
+string | false & {\em \$instructions} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Task__Postinstallscript__rw_ac6f420561382c882e5468d0d4b27811d}\label{classPEAR__Task__Postinstallscript__rw_ac6f420561382c882e5468d0d4b27811d}} 
+\index{PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}!getParam@{getParam}}
+\index{getParam@{getParam}!PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}}
+\doxysubsubsection{\texorpdfstring{getParam()}{getParam()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw\+::get\+Param (\begin{DoxyParamCaption}\item[{}]{\$name,  }\item[{}]{\$prompt,  }\item[{}]{\$type = {\ttfamily \textquotesingle{}string\textquotesingle{}},  }\item[{}]{\$default = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Use to set up a param tag for use in creating a paramgroup \mbox{\Hypertarget{classPEAR__Task__Postinstallscript__rw_abbdc89d4d7a1e4e9ffcefd90251ea366}\label{classPEAR__Task__Postinstallscript__rw_abbdc89d4d7a1e4e9ffcefd90251ea366}} 
+\index{PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}!PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}}
+\index{PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}!PEAR\_Task\_Postinstallscript\_rw@{PEAR\_Task\_Postinstallscript\_rw}}
+\doxysubsubsection{\texorpdfstring{PEAR\_Task\_Postinstallscript\_rw()}{PEAR\_Task\_Postinstallscript\_rw()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw\+::\+P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw (\begin{DoxyParamCaption}\item[{\&}]{\$pkg,  }\item[{\&}]{\$config,  }\item[{\&}]{\$logger,  }\item[{}]{\$file\+Xml }\end{DoxyParamCaption})}
+
+Enter description here...
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\hyperlink{classPEAR__PackageFile__v2__rw}{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2\+\_\+rw}} & {\em \$pkg} & \\
+\hline
+P\+E\+A\+R\+\_\+\+Config & {\em \$config} & \\
+\hline
+\mbox{\hyperlink{classPEAR__Frontend}{P\+E\+A\+R\+\_\+\+Frontend}} & {\em \$logger} & \\
+\hline
+array & {\em \$file\+Xml} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPEAR__Task__Postinstallscript__rw}{P\+E\+A\+R\+\_\+\+Task\+\_\+\+Postinstallscript\+\_\+rw}} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/\+Task/\+Postinstallscript/rw.\+php\end{DoxyCompactItemize}

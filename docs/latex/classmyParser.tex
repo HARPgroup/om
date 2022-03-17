@@ -1,0 +1,112 @@
+\hypertarget{classmyParser}{}\doxysection{my\+Parser Class Reference}
+\label{classmyParser}\index{myParser@{myParser}}
+
+
+Inheritance diagram for my\+Parser\+:
+% FIG 0
+
+
+Collaboration diagram for my\+Parser\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmyParser_aceeff225714471cad3c1e13c8f098d36}\label{classmyParser_aceeff225714471cad3c1e13c8f098d36}} 
+{\bfseries my\+Parser} ()
+\item 
+\mbox{\hyperlink{classmyParser_ade5a28ad6f11f24d5a460d626dec2ed9}{start\+Handler}} (\$xp, \$name, \$attribs)
+\item 
+\mbox{\hyperlink{classmyParser_a098ad86ab749cb89dbe93bac1bea1aee}{end\+Handler}} (\$xp, \$name)
+\item 
+\mbox{\Hypertarget{classmyParser_a8d763dfd6cc1e53b96c296cf619b67bc}\label{classmyParser_a8d763dfd6cc1e53b96c296cf619b67bc}} 
+{\bfseries xmltag\+\_\+foo\+\_\+bar} (\$xp, \$name, \$attribs)
+\item 
+\mbox{\Hypertarget{classmyParser_a76e30cc945c095ef845e0abf2b762d27}\label{classmyParser_a76e30cc945c095ef845e0abf2b762d27}} 
+{\bfseries xmltag\+\_\+foo\+\_\+bar\+\_\+} (\$xp, \$name)
+\item 
+\mbox{\Hypertarget{classmyParser_a28c55f07cd6e0970c5d7fc15bc5f1d58}\label{classmyParser_a28c55f07cd6e0970c5d7fc15bc5f1d58}} 
+{\bfseries xmltag\+\_\+foo} (\$xp, \$name)
+\item 
+\mbox{\Hypertarget{classmyParser_ade13406404a64d653883d1c52453e17b}\label{classmyParser_ade13406404a64d653883d1c52453e17b}} 
+{\bfseries xmltag\+\_\+foo\+\_\+} (\$xp, \$name)
+\item 
+\mbox{\Hypertarget{classmyParser_aceeff225714471cad3c1e13c8f098d36}\label{classmyParser_aceeff225714471cad3c1e13c8f098d36}} 
+{\bfseries my\+Parser} ()
+\item 
+\mbox{\hyperlink{classmyParser_a31c0f6eff3ba6b4617964c3e6d5d9375}{handle\+Element}} (\$name, \$attribs, \$data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+require the parser 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmyParser_a098ad86ab749cb89dbe93bac1bea1aee}\label{classmyParser_a098ad86ab749cb89dbe93bac1bea1aee}} 
+\index{myParser@{myParser}!endHandler@{endHandler}}
+\index{endHandler@{endHandler}!myParser@{myParser}}
+\doxysubsubsection{\texorpdfstring{endHandler()}{endHandler()}}
+{\footnotesize\ttfamily my\+Parser\+::end\+Handler (\begin{DoxyParamCaption}\item[{}]{\$xp,  }\item[{}]{\$name }\end{DoxyParamCaption})}
+
+handle start element
+
+@access private 
+\begin{DoxyParams}{Parameters}
+{\em resource} & xml parser resource \\
+\hline
+{\em string} & name of the element \\
+\hline
+{\em array} & attributes \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classXML__Parser_a30c7cfbcc0ee83106f008e2cb838ef0a}{X\+M\+L\+\_\+\+Parser}}.
+
+\mbox{\Hypertarget{classmyParser_a31c0f6eff3ba6b4617964c3e6d5d9375}\label{classmyParser_a31c0f6eff3ba6b4617964c3e6d5d9375}} 
+\index{myParser@{myParser}!handleElement@{handleElement}}
+\index{handleElement@{handleElement}!myParser@{myParser}}
+\doxysubsubsection{\texorpdfstring{handleElement()}{handleElement()}}
+{\footnotesize\ttfamily my\+Parser\+::handle\+Element (\begin{DoxyParamCaption}\item[{}]{\$name,  }\item[{}]{\$attribs,  }\item[{}]{\$data }\end{DoxyParamCaption})}
+
+handle the element
+
+The element will be handled, once it\textquotesingle{}s closed
+
+@access private 
+\begin{DoxyParams}{Parameters}
+{\em string} & name of the element \\
+\hline
+{\em array} & attributes of the element \\
+\hline
+{\em string} & character data of the element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classmyParser_ade5a28ad6f11f24d5a460d626dec2ed9}\label{classmyParser_ade5a28ad6f11f24d5a460d626dec2ed9}} 
+\index{myParser@{myParser}!startHandler@{startHandler}}
+\index{startHandler@{startHandler}!myParser@{myParser}}
+\doxysubsubsection{\texorpdfstring{startHandler()}{startHandler()}}
+{\footnotesize\ttfamily my\+Parser\+::start\+Handler (\begin{DoxyParamCaption}\item[{}]{\$xp,  }\item[{}]{\$name,  }\item[{}]{\$attribs }\end{DoxyParamCaption})}
+
+handle start element
+
+@access private 
+\begin{DoxyParams}{Parameters}
+{\em resource} & xml parser resource \\
+\hline
+{\em string} & name of the element \\
+\hline
+{\em array} & attributes \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classXML__Parser_a970c506eb280f2ce965a8111f5f4760a}{X\+M\+L\+\_\+\+Parser}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+X\+M\+L/\+X\+M\+L\+\_\+\+Parser-\/1.\+2.\+8/examples/xml\+\_\+parser\+\_\+file.\+php\item 
+php/lib/\+P\+E\+A\+R/\+X\+M\+L/\+X\+M\+L\+\_\+\+Parser-\/1.\+2.\+8/examples/xml\+\_\+parser\+\_\+funcmode.\+php\item 
+php/lib/\+P\+E\+A\+R/\+X\+M\+L/\+X\+M\+L\+\_\+\+Parser-\/1.\+2.\+8/examples/xml\+\_\+parser\+\_\+simple1.\+php\end{DoxyCompactItemize}

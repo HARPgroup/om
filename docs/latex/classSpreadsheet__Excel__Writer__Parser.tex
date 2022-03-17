@@ -1,0 +1,524 @@
+\hypertarget{classSpreadsheet__Excel__Writer__Parser}{}\doxysection{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser Class Reference}
+\label{classSpreadsheet__Excel__Writer__Parser}\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+
+
+Inheritance diagram for Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+:
+% FIG 0
+
+
+Collaboration diagram for Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a14a4a1946c3c0c1732436b823aee3022}{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser}} (\$byte\+\_\+order, \$biff\+\_\+version)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a5d618f84df58e8ca9da8a65b4f93d45b}{\+\_\+initialize\+Hashes}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_aedae907b0f0cb7e0838d5101154f21d7}{\+\_\+convert}} (\$token)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a46bffff5bbbee6ea8ff675f84f11404c}{\+\_\+convert\+Number}} (\$num)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a1cde36b270ababd224d4bccc7f784204}{\+\_\+convert\+String}} (\$string)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a923c801e171c65fa5e9fbce7f91177f1}{\+\_\+convert\+Function}} (\$token, \$num\+\_\+args)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_af4a91773bb3938ea34601195c812f0f1}{\+\_\+convert\+Range2d}} (\$range, \$class=0)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_acff5e7de07d2908301b4b9d71f1fa2d6}{\+\_\+convert\+Range3d}} (\$token)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a51c573ea9ec3e2ac3e10595cb275892d}{\+\_\+convert\+Ref2d}} (\$cell)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_aa64b3d7ff0425f51c5a505531d36ead6}{\+\_\+convert\+Ref3d}} (\$cell)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_aab123169f05d3ea02002ee68a690aa0f}{\+\_\+pack\+Ext\+Ref}} (\$ext\+\_\+ref)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a67922c201b97b27479dd3f71e02279c4}{\+\_\+get\+Ref\+Index}} (\$ext\+\_\+ref)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a4f931bdcff0383dfd58ab229a1b2557b}{\+\_\+get\+Sheet\+Index}} (\$sheet\+\_\+name)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a1ec3a6c3737d8f4ce7093908f4ea5adb}{set\+Ext\+Sheet}} (\$name, \$index)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a4d591844bb0811d53c8d8cd347896c06}{\+\_\+cell\+To\+Packed\+Rowcol}} (\$cell)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_aee88fe07c5fd3086eec5c28a9e5f10c9}{\+\_\+range\+To\+Packed\+Range}} (\$range)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a448a51dd7815fb0e544d132765562665}{\+\_\+cell\+To\+Rowcol}} (\$cell)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_ac8aad39b3968e274fad648a1c6e0c55b}{\+\_\+advance}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a1e06ee4a2b104b3f8323143df8e89378}{\+\_\+match}} (\$token)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a10a1e8ac2082fbf5eab31b403cbae6c4}{parse}} (\$formula)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_ab48027e047122c267f7ff727641de852}{\+\_\+condition}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_ac5dc3c309c51588817fd8d5b2f3479f6}{\+\_\+expression}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a003f41c1df3ea199dd6dc8f1c7186e7d}{\+\_\+parenthesized\+Expression}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a6de5f3b60d9335f3bf8b13be52520fdb}{\+\_\+term}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_aba2e225db85c1af50b06a2e7e41a18d0}{\+\_\+fact}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a88cb6d05cf219fd355eb033ccf3f3561}{\+\_\+func}} ()
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_ab431bd89043c31849c68d96e83d3b61a}{\+\_\+create\+Tree}} (\$value, \$left, \$right)
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_a863af74feff9a57d2fbde2f21b6be088}{to\+Reverse\+Polish}} (\$tree=array())
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a2fd0bcf9b2eea41974a3ed14372021d2}\label{classSpreadsheet__Excel__Writer__Parser_a2fd0bcf9b2eea41974a3ed14372021d2}} 
+{\bfseries \$\+\_\+current\+\_\+char}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a0c2c9c94cb608b2f5098b1a038f7a7f2}\label{classSpreadsheet__Excel__Writer__Parser_a0c2c9c94cb608b2f5098b1a038f7a7f2}} 
+{\bfseries \$\+\_\+current\+\_\+token}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a4393e642d7028dd4d50aeaf5bf3bfb96}\label{classSpreadsheet__Excel__Writer__Parser_a4393e642d7028dd4d50aeaf5bf3bfb96}} 
+{\bfseries \$\+\_\+formula}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a6df5a52b62dd19f2587d9ac27ade638d}\label{classSpreadsheet__Excel__Writer__Parser_a6df5a52b62dd19f2587d9ac27ade638d}} 
+{\bfseries \$\+\_\+lookahead}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_ab1a9bf8cde1218cc8a6ba11da8a5b789}\label{classSpreadsheet__Excel__Writer__Parser_ab1a9bf8cde1218cc8a6ba11da8a5b789}} 
+{\bfseries \$\+\_\+parse\+\_\+tree}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a4a96b55716bf009a7c1fb7a66aa70c38}\label{classSpreadsheet__Excel__Writer__Parser_a4a96b55716bf009a7c1fb7a66aa70c38}} 
+{\bfseries \$\+\_\+byte\+\_\+order}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a7d9bfac613894844d5ff423e0508a55c}\label{classSpreadsheet__Excel__Writer__Parser_a7d9bfac613894844d5ff423e0508a55c}} 
+{\bfseries \$\+\_\+ext\+\_\+sheets}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_af17b8e0e792f2d8b89287d7b3e441d48}\label{classSpreadsheet__Excel__Writer__Parser_af17b8e0e792f2d8b89287d7b3e441d48}} 
+{\bfseries \$\+\_\+references}
+\item 
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_ad70fffd640c29970a3c105e4907cd7c9}\label{classSpreadsheet__Excel__Writer__Parser_ad70fffd640c29970a3c105e4907cd7c9}} 
+{\bfseries \$\+\_\+\+B\+I\+F\+F\+\_\+version}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_ac8aad39b3968e274fad648a1c6e0c55b}\label{classSpreadsheet__Excel__Writer__Parser_ac8aad39b3968e274fad648a1c6e0c55b}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_advance@{\_advance}}
+\index{\_advance@{\_advance}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_advance()}{\_advance()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+advance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Advance to the next valid token.
+
+@access private \mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a4d591844bb0811d53c8d8cd347896c06}\label{classSpreadsheet__Excel__Writer__Parser_a4d591844bb0811d53c8d8cd347896c06}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_cellToPackedRowcol@{\_cellToPackedRowcol}}
+\index{\_cellToPackedRowcol@{\_cellToPackedRowcol}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_cellToPackedRowcol()}{\_cellToPackedRowcol()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+cell\+To\+Packed\+Rowcol (\begin{DoxyParamCaption}\item[{}]{\$cell }\end{DoxyParamCaption})}
+
+pack() row and column into the required 3 or 4 byte format.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cell} & The Excel cell reference to be packed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array Array containing the row and column in packed() format 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a448a51dd7815fb0e544d132765562665}\label{classSpreadsheet__Excel__Writer__Parser_a448a51dd7815fb0e544d132765562665}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_cellToRowcol@{\_cellToRowcol}}
+\index{\_cellToRowcol@{\_cellToRowcol}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_cellToRowcol()}{\_cellToRowcol()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+cell\+To\+Rowcol (\begin{DoxyParamCaption}\item[{}]{\$cell }\end{DoxyParamCaption})}
+
+Convert an Excel cell reference such as A1 or \$\+B2 or C\$3 or \$D\$4 to a zero indexed row and column number. Also returns two (0,1) values to indicate whether the row or column are relative references.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cell} & The Excel cell reference in A1 format. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_ab48027e047122c267f7ff727641de852}\label{classSpreadsheet__Excel__Writer__Parser_ab48027e047122c267f7ff727641de852}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_condition@{\_condition}}
+\index{\_condition@{\_condition}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_condition()}{\_condition()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+condition (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+It parses a condition. It assumes the following rule\+: Cond -\/$>$ Expr \mbox{[}(\char`\"{}$>$\char`\"{} $\vert$ \char`\"{}$<$\char`\"{}) Expr\mbox{]}
+
+@access private \begin{DoxyReturn}{Returns}
+mixed The parsed ptg\textquotesingle{}d tree on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_aedae907b0f0cb7e0838d5101154f21d7}\label{classSpreadsheet__Excel__Writer__Parser_aedae907b0f0cb7e0838d5101154f21d7}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_convert@{\_convert}}
+\index{\_convert@{\_convert}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_convert()}{\_convert()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+convert (\begin{DoxyParamCaption}\item[{}]{\$token }\end{DoxyParamCaption})}
+
+Convert a token to the proper ptg value.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$token} & The token to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed the converted token on success. \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} if the token is not recognized 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a923c801e171c65fa5e9fbce7f91177f1}\label{classSpreadsheet__Excel__Writer__Parser_a923c801e171c65fa5e9fbce7f91177f1}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_convertFunction@{\_convertFunction}}
+\index{\_convertFunction@{\_convertFunction}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_convertFunction()}{\_convertFunction()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+convert\+Function (\begin{DoxyParamCaption}\item[{}]{\$token,  }\item[{}]{\$num\+\_\+args }\end{DoxyParamCaption})}
+
+Convert a function to a ptg\+Func or ptg\+Func\+VarV depending on the number of args that it takes.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$token} & The name of the function for convertion to ptg value. \\
+\hline
+integer & {\em \$num\+\_\+args} & The number of arguments the function receives. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string The packed ptg for the function 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a46bffff5bbbee6ea8ff675f84f11404c}\label{classSpreadsheet__Excel__Writer__Parser_a46bffff5bbbee6ea8ff675f84f11404c}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_convertNumber@{\_convertNumber}}
+\index{\_convertNumber@{\_convertNumber}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_convertNumber()}{\_convertNumber()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+convert\+Number (\begin{DoxyParamCaption}\item[{}]{\$num }\end{DoxyParamCaption})}
+
+Convert a number token to ptg\+Int or ptg\+Num
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$num} & an integer or double for conversion to its ptg value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_af4a91773bb3938ea34601195c812f0f1}\label{classSpreadsheet__Excel__Writer__Parser_af4a91773bb3938ea34601195c812f0f1}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_convertRange2d@{\_convertRange2d}}
+\index{\_convertRange2d@{\_convertRange2d}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_convertRange2d()}{\_convertRange2d()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+convert\+Range2d (\begin{DoxyParamCaption}\item[{}]{\$range,  }\item[{}]{\$class = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Convert an Excel range such as A1\+:D4 to a ptg\+RefV.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$range} & An Excel range in the A1\+:A2 or A1..A2 format. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_acff5e7de07d2908301b4b9d71f1fa2d6}\label{classSpreadsheet__Excel__Writer__Parser_acff5e7de07d2908301b4b9d71f1fa2d6}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_convertRange3d@{\_convertRange3d}}
+\index{\_convertRange3d@{\_convertRange3d}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_convertRange3d()}{\_convertRange3d()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+convert\+Range3d (\begin{DoxyParamCaption}\item[{}]{\$token }\end{DoxyParamCaption})}
+
+Convert an Excel 3d range such as \char`\"{}\+Sheet1!\+A1\+:\+D4\char`\"{} or \char`\"{}\+Sheet1\+:\+Sheet2!\+A1\+:\+D4\char`\"{} to a ptg\+Area3d.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$token} & An Excel range in the Sheet1!\+A1\+:A2 format. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed The packed ptg\+Area3d token on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a51c573ea9ec3e2ac3e10595cb275892d}\label{classSpreadsheet__Excel__Writer__Parser_a51c573ea9ec3e2ac3e10595cb275892d}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_convertRef2d@{\_convertRef2d}}
+\index{\_convertRef2d@{\_convertRef2d}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_convertRef2d()}{\_convertRef2d()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+convert\+Ref2d (\begin{DoxyParamCaption}\item[{}]{\$cell }\end{DoxyParamCaption})}
+
+Convert an Excel reference such as A1, \$\+B2, C\$3 or \$D\$4 to a ptg\+RefV.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cell} & An Excel cell reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string The cell in packed() format with the corresponding ptg 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_aa64b3d7ff0425f51c5a505531d36ead6}\label{classSpreadsheet__Excel__Writer__Parser_aa64b3d7ff0425f51c5a505531d36ead6}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_convertRef3d@{\_convertRef3d}}
+\index{\_convertRef3d@{\_convertRef3d}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_convertRef3d()}{\_convertRef3d()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+convert\+Ref3d (\begin{DoxyParamCaption}\item[{}]{\$cell }\end{DoxyParamCaption})}
+
+Convert an Excel 3d reference such as \char`\"{}\+Sheet1!\+A1\char`\"{} or \char`\"{}\+Sheet1\+:\+Sheet2!\+A1\char`\"{} to a ptg\+Ref3d.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$cell} & An Excel cell reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed The packed ptg\+Ref3d token on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a1cde36b270ababd224d4bccc7f784204}\label{classSpreadsheet__Excel__Writer__Parser_a1cde36b270ababd224d4bccc7f784204}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_convertString@{\_convertString}}
+\index{\_convertString@{\_convertString}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_convertString()}{\_convertString()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+convert\+String (\begin{DoxyParamCaption}\item[{}]{\$string }\end{DoxyParamCaption})}
+
+Convert a string token to ptg\+Str
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$string} & A string for conversion to its ptg value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed the converted token on success. \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} if the string is longer than 255 characters. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_ab431bd89043c31849c68d96e83d3b61a}\label{classSpreadsheet__Excel__Writer__Parser_ab431bd89043c31849c68d96e83d3b61a}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_createTree@{\_createTree}}
+\index{\_createTree@{\_createTree}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_createTree()}{\_createTree()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+create\+Tree (\begin{DoxyParamCaption}\item[{}]{\$value,  }\item[{}]{\$left,  }\item[{}]{\$right }\end{DoxyParamCaption})}
+
+Creates a tree. In fact an array which may have one or two arrays (sub-\/trees) as elements.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$value} & The value of this node. \\
+\hline
+mixed & {\em \$left} & The left array (sub-\/tree) or a final node. \\
+\hline
+mixed & {\em \$right} & The right array (sub-\/tree) or a final node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array A tree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_ac5dc3c309c51588817fd8d5b2f3479f6}\label{classSpreadsheet__Excel__Writer__Parser_ac5dc3c309c51588817fd8d5b2f3479f6}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_expression@{\_expression}}
+\index{\_expression@{\_expression}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_expression()}{\_expression()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+expression (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+It parses a expression. It assumes the following rule\+: Expr -\/$>$ Term \mbox{[}(\char`\"{}+\char`\"{} $\vert$ \char`\"{}-\/\char`\"{}) Term\mbox{]} -\/$>$ \char`\"{}string\char`\"{} -\/$>$ \char`\"{}-\/\char`\"{} Term
+
+@access private \begin{DoxyReturn}{Returns}
+mixed The parsed ptg\textquotesingle{}d tree on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_aba2e225db85c1af50b06a2e7e41a18d0}\label{classSpreadsheet__Excel__Writer__Parser_aba2e225db85c1af50b06a2e7e41a18d0}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_fact@{\_fact}}
+\index{\_fact@{\_fact}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_fact()}{\_fact()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+fact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+It parses a factor. It assumes the following rule\+: Fact -\/$>$ ( Expr ) $\vert$ Cell\+Ref $\vert$ Cell\+Range $\vert$ Number $\vert$ Function
+
+@access private \begin{DoxyReturn}{Returns}
+mixed The parsed ptg\textquotesingle{}d tree on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a88cb6d05cf219fd355eb033ccf3f3561}\label{classSpreadsheet__Excel__Writer__Parser_a88cb6d05cf219fd355eb033ccf3f3561}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_func@{\_func}}
+\index{\_func@{\_func}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_func()}{\_func()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+func (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+It parses a function call. It assumes the following rule\+: Func -\/$>$ ( Expr \mbox{[},Expr\mbox{]}$\ast$ )
+
+@access private \begin{DoxyReturn}{Returns}
+mixed The parsed ptg\textquotesingle{}d tree on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a67922c201b97b27479dd3f71e02279c4}\label{classSpreadsheet__Excel__Writer__Parser_a67922c201b97b27479dd3f71e02279c4}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_getRefIndex@{\_getRefIndex}}
+\index{\_getRefIndex@{\_getRefIndex}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_getRefIndex()}{\_getRefIndex()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+get\+Ref\+Index (\begin{DoxyParamCaption}\item[{}]{\$ext\+\_\+ref }\end{DoxyParamCaption})}
+
+Look up the R\+EF index that corresponds to an external sheet name (or range). If it doesn\textquotesingle{}t exist yet add it to the workbook\textquotesingle{}s references array. It assumes all sheet names given must exist.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$ext\+\_\+ref} & The name of the external reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed The reference index in packed() format on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a4f931bdcff0383dfd58ab229a1b2557b}\label{classSpreadsheet__Excel__Writer__Parser_a4f931bdcff0383dfd58ab229a1b2557b}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_getSheetIndex@{\_getSheetIndex}}
+\index{\_getSheetIndex@{\_getSheetIndex}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_getSheetIndex()}{\_getSheetIndex()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+get\+Sheet\+Index (\begin{DoxyParamCaption}\item[{}]{\$sheet\+\_\+name }\end{DoxyParamCaption})}
+
+Look up the index that corresponds to an external sheet name. The hash of sheet names is updated by the addworksheet() method of the \mbox{\hyperlink{classSpreadsheet__Excel__Writer__Workbook}{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Workbook}} class.
+
+@access private \begin{DoxyReturn}{Returns}
+integer The sheet index, -\/1 if the sheet was not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a5d618f84df58e8ca9da8a65b4f93d45b}\label{classSpreadsheet__Excel__Writer__Parser_a5d618f84df58e8ca9da8a65b4f93d45b}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_initializeHashes@{\_initializeHashes}}
+\index{\_initializeHashes@{\_initializeHashes}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_initializeHashes()}{\_initializeHashes()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+initialize\+Hashes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialize the ptg and function hashes.
+
+@access private \mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a1e06ee4a2b104b3f8323143df8e89378}\label{classSpreadsheet__Excel__Writer__Parser_a1e06ee4a2b104b3f8323143df8e89378}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_match@{\_match}}
+\index{\_match@{\_match}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_match()}{\_match()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+match (\begin{DoxyParamCaption}\item[{}]{\$token }\end{DoxyParamCaption})}
+
+Checks if it\textquotesingle{}s a valid token.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$token} & The token to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed The checked token or false on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_aab123169f05d3ea02002ee68a690aa0f}\label{classSpreadsheet__Excel__Writer__Parser_aab123169f05d3ea02002ee68a690aa0f}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_packExtRef@{\_packExtRef}}
+\index{\_packExtRef@{\_packExtRef}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_packExtRef()}{\_packExtRef()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+pack\+Ext\+Ref (\begin{DoxyParamCaption}\item[{}]{\$ext\+\_\+ref }\end{DoxyParamCaption})}
+
+Convert the sheet name part of an external reference, for example \char`\"{}\+Sheet1\char`\"{} or \char`\"{}\+Sheet1\+:\+Sheet2\char`\"{}, to a packed structure.
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$ext\+\_\+ref} & The name of the external reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string The reference index in packed() format 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a003f41c1df3ea199dd6dc8f1c7186e7d}\label{classSpreadsheet__Excel__Writer__Parser_a003f41c1df3ea199dd6dc8f1c7186e7d}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_parenthesizedExpression@{\_parenthesizedExpression}}
+\index{\_parenthesizedExpression@{\_parenthesizedExpression}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_parenthesizedExpression()}{\_parenthesizedExpression()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+parenthesized\+Expression (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function just introduces a ptg\+Paren element in the tree, so that Excel doesn\textquotesingle{}t get confused when working with a parenthesized formula afterwards.
+
+@access private \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Parser_aba2e225db85c1af50b06a2e7e41a18d0}{\+\_\+fact()}} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+array The parsed ptg\textquotesingle{}d tree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_aee88fe07c5fd3086eec5c28a9e5f10c9}\label{classSpreadsheet__Excel__Writer__Parser_aee88fe07c5fd3086eec5c28a9e5f10c9}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_rangeToPackedRange@{\_rangeToPackedRange}}
+\index{\_rangeToPackedRange@{\_rangeToPackedRange}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_rangeToPackedRange()}{\_rangeToPackedRange()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+range\+To\+Packed\+Range (\begin{DoxyParamCaption}\item[{}]{\$range }\end{DoxyParamCaption})}
+
+pack() row range into the required 3 or 4 byte format. Just using maximum col/rows, which is probably not the correct solution
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$range} & The Excel range to be packed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array Array containing (row1,col1,row2,col2) in packed() format 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a6de5f3b60d9335f3bf8b13be52520fdb}\label{classSpreadsheet__Excel__Writer__Parser_a6de5f3b60d9335f3bf8b13be52520fdb}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!\_term@{\_term}}
+\index{\_term@{\_term}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_term()}{\_term()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+\_\+term (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+It parses a term. It assumes the following rule\+: Term -\/$>$ Fact \mbox{[}(\char`\"{}$\ast$\char`\"{} $\vert$ \char`\"{}/\char`\"{}) Fact\mbox{]}
+
+@access private \begin{DoxyReturn}{Returns}
+mixed The parsed ptg\textquotesingle{}d tree on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a10a1e8ac2082fbf5eab31b403cbae6c4}\label{classSpreadsheet__Excel__Writer__Parser_a10a1e8ac2082fbf5eab31b403cbae6c4}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!parse@{parse}}
+\index{parse@{parse}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::parse (\begin{DoxyParamCaption}\item[{}]{\$formula }\end{DoxyParamCaption})}
+
+The parsing method. It parses a formula.
+
+@access public 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$formula} & The formula to parse, without the initial equal sign (=). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed true on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a1ec3a6c3737d8f4ce7093908f4ea5adb}\label{classSpreadsheet__Excel__Writer__Parser_a1ec3a6c3737d8f4ce7093908f4ea5adb}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!setExtSheet@{setExtSheet}}
+\index{setExtSheet@{setExtSheet}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{setExtSheet()}{setExtSheet()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::set\+Ext\+Sheet (\begin{DoxyParamCaption}\item[{}]{\$name,  }\item[{}]{\$index }\end{DoxyParamCaption})}
+
+This method is used to update the array of sheet names. It is called by the add\+Worksheet() method of the \mbox{\hyperlink{classSpreadsheet__Excel__Writer__Workbook}{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Workbook}} class.
+
+@access public \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Workbook_ab939282dc0232b0dd3bed1fb93a9bf16}{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Workbook\+::add\+Worksheet()}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$name} & The name of the worksheet being added \\
+\hline
+integer & {\em \$index} & The index of the worksheet being added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a14a4a1946c3c0c1732436b823aee3022}\label{classSpreadsheet__Excel__Writer__Parser_a14a4a1946c3c0c1732436b823aee3022}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{Spreadsheet\_Excel\_Writer\_Parser()}{Spreadsheet\_Excel\_Writer\_Parser()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::\+Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser (\begin{DoxyParamCaption}\item[{}]{\$byte\+\_\+order,  }\item[{}]{\$biff\+\_\+version }\end{DoxyParamCaption})}
+
+The class constructor
+
+
+\begin{DoxyParams}[1]{Parameters}
+integer & {\em \$byte\+\_\+order} & The byte order (Little endian or Big endian) of the architecture (optional). 1 =$>$ big endian, 0 (default) little endian. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer__Parser_a863af74feff9a57d2fbde2f21b6be088}\label{classSpreadsheet__Excel__Writer__Parser_a863af74feff9a57d2fbde2f21b6be088}} 
+\index{Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}!toReversePolish@{toReversePolish}}
+\index{toReversePolish@{toReversePolish}!Spreadsheet\_Excel\_Writer\_Parser@{Spreadsheet\_Excel\_Writer\_Parser}}
+\doxysubsubsection{\texorpdfstring{toReversePolish()}{toReversePolish()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Parser\+::to\+Reverse\+Polish (\begin{DoxyParamCaption}\item[{}]{\$tree = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+Builds a string containing the tree in reverse polish notation (What you would use in a HP calculator stack). The following tree\+:
+
+
+\begin{DoxyItemize}
+\item / \textbackslash{} 2 3
+\end{DoxyItemize}
+
+produces\+: \char`\"{}23+\char`\"{}
+
+The following tree\+:
+
+
+\begin{DoxyItemize}
+\item / \textbackslash{} 3 $\ast$ / \textbackslash{} 6 A1
+\end{DoxyItemize}
+
+produces\+: \char`\"{}36\+A1$\ast$+\char`\"{}
+
+In fact all operands, functions, references, etc... are written as ptg\textquotesingle{}s
+
+@access public 
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$tree} & The optional tree to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string The tree in reverse polish notation 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+Spreadsheet/\+Excel/\+Writer/Parser.\+php\end{DoxyCompactItemize}

@@ -1,0 +1,168 @@
+\hypertarget{classPEAR__XMLParser}{}\doxysection{P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser Class Reference}
+\label{classPEAR__XMLParser}\index{PEAR\_XMLParser@{PEAR\_XMLParser}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_ab637774418da338833a04164a8bd02a0}{get\+Data}} ()
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_a163811cd0988622cf50cfd33a4152a61}{parse}} (\$data)
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_a4abb904d6c66f341e66cdfe60174e3b1}{start\+Handler}} (\$parser, \$element, \$attribs)
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_a70b070e40f53e2ffbee03f1e7241ae73}{post\+Process}} (\$data, \$element)
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_a7b5f24985d0bf45fb9051c9f912ee173}{end\+Handler}} (\$parser, \$element)
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_a1d7f3db460ed471cce68a3d4568b96ed}{cdata\+Handler}} (\$parser, \$cdata)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__XMLParser_ad7c94c1cd87bf54d39d3e78048fca0f0}\label{classPEAR__XMLParser_ad7c94c1cd87bf54d39d3e78048fca0f0}} 
+{\bfseries \$\+\_\+unserialized\+Data} = null
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_a46b96fa7526362352db37bdc82c68ddb}{\$\+\_\+root}} = null
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_ac2a9f44b75293469bc1019b09e99f2f6}{\$\+\_\+data\+Stack}} = array()
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_a435fafdb2077566f6fd758d97cebf627}{\$\+\_\+val\+Stack}} = array()
+\item 
+\mbox{\hyperlink{classPEAR__XMLParser_a9f909c11bfc1537db94162a289dd630b}{\$\+\_\+depth}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__XMLParser_a1d7f3db460ed471cce68a3d4568b96ed}\label{classPEAR__XMLParser_a1d7f3db460ed471cce68a3d4568b96ed}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!cdataHandler@{cdataHandler}}
+\index{cdataHandler@{cdataHandler}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{cdataHandler()}{cdataHandler()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::cdata\+Handler (\begin{DoxyParamCaption}\item[{}]{\$parser,  }\item[{}]{\$cdata }\end{DoxyParamCaption})}
+
+Handler for character data
+
+@access private 
+\begin{DoxyParams}{Parameters}
+{\em object} & X\+ML parser object \\
+\hline
+{\em string} & C\+D\+A\+TA \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__XMLParser_a7b5f24985d0bf45fb9051c9f912ee173}\label{classPEAR__XMLParser_a7b5f24985d0bf45fb9051c9f912ee173}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!endHandler@{endHandler}}
+\index{endHandler@{endHandler}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{endHandler()}{endHandler()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::end\+Handler (\begin{DoxyParamCaption}\item[{}]{\$parser,  }\item[{}]{\$element }\end{DoxyParamCaption})}
+
+End element handler for X\+ML parser
+
+@access private 
+\begin{DoxyParams}{Parameters}
+{\em object} & X\+ML parser object \\
+\hline
+{\em string} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__XMLParser_ab637774418da338833a04164a8bd02a0}\label{classPEAR__XMLParser_ab637774418da338833a04164a8bd02a0}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!getData@{getData}}
+\index{getData@{getData}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__XMLParser_a163811cd0988622cf50cfd33a4152a61}\label{classPEAR__XMLParser_a163811cd0988622cf50cfd33a4152a61}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!parse@{parse}}
+\index{parse@{parse}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::parse (\begin{DoxyParamCaption}\item[{}]{\$data }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & xml content \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true$\vert$\+P\+E\+A\+R\+\_\+\+Error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__XMLParser_a70b070e40f53e2ffbee03f1e7241ae73}\label{classPEAR__XMLParser_a70b070e40f53e2ffbee03f1e7241ae73}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!postProcess@{postProcess}}
+\index{postProcess@{postProcess}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{postProcess()}{postProcess()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::post\+Process (\begin{DoxyParamCaption}\item[{}]{\$data,  }\item[{}]{\$element }\end{DoxyParamCaption})}
+
+post-\/process data
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & \\
+\hline
+string & {\em \$element} & element name \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classPEAR__PackageFile__Parser__v2_a0b6fea53659f3c624d319031fd7736cd}{P\+E\+A\+R\+\_\+\+Package\+File\+\_\+\+Parser\+\_\+v2}}.
+
+\mbox{\Hypertarget{classPEAR__XMLParser_a4abb904d6c66f341e66cdfe60174e3b1}\label{classPEAR__XMLParser_a4abb904d6c66f341e66cdfe60174e3b1}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!startHandler@{startHandler}}
+\index{startHandler@{startHandler}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{startHandler()}{startHandler()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::start\+Handler (\begin{DoxyParamCaption}\item[{}]{\$parser,  }\item[{}]{\$element,  }\item[{}]{\$attribs }\end{DoxyParamCaption})}
+
+Start element handler for X\+ML parser
+
+@access private 
+\begin{DoxyParams}[1]{Parameters}
+object & {\em \$parser} & X\+ML parser object \\
+\hline
+string & {\em \$element} & X\+ML element \\
+\hline
+array & {\em \$attribs} & attributes of X\+ML tag \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPEAR__XMLParser_ac2a9f44b75293469bc1019b09e99f2f6}\label{classPEAR__XMLParser_ac2a9f44b75293469bc1019b09e99f2f6}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!\$\_dataStack@{\$\_dataStack}}
+\index{\$\_dataStack@{\$\_dataStack}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{\$\_dataStack}{$\_dataStack}}
+{\footnotesize\ttfamily array P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::\$\+\_\+data\+Stack = array()}
+
+stack for all data that is found \mbox{\Hypertarget{classPEAR__XMLParser_a9f909c11bfc1537db94162a289dd630b}\label{classPEAR__XMLParser_a9f909c11bfc1537db94162a289dd630b}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!\$\_depth@{\$\_depth}}
+\index{\$\_depth@{\$\_depth}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{\$\_depth}{$\_depth}}
+{\footnotesize\ttfamily int P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::\$\+\_\+depth = 0}
+
+current tag depth \mbox{\Hypertarget{classPEAR__XMLParser_a46b96fa7526362352db37bdc82c68ddb}\label{classPEAR__XMLParser_a46b96fa7526362352db37bdc82c68ddb}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!\$\_root@{\$\_root}}
+\index{\$\_root@{\$\_root}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{\$\_root}{$\_root}}
+{\footnotesize\ttfamily string P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::\$\+\_\+root = null}
+
+name of the root tag \mbox{\Hypertarget{classPEAR__XMLParser_a435fafdb2077566f6fd758d97cebf627}\label{classPEAR__XMLParser_a435fafdb2077566f6fd758d97cebf627}} 
+\index{PEAR\_XMLParser@{PEAR\_XMLParser}!\$\_valStack@{\$\_valStack}}
+\index{\$\_valStack@{\$\_valStack}!PEAR\_XMLParser@{PEAR\_XMLParser}}
+\doxysubsubsection{\texorpdfstring{\$\_valStack}{$\_valStack}}
+{\footnotesize\ttfamily array P\+E\+A\+R\+\_\+\+X\+M\+L\+Parser\+::\$\+\_\+val\+Stack = array()}
+
+stack for all values that are generated 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/X\+M\+L\+Parser.\+php\end{DoxyCompactItemize}

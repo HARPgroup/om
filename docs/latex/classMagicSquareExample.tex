@@ -1,0 +1,47 @@
+\hypertarget{classMagicSquareExample}{}\doxysection{Magic\+Square\+Example Class Reference}
+\label{classMagicSquareExample}\index{MagicSquareExample@{MagicSquareExample}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMagicSquareExample_a292cb51dade367ff612ca4a36b2833ca}{magic}} (\$n)
+\item 
+\mbox{\hyperlink{classMagicSquareExample_a829c7d36a96cbf15b1af8d81f8ceaea8}{microtime\+\_\+float}} ()
+\item 
+\mbox{\hyperlink{classMagicSquareExample_a5e15afbed4b2d022765fe090c3119483}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Example of use of \mbox{\hyperlink{classMatrix}{Matrix}} Class, featuring magic squares. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMagicSquareExample_a292cb51dade367ff612ca4a36b2833ca}\label{classMagicSquareExample_a292cb51dade367ff612ca4a36b2833ca}} 
+\index{MagicSquareExample@{MagicSquareExample}!magic@{magic}}
+\index{magic@{magic}!MagicSquareExample@{MagicSquareExample}}
+\doxysubsubsection{\texorpdfstring{magic()}{magic()}}
+{\footnotesize\ttfamily Magic\+Square\+Example\+::magic (\begin{DoxyParamCaption}\item[{}]{\$n }\end{DoxyParamCaption})}
+
+Generate magic square test matrix. 
+\begin{DoxyParams}{Parameters}
+{\em int} & n dimension of matrix \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMagicSquareExample_a5e15afbed4b2d022765fe090c3119483}\label{classMagicSquareExample_a5e15afbed4b2d022765fe090c3119483}} 
+\index{MagicSquareExample@{MagicSquareExample}!main@{main}}
+\index{main@{main}!MagicSquareExample@{MagicSquareExample}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily Magic\+Square\+Example\+::main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tests LU, QR, S\+VD and symmetric Eig decompositions.
+
+n = order of magic square. trace = diagonal sum, should be the magic sum, (n$^\wedge$3 + n)/2. max\+\_\+eig = maximum eigenvalue of (A + A\textquotesingle{})/2, should equal trace. rank = linear algebraic rank, should equal n if n is odd, be less than n if n is even. cond = L\+\_\+2 condition number, ratio of singular values. lu\+\_\+res = test of LU factorization, norm1(L$\ast$\+U-\/A(p,\+:))/(n$\ast$eps). qr\+\_\+res = test of QR factorization, norm1(Q$\ast$\+R-\/A)/(n$\ast$eps). \mbox{\Hypertarget{classMagicSquareExample_a829c7d36a96cbf15b1af8d81f8ceaea8}\label{classMagicSquareExample_a829c7d36a96cbf15b1af8d81f8ceaea8}} 
+\index{MagicSquareExample@{MagicSquareExample}!microtime\_float@{microtime\_float}}
+\index{microtime\_float@{microtime\_float}!MagicSquareExample@{MagicSquareExample}}
+\doxysubsubsection{\texorpdfstring{microtime\_float()}{microtime\_float()}}
+{\footnotesize\ttfamily Magic\+Square\+Example\+::microtime\+\_\+float (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Simple function to replicate \mbox{\hyperlink{categoryPHP}{P\+HP}} 5 behaviour 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/phpmath/examples/Magic\+Square\+Example.\+php\end{DoxyCompactItemize}

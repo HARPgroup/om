@@ -1,0 +1,480 @@
+\hypertarget{classDB__ifx}{}\doxysection{D\+B\+\_\+ifx Class Reference}
+\label{classDB__ifx}\index{DB\_ifx@{DB\_ifx}}
+
+
+Inheritance diagram for D\+B\+\_\+ifx\+:
+% FIG 0
+
+
+Collaboration diagram for D\+B\+\_\+ifx\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__ifx_a20e91be3095c7eff5227612e419aedaf}{D\+B\+\_\+ifx}} ()
+\item 
+\mbox{\hyperlink{classDB__ifx_a95d7b4adef2e0633219a3335916360bc}{connect}} (\$dsn, \$persistent=false)
+\item 
+\mbox{\hyperlink{classDB__ifx_a02864874566941823c057819b1c2a47a}{disconnect}} ()
+\item 
+\mbox{\hyperlink{classDB__ifx_aa8de5f9cbe0e7167cb97b960a06e906d}{simple\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\mbox{\hyperlink{classDB__ifx_a1420189ba8af721b88e223a2a3b77f9b}{next\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__ifx_ade4624a8445f279f62841a22835e3abf}{affected\+Rows}} ()
+\item 
+\mbox{\hyperlink{classDB__ifx_a2b41ec264aa5ab8f09416cd2c3f7161e}{fetch\+Into}} (\$result, \&\$arr, \$fetchmode, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__ifx_a98f28e75399a5622a18f7570a55956c3}{num\+Cols}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__ifx_a958b9df29e4c04f692b06b0b596d2867}{free\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__ifx_a17d4eb1b1b52e08b433f53f3e046fb0c}{auto\+Commit}} (\$onoff=true)
+\item 
+\mbox{\hyperlink{classDB__ifx_abe145f2769789e69544535d13efa3746}{commit}} ()
+\item 
+\mbox{\hyperlink{classDB__ifx_a2a83c2223625a18d94a0d8edabf4ad8c}{rollback}} ()
+\item 
+\mbox{\hyperlink{classDB__ifx_af88ab4dc19c9e8e654c4c5afbb77ca9a}{ifx\+Raise\+Error}} (\$errno=null)
+\item 
+\mbox{\hyperlink{classDB__ifx_a95b6c6b77fa9d594e1ce9ecf8904e7b9}{error\+Native}} ()
+\item 
+\mbox{\hyperlink{classDB__ifx_ad5c766a6ee060f6050629235dade2241}{error\+Code}} (\$nativecode)
+\item 
+\mbox{\hyperlink{classDB__ifx_a10ca5e8c20f938c3428f08018e261666}{table\+Info}} (\$result, \$mode=null)
+\item 
+\mbox{\hyperlink{classDB__ifx_a2fa2975061c7a7989df824806e5bfb8f}{get\+Special\+Query}} (\$type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDB__ifx_a1a6f66b459ad9119c2418e55c08a9cc5}\label{classDB__ifx_a1a6f66b459ad9119c2418e55c08a9cc5}} 
+{\bfseries \$phptype} = \textquotesingle{}ifx\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classDB__ifx_abd74f199556c0e7a08bf48559e46e664}\label{classDB__ifx_abd74f199556c0e7a08bf48559e46e664}} 
+{\bfseries \$dbsyntax} = \textquotesingle{}ifx\textquotesingle{}
+\item 
+{\bfseries \$features}
+\item 
+{\bfseries \$errorcode\+\_\+map}
+\item 
+\mbox{\Hypertarget{classDB__ifx_a047430f4ae7f931ef57970d5ed9e87c5}\label{classDB__ifx_a047430f4ae7f931ef57970d5ed9e87c5}} 
+{\bfseries \$connection}
+\item 
+\mbox{\Hypertarget{classDB__ifx_a9f47cf2e23208283f1f587d07646633c}\label{classDB__ifx_a9f47cf2e23208283f1f587d07646633c}} 
+{\bfseries \$dsn} = array()
+\item 
+\mbox{\Hypertarget{classDB__ifx_a3977f4c1dcaa877b5672f4d2e598dab3}\label{classDB__ifx_a3977f4c1dcaa877b5672f4d2e598dab3}} 
+{\bfseries \$autocommit} = true
+\item 
+\mbox{\hyperlink{classDB__ifx_aebcd7503e08e315060734ed35698845a}{\$transaction\+\_\+opcount}} = 0
+\item 
+\mbox{\Hypertarget{classDB__ifx_ab217c2fcb5667eb82393daf24e477e95}\label{classDB__ifx_ab217c2fcb5667eb82393daf24e477e95}} 
+{\bfseries \$affected} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__ifx_ade4624a8445f279f62841a22835e3abf}\label{classDB__ifx_ade4624a8445f279f62841a22835e3abf}} 
+\index{DB\_ifx@{DB\_ifx}!affectedRows@{affectedRows}}
+\index{affectedRows@{affectedRows}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{affectedRows()}{affectedRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::affected\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determines the number of rows affected by a data maniuplation query
+
+0 is returned for queries that don\textquotesingle{}t manipulate data.
+
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a05a802d72feb861012eb7ebfdbe00e84}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ifx_a17d4eb1b1b52e08b433f53f3e046fb0c}\label{classDB__ifx_a17d4eb1b1b52e08b433f53f3e046fb0c}} 
+\index{DB\_ifx@{DB\_ifx}!autoCommit@{autoCommit}}
+\index{autoCommit@{autoCommit}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{autoCommit()}{autoCommit()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::auto\+Commit (\begin{DoxyParamCaption}\item[{}]{\$onoff = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Enables or disables automatic commits
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$onoff} & true turns it on, false turns it off\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object if the driver doesn\textquotesingle{}t support auto-\/committing transactions. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ad28b0f99a6bc3cdbf921804ec7720078}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ifx_abe145f2769789e69544535d13efa3746}\label{classDB__ifx_abe145f2769789e69544535d13efa3746}} 
+\index{DB\_ifx@{DB\_ifx}!commit@{commit}}
+\index{commit@{commit}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Commits the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a36868fcbeee42d96e00faeac7e82cb81}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ifx_a95d7b4adef2e0633219a3335916360bc}\label{classDB__ifx_a95d7b4adef2e0633219a3335916360bc}} 
+\index{DB\_ifx@{DB\_ifx}!connect@{connect}}
+\index{connect@{connect}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::connect (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$persistent = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Connect to the database server, log in and open the database
+
+Don\textquotesingle{}t call this method directly. Use \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect()}} instead.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$dsn} & the data source name \\
+\hline
+bool & {\em \$persistent} & should the connection be persistent?\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ifx_a20e91be3095c7eff5227612e419aedaf}\label{classDB__ifx_a20e91be3095c7eff5227612e419aedaf}} 
+\index{DB\_ifx@{DB\_ifx}!DB\_ifx@{DB\_ifx}}
+\index{DB\_ifx@{DB\_ifx}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{DB\_ifx()}{DB\_ifx()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::\+D\+B\+\_\+ifx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This constructor calls {\ttfamily \$this-\/$>$\mbox{\hyperlink{classDB__common_aa5163360915c02c99d8d048b4728c3cc}{D\+B\+\_\+common()}}}
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ifx_a02864874566941823c057819b1c2a47a}\label{classDB__ifx_a02864874566941823c057819b1c2a47a}} 
+\index{DB\_ifx@{DB\_ifx}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disconnects from the database server
+
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ifx_ad5c766a6ee060f6050629235dade2241}\label{classDB__ifx_ad5c766a6ee060f6050629235dade2241}} 
+\index{DB\_ifx@{DB\_ifx}!errorCode@{errorCode}}
+\index{errorCode@{errorCode}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{errorCode()}{errorCode()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::error\+Code (\begin{DoxyParamCaption}\item[{}]{\$nativecode }\end{DoxyParamCaption})}
+
+Maps native error codes to \mbox{\hyperlink{classDB}{DB}}\textquotesingle{}s portable ones.
+
+Requires that the \mbox{\hyperlink{classDB}{DB}} implementation\textquotesingle{}s constructor fills in the {\itshape \$errorcode\+\_\+map} property.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$nativecode} & error code returned by the database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int a portable \mbox{\hyperlink{classDB}{DB}} error code, or D\+B\+\_\+\+E\+R\+R\+OR if this \mbox{\hyperlink{classDB}{DB}} implementation has no mapping for the given error code. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a94d409cd5836c29a3b4fc90b45ed3364}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ifx_a95b6c6b77fa9d594e1ce9ecf8904e7b9}\label{classDB__ifx_a95b6c6b77fa9d594e1ce9ecf8904e7b9}} 
+\index{DB\_ifx@{DB\_ifx}!errorNative@{errorNative}}
+\index{errorNative@{errorNative}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{errorNative()}{errorNative()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::error\+Native (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the D\+B\+MS\textquotesingle{} native error code and message produced by the last query
+
+\begin{DoxyReturn}{Returns}
+string the D\+B\+MS\textquotesingle{} error code and message 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a5b451dc88229cf12de5a0845ba53a377}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ifx_a2b41ec264aa5ab8f09416cd2c3f7161e}\label{classDB__ifx_a2b41ec264aa5ab8f09416cd2c3f7161e}} 
+\index{DB\_ifx@{DB\_ifx}!fetchInto@{fetchInto}}
+\index{fetchInto@{fetchInto}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{fetchInto()}{fetchInto()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::fetch\+Into (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{\&}]{\$arr,  }\item[{}]{\$fetchmode,  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Places a row from the result set into the given array
+
+Formating of the array and the data therein are configurable. See \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} for more information.
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & the query result resource \\
+\hline
+array & {\em \$arr} & the referenced array to put the data in \\
+\hline
+int & {\em \$fetchmode} & how the resulting array should be indexed \\
+\hline
+int & {\em \$rownum} & the row number to fetch (0 = first row)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK on success, N\+U\+LL when the end of a result set is reached or on failure
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__ifx_a958b9df29e4c04f692b06b0b596d2867}\label{classDB__ifx_a958b9df29e4c04f692b06b0b596d2867}} 
+\index{DB\_ifx@{DB\_ifx}!freeResult@{freeResult}}
+\index{freeResult@{freeResult}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{freeResult()}{freeResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::free\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Deletes the result set and frees the memory occupied by the result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE if \$result is invalid
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__ifx_a2fa2975061c7a7989df824806e5bfb8f}\label{classDB__ifx_a2fa2975061c7a7989df824806e5bfb8f}} 
+\index{DB\_ifx@{DB\_ifx}!getSpecialQuery@{getSpecialQuery}}
+\index{getSpecialQuery@{getSpecialQuery}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{getSpecialQuery()}{getSpecialQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::get\+Special\+Query (\begin{DoxyParamCaption}\item[{}]{\$type }\end{DoxyParamCaption})}
+
+Obtains the query string needed for listing a given type of objects
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$type} & the kind of objects you want to retrieve\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the S\+QL query string or null if the driver doesn\textquotesingle{}t support the object type requested
+\end{DoxyReturn}
+@access protected \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a822d61267fea12aebe53a4a33bf9015d}{D\+B\+\_\+common\+::get\+List\+Of()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a2550ff7e5023d193614ab722d9aa3eb9}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ifx_af88ab4dc19c9e8e654c4c5afbb77ca9a}\label{classDB__ifx_af88ab4dc19c9e8e654c4c5afbb77ca9a}} 
+\index{DB\_ifx@{DB\_ifx}!ifxRaiseError@{ifxRaiseError}}
+\index{ifxRaiseError@{ifxRaiseError}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{ifxRaiseError()}{ifxRaiseError()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::ifx\+Raise\+Error (\begin{DoxyParamCaption}\item[{}]{\$errno = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Produces a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object regarding the current problem
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$errno} & if the error is being manually raised pass a D\+B\+\_\+\+E\+R\+R\+O\+R$\ast$ constant here. If this isn\textquotesingle{}t passed the error information gathered from the D\+B\+MS.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a3b60dee1050625ee683af046033bbe26}{D\+B\+\_\+common\+::raise\+Error()}}, \mbox{\hyperlink{classDB__ifx_a95b6c6b77fa9d594e1ce9ecf8904e7b9}{D\+B\+\_\+ifx\+::error\+Native()}}, \mbox{\hyperlink{classDB__ifx_ad5c766a6ee060f6050629235dade2241}{D\+B\+\_\+ifx\+::error\+Code()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__ifx_a1420189ba8af721b88e223a2a3b77f9b}\label{classDB__ifx_a1420189ba8af721b88e223a2a3b77f9b}} 
+\index{DB\_ifx@{DB\_ifx}!nextResult@{nextResult}}
+\index{nextResult@{nextResult}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{nextResult()}{nextResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::next\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Move the internal ifx result pointer to the next available result
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & valid fbsql result resource\\
+\hline
+\end{DoxyParams}
+@access public
+
+\begin{DoxyReturn}{Returns}
+true if a result is available otherwise return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ifx_a98f28e75399a5622a18f7570a55956c3}\label{classDB__ifx_a98f28e75399a5622a18f7570a55956c3}} 
+\index{DB\_ifx@{DB\_ifx}!numCols@{numCols}}
+\index{numCols@{numCols}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{numCols()}{numCols()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::num\+Cols (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of columns in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of columns. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__ifx_a2a83c2223625a18d94a0d8edabf4ad8c}\label{classDB__ifx_a2a83c2223625a18d94a0d8edabf4ad8c}} 
+\index{DB\_ifx@{DB\_ifx}!rollback@{rollback}}
+\index{rollback@{rollback}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{rollback()}{rollback()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::rollback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reverts the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a03b635b3130360516cb504b7f6095891}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__ifx_aa8de5f9cbe0e7167cb97b960a06e906d}\label{classDB__ifx_aa8de5f9cbe0e7167cb97b960a06e906d}} 
+\index{DB\_ifx@{DB\_ifx}!simpleQuery@{simpleQuery}}
+\index{simpleQuery@{simpleQuery}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{simpleQuery()}{simpleQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::simple\+Query (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Sends a query to the database server
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & the S\+QL query string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed + a \mbox{\hyperlink{categoryPHP}{P\+HP}} result resrouce for successful S\+E\+L\+E\+CT queries
+\begin{DoxyItemize}
+\item the D\+B\+\_\+\+OK constant for other successful queries
+\item a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__ifx_a10ca5e8c20f938c3428f08018e261666}\label{classDB__ifx_a10ca5e8c20f938c3428f08018e261666}} 
+\index{DB\_ifx@{DB\_ifx}!tableInfo@{tableInfo}}
+\index{tableInfo@{tableInfo}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{tableInfo()}{tableInfo()}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::table\+Info (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{}]{\$mode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Returns information about a table or a result set
+
+N\+O\+TE\+: only supports \textquotesingle{}table\textquotesingle{} if {\itshape \$result} is a table name.
+
+If analyzing a query result and the result has duplicate field names, an error will be raised saying $<$samp$>$can\textquotesingle{}t distinguish duplicate field names$<$/samp$>$.
+
+
+\begin{DoxyParams}[1]{Parameters}
+object | string & {\em \$result} & \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} object from a query or a string containing the name of a table. While this also accepts a query result resource identifier, this behavior is deprecated. \\
+\hline
+int & {\em \$mode} & a valid table\+Info mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array an associative array with the information requested. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common\+::table\+Info()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+6.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__ifx_aa6e1c3294908a0f96ab80ac961f75a71}\label{classDB__ifx_aa6e1c3294908a0f96ab80ac961f75a71}} 
+\index{DB\_ifx@{DB\_ifx}!\$errorcode\_map@{\$errorcode\_map}}
+\index{\$errorcode\_map@{\$errorcode\_map}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{\$errorcode\_map}{$errorcode\_map}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::\$errorcode\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/201'}    => DB\_ERROR\_SYNTAX,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/206'}    => DB\_ERROR\_NOSUCHTABLE,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/217'}    => DB\_ERROR\_NOSUCHFIELD,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/236'}    => DB\_ERROR\_VALUE\_COUNT\_ON\_ROW,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/239'}    => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/253'}    => DB\_ERROR\_SYNTAX,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/268'}    => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/292'}    => DB\_ERROR\_CONSTRAINT\_NOT\_NULL,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/310'}    => DB\_ERROR\_ALREADY\_EXISTS,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/316'}    => DB\_ERROR\_ALREADY\_EXISTS,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/319'}    => DB\_ERROR\_NOT\_FOUND,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/329'}    => DB\_ERROR\_NODBSELECTED,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/346'}    => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/386'}    => DB\_ERROR\_CONSTRAINT\_NOT\_NULL,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/391'}    => DB\_ERROR\_CONSTRAINT\_NOT\_NULL,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/554'}    => DB\_ERROR\_SYNTAX,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/691'}    => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/692'}    => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/703'}    => DB\_ERROR\_CONSTRAINT\_NOT\_NULL,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/1202'}   => DB\_ERROR\_DIVZERO,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/1204'}   => DB\_ERROR\_INVALID\_DATE,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/1205'}   => DB\_ERROR\_INVALID\_DATE,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/1206'}   => DB\_ERROR\_INVALID\_DATE,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/1209'}   => DB\_ERROR\_INVALID\_DATE,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/1210'}   => DB\_ERROR\_INVALID\_DATE,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/1212'}   => DB\_ERROR\_INVALID\_DATE,}
+\DoxyCodeLine{        \textcolor{stringliteral}{'-\/1213'}   => DB\_ERROR\_INVALID\_NUMBER,}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__ifx_aabe18f768c89d3de9e5550c94302f1a1}\label{classDB__ifx_aabe18f768c89d3de9e5550c94302f1a1}} 
+\index{DB\_ifx@{DB\_ifx}!\$features@{\$features}}
+\index{\$features@{\$features}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{\$features}{$features}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::\$features}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'limit'}         => \textcolor{stringliteral}{'emulate'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'new\_link'}      => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'numrows'}       => \textcolor{stringliteral}{'emulate'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'pconnect'}      => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'prepare'}       => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'ssl'}           => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'transactions'}  => \textcolor{keyword}{true},}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__ifx_aebcd7503e08e315060734ed35698845a}\label{classDB__ifx_aebcd7503e08e315060734ed35698845a}} 
+\index{DB\_ifx@{DB\_ifx}!\$transaction\_opcount@{\$transaction\_opcount}}
+\index{\$transaction\_opcount@{\$transaction\_opcount}!DB\_ifx@{DB\_ifx}}
+\doxysubsubsection{\texorpdfstring{\$transaction\_opcount}{$transaction\_opcount}}
+{\footnotesize\ttfamily D\+B\+\_\+ifx\+::\$transaction\+\_\+opcount = 0}
+
+The quantity of transactions begun
+
+\{ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+D\+B/ifx.\+php\end{DoxyCompactItemize}

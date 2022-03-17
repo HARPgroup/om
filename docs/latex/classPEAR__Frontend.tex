@@ -1,0 +1,199 @@
+\hypertarget{classPEAR__Frontend}{}\doxysection{P\+E\+A\+R\+\_\+\+Frontend Class Reference}
+\label{classPEAR__Frontend}\index{PEAR\_Frontend@{PEAR\_Frontend}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Frontend\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Frontend\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Frontend_a2e47cf747380729f036d9e1b4078d75a}{set\+Config}} (\&\$config)
+\item 
+\mbox{\hyperlink{classPEAR__Frontend_a2b4f8e6dd445a6d79884f29e8ef99664}{add\+Temp\+File}} (\$file)
+\item 
+\mbox{\hyperlink{classPEAR__Frontend_a38ec4a92135f2e19e0f217bd56dcb529}{log}} (\$msg, \$append\+\_\+crlf=true)
+\item 
+\mbox{\hyperlink{classPEAR__Frontend_a84c8c88d18a13766f2e0b878b4af454c}{run\+Postinstall\+Scripts}} (\&\$scripts)
+\item 
+\mbox{\hyperlink{classPEAR__Frontend_a81759c807fbad151193d1bea46dccb0f}{output\+Data}} (\$data, \$command=\textquotesingle{}\+\_\+default\textquotesingle{})
+\item 
+\mbox{\hyperlink{classPEAR__Frontend_ad78df43031fc81a5e559a7a812481f8d}{user\+Dialog}} (\$command, \$prompts, \$types=array(), \$defaults=array())
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\& \mbox{\hyperlink{classPEAR__Frontend_a642d973dc7ca17fa0d0118b96ff2992a}{singleton}} (\$type=null)
+\item 
+\& \mbox{\hyperlink{classPEAR__Frontend_a75c4378c55e928331e7a443f1e32078b}{set\+Frontend\+Class}} (\$uiclass)
+\item 
+\& \mbox{\hyperlink{classPEAR__Frontend_aa7142830d99146c23e54761d5fd5e88b}{set\+Frontend\+Object}} (\$uiobject)
+\item 
+\mbox{\hyperlink{classPEAR__Frontend_a87aca8682a09695dc46712812c6f80b6}{is\+Includeable}} (\$path)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Frontend_a2b4f8e6dd445a6d79884f29e8ef99664}\label{classPEAR__Frontend_a2b4f8e6dd445a6d79884f29e8ef99664}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!addTempFile@{addTempFile}}
+\index{addTempFile@{addTempFile}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{addTempFile()}{addTempFile()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Frontend\+::add\+Temp\+File (\begin{DoxyParamCaption}\item[{}]{\$file }\end{DoxyParamCaption})}
+
+This can be overridden to allow session-\/based temporary file management
+
+By default, all files are deleted at the end of a session. The web installer needs to be able to sustain a list over many sessions in order to support user interaction with install scripts \mbox{\Hypertarget{classPEAR__Frontend_a87aca8682a09695dc46712812c6f80b6}\label{classPEAR__Frontend_a87aca8682a09695dc46712812c6f80b6}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!isIncludeable@{isIncludeable}}
+\index{isIncludeable@{isIncludeable}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{isIncludeable()}{isIncludeable()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Frontend\+::is\+Includeable (\begin{DoxyParamCaption}\item[{}]{\$path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$path} & relative or absolute include path \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Frontend_a38ec4a92135f2e19e0f217bd56dcb529}\label{classPEAR__Frontend_a38ec4a92135f2e19e0f217bd56dcb529}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!log@{log}}
+\index{log@{log}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Frontend\+::log (\begin{DoxyParamCaption}\item[{}]{\$msg,  }\item[{}]{\$append\+\_\+crlf = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Log an action
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$msg} & the message to log \\
+\hline
+boolean & {\em \$append\+\_\+crlf} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean true @abstract 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classPEAR__Frontend__CLI_a689aaaa663edc6d1f538359aa3ef51fd}{P\+E\+A\+R\+\_\+\+Frontend\+\_\+\+C\+LI}}.
+
+\mbox{\Hypertarget{classPEAR__Frontend_a81759c807fbad151193d1bea46dccb0f}\label{classPEAR__Frontend_a81759c807fbad151193d1bea46dccb0f}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!outputData@{outputData}}
+\index{outputData@{outputData}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{outputData()}{outputData()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Frontend\+::output\+Data (\begin{DoxyParamCaption}\item[{}]{\$data,  }\item[{}]{\$command = {\ttfamily \textquotesingle{}\+\_\+default\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Display human-\/friendly output formatted depending on the \$command parameter.
+
+This should be able to handle basic output data with no command 
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$data} & data structure containing the information to display \\
+\hline
+string & {\em \$command} & command from which this method was called @abstract \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classPEAR__Frontend__CLI_a68c1c3f30a19d3f286c83763bf4fb983}{P\+E\+A\+R\+\_\+\+Frontend\+\_\+\+C\+LI}}.
+
+\mbox{\Hypertarget{classPEAR__Frontend_a84c8c88d18a13766f2e0b878b4af454c}\label{classPEAR__Frontend_a84c8c88d18a13766f2e0b878b4af454c}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!runPostinstallScripts@{runPostinstallScripts}}
+\index{runPostinstallScripts@{runPostinstallScripts}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{runPostinstallScripts()}{runPostinstallScripts()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Frontend\+::run\+Postinstall\+Scripts (\begin{DoxyParamCaption}\item[{\&}]{\$scripts }\end{DoxyParamCaption})}
+
+Run a post-\/installation script
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$scripts} & array of post-\/install scripts @abstract \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classPEAR__Frontend__CLI_a35583cf41fb7e2d56a57aeff30dcf09a}{P\+E\+A\+R\+\_\+\+Frontend\+\_\+\+C\+LI}}.
+
+\mbox{\Hypertarget{classPEAR__Frontend_a2e47cf747380729f036d9e1b4078d75a}\label{classPEAR__Frontend_a2e47cf747380729f036d9e1b4078d75a}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!setConfig@{setConfig}}
+\index{setConfig@{setConfig}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{setConfig()}{setConfig()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Frontend\+::set\+Config (\begin{DoxyParamCaption}\item[{\&}]{\$config }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__Frontend_a75c4378c55e928331e7a443f1e32078b}\label{classPEAR__Frontend_a75c4378c55e928331e7a443f1e32078b}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!setFrontendClass@{setFrontendClass}}
+\index{setFrontendClass@{setFrontendClass}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{setFrontendClass()}{setFrontendClass()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Frontend\+::set\+Frontend\+Class (\begin{DoxyParamCaption}\item[{}]{\$uiclass }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Set the frontend class that will be used by calls to \mbox{\hyperlink{classPEAR__Frontend_a642d973dc7ca17fa0d0118b96ff2992a}{singleton()}}
+
+Frontends are expected to conform to the \mbox{\hyperlink{classPEAR}{P\+E\+AR}} naming standard of \+\_\+ =$>$ D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR (\mbox{\hyperlink{classPEAR__Frontend__CLI}{P\+E\+A\+R\+\_\+\+Frontend\+\_\+\+C\+LI}} is in P\+E\+A\+R/\+Frontend/\+C\+L\+I.\+php) 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$uiclass} & full class name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPEAR__Frontend}{P\+E\+A\+R\+\_\+\+Frontend}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Frontend_aa7142830d99146c23e54761d5fd5e88b}\label{classPEAR__Frontend_aa7142830d99146c23e54761d5fd5e88b}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!setFrontendObject@{setFrontendObject}}
+\index{setFrontendObject@{setFrontendObject}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{setFrontendObject()}{setFrontendObject()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Frontend\+::set\+Frontend\+Object (\begin{DoxyParamCaption}\item[{}]{\$uiobject }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Set the frontend object that will be used by calls to \mbox{\hyperlink{classPEAR__Frontend_a642d973dc7ca17fa0d0118b96ff2992a}{singleton()}}
+
+Frontends are expected to be a descendant of \mbox{\hyperlink{classPEAR__Frontend}{P\+E\+A\+R\+\_\+\+Frontend}} 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__Frontend}{P\+E\+A\+R\+\_\+\+Frontend}}} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPEAR__Frontend}{P\+E\+A\+R\+\_\+\+Frontend}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Frontend_a642d973dc7ca17fa0d0118b96ff2992a}\label{classPEAR__Frontend_a642d973dc7ca17fa0d0118b96ff2992a}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!singleton@{singleton}}
+\index{singleton@{singleton}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{singleton()}{singleton()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Frontend\+::singleton (\begin{DoxyParamCaption}\item[{}]{\$type = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Retrieve the frontend object \begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Frontend\+\_\+\+C\+L\+I$\vert$\+P\+E\+A\+R\+\_\+\+Frontend\+\_\+\+Web$\vert$\+P\+E\+A\+R\+\_\+\+Frontend\+\_\+\+Gtk 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Frontend_ad78df43031fc81a5e559a7a812481f8d}\label{classPEAR__Frontend_ad78df43031fc81a5e559a7a812481f8d}} 
+\index{PEAR\_Frontend@{PEAR\_Frontend}!userDialog@{userDialog}}
+\index{userDialog@{userDialog}!PEAR\_Frontend@{PEAR\_Frontend}}
+\doxysubsubsection{\texorpdfstring{userDialog()}{userDialog()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Frontend\+::user\+Dialog (\begin{DoxyParamCaption}\item[{}]{\$command,  }\item[{}]{\$prompts,  }\item[{}]{\$types = {\ttfamily array()},  }\item[{}]{\$defaults = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+Display a modal form dialog and return the given input
+
+A frontend that requires multiple requests to retrieve and process data must take these needs into account, and implement the request handling code. 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$command} & command from which this method was called \\
+\hline
+array & {\em \$prompts} & associative array. keys are the input field names and values are the description \\
+\hline
+array & {\em \$types} & array of input field types (text, password, etc.) keys have to be the same like in \$prompts \\
+\hline
+array & {\em \$defaults} & array of default values. again keys have to be the same like in \$prompts. Do not depend on a default value being set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array input sent by the user @abstract 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/Frontend.\+php\end{DoxyCompactItemize}

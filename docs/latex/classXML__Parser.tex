@@ -1,0 +1,751 @@
+\hypertarget{classXML__Parser}{}\doxysection{X\+M\+L\+\_\+\+Parser Class Reference}
+\label{classXML__Parser}\index{XML\_Parser@{XML\_Parser}}
+
+
+Inheritance diagram for X\+M\+L\+\_\+\+Parser\+:
+% FIG 0
+
+
+Collaboration diagram for X\+M\+L\+\_\+\+Parser\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classXML__Parser_a4ca8cc18c19733d29b2f677a7b379fcd}{\+\_\+\+\_\+construct}} (\$srcenc=null, \$mode=\textquotesingle{}event\textquotesingle{}, \$tgtenc=null)
+\item 
+\mbox{\hyperlink{classXML__Parser_ae3da3e84a77223e4fa74084596c465f4}{set\+Mode}} (\$mode)
+\item 
+\mbox{\hyperlink{classXML__Parser_ae284fcdda857f1a4546316526713751b}{set\+Handler\+Obj}} (\$obj)
+\item 
+\mbox{\hyperlink{classXML__Parser_afeb7d9c0f3cf872dea917ba3066fc91f}{\+\_\+init\+Handlers}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_a9d70ce30889593f31f846c3c4f0d9a34}{\+\_\+create}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_a72838668ddc6d2ab5930500a972bc60b}{reset}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}{set\+Input\+File}} (\$file)
+\item 
+\mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{set\+Input\+String}} (\$data)
+\item 
+\mbox{\hyperlink{classXML__Parser_ad07b997592f4723a6ba12fe9359de1b9}{set\+Input}} (\$fp)
+\item 
+\mbox{\hyperlink{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}{parse}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_aebdff578e52cebcb509a9b594691f786}{\+\_\+parse\+String}} (\$data, \$eof=false)
+\item 
+\mbox{\hyperlink{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}{parse\+String}} (\$data, \$eof=false)
+\item 
+\mbox{\hyperlink{classXML__Parser_ae82d6e3c14fea6aab84cf23bd477cfce}{free}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_acce1232b79c3f66be0139f1bfd139ddc}{raise\+Error}} (\$msg=null, \$ecode=0)
+\item 
+\mbox{\Hypertarget{classXML__Parser_aa5998e2f7276dc8635eae7bff9172042}\label{classXML__Parser_aa5998e2f7276dc8635eae7bff9172042}} 
+{\bfseries func\+Start\+Handler} (\$xp, \$elem, \$attribs)
+\item 
+\mbox{\Hypertarget{classXML__Parser_a3cc2537b8c69113ce7af063cbe34aeb8}\label{classXML__Parser_a3cc2537b8c69113ce7af063cbe34aeb8}} 
+{\bfseries func\+End\+Handler} (\$xp, \$elem)
+\item 
+\mbox{\hyperlink{classXML__Parser_a970c506eb280f2ce965a8111f5f4760a}{start\+Handler}} (\$xp, \$elem, \$attribs)
+\item 
+\mbox{\hyperlink{classXML__Parser_a30c7cfbcc0ee83106f008e2cb838ef0a}{end\+Handler}} (\$xp, \$elem)
+\item 
+\mbox{\hyperlink{classXML__Parser_a4a75f7cb6eb133208559dd4078e8b3a9}{X\+M\+L\+\_\+\+Parser}} (\$srcenc=null, \$mode=\textquotesingle{}event\textquotesingle{}, \$tgtenc=null)
+\item 
+\mbox{\hyperlink{classXML__Parser_a4ca8cc18c19733d29b2f677a7b379fcd}{\+\_\+\+\_\+construct}} (\$srcenc=null, \$mode=\textquotesingle{}event\textquotesingle{}, \$tgtenc=null)
+\item 
+\mbox{\hyperlink{classXML__Parser_ae3da3e84a77223e4fa74084596c465f4}{set\+Mode}} (\$mode)
+\item 
+\mbox{\hyperlink{classXML__Parser_a7c9570d06ed9eeac5da01d197ac95e83}{set\+Handler\+Obj}} (\&\$obj)
+\item 
+\mbox{\hyperlink{classXML__Parser_afeb7d9c0f3cf872dea917ba3066fc91f}{\+\_\+init\+Handlers}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_a9d70ce30889593f31f846c3c4f0d9a34}{\+\_\+create}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_a72838668ddc6d2ab5930500a972bc60b}{reset}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}{set\+Input\+File}} (\$file)
+\item 
+\mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{set\+Input\+String}} (\$data)
+\item 
+\mbox{\hyperlink{classXML__Parser_ad07b997592f4723a6ba12fe9359de1b9}{set\+Input}} (\$fp)
+\item 
+\mbox{\hyperlink{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}{parse}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_aebdff578e52cebcb509a9b594691f786}{\+\_\+parse\+String}} (\$data, \$eof=false)
+\item 
+\mbox{\hyperlink{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}{parse\+String}} (\$data, \$eof=false)
+\item 
+\mbox{\hyperlink{classXML__Parser_ae82d6e3c14fea6aab84cf23bd477cfce}{free}} ()
+\item 
+\mbox{\hyperlink{classXML__Parser_acce1232b79c3f66be0139f1bfd139ddc}{raise\+Error}} (\$msg=null, \$ecode=0)
+\item 
+\mbox{\Hypertarget{classXML__Parser_aa5998e2f7276dc8635eae7bff9172042}\label{classXML__Parser_aa5998e2f7276dc8635eae7bff9172042}} 
+{\bfseries func\+Start\+Handler} (\$xp, \$elem, \$attribs)
+\item 
+\mbox{\Hypertarget{classXML__Parser_a3cc2537b8c69113ce7af063cbe34aeb8}\label{classXML__Parser_a3cc2537b8c69113ce7af063cbe34aeb8}} 
+{\bfseries func\+End\+Handler} (\$xp, \$elem)
+\item 
+\mbox{\hyperlink{classXML__Parser_a27fc9129bc056a9233ecc9600427b620}{start\+Handler}} (\$xp, \$elem, \&\$attribs)
+\item 
+\mbox{\hyperlink{classXML__Parser_a30c7cfbcc0ee83106f008e2cb838ef0a}{end\+Handler}} (\$xp, \$elem)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classXML__Parser_a3af2f217d4ad7579098cfa64c9d9ae03}\label{classXML__Parser_a3af2f217d4ad7579098cfa64c9d9ae03}} 
+{\bfseries \$parser}
+\item 
+\mbox{\Hypertarget{classXML__Parser_a10b6cbd024780f39a64053e1fd1ea3e4}\label{classXML__Parser_a10b6cbd024780f39a64053e1fd1ea3e4}} 
+{\bfseries \$fp}
+\item 
+\mbox{\Hypertarget{classXML__Parser_a73310b6d94484144c674557764188153}\label{classXML__Parser_a73310b6d94484144c674557764188153}} 
+{\bfseries \$folding} = true
+\item 
+\mbox{\Hypertarget{classXML__Parser_a7c01abe46c9ffda1033e2fce6f7889ee}\label{classXML__Parser_a7c01abe46c9ffda1033e2fce6f7889ee}} 
+{\bfseries \$mode}
+\item 
+{\bfseries \$handler}
+\item 
+\mbox{\Hypertarget{classXML__Parser_a09677bdef06a5089dfedafd4bd23c62a}\label{classXML__Parser_a09677bdef06a5089dfedafd4bd23c62a}} 
+{\bfseries \$srcenc}
+\item 
+\mbox{\Hypertarget{classXML__Parser_aa1e9e1240643e804a5bcd62201739934}\label{classXML__Parser_aa1e9e1240643e804a5bcd62201739934}} 
+{\bfseries \$tgtenc}
+\item 
+\mbox{\Hypertarget{classXML__Parser_a63551a3673d3220b41408319cb164cc9}\label{classXML__Parser_a63551a3673d3220b41408319cb164cc9}} 
+{\bfseries \$\+\_\+handler\+Obj}
+\item 
+\mbox{\Hypertarget{classXML__Parser_a95cb88eac90ffd5713626a30abb37a0b}\label{classXML__Parser_a95cb88eac90ffd5713626a30abb37a0b}} 
+{\bfseries \$\+\_\+valid\+Encodings} = array(\textquotesingle{}I\+SO-\/8859-\/1\textquotesingle{}, \textquotesingle{}U\+TF-\/8\textquotesingle{}, \textquotesingle{}US-\/A\+S\+C\+II\textquotesingle{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classXML__Parser_a4ca8cc18c19733d29b2f677a7b379fcd}\label{classXML__Parser_a4ca8cc18c19733d29b2f677a7b379fcd}} 
+\index{XML\_Parser@{XML\_Parser}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$srcenc = {\ttfamily null},  }\item[{}]{\$mode = {\ttfamily \textquotesingle{}event\textquotesingle{}},  }\item[{}]{\$tgtenc = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Creates an X\+ML parser.
+
+This is needed for P\+H\+P4 compatibility, it will call the constructor, when a new instance is created.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$srcenc} & source charset encoding, use N\+U\+LL (default) to use whatever the document specifies \\
+\hline
+string & {\em \$mode} & how this parser object should work, \char`\"{}event\char`\"{} for startelement/endelement-\/type events, \char`\"{}func\char`\"{} to have it call functions named after elements \\
+\hline
+string & {\em \$tgenc} & a valid target encoding function \mbox{\hyperlink{classXML__Parser}{X\+M\+L\+\_\+\+Parser}}(\$srcenc = null, \$mode = \textquotesingle{}event\textquotesingle{}, \$tgtenc = null) \{ \mbox{\hyperlink{classXML__Parser_a4ca8cc18c19733d29b2f677a7b379fcd}{X\+M\+L\+\_\+\+Parser\+::\+\_\+\+\_\+construct}}(\$srcenc, \$mode, \$tgtenc); \} P\+H\+P5 constructor\\
+\hline
+string & {\em \$srcenc} & source charset encoding, use N\+U\+LL (default) to use whatever the document specifies \\
+\hline
+string & {\em \$mode} & how this parser object should work, \char`\"{}event\char`\"{} for startelement/endelement-\/type events, \char`\"{}func\char`\"{} to have it call functions named after elements \\
+\hline
+string & {\em \$tgenc} & a valid target encoding \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classXML__Parser_a4ca8cc18c19733d29b2f677a7b379fcd}\label{classXML__Parser_a4ca8cc18c19733d29b2f677a7b379fcd}} 
+\index{XML\_Parser@{XML\_Parser}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$srcenc = {\ttfamily null},  }\item[{}]{\$mode = {\ttfamily \textquotesingle{}event\textquotesingle{}},  }\item[{}]{\$tgtenc = {\ttfamily null} }\end{DoxyParamCaption})}
+
+P\+H\+P5 constructor
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$srcenc} & source charset encoding, use N\+U\+LL (default) to use whatever the document specifies \\
+\hline
+string & {\em \$mode} & how this parser object should work, \char`\"{}event\char`\"{} for startelement/endelement-\/type events, \char`\"{}func\char`\"{} to have it call functions named after elements \\
+\hline
+string & {\em \$tgenc} & a valid target encoding \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classXML__Parser_a9d70ce30889593f31f846c3c4f0d9a34}\label{classXML__Parser_a9d70ce30889593f31f846c3c4f0d9a34}} 
+\index{XML\_Parser@{XML\_Parser}!\_create@{\_create}}
+\index{\_create@{\_create}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_create()}{\_create()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+create the X\+ML parser resource
+
+Has been moved from the constructor to avoid problems with object references.
+
+Furthermore it allows us returning an error if something fails.
+
+@access private \begin{DoxyReturn}{Returns}
+boolean$\vert$object true on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} otherwise
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+xml\+\_\+parser\+\_\+create 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classXML__Parser_a9d70ce30889593f31f846c3c4f0d9a34}\label{classXML__Parser_a9d70ce30889593f31f846c3c4f0d9a34}} 
+\index{XML\_Parser@{XML\_Parser}!\_create@{\_create}}
+\index{\_create@{\_create}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_create()}{\_create()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\+\_\+create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+create the X\+ML parser resource
+
+Has been moved from the constructor to avoid problems with object references.
+
+Furthermore it allows us returning an error if something fails.
+
+@access private \begin{DoxyReturn}{Returns}
+boolean$\vert$object true on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} otherwise
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+xml\+\_\+parser\+\_\+create 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classXML__Parser_afeb7d9c0f3cf872dea917ba3066fc91f}\label{classXML__Parser_afeb7d9c0f3cf872dea917ba3066fc91f}} 
+\index{XML\_Parser@{XML\_Parser}!\_initHandlers@{\_initHandlers}}
+\index{\_initHandlers@{\_initHandlers}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_initHandlers()}{\_initHandlers()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\+\_\+init\+Handlers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Init the element handlers
+
+@access private set additional handlers for character data, entities, etc.
+
+Reimplemented in \mbox{\hyperlink{classXML__Parser__Simple_ae8b9382659b7a836a3e73c73ac372c12}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}, and \mbox{\hyperlink{classXML__Parser__Simple_ae8b9382659b7a836a3e73c73ac372c12}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}.
+
+\mbox{\Hypertarget{classXML__Parser_afeb7d9c0f3cf872dea917ba3066fc91f}\label{classXML__Parser_afeb7d9c0f3cf872dea917ba3066fc91f}} 
+\index{XML\_Parser@{XML\_Parser}!\_initHandlers@{\_initHandlers}}
+\index{\_initHandlers@{\_initHandlers}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_initHandlers()}{\_initHandlers()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\+\_\+init\+Handlers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Init the element handlers
+
+@access private set additional handlers for character data, entities, etc.
+
+Reimplemented in \mbox{\hyperlink{classXML__Parser__Simple_ae8b9382659b7a836a3e73c73ac372c12}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}, and \mbox{\hyperlink{classXML__Parser__Simple_ae8b9382659b7a836a3e73c73ac372c12}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}.
+
+\mbox{\Hypertarget{classXML__Parser_aebdff578e52cebcb509a9b594691f786}\label{classXML__Parser_aebdff578e52cebcb509a9b594691f786}} 
+\index{XML\_Parser@{XML\_Parser}!\_parseString@{\_parseString}}
+\index{\_parseString@{\_parseString}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_parseString()}{\_parseString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\+\_\+parse\+String (\begin{DoxyParamCaption}\item[{}]{\$data,  }\item[{}]{\$eof = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_aebdff578e52cebcb509a9b594691f786}{X\+M\+L\+\_\+\+Parser\+::\+\_\+parse\+String()}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & \\
+\hline
+boolean & {\em \$eof} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool @access private 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}{parse\+String()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classXML__Parser_aebdff578e52cebcb509a9b594691f786}\label{classXML__Parser_aebdff578e52cebcb509a9b594691f786}} 
+\index{XML\_Parser@{XML\_Parser}!\_parseString@{\_parseString}}
+\index{\_parseString@{\_parseString}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{\_parseString()}{\_parseString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\+\_\+parse\+String (\begin{DoxyParamCaption}\item[{}]{\$data,  }\item[{}]{\$eof = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_aebdff578e52cebcb509a9b594691f786}{X\+M\+L\+\_\+\+Parser\+::\+\_\+parse\+String()}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & \\
+\hline
+boolean & {\em \$eof} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool @access private 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}{parse\+String()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classXML__Parser_a30c7cfbcc0ee83106f008e2cb838ef0a}\label{classXML__Parser_a30c7cfbcc0ee83106f008e2cb838ef0a}} 
+\index{XML\_Parser@{XML\_Parser}!endHandler@{endHandler}}
+\index{endHandler@{endHandler}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{endHandler()}{endHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::end\+Handler (\begin{DoxyParamCaption}\item[{}]{\$xp,  }\item[{}]{\$elem }\end{DoxyParamCaption})}
+
+@abstract 
+
+Reimplemented in \mbox{\hyperlink{classmyParser_a098ad86ab749cb89dbe93bac1bea1aee}{my\+Parser}}, \mbox{\hyperlink{classXML__Parser__Simple_a946b31e66188e84cffe87d7cbbc15939}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}, and \mbox{\hyperlink{classXML__Parser__Simple_a946b31e66188e84cffe87d7cbbc15939}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}.
+
+\mbox{\Hypertarget{classXML__Parser_a30c7cfbcc0ee83106f008e2cb838ef0a}\label{classXML__Parser_a30c7cfbcc0ee83106f008e2cb838ef0a}} 
+\index{XML\_Parser@{XML\_Parser}!endHandler@{endHandler}}
+\index{endHandler@{endHandler}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{endHandler()}{endHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::end\+Handler (\begin{DoxyParamCaption}\item[{}]{\$xp,  }\item[{}]{\$elem }\end{DoxyParamCaption})}
+
+@abstract 
+
+Reimplemented in \mbox{\hyperlink{classmyParser_a098ad86ab749cb89dbe93bac1bea1aee}{my\+Parser}}, \mbox{\hyperlink{classXML__Parser__Simple_a946b31e66188e84cffe87d7cbbc15939}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}, and \mbox{\hyperlink{classXML__Parser__Simple_a946b31e66188e84cffe87d7cbbc15939}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}.
+
+\mbox{\Hypertarget{classXML__Parser_ae82d6e3c14fea6aab84cf23bd477cfce}\label{classXML__Parser_ae82d6e3c14fea6aab84cf23bd477cfce}} 
+\index{XML\_Parser@{XML\_Parser}!free@{free}}
+\index{free@{free}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{free()}{free()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_ae82d6e3c14fea6aab84cf23bd477cfce}{X\+M\+L\+\_\+\+Parser\+::free()}}
+
+Free the internal resources associated with the parser
+
+\begin{DoxyReturn}{Returns}
+null 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classXML__Parser_ae82d6e3c14fea6aab84cf23bd477cfce}\label{classXML__Parser_ae82d6e3c14fea6aab84cf23bd477cfce}} 
+\index{XML\_Parser@{XML\_Parser}!free@{free}}
+\index{free@{free}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{free()}{free()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_ae82d6e3c14fea6aab84cf23bd477cfce}{X\+M\+L\+\_\+\+Parser\+::free()}}
+
+Free the internal resources associated with the parser
+
+\begin{DoxyReturn}{Returns}
+null 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}\label{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}} 
+\index{XML\_Parser@{XML\_Parser}!parse@{parse}}
+\index{parse@{parse}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::parse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Central parsing function.
+
+\begin{DoxyReturn}{Returns}
+true$\vert$object \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error returns true on success, or a \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} otherwise @access public 
+\end{DoxyReturn}
+reset the parser\mbox{\Hypertarget{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}\label{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}} 
+\index{XML\_Parser@{XML\_Parser}!parse@{parse}}
+\index{parse@{parse}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::parse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Central parsing function.
+
+\begin{DoxyReturn}{Returns}
+true$\vert$object \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error returns true on success, or a \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} otherwise @access public 
+\end{DoxyReturn}
+reset the parser\mbox{\Hypertarget{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}\label{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}} 
+\index{XML\_Parser@{XML\_Parser}!parseString@{parseString}}
+\index{parseString@{parseString}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{parseString()}{parseString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::parse\+String (\begin{DoxyParamCaption}\item[{}]{\$data,  }\item[{}]{\$eof = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}{X\+M\+L\+\_\+\+Parser\+::parse\+String()}}
+
+Parses a string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & X\+ML data \\
+\hline
+boolean & {\em \$eof} & If set and T\+R\+UE, data is the last piece of data sent in this parser \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classXML__Parser__Error}{X\+M\+L\+\_\+\+Parser\+\_\+\+Error}}} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+Pear Error$\vert$true true on success or a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} Error 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classXML__Parser_aebdff578e52cebcb509a9b594691f786}{\+\_\+parse\+String()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}\label{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}} 
+\index{XML\_Parser@{XML\_Parser}!parseString@{parseString}}
+\index{parseString@{parseString}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{parseString()}{parseString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::parse\+String (\begin{DoxyParamCaption}\item[{}]{\$data,  }\item[{}]{\$eof = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_a12fa9cd0d4d2fbccea8a471f725263d6}{X\+M\+L\+\_\+\+Parser\+::parse\+String()}}
+
+Parses a string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & X\+ML data \\
+\hline
+boolean & {\em \$eof} & If set and T\+R\+UE, data is the last piece of data sent in this parser \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classXML__Parser__Error}{X\+M\+L\+\_\+\+Parser\+\_\+\+Error}}} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+Pear Error$\vert$true true on success or a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} Error 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classXML__Parser_aebdff578e52cebcb509a9b594691f786}{\+\_\+parse\+String()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classXML__Parser_acce1232b79c3f66be0139f1bfd139ddc}\label{classXML__Parser_acce1232b79c3f66be0139f1bfd139ddc}} 
+\index{XML\_Parser@{XML\_Parser}!raiseError@{raiseError}}
+\index{raiseError@{raiseError}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{raiseError()}{raiseError()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::raise\+Error (\begin{DoxyParamCaption}\item[{}]{\$msg = {\ttfamily null},  }\item[{}]{\$ecode = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_acce1232b79c3f66be0139f1bfd139ddc}{X\+M\+L\+\_\+\+Parser\+::raise\+Error()}}
+
+Throws a \mbox{\hyperlink{classXML__Parser__Error}{X\+M\+L\+\_\+\+Parser\+\_\+\+Error}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$msg} & the error message \\
+\hline
+integer & {\em \$ecode} & the error message code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classXML__Parser__Error}{X\+M\+L\+\_\+\+Parser\+\_\+\+Error}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classXML__Parser_acce1232b79c3f66be0139f1bfd139ddc}\label{classXML__Parser_acce1232b79c3f66be0139f1bfd139ddc}} 
+\index{XML\_Parser@{XML\_Parser}!raiseError@{raiseError}}
+\index{raiseError@{raiseError}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{raiseError()}{raiseError()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::raise\+Error (\begin{DoxyParamCaption}\item[{}]{\$msg = {\ttfamily null},  }\item[{}]{\$ecode = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_acce1232b79c3f66be0139f1bfd139ddc}{X\+M\+L\+\_\+\+Parser\+::raise\+Error()}}
+
+Throws a \mbox{\hyperlink{classXML__Parser__Error}{X\+M\+L\+\_\+\+Parser\+\_\+\+Error}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$msg} & the error message \\
+\hline
+integer & {\em \$ecode} & the error message code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classXML__Parser__Error}{X\+M\+L\+\_\+\+Parser\+\_\+\+Error}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classXML__Parser_a72838668ddc6d2ab5930500a972bc60b}\label{classXML__Parser_a72838668ddc6d2ab5930500a972bc60b}} 
+\index{XML\_Parser@{XML\_Parser}!reset@{reset}}
+\index{reset@{reset}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reset the parser.
+
+This allows you to use one parser instance to parse multiple X\+ML documents.
+
+@access public \begin{DoxyReturn}{Returns}
+boolean$\vert$object true on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} otherwise 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classXML__Parser__Simple_a4b15941dc1ff45937ed65084fbe7d416}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}, and \mbox{\hyperlink{classXML__Parser__Simple_a4b15941dc1ff45937ed65084fbe7d416}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}.
+
+\mbox{\Hypertarget{classXML__Parser_a72838668ddc6d2ab5930500a972bc60b}\label{classXML__Parser_a72838668ddc6d2ab5930500a972bc60b}} 
+\index{XML\_Parser@{XML\_Parser}!reset@{reset}}
+\index{reset@{reset}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reset the parser.
+
+This allows you to use one parser instance to parse multiple X\+ML documents.
+
+@access public \begin{DoxyReturn}{Returns}
+boolean$\vert$object true on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} otherwise 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classXML__Parser__Simple_a4b15941dc1ff45937ed65084fbe7d416}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}, and \mbox{\hyperlink{classXML__Parser__Simple_a4b15941dc1ff45937ed65084fbe7d416}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}.
+
+\mbox{\Hypertarget{classXML__Parser_ae284fcdda857f1a4546316526713751b}\label{classXML__Parser_ae284fcdda857f1a4546316526713751b}} 
+\index{XML\_Parser@{XML\_Parser}!setHandlerObj@{setHandlerObj}}
+\index{setHandlerObj@{setHandlerObj}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setHandlerObj()}{setHandlerObj()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Handler\+Obj (\begin{DoxyParamCaption}\item[{}]{\$obj }\end{DoxyParamCaption})}
+
+Sets the object, that will handle the X\+ML events
+
+This allows you to create a handler object independent of the parser object that you are using and easily switch the underlying parser.
+
+If no object will be set, \mbox{\hyperlink{classXML__Parser}{X\+M\+L\+\_\+\+Parser}} assumes that you extend this class and handle the events in \$this.
+
+@access public 
+\begin{DoxyParams}{Parameters}
+{\em object} & object to handle the events \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean will always return true 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+v1.\+2.\+0beta3 
+\end{DoxySince}
+\mbox{\Hypertarget{classXML__Parser_a7c9570d06ed9eeac5da01d197ac95e83}\label{classXML__Parser_a7c9570d06ed9eeac5da01d197ac95e83}} 
+\index{XML\_Parser@{XML\_Parser}!setHandlerObj@{setHandlerObj}}
+\index{setHandlerObj@{setHandlerObj}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setHandlerObj()}{setHandlerObj()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Handler\+Obj (\begin{DoxyParamCaption}\item[{\&}]{\$obj }\end{DoxyParamCaption})}
+
+Sets the object, that will handle the X\+ML events
+
+This allows you to create a handler object independent of the parser object that you are using and easily switch the underlying parser.
+
+If no object will be set, \mbox{\hyperlink{classXML__Parser}{X\+M\+L\+\_\+\+Parser}} assumes that you extend this class and handle the events in \$this.
+
+@access public 
+\begin{DoxyParams}{Parameters}
+{\em object} & object to handle the events \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean will always return true 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+v1.\+2.\+0beta3 
+\end{DoxySince}
+\mbox{\Hypertarget{classXML__Parser_ad07b997592f4723a6ba12fe9359de1b9}\label{classXML__Parser_ad07b997592f4723a6ba12fe9359de1b9}} 
+\index{XML\_Parser@{XML\_Parser}!setInput@{setInput}}
+\index{setInput@{setInput}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setInput()}{setInput()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Input (\begin{DoxyParamCaption}\item[{}]{\$fp }\end{DoxyParamCaption})}
+
+Sets the file handle to use with \mbox{\hyperlink{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}{parse()}}.
+
+You should use \mbox{\hyperlink{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}{set\+Input\+File()}} or \mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{set\+Input\+String()}} if you pass a string
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$fp} & Can be either a resource returned from fopen(), a U\+RL, a local filename or a string. @access public \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}{parse()}} @uses \mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{set\+Input\+String()}}, \mbox{\hyperlink{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}{set\+Input\+File()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classXML__Parser_ad07b997592f4723a6ba12fe9359de1b9}\label{classXML__Parser_ad07b997592f4723a6ba12fe9359de1b9}} 
+\index{XML\_Parser@{XML\_Parser}!setInput@{setInput}}
+\index{setInput@{setInput}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setInput()}{setInput()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Input (\begin{DoxyParamCaption}\item[{}]{\$fp }\end{DoxyParamCaption})}
+
+Sets the file handle to use with \mbox{\hyperlink{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}{parse()}}.
+
+You should use \mbox{\hyperlink{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}{set\+Input\+File()}} or \mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{set\+Input\+String()}} if you pass a string
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$fp} & Can be either a resource returned from fopen(), a U\+RL, a local filename or a string. @access public \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}{parse()}} @uses \mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{set\+Input\+String()}}, \mbox{\hyperlink{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}{set\+Input\+File()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}\label{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}} 
+\index{XML\_Parser@{XML\_Parser}!setInputFile@{setInputFile}}
+\index{setInputFile@{setInputFile}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setInputFile()}{setInputFile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Input\+File (\begin{DoxyParamCaption}\item[{}]{\$file }\end{DoxyParamCaption})}
+
+Sets the input xml file to be parsed
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & Filename (full path) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+resource fopen handle of the given file 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classXML__Parser__Error}{X\+M\+L\+\_\+\+Parser\+\_\+\+Error}}} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classXML__Parser_ad07b997592f4723a6ba12fe9359de1b9}{set\+Input()}}, \mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{set\+Input\+String()}}, \mbox{\hyperlink{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}{parse()}} @access public 
+\end{DoxySeeAlso}
+check, if file is a remote file\mbox{\Hypertarget{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}\label{classXML__Parser_a9fdb651e634076c1733f7b18ae117c4b}} 
+\index{XML\_Parser@{XML\_Parser}!setInputFile@{setInputFile}}
+\index{setInputFile@{setInputFile}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setInputFile()}{setInputFile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Input\+File (\begin{DoxyParamCaption}\item[{}]{\$file }\end{DoxyParamCaption})}
+
+Sets the input xml file to be parsed
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & Filename (full path) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+resource fopen handle of the given file 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classXML__Parser__Error}{X\+M\+L\+\_\+\+Parser\+\_\+\+Error}}} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classXML__Parser_ad07b997592f4723a6ba12fe9359de1b9}{set\+Input()}}, \mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{set\+Input\+String()}}, \mbox{\hyperlink{classXML__Parser_ac307c0b14ea0dafa92e692258b899374}{parse()}} @access public 
+\end{DoxySeeAlso}
+check, if file is a remote file\mbox{\Hypertarget{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}\label{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}} 
+\index{XML\_Parser@{XML\_Parser}!setInputString@{setInputString}}
+\index{setInputString@{setInputString}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setInputString()}{setInputString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Input\+String (\begin{DoxyParamCaption}\item[{}]{\$data }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{X\+M\+L\+\_\+\+Parser\+::set\+Input\+String()}}
+
+Sets the xml input from a string
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & a string containing the X\+ML document \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+null 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}\label{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}} 
+\index{XML\_Parser@{XML\_Parser}!setInputString@{setInputString}}
+\index{setInputString@{setInputString}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setInputString()}{setInputString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Input\+String (\begin{DoxyParamCaption}\item[{}]{\$data }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classXML__Parser_a09ee406ba9402d26e7af14921c7dda47}{X\+M\+L\+\_\+\+Parser\+::set\+Input\+String()}}
+
+Sets the xml input from a string
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$data} & a string containing the X\+ML document \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+null 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classXML__Parser_ae3da3e84a77223e4fa74084596c465f4}\label{classXML__Parser_ae3da3e84a77223e4fa74084596c465f4}} 
+\index{XML\_Parser@{XML\_Parser}!setMode@{setMode}}
+\index{setMode@{setMode}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Mode (\begin{DoxyParamCaption}\item[{}]{\$mode }\end{DoxyParamCaption})}
+
+Sets the mode of the parser.
+
+Possible modes are\+:
+\begin{DoxyItemize}
+\item func
+\item event
+\end{DoxyItemize}
+
+You can set the mode using the second parameter in the constructor.
+
+This method is only needed, when switching to a new mode at a later point.
+
+@access public 
+\begin{DoxyParams}{Parameters}
+{\em string} & mode, either \textquotesingle{}func\textquotesingle{} or \textquotesingle{}event\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean$\vert$object true on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classXML__Parser_ae3da3e84a77223e4fa74084596c465f4}\label{classXML__Parser_ae3da3e84a77223e4fa74084596c465f4}} 
+\index{XML\_Parser@{XML\_Parser}!setMode@{setMode}}
+\index{setMode@{setMode}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::set\+Mode (\begin{DoxyParamCaption}\item[{}]{\$mode }\end{DoxyParamCaption})}
+
+Sets the mode of the parser.
+
+Possible modes are\+:
+\begin{DoxyItemize}
+\item func
+\item event
+\end{DoxyItemize}
+
+You can set the mode using the second parameter in the constructor.
+
+This method is only needed, when switching to a new mode at a later point.
+
+@access public 
+\begin{DoxyParams}{Parameters}
+{\em string} & mode, either \textquotesingle{}func\textquotesingle{} or \textquotesingle{}event\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean$\vert$object true on success, \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classXML__Parser_a970c506eb280f2ce965a8111f5f4760a}\label{classXML__Parser_a970c506eb280f2ce965a8111f5f4760a}} 
+\index{XML\_Parser@{XML\_Parser}!startHandler@{startHandler}}
+\index{startHandler@{startHandler}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{startHandler()}{startHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::start\+Handler (\begin{DoxyParamCaption}\item[{}]{\$xp,  }\item[{}]{\$elem,  }\item[{}]{\$attribs }\end{DoxyParamCaption})}
+
+@abstract 
+
+Reimplemented in \mbox{\hyperlink{classmyParser_ade5a28ad6f11f24d5a460d626dec2ed9}{my\+Parser}}.
+
+\mbox{\Hypertarget{classXML__Parser_a27fc9129bc056a9233ecc9600427b620}\label{classXML__Parser_a27fc9129bc056a9233ecc9600427b620}} 
+\index{XML\_Parser@{XML\_Parser}!startHandler@{startHandler}}
+\index{startHandler@{startHandler}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{startHandler()}{startHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::start\+Handler (\begin{DoxyParamCaption}\item[{}]{\$xp,  }\item[{}]{\$elem,  }\item[{\&}]{\$attribs }\end{DoxyParamCaption})}
+
+@abstract 
+
+Reimplemented in \mbox{\hyperlink{classXML__Parser__Simple_a74f287e36abba7d754557aa31503ebd1}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}, and \mbox{\hyperlink{classXML__Parser__Simple_a74f287e36abba7d754557aa31503ebd1}{X\+M\+L\+\_\+\+Parser\+\_\+\+Simple}}.
+
+\mbox{\Hypertarget{classXML__Parser_a4a75f7cb6eb133208559dd4078e8b3a9}\label{classXML__Parser_a4a75f7cb6eb133208559dd4078e8b3a9}} 
+\index{XML\_Parser@{XML\_Parser}!XML\_Parser@{XML\_Parser}}
+\index{XML\_Parser@{XML\_Parser}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{XML\_Parser()}{XML\_Parser()}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\+X\+M\+L\+\_\+\+Parser (\begin{DoxyParamCaption}\item[{}]{\$srcenc = {\ttfamily null},  }\item[{}]{\$mode = {\ttfamily \textquotesingle{}event\textquotesingle{}},  }\item[{}]{\$tgtenc = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Creates an X\+ML parser.
+
+This is needed for P\+H\+P4 compatibility, it will call the constructor, when a new instance is created.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$srcenc} & source charset encoding, use N\+U\+LL (default) to use whatever the document specifies \\
+\hline
+string & {\em \$mode} & how this parser object should work, \char`\"{}event\char`\"{} for startelement/endelement-\/type events, \char`\"{}func\char`\"{} to have it call functions named after elements \\
+\hline
+string & {\em \$tgenc} & a valid target encoding \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classXML__Parser_ab9e38f950f100cb92f1a778b5580013d}\label{classXML__Parser_ab9e38f950f100cb92f1a778b5580013d}} 
+\index{XML\_Parser@{XML\_Parser}!\$handler@{\$handler}}
+\index{\$handler@{\$handler}!XML\_Parser@{XML\_Parser}}
+\doxysubsubsection{\texorpdfstring{\$handler}{$handler}}
+{\footnotesize\ttfamily X\+M\+L\+\_\+\+Parser\+::\$handler}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'character\_data\_handler'}            => \textcolor{stringliteral}{'cdataHandler'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'default\_handler'}                   => \textcolor{stringliteral}{'defaultHandler'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'processing\_instruction\_handler'}    => \textcolor{stringliteral}{'piHandler'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'unparsed\_entity\_decl\_handler'}      => \textcolor{stringliteral}{'unparsedHandler'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'notation\_decl\_handler'}             => \textcolor{stringliteral}{'notationHandler'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'external\_entity\_ref\_handler'}       => \textcolor{stringliteral}{'entityrefHandler'}}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+X\+M\+L/Parser.\+php\end{DoxyCompactItemize}

@@ -1,0 +1,40 @@
+\hypertarget{classAccBarPlot}{}\doxysection{Acc\+Bar\+Plot Class Reference}
+\label{classAccBarPlot}\index{AccBarPlot@{AccBarPlot}}
+
+
+Inheritance diagram for Acc\+Bar\+Plot\+:
+% FIG 0
+
+
+Collaboration diagram for Acc\+Bar\+Plot\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccBarPlot_ada993ace0bf8c7fe9d141d62f0d6ec61}\label{classAccBarPlot_ada993ace0bf8c7fe9d141d62f0d6ec61}} 
+{\bfseries \+\_\+\+\_\+construct} (\$plots)
+\item 
+\mbox{\Hypertarget{classAccBarPlot_a77aeb8c73f267590e50d6aeb040e6d19}\label{classAccBarPlot_a77aeb8c73f267590e50d6aeb040e6d19}} 
+{\bfseries Legend} (\$graph)
+\item 
+\mbox{\Hypertarget{classAccBarPlot_a76bbbd5212a7641f23932bb105b389c3}\label{classAccBarPlot_a76bbbd5212a7641f23932bb105b389c3}} 
+{\bfseries Max} ()
+\item 
+\mbox{\Hypertarget{classAccBarPlot_a7e6875b33e8d73369a16a34c1172ab3f}\label{classAccBarPlot_a7e6875b33e8d73369a16a34c1172ab3f}} 
+{\bfseries Min} ()
+\item 
+\mbox{\Hypertarget{classAccBarPlot_a588b9a678c7c3932b3d3072728871714}\label{classAccBarPlot_a588b9a678c7c3932b3d3072728871714}} 
+{\bfseries Stroke} (\$img, \$xscale, \$yscale)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAccBarPlot_a835364cec36e12ad8d05df6e3e1b0375}\label{classAccBarPlot_a835364cec36e12ad8d05df6e3e1b0375}} 
+{\bfseries \$nbrplots} =0
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+drupal/om/lib/jpgraph/jpgraph\+\_\+bar.\+php\end{DoxyCompactItemize}

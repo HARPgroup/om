@@ -1,0 +1,993 @@
+\hypertarget{classMail__IMAPv2}{}\doxysection{Mail\+\_\+\+I\+M\+A\+Pv2 Class Reference}
+\label{classMail__IMAPv2}\index{Mail\_IMAPv2@{Mail\_IMAPv2}}
+
+
+Inheritance diagram for Mail\+\_\+\+I\+M\+A\+Pv2\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a4c865898c45fd4d35f48f5ff2023fb96}{Mail\+\_\+\+I\+M\+A\+Pv2}} (\$connection=null, \$get\+\_\+info=true)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a16353d9f5a7f2c19190938e21b4cce4a}{error\+Template}} ()
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ab0ac1a7d29e7325718e27fcbaf64ae93}{connect}} (\$uri, \$get\+\_\+info=true)
+\item 
+\mbox{\Hypertarget{classMail__IMAPv2_a9a474fbd899610886b9bd095befa51e5}\label{classMail__IMAPv2_a9a474fbd899610886b9bd095befa51e5}} 
+{\bfseries get\+Mailbox\+Info} (\$ret=true)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ac741c60060c450a16665abc39b210d0d}{set\+Options}} (\$options, \$constant)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a64b6c9c1e1c788c8c291d19c36b6b7d7}{close}} ()
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a6cfa7cc1879442d6c06e25522e9871a0}{message\+Count}} ()
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ad3cbe33a485ba3b8e9970b83322a4bd9}{\+\_\+declare\+Parts}} (\&\$mid, \$sub\+\_\+part=null, \$sub\+\_\+pid=null, \$n=0, \$is\+\_\+sub\+\_\+part=false, \$skip\+\_\+part=false, \$last\+\_\+was\+\_\+signed=false)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ae08d806a713233eeb896e28c8e59a989}{\+\_\+check\+If\+Parsed}} (\&\$mid, \$check\+Pid=true, \$get\+\_\+mime=\textquotesingle{}text/html\textquotesingle{})
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ace09ac2e57816c34ddf7f4d5ea62cbb8}{get\+Parts}} (\&\$mid, \$pid=\textquotesingle{}0\textquotesingle{}, \$ret=false, \$args=array())
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a45e1976911206ac88a1297d2a0878298}{\+\_\+scan\+Multipart}} (\&\$mid, \&\$pid, \&\$i, \$M\+I\+ME, \$action=\textquotesingle{}add\textquotesingle{}, \$look\+\_\+for=\textquotesingle{}all\textquotesingle{}, \$pid\+\_\+add=1, \$get\+\_\+alternative=true)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a5d5574bb2402a727abdd46e0fca50563}{\+\_\+is\+Multipart}} (\$mid, \$subtype)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a2d83043a283919e9a2b5ecb16b24abbe}{get\+Related\+Parts}} (\&\$mid, \&\$pid, \$secure\+M\+I\+ME=array())
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a1f9dd1f2632200226876d5e7b65be4b5}{\+\_\+get\+C\+I\+Ds}} (\&\$mid, \&\$i, \&\$secure\+M\+I\+ME, \&\$related)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ac2d5bb6cc819098704da808c50823a37}{unset\+Parts}} (\&\$mid)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a91d77c964a870c8ef701df2b493eb2af}{\+\_\+add\+Part}} (\&\$n, \&\$mid, \&\$i, \$part)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ad92be95861444364a170272b677e4ae1}{get\+Raw\+Message}} (\&\$mid)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a03140b22d85dc885db9affba002813f0}{get\+Body}} (\&\$mid, \$pid=\textquotesingle{}1\textquotesingle{}, \$action=0, \$get\+\_\+mime=\textquotesingle{}text/html\textquotesingle{}, \$attempt=1)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ae7e8ef5c96b765c5a21c00e6bf348bc3}{\+\_\+decode\+Message}} (\&\$body, \&\$encoding, \&\$charset)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ab0bcd309e619e7946a07f4fe27068116}{\+\_\+get\+Default\+Pid}} (\&\$mid, \$get\+\_\+mime=\textquotesingle{}text/html\textquotesingle{}, \$attempt=1)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a2cc6d42f7e74ec5295022cdb0877e785}{extract\+M\+I\+ME}} (\&\$mid, \$M\+I\+M\+Es)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_aa9ca42b8b8a1037d8cc6f5a74e9b5e91}{get\+Raw\+Headers}} (\&\$mid, \$pid=\textquotesingle{}0\textquotesingle{}, \$rtn=true, \$pid\+\_\+check=false)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_abfea7a10cc401b728b5c44574dc539da}{get\+Headers}} (\&\$mid, \$pid=\textquotesingle{}0\textquotesingle{}, \$rtn=false, \$args=array())
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a082df062167991bfdc0d66785a43779a}{\+\_\+parse\+Header\+Line}} (\&\$mid, \&\$line, \$name)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a69bcb9fa3fced9c56e2ddf6eb4939f8b}{\+\_\+default\+Header\+Pid}} (\&\$mid, \$pid)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a88289053e5e46e31ea066936694ceda6}{unset\+Headers}} (\&\$mid)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a7b96ec5cb43181c7ab156d690a4d6fdc}{delete}} (\&\$mid, \$separator=\char`\"{}$<$br /$>$\textbackslash{}n\char`\"{})
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a479ba42e3e8b520ac7cb950e866da764}{expunge}} ()
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a53d4ed4c4b4cc0e0a86df297beec8403}{errors}} (\$handler=true, \$seperator=\char`\"{}$<$br /$>$\textbackslash{}n\char`\"{})
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_aa830375c65e49af6fcaa10acc31a4d0d}{alerts}} (\$handler=true, \$seperator=\char`\"{}$<$br /$>$\textbackslash{}n\char`\"{})
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ab5ad9f092f8ea4feb75c4581e0113864}{get\+Quota}} (\$folder=null, \$rtn=true)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ac3cc17e24e198fc5b5a84126c646f318}{set\+Flags}} (\$mids, \$flags, \$action=\textquotesingle{}set\textquotesingle{})
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a60b53d82014f25d770b5e996dad27eaf}{get\+Mailboxes}} (\$host=null, \$pattern=\textquotesingle{} $\ast$\textquotesingle{}, \$rtn=true)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a2fc7a4004909eaefad9c795df96b1c83}{convert\+Bytes}} (\$bytes)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_aec9d91e3275428fdea61432eda7ae7b4}{\$error}}
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a324a7df059448606e366febe42b9384f}{\$mailbox}}
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a9b7bf6314da987504cac5702b23046d3}{\$mailbox\+Info}} = array()
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a398076788e4da176a319345ee202e8e9}{\$option}} = array()
+\item 
+\mbox{\Hypertarget{classMail__IMAPv2_a3cd1fe6ca7b18755a5901f9636a05daa}\label{classMail__IMAPv2_a3cd1fe6ca7b18755a5901f9636a05daa}} 
+{\bfseries \$structure} = array()
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ac53c8126196b8a2ceae4f10770080e17}{\$msg}} = array()
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_aee87cc38c11b1aaa82861c2aaf82fc07}{\$header}} = array()
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_a44c3deb0b2d94e5799bc5e6fbf11b09d}{\$\+\_\+data\+Types}}
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_ab2db5dea1d8cb4aa87f7658164906a22}{\$\+\_\+encoding\+Types}}
+\item 
+\mbox{\hyperlink{classMail__IMAPv2_adaef6be05441093cbabcf3f202f1550a}{\$fields}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMail__IMAPv2_a91d77c964a870c8ef701df2b493eb2af}\label{classMail__IMAPv2_a91d77c964a870c8ef701df2b493eb2af}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_addPart@{\_addPart}}
+\index{\_addPart@{\_addPart}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_addPart()}{\_addPart()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+add\+Part (\begin{DoxyParamCaption}\item[{\&}]{\$n,  }\item[{\&}]{\$mid,  }\item[{\&}]{\$i,  }\item[{}]{\$part }\end{DoxyParamCaption})}
+
+Adds information to the member variable inline part \textquotesingle{}in\textquotesingle{} and attachment \textquotesingle{}at\textquotesingle{} arrays.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$n} & offset part counter \\
+\hline
+int & {\em \&\$mid} & message id \\
+\hline
+int & {\em \&\$i} & offset structure reference counter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void @access private @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_addPart}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+add\+Part}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMail__IMAPv2_ae08d806a713233eeb896e28c8e59a989}\label{classMail__IMAPv2_ae08d806a713233eeb896e28c8e59a989}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_checkIfParsed@{\_checkIfParsed}}
+\index{\_checkIfParsed@{\_checkIfParsed}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_checkIfParsed()}{\_checkIfParsed()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+check\+If\+Parsed (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$check\+Pid = {\ttfamily true},  }\item[{}]{\$get\+\_\+mime = {\ttfamily \textquotesingle{}text/html\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Checks if the part has been parsed, if not calls on \+\_\+declare\+Parts to parse the message.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+bool & {\em \$check\+Pid} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void @access protected @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_checkIfParsed}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+check\+If\+Parsed}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMail__IMAPv2_ad3cbe33a485ba3b8e9970b83322a4bd9}\label{classMail__IMAPv2_ad3cbe33a485ba3b8e9970b83322a4bd9}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_declareParts@{\_declareParts}}
+\index{\_declareParts@{\_declareParts}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_declareParts()}{\_declareParts()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+declare\+Parts (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$sub\+\_\+part = {\ttfamily null},  }\item[{}]{\$sub\+\_\+pid = {\ttfamily null},  }\item[{}]{\$n = {\ttfamily 0},  }\item[{}]{\$is\+\_\+sub\+\_\+part = {\ttfamily false},  }\item[{}]{\$skip\+\_\+part = {\ttfamily false},  }\item[{}]{\$last\+\_\+was\+\_\+signed = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Gather message information returned by \mbox{\hyperlink{}{imap\+\_\+fetchstructure}} and recursively iterate through each parts array. Concatenate part numbers in the following format {\ttfamily 1.\+1} each part id is separated by a period, each referring to a part or subpart of a multipart message. Create part numbers as such that they are compatible with \mbox{\hyperlink{}{imap\+\_\+fetchbody}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+array & {\em \$sub\+\_\+part} & recursive \\
+\hline
+string & {\em \$sub\+\_\+pid} & recursive parent part id \\
+\hline
+int & {\em \$n} & recursive counter \\
+\hline
+bool & {\em \$is\+\_\+sub\+\_\+part} & recursive \\
+\hline
+bool & {\em \$skip\+\_\+part} & recursive \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed @access protected 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+fetchstructure 
+
+imap\+\_\+fetchbody @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_declareParts}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+declare\+Parts}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_ae7e8ef5c96b765c5a21c00e6bf348bc3}\label{classMail__IMAPv2_ae7e8ef5c96b765c5a21c00e6bf348bc3}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_decodeMessage@{\_decodeMessage}}
+\index{\_decodeMessage@{\_decodeMessage}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_decodeMessage()}{\_decodeMessage()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+decode\+Message (\begin{DoxyParamCaption}\item[{\&}]{\$body,  }\item[{\&}]{\$encoding,  }\item[{\&}]{\$charset }\end{DoxyParamCaption})}
+
+Decode a string from quoted-\/printable or base64 encoding. If neither of those encoding types are specified, returns string untouched.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \&\$body} & string to decode \\
+\hline
+string & {\em \&\$encoding} & encoding to decode from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string @access private @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_decodeMessage}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+decode\+Message}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMail__IMAPv2_a69bcb9fa3fced9c56e2ddf6eb4939f8b}\label{classMail__IMAPv2_a69bcb9fa3fced9c56e2ddf6eb4939f8b}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_defaultHeaderPid@{\_defaultHeaderPid}}
+\index{\_defaultHeaderPid@{\_defaultHeaderPid}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_defaultHeaderPid()}{\_defaultHeaderPid()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+default\+Header\+Pid (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$pid }\end{DoxyParamCaption})}
+
+Finds and returns a default part id for headers and matches any sub message part to the appropriate headers. Returns false on failure and may return a value that evaluates to false, use the \textquotesingle{}===\textquotesingle{} operator for testing this function\textquotesingle{}s return value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+string & {\em \$pid} & part id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$false @access private 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_abfea7a10cc401b728b5c44574dc539da}{get\+Headers}} 
+
+\mbox{\hyperlink{classMail__IMAPv2_aa9ca42b8b8a1037d8cc6f5a74e9b5e91}{get\+Raw\+Headers}} @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_defaultHeaderPid}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+default\+Header\+Pid}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a1f9dd1f2632200226876d5e7b65be4b5}\label{classMail__IMAPv2_a1f9dd1f2632200226876d5e7b65be4b5}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_getCIDs@{\_getCIDs}}
+\index{\_getCIDs@{\_getCIDs}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_getCIDs()}{\_getCIDs()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+get\+C\+I\+Ds (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{\&}]{\$i,  }\item[{\&}]{\$secure\+M\+I\+ME,  }\item[{\&}]{\$related }\end{DoxyParamCaption})}
+
+Helper function for get\+Related\+Parts
+
+\begin{DoxyReturn}{Returns}
+void @access private 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_a2d83043a283919e9a2b5ecb16b24abbe}{get\+Related\+Parts}} @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_getCIDs}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+get\+C\+I\+Ds}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_ab0bcd309e619e7946a07f4fe27068116}\label{classMail__IMAPv2_ab0bcd309e619e7946a07f4fe27068116}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_getDefaultPid@{\_getDefaultPid}}
+\index{\_getDefaultPid@{\_getDefaultPid}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_getDefaultPid()}{\_getDefaultPid()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+get\+Default\+Pid (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$get\+\_\+mime = {\ttfamily \textquotesingle{}text/html\textquotesingle{}},  }\item[{}]{\$attempt = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+Searches structure defined in \$this-\/$>$\+\_\+declare\+Parts for the top-\/level default message. Attempts to find a text/html default part, if no text/html part is found, automatically attempts to find a text/plain part. Returns the part id for the default top level message part on success. Returns false on failure.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+string & {\em \$get\+Part} & (optional) default M\+I\+ME type to look for, one of text/html or text/plain text/html by default. \\
+\hline
+int & {\em \$attempt} & (optional) Used internally by \+\_\+get\+Default\+Pid to track the method\textquotesingle{}s attempt at retrieving the correct default part to display.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_getDefaultPid}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+get\+Default\+Pid}} @access private 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMail__IMAPv2_a5d5574bb2402a727abdd46e0fca50563}\label{classMail__IMAPv2_a5d5574bb2402a727abdd46e0fca50563}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_isMultipart@{\_isMultipart}}
+\index{\_isMultipart@{\_isMultipart}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_isMultipart()}{\_isMultipart()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+is\+Multipart (\begin{DoxyParamCaption}\item[{}]{\$mid,  }\item[{}]{\$subtype }\end{DoxyParamCaption})}
+
+Determines whether a message contains a multipart/(insert subtype here) part. Only called on by \$this-\/$>$\+\_\+scan\+Multipart
+
+\begin{DoxyReturn}{Returns}
+B\+O\+OL @access private 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_a45e1976911206ac88a1297d2a0878298}{\+\_\+scan\+Multipart}} @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_isMultipart}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+is\+Multipart}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a082df062167991bfdc0d66785a43779a}\label{classMail__IMAPv2_a082df062167991bfdc0d66785a43779a}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_parseHeaderLine@{\_parseHeaderLine}}
+\index{\_parseHeaderLine@{\_parseHeaderLine}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_parseHeaderLine()}{\_parseHeaderLine()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+parse\+Header\+Line (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{\&}]{\$line,  }\item[{}]{\$name }\end{DoxyParamCaption})}
+
+Parse header information from the given line and add it to the \mbox{\hyperlink{classMail__IMAPv2_aee87cc38c11b1aaa82861c2aaf82fc07}{\$header}} array. This function is only used by \mbox{\hyperlink{classMail__IMAPv2_aa9ca42b8b8a1037d8cc6f5a74e9b5e91}{get\+Raw\+Headers}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \&\$line} & \\
+\hline
+string & {\em \$name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array @access private @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_parseHeaderLine}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+parse\+Header\+Line}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMail__IMAPv2_a45e1976911206ac88a1297d2a0878298}\label{classMail__IMAPv2_a45e1976911206ac88a1297d2a0878298}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\_scanMultipart@{\_scanMultipart}}
+\index{\_scanMultipart@{\_scanMultipart}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\_scanMultipart()}{\_scanMultipart()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+\_\+scan\+Multipart (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{\&}]{\$pid,  }\item[{\&}]{\$i,  }\item[{}]{\$\+M\+I\+ME,  }\item[{}]{\$action = {\ttfamily \textquotesingle{}add\textquotesingle{}},  }\item[{}]{\$look\+\_\+for = {\ttfamily \textquotesingle{}all\textquotesingle{}},  }\item[{}]{\$pid\+\_\+add = {\ttfamily 1},  }\item[{}]{\$get\+\_\+alternative = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Finds message parts relevant to the message part currently being displayed or looks through a message and determines which is the best body to display.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+int & {\em \&\$pid} & part id \\
+\hline
+int & {\em \$i} & offset indice correlating to the pid \\
+\hline
+str & {\em \$\+M\+I\+ME} & one of text/plain or text/html the default M\+I\+ME to retrieve. \\
+\hline
+str & {\em \$action} & one of add$\vert$get \\
+\hline
+str & {\em \$look\+\_\+for} & one of all$\vert$multipart$\vert$top$\vert$none \\
+\hline
+int & {\em \$pid\+\_\+add} & determines the level of nesting. \\
+\hline
+bool & {\em \$get\+\_\+alternative} & Determines whether the program retrieves the alternative part in a multipart/alternative message.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$false @access private @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_scanMultipart}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+scan\+Multipart}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMail__IMAPv2_aa830375c65e49af6fcaa10acc31a4d0d}\label{classMail__IMAPv2_aa830375c65e49af6fcaa10acc31a4d0d}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!alerts@{alerts}}
+\index{alerts@{alerts}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{alerts()}{alerts()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::alerts (\begin{DoxyParamCaption}\item[{}]{\$handler = {\ttfamily true},  }\item[{}]{\$seperator = {\ttfamily \char`\"{}$<$br~/$>$\textbackslash{}n\char`\"{}} }\end{DoxyParamCaption})}
+
+Wrapper function for \mbox{\hyperlink{}{imap\+\_\+alerts}}. Implodes the array returned by imap\+\_\+alerts, (if any) and returns the text.
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$handler} & How to handle the imap error stack, true by default. If true adds the alerts to the \mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}} object. If false, returns the imap alert stack.\\
+\hline
+string & {\em \$seperator} & Characters to seperate each alert message. \textquotesingle{}~\newline
+~\newline
+\textquotesingle{} by default. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool$\vert$string @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+alerts 
+
+\mbox{\hyperlink{classMail__IMAPv2_a53d4ed4c4b4cc0e0a86df297beec8403}{errors}} @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/alerts}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/alerts}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a64b6c9c1e1c788c8c291d19c36b6b7d7}\label{classMail__IMAPv2_a64b6c9c1e1c788c8c291d19c36b6b7d7}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!close@{close}}
+\index{close@{close}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Wrapper method for \mbox{\hyperlink{}{imap\+\_\+close}}. Close the I\+M\+AP resource stream.
+
+\begin{DoxyReturn}{Returns}
+B\+O\+OL @access public @tutorial \href{http://www.smilingsouls.net/index.php?content=Mail_IMAP/close}{\texttt{ http\+://www.\+smilingsouls.\+net/index.\+php?content=\+Mail\+\_\+\+I\+M\+A\+P/close}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+close 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_ab0ac1a7d29e7325718e27fcbaf64ae93}\label{classMail__IMAPv2_ab0ac1a7d29e7325718e27fcbaf64ae93}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!connect@{connect}}
+\index{connect@{connect}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::connect (\begin{DoxyParamCaption}\item[{}]{\$uri,  }\item[{}]{\$get\+\_\+info = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Wrapper method for \mbox{\hyperlink{}{imap\+\_\+open}}. Accepts a U\+RI abstraction in the following format\+: imap\+://user\+:\href{mailto:pass@mail.example.com}{\texttt{ pass@mail.\+example.\+com}}\+:143/\+I\+N\+B\+OX\#notls instead of the standard connection arguments used in imap\+\_\+open. Replace the protocol with one of pop3$\vert$pop3s imap$\vert$imaps nntp$\vert$nntps. Place intial folder in the file path portion, and optionally append tls$\vert$notls$\vert$novalidate-\/cert in the anchor portion of the U\+RL. A port number is optional, however, leaving it off could lead to a serious degradation in preformance.
+
+Since \mbox{\hyperlink{classMail__IMAPv2}{Mail\+\_\+\+I\+M\+A\+Pv2}} 0.\+1.\+0 the \$options argument became the \$get\+\_\+info argument. constants for action were removed and the argument is now a B\+O\+OL toggle.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$uri} & server U\+RI \\
+\hline
+bool & {\em \$get\+\_\+info} & (optional) true by default. If true, make a call to \mbox{\hyperlink{}{get\+Mailbox\+Info}} if false do not call \mbox{\hyperlink{}{get\+Mailbox\+Info}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+B\+O\+OL @tutorial \href{http://www.smilingsouls.net/index.php?content=Mail_IMAP/connect}{\texttt{ http\+://www.\+smilingsouls.\+net/index.\+php?content=\+Mail\+\_\+\+I\+M\+A\+P/connect}} @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+open 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a2fc7a4004909eaefad9c795df96b1c83}\label{classMail__IMAPv2_a2fc7a4004909eaefad9c795df96b1c83}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!convertBytes@{convertBytes}}
+\index{convertBytes@{convertBytes}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{convertBytes()}{convertBytes()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::convert\+Bytes (\begin{DoxyParamCaption}\item[{}]{\$bytes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Converts an integer containing the number of bytes in a file to one of Bytes, Kilobytes, Megabytes, or Gigabytes, appending the unit of measurement.
+
+This method may be called statically.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$bytes} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/convertBytes}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/convert\+Bytes}} @access public 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMail__IMAPv2_a7b96ec5cb43181c7ab156d690a4d6fdc}\label{classMail__IMAPv2_a7b96ec5cb43181c7ab156d690a4d6fdc}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!delete@{delete}}
+\index{delete@{delete}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{delete()}{delete()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::delete (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$separator = {\ttfamily \char`\"{}$<$br~/$>$\textbackslash{}n\char`\"{}} }\end{DoxyParamCaption})}
+
+Wrapper function for \mbox{\hyperlink{}{imap\+\_\+delete}}. Sets the marked for deletion flag. Note\+: P\+O\+P3 mailboxes do not remember flag settings between connections, for P\+O\+P3 mailboxes this function should be used in addtion to \mbox{\hyperlink{classMail__IMAPv2_a479ba42e3e8b520ac7cb950e866da764}{expunge}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+B\+O\+OL @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/delete}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/delete}} @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+delete 
+
+\mbox{\hyperlink{classMail__IMAPv2_a479ba42e3e8b520ac7cb950e866da764}{expunge}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a53d4ed4c4b4cc0e0a86df297beec8403}\label{classMail__IMAPv2_a53d4ed4c4b4cc0e0a86df297beec8403}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!errors@{errors}}
+\index{errors@{errors}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{errors()}{errors()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::errors (\begin{DoxyParamCaption}\item[{}]{\$handler = {\ttfamily true},  }\item[{}]{\$seperator = {\ttfamily \char`\"{}$<$br~/$>$\textbackslash{}n\char`\"{}} }\end{DoxyParamCaption})}
+
+Wrapper function for \mbox{\hyperlink{}{imap\+\_\+errors}}. Implodes the array returned by imap\+\_\+errors, (if any) and returns the error text.
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$handler} & How to handle the imap error stack, true by default. If true adds the errors to the \mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}} object. If false, returns the imap error stack.\\
+\hline
+string & {\em \$seperator} & (optional) Characters to seperate each error message. \char`\"{}$<$br /$>$\textbackslash{}n\char`\"{} by default.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool$\vert$string @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+errors 
+
+\mbox{\hyperlink{classMail__IMAPv2_aa830375c65e49af6fcaa10acc31a4d0d}{alerts}} @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/errors}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/errors}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a16353d9f5a7f2c19190938e21b4cce4a}\label{classMail__IMAPv2_a16353d9f5a7f2c19190938e21b4cce4a}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!errorTemplate@{errorTemplate}}
+\index{errorTemplate@{errorTemplate}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{errorTemplate()}{errorTemplate()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::error\+Template (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]Finish writing this method, and test it. \end{DoxyRefDesc}
+\mbox{\Hypertarget{classMail__IMAPv2_a479ba42e3e8b520ac7cb950e866da764}\label{classMail__IMAPv2_a479ba42e3e8b520ac7cb950e866da764}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!expunge@{expunge}}
+\index{expunge@{expunge}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{expunge()}{expunge()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::expunge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Wrapper function for \mbox{\hyperlink{}{imap\+\_\+expunge}}. Expunges messages marked for deletion.
+
+\begin{DoxyReturn}{Returns}
+B\+O\+OL @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/expunge}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/expunge}} @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+expunge 
+
+\mbox{\hyperlink{classMail__IMAPv2_a7b96ec5cb43181c7ab156d690a4d6fdc}{delete}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a2cc6d42f7e74ec5295022cdb0877e785}\label{classMail__IMAPv2_a2cc6d42f7e74ec5295022cdb0877e785}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!extractMIME@{extractMIME}}
+\index{extractMIME@{extractMIME}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{extractMIME()}{extractMIME()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::extract\+M\+I\+ME (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$\+M\+I\+M\+Es }\end{DoxyParamCaption})}
+
+Searches all message parts for the specified M\+I\+ME type. Use \mbox{\hyperlink{classMail__IMAPv2_a03140b22d85dc885db9affba002813f0}{get\+Body}} with \$action option Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+L\+I\+T\+E\+R\+A\+L\+\_\+\+D\+E\+C\+O\+DE to view M\+I\+ME type parts retrieved. If you need to access the M\+I\+ME type with filename use normal \mbox{\hyperlink{classMail__IMAPv2_a03140b22d85dc885db9affba002813f0}{get\+Body}} with no action specified.
+
+Returns an array of part ids on success. Returns false if M\+I\+ME couldn\textquotesingle{}t be found, or on failure.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+string | array & {\em \$\+M\+I\+M\+Es} & mime type to extract \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array$\vert$false @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/extractMIME}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/extract\+M\+I\+ME}} @access public 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMail__IMAPv2_a03140b22d85dc885db9affba002813f0}\label{classMail__IMAPv2_a03140b22d85dc885db9affba002813f0}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!getBody@{getBody}}
+\index{getBody@{getBody}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{getBody()}{getBody()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::get\+Body (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$pid = {\ttfamily \textquotesingle{}1\textquotesingle{}},  }\item[{}]{\$action = {\ttfamily 0},  }\item[{}]{\$get\+\_\+mime = {\ttfamily \textquotesingle{}text/html\textquotesingle{}},  }\item[{}]{\$attempt = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+Searches parts array set in \$this-\/$>$\mbox{\hyperlink{classMail__IMAPv2_ad3cbe33a485ba3b8e9970b83322a4bd9}{\+\_\+declare\+Parts()}} for a displayable message. If the part id passed is message/rfc822 looks in subparts for a displayable body. Attempts to return a text/html inline message part by default. And will automatically attempt to find a text/plain part if a text/html part could not be found.
+
+Returns an array containing three associative indices; \textquotesingle{}ftype\textquotesingle{}, \textquotesingle{}fname\textquotesingle{} and \textquotesingle{}message\textquotesingle{}. \textquotesingle{}ftype\textquotesingle{} contains the M\+I\+ME type of the message, \textquotesingle{}fname\textquotesingle{}, the original file name, if any, empty string otherwise. And \textquotesingle{}message\textquotesingle{}, which contains the message body itself which is returned decoded from base64 or quoted-\/printable if either of those encoding types are specified, returns untouched otherwise. Returns false on failure.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+string & {\em \$pid} & part id \\
+\hline
+int & {\em \$action} & (optional) options for body return. Set to one of the following\+: Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+B\+O\+DY (default), if part is message/rfc822 searches subparts for a displayable body and returns the body decoded as part of an array. Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+L\+I\+T\+E\+R\+AL, return the message for the specified \$pid without searching subparts or decoding the message (may return unparsed message) body is returned undecoded as a string. Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+L\+I\+T\+E\+R\+A\+L\+\_\+\+D\+E\+C\+O\+DE, same as Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+L\+I\+T\+E\+R\+AL, except message decoding is attempted from base64 or quoted-\/printable encoding, returns undecoded string if decoding failed.\\
+\hline
+string & {\em \$get\+Part} & (optional) one of text/plain or text/html, allows the specification of the default part to return from multipart messages, text/html by default.\\
+\hline
+int & {\em \$attempt} & (optional) used internally by get\+Body to track attempts at finding the right part to display for the body of the message.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array$\vert$string$\vert$false @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/getBody}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/get\+Body}} @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+fetchbody 
+
+\$this-\/$>$\mbox{\hyperlink{classMail__IMAPv2_ace09ac2e57816c34ddf7f4d5ea62cbb8}{get\+Parts}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+\mbox{\hyperlink{categoryPHP}{P\+HP}} 4.\+2.\+0 
+\end{DoxySince}
+\mbox{\Hypertarget{classMail__IMAPv2_abfea7a10cc401b728b5c44574dc539da}\label{classMail__IMAPv2_abfea7a10cc401b728b5c44574dc539da}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!getHeaders@{getHeaders}}
+\index{getHeaders@{getHeaders}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{getHeaders()}{getHeaders()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::get\+Headers (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$pid = {\ttfamily \textquotesingle{}0\textquotesingle{}},  }\item[{}]{\$rtn = {\ttfamily false},  }\item[{}]{\$args = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+Set member variable containing header information. Creates an array containing associative indices referring to various header information. Use \mbox{\hyperlink{}{var\+\_\+dump}} or \mbox{\hyperlink{}{print\+\_\+r}} on the \mbox{\hyperlink{classMail__IMAPv2_aee87cc38c11b1aaa82861c2aaf82fc07}{\$header}} member variable to view information gathered by this function.
+
+If \$ret is true, returns array containing header information on success and false on failure.
+
+If \$ret is false, adds the header information to the \$header member variable and returns B\+O\+OL.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+string & {\em \&\$pid} & (optional) part id to retrieve headers for. \\
+\hline
+bool & {\em \$rtn} & (optional) If true return the headers, if false, assign to \$header member variable.\\
+\hline
+array & {\em \$args} & (optional) Associative array containing extra arguments. \begin{DoxyVerb}$args['from_length'] int
+    From field length for imap_headerinfo.
+
+$args['subject_length'] int
+    Subject field length for imap_headerinfo
+
+$args['default_host'] string
+    Default host for imap_headerinfo & imap_rfc822_parse_headers
+\end{DoxyVerb}
+\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Array$\vert$\+B\+O\+OL @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/getHeaders}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/get\+Headers}} @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_ace09ac2e57816c34ddf7f4d5ea62cbb8}{get\+Parts}} 
+
+imap\+\_\+fetchheader 
+
+imap\+\_\+fetchbody 
+
+imap\+\_\+headerinfo 
+
+imap\+\_\+rfc822\+\_\+parse\+\_\+headers 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a60b53d82014f25d770b5e996dad27eaf}\label{classMail__IMAPv2_a60b53d82014f25d770b5e996dad27eaf}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!getMailboxes@{getMailboxes}}
+\index{getMailboxes@{getMailboxes}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{getMailboxes()}{getMailboxes()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::get\+Mailboxes (\begin{DoxyParamCaption}\item[{}]{\$host = {\ttfamily null},  }\item[{}]{\$pattern = {\ttfamily \textquotesingle{}$\ast$\textquotesingle{}},  }\item[{}]{\$rtn = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Wrapper method for imap\+\_\+list. Calling on this function will return a list of mailboxes. This method receives the host argument automatically via \$this-\/$>$connect in the \$this-\/$>$mailbox\+Info\mbox{[}\textquotesingle{}host\textquotesingle{}\mbox{]} variable if a connection U\+RI is used.
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & (optional) host name. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array$\vert$false list of mailboxes on the current server. @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+list @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/getMailboxes}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/get\+Mailboxes}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_ace09ac2e57816c34ddf7f4d5ea62cbb8}\label{classMail__IMAPv2_ace09ac2e57816c34ddf7f4d5ea62cbb8}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!getParts@{getParts}}
+\index{getParts@{getParts}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{getParts()}{getParts()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::get\+Parts (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$pid = {\ttfamily \textquotesingle{}0\textquotesingle{}},  }\item[{}]{\$ret = {\ttfamily false},  }\item[{}]{\$args = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+sets up member variables containing inline parts and attachments for a specific part in member variable arrays beginning with \textquotesingle{}in\textquotesingle{} and \textquotesingle{}attach\textquotesingle{}. If inline parts are present, sets \mbox{\hyperlink{}{\$in\+Pid}}, \mbox{\hyperlink{}{\$in\+Ftype}}, \mbox{\hyperlink{}{\$in\+Fsize}}, \mbox{\hyperlink{}{\$in\+Has\+Attach}}, \mbox{\hyperlink{}{\$in\+Inline\+Id}} (if an inline C\+ID is specified). If attachments are present, sets, \mbox{\hyperlink{}{\$attach\+Pid}}, \mbox{\hyperlink{}{\$attach\+Fsize}}, \mbox{\hyperlink{}{\$attach\+Has\+Attach}}, \mbox{\hyperlink{}{\$attach\+Fname}} (if a filename is present, empty string otherwise).
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+int & {\em \&\$pid} & part id \\
+\hline
+bool & {\em \$ret} & false by default, if true returns the contents of the \$in$\ast$ and \$attach$\ast$ arrays. If false method returns B\+O\+OL.\\
+\hline
+string & {\em \$args} & (optional) Associative array containing optional extra arguments. The following are the possible indices. \begin{DoxyVerb}$args['get_mime'] STRING
+    Values: text/plain|text/html, text/html by default. The MIME type for
+    the part to be displayed by default for each level of nesting.
+
+$agrs['get_alternative'] BOOL
+    If true, includes the alternative part of a multipart/alternative
+    message in the $in* array. If veiwing text/html part by default this
+    places the text/plain part in the $in* (inline attachment array).
+
+$args['retrieve_all'] BOOL
+    If true, gets all the message parts at once, this option will index
+    the entire message in the $in* and $attach* member variables regardless
+    of nesting (method indexes parts relevant to the current level of
+    nesting by default).
+\end{DoxyVerb}
+\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+B\+O\+O\+L$\vert$\+Array @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/getParts}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/get\+Parts}} @access public 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+\mbox{\hyperlink{categoryPHP}{P\+HP}} 4.\+2.\+0 
+\end{DoxySince}
+\mbox{\Hypertarget{classMail__IMAPv2_ab5ad9f092f8ea4feb75c4581e0113864}\label{classMail__IMAPv2_ab5ad9f092f8ea4feb75c4581e0113864}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!getQuota@{getQuota}}
+\index{getQuota@{getQuota}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{getQuota()}{getQuota()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::get\+Quota (\begin{DoxyParamCaption}\item[{}]{\$folder = {\ttfamily null},  }\item[{}]{\$rtn = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Retreives information about the current mailbox\textquotesingle{}s quota. Rounds up quota sizes and appends the unit of measurment. Returns information in a multi-\/dimensional associative array.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$folder} & Folder to retrieve quota for. \\
+\hline
+B\+O\+OL & {\em \$rtn} & (optional) true by default, if true return the quota if false merge quota information into the \$mailbox\+Info member variable. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array$\vert$false @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+get\+\_\+quotaroot @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/getQuota}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/get\+Quota}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_aa9ca42b8b8a1037d8cc6f5a74e9b5e91}\label{classMail__IMAPv2_aa9ca42b8b8a1037d8cc6f5a74e9b5e91}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!getRawHeaders@{getRawHeaders}}
+\index{getRawHeaders@{getRawHeaders}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{getRawHeaders()}{getRawHeaders()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::get\+Raw\+Headers (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{}]{\$pid = {\ttfamily \textquotesingle{}0\textquotesingle{}},  }\item[{}]{\$rtn = {\ttfamily true},  }\item[{}]{\$pid\+\_\+check = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Set member variable \mbox{\hyperlink{}{\$raw\+Headers}} to contain Raw Header information for a part. Returns default header part id on success, returns false on failure.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message\+\_\+id \\
+\hline
+string & {\em \$pid} & (optional) part id to retrieve headers for \\
+\hline
+bool & {\em \$rtn} & Decides what to return. One of true$\vert$false$\vert$return\+\_\+pid If true return the raw headers (returns the headers by default)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$false @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/getRawHeaders}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/get\+Raw\+Headers}} @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+fetchbody 
+
+\mbox{\hyperlink{classMail__IMAPv2_abfea7a10cc401b728b5c44574dc539da}{get\+Headers}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_ad92be95861444364a170272b677e4ae1}\label{classMail__IMAPv2_ad92be95861444364a170272b677e4ae1}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!getRawMessage@{getRawMessage}}
+\index{getRawMessage@{getRawMessage}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{getRawMessage()}{getRawMessage()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::get\+Raw\+Message (\begin{DoxyParamCaption}\item[{\&}]{\$mid }\end{DoxyParamCaption})}
+
+Returns entire unparsed message body. See \mbox{\hyperlink{}{imap\+\_\+body}} for options.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string$\vert$null @tutorial \href{http://www.smilingsouls.net/index.php?content=Mail_IMAPv2/getRawMessage}{\texttt{ http\+://www.\+smilingsouls.\+net/index.\+php?content=\+Mail\+\_\+\+I\+M\+A\+Pv2/get\+Raw\+Message}} @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+body @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/getRawMessage}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/get\+Raw\+Message}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a2d83043a283919e9a2b5ecb16b24abbe}\label{classMail__IMAPv2_a2d83043a283919e9a2b5ecb16b24abbe}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!getRelatedParts@{getRelatedParts}}
+\index{getRelatedParts@{getRelatedParts}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{getRelatedParts()}{getRelatedParts()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::get\+Related\+Parts (\begin{DoxyParamCaption}\item[{\&}]{\$mid,  }\item[{\&}]{\$pid,  }\item[{}]{\$secure\+M\+I\+ME = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+Looks to see if this part has any inline parts associated with it. It looks up the message tree for parts with C\+ID entries and indexes those entries, whereas an algorithm may be ran to replace inline C\+I\+Ds with a part viewer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+string & {\em \&\$pid} & part id \\
+\hline
+array & {\em \$secure\+M\+I\+ME} & array of acceptable C\+ID M\+I\+ME types.\\
+\hline
+\end{DoxyParams}
+The \$secure\+M\+I\+ME argument allows you to limit the types of files allowed in a multipart/related message, for instance, to prevent a browser from automatically initiating download of a part that could contain potentially malicious code.
+
+Suggested M\+I\+ME types\+: text/plain, text/html, text/css, image/jpeg, image/pjpeg, image/gif image/png, image/x-\/png, application/xml, application/xhtml+xml, text/xml
+
+M\+I\+ME types are not limited by default.
+
+\begin{DoxyReturn}{Returns}
+array$\vert$false On success returns an array of parts associated with the current message, including the cid of the part, the part id and the M\+I\+ME type.
+\end{DoxyReturn}
+@access public @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/getRelatedParts}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/get\+Related\+Parts}} \mbox{\Hypertarget{classMail__IMAPv2_a4c865898c45fd4d35f48f5ff2023fb96}\label{classMail__IMAPv2_a4c865898c45fd4d35f48f5ff2023fb96}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{Mail\_IMAPv2()}{Mail\_IMAPv2()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::\+Mail\+\_\+\+I\+M\+A\+Pv2 (\begin{DoxyParamCaption}\item[{}]{\$connection = {\ttfamily null},  }\item[{}]{\$get\+\_\+info = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Constructor. Optionally set the I\+M\+AP resource stream.
+
+If I\+M\+AP connection arguments are not supplied, returns null. Accepts a U\+RI abstraction of the standard imap\+\_\+open connection argument (see \mbox{\hyperlink{classMail__IMAPv2_ab0ac1a7d29e7325718e27fcbaf64ae93}{connect}}) or the imap resource indicator.
+
+If the optional flags argument of imap\+\_\+open needs to be set, then \mbox{\hyperlink{classMail__IMAPv2_ab0ac1a7d29e7325718e27fcbaf64ae93}{connect}} should be called after either setting the \mbox{\hyperlink{classMail__IMAPv2_a398076788e4da176a319345ee202e8e9}{\$option}} member variable or calling \mbox{\hyperlink{classMail__IMAPv2_ac741c60060c450a16665abc39b210d0d}{set\+Options}}.
+
+Since \mbox{\hyperlink{classMail__IMAPv2}{Mail\+\_\+\+I\+M\+A\+Pv2}} 0.\+1.\+0 creates an instance of \mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}}. \$options argument became \$get\+\_\+info argument see \mbox{\hyperlink{classMail__IMAPv2_ab0ac1a7d29e7325718e27fcbaf64ae93}{connect}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$connection} & (optional) server U\+RI $\vert$ imap resource identifier \\
+\hline
+int & {\em \$action} & @tutorial \href{http://www.smilingsouls.net/?content=Mail_IMAP/Mail_IMAP}{\texttt{ http\+://www.\+smilingsouls.\+net/?content=\+Mail\+\_\+\+I\+M\+A\+P/\+Mail\+\_\+\+I\+M\+AP}} @access public \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+B\+O\+O\+L$\vert$null$\vert$\+P\+E\+A\+R\+\_\+\+Error 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_ab0ac1a7d29e7325718e27fcbaf64ae93}{connect}} 
+
+imap\+\_\+open 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a6cfa7cc1879442d6c06e25522e9871a0}\label{classMail__IMAPv2_a6cfa7cc1879442d6c06e25522e9871a0}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!messageCount@{messageCount}}
+\index{messageCount@{messageCount}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{messageCount()}{messageCount()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::message\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Wrapper method for \mbox{\hyperlink{}{imap\+\_\+num\+\_\+msg}}.
+
+\begin{DoxyReturn}{Returns}
+int mailbox message count @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/messageCount}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/message\+Count}} @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+num\+\_\+msg 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_ac3cc17e24e198fc5b5a84126c646f318}\label{classMail__IMAPv2_ac3cc17e24e198fc5b5a84126c646f318}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!setFlags@{setFlags}}
+\index{setFlags@{setFlags}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{setFlags()}{setFlags()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::set\+Flags (\begin{DoxyParamCaption}\item[{}]{\$mids,  }\item[{}]{\$flags,  }\item[{}]{\$action = {\ttfamily \textquotesingle{}set\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Wrapper function for \mbox{\hyperlink{}{imap\+\_\+setflag\+\_\+full}}. Sets various message flags. Accepts an array of message ids and an array of flags to be set.
+
+The flags which you can set are \char`\"{}\textbackslash{}\textbackslash{}\+Seen\char`\"{}, \char`\"{}\textbackslash{}\textbackslash{}\+Answered\char`\"{}, \char`\"{}\textbackslash{}\textbackslash{}\+Flagged\char`\"{}, \char`\"{}\textbackslash{}\textbackslash{}\+Deleted\char`\"{}, and \char`\"{}\textbackslash{}\textbackslash{}\+Draft\char`\"{} (as defined by R\+F\+C2060).
+
+Warning\+: P\+O\+P3 mailboxes do not remember flag settings from connection to connection.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$mids} & Array of message ids to set flags on. \\
+\hline
+array & {\em \$flags} & Array of flags to set on messages. \\
+\hline
+int & {\em \$action} & Flag operation toggle one of set$\vert$clear \\
+\hline
+int & {\em \$options} & (optional) sets the forth argument of \mbox{\hyperlink{}{imap\+\_\+setflag\+\_\+full}} or \{@imap\+\_\+clearflag\+\_\+full\}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+B\+O\+OL 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Message} & I\+Ds and Flags are to be supplied as arrays. Remedy\+: place message ids and flags in arrays. @access public \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+setflag\+\_\+full 
+
+imap\+\_\+clearflag\+\_\+full @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/setFlags}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/set\+Flags}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_ac741c60060c450a16665abc39b210d0d}\label{classMail__IMAPv2_ac741c60060c450a16665abc39b210d0d}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!setOptions@{setOptions}}
+\index{setOptions@{setOptions}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{setOptions()}{setOptions()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::set\+Options (\begin{DoxyParamCaption}\item[{}]{\$options,  }\item[{}]{\$constant }\end{DoxyParamCaption})}
+
+Set the \$option member variable, which is used to specify optional imap\+\_\+$\ast$ function arguments (labeled in the manual as flags or options e.\+g. F\+T\+\_\+\+U\+ID, O\+P\+\_\+\+R\+E\+A\+D\+O\+N\+LY, etc).
+
+{\bfseries{Example\+:}} {\ttfamily  \$msg-\/$>$set\+Options(array(\textquotesingle{}body\textquotesingle{}, \textquotesingle{}fetchbody\textquotesingle{}, \textquotesingle{}fetchheader\textquotesingle{}), \textquotesingle{}F\+T\+\_\+\+U\+ID\textquotesingle{}); }
+
+This results in imap\+\_\+body, imap\+\_\+fetchbody and imap\+\_\+fetchheader being passed the F\+T\+\_\+\+U\+ID option in the flags/options argument where ever these are called on by \mbox{\hyperlink{classMail__IMAPv2}{Mail\+\_\+\+I\+M\+A\+Pv2}}.
+
+Note\+: this method only sets optional imap\+\_\+$\ast$ arguments labeled as flags/options.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$options} & -\/ function names to pass the arugument to \\
+\hline
+string & {\em \$constant} & -\/ constant name to pass. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Error$\vert$true @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_a398076788e4da176a319345ee202e8e9}{\$option}} @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/setOptions}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/set\+Options}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a88289053e5e46e31ea066936694ceda6}\label{classMail__IMAPv2_a88289053e5e46e31ea066936694ceda6}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!unsetHeaders@{unsetHeaders}}
+\index{unsetHeaders@{unsetHeaders}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{unsetHeaders()}{unsetHeaders()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::unset\+Headers (\begin{DoxyParamCaption}\item[{\&}]{\$mid }\end{DoxyParamCaption})}
+
+Destroys variables set by \mbox{\hyperlink{classMail__IMAPv2_abfea7a10cc401b728b5c44574dc539da}{get\+Headers}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \&\$mid} & message id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/unsetHeaders}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/unset\+Headers}} @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_abfea7a10cc401b728b5c44574dc539da}{get\+Headers}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_ac2d5bb6cc819098704da808c50823a37}\label{classMail__IMAPv2_ac2d5bb6cc819098704da808c50823a37}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!unsetParts@{unsetParts}}
+\index{unsetParts@{unsetParts}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{unsetParts()}{unsetParts()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+::unset\+Parts (\begin{DoxyParamCaption}\item[{\&}]{\$mid }\end{DoxyParamCaption})}
+
+Destroys variables set by \mbox{\hyperlink{classMail__IMAPv2_ace09ac2e57816c34ddf7f4d5ea62cbb8}{get\+Parts}} and \+\_\+declare\+Parts.
+
+
+\begin{DoxyParams}[1]{Parameters}
+integer & {\em \&\$mid} & message id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_ace09ac2e57816c34ddf7f4d5ea62cbb8}{get\+Parts}} @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/unsetParts}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/unset\+Parts}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMail__IMAPv2_a44c3deb0b2d94e5799bc5e6fbf11b09d}\label{classMail__IMAPv2_a44c3deb0b2d94e5799bc5e6fbf11b09d}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\$\_dataTypes@{\$\_dataTypes}}
+\index{\$\_dataTypes@{\$\_dataTypes}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\$\_dataTypes}{$\_dataTypes}}
+{\footnotesize\ttfamily array Mail\+\_\+\+I\+M\+A\+Pv2\+::\$\+\_\+data\+Types}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'text'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'multipart'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'message'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'application'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'audio'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'image'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'video'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'other'}}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+(string) contains the various possible data types.
+
+@access private @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_dataTypes}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+data\+Types}} \mbox{\Hypertarget{classMail__IMAPv2_ab2db5dea1d8cb4aa87f7658164906a22}\label{classMail__IMAPv2_ab2db5dea1d8cb4aa87f7658164906a22}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\$\_encodingTypes@{\$\_encodingTypes}}
+\index{\$\_encodingTypes@{\$\_encodingTypes}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\$\_encodingTypes}{$\_encodingTypes}}
+{\footnotesize\ttfamily array Mail\+\_\+\+I\+M\+A\+Pv2\+::\$\+\_\+encoding\+Types}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'7bit'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'8bit'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'binary'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'base64'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'quoted-\/printable'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'other'}}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+(string) Contains the various possible encoding types.
+
+@access private @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/_encodingTypes}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/\+\_\+encoding\+Types}} \mbox{\Hypertarget{classMail__IMAPv2_aec9d91e3275428fdea61432eda7ae7b4}\label{classMail__IMAPv2_aec9d91e3275428fdea61432eda7ae7b4}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\$error@{\$error}}
+\index{\$error@{\$error}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\$error}{$error}}
+{\footnotesize\ttfamily object Mail\+\_\+\+I\+M\+A\+Pv2\+::\$error}
+
+Contains an instance of the \mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}} object.
+
+@access public @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/error}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/error}} \mbox{\Hypertarget{classMail__IMAPv2_adaef6be05441093cbabcf3f202f1550a}\label{classMail__IMAPv2_adaef6be05441093cbabcf3f202f1550a}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\$fields@{\$fields}}
+\index{\$fields@{\$fields}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\$fields}{$fields}}
+{\footnotesize\ttfamily array Mail\+\_\+\+I\+M\+A\+Pv2\+::\$fields}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'fname'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'pid'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'ftype'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'fsize'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'has\_at'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'charset'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'cid'}}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+(string) Contains the fields searched for and added to inline and attachment part arrays. These are the \textquotesingle{}in\textquotesingle{} and \textquotesingle{}at\textquotesingle{} associative indices of the \$msg member variable.
+
+@access public @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/fields}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/fields}} \mbox{\Hypertarget{classMail__IMAPv2_aee87cc38c11b1aaa82861c2aaf82fc07}\label{classMail__IMAPv2_aee87cc38c11b1aaa82861c2aaf82fc07}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\$header@{\$header}}
+\index{\$header@{\$header}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\$header}{$header}}
+{\footnotesize\ttfamily header array Mail\+\_\+\+I\+M\+A\+Pv2\+::\$header = array()}
+
+(array)(mixed) Associative array containing information gathered by \mbox{\hyperlink{}{imap\+\_\+headerinfo}} or \mbox{\hyperlink{}{imap\+\_\+rfc822\+\_\+parse\+\_\+headers}}.
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_abfea7a10cc401b728b5c44574dc539da}{get\+Headers}} @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/header}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/header}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a324a7df059448606e366febe42b9384f}\label{classMail__IMAPv2_a324a7df059448606e366febe42b9384f}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\$mailbox@{\$mailbox}}
+\index{\$mailbox@{\$mailbox}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\$mailbox}{$mailbox}}
+{\footnotesize\ttfamily resource Mail\+\_\+\+I\+M\+A\+Pv2\+::\$mailbox}
+
+Contains the imap resource stream.
+
+@access public \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2}{Mail\+\_\+\+I\+M\+A\+Pv2}} 
+
+open @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/mailbox}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/mailbox}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_a9b7bf6314da987504cac5702b23046d3}\label{classMail__IMAPv2_a9b7bf6314da987504cac5702b23046d3}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\$mailboxInfo@{\$mailboxInfo}}
+\index{\$mailboxInfo@{\$mailboxInfo}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\$mailboxInfo}{$mailboxInfo}}
+{\footnotesize\ttfamily array Mail\+\_\+\+I\+M\+A\+Pv2\+::\$mailbox\+Info = array()}
+
+Contains information about the current mailbox.
+
+@access public \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_ab0ac1a7d29e7325718e27fcbaf64ae93}{connect}} 
+
+get\+Mailbox\+Info @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/mailboxInfo}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/mailbox\+Info}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2_ac53c8126196b8a2ceae4f10770080e17}\label{classMail__IMAPv2_ac53c8126196b8a2ceae4f10770080e17}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\$msg@{\$msg}}
+\index{\$msg@{\$msg}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\$msg}{$msg}}
+{\footnotesize\ttfamily array Mail\+\_\+\+I\+M\+A\+Pv2\+::\$msg = array()}
+
+Contains various information about a message, separates inline parts from attachments and contains the default part id for each message.
+
+@access public @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/msg}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/msg}} \mbox{\Hypertarget{classMail__IMAPv2_a398076788e4da176a319345ee202e8e9}\label{classMail__IMAPv2_a398076788e4da176a319345ee202e8e9}} 
+\index{Mail\_IMAPv2@{Mail\_IMAPv2}!\$option@{\$option}}
+\index{\$option@{\$option}!Mail\_IMAPv2@{Mail\_IMAPv2}}
+\doxysubsubsection{\texorpdfstring{\$option}{$option}}
+{\footnotesize\ttfamily array Mail\+\_\+\+I\+M\+A\+Pv2\+::\$option = array()}
+
+Set flags for various imap\+\_\+$\ast$ functions.
+
+Use associative indices to indicate the imap\+\_\+$\ast$ function to set flags for, create the indice omitting the \textquotesingle{}imap\+\_\+\textquotesingle{} portion of the function name. see\+: \mbox{\hyperlink{classMail__IMAPv2_ac741c60060c450a16665abc39b210d0d}{set\+Options}} for more information.
+
+@access public \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classMail__IMAPv2_ac741c60060c450a16665abc39b210d0d}{set\+Options}} @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP/setOptions}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P/set\+Options}} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/I\+M\+A\+Pv2.\+php\end{DoxyCompactItemize}

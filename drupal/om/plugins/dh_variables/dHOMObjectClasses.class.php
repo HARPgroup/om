@@ -849,6 +849,9 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     if (is_object($new_save)) {
       if ($new_save->propvalue == 1) {
         dpm("Using new save method");
+        $exp = $this->exportOpenMI($entity);
+        dpm($exp,"Using JSON export mode");
+        $exp_json = addslashes(json_encode($exp[$entity->propname]));
         om_set_element($elid, $entity);
         return;
       }

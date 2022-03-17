@@ -674,12 +674,8 @@ function om_setprop($elementid, $propname, $propval) {
   return $elid;
 }
 
-function om_set_element($elementid, $entity) {
+function om_set_element($elementid, $exp_json) {
   global $php_path;
-  $plugin = dh_variables_getPlugins($entity);
-  $exp = $plugin->exportOpenMI($entity);
-  dpm($exp,"Using JSON export mode");
-  $exp_json = addslashes(json_encode($exp[$entity->propname]));
   $cmd = "cd $php_path \n";
   $cmd .= "php set_element.php $elementid \"$exp_json\"";
   //dpm( $php_path, "Exec Path ");

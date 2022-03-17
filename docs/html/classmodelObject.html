@@ -452,8 +452,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac5370de8563048a71c7526bc5dca81ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1546edfc3238ce3a29b34ea7bcb4832"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodelObject.html#ab1546edfc3238ce3a29b34ea7bcb4832">setProp</a> ($propname, $propvalue, $view='')</td></tr>
 <tr class="separator:ab1546edfc3238ce3a29b34ea7bcb4832"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7c9538cdd062206d1e79d849f386361"><td class="memItemLeft" align="right" valign="top"><a id="aa7c9538cdd062206d1e79d849f386361"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>setPropJSON2d</b> ($propname, $propvalue, $view='')</td></tr>
+<tr class="memitem:aa7c9538cdd062206d1e79d849f386361"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodelObject.html#aa7c9538cdd062206d1e79d849f386361">setPropJSON2d</a> ($propname, $propvalue, $view='')</td></tr>
 <tr class="separator:aa7c9538cdd062206d1e79d849f386361"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1424bc225b6fcdc497c7d7cc51c55a1"><td class="memItemLeft" align="right" valign="top"><a id="aa1424bc225b6fcdc497c7d7cc51c55a1"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>setClassProp</b> ($propname, $propvalue, $view='')</td></tr>
@@ -1031,8 +1030,43 @@ Public Attributes</h2></td></tr>
 <p>Set any property on the object. 3 main types of properties are supported:</p><ul>
 <li>A simple un-typed attribute of the class itself (i.e., declared with 'var $propname;' in the class body.</li>
 <li>A sub-component type property. These are auto-detected by matching their name in the array $this-&gt;processors[]</li>
-<li>A JSON string object. This calls method setPropJSON2d which can theoretically handle a complex JSON object representing the entire object class itself. See modelObject::setPropJSON2d() Pane for annual reporting submittal. </li>
+<li>A JSON string object. This calls method setPropJSON2d which can theoretically handle a complex JSON object representing the entire object class itself. See <a class="el" href="classmodelObject.html#aa7c9538cdd062206d1e79d849f386361">modelObject::setPropJSON2d()</a> Pane for annual reporting submittal. </li>
 </ul>
+
+</div>
+</div>
+<a id="aa7c9538cdd062206d1e79d849f386361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7c9538cdd062206d1e79d849f386361">&#9670;&nbsp;</a></span>setPropJSON2d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">modelObject::setPropJSON2d </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$propname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$propvalue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>$view</em> = <code>''</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set all properties on an object, simple and processor-type Shoudl accept a JSON string that is parsed into an array of objects formatted in OpenMI style </p>
 
 </div>
 </div>

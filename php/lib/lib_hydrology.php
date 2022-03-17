@@ -1019,6 +1019,12 @@ class modelObject {
     }
   }
   
+  
+  /**
+   * Set all properties on an object, simple and processor-type 
+   * Shoudl accept a JSON string that is parsed into an array of objects 
+   * formatted in OpenMI style 
+   */
   function setPropJSON2d($propname, $propvalue, $view = '') {
     // this can set all attributes of an object class in one lloop
     //if (get_class($this) == 'Equation') {

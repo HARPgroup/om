@@ -13,16 +13,21 @@ include_once('./xajax_modeling.element.php');
 $noajax = 1;
 $projectid = 3;
 
-if ( count($argv) < 5 ) {
+if ( count($argv) < 3 ) {
   error_log("Usage: set_element.php elementid openmi_json \n");
   die;
 }
 
 list($script, $elid, $openmi_json) = $argv;
 
+// for now we over-ride and get hard coded file
+$elid = 340268;
+$openmi_json = file_get_contents('https://raw.githubusercontent.com/HARPgroup/om/master/data/json/difficult_run.json');
 
+error_log("Calling unSerializeSingleModelObject($elid)"); 
 $loadres = unSerializeSingleModelObject($elid);
 $thisobject = $loadres['object'];
+error_log("Retrieved $thisobject->name"); 
 $thisobject->setProp('all', $openmi_json, 'json-2d');
 // @todo: handle these for now we just want to see if it works 
 //saveModelObject($elid, $thisobject, array('name' => $thisobject->name));

@@ -57,6 +57,8 @@ ln -s /opt/model/om/php/lib/PEAR /var/www/html/lib/PEAR
 # We used to do dev separate from live, because the path is /opt/model/om-dev,  but now we have a 
 # soft-link for opt/model/om to opt/model/om-dev so all is one. we can regenerate if need be later
 # live
+rm /var/www/html/om/set_element.php
+ln -s  /opt/model/om/php/src/set_element.php /var/www/html/om/set_element.php
 rm /var/www/html/om/who_xmlobjects.frisk.php
 ln -s  /opt/model/om/php/src/who_xmlobjects.frisk.php /var/www/html/om/who_xmlobjects.frisk.php
 rm /var/www/html/om/who_xmlobjects.usgs.php

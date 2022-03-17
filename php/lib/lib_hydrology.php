@@ -1030,6 +1030,7 @@ class modelObject {
     //if (get_class($this) == 'Equation') {
     //if ($this->json2d) {
     // expects openMI style objects in json format 
+    error_log("Calling setPropJSON2d($propname)");
     $raw_json = $propvalue;
     $json_props = json_decode($propvalue, TRUE);
     foreach ($json_props as $pname => $pvalue) {

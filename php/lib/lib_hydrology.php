@@ -1077,7 +1077,7 @@ class modelObject {
     if ($prop === FALSE) {
       if (!class_exists($object_class)) {
         error_log("Error: Object class $object_class can not be found. Skipping $pname .");
-        continue;
+        return;
       }
       $syobj = new $object_class;
       $this->addOperator($pname, $syobj);

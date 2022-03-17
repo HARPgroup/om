@@ -13,7 +13,7 @@ include_once('./xajax_modeling.element.php');
 $noajax = 1;
 $projectid = 3;
 
-if ( count($argv) < 5 ) {
+if ( count($argv) < 3 ) {
   error_log("Usage: set_element.php elementid openmi_json \n");
   die;
 }

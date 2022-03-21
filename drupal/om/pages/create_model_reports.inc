@@ -54,6 +54,10 @@ if ($model != FALSE) {
   dsm("Scenario summary parameters added.");
 }
 
+if (isset($parms['destination'])) {
+  $url = $parms['destination'];
+  drupal_goto($url);
+}
 if (isset($parms['finaldest'])) {
   $url = $parms['finaldest'];
   drupal_goto($url);

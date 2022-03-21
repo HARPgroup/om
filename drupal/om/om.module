@@ -329,8 +329,12 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
     $copy->propcode = 0;
     $copy->save();
   }
-  if ($overwrite) {
+  if ($overwrite or $copy->is_new) {
     $copy->save();
+    if ($copy->is_new) {
+      // put a reminder for later 
+      $is_new = TRUE;
+    }
   }
   //entity_save('dh_properties', $copy);
   // @todo: handle allprops if requested
@@ -357,7 +361,9 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
       $copy->{$thisprop['propname']} = $sub;
     }
   }
-  if ($overwrite) {
+  if ($overwrite or $is_new) {
+    // because we saved once before if this was a new object, we stashed a call to this which 
+    // is later used to save any fields that were copied.
     $copy->save();
   }
   error_log("Made copy of $propname as $newname with pid = " . $copy->pid . " and featureid = " . $copy->featureid . " propcode = $copy->propcode, propvalue=$copy->propvalue");

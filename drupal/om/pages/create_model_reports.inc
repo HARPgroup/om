@@ -9,6 +9,7 @@
 // later version may allow checkbox behavior described below.
 
 $arg = arg();
+$parms = drupal_get_query_parameters();
 if ($arg[0] == 'node') {
   $aoff = 1;
 } else {

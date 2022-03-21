@@ -251,6 +251,7 @@ function om_model_getSetProperty($values, $singularity = 'name', $save = TRUE, $
   } else {
     //dsm("Found $om_model->propname");
   }
+  dpm($om_model, "Returning");
   return $om_model;
 }
 

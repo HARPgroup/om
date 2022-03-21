@@ -329,7 +329,9 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
     $copy->propcode = 0;
     $copy->save();
   }
-  $copy->save();
+  if ($overwrite) {
+    $copy->save();
+  }
   //entity_save('dh_properties', $copy);
   // @todo: handle allprops if requested
   if ($allprops) {
@@ -355,7 +357,9 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
       $copy->{$thisprop['propname']} = $sub;
     }
   }
-  $copy->save();
+  if ($overwrite) {
+    $copy->save();
+  }
   error_log("Made copy of $propname as $newname with pid = " . $copy->pid . " and featureid = " . $copy->featureid . " propcode = $copy->propcode, propvalue=$copy->propvalue");
   // die on match
   //if ($copy->propname == 'keycol1') {

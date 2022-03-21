@@ -16,10 +16,10 @@ if ($arg[0] == 'node') {
 }
 $pid = $arg[1 + $aoff];
 $run_name = $arg[2 + $aoff];
-dpm($arg,'args');
-dsm("pid = $pid, $run_name = $run_name");
+//dpm($arg,'args');
+//dsm("pid = $pid, $run_name = $run_name");
 $model = entity_load_single('dh_properties', $pid);
-dpm($model, 'model');
+//dpm($model, 'model');
 if ($model != FALSE) {
   $entity = entity_load_single($model->entity_type, $model->featureid);
   $run_atts = array('featureid' => $model->pid, 'entity_type' => 'dh_properties', 'propname' => $run_name );
@@ -45,10 +45,10 @@ if ($model != FALSE) {
   $template_entity = entity_load_single('dh_properties', $tr_pid);
   // create, but don't overwrite properties on model
   $model_reports = om_copy_properties($template_entity, $model, 'reports', TRUE, TRUE, TRUE, FALSE);
-  dpm($model_reports,'model_reports');
+  //dpm($model_reports,'model_reports');
   // create, but don't overwrite properties on scenario
   $scenario_reports = om_copy_properties($template_entity, $run_info, 'scenario_reports|reports', TRUE, TRUE, TRUE, FALSE);
-  dpm($scenario_reports,'scenario_reports');
+  //dpm($scenario_reports,'scenario_reports');
   
 }
 

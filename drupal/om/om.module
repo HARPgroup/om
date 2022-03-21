@@ -227,7 +227,7 @@ function om_flow_mode_options() {
 
 // Generic function to get or set property.  Need to migrate to dh at some time.
 function om_model_getSetProperty($values, $singularity = 'name', $save = TRUE, $overwrite = TRUE) {
-  dsm("Copying $values[propname] with overwrite = $overwrite");
+  //dsm("Copying $values[propname] with overwrite = $overwrite");
   if ($overwrite === TRUE) {
     $om_model = dh_properties_enforce_singularity($values, $singularity);
   } else {
@@ -251,7 +251,7 @@ function om_model_getSetProperty($values, $singularity = 'name', $save = TRUE, $
   } else {
     //dsm("Found $om_model->propname");
   }
-  dpm($om_model, "Returning");
+  //dpm($om_model, "Returning");
   return $om_model;
 }
 

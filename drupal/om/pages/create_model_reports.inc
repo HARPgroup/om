@@ -44,10 +44,10 @@ if ($model != FALSE) {
   }
   $template_entity = entity_load_single('dh_properties', $tr_pid);
   // create, but don't overwrite properties on model
-  $model_reports = om_copy_properties($template_entity, $model, 'reports', TRUE, TRUE, TRUE);
+  $model_reports = om_copy_properties($template_entity, $model, 'reports', TRUE, TRUE, TRUE, FALSE);
   dpm($model_reports,'model_reports');
   // create, but don't overwrite properties on scenario
-  $scenario_reports = om_copy_properties($template_entity, $run_info, 'scenario_reports|reports', TRUE, TRUE, TRUE);
+  $scenario_reports = om_copy_properties($template_entity, $run_info, 'scenario_reports|reports', TRUE, TRUE, TRUE, FALSE);
   dpm($scenario_reports,'scenario_reports');
   
 }

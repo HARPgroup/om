@@ -22,10 +22,6 @@ $model = entity_load_single('dh_properties', $pid);
 //dpm($model, 'model');
 if ($model != FALSE) {
   $entity = entity_load_single($model->entity_type, $model->featureid);
-  $run_atts = array('featureid' => $model->pid, 'entity_type' => 'dh_properties', 'propname' => $run_name );
-  // retrieve or create the model run info reports container
-  $run_info = om_model_getSetProperty($run_atts, 'name', TRUE, FALSE) ;
-  dpm($run_info, 'run info');
   switch ($entity->bundle) {
     case 'facility':
     case 'intake':
@@ -40,16 +36,26 @@ if ($model != FALSE) {
     default:
     echo "Cannot handle object of entity_type = $model->entity_type, bundle = $entity->bundle ";
     exit;
-    
   }
   $template_entity = entity_load_single('dh_properties', $tr_pid);
   // create, but don't overwrite properties on model
   $model_reports = om_copy_properties($template_entity, $model, 'reports', TRUE, TRUE, TRUE, FALSE);
   //dpm($model_reports,'model_reports');
   // create, but don't overwrite properties on scenario
-  $scenario_reports = om_copy_properties($template_entity, $run_info, 'scenario_reports|reports', TRUE, TRUE, TRUE, FALSE);
-  //dpm($scenario_reports,'scenario_reports');
+  if ($run_name <> '') {
+    $run_atts = array('featureid' => $model->pid, 'entity_type' => 'dh_properties', 'propname' => $run_name );
+    // retrieve or create the model run info reports container
+    $run_info = om_model_getSetProperty($run_atts, 'name', TRUE, FALSE) ;
+    //dpm($run_info, 'run info');
+    $scenario_reports = om_copy_properties($template_entity, $run_info, 'scenario_reports|reports', TRUE, TRUE, TRUE, FALSE);
+    //dpm($scenario_reports,'scenario_reports');
+  }
   
+}
+
+if (isset($parms['finaldest'])) {
+  $url = $parms['finaldest'];
+  drupal_goto($url);
 }
 
 

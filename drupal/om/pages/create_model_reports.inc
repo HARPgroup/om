@@ -24,7 +24,7 @@ if ($model != FALSE) {
   $entity = entity_load_single($model->entity_type, $model->featureid);
   $run_atts = array('featureid' => $model->pid, 'entity_type' => 'dh_properties', 'propname' => $run_name );
   // retrieve or create the model run info reports container
-  $run_info = om_model_getSetProperty($run_atts, 'name', TRUE) ;
+  $run_info = om_model_getSetProperty($run_atts, 'name', TRUE, FALSE) ;
   dpm($run_info, 'run info');
   switch ($entity->bundle) {
     case 'facility':

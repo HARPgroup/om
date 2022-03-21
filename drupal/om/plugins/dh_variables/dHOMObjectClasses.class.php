@@ -845,6 +845,17 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
       return;
     }
     $elid = $this->findRemoteOMElement($entity, $path);
+    $new_save = om_load_dh_property($entity, 'use_new_save');
+    if (is_object($new_save)) {
+      if ($new_save->propvalue == 1) {
+        dpm("Using new save method");
+        $exp = $this->exportOpenMI($entity);
+        dpm($exp,"Using JSON export mode");
+        $exp_json = addslashes(json_encode($exp[$entity->propname]));
+        om_set_element($elid, $exp_json);
+        return;
+      }
+    }
     // take the last parent out since that is just the name of the model element
     // and we don't need that, since we have the elementid 
     // if this was a form API use case we could keep the parent name
@@ -1113,6 +1124,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     // if so, offer to add them automatically on save.
     // make this weight 20 so it's last thing before save button
     $defprops = $this->getDefaults($entity);
+    
   }
   
   public function applyEntityAttribute(&$property, $value) {
@@ -1378,6 +1390,20 @@ class dHOMModelElement extends dHOMBaseObjectClass {
       )
     );
     return $export;
+  }
+  
+  public function formRowEdit(&$form, $entity) {
+    // special render handlers when displaying in a grouped property block
+    //dpm($entity, 'entity');
+    parent::formRowEdit($form, $entity);
+    /*
+    // add special save mode 
+    $opts = array(0=>'FALSE', 1=>'TRUE');
+    $form['new_save'] = array();
+    $form['new_save']['#options'] = $opts;
+    $form['new_save']['#title'] = 'Use New All JSON object saving?';
+    $form['new_save']['#type'] = 'select';
+    */
   }
 }
 

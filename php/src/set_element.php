@@ -20,9 +20,11 @@ if ( count($argv) < 3 ) {
 
 list($script, $elid, $openmi_json) = $argv;
 
-// for now we over-ride and get hard coded file
-$elid = 340268;
-$openmi_json = file_get_contents('https://raw.githubusercontent.com/HARPgroup/om/master/data/json/difficult_run.json');
+// for now we over-ride and get hard coded file if we send test as json
+if ($openmi_json === 'test') {
+  $elid = 340268;
+  $openmi_json = file_get_contents('https://raw.githubusercontent.com/HARPgroup/om/master/data/json/difficult_run.json');
+}
 
 error_log("Calling unSerializeSingleModelObject($elid)"); 
 $loadres = unSerializeSingleModelObject($elid);
@@ -33,5 +35,7 @@ $thisobject->setProp('all', $openmi_json, 'json-2d');
 //saveModelObject($elid, $thisobject, array('name' => $thisobject->name));
 //$res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
 //error_log("Finished.\n");
+$ret = saveModelObject($elid, $thisobject, array('name' => $thisobject->name), TRUE);
 
+error_log("Save Query: " . $ret['debugHTML']);
 ?>

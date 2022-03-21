@@ -226,8 +226,14 @@ function om_flow_mode_options() {
 }
 
 // Generic function to get or set property.  Need to migrate to dh at some time.
-function om_model_getSetProperty($values, $singularity = 'name', $save = TRUE) {
-  $om_model = dh_properties_enforce_singularity($values, $singularity);
+function om_model_getSetProperty($values, $singularity = 'name', $save = TRUE, $overwrite = TRUE) {
+  //dsm("Copying $values[propname] with overwrite = $overwrite");
+  if ($overwrite === TRUE) {
+    $om_model = dh_properties_enforce_singularity($values, $singularity);
+  } else {
+    // use a non-destructive method 
+    $om_model = om_get_property($values, $singularity);
+  }
   if (!is_object($om_model)) {
     if (isset($values['propvalue_default'])) {
       $values['propvalue'] = $values['propvalue_default'];
@@ -245,6 +251,7 @@ function om_model_getSetProperty($values, $singularity = 'name', $save = TRUE) {
   } else {
     //dsm("Found $om_model->propname");
   }
+  //dpm($om_model, "Returning");
   return $om_model;
 }
 
@@ -274,7 +281,7 @@ function om_get_property($values, $singularity = 'name') {
   return $om_model;
 }
 
-function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE, $defprops = FALSE, $allprops = FALSE) {
+function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE, $defprops = FALSE, $allprops = FALSE, $overwrite = TRUE) {
   list($propname,$newname) = explode("|",$propname);
   $newname = empty($newname) ? $propname : $newname;
   $src_prop = om_load_dh_property($src_entity, $propname);
@@ -305,7 +312,7 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
   
   // add or replace new property with copy values 
   //error_log("values " . print_r($values,1));
-  $copy = om_model_getSetProperty($values, 'name', FALSE);
+  $copy = om_model_getSetProperty($values, 'name', FALSE, $overwrite);
   // Now copy fields
   if ($fields) {
     $propfields = field_info_instances($src_prop->entityType(), $src_prop->bundle);
@@ -322,7 +329,13 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
     $copy->propcode = 0;
     $copy->save();
   }
-  $copy->save();
+  if ($overwrite or $copy->is_new) {
+    $copy->save();
+    if ($copy->is_new) {
+      // put a reminder for later 
+      $is_new = TRUE;
+    }
+  }
   //entity_save('dh_properties', $copy);
   // @todo: handle allprops if requested
   if ($allprops) {
@@ -330,7 +343,7 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
     $propnames = dh_get_dh_propnames($src_prop->entityType(), $src_prop->identifier());
     //dpm($propnames, "Propnames ");
     foreach ($propnames as $subpropname) {
-      $sub_copy = om_copy_properties($src_prop, $copy, $subpropname, TRUE, TRUE, TRUE);
+      $sub_copy = om_copy_properties($src_prop, $copy, $subpropname, TRUE, TRUE, TRUE, $overwrite);
       //dpm($copy,'copy');
     }
   }
@@ -344,11 +357,15 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
     //error_log("Found def props: " . print_r($default_subprops,1));
     foreach ($default_subprops as $thisprop) {
       //error_log("Copying $thisprop[propname] from $src_prop->pid to $copy->pid");
-      $sub = om_copy_properties($src_prop, $copy, $thisprop['propname'], $fields, $defprops, $allprops);
+      $sub = om_copy_properties($src_prop, $copy, $thisprop['propname'], $fields, $defprops, $allprops, $overwrite);
       $copy->{$thisprop['propname']} = $sub;
     }
   }
-  $copy->save();
+  if ($overwrite or $is_new) {
+    // because we saved once before if this was a new object, we stashed a call to this which 
+    // is later used to save any fields that were copied.
+    $copy->save();
+  }
   error_log("Made copy of $propname as $newname with pid = " . $copy->pid . " and featureid = " . $copy->featureid . " propcode = $copy->propcode, propvalue=$copy->propvalue");
   // die on match
   //if ($copy->propname == 'keycol1') {
@@ -673,6 +690,18 @@ function om_setprop($elementid, $propname, $propval) {
   $elid = shell_exec($cmd);
   return $elid;
 }
+
+function om_set_element($elementid, $exp_json) {
+  global $php_path;
+  $cmd = "cd $php_path \n";
+  $cmd .= "php set_element.php $elementid \"$exp_json\"";
+  //dpm( $php_path, "Exec Path ");
+  //dpm( $cmd, "Executing ");
+  error_log("$cmd");
+  $elid = shell_exec($cmd);
+  return $elid;
+}
+
 
 function om_get_model_status($elementid, $mins = 120, $format = '') {
   // use format = 'list' to see the raw liostobject (default for no elementid)

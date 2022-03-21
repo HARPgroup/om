@@ -1034,51 +1034,95 @@ class modelObject {
     // expects openMI style objects in json format 
     error_log("Calling setPropJSON2d($propname)");
     $raw_json = $propvalue;
-    $json_props = json_decode($propvalue, TRUE);
+    // this is being called recursively, or by another routine that has already translated from json 
+    if ($view == 'json_decoded') {
+      $json_props = $propvalue;
+    } else {
+      $json_props = json_decode($propvalue, TRUE);
+    }
     foreach ($json_props as $pname => $pvalue) {
       error_log("setPropJSON2d: this->setClassProp($pname)");
       if ($pname == 'object_class') {
         continue;
       }
       if (property_exists($this, $pname)) {
-        if (!is_array($pvalue)) {
-          // handle normal attributes
-          $this->setClassProp($pname, $pvalue, "");
-        } else {
-          // handle openmi structured attribute
-          //error_log("object_class: $pvalue[object_class]");
-          switch ($pvalue['object_class']) {
-            //default, flat properties are all for now.
-            case NULL:
-            case 'textField':
-              $this->setClassProp($pvalue['name'], $pvalue['value'], "");
-              //error_log("Exec: this->setClassProp($pvalue[name], $pvalue[value], \"\")");
-            break;
-            case 'table':
-            case 'array':
-            case 'matrix':
-            if (is_array($pvalue['value'])) {
-              $this->setClassProp($pvalue['name'], $pvalue['value'], "array");
-            } else {
-              error_log("Error: Property $pvalue[name] is object_class $pvalue[object_class] but is not valid array");
-            }
-              //error_log("Exec: this->setClassProp($pvalue[name], $pvalue[value], \"\")");
-            break;
-            default:
-            // Handle more complex object properties 
-            error_log("Warning: Skipping $pname -- setProp cannot handle json-2d with object_class = " . $pvalue['object_class']);
-            break;
-          }
-        }
+        $this->applyJSONPropArray($pname, $pvalue);
       } else {
-        // this is not a property on the base class, look for processors
-        error_log("Warning: Skipping $pname not found on class -- setProp cannot yet add processors with json-2d ");
-        continue;
-        // @todo: include plumbing from set_subprop.php to handle robust json property setting.
-        // Does a sub-comp of this name exist? Or, is this an object_class change?
-          // if either is true, we insert a brand new object 
-        // Now, we should have an object set in $this->processors
-        // Load the object and call 
+        $this->applyJSONComponentArray($pname, $pvalue);
+      }
+    }
+  }
+  
+  function applyJSONComponentArray($pname, $pvalue) {
+    // this is not a property on the base class, look for processors
+    $skips = array('id', 'om_element_connection', 'host');
+    // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 
+    
+    error_log("Notice: Looking to add $pname as processor ");
+    if (!is_array($pvalue)) {
+      error_log("Warning: Skipping component $pname because json did not have array. ");
+      return;
+    }
+    if (!isset($pvalue['object_class']) ) {
+      error_log("Warning: Skipping component $pname because json did not have array. ");
+      return;
+    }
+    // @todo: include plumbing from set_subprop.php to handle robust json property setting.
+    // Does a sub-comp of this name exist? Or, is this an object_class change?
+    $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
+    if (is_object($prop)) {
+      $object_class = $prop->object_class;
+      if ($pvalue['object_class'] <> $object_class) {
+        $prop = FALSE;
+      }
+    }
+    // if either is true, we insert a brand new object 
+    if ($prop === FALSE) {
+      if (!class_exists($object_class)) {
+        error_log("Error: Object class $object_class can not be found. Skipping $pname .");
+        return;
+      }
+      $syobj = new $object_class;
+      $this->addOperator($pname, $syobj);
+      error_log("Added $pname as component type $object_class .");
+      // re-retrieve to make sure that the object is not cloned.
+      $prop = $this->processors[$pname];
+    }
+    // recursively calls setPropJSON2d on the subcomp.
+    error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");
+    $prop->setPropJSON2d($pname, $pvalue, 'json_decoded');
+    // Now, we should have an object set in $this->processors
+    // Load the object and call 
+  }
+  
+  function applyJSONPropArray($pname, $pvalue) {
+    if (!is_array($pvalue)) {
+      // handle normal attributes
+      $this->setClassProp($pname, $pvalue, "");
+    } else {
+      // handle openmi structured attribute
+      //error_log("object_class: $pvalue[object_class]");
+      switch ($pvalue['object_class']) {
+        //default, flat properties are all for now.
+        case NULL:
+        case 'textField':
+          $this->setClassProp($pvalue['name'], $pvalue['value'], "");
+          //error_log("Exec: this->setClassProp($pvalue[name], $pvalue[value], \"\")");
+        break;
+        case 'table':
+        case 'array':
+        case 'matrix':
+        if (is_array($pvalue['value'])) {
+          $this->setClassProp($pvalue['name'], $pvalue['value'], "array");
+        } else {
+          error_log("Error: Property $pvalue[name] is object_class $pvalue[object_class] but is not valid array");
+        }
+          //error_log("Exec: this->setClassProp($pvalue[name], $pvalue[value], \"\")");
+        break;
+        default:
+        // Handle more complex object properties 
+        error_log("Warning: Skipping $pname -- setProp cannot handle json-2d with object_class = " . $pvalue['object_class']);
+        break;
       }
     }
   }

@@ -51,7 +51,7 @@ if ($model != FALSE) {
     $scenario_reports = om_copy_properties($template_entity, $run_info, 'scenario_reports|reports', TRUE, TRUE, TRUE, FALSE);
     //dpm($scenario_reports,'scenario_reports');
   }
-  
+  dsm("Scenario summary parameters added.");
 }
 
 if (isset($parms['finaldest'])) {

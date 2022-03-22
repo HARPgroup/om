@@ -20,8 +20,8 @@ $run_name = $arg[2 + $aoff];
 //dpm($arg,'args');
 //dsm("pid = $pid, $run_name = $run_name");
 $model = entity_load_single('dh_properties', $pid);
-//dpm($model, 'model');
-if ($model != FALSE) {
+dpm($model, 'model');
+if (is_object($model)) {
   $entity = entity_load_single($model->entity_type, $model->featureid);
   switch ($entity->bundle) {
     case 'facility':

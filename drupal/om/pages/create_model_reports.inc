@@ -20,7 +20,7 @@ $run_name = $arg[2 + $aoff];
 //dpm($arg,'args');
 //dsm("pid = $pid, $run_name = $run_name");
 $model = entity_load_single('dh_properties', $pid);
-dpm($model, 'model');
+//dpm($model, 'model');
 if (is_object($model)) {
   $entity = entity_load_single($model->entity_type, $model->featureid);
   switch ($entity->bundle) {
@@ -51,7 +51,7 @@ if (is_object($model)) {
     $scenario_reports = om_copy_properties($template_entity, $run_info, 'scenario_reports|reports', TRUE, TRUE, TRUE, FALSE);
     //dpm($scenario_reports,'scenario_reports');
   }
-  dsm("Scenario summary parameters added.");
+  dsm("Default scenario summary parameters added.");
 }
 
 if (isset($parms['destination'])) {

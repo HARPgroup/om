@@ -8,7 +8,7 @@ $obj = entity_load_single('dh_properties', $eid);
 if ($obj->varid == dh_varkey2varid('om_scenario', TRUE)) {
   // we got and get the parent id any time we want this since the routine expects that as first argument.
   $link_parts = array('om-model-reports', $obj->featureid, $obj->propname);
-  dpm($link_parts);
+  //dpm($link_parts);
 }
 $link_url = implode("/", $link_parts);
 $l = l("Click here to refresh report elements from model templates.", $link_url, array('query' => array('destination'=> "om-model-info/$eid")));

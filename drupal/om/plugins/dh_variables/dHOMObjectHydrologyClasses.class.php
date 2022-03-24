@@ -778,7 +778,7 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
       '#type' => 'select',
       '#description' => 'Physiographic province.',
       '#options' => $this->getOptions(),
-      '#default_value' => !empty($entity->province) ? $entity->province : "",
+      '#default_value' => !empty($entity->province->propvalue) ? $entity->province->propvalue : "",
     );
   }
 }

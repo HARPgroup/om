@@ -136,8 +136,12 @@ if (!$runVars['test_only']) {
     $cmd_output = array();
     $cmd = "cd $sumdir \n";
     $elid = intval(trim($elid));
+    $mesg = "Post-processing Element $elid with summarize_element.sh $elid $runid";
+    setStatus($listobject, $elid, $mesg, $serverip, 4, $runid);
     $cmd .= "/opt/model/om/drupal/om/sh/summarize_element.sh $elid $runid";
     error_log("Executing Summary : $cmd");
+    $mesg = "Run & Post-Processing Complete.";
+    setStatus($listobject, $elid, $mesg, $serverip, 0, $runid);
     $forkout = exec( $cmd, $cmd_output );
   }
 }

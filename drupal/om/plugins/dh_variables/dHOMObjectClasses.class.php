@@ -194,6 +194,11 @@ class dHVariablePluginDefaultOM extends dHVariablePluginDefault {
       $prop->varname = isset($thisvar['varname']) ? $thisvar['varname'] : $varinfo->varname;
       $prop->title = isset($thisvar['title']) ? $thisvar['title'] : $varinfo->propname;
       $prop->datatype = isset($thisvar['datatype']) ? $thisvar['datatype'] : $varinfo->datatype;
+      // embed = is this being sved as part of a multi-object form?
+      //         since properties could be saved as embedded, OR as stad-alone
+      //         we have to set this because a standalone prop would have to synchronize itself 
+      //         but others would not.
+      $prop->embedded = TRUE; 
       $entity->{$prop->propname} = $prop;
     }
   }
@@ -224,6 +229,11 @@ class dHVariablePluginDefaultOM extends dHVariablePluginDefault {
       $prop->vardesc = isset($thisvar['vardesc']) ? $thisvar['vardesc'] : $varinfo->vardesc;
       $prop->varname = isset($thisvar['varname']) ? $thisvar['varname'] : $varinfo->varname;
       $prop->datatype = isset($thisvar['datatype']) ? $thisvar['datatype'] : $varinfo->datatype;
+      // embed = is this being sved as part of a multi-object form?
+      //         since properties could be saved as embedded, OR as stad-alone
+      //         we have to set this because a standalone prop would have to synchronize itself 
+      //         but others would not.
+      $prop->embedded = TRUE;
       $entity->{$prop->propname} = $prop;
     }
   }
@@ -841,7 +851,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     // we DO want to force if this element has been edited solo, and skip loading the parent.
     // how to verify that, though?
     //dpm("synchronize called with elid = $elid, json2d = $json2d, and set_remote = $this->set_remote");
-    if ($json2d and !$force) {
+    if ($json2d and !$force and ($entity->embedded === TRUE) ) {
       return;
     }
     $elid = $this->findRemoteOMElement($entity, $path);

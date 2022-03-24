@@ -851,7 +851,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     // we DO want to force if this element has been edited solo, and skip loading the parent.
     // how to verify that, though?
     //dpm("synchronize called with elid = $elid, json2d = $json2d, and set_remote = $this->set_remote");
-    if ($json2d and !$force and !($entity->embedded === TRUE) ) {
+    if ($json2d and !$force and ($entity->embedded === TRUE) ) {
       return;
     }
     $elid = $this->findRemoteOMElement($entity, $path);

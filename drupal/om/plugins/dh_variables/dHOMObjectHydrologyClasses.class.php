@@ -761,6 +761,26 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
     parent::formRowSave($values, $entity);
   }
    
+  public function getOptions() {
+    $fsopts = array(
+      1 => t('Appalachian Plateau'),
+      2 => t('Valley and Ridge'),
+      3 => t('Piedmont'),
+      4 => t('Coastal Plain'),
+    );
+    return $fsopts;
+  }
+  
+  public function formRowEdit(&$form, $entity) {
+    parent::formRowEdit($form, $entity);
+    $form['province'] = array(
+      '#title' => t(),
+      '#type' => 'select',
+      '#description' => 'Physiographic province.',
+      '#options' => $this->getOptions(),
+      '#default_value' => !empty($entity->propcode) ? $entity->propcode : "",
+    );
+  }
 }
 
 class dHOMUSGSChannelGeomObject_sub extends dHOMUSGSChannelGeomObject {

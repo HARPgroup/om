@@ -140,9 +140,11 @@ if (!$runVars['test_only']) {
     setStatus($listobject, $elid, $mesg, $serverip, 0, $runid);
     $cmd .= "/opt/model/om/drupal/om/sh/summarize_element.sh $elid $runid";
     error_log("Executing Summary : $cmd");
+    $forkout = exec( $cmd, $cmd_output );
     $mesg = "Run & Post-Processing Complete.";
     setStatus($listobject, $elid, $mesg, $serverip, 0, $runid);
-    $forkout = exec( $cmd, $cmd_output );
   }
+  $mesg = "Run & Post-Processing Complete.";
+  setStatus($listobject, $elementid, $mesg, $serverip, 0, $runid);
 }
 ?>

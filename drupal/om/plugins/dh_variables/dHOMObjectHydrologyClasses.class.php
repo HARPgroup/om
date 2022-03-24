@@ -774,7 +774,7 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
   public function formRowEdit(&$form, $entity) {
     parent::formRowEdit($form, $entity);
     $form['province'] = array(
-      '#title' => t(),
+      '#title' => "Physiographic Province",
       '#type' => 'select',
       '#description' => 'Physiographic province.',
       '#options' => $this->getOptions(),

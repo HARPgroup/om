@@ -1013,11 +1013,6 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
     #   1) do not exceed the max_memory_values
     #  OR
     #   2) only get enough to encompass the current dt
-    # hmmm... would a query do this?
-    # how about
-    # select count(*) numts from table where timestamp >= $currenttime and timestamp <= $currenttime + dt
-    # then, if numts > max_memory_values set LIMIT = numts
-    # select * from table where timestamp >= $currenttime and timestamp <= $currenttime + dt LIMIT numts
     $current_time = $this->timer->thistime->format("U");
     // do this to give us a sane starting time at first get 
     $dt = $this->dt;
@@ -1033,7 +1028,8 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
       }
-      if($this->timer->steps < 5) {
+      $outimes = 9999999999;
+      if($this->timer->steps < $outimes) {
         error_log("getCurrentDataSlice $this->name");
         error_log($this->listobject->querystring);
       }
@@ -1057,7 +1053,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
       }
-      if($this->timer->steps < 5) {
+      if($this->timer->steps < $outimes) {
         error_log($this->listobject->querystring);
       }
       $this->listobject->performQuery();

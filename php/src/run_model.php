@@ -138,7 +138,7 @@ if (!$runVars['test_only']) {
     $elid = intval(trim($elid));
     $elinfo = getElementInfo($listobject, $elid);
     $mesg = "Post-processing Element " . $elinfo['elemname'] . " with summarize_element.sh $elid $runid";
-    setStatus($listobject, $elid, $mesg, $serverip, 0, $runid);
+    setStatus($listobject, $elementid, $mesg, $serverip, 0, $runid);
     $cmd .= "/opt/model/om/drupal/om/sh/summarize_element.sh $elid $runid";
     error_log("Executing Summary : $cmd");
     $forkout = exec( $cmd, $cmd_output );

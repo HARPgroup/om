@@ -3,12 +3,16 @@
 
 if [ $# -lt 2 ]; then
   echo 1>&2 "Usage: create_landuse_table.sh landseg scenario [version=p6]"
-  echo 1>&2 "Usage: create_landuse_table.sh A51045 CFBASE30Y20180615 p5"
+  echo 1>&2 "Usage: create_landuse_table.sh A51045 CFBASE30Y20180615 p532"
   exit 2
 fi 
 
 landseg=$1
 scenario=$2
+version="p6"
+if [ $# -gt 2 ]; then
+  version=$3
+fi 
 
 # i.e. create_landseg_table.sh N51045 JU1_7630_7490 CFBASE30Y20180615
 if [ -z "$CBP_EXPORT_DIR" ]; then 

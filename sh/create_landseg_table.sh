@@ -13,6 +13,7 @@ version="p6"
 if [ $# -gt 2 ]; then
   version=$3
 fi 
+overwrite=0
 if [ $# -gt 3 ]; then
   overwrite=$4
 fi 

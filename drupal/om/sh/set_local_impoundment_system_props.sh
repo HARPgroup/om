@@ -2,7 +2,7 @@
 
 if [ $# -lt 1 ]; then
   echo 1>&2 "This is used to model a water suply facility with off-line impoundment"
-  echo 1>&2 "Usage: set_local_impoundment_system_props.sh vahydro_model_pid (entity_type=model parent, default=auto) (entity_id=model parent)"
+  echo 1>&2 "Usage: set_local_impoundment_system_props.sh vahydro_model_pid  [template] [entity_type=model parent, default=dh_feature] [entity_id=model parent id]"
   exit 2
 fi
 pid=$1

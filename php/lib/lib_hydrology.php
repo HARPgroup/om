@@ -5789,13 +5789,8 @@ class timeSeriesInput extends modelObject {
       #   1) do not exceed the max_memory_values
       #  OR
       #   2) only get enough to encompass the current dt
-      # hmmm... would a query do this?
-      # how about
-      # select count(*) numts from table where timestamp >= $currenttime and timestamp <= $currenttime + dt
-      # then, if numts > max_memory_values set LIMIT = numts
-      # select * from table where timestamp >= $currenttime and timestamp <= $currenttime + dt LIMIT numts
-      $current_time = $this->timer->thistime->format("U");
-      // do this in case we are in a before the epoch time period and the default value of lasttimesec = 0
+      # see CBPLandDataConnectionFile class for a fixed version of this that acts properly.  
+      # THis just grabs everything which is OK for daily time series, not hourly
       if ($this->lasttimesec > $current_time) {
          $this->lasttimesec = $current_time;
       }

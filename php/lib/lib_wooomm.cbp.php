@@ -665,6 +665,9 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
   
    function init() {
       parent::init();
+      // now we hard code max memory values here as it is a specific component and one size should fit all
+      // at least until memory and processor power goes bananas
+      $this->max_memory_values = 24 * 365 * 2; // hours, times days per years, times year 
       //$this->getLandUses();
    }
    function toArray() {
@@ -1028,8 +1031,8 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
       }
-      $outimes = 9999999999;
-      if($this->timer->steps < $outimes) {
+      $outimes = -1; // never show if < 0
+      if ($this->timer->steps < $outimes) {
         error_log("getCurrentDataSlice $this->name");
         error_log($this->listobject->querystring);
       }
@@ -1053,7 +1056,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
       }
-      if($this->timer->steps < $outimes) {
+      if ($this->timer->steps < $outimes) {
         error_log($this->listobject->querystring);
       }
       $this->listobject->performQuery();

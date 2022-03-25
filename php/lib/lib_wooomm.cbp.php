@@ -645,6 +645,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
         error_log("flow_scenario = evaluateMatrix($flow_mode) ");
         $flow_scenario = $this->processors['flow_scenario']->evaluateMatrix($flow_mode);
       } else {
+        error_log("flow_scenario = NON-MATRIX property ");
         $flow_scenario = $this->getProp('flow_scenario');
       }
       if (strlen(trim($flow_scenario)) > 0) {

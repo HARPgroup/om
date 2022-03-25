@@ -5808,8 +5808,6 @@ class timeSeriesInput extends modelObject {
          if ($this->debug) {
             $this->logDebug($this->listobject->querystring);
          }
-         error_log("getCurrentDataSlice $this->name");
-         error_log($this->listobject->querystring);
          $this->listobject->performQuery();
          $numts = $this->listobject->getRecordValue(1,'numts');
          if ($this->debug) {
@@ -5817,7 +5815,7 @@ class timeSeriesInput extends modelObject {
          }
          // @todo: check this out.  I think it should set limit to be max_memory_values if numts > max_memory_mb
          //                         Otherwise, what is this accomplishing other than loading all ts all the time?
-         if ($numts < $this->max_memory_values) {
+         if ($numts > $this->max_memory_values) {
             $limit = $numts;
          } else {
             $limit = $this->max_memory_values;
@@ -5830,7 +5828,6 @@ class timeSeriesInput extends modelObject {
          if ($this->debug) {
             $this->logDebug($this->listobject->querystring);
          }
-         error_log($this->listobject->querystring);
          $this->listobject->performQuery();
          $tvs = $this->listobject->queryrecords;
          $this->tsvalues = array();

@@ -31,7 +31,7 @@ tablename=`echo $tablename | tr '[:upper:]' '[:lower:]'`
 hdrcols=`head -n 1 $filename`
 
 if [ $overwrite -eq 1 ]; then 
-  echo "drop table $tablename ; "  psql -U postgres -p 5444 model_scratch
+  echo "drop table $tablename ; " | psql -U postgres -p 5444 model_scratch
 fi
 
 template_table_file=`basename $CBP_RO_TEMPLATE`

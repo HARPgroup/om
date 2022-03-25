@@ -2,20 +2,23 @@
 
 if [ $# -lt 1 ]; then
   echo 1>&2 "This is used to model a water suply facility with off-line impoundment"
-  echo 1>&2 "Usage: set_local_impoundment_system_props.sh vahydro_model_pid (entity_type=model parent, default=auto) (entity_id=model parent)"
+  echo 1>&2 "Usage: set_local_impoundment_system_props.sh vahydro_model_pid  [template] [entity_type=model parent, default=dh_feature] [entity_id=model parent id]"
   exit 2
 fi
 pid=$1
-entity_type='dh_feature'
+# Water Supply Model Element Template 
+template=6717035
 if [ $# -gt 1 ]; then
-  entity_type=$2
+  template=$2
+fi 
+entity_type='dh_feature'
+if [ $# -gt 2 ]; then
+  entity_type=$3
 fi 
 entity_id="auto"
-if [ $# -gt 2 ]; then
-  entity_id=$3
+if [ $# -gt 3 ]; then
+  entity_id=$4
 fi 
-# Water Supply Model Element Template 
-template=6528239
 
 
 # make sure it is using the new discharge_mgd variable 

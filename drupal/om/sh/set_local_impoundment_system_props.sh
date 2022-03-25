@@ -6,16 +6,19 @@ if [ $# -lt 1 ]; then
   exit 2
 fi
 pid=$1
-entity_type='dh_feature'
-if [ $# -gt 1 ]; then
-  entity_type=$2
-fi 
-entity_id="auto"
-if [ $# -gt 2 ]; then
-  entity_id=$3
-fi 
 # Water Supply Model Element Template 
 template=6717035
+if [ $# -gt 1 ]; then
+  template=$2
+fi 
+entity_type='dh_feature'
+if [ $# -gt 2 ]; then
+  entity_type=$3
+fi 
+entity_id="auto"
+if [ $# -gt 3 ]; then
+  entity_id=$4
+fi 
 
 
 # make sure it is using the new discharge_mgd variable 

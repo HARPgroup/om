@@ -645,7 +645,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
         error_log("flow_scenario = evaluateMatrix($flow_mode) ");
         $flow_scenario = $this->processors['flow_scenario']->evaluateMatrix($flow_mode);
       } else {
-        error_log("flow_scenario = NON-MATRIX property ");
+        error_log("no evaluateMatrix() on flow_scenario methods " . print_r(get_class_methods($this->processors['flow_scenario']),1));
         $flow_scenario = $this->getProp('flow_scenario');
       }
       if (strlen(trim($flow_scenario)) > 0) {
@@ -656,6 +656,8 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
         error_log("Scenario: $this->scenario, Filepath: $this->filepath");
         $this->setDBCacheName();
       }
+    } else {
+      error_log("$this->name does not have a flow_scenario component");
     }
     $retfile = $this->filepath;
     return $retfile;

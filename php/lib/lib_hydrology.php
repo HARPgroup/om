@@ -5815,7 +5815,7 @@ class timeSeriesInput extends modelObject {
          }
          // @todo: check this out.  I think it should set limit to be max_memory_values if numts > max_memory_mb
          //                         Otherwise, what is this accomplishing other than loading all ts all the time?
-         if ($numts > $this->max_memory_values) {
+         if ($numts < $this->max_memory_values) {
             $limit = $numts;
          } else {
             $limit = $this->max_memory_values;

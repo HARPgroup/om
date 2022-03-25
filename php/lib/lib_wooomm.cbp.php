@@ -637,7 +637,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
     // handles file movement in the background, choices among source types
     // could do 
     // filepath (base dir) + out/land/ + scenario + eos + landseg 
-    //error_log("Global Modes: $run_mode, $flow_mode ");
+    error_log("Global Modes: $run_mode, $flow_mode ");
     // if component flow_scenario is set, 
     // then override the scenario setting and the file name 
     if (isset($this->processors['flow_scenario'])) {

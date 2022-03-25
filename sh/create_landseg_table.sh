@@ -2,8 +2,8 @@
 . hspf_config
 
 if [ $# -lt 2 ]; then
-  echo 1>&2 "Usage: create_landuse_table.sh landseg scenario"
-  echo 1>&2 "Usage: create_landuse_table.sh N51045 CFBASE30Y20180615 "
+  echo 1>&2 "Usage: create_landuse_table.sh landseg scenario [version=p6]"
+  echo 1>&2 "Usage: create_landuse_table.sh A51045 CFBASE30Y20180615 p5"
   exit 2
 fi 
 
@@ -19,7 +19,7 @@ else
   cbp_path=$CBP_EXPORT_DIR
 fi
 filename="$cbp_path/land/$scenario/eos/${landseg}_0111-0211-0411.csv"
-tablename="cbp_p6_${scenario}_${landseg}"
+tablename="cbp_${version}_${scenario}_${landseg}"
 tablename=`echo $tablename | tr '[:upper:]' '[:lower:]'`
 hdrcols=`head -n 1 $filename`
 

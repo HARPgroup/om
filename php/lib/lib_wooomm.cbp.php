@@ -625,6 +625,71 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
    // global $cbp_landseg_data;
     // $cbp_landseg_data 
   // Behavior
+   
+  function getCurrentDataSlice() {
+    # need to get a certain, sensible number of values that match two criteria:
+    #   1) do not exceed the max_memory_values
+    #  OR
+    #   2) only get enough to encompass the current dt
+    # hmmm... would a query do this?
+    # how about
+    # select count(*) numts from table where timestamp >= $currenttime and timestamp <= $currenttime + dt
+    # then, if numts > max_memory_values set LIMIT = numts
+    # select * from table where timestamp >= $currenttime and timestamp <= $currenttime + dt LIMIT numts
+    $current_time = $this->timer->thistime->format("U");
+    // do this to give us a sane starting time at first get 
+    $dt = $this->dt;
+    if ($this->timer->steps == 0 ) {
+      // subtracting dt here insures that we will be "inside" the time interval
+      $this->lasttimesec = $current_time - $dt;
+    }
+    if ($this->listobject->tableExists($this->db_cache_name)) {
+      // get all from last time to now 
+      $this->listobject->querystring = "  select count(*) as numts, min(\"timestamp\") as mints, max(\"timestamp\") as maxts ";
+      $this->listobject->querystring .= " from  \"$this->db_cache_name\"";
+      $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec and \"timestamp\" <= ($current_time + $dt * this->max_memory_values) ";
+      if ($this->debug) {
+        $this->logDebug($this->listobject->querystring);
+      }
+      error_log("getCurrentDataSlice $this->name");
+      error_log($this->listobject->querystring);
+      $this->listobject->performQuery();
+      $numts = $this->listobject->getRecordValue(1,'numts');
+      if ($this->debug) {
+        $this->logDebug("$numts values remaining in cache\n");
+      }
+      // @todo: check this out.  I think it should set limit to be max_memory_values if numts > max_memory_mb
+      //                         Otherwise, what is this accomplishing other than loading all ts all the time?
+      if ($numts < $this->max_memory_values) {
+        $limit = $numts;
+      } else {
+        $limit = $this->max_memory_values;
+      }
+      $this->listobject->querystring = "  SELECT * ";
+      $this->listobject->querystring .= " FROM  " . $this->db_cache_name;
+      $this->listobject->querystring .= " WHERE \"timestamp\" > $this->lasttimesec ";
+      $this->listobject->querystring .= " ORDER BY \"timestamp\"";
+      $this->listobject->querystring .= " LIMIT $limit ";
+      if ($this->debug) {
+        $this->logDebug($this->listobject->querystring);
+      }
+      error_log($this->listobject->querystring);
+      $this->listobject->performQuery();
+      $tvs = $this->listobject->queryrecords;
+      $this->tsvalues = array();
+      foreach ($tvs as $thistv) {
+        $ts = $thistv['timestamp'];
+        $this->tsvalues[$ts] = $thistv;
+        $keys = array_keys($thistv);
+        $firstkey = $keys[0];
+        //error_log("At Timestamp $ts adding: $firstkey = " . $thistv[$firstkey]);
+      }
+    }
+    
+    if ($this->debug) {
+       $this->logDebug("$this->name getCurrentDataSlice() added " . count($this->tsvalues) . " to tsvalues array");
+    }
+  }
   
   function setSingleDataColumnType($thiscol, $thistype = 'float8', $defval = NULL, $loggable = 1, $overwrite = 0, $logformat='%s') {
     //error_log("$thiscol, $thistype, $defval, $loggable, $overwrite, $logformat ");

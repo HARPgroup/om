@@ -84,12 +84,12 @@ foreach ($data as $element) {
   $om_model = FALSE;
   $values = array(
     'entity_type' => 'dh_feature', 
-    'featureid' => $om_fid, 
+    'featureid' => $hydroid, 
     'propcode'=>'vwp-1.0',
   );
-  $src_model = om_get_property($values, 'propcode_singular');
+  $src_model = om_get_property($values, 'all');
   $values['propcode'] = 'vahydro-1.0';
-  $dest_model = om_get_property($values, 'propcode_singular');
+  $dest_model = om_get_property($values, 'all');
   error_log($src_model->pid);
   error_log($dest_model->pid);
 }

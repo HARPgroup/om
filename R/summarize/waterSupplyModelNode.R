@@ -18,14 +18,14 @@ ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)
 
 # Read Args
-# argst <- commandArgs(trailingOnly=T)
-# pid <- as.integer(argst[1])
-# elid <- as.integer(argst[2])
-# runid <- as.integer(argst[3])
+argst <- commandArgs(trailingOnly=T)
+pid <- as.integer(argst[1])
+elid <- as.integer(argst[2])
+runid <- as.integer(argst[3])
 
-pid <- 4713208 #Salem
-elid <- 249169  #Salem
-runid <- 600
+# pid <- 4713208 #Salem
+# elid <- 249169  #Salem
+# runid <- 600
 
 
 finfo <- fn_get_runfile_info(elid, runid)

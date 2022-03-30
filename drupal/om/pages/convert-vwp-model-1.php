@@ -74,13 +74,17 @@ if (count($args) < 3) {
       $release_name = ($rt->propcode == '1') ? "tiered_release" : "simple_release";
       $r1 = om_load_dh_property($src_model, $release_name, TRUE);
       $r2 = om_load_dh_property($src_model, 'release_current', TRUE);
+      // warn if missing a variable 
       if (!in_array($r1->cfb_var->propcode, $dest_local_vars)) {
-        dsm("Can No Find Conditional variable $r1->cfb_var->propcode on $dest_model->propname - must manually configure");
-      } else {
-        $r2->cfb_condition->propcode = $r1->cfb_condition->propcode;
-        $r2->flowby_eqn->propcode = $r1->flowby_eqn->propcode;
-        $r2->cfb_var->propcode = $r1->cfb_var->propcode;
-      }
+        dsm("Can No Find Conditional variable" . $r1->cfb_var->propcode . " on " . $dest_model->propname . " - must manually configure");
+      }      
+      $r2->cfb_condition->propcode = $r1->cfb_condition->propcode;
+      $r2->flowby_eqn->propcode = $r1->flowby_eqn->propcode;
+      $r2->cfb_var->propcode = $r1->cfb_var->propcode;
+      $r2->exec_hierarch->propvalue = $r1->exec_hierarch->propvalue;
+      $r2->varid = $r1->varid;
+      $r2->object_class = $r1->object_class;
+      $r2->save();
     } else {
       dsm("There is no impoundment object on $dest_model->propname... skipping.");
     }

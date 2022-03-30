@@ -90,8 +90,8 @@ foreach ($data as $element) {
   $src_model = om_get_property($values, 'all');
   $values['propcode'] = 'vahydro-1.0';
   $dest_model = om_get_property($values, 'all');
-  error_log($src_model$pid);
-  error_log($dest_model$pid);
+  error_log($src_model->pid);
+  error_log($dest_model->pid);
 }
 
 ?>

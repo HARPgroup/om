@@ -93,6 +93,18 @@ foreach ($data as $element) {
   $dest_model = om_get_property($values, 'propcode_singular');
   error_log($src_model->pid);
   error_log($dest_model->pid);
+  
+  if ( is_object($src_model) and is_object($dest_model)) {
+    // do the conversion
+    $imp1 = om_load_dh_property($src_model, 'impoundment');
+    $imp2 = om_load_dh_property($dest_model, 'local_impoundment');
+    $pl1 = dh_variables_getPlugins($src_model);
+    $pl2 = dh_variables_getPlugins($dest_model);
+    $pl1->loadProperties($imp1);
+    $pl2->loadProperties($imp2);
+    dpm($imp1,'imp1');
+    dpm($imp2,'imp2');
+  }
 }
 
 ?>

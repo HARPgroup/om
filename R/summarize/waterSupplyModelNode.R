@@ -17,12 +17,16 @@ library(hydrotools)
 ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)
 
-
 # Read Args
-argst <- commandArgs(trailingOnly=T)
-pid <- as.integer(argst[1])
-elid <- as.integer(argst[2])
-runid <- as.integer(argst[3])
+# argst <- commandArgs(trailingOnly=T)
+# pid <- as.integer(argst[1])
+# elid <- as.integer(argst[2])
+# runid <- as.integer(argst[3])
+
+pid <- 4713208 #Salem
+elid <- 249169  #Salem
+runid <- 600
+
 
 finfo <- fn_get_runfile_info(elid, runid)
 remote_url <- finfo$remote_url
@@ -661,6 +665,119 @@ if (imp_off == 0) {
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.flows.all', 0.0, ds)
 
 }
+
+
+###############################################
+# RSEG FDC
+###############################################
+base_var <- "Qbaseline" #BASE VARIABLE USED IN FDCs AND HYDROGRAPHS
+comp_var <- "Qout" #VARIABLE TO COMPARE AGAINST BASE VARIABLE, DEFAULT Qout
+
+# FOR TESTING 
+# save_directory <- 'C:/Users/nrf46657/Desktop/GitHub/om/R/summarize'
+datpd <- datdf
+fname <- paste(
+  save_directory,
+  paste0(
+    'fdc.',
+    elid, '.', runid, '.png'
+  ),
+  sep = '/'
+)
+# FOR TESTING 
+# save_url <- save_directory
+furl <- paste(
+  save_url,
+  paste0(
+    'fdc.',
+    elid, '.', runid, '.png'
+  ),
+  sep = '/'
+)
+
+
+png(fname, width = 700, height = 700)
+legend_text = c("Baseline Flow","Scenario Flow")
+fdc_plot <- hydroTSM::fdc(
+  cbind(datpd[names(datpd)== base_var], datpd[names(datpd)== comp_var]),
+  yat = c(0.10,1,5,10,25,100,400),
+  leg.txt = legend_text,
+  main=paste("Flow Duration Curve","\n","(Model Flow Period ",sdate," to ",edate,")",sep=""),
+  ylab = "Flow (cfs)",
+  ylim=c(1.0, 5000),
+  cex.main=1.75,
+  cex.axis=1.50,
+  leg.cex=2,
+  cex.sub = 1.2
+)
+dev.off()
+
+print(paste("Saved file: ", fname, "with URL", furl))
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc', 0.0, ds)
+###############################################
+###############################################
+
+
+###############################################
+# RSEG Hydrograph (Drought Period)
+###############################################
+# Zoom in on critical drought period
+pdstart = as.Date(paste0(l90_year,"-06-01") )
+pdend = as.Date(paste0(l90_year, "-11-15") )
+datpd <- window(
+  dat,
+  start = pdstart,
+  end = pdend
+);
+datpd <- data.frame(datpd)
+datpd$date <- rownames(datpd)
+
+fname <- paste(
+  save_directory,
+  paste0(
+    'hydrograph_dry.',
+    elid, '.', runid, '.png'
+  ),
+  sep = '/'
+)
+furl <- paste(
+  save_url,
+  paste0(
+    'hydrograph_dry.',
+    elid, '.', runid, '.png'
+  ),
+  sep = '/'
+)
+
+png(fname, width = 900, height = 700)
+legend_text = c("Baseline Flow","Scenario Flow")
+xmn <- as.Date(pdstart)
+xmx <- as.Date(pdend)
+ymn <- 0
+#ymx <- 1000
+ymx <- max(cbind(as.numeric(unlist(datpd[names(datpd)== base_var])),
+                            as.numeric(unlist(datpd[names(datpd)== comp_var]))))
+par(mar = c(5,5,2,5))
+hydrograph_dry <- plot(as.numeric(unlist(datpd[names(datpd)== base_var]))~as.Date(datpd$date),
+                       type = "l", lty=2, lwd = 1,ylim=c(ymn,ymx),xlim=c(xmn,xmx),
+                       ylab="Flow (cfs)",xlab=paste("Lowest 90 Day Flow Period",pdstart,"to",pdend),
+                       main = "Hydrograph: Dry Period",
+                       cex.main=1.75,
+                       cex.axis=1.50,
+                       cex.lab=1.50
+                       )
+par(new = TRUE)
+plot(as.numeric(unlist(datpd[names(datpd)== comp_var]))~as.Date(datpd$date),
+     type = "l",col='brown3', lwd = 2, 
+     axes=FALSE,ylim=c(ymn,ymx),xlim=c(xmn,xmx),ylab="",xlab="")
+legend("topright",legend=legend_text,col=c("black","brown3"), 
+       lty=c(2,1), lwd=c(1,2), cex=1.5)
+dev.off()
+
+print(paste("Saved file: ", fname, "with URL", furl))
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.hydrograph_dry', 0.0, ds)
+###############################################
+###############################################
 
 
 

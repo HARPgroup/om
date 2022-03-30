@@ -113,7 +113,7 @@ foreach ($data as $element) {
     $imp2->save();
     // storage 
     $st1 = om_load_dh_property($imp1, 'storage_stage_area');
-    $st1 = om_load_dh_property($imp2, 'storage_stage_area');
+    $st2 = om_load_dh_property($imp2, 'storage_stage_area');
     dpm($st1,'st1');
     $st2->field_dh_matrix = $st1->field_dh_matrix;
     $st2->save();

@@ -679,8 +679,10 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     return $publix;
   }
 
-  function getLocalVars() {
+  function getLocalVars($entity) {
     // gets all viewable variables
+    // NOT YET FULLY OPERATIONAL
+    $this->state = array();
     $publix = array_unique(array_merge(array_keys($this->state), $this->getPublicProps($entity), $this->getPublicProcs($entity), $this->getPublicInputs($entity)));
 
     return $publix;

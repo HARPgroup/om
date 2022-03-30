@@ -98,12 +98,25 @@ foreach ($data as $element) {
     // do the conversion
     $imp1 = om_load_dh_property($src_model, 'impoundment');
     $imp2 = om_load_dh_property($dest_model, 'local_impoundment');
-    $pl1 = dh_variables_getPlugins($src_model);
-    $pl2 = dh_variables_getPlugins($dest_model);
+    $pl1 = dh_variables_getPlugins($imp1);
+    $pl2 = dh_variables_getPlugins($imp2);
     $pl1->loadProperties($imp1);
     $pl2->loadProperties($imp2);
-    dpm($imp1,'imp1');
-    dpm($imp2,'imp2');
+    //dpm($imp1,'imp1');
+    //dpm($imp2,'imp2');
+    // copy basic impoundment attributes
+    $imp2->unusable_storage->propvalue = $imp1->unusable_storage->propvalue;
+    $imp2->initstorage->propvalue = $imp1->initstorage->propvalue;
+    $imp2->full_surface_area->propvalue = $imp1->full_surface_area->propvalue;
+    $imp2->maxcapacity->propvalue = $imp1->maxcapacity->propvalue;
+    
+    $imp2->save();
+    // storage 
+    $st1 = om_load_dh_property($imp1, 'storage_stage_area');
+    $st1 = om_load_dh_property($imp2, 'storage_stage_area');
+    dpm($st1,'st1');
+    $st2->field_dh_matrix = $st1->field_dh_matrix;
+    $st2->save();
   }
 }
 

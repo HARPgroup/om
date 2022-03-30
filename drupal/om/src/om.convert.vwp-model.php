@@ -87,9 +87,9 @@ foreach ($data as $element) {
     'featureid' => $hydroid, 
     'propcode'=>'vwp-1.0',
   );
-  $src_model = om_get_property($values, 'all');
+  $src_model = om_get_property($values, 'propcode_singular');
   $values['propcode'] = 'vahydro-1.0';
-  $dest_model = om_get_property($values, 'all');
+  $dest_model = om_get_property($values, 'propcode_singular');
   error_log($src_model->pid);
   error_log($dest_model->pid);
 }

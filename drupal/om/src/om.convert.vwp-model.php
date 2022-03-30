@@ -86,6 +86,7 @@ foreach ($data as $element) {
     'entity_type' => 'dh_feature', 
     'featureid' => $hydroid, 
     'propcode'=>'vwp-1.0',
+    'varkey' => 'om_water_system_element'
   );
   $src_model = om_get_property($values, 'propcode_singular');
   $values['propcode'] = 'vahydro-1.0';

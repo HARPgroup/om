@@ -1,0 +1,61 @@
+\hypertarget{classtimerObject}{}\doxysection{timer\+Object Class Reference}
+\label{classtimerObject}\index{timerObject@{timerObject}}
+
+
+Collaboration diagram for timer\+Object\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtimerObject_a5ddeffc23754f14a07a5b2d956a496e2}\label{classtimerObject_a5ddeffc23754f14a07a5b2d956a496e2}} 
+{\bfseries microtime\+\_\+float} ()
+\item 
+\mbox{\Hypertarget{classtimerObject_a7b673c2d013c1119c2e9ac18799a6a53}\label{classtimerObject_a7b673c2d013c1119c2e9ac18799a6a53}} 
+{\bfseries startsplit} () \# starts
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtimerObject_a86c8cde373abe56dc6753bb0b82167e1}\label{classtimerObject_a86c8cde373abe56dc6753bb0b82167e1}} 
+{\bfseries \$timestart} = 0
+\item 
+\mbox{\Hypertarget{classtimerObject_a0b771953a0326b01b86ea8afbab8b35c}\label{classtimerObject_a0b771953a0326b01b86ea8afbab8b35c}} 
+{\bfseries \$timeend} = 0
+\item 
+\mbox{\Hypertarget{classtimerObject_a4480a65694b64e296a9e4c2224b912ef}\label{classtimerObject_a4480a65694b64e296a9e4c2224b912ef}} 
+{\bfseries \$timesplit} = 0
+\item 
+or takes a {\bfseries split}
+\item 
+\mbox{\Hypertarget{classtimerObject_a8d40b6866f8bad82966a356e39b7ae41}\label{classtimerObject_a8d40b6866f8bad82966a356e39b7ae41}} 
+\$this {\bfseries timesplit} = \$this-\/$>$timeend -\/ \$this-\/$>$timestart
+\item 
+\mbox{\Hypertarget{classtimerObject_af9c926819cdf0e61edf8cc3d0fb96aed}\label{classtimerObject_af9c926819cdf0e61edf8cc3d0fb96aed}} 
+\$this {\bfseries timestart} = \$this-\/$>$microtime\+\_\+float()
+\item 
+\mbox{\Hypertarget{classtimerObject_aaf3261d60d52d464ee121bb79554b43d}\label{classtimerObject_aaf3261d60d52d464ee121bb79554b43d}} 
+{\bfseries \$split} = 0
+\item 
+\mbox{\Hypertarget{classtimerObject_a1c101a07b544742b051f99de1eedbbc3}\label{classtimerObject_a1c101a07b544742b051f99de1eedbbc3}} 
+if(\$this-\/$>$timesplit $>$ 0) return {\bfseries \$split}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classtimerObject_afb00514058a2078745692bde08da2ec5}\label{classtimerObject_afb00514058a2078745692bde08da2ec5}} 
+\index{timerObject@{timerObject}!split@{split}}
+\index{split@{split}!timerObject@{timerObject}}
+\doxysubsubsection{\texorpdfstring{split}{split}}
+{\footnotesize\ttfamily or takes a timer\+Object\+::split}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{      \$this-\/>timeend = \$this-\/>microtime\_float()}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/misc\+\_\+functions.\+php\end{DoxyCompactItemize}

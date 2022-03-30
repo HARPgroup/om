@@ -1,0 +1,621 @@
+\hypertarget{classDB__mssql}{}\doxysection{D\+B\+\_\+mssql Class Reference}
+\label{classDB__mssql}\index{DB\_mssql@{DB\_mssql}}
+
+
+Inheritance diagram for D\+B\+\_\+mssql\+:
+% FIG 0
+
+
+Collaboration diagram for D\+B\+\_\+mssql\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__mssql_a44c7fb28fc895f98b12426e3a2ce7e8f}{D\+B\+\_\+mssql}} ()
+\item 
+\mbox{\hyperlink{classDB__mssql_a1d0bb821e0f0acd0064c1aee5a6c6f77}{connect}} (\$dsn, \$persistent=false)
+\item 
+\mbox{\hyperlink{classDB__mssql_adf34d6dfb468bfe6e35cc14c96c05d01}{disconnect}} ()
+\item 
+\mbox{\hyperlink{classDB__mssql_a2dc5b7816d107527dd279b01922f9903}{simple\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\mbox{\hyperlink{classDB__mssql_ac739e8a58cbea51a16ca1c57c239938c}{next\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__mssql_ae29618cf6246ce88fa7749d619df2b11}{fetch\+Into}} (\$result, \&\$arr, \$fetchmode, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__mssql_a93b549224b408efd709fc5d08d621f98}{free\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__mssql_a666b6aae874998d768540645cd718a15}{num\+Cols}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__mssql_a328c1b51db529325b70f8cb5aba220d3}{num\+Rows}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__mssql_a37676afeaeea58304081b42169513089}{auto\+Commit}} (\$onoff=false)
+\item 
+\mbox{\hyperlink{classDB__mssql_a47154a0a794587d7c03cd2e0ed7ae46b}{commit}} ()
+\item 
+\mbox{\hyperlink{classDB__mssql_affb50e79da6962fb537d9d2ad98c17ee}{rollback}} ()
+\item 
+\mbox{\hyperlink{classDB__mssql_a533bedc53da1260223b798f4ffb4b225}{affected\+Rows}} ()
+\item 
+\mbox{\hyperlink{classDB__mssql_aad15a67a2450cce2c4a9d7ff60239982}{next\+Id}} (\$seq\+\_\+name, \$ondemand=true)
+\item 
+\mbox{\hyperlink{classDB__mssql_a65d737419775e181740897e49d3d0fde}{create\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__mssql_a83ee2053a92491c5cc47bf9d57163450}{drop\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__mssql_ad5bfa91bde83acead6ad9ec7dbe50f85}{quote\+Identifier}} (\$str)
+\item 
+\mbox{\hyperlink{classDB__mssql_af16719185e6a32a275f746ac52f6da8e}{mssql\+Raise\+Error}} (\$code=null)
+\item 
+\mbox{\hyperlink{classDB__mssql_aeb7a0e43d27aaae4a522e778ffdcd667}{error\+Native}} ()
+\item 
+\mbox{\hyperlink{classDB__mssql_a4e85b88d82b855c8d1ca815855501669}{error\+Code}} (\$nativecode=null, \$msg=\textquotesingle{}\textquotesingle{})
+\item 
+\mbox{\hyperlink{classDB__mssql_a4a831aac819e01b76bc829c974f659e9}{table\+Info}} (\$result, \$mode=null)
+\item 
+\mbox{\hyperlink{classDB__mssql_a0c2815e0ae2916690a9bb70cb865f18b}{\+\_\+mssql\+\_\+field\+\_\+flags}} (\$table, \$column)
+\item 
+\mbox{\hyperlink{classDB__mssql_a72139d314968098c9c41b81bef27cde6}{\+\_\+add\+\_\+flag}} (\&\$array, \$value)
+\item 
+\mbox{\hyperlink{classDB__mssql_a25e9d54a9159447715d276b5fa88e639}{get\+Special\+Query}} (\$type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDB__mssql_ab242d841fc154efe05bd0d2223cb30f2}\label{classDB__mssql_ab242d841fc154efe05bd0d2223cb30f2}} 
+{\bfseries \$phptype} = \textquotesingle{}mssql\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classDB__mssql_a1b51d92710d386648a8a69aabfc1fead}\label{classDB__mssql_a1b51d92710d386648a8a69aabfc1fead}} 
+{\bfseries \$dbsyntax} = \textquotesingle{}mssql\textquotesingle{}
+\item 
+{\bfseries \$features}
+\item 
+\mbox{\Hypertarget{classDB__mssql_a1b273206f40d44340b7603f43ab36eb3}\label{classDB__mssql_a1b273206f40d44340b7603f43ab36eb3}} 
+{\bfseries \$errorcode\+\_\+map}
+\item 
+\mbox{\Hypertarget{classDB__mssql_ae9ddfb5db76db182056130a7567ce54e}\label{classDB__mssql_ae9ddfb5db76db182056130a7567ce54e}} 
+{\bfseries \$connection}
+\item 
+\mbox{\Hypertarget{classDB__mssql_ac6d85e7b6620046688d4011433087ff9}\label{classDB__mssql_ac6d85e7b6620046688d4011433087ff9}} 
+{\bfseries \$dsn} = array()
+\item 
+\mbox{\Hypertarget{classDB__mssql_a4357a69e8d1ffd9f593a7809a39b865e}\label{classDB__mssql_a4357a69e8d1ffd9f593a7809a39b865e}} 
+{\bfseries \$autocommit} = true
+\item 
+\mbox{\hyperlink{classDB__mssql_a1f66188aa576d1ed21c6f4e22ceb06aa}{\$transaction\+\_\+opcount}} = 0
+\item 
+\mbox{\Hypertarget{classDB__mssql_a1551399bab1f66146cb59bc816763a6d}\label{classDB__mssql_a1551399bab1f66146cb59bc816763a6d}} 
+{\bfseries \$\+\_\+db} = null
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__mssql_a72139d314968098c9c41b81bef27cde6}\label{classDB__mssql_a72139d314968098c9c41b81bef27cde6}} 
+\index{DB\_mssql@{DB\_mssql}!\_add\_flag@{\_add\_flag}}
+\index{\_add\_flag@{\_add\_flag}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{\_add\_flag()}{\_add\_flag()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::\+\_\+add\+\_\+flag (\begin{DoxyParamCaption}\item[{\&}]{\$array,  }\item[{}]{\$value }\end{DoxyParamCaption})}
+
+Adds a string to the flags array if the flag is not yet in there
+\begin{DoxyItemize}
+\item if there is no flag present the array is created
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \&\$array} & the reference to the flag-\/array \\
+\hline
+string & {\em \$value} & the flag value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+@access private \begin{DoxyAuthor}{Author}
+Joern Barthel \href{mailto:j_barthel@web.de}{\texttt{ j\+\_\+barthel@web.\+de}} 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classDB__mssql_a0c2815e0ae2916690a9bb70cb865f18b}\label{classDB__mssql_a0c2815e0ae2916690a9bb70cb865f18b}} 
+\index{DB\_mssql@{DB\_mssql}!\_mssql\_field\_flags@{\_mssql\_field\_flags}}
+\index{\_mssql\_field\_flags@{\_mssql\_field\_flags}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{\_mssql\_field\_flags()}{\_mssql\_field\_flags()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::\+\_\+mssql\+\_\+field\+\_\+flags (\begin{DoxyParamCaption}\item[{}]{\$table,  }\item[{}]{\$column }\end{DoxyParamCaption})}
+
+Get a column\textquotesingle{}s flags
+
+Supports \char`\"{}not\+\_\+null\char`\"{}, \char`\"{}primary\+\_\+key\char`\"{}, \char`\"{}auto\+\_\+increment\char`\"{} (mssql identity), \char`\"{}timestamp\char`\"{} (mssql timestamp), \char`\"{}unique\+\_\+key\char`\"{} (mssql unique index, unique check or primary\+\_\+key) and \char`\"{}multiple\+\_\+key\char`\"{} (multikey index)
+
+mssql timestamp is N\+OT similar to the mysql timestamp so this is maybe not useful at all -\/ is the behaviour of mysql\+\_\+field\+\_\+flags that primary keys are alway unique? is the interpretation of multiple\+\_\+key correct?
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$table} & the table name \\
+\hline
+string & {\em \$column} & the field name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the flags
+\end{DoxyReturn}
+@access private \begin{DoxyAuthor}{Author}
+Joern Barthel \href{mailto:j_barthel@web.de}{\texttt{ j\+\_\+barthel@web.\+de}} 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{classDB__mssql_a533bedc53da1260223b798f4ffb4b225}\label{classDB__mssql_a533bedc53da1260223b798f4ffb4b225}} 
+\index{DB\_mssql@{DB\_mssql}!affectedRows@{affectedRows}}
+\index{affectedRows@{affectedRows}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{affectedRows()}{affectedRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::affected\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determines the number of rows affected by a data maniuplation query
+
+0 is returned for queries that don\textquotesingle{}t manipulate data.
+
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a05a802d72feb861012eb7ebfdbe00e84}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_a37676afeaeea58304081b42169513089}\label{classDB__mssql_a37676afeaeea58304081b42169513089}} 
+\index{DB\_mssql@{DB\_mssql}!autoCommit@{autoCommit}}
+\index{autoCommit@{autoCommit}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{autoCommit()}{autoCommit()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::auto\+Commit (\begin{DoxyParamCaption}\item[{}]{\$onoff = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Enables or disables automatic commits
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$onoff} & true turns it on, false turns it off\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object if the driver doesn\textquotesingle{}t support auto-\/committing transactions. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ad28b0f99a6bc3cdbf921804ec7720078}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_a47154a0a794587d7c03cd2e0ed7ae46b}\label{classDB__mssql_a47154a0a794587d7c03cd2e0ed7ae46b}} 
+\index{DB\_mssql@{DB\_mssql}!commit@{commit}}
+\index{commit@{commit}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Commits the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a36868fcbeee42d96e00faeac7e82cb81}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_a1d0bb821e0f0acd0064c1aee5a6c6f77}\label{classDB__mssql_a1d0bb821e0f0acd0064c1aee5a6c6f77}} 
+\index{DB\_mssql@{DB\_mssql}!connect@{connect}}
+\index{connect@{connect}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::connect (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$persistent = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Connect to the database server, log in and open the database
+
+Don\textquotesingle{}t call this method directly. Use \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect()}} instead.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$dsn} & the data source name \\
+\hline
+bool & {\em \$persistent} & should the connection be persistent?\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mssql_a65d737419775e181740897e49d3d0fde}\label{classDB__mssql_a65d737419775e181740897e49d3d0fde}} 
+\index{DB\_mssql@{DB\_mssql}!createSequence@{createSequence}}
+\index{createSequence@{createSequence}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{createSequence()}{createSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::create\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Creates a new sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the new sequence\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+mssql\+::next\+I\+D(), \mbox{\hyperlink{classDB__mssql_a83ee2053a92491c5cc47bf9d57163450}{D\+B\+\_\+mssql\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_a44c7fb28fc895f98b12426e3a2ce7e8f}\label{classDB__mssql_a44c7fb28fc895f98b12426e3a2ce7e8f}} 
+\index{DB\_mssql@{DB\_mssql}!DB\_mssql@{DB\_mssql}}
+\index{DB\_mssql@{DB\_mssql}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{DB\_mssql()}{DB\_mssql()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::\+D\+B\+\_\+mssql (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This constructor calls {\ttfamily \$this-\/$>$\mbox{\hyperlink{classDB__common_aa5163360915c02c99d8d048b4728c3cc}{D\+B\+\_\+common()}}}
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mssql_adf34d6dfb468bfe6e35cc14c96c05d01}\label{classDB__mssql_adf34d6dfb468bfe6e35cc14c96c05d01}} 
+\index{DB\_mssql@{DB\_mssql}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disconnects from the database server
+
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mssql_a83ee2053a92491c5cc47bf9d57163450}\label{classDB__mssql_a83ee2053a92491c5cc47bf9d57163450}} 
+\index{DB\_mssql@{DB\_mssql}!dropSequence@{dropSequence}}
+\index{dropSequence@{dropSequence}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{dropSequence()}{dropSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::drop\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Deletes a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence to be deleted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common\+::drop\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+mssql\+::next\+I\+D(), \mbox{\hyperlink{classDB__mssql_a65d737419775e181740897e49d3d0fde}{D\+B\+\_\+mssql\+::create\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_a4e85b88d82b855c8d1ca815855501669}\label{classDB__mssql_a4e85b88d82b855c8d1ca815855501669}} 
+\index{DB\_mssql@{DB\_mssql}!errorCode@{errorCode}}
+\index{errorCode@{errorCode}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{errorCode()}{errorCode()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::error\+Code (\begin{DoxyParamCaption}\item[{}]{\$nativecode = {\ttfamily null},  }\item[{}]{\$msg = {\ttfamily \textquotesingle{}\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Determines P\+E\+A\+R\+::\+DB error code from mssql\textquotesingle{}s native codes.
+
+If {\itshape \$nativecode} isn\textquotesingle{}t known yet, it will be looked up.
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$nativecode} & mssql error code, if known \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer an error number from a \mbox{\hyperlink{classDB}{DB}} error constant 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__mssql_aeb7a0e43d27aaae4a522e778ffdcd667}{error\+Native()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__mssql_aeb7a0e43d27aaae4a522e778ffdcd667}\label{classDB__mssql_aeb7a0e43d27aaae4a522e778ffdcd667}} 
+\index{DB\_mssql@{DB\_mssql}!errorNative@{errorNative}}
+\index{errorNative@{errorNative}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{errorNative()}{errorNative()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::error\+Native (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the D\+B\+MS\textquotesingle{} native error code produced by the last query
+
+\begin{DoxyReturn}{Returns}
+int the D\+B\+MS\textquotesingle{} error code 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a5b451dc88229cf12de5a0845ba53a377}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_ae29618cf6246ce88fa7749d619df2b11}\label{classDB__mssql_ae29618cf6246ce88fa7749d619df2b11}} 
+\index{DB\_mssql@{DB\_mssql}!fetchInto@{fetchInto}}
+\index{fetchInto@{fetchInto}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{fetchInto()}{fetchInto()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::fetch\+Into (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{\&}]{\$arr,  }\item[{}]{\$fetchmode,  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Places a row from the result set into the given array
+
+Formating of the array and the data therein are configurable. See \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} for more information.
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & the query result resource \\
+\hline
+array & {\em \$arr} & the referenced array to put the data in \\
+\hline
+int & {\em \$fetchmode} & how the resulting array should be indexed \\
+\hline
+int & {\em \$rownum} & the row number to fetch (0 = first row)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK on success, N\+U\+LL when the end of a result set is reached or on failure
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__mssql_a93b549224b408efd709fc5d08d621f98}\label{classDB__mssql_a93b549224b408efd709fc5d08d621f98}} 
+\index{DB\_mssql@{DB\_mssql}!freeResult@{freeResult}}
+\index{freeResult@{freeResult}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{freeResult()}{freeResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::free\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Deletes the result set and frees the memory occupied by the result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE if \$result is invalid
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__mssql_a25e9d54a9159447715d276b5fa88e639}\label{classDB__mssql_a25e9d54a9159447715d276b5fa88e639}} 
+\index{DB\_mssql@{DB\_mssql}!getSpecialQuery@{getSpecialQuery}}
+\index{getSpecialQuery@{getSpecialQuery}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{getSpecialQuery()}{getSpecialQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::get\+Special\+Query (\begin{DoxyParamCaption}\item[{}]{\$type }\end{DoxyParamCaption})}
+
+Obtains the query string needed for listing a given type of objects
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$type} & the kind of objects you want to retrieve\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the S\+QL query string or null if the driver doesn\textquotesingle{}t support the object type requested
+\end{DoxyReturn}
+@access protected \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a822d61267fea12aebe53a4a33bf9015d}{D\+B\+\_\+common\+::get\+List\+Of()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a2550ff7e5023d193614ab722d9aa3eb9}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_af16719185e6a32a275f746ac52f6da8e}\label{classDB__mssql_af16719185e6a32a275f746ac52f6da8e}} 
+\index{DB\_mssql@{DB\_mssql}!mssqlRaiseError@{mssqlRaiseError}}
+\index{mssqlRaiseError@{mssqlRaiseError}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{mssqlRaiseError()}{mssqlRaiseError()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::mssql\+Raise\+Error (\begin{DoxyParamCaption}\item[{}]{\$code = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Produces a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object regarding the current problem
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$errno} & if the error is being manually raised pass a D\+B\+\_\+\+E\+R\+R\+O\+R$\ast$ constant here. If this isn\textquotesingle{}t passed the error information gathered from the D\+B\+MS.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a3b60dee1050625ee683af046033bbe26}{D\+B\+\_\+common\+::raise\+Error()}}, \mbox{\hyperlink{classDB__mssql_aeb7a0e43d27aaae4a522e778ffdcd667}{D\+B\+\_\+mssql\+::error\+Native()}}, \mbox{\hyperlink{classDB__mssql_a4e85b88d82b855c8d1ca815855501669}{D\+B\+\_\+mssql\+::error\+Code()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__mssql_aad15a67a2450cce2c4a9d7ff60239982}\label{classDB__mssql_aad15a67a2450cce2c4a9d7ff60239982}} 
+\index{DB\_mssql@{DB\_mssql}!nextId@{nextId}}
+\index{nextId@{nextId}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{nextId()}{nextId()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::next\+Id (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name,  }\item[{}]{\$ondemand = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Returns the next free id in a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence \\
+\hline
+boolean & {\em \$ondemand} & when true, the seqence is automatically created if it does not exist\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the next id number in the sequence. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+D\+B\+\_\+common\+::next\+I\+D(), \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, \mbox{\hyperlink{classDB__mssql_a65d737419775e181740897e49d3d0fde}{D\+B\+\_\+mssql\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__mssql_a83ee2053a92491c5cc47bf9d57163450}{D\+B\+\_\+mssql\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ae654bec375517d041f1920ab0cc4703b}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_ac739e8a58cbea51a16ca1c57c239938c}\label{classDB__mssql_ac739e8a58cbea51a16ca1c57c239938c}} 
+\index{DB\_mssql@{DB\_mssql}!nextResult@{nextResult}}
+\index{nextResult@{nextResult}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{nextResult()}{nextResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::next\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Move the internal mssql result pointer to the next available result
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & valid fbsql result resource\\
+\hline
+\end{DoxyParams}
+@access public
+
+\begin{DoxyReturn}{Returns}
+true if a result is available otherwise return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mssql_a666b6aae874998d768540645cd718a15}\label{classDB__mssql_a666b6aae874998d768540645cd718a15}} 
+\index{DB\_mssql@{DB\_mssql}!numCols@{numCols}}
+\index{numCols@{numCols}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{numCols()}{numCols()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::num\+Cols (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of columns in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of columns. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__mssql_a328c1b51db529325b70f8cb5aba220d3}\label{classDB__mssql_a328c1b51db529325b70f8cb5aba220d3}} 
+\index{DB\_mssql@{DB\_mssql}!numRows@{numRows}}
+\index{numRows@{numRows}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{numRows()}{numRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::num\+Rows (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of rows in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a605433b6d3412f7d2c24287553965382}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_ad5bfa91bde83acead6ad9ec7dbe50f85}\label{classDB__mssql_ad5bfa91bde83acead6ad9ec7dbe50f85}} 
+\index{DB\_mssql@{DB\_mssql}!quoteIdentifier@{quoteIdentifier}}
+\index{quoteIdentifier@{quoteIdentifier}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{quoteIdentifier()}{quoteIdentifier()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::quote\+Identifier (\begin{DoxyParamCaption}\item[{}]{\$str }\end{DoxyParamCaption})}
+
+Quotes a string so it can be safely used as a table or column name
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$str} & identifier name to be quoted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string quoted identifier string
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ac244ef9aea1db0f25d5fd6c6f1742605}{D\+B\+\_\+common\+::quote\+Identifier()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+6.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ac244ef9aea1db0f25d5fd6c6f1742605}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_affb50e79da6962fb537d9d2ad98c17ee}\label{classDB__mssql_affb50e79da6962fb537d9d2ad98c17ee}} 
+\index{DB\_mssql@{DB\_mssql}!rollback@{rollback}}
+\index{rollback@{rollback}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{rollback()}{rollback()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::rollback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reverts the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a03b635b3130360516cb504b7f6095891}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__mssql_a2dc5b7816d107527dd279b01922f9903}\label{classDB__mssql_a2dc5b7816d107527dd279b01922f9903}} 
+\index{DB\_mssql@{DB\_mssql}!simpleQuery@{simpleQuery}}
+\index{simpleQuery@{simpleQuery}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{simpleQuery()}{simpleQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::simple\+Query (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Sends a query to the database server
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & the S\+QL query string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed + a \mbox{\hyperlink{categoryPHP}{P\+HP}} result resrouce for successful S\+E\+L\+E\+CT queries
+\begin{DoxyItemize}
+\item the D\+B\+\_\+\+OK constant for other successful queries
+\item a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__mssql_a4a831aac819e01b76bc829c974f659e9}\label{classDB__mssql_a4a831aac819e01b76bc829c974f659e9}} 
+\index{DB\_mssql@{DB\_mssql}!tableInfo@{tableInfo}}
+\index{tableInfo@{tableInfo}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{tableInfo()}{tableInfo()}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::table\+Info (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{}]{\$mode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Returns information about a table or a result set
+
+N\+O\+TE\+: only supports \textquotesingle{}table\textquotesingle{} and \textquotesingle{}flags\textquotesingle{} if {\itshape \$result} is a table name.
+
+
+\begin{DoxyParams}[1]{Parameters}
+object | string & {\em \$result} & \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} object from a query or a string containing the name of a table. While this also accepts a query result resource identifier, this behavior is deprecated. \\
+\hline
+int & {\em \$mode} & a valid table\+Info mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array an associative array with the information requested. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common\+::table\+Info()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__mssql_a640e64799b47b825b68ca643661c0588}\label{classDB__mssql_a640e64799b47b825b68ca643661c0588}} 
+\index{DB\_mssql@{DB\_mssql}!\$features@{\$features}}
+\index{\$features@{\$features}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{\$features}{$features}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::\$features}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'limit'}         => \textcolor{stringliteral}{'emulate'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'new\_link'}      => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'numrows'}       => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'pconnect'}      => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'prepare'}       => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'ssl'}           => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'transactions'}  => \textcolor{keyword}{true},}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__mssql_a1f66188aa576d1ed21c6f4e22ceb06aa}\label{classDB__mssql_a1f66188aa576d1ed21c6f4e22ceb06aa}} 
+\index{DB\_mssql@{DB\_mssql}!\$transaction\_opcount@{\$transaction\_opcount}}
+\index{\$transaction\_opcount@{\$transaction\_opcount}!DB\_mssql@{DB\_mssql}}
+\doxysubsubsection{\texorpdfstring{\$transaction\_opcount}{$transaction\_opcount}}
+{\footnotesize\ttfamily D\+B\+\_\+mssql\+::\$transaction\+\_\+opcount = 0}
+
+The quantity of transactions begun
+
+\{ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+D\+B/mssql.\+php\end{DoxyCompactItemize}

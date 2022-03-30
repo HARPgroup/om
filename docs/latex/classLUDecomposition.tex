@@ -1,0 +1,136 @@
+\hypertarget{classLUDecomposition}{}\doxysection{L\+U\+Decomposition Class Reference}
+\label{classLUDecomposition}\index{LUDecomposition@{LUDecomposition}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLUDecomposition_af0c77a34addccb01ad2e4ca352332087}{L\+U\+Decomposition}} (\$A)
+\item 
+\mbox{\hyperlink{classLUDecomposition_abe71f1f01614cf53859b678cdef10086}{getL}} ()
+\item 
+\mbox{\hyperlink{classLUDecomposition_af290050adf55d1b0d87577cbec36b69a}{getU}} ()
+\item 
+\mbox{\hyperlink{classLUDecomposition_aebde646c670f3cd35c48126b50ba7a9f}{get\+Pivot}} ()
+\item 
+\mbox{\hyperlink{classLUDecomposition_a166e4ef4998e7b7b4a71fb42953e8147}{get\+Double\+Pivot}} ()
+\item 
+\mbox{\hyperlink{classLUDecomposition_a871f8a8b067b20d13a674f749fbaa090}{is\+Nonsingular}} ()
+\item 
+\mbox{\hyperlink{classLUDecomposition_a43d90c4a107538dccb36a08bc17e9e28}{det}} ()
+\item 
+\mbox{\hyperlink{classLUDecomposition_a58fab0b9758ab6cf14465d82c17bcd3e}{solve}} (\$B)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLUDecomposition_aac6c010347940491b6e9ce5dcb57d216}\label{classLUDecomposition_aac6c010347940491b6e9ce5dcb57d216}} 
+{\bfseries \$\+LU} = array()
+\item 
+\mbox{\Hypertarget{classLUDecomposition_a8e413600405505f8e655226510aa6de6}\label{classLUDecomposition_a8e413600405505f8e655226510aa6de6}} 
+{\bfseries \$m}
+\item 
+\mbox{\Hypertarget{classLUDecomposition_aebdd557749f2986eb9f012b1278297b4}\label{classLUDecomposition_aebdd557749f2986eb9f012b1278297b4}} 
+{\bfseries \$n}
+\item 
+\mbox{\Hypertarget{classLUDecomposition_a45a0a8dc5222e7f935df6de929b9abfe}\label{classLUDecomposition_a45a0a8dc5222e7f935df6de929b9abfe}} 
+{\bfseries \$pivsign}
+\item 
+\mbox{\Hypertarget{classLUDecomposition_ad51f861973b46a5578b313d850bd9dc0}\label{classLUDecomposition_ad51f861973b46a5578b313d850bd9dc0}} 
+{\bfseries \$piv} = array()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLUDecomposition_a43d90c4a107538dccb36a08bc17e9e28}\label{classLUDecomposition_a43d90c4a107538dccb36a08bc17e9e28}} 
+\index{LUDecomposition@{LUDecomposition}!det@{det}}
+\index{det@{det}!LUDecomposition@{LUDecomposition}}
+\doxysubsubsection{\texorpdfstring{det()}{det()}}
+{\footnotesize\ttfamily L\+U\+Decomposition\+::det (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Count determinants \begin{DoxyReturn}{Returns}
+array d matrix deterninat 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLUDecomposition_a166e4ef4998e7b7b4a71fb42953e8147}\label{classLUDecomposition_a166e4ef4998e7b7b4a71fb42953e8147}} 
+\index{LUDecomposition@{LUDecomposition}!getDoublePivot@{getDoublePivot}}
+\index{getDoublePivot@{getDoublePivot}!LUDecomposition@{LUDecomposition}}
+\doxysubsubsection{\texorpdfstring{getDoublePivot()}{getDoublePivot()}}
+{\footnotesize\ttfamily L\+U\+Decomposition\+::get\+Double\+Pivot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Alias for get\+Pivot \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classLUDecomposition_aebde646c670f3cd35c48126b50ba7a9f}{get\+Pivot}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classLUDecomposition_abe71f1f01614cf53859b678cdef10086}\label{classLUDecomposition_abe71f1f01614cf53859b678cdef10086}} 
+\index{LUDecomposition@{LUDecomposition}!getL@{getL}}
+\index{getL@{getL}!LUDecomposition@{LUDecomposition}}
+\doxysubsubsection{\texorpdfstring{getL()}{getL()}}
+{\footnotesize\ttfamily L\+U\+Decomposition\+::getL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get lower triangular factor. \begin{DoxyReturn}{Returns}
+array Lower triangular factor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLUDecomposition_aebde646c670f3cd35c48126b50ba7a9f}\label{classLUDecomposition_aebde646c670f3cd35c48126b50ba7a9f}} 
+\index{LUDecomposition@{LUDecomposition}!getPivot@{getPivot}}
+\index{getPivot@{getPivot}!LUDecomposition@{LUDecomposition}}
+\doxysubsubsection{\texorpdfstring{getPivot()}{getPivot()}}
+{\footnotesize\ttfamily L\+U\+Decomposition\+::get\+Pivot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Return pivot permutation vector. \begin{DoxyReturn}{Returns}
+array Pivot vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLUDecomposition_af290050adf55d1b0d87577cbec36b69a}\label{classLUDecomposition_af290050adf55d1b0d87577cbec36b69a}} 
+\index{LUDecomposition@{LUDecomposition}!getU@{getU}}
+\index{getU@{getU}!LUDecomposition@{LUDecomposition}}
+\doxysubsubsection{\texorpdfstring{getU()}{getU()}}
+{\footnotesize\ttfamily L\+U\+Decomposition\+::getU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get upper triangular factor. \begin{DoxyReturn}{Returns}
+array Upper triangular factor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLUDecomposition_a871f8a8b067b20d13a674f749fbaa090}\label{classLUDecomposition_a871f8a8b067b20d13a674f749fbaa090}} 
+\index{LUDecomposition@{LUDecomposition}!isNonsingular@{isNonsingular}}
+\index{isNonsingular@{isNonsingular}!LUDecomposition@{LUDecomposition}}
+\doxysubsubsection{\texorpdfstring{isNonsingular()}{isNonsingular()}}
+{\footnotesize\ttfamily L\+U\+Decomposition\+::is\+Nonsingular (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Is the matrix nonsingular? \begin{DoxyReturn}{Returns}
+true if U, and hence A, is nonsingular. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLUDecomposition_af0c77a34addccb01ad2e4ca352332087}\label{classLUDecomposition_af0c77a34addccb01ad2e4ca352332087}} 
+\index{LUDecomposition@{LUDecomposition}!LUDecomposition@{LUDecomposition}}
+\index{LUDecomposition@{LUDecomposition}!LUDecomposition@{LUDecomposition}}
+\doxysubsubsection{\texorpdfstring{LUDecomposition()}{LUDecomposition()}}
+{\footnotesize\ttfamily L\+U\+Decomposition\+::\+L\+U\+Decomposition (\begin{DoxyParamCaption}\item[{}]{\$A }\end{DoxyParamCaption})}
+
+LU Decomposition constructor. 
+\begin{DoxyParams}{Parameters}
+{\em \$A} & Rectangular matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Structure to access L, U and piv. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLUDecomposition_a58fab0b9758ab6cf14465d82c17bcd3e}\label{classLUDecomposition_a58fab0b9758ab6cf14465d82c17bcd3e}} 
+\index{LUDecomposition@{LUDecomposition}!solve@{solve}}
+\index{solve@{solve}!LUDecomposition@{LUDecomposition}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily L\+U\+Decomposition\+::solve (\begin{DoxyParamCaption}\item[{}]{\$B }\end{DoxyParamCaption})}
+
+Solve A$\ast$X = B 
+\begin{DoxyParams}{Parameters}
+{\em \$B} & A \mbox{\hyperlink{classMatrix}{Matrix}} with as many rows as A and any number of columns. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+X so that L$\ast$\+U$\ast$X = B(piv,\+:) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Illegal\+Argument\+Exception} & \mbox{\hyperlink{classMatrix}{Matrix}} row dimensions must agree. \\
+\hline
+{\em Runtime\+Exception} & \mbox{\hyperlink{classMatrix}{Matrix}} is singular. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/phpmath/L\+U\+Decomposition.\+php\end{DoxyCompactItemize}

@@ -1,0 +1,80 @@
+\hypertarget{classSpreadsheet__Excel__Writer}{}\doxysection{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer Class Reference}
+\label{classSpreadsheet__Excel__Writer}\index{Spreadsheet\_Excel\_Writer@{Spreadsheet\_Excel\_Writer}}
+
+
+Inheritance diagram for Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+:
+% FIG 0
+
+
+Collaboration diagram for Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer_a712f40b343ff21c72bc083a270d566ea}{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer}} (\$filename=\textquotesingle{}\textquotesingle{})
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer_a52377b0ec77c21e94666f4ac19ff164c}{send}} (\$filename)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer_a47490460886d8e0ff820341556b166b7}{rowcol\+To\+Cell}} (\$row, \$col)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer_a47490460886d8e0ff820341556b166b7}\label{classSpreadsheet__Excel__Writer_a47490460886d8e0ff820341556b166b7}} 
+\index{Spreadsheet\_Excel\_Writer@{Spreadsheet\_Excel\_Writer}!rowcolToCell@{rowcolToCell}}
+\index{rowcolToCell@{rowcolToCell}!Spreadsheet\_Excel\_Writer@{Spreadsheet\_Excel\_Writer}}
+\doxysubsubsection{\texorpdfstring{rowcolToCell()}{rowcolToCell()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+::rowcol\+To\+Cell (\begin{DoxyParamCaption}\item[{}]{\$row,  }\item[{}]{\$col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Utility function for writing formulas Converts a cell\textquotesingle{}s coordinates to the A1 format.
+
+@access public
+
+
+\begin{DoxyParams}[1]{Parameters}
+integer & {\em \$row} & Row for the cell to convert (0-\/indexed). \\
+\hline
+integer & {\em \$col} & Column for the cell to convert (0-\/indexed). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string The cell identifier in A1 format 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer_a52377b0ec77c21e94666f4ac19ff164c}\label{classSpreadsheet__Excel__Writer_a52377b0ec77c21e94666f4ac19ff164c}} 
+\index{Spreadsheet\_Excel\_Writer@{Spreadsheet\_Excel\_Writer}!send@{send}}
+\index{send@{send}!Spreadsheet\_Excel\_Writer@{Spreadsheet\_Excel\_Writer}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+::send (\begin{DoxyParamCaption}\item[{}]{\$filename }\end{DoxyParamCaption})}
+
+Send H\+T\+TP headers for the Excel file.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$filename} & The filename to use for H\+T\+TP headers @access public \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSpreadsheet__Excel__Writer_a712f40b343ff21c72bc083a270d566ea}\label{classSpreadsheet__Excel__Writer_a712f40b343ff21c72bc083a270d566ea}} 
+\index{Spreadsheet\_Excel\_Writer@{Spreadsheet\_Excel\_Writer}!Spreadsheet\_Excel\_Writer@{Spreadsheet\_Excel\_Writer}}
+\index{Spreadsheet\_Excel\_Writer@{Spreadsheet\_Excel\_Writer}!Spreadsheet\_Excel\_Writer@{Spreadsheet\_Excel\_Writer}}
+\doxysubsubsection{\texorpdfstring{Spreadsheet\_Excel\_Writer()}{Spreadsheet\_Excel\_Writer()}}
+{\footnotesize\ttfamily Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+::\+Spreadsheet\+\_\+\+Excel\+\_\+\+Writer (\begin{DoxyParamCaption}\item[{}]{\$filename = {\ttfamily \textquotesingle{}\textquotesingle{}} }\end{DoxyParamCaption})}
+
+The constructor. It just creates a Workbook
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$filename} & The optional filename for the Workbook. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classSpreadsheet__Excel__Writer__Workbook}{Spreadsheet\+\_\+\+Excel\+\_\+\+Writer\+\_\+\+Workbook}} The Workbook created 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+Spreadsheet/\+Excel/Writer.\+php\end{DoxyCompactItemize}

@@ -1,0 +1,218 @@
+\hypertarget{classContour}{}\doxysection{Contour Class Reference}
+\label{classContour}\index{Contour@{Contour}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classContour_a5a0535f4aac755686608f5ce846f5abc}{\+\_\+\+\_\+construct}} (\$a\+Matrix, \$a\+Isobars=10, \$a\+Colors=null)
+\item 
+\mbox{\hyperlink{classContour_a0910d467bc927cf2855e72c73dc999d0}{Set\+Invert}} (\$a\+Flg=true)
+\item 
+\mbox{\hyperlink{classContour_ac182873b0ead84e64c1d973dc21f84ea}{get\+Min\+Max\+Val}} ()
+\item 
+\mbox{\hyperlink{classContour_a30e0f3ee2a7dfc31de09eb0140bfdd7c}{reset\+Edge\+Matrices}} ()
+\item 
+\mbox{\hyperlink{classContour_ac1ff92d648fe93c7738e525e6601d19d}{isobar\+H\+Crossing}} (\$a\+Row, \$a\+Col, \$a\+Isobar)
+\item 
+\mbox{\hyperlink{classContour_afbe2960b9d6ccb86629db25441650afa}{isobar\+V\+Crossing}} (\$a\+Row, \$a\+Col, \$a\+Isobar)
+\item 
+\mbox{\hyperlink{classContour_a2413f26139aa59b23b4515812dfc34f2}{determine\+Isobar\+Edge\+Crossings}} (\$a\+Isobar)
+\item 
+\mbox{\hyperlink{classContour_a5d5536ccb705a62ba3e8818e80cfc266}{get\+Crossing\+Coord}} (\$a\+Row, \$a\+Col, \$a\+Edge\+Dir, \$a\+Isobar\+Val)
+\item 
+\mbox{\hyperlink{classContour_ac43e98bddac3847b81b3b7e5813d9565}{adjust\+Data\+Point\+Values}} ()
+\item 
+\mbox{\hyperlink{classContour_a717bbd544ed44f46c9e65776ce959399}{Use\+High\+Contrast\+Color}} (\$a\+Flg=true, \$a\+BW=false)
+\item 
+\mbox{\hyperlink{classContour_a7ec5595bf0bef596ef922e9368b4ffe2}{Calculate\+Colors}} ()
+\item 
+\mbox{\hyperlink{classContour_a46b3ce525b8924e48609ed20fbeacda7}{get\+Isobars}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classContour_acbd1eab5095d7cc1ba671745526f38ae}\label{classContour_acbd1eab5095d7cc1ba671745526f38ae}} 
+{\bfseries \$nbr\+Rows} =0
+\item 
+\mbox{\Hypertarget{classContour_ae6a23daef8ff4b6458d23972bbb62295}\label{classContour_ae6a23daef8ff4b6458d23972bbb62295}} 
+{\bfseries \$vert\+Edges} =array()
+\item 
+\mbox{\Hypertarget{classContour_ac983cbe8522a18ba15f21c40d5ef0391}\label{classContour_ac983cbe8522a18ba15f21c40d5ef0391}} 
+{\bfseries \$isobar\+Colors} = array()
+\item 
+\mbox{\Hypertarget{classContour_a3773b4d070154b547eff5c6e61b58705}\label{classContour_a3773b4d070154b547eff5c6e61b58705}} 
+{\bfseries \$highcontrastbw} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class encapsulates the core contour plot algorithm. It will find the path of the specified isobars in the data matrix specified. It is assumed that the data matrix models an equspaced X-\/Y mesh of datavalues corresponding to the Z values. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classContour_a5a0535f4aac755686608f5ce846f5abc}\label{classContour_a5a0535f4aac755686608f5ce846f5abc}} 
+\index{Contour@{Contour}!\_\_construct@{\_\_construct}}
+\index{\_\_construct@{\_\_construct}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{\_\_construct()}{\_\_construct()}}
+{\footnotesize\ttfamily Contour\+::\+\_\+\+\_\+construct (\begin{DoxyParamCaption}\item[{}]{\$a\+Matrix,  }\item[{}]{\$a\+Isobars = {\ttfamily 10},  }\item[{}]{\$a\+Colors = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Create a new contour level \char`\"{}algorithm machine\char`\"{}. 
+\begin{DoxyParams}{Parameters}
+{\em \$a\+Matrix} & The values to find the contour from \\
+\hline
+{\em \$a\+Isobars} & Mixed. If integer it determines the number of isobars to be used. The levels are determined automatically as equdistance between the min and max value of the matrice. If \$a\+Isobars is an array then this is interpretated as an array of values to be used as isobars in the contour plot. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an instance of the contour algorithm 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classContour_ac43e98bddac3847b81b3b7e5813d9565}\label{classContour_ac43e98bddac3847b81b3b7e5813d9565}} 
+\index{Contour@{Contour}!adjustDataPointValues@{adjustDataPointValues}}
+\index{adjustDataPointValues@{adjustDataPointValues}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{adjustDataPointValues()}{adjustDataPointValues()}}
+{\footnotesize\ttfamily Contour\+::adjust\+Data\+Point\+Values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+In order to avoid all kinds of unpleasent extra checks and complex boundary controls for the degenerated case where the contour levels exactly crosses one of the vertices we add a very small delta (0.\+1\%) to the data point value. This has no visible affect but it makes the code sooooo much cleaner. \mbox{\Hypertarget{classContour_a7ec5595bf0bef596ef922e9368b4ffe2}\label{classContour_a7ec5595bf0bef596ef922e9368b4ffe2}} 
+\index{Contour@{Contour}!CalculateColors@{CalculateColors}}
+\index{CalculateColors@{CalculateColors}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{CalculateColors()}{CalculateColors()}}
+{\footnotesize\ttfamily Contour\+::\+Calculate\+Colors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calculate suitable colors for each defined isobar \mbox{\Hypertarget{classContour_a2413f26139aa59b23b4515812dfc34f2}\label{classContour_a2413f26139aa59b23b4515812dfc34f2}} 
+\index{Contour@{Contour}!determineIsobarEdgeCrossings@{determineIsobarEdgeCrossings}}
+\index{determineIsobarEdgeCrossings@{determineIsobarEdgeCrossings}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{determineIsobarEdgeCrossings()}{determineIsobarEdgeCrossings()}}
+{\footnotesize\ttfamily Contour\+::determine\+Isobar\+Edge\+Crossings (\begin{DoxyParamCaption}\item[{}]{\$a\+Isobar }\end{DoxyParamCaption})}
+
+Determine all edges, horizontal and vertical that the specified isobar crosses. The crossings are recorded in the two edge matrices.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$a\+Isobar} & The value of the isobar to be checked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classContour_a5d5536ccb705a62ba3e8818e80cfc266}\label{classContour_a5d5536ccb705a62ba3e8818e80cfc266}} 
+\index{Contour@{Contour}!getCrossingCoord@{getCrossingCoord}}
+\index{getCrossingCoord@{getCrossingCoord}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{getCrossingCoord()}{getCrossingCoord()}}
+{\footnotesize\ttfamily Contour\+::get\+Crossing\+Coord (\begin{DoxyParamCaption}\item[{}]{\$a\+Row,  }\item[{}]{\$a\+Col,  }\item[{}]{\$a\+Edge\+Dir,  }\item[{}]{\$a\+Isobar\+Val }\end{DoxyParamCaption})}
+
+Return the normalized coordinates for the crossing of the specified edge with the specified isobar-\/ The crossing is simpy detrmined with a linear interpolation between the two vertices on each side of the edge and the value of the isobar
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$a\+Row} & Row of edge \\
+\hline
+{\em \$a\+Col} & Column of edge \\
+\hline
+{\em \$a\+Edge\+Dir} & Determine if this is a horizontal or vertical edge \\
+\hline
+{\em \$ib} & The isobar value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unknown\+\_\+type 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classContour_a46b3ce525b8924e48609ed20fbeacda7}\label{classContour_a46b3ce525b8924e48609ed20fbeacda7}} 
+\index{Contour@{Contour}!getIsobars@{getIsobars}}
+\index{getIsobars@{getIsobars}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{getIsobars()}{getIsobars()}}
+{\footnotesize\ttfamily Contour\+::get\+Isobars (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is where the main work is done. For each isobar the crossing of the edges are determined and then each cell is analyzed to find the 0, 2 or 4 crossings. Then the normalized coordinate for the crossings are determined and pushed on to the isobar stack. When the method is finished the \$isobar\+Coord will hold one arrayfor each isobar where all the line segments that makes up the contour plot are stored.
+
+\begin{DoxyReturn}{Returns}
+array( \$isobar\+Coord, \$isobar\+Values, \$isobar\+Colors ) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classContour_ac182873b0ead84e64c1d973dc21f84ea}\label{classContour_ac182873b0ead84e64c1d973dc21f84ea}} 
+\index{Contour@{Contour}!getMinMaxVal@{getMinMaxVal}}
+\index{getMinMaxVal@{getMinMaxVal}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{getMinMaxVal()}{getMinMaxVal()}}
+{\footnotesize\ttfamily Contour\+::get\+Min\+Max\+Val (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Find the min and max values in the data matrice
+
+\begin{DoxyReturn}{Returns}
+array(min\+\_\+value,max\+\_\+value) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classContour_ac1ff92d648fe93c7738e525e6601d19d}\label{classContour_ac1ff92d648fe93c7738e525e6601d19d}} 
+\index{Contour@{Contour}!isobarHCrossing@{isobarHCrossing}}
+\index{isobarHCrossing@{isobarHCrossing}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{isobarHCrossing()}{isobarHCrossing()}}
+{\footnotesize\ttfamily Contour\+::isobar\+H\+Crossing (\begin{DoxyParamCaption}\item[{}]{\$a\+Row,  }\item[{}]{\$a\+Col,  }\item[{}]{\$a\+Isobar }\end{DoxyParamCaption})}
+
+Determine if the specified isobar crosses the horizontal edge specified by its row and column
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$a\+Row} & Row index of edge to be checked \\
+\hline
+{\em \$a\+Col} & Col index of edge to be checked \\
+\hline
+{\em \$a\+Isobar} & Isobar value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the isobar is crossing this edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classContour_afbe2960b9d6ccb86629db25441650afa}\label{classContour_afbe2960b9d6ccb86629db25441650afa}} 
+\index{Contour@{Contour}!isobarVCrossing@{isobarVCrossing}}
+\index{isobarVCrossing@{isobarVCrossing}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{isobarVCrossing()}{isobarVCrossing()}}
+{\footnotesize\ttfamily Contour\+::isobar\+V\+Crossing (\begin{DoxyParamCaption}\item[{}]{\$a\+Row,  }\item[{}]{\$a\+Col,  }\item[{}]{\$a\+Isobar }\end{DoxyParamCaption})}
+
+Determine if the specified isobar crosses the vertical edge specified by its row and column
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$a\+Row} & Row index of edge to be checked \\
+\hline
+{\em \$a\+Col} & Col index of edge to be checked \\
+\hline
+{\em \$a\+Isobar} & Isobar value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the isobar is crossing this edge 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classContour_a30e0f3ee2a7dfc31de09eb0140bfdd7c}\label{classContour_a30e0f3ee2a7dfc31de09eb0140bfdd7c}} 
+\index{Contour@{Contour}!resetEdgeMatrices@{resetEdgeMatrices}}
+\index{resetEdgeMatrices@{resetEdgeMatrices}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{resetEdgeMatrices()}{resetEdgeMatrices()}}
+{\footnotesize\ttfamily Contour\+::reset\+Edge\+Matrices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reset the two matrices that keeps track on where the isobars crosses the horizontal and vertical edges \mbox{\Hypertarget{classContour_a0910d467bc927cf2855e72c73dc999d0}\label{classContour_a0910d467bc927cf2855e72c73dc999d0}} 
+\index{Contour@{Contour}!SetInvert@{SetInvert}}
+\index{SetInvert@{SetInvert}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{SetInvert()}{SetInvert()}}
+{\footnotesize\ttfamily Contour\+::\+Set\+Invert (\begin{DoxyParamCaption}\item[{}]{\$a\+Flg = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Flip the plot around the Y-\/coordinate. This has the same affect as flipping the input data matrice
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$a\+Flg} & If true the the vertice in input data matrice position (0,0) corresponds to the top left corner of teh plot otherwise it will correspond to the bottom left corner (a horizontal flip) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classContour_a717bbd544ed44f46c9e65776ce959399}\label{classContour_a717bbd544ed44f46c9e65776ce959399}} 
+\index{Contour@{Contour}!UseHighContrastColor@{UseHighContrastColor}}
+\index{UseHighContrastColor@{UseHighContrastColor}!Contour@{Contour}}
+\doxysubsubsection{\texorpdfstring{UseHighContrastColor()}{UseHighContrastColor()}}
+{\footnotesize\ttfamily Contour\+::\+Use\+High\+Contrast\+Color (\begin{DoxyParamCaption}\item[{}]{\$a\+Flg = {\ttfamily true},  }\item[{}]{\$a\+BW = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$a\+Flg} & \\
+\hline
+{\em \$a\+BW} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unknown\+\_\+type 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+drupal/om/lib/jpgraph/jpgraph\+\_\+contour.\+php\end{DoxyCompactItemize}

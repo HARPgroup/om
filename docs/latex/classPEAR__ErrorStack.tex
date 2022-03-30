@@ -1,0 +1,564 @@
+\hypertarget{classPEAR__ErrorStack}{}\doxysection{P\+E\+A\+R\+\_\+\+Error\+Stack Class Reference}
+\label{classPEAR__ErrorStack}\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_ae796988ad3a362e8e21f323c5d21d64e}{P\+E\+A\+R\+\_\+\+Error\+Stack}} (\$package, \$msg\+Callback=false, \$context\+Callback=false, \$throw\+P\+E\+A\+R\+\_\+\+Error=false)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_ad823e69a8a6bdc3b943be3c6cb00ecae}{\+\_\+handle\+Error}} (\$err)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a92e528a2d85c0f542fdef60756a2bc09}{set\+Logger}} (\&\$log)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a2eb2094deaf547d2d1c5744fa9d505d9}{set\+Message\+Callback}} (\$msg\+Callback)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_aae0daac138949f416f544886fa2e2738}{get\+Message\+Callback}} ()
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_ab77053f650006f5be263b575f1147faf}{set\+Context\+Callback}} (\$context\+Callback)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a76bc74fb08d53620cb24c8f2f48e1b15}{push\+Callback}} (\$cb)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a30464bb8f3a27137cc028d7e1166383c}{pop\+Callback}} ()
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a2fb062a92ee24b15a5d15b9c53ffa925}{push}} (\$code, \$level=\textquotesingle{}error\textquotesingle{}, \$params=array(), \$msg=false, \$repackage=false, \$backtrace=false)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a67f6ebb6b71baf48ac3d6088c39c8586}{\+\_\+log}} (\$err)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a872ef26d7f4b2889d9d8a3ce93b75e56}{pop}} ()
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_af0a99426a00667658b6927e0f0beeec4}{static\+Pop}} (\$package)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a63e87c77e5586c39043c486798cac086}{has\+Errors}} (\$level=false)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a2da44a23bb06e5efbe8e35de81cecd7a}{get\+Errors}} (\$purge=false, \$level=false)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_afa2bd540d30e446b6610c2a39cb2a230}{\+\_\+sort\+Errors}} (\$a, \$b)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_adb693023b26b2540b4b311d9b4ad263c}{get\+Error\+Message\+Template}} (\$code)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_af7a1f0bec420abf361c989017aa8d1a7}{set\+Error\+Message\+Template}} (\$template)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a48640fdbc5689e14838b3ae5534e75b5}{raise\+Error}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\& \mbox{\hyperlink{classPEAR__ErrorStack_ae2fdad5bfb5103ae36545f4525e34a30}{singleton}} (\$package, \$msg\+Callback=false, \$context\+Callback=false, \$throw\+P\+E\+A\+R\+\_\+\+Error=false, \$stack\+Class=\textquotesingle{}\mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}}\textquotesingle{})
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a6650eb6d3f24d9c7f707d38b789ea38c}{set\+Default\+Logger}} (\&\$log)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a7349781d48b3a4ffcf738db537cacc36}{set\+Default\+Callback}} (\$callback=false, \$package=false)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_aee3316e3379ca2bdf3ccf57957b0381a}{static\+Push\+Callback}} (\$cb)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_ae947fbeaf008439bbfe8627b1d3dc455}{static\+Pop\+Callback}} ()
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a171377994fedee4b97078da6eef7fa6b}{static\+Push}} (\$package, \$code, \$level=\textquotesingle{}error\textquotesingle{}, \$params=array(), \$msg=false, \$repackage=false, \$backtrace=false)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a9151ec6bdfb49cea96a3319bce915497}{static\+Has\+Errors}} (\$package=false, \$level=false)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a3c10b4c975ed17cd778c72dd77e02c7e}{static\+Get\+Errors}} (\$purge=false, \$level=false, \$merge=false, \$sortfunc=array(\textquotesingle{}\mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}}\textquotesingle{}, \textquotesingle{}\mbox{\hyperlink{classPEAR__ErrorStack_afa2bd540d30e446b6610c2a39cb2a230}{\+\_\+sort\+Errors}}\textquotesingle{}))
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a4bd26776d8a0399590d8853bfd3718c8}{get\+File\+Line}} (\$code, \$params, \$backtrace=null)
+\item 
+\mbox{\hyperlink{classPEAR__ErrorStack_a2eaa481230246ec0661a09ffd3032ea6}{get\+Error\+Message}} (\&\$stack, \$err, \$template=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__ErrorStack_ad2dbaa091b613ba9c7bbea9285891830}\label{classPEAR__ErrorStack_ad2dbaa091b613ba9c7bbea9285891830}} 
+{\bfseries \$\+\_\+errors} = array()
+\item 
+\mbox{\Hypertarget{classPEAR__ErrorStack_acb7aa26a495338da7027ca22f71d9cd5}\label{classPEAR__ErrorStack_acb7aa26a495338da7027ca22f71d9cd5}} 
+{\bfseries \$\+\_\+errors\+By\+Level} = array()
+\item 
+\mbox{\Hypertarget{classPEAR__ErrorStack_a92c036cf48c19565d0bace278813318e}\label{classPEAR__ErrorStack_a92c036cf48c19565d0bace278813318e}} 
+{\bfseries \$\+\_\+package}
+\item 
+\mbox{\Hypertarget{classPEAR__ErrorStack_a132e006a28635bd2d30afae54d002d11}\label{classPEAR__ErrorStack_a132e006a28635bd2d30afae54d002d11}} 
+{\bfseries \$\+\_\+compat} = false
+\item 
+\mbox{\Hypertarget{classPEAR__ErrorStack_a4f303234f915e7fc7e7cac2383782ca0}\label{classPEAR__ErrorStack_a4f303234f915e7fc7e7cac2383782ca0}} 
+{\bfseries \$\+\_\+msg\+Callback} = false
+\item 
+\mbox{\Hypertarget{classPEAR__ErrorStack_a2e2afea1ca5e7761393b38563ab34ff8}\label{classPEAR__ErrorStack_a2e2afea1ca5e7761393b38563ab34ff8}} 
+{\bfseries \$\+\_\+context\+Callback} = false
+\item 
+\mbox{\Hypertarget{classPEAR__ErrorStack_a000cfbf44765116ef840794f06aa0980}\label{classPEAR__ErrorStack_a000cfbf44765116ef840794f06aa0980}} 
+{\bfseries \$\+\_\+error\+Callback} = array()
+\item 
+\mbox{\Hypertarget{classPEAR__ErrorStack_a716affdc1155ed483bf27db3a5b6c32c}\label{classPEAR__ErrorStack_a716affdc1155ed483bf27db3a5b6c32c}} 
+{\bfseries \$\+\_\+logger} = false
+\item 
+\mbox{\Hypertarget{classPEAR__ErrorStack_aff75883fac368e4be6d897039c314e56}\label{classPEAR__ErrorStack_aff75883fac368e4be6d897039c314e56}} 
+{\bfseries \$\+\_\+error\+Msgs} = array()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__ErrorStack_ad823e69a8a6bdc3b943be3c6cb00ecae}\label{classPEAR__ErrorStack_ad823e69a8a6bdc3b943be3c6cb00ecae}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!\_handleError@{\_handleError}}
+\index{\_handleError@{\_handleError}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{\_handleError()}{\_handleError()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::\+\_\+handle\+Error (\begin{DoxyParamCaption}\item[{}]{\$err }\end{DoxyParamCaption})}
+
+Internal error handler for \mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}} class
+
+Dies if the error is an exception (and would have died anyway) @access private \mbox{\Hypertarget{classPEAR__ErrorStack_a67f6ebb6b71baf48ac3d6088c39c8586}\label{classPEAR__ErrorStack_a67f6ebb6b71baf48ac3d6088c39c8586}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!\_log@{\_log}}
+\index{\_log@{\_log}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{\_log()}{\_log()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::\+\_\+log (\begin{DoxyParamCaption}\item[{}]{\$err }\end{DoxyParamCaption})}
+
+Log an error using P\+E\+A\+R\+::\+Log 
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$err} & Error array \\
+\hline
+array & {\em \$levels} & Error level =$>$ Log constant map @access protected \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__ErrorStack_afa2bd540d30e446b6610c2a39cb2a230}\label{classPEAR__ErrorStack_afa2bd540d30e446b6610c2a39cb2a230}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!\_sortErrors@{\_sortErrors}}
+\index{\_sortErrors@{\_sortErrors}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{\_sortErrors()}{\_sortErrors()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::\+\_\+sort\+Errors (\begin{DoxyParamCaption}\item[{}]{\$a,  }\item[{}]{\$b }\end{DoxyParamCaption})}
+
+Error sorting function, sorts by time @access private \mbox{\Hypertarget{classPEAR__ErrorStack_a2eaa481230246ec0661a09ffd3032ea6}\label{classPEAR__ErrorStack_a2eaa481230246ec0661a09ffd3032ea6}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!getErrorMessage@{getErrorMessage}}
+\index{getErrorMessage@{getErrorMessage}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{getErrorMessage()}{getErrorMessage()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::get\+Error\+Message (\begin{DoxyParamCaption}\item[{\&}]{\$stack,  }\item[{}]{\$err,  }\item[{}]{\$template = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Standard error message generation callback
+
+This method may also be called by a custom error message generator to fill in template values from the params array, simply set the third parameter to the error message template string to use
+
+The special variable \+\_\+\+\_\+msg\% is reserved\+: use it only to specify where a message passed in by the user should be placed in the template, like so\+:
+
+Error message\+: msg\% -\/ internal error
+
+If the message passed like so\+:
+
+{\ttfamily  \$stack-\/$>$push(E\+R\+R\+O\+R\+\_\+\+C\+O\+DE, \textquotesingle{}error\textquotesingle{}, array(), \textquotesingle{}server error 500\textquotesingle{}); }
+
+The returned error message will be \char`\"{}\+Error message\+: server error 500 -\/
+internal error\char`\"{} 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}}} & \\
+\hline
+{\em array} & \\
+\hline
+{\em string$\vert$false} & Pre-\/generated error message template\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_adb693023b26b2540b4b311d9b4ad263c}\label{classPEAR__ErrorStack_adb693023b26b2540b4b311d9b4ad263c}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!getErrorMessageTemplate@{getErrorMessageTemplate}}
+\index{getErrorMessageTemplate@{getErrorMessageTemplate}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{getErrorMessageTemplate()}{getErrorMessageTemplate()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::get\+Error\+Message\+Template (\begin{DoxyParamCaption}\item[{}]{\$code }\end{DoxyParamCaption})}
+
+Standard Error Message Template generator from code \begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a2da44a23bb06e5efbe8e35de81cecd7a}\label{classPEAR__ErrorStack_a2da44a23bb06e5efbe8e35de81cecd7a}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!getErrors@{getErrors}}
+\index{getErrors@{getErrors}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{getErrors()}{getErrors()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::get\+Errors (\begin{DoxyParamCaption}\item[{}]{\$purge = {\ttfamily false},  }\item[{}]{\$level = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Retrieve all errors since last purge
+
+
+\begin{DoxyParams}{Parameters}
+{\em boolean} & set in order to empty the error stack \\
+\hline
+{\em string} & level name, to return only errors of a particular severity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a4bd26776d8a0399590d8853bfd3718c8}\label{classPEAR__ErrorStack_a4bd26776d8a0399590d8853bfd3718c8}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!getFileLine@{getFileLine}}
+\index{getFileLine@{getFileLine}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{getFileLine()}{getFileLine()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::get\+File\+Line (\begin{DoxyParamCaption}\item[{}]{\$code,  }\item[{}]{\$params,  }\item[{}]{\$backtrace = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Standard file/line number/function/class context callback
+
+This function uses a backtrace generated from \mbox{\hyperlink{}{debug\+\_\+backtrace()}} and so will not work at all in \mbox{\hyperlink{categoryPHP}{P\+HP}} $<$ 4.\+3.\+0. The frame should reference the frame that contains the source of the error. \begin{DoxyReturn}{Returns}
+array$\vert$false either array(\textquotesingle{}file\textquotesingle{} =$>$ file, \textquotesingle{}line\textquotesingle{} =$>$ line, \textquotesingle{}function\textquotesingle{} =$>$ function name, \textquotesingle{}class\textquotesingle{} =$>$ class name) or if this doesn\textquotesingle{}t work, then false 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em unused} & \\
+\hline
+{\em integer} & backtrace frame. \\
+\hline
+{\em array} & Results of debug\+\_\+backtrace() \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__ErrorStack_aae0daac138949f416f544886fa2e2738}\label{classPEAR__ErrorStack_aae0daac138949f416f544886fa2e2738}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!getMessageCallback@{getMessageCallback}}
+\index{getMessageCallback@{getMessageCallback}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{getMessageCallback()}{getMessageCallback()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::get\+Message\+Callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get an error code =$>$ error message mapping callback
+
+This method returns the current callback that can be used to generate error messages \begin{DoxyReturn}{Returns}
+array$\vert$string$\vert$false Callback function/method or false if none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a63e87c77e5586c39043c486798cac086}\label{classPEAR__ErrorStack_a63e87c77e5586c39043c486798cac086}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!hasErrors@{hasErrors}}
+\index{hasErrors@{hasErrors}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{hasErrors()}{hasErrors()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::has\+Errors (\begin{DoxyParamCaption}\item[{}]{\$level = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Determine whether there are any errors on the stack 
+\begin{DoxyParams}{Parameters}
+{\em string$\vert$array} & Level name. Use to determine if any errors of level (string), or levels (array) have been pushed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_ae796988ad3a362e8e21f323c5d21d64e}\label{classPEAR__ErrorStack_ae796988ad3a362e8e21f323c5d21d64e}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{PEAR\_ErrorStack()}{PEAR\_ErrorStack()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::\+P\+E\+A\+R\+\_\+\+Error\+Stack (\begin{DoxyParamCaption}\item[{}]{\$package,  }\item[{}]{\$msg\+Callback = {\ttfamily false},  }\item[{}]{\$context\+Callback = {\ttfamily false},  }\item[{}]{\$throw\+P\+E\+A\+R\+\_\+\+Error = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Set up a new error stack
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$package} & name of the package this error stack represents \\
+\hline
+callback & {\em \$msg\+Callback} & callback used for error message generation \\
+\hline
+callback & {\em \$context\+Callback} & callback used for context generation, defaults to \mbox{\hyperlink{classPEAR__ErrorStack_a4bd26776d8a0399590d8853bfd3718c8}{get\+File\+Line()}} \\
+\hline
+boolean & {\em \$throw\+P\+E\+A\+R\+\_\+\+Error} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a872ef26d7f4b2889d9d8a3ce93b75e56}\label{classPEAR__ErrorStack_a872ef26d7f4b2889d9d8a3ce93b75e56}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!pop@{pop}}
+\index{pop@{pop}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::pop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Pop an error off of the error stack
+
+\begin{DoxyReturn}{Returns}
+false$\vert$array 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+0.\+4alpha it is no longer possible to specify a specific error level to return -\/ the last error pushed will be returned, instead 
+\end{DoxySince}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a30464bb8f3a27137cc028d7e1166383c}\label{classPEAR__ErrorStack_a30464bb8f3a27137cc028d7e1166383c}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!popCallback@{popCallback}}
+\index{popCallback@{popCallback}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{popCallback()}{popCallback()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::pop\+Callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Remove a callback from the error callback stack \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classPEAR__ErrorStack_a76bc74fb08d53620cb24c8f2f48e1b15}{push\+Callback()}} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+array$\vert$string$\vert$false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a2fb062a92ee24b15a5d15b9c53ffa925}\label{classPEAR__ErrorStack_a2fb062a92ee24b15a5d15b9c53ffa925}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!push@{push}}
+\index{push@{push}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::push (\begin{DoxyParamCaption}\item[{}]{\$code,  }\item[{}]{\$level = {\ttfamily \textquotesingle{}error\textquotesingle{}},  }\item[{}]{\$params = {\ttfamily array()},  }\item[{}]{\$msg = {\ttfamily false},  }\item[{}]{\$repackage = {\ttfamily false},  }\item[{}]{\$backtrace = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Add an error to the stack
+
+If the message generator exists, it is called with 2 parameters.
+\begin{DoxyItemize}
+\item the current Error Stack object
+\item an array that is in the same format as an error. Available indices are \textquotesingle{}code\textquotesingle{}, \textquotesingle{}package\textquotesingle{}, \textquotesingle{}time\textquotesingle{}, \textquotesingle{}params\textquotesingle{}, \textquotesingle{}level\textquotesingle{}, and \textquotesingle{}context\textquotesingle{}
+\end{DoxyItemize}
+
+Next, if the error should contain context information, this is handled by the context grabbing method. Finally, the error is pushed onto the proper error stack 
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$code} & Package-\/specific error code \\
+\hline
+string & {\em \$level} & Error level. This is N\+OT spell-\/checked \\
+\hline
+array & {\em \$params} & associative array of error parameters \\
+\hline
+string & {\em \$msg} & Error message, or a portion of it if the message is to be generated \\
+\hline
+array & {\em \$repackage} & If this error re-\/packages an error pushed by another package, place the array returned from \mbox{\hyperlink{classPEAR__ErrorStack_a872ef26d7f4b2889d9d8a3ce93b75e56}{pop()}} in this parameter \\
+\hline
+array & {\em \$backtrace} & Protected parameter\+: use this to pass in the \mbox{\hyperlink{}{debug\+\_\+backtrace()}} that should be used to find error context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Error$\vert$array if compatibility mode is on, a \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} is also thrown. If a \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} is returned, the userinfo property is set to the following array\+:
+\end{DoxyReturn}
+{\ttfamily  array( \textquotesingle{}code\textquotesingle{} =$>$ \$code, \textquotesingle{}params\textquotesingle{} =$>$ \$params, \textquotesingle{}package\textquotesingle{} =$>$ \$this-\/$>$\+\_\+package, \textquotesingle{}level\textquotesingle{} =$>$ \$level, \textquotesingle{}time\textquotesingle{} =$>$ time(), \textquotesingle{}context\textquotesingle{} =$>$ \$context, \textquotesingle{}message\textquotesingle{} =$>$ \$msg, //\mbox{[}\textquotesingle{}repackage\textquotesingle{} =$>$ \$err\mbox{]} repackaged error array/\+Exception class ); }
+
+Normally, the previous array is returned. \mbox{\Hypertarget{classPEAR__ErrorStack_a76bc74fb08d53620cb24c8f2f48e1b15}\label{classPEAR__ErrorStack_a76bc74fb08d53620cb24c8f2f48e1b15}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!pushCallback@{pushCallback}}
+\index{pushCallback@{pushCallback}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{pushCallback()}{pushCallback()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::push\+Callback (\begin{DoxyParamCaption}\item[{}]{\$cb }\end{DoxyParamCaption})}
+
+Set an error Callback If set to a valid callback, this will be called every time an error is pushed onto the stack. The return value will be used to determine whether to allow an error to be pushed or logged.
+
+The return value must be one of the E\+R\+R\+O\+R\+S\+T\+A\+C\+K\+\_\+$\ast$ constants.
+
+This functionality can be used to emulate \mbox{\hyperlink{classPEAR}{P\+E\+AR}}\textquotesingle{}s push\+Error\+Handling, and the P\+E\+A\+R\+\_\+\+E\+R\+R\+O\+R\+\_\+\+C\+A\+L\+L\+B\+A\+CK mode, without affecting the integrity of the error stack or logging \begin{DoxySeeAlso}{See also}
+P\+E\+A\+R\+\_\+\+E\+R\+R\+O\+R\+S\+T\+A\+C\+K\+\_\+\+P\+U\+S\+H\+A\+N\+D\+L\+OG, P\+E\+A\+R\+\_\+\+E\+R\+R\+O\+R\+S\+T\+A\+C\+K\+\_\+\+P\+U\+SH, P\+E\+A\+R\+\_\+\+E\+R\+R\+O\+R\+S\+T\+A\+C\+K\+\_\+\+L\+OG 
+
+\mbox{\hyperlink{classPEAR__ErrorStack_a30464bb8f3a27137cc028d7e1166383c}{pop\+Callback()}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+string | array & {\em \$cb} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a48640fdbc5689e14838b3ae5534e75b5}\label{classPEAR__ErrorStack_a48640fdbc5689e14838b3ae5534e75b5}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!raiseError@{raiseError}}
+\index{raiseError@{raiseError}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{raiseError()}{raiseError()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::raise\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+emulate \mbox{\hyperlink{classPEAR_add7f8b82b573935527decd2e1af6065d}{P\+E\+A\+R\+::raise\+Error()}}
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_ab77053f650006f5be263b575f1147faf}\label{classPEAR__ErrorStack_ab77053f650006f5be263b575f1147faf}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!setContextCallback@{setContextCallback}}
+\index{setContextCallback@{setContextCallback}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{setContextCallback()}{setContextCallback()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::set\+Context\+Callback (\begin{DoxyParamCaption}\item[{}]{\$context\+Callback }\end{DoxyParamCaption})}
+
+Set a callback that generates context information (location of error) for an error stack
+
+This method sets the callback that can be used to generate context information for an error. Passing in N\+U\+LL will disable context generation and remove the expensive call to debug\+\_\+backtrace() 
+\begin{DoxyParams}{Parameters}
+{\em array$\vert$string$\vert$null} & Callback function/method \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a7349781d48b3a4ffcf738db537cacc36}\label{classPEAR__ErrorStack_a7349781d48b3a4ffcf738db537cacc36}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!setDefaultCallback@{setDefaultCallback}}
+\index{setDefaultCallback@{setDefaultCallback}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{setDefaultCallback()}{setDefaultCallback()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::set\+Default\+Callback (\begin{DoxyParamCaption}\item[{}]{\$callback = {\ttfamily false},  }\item[{}]{\$package = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Sets a default callback to be used by all error stacks
+
+This method sets the callback that can be used to generate error messages for a singleton 
+\begin{DoxyParams}{Parameters}
+{\em array$\vert$string} & Callback function/method \\
+\hline
+{\em string} & Package name, or false for all packages \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a6650eb6d3f24d9c7f707d38b789ea38c}\label{classPEAR__ErrorStack_a6650eb6d3f24d9c7f707d38b789ea38c}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!setDefaultLogger@{setDefaultLogger}}
+\index{setDefaultLogger@{setDefaultLogger}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{setDefaultLogger()}{setDefaultLogger()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::set\+Default\+Logger (\begin{DoxyParamCaption}\item[{\&}]{\$log }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Set up a P\+E\+A\+R\+::\+Log object for all error stacks that don\textquotesingle{}t have one 
+\begin{DoxyParams}[1]{Parameters}
+Log & {\em \$log} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__ErrorStack_af7a1f0bec420abf361c989017aa8d1a7}\label{classPEAR__ErrorStack_af7a1f0bec420abf361c989017aa8d1a7}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!setErrorMessageTemplate@{setErrorMessageTemplate}}
+\index{setErrorMessageTemplate@{setErrorMessageTemplate}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{setErrorMessageTemplate()}{setErrorMessageTemplate()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::set\+Error\+Message\+Template (\begin{DoxyParamCaption}\item[{}]{\$template }\end{DoxyParamCaption})}
+
+Set the Error Message Template array
+
+The array format must be\+: 
+\begin{DoxyPre}
+array(error code => 'message template',...)
+\end{DoxyPre}
+
+
+Error message parameters passed into \mbox{\hyperlink{classPEAR__ErrorStack_a2fb062a92ee24b15a5d15b9c53ffa925}{push()}} will be used as input for the error message. If the template is \textquotesingle{}message foo\% was bar\textquotesingle{}, and the parameters are array(\textquotesingle{}foo\textquotesingle{} =$>$ \textquotesingle{}one\textquotesingle{}, \textquotesingle{}bar\textquotesingle{} =$>$ \textquotesingle{}six\textquotesingle{}), the error message returned will be \textquotesingle{}message one was six\textquotesingle{} \begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a92e528a2d85c0f542fdef60756a2bc09}\label{classPEAR__ErrorStack_a92e528a2d85c0f542fdef60756a2bc09}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!setLogger@{setLogger}}
+\index{setLogger@{setLogger}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{setLogger()}{setLogger()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::set\+Logger (\begin{DoxyParamCaption}\item[{\&}]{\$log }\end{DoxyParamCaption})}
+
+Set up a P\+E\+A\+R\+::\+Log object for this error stack 
+\begin{DoxyParams}[1]{Parameters}
+Log & {\em \$log} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a2eb2094deaf547d2d1c5744fa9d505d9}\label{classPEAR__ErrorStack_a2eb2094deaf547d2d1c5744fa9d505d9}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!setMessageCallback@{setMessageCallback}}
+\index{setMessageCallback@{setMessageCallback}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{setMessageCallback()}{setMessageCallback()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::set\+Message\+Callback (\begin{DoxyParamCaption}\item[{}]{\$msg\+Callback }\end{DoxyParamCaption})}
+
+Set an error code =$>$ error message mapping callback
+
+This method sets the callback that can be used to generate error messages for any instance 
+\begin{DoxyParams}{Parameters}
+{\em array$\vert$string} & Callback function/method \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__ErrorStack_ae2fdad5bfb5103ae36545f4525e34a30}\label{classPEAR__ErrorStack_ae2fdad5bfb5103ae36545f4525e34a30}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!singleton@{singleton}}
+\index{singleton@{singleton}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{singleton()}{singleton()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Error\+Stack\+::singleton (\begin{DoxyParamCaption}\item[{}]{\$package,  }\item[{}]{\$msg\+Callback = {\ttfamily false},  }\item[{}]{\$context\+Callback = {\ttfamily false},  }\item[{}]{\$throw\+P\+E\+A\+R\+\_\+\+Error = {\ttfamily false},  }\item[{}]{\$stack\+Class = {\ttfamily \textquotesingle{}\mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}}\textquotesingle{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Return a single error stack for this package.
+
+Note that all parameters are ignored if the stack for package \$package has already been instantiated 
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$package} & name of the package this error stack represents \\
+\hline
+callback & {\em \$msg\+Callback} & callback used for error message generation \\
+\hline
+callback & {\em \$context\+Callback} & callback used for context generation, defaults to \mbox{\hyperlink{classPEAR__ErrorStack_a4bd26776d8a0399590d8853bfd3718c8}{get\+File\+Line()}} \\
+\hline
+boolean & {\em \$throw\+P\+E\+A\+R\+\_\+\+Error} & \\
+\hline
+string & {\em \$stack\+Class} & class to instantiate\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a3c10b4c975ed17cd778c72dd77e02c7e}\label{classPEAR__ErrorStack_a3c10b4c975ed17cd778c72dd77e02c7e}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!staticGetErrors@{staticGetErrors}}
+\index{staticGetErrors@{staticGetErrors}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{staticGetErrors()}{staticGetErrors()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::static\+Get\+Errors (\begin{DoxyParamCaption}\item[{}]{\$purge = {\ttfamily false},  }\item[{}]{\$level = {\ttfamily false},  }\item[{}]{\$merge = {\ttfamily false},  }\item[{}]{\$sortfunc = {\ttfamily array(\textquotesingle{}\mbox{\hyperlink{classPEAR__ErrorStack}{P\+E\+A\+R\+\_\+\+Error\+Stack}}\textquotesingle{},~\textquotesingle{}\mbox{\hyperlink{classPEAR__ErrorStack_afa2bd540d30e446b6610c2a39cb2a230}{\+\_\+sort\+Errors}}\textquotesingle{})} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get a list of all errors since last purge, organized by package \begin{DoxySince}{Since}
+\mbox{\hyperlink{classPEAR}{P\+E\+AR}} 1.\+4.\+0dev BC break! \$level is now in the place \$merge used to be 
+\end{DoxySince}
+
+\begin{DoxyParams}[1]{Parameters}
+boolean & {\em \$purge} & Set to purge the error stack of existing errors \\
+\hline
+string & {\em \$level} & Set to a level name in order to retrieve only errors of a particular level \\
+\hline
+boolean & {\em \$merge} & Set to return a flat array, not organized by package \\
+\hline
+array & {\em \$sortfunc} & Function used to sort a merged array -\/ default sorts by time, and should be good for most cases\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a9151ec6bdfb49cea96a3319bce915497}\label{classPEAR__ErrorStack_a9151ec6bdfb49cea96a3319bce915497}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!staticHasErrors@{staticHasErrors}}
+\index{staticHasErrors@{staticHasErrors}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{staticHasErrors()}{staticHasErrors()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::static\+Has\+Errors (\begin{DoxyParamCaption}\item[{}]{\$package = {\ttfamily false},  }\item[{}]{\$level = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Determine whether there are any errors on a single error stack, or on any error stack
+
+The optional parameter can be used to test the existence of any errors without the need of singleton instantiation 
+\begin{DoxyParams}{Parameters}
+{\em string$\vert$false} & Package name to check for errors \\
+\hline
+{\em string} & Level name to check for a particular severity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_af0a99426a00667658b6927e0f0beeec4}\label{classPEAR__ErrorStack_af0a99426a00667658b6927e0f0beeec4}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!staticPop@{staticPop}}
+\index{staticPop@{staticPop}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{staticPop()}{staticPop()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::static\+Pop (\begin{DoxyParamCaption}\item[{}]{\$package }\end{DoxyParamCaption})}
+
+Pop an error off of the error stack, static method
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & package name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+P\+E\+A\+R1.\+5.\+0a1 
+\end{DoxySince}
+\mbox{\Hypertarget{classPEAR__ErrorStack_ae947fbeaf008439bbfe8627b1d3dc455}\label{classPEAR__ErrorStack_ae947fbeaf008439bbfe8627b1d3dc455}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!staticPopCallback@{staticPopCallback}}
+\index{staticPopCallback@{staticPopCallback}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{staticPopCallback()}{staticPopCallback()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::static\+Pop\+Callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Remove a temporary overriding error callback \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classPEAR__ErrorStack_aee3316e3379ca2bdf3ccf57957b0381a}{static\+Push\+Callback()}} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+array$\vert$string$\vert$false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_a171377994fedee4b97078da6eef7fa6b}\label{classPEAR__ErrorStack_a171377994fedee4b97078da6eef7fa6b}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!staticPush@{staticPush}}
+\index{staticPush@{staticPush}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{staticPush()}{staticPush()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::static\+Push (\begin{DoxyParamCaption}\item[{}]{\$package,  }\item[{}]{\$code,  }\item[{}]{\$level = {\ttfamily \textquotesingle{}error\textquotesingle{}},  }\item[{}]{\$params = {\ttfamily array()},  }\item[{}]{\$msg = {\ttfamily false},  }\item[{}]{\$repackage = {\ttfamily false},  }\item[{}]{\$backtrace = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Static version of \mbox{\hyperlink{classPEAR__ErrorStack_a2fb062a92ee24b15a5d15b9c53ffa925}{push()}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$package} & Package name this error belongs to \\
+\hline
+int & {\em \$code} & Package-\/specific error code \\
+\hline
+string & {\em \$level} & Error level. This is N\+OT spell-\/checked \\
+\hline
+array & {\em \$params} & associative array of error parameters \\
+\hline
+string & {\em \$msg} & Error message, or a portion of it if the message is to be generated \\
+\hline
+array & {\em \$repackage} & If this error re-\/packages an error pushed by another package, place the array returned from \mbox{\hyperlink{classPEAR__ErrorStack_a872ef26d7f4b2889d9d8a3ce93b75e56}{pop()}} in this parameter \\
+\hline
+array & {\em \$backtrace} & Protected parameter\+: use this to pass in the \mbox{\hyperlink{}{debug\+\_\+backtrace()}} that should be used to find error context \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Error$\vert$array if compatibility mode is on, a \mbox{\hyperlink{classPEAR__Error}{P\+E\+A\+R\+\_\+\+Error}} is also thrown. see docs for \mbox{\hyperlink{classPEAR__ErrorStack_a2fb062a92ee24b15a5d15b9c53ffa925}{push()}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__ErrorStack_aee3316e3379ca2bdf3ccf57957b0381a}\label{classPEAR__ErrorStack_aee3316e3379ca2bdf3ccf57957b0381a}} 
+\index{PEAR\_ErrorStack@{PEAR\_ErrorStack}!staticPushCallback@{staticPushCallback}}
+\index{staticPushCallback@{staticPushCallback}!PEAR\_ErrorStack@{PEAR\_ErrorStack}}
+\doxysubsubsection{\texorpdfstring{staticPushCallback()}{staticPushCallback()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Error\+Stack\+::static\+Push\+Callback (\begin{DoxyParamCaption}\item[{}]{\$cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Set a temporary overriding error callback for every package error stack
+
+Use this to temporarily disable all existing callbacks (can be used to emulate the @ operator, for instance) \begin{DoxySeeAlso}{See also}
+P\+E\+A\+R\+\_\+\+E\+R\+R\+O\+R\+S\+T\+A\+C\+K\+\_\+\+P\+U\+S\+H\+A\+N\+D\+L\+OG, P\+E\+A\+R\+\_\+\+E\+R\+R\+O\+R\+S\+T\+A\+C\+K\+\_\+\+P\+U\+SH, P\+E\+A\+R\+\_\+\+E\+R\+R\+O\+R\+S\+T\+A\+C\+K\+\_\+\+L\+OG 
+
+\mbox{\hyperlink{classPEAR__ErrorStack_ae947fbeaf008439bbfe8627b1d3dc455}{static\+Pop\+Callback()}}, \mbox{\hyperlink{classPEAR__ErrorStack_a76bc74fb08d53620cb24c8f2f48e1b15}{push\+Callback()}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+string | array & {\em \$cb} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/Error\+Stack.\+php\end{DoxyCompactItemize}

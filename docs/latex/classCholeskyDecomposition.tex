@@ -1,0 +1,76 @@
+\hypertarget{classCholeskyDecomposition}{}\doxysection{Cholesky\+Decomposition Class Reference}
+\label{classCholeskyDecomposition}\index{CholeskyDecomposition@{CholeskyDecomposition}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCholeskyDecomposition_a3efaeb7764b681719ef7011f011f894d}{Cholesky\+Decomposition}} ( \$A=null)
+\item 
+\mbox{\hyperlink{classCholeskyDecomposition_a0ea878b291b1daee021e9de4240128ea}{is\+S\+PD}} ()
+\item 
+\mbox{\hyperlink{classCholeskyDecomposition_a66e1da53c56210f52399529ee9895f59}{getL}} ()
+\item 
+\mbox{\hyperlink{classCholeskyDecomposition_a300fb8794179da020ad739279932698c}{solve}} ( \$B=null)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCholeskyDecomposition_a386f2090fe7fc28231cfe8215232e472}\label{classCholeskyDecomposition_a386f2090fe7fc28231cfe8215232e472}} 
+{\bfseries \$L} = array()
+\item 
+\mbox{\Hypertarget{classCholeskyDecomposition_ab386c11a6527359db8a83ff08ca0979e}\label{classCholeskyDecomposition_ab386c11a6527359db8a83ff08ca0979e}} 
+{\bfseries \$m}
+\item 
+\mbox{\Hypertarget{classCholeskyDecomposition_a1cc4613d2b9e70ca43ab704f58fb4de3}\label{classCholeskyDecomposition_a1cc4613d2b9e70ca43ab704f58fb4de3}} 
+{\bfseries \$isspd} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCholeskyDecomposition_a3efaeb7764b681719ef7011f011f894d}\label{classCholeskyDecomposition_a3efaeb7764b681719ef7011f011f894d}} 
+\index{CholeskyDecomposition@{CholeskyDecomposition}!CholeskyDecomposition@{CholeskyDecomposition}}
+\index{CholeskyDecomposition@{CholeskyDecomposition}!CholeskyDecomposition@{CholeskyDecomposition}}
+\doxysubsubsection{\texorpdfstring{CholeskyDecomposition()}{CholeskyDecomposition()}}
+{\footnotesize\ttfamily Cholesky\+Decomposition\+::\+Cholesky\+Decomposition (\begin{DoxyParamCaption}\item[{}]{\$A = {\ttfamily null} }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{classCholeskyDecomposition}{Cholesky\+Decomposition}} Class constructor -\/ decomposes symmetric positive definite matrix 
+\begin{DoxyParams}{Parameters}
+{\em mixed} & \mbox{\hyperlink{classMatrix}{Matrix}} square symmetric positive definite matrix \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCholeskyDecomposition_a66e1da53c56210f52399529ee9895f59}\label{classCholeskyDecomposition_a66e1da53c56210f52399529ee9895f59}} 
+\index{CholeskyDecomposition@{CholeskyDecomposition}!getL@{getL}}
+\index{getL@{getL}!CholeskyDecomposition@{CholeskyDecomposition}}
+\doxysubsubsection{\texorpdfstring{getL()}{getL()}}
+{\footnotesize\ttfamily Cholesky\+Decomposition\+::getL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+getL Return triangular factor. \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classMatrix}{Matrix}} Lower triangular matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCholeskyDecomposition_a0ea878b291b1daee021e9de4240128ea}\label{classCholeskyDecomposition_a0ea878b291b1daee021e9de4240128ea}} 
+\index{CholeskyDecomposition@{CholeskyDecomposition}!isSPD@{isSPD}}
+\index{isSPD@{isSPD}!CholeskyDecomposition@{CholeskyDecomposition}}
+\doxysubsubsection{\texorpdfstring{isSPD()}{isSPD()}}
+{\footnotesize\ttfamily Cholesky\+Decomposition\+::is\+S\+PD (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Is the matrix symmetric and positive definite? \begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCholeskyDecomposition_a300fb8794179da020ad739279932698c}\label{classCholeskyDecomposition_a300fb8794179da020ad739279932698c}} 
+\index{CholeskyDecomposition@{CholeskyDecomposition}!solve@{solve}}
+\index{solve@{solve}!CholeskyDecomposition@{CholeskyDecomposition}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily Cholesky\+Decomposition\+::solve (\begin{DoxyParamCaption}\item[{}]{\$B = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Solve A$\ast$X = B 
+\begin{DoxyParams}{Parameters}
+{\em \$B} & Row-\/equal matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classMatrix}{Matrix}} L $\ast$ L\textquotesingle{} $\ast$ X = B 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/phpmath/Cholesky\+Decomposition.\+php\end{DoxyCompactItemize}

@@ -1,0 +1,79 @@
+\hypertarget{classMath__Expression}{}\doxysection{Math\+\_\+\+Expression Class Reference}
+\label{classMath__Expression}\index{Math\_Expression@{Math\_Expression}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMath__Expression_a98944dbc537f6ea515b5aec4c3b551aa}\label{classMath__Expression_a98944dbc537f6ea515b5aec4c3b551aa}} 
+{\bfseries \+\_\+\+\_\+construct} (\$expression)
+\item 
+\mbox{\Hypertarget{classMath__Expression_aa2475bb806789896f1575d5815d73e7f}\label{classMath__Expression_aa2475bb806789896f1575d5815d73e7f}} 
+{\bfseries evaluate} ()
+\item 
+\mbox{\Hypertarget{classMath__Expression_a2c67baff64df6b936366a1b6c0aec877}\label{classMath__Expression_a2c67baff64df6b936366a1b6c0aec877}} 
+{\bfseries \+\_\+\+\_\+to\+String} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMath__Expression_af0505b859188ca0ba7412d75d233924f}\label{classMath__Expression_af0505b859188ca0ba7412d75d233924f}} 
+static {\bfseries handle\+Operation} (\mbox{\hyperlink{classMath__Expression__Structure}{Math\+\_\+\+Expression\+\_\+\+Structure}} \$struct1, \mbox{\hyperlink{classMath__Expression__Operator}{Math\+\_\+\+Expression\+\_\+\+Operator}} \$operator, \mbox{\hyperlink{classMath__Expression__Structure}{Math\+\_\+\+Expression\+\_\+\+Structure}} \$struct2)
+\item 
+\mbox{\Hypertarget{classMath__Expression_ac6ac15b2fabd93826a5dcc82785cd926}\label{classMath__Expression_ac6ac15b2fabd93826a5dcc82785cd926}} 
+static {\bfseries register\+Operator} (\mbox{\hyperlink{classMath__Expression__Operator}{Math\+\_\+\+Expression\+\_\+\+Operator}} \$operator)
+\item 
+\mbox{\Hypertarget{classMath__Expression_a086e7461e2d7a19505e96f8771031008}\label{classMath__Expression_a086e7461e2d7a19505e96f8771031008}} 
+static {\bfseries register\+Structure} (\mbox{\hyperlink{classMath__Expression__Structure}{Math\+\_\+\+Expression\+\_\+\+Structure}} \$structure)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMath__Expression_a66433cd18d8679bfcaed61e37ae05b32}\label{classMath__Expression_a66433cd18d8679bfcaed61e37ae05b32}} 
+const {\bfseries S\+\_\+\+V\+A\+L\+ID} = 0
+\item 
+\mbox{\Hypertarget{classMath__Expression_a9ad84246094512cf14cea8ac05cd4ae4}\label{classMath__Expression_a9ad84246094512cf14cea8ac05cd4ae4}} 
+const {\bfseries S\+\_\+\+E\+R\+R\+OR} = 1
+\item 
+\mbox{\Hypertarget{classMath__Expression_a2cb245520bd03ee2cb0bf8ae146b3b36}\label{classMath__Expression_a2cb245520bd03ee2cb0bf8ae146b3b36}} 
+const {\bfseries P\+\_\+\+S\+T\+R\+U\+C\+T\+U\+RE} = 1
+\item 
+\mbox{\Hypertarget{classMath__Expression_a8468095e05082498ec54ff0cd742b572}\label{classMath__Expression_a8468095e05082498ec54ff0cd742b572}} 
+const {\bfseries P\+\_\+\+O\+P\+E\+R\+A\+T\+OR} = 2
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMath__Expression_ab782e8e5317d450df28ad635671714a8}\label{classMath__Expression_ab782e8e5317d450df28ad635671714a8}} 
+{\bfseries \+\_\+parse} ()
+\item 
+\mbox{\Hypertarget{classMath__Expression_a62da3b75450a202a3f6999a1228b1fb4}\label{classMath__Expression_a62da3b75450a202a3f6999a1228b1fb4}} 
+{\bfseries \+\_\+to\+R\+PN} ()
+\item 
+\mbox{\Hypertarget{classMath__Expression_a44437f0f59d3a6075894913b1b40a4d4}\label{classMath__Expression_a44437f0f59d3a6075894913b1b40a4d4}} 
+{\bfseries \+\_\+clean} (\$expression)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMath__Expression_a818e507f632b67f0810381e9330efbc1}\label{classMath__Expression_a818e507f632b67f0810381e9330efbc1}} 
+{\bfseries \$\+\_\+pieces} = array()
+\item 
+\mbox{\Hypertarget{classMath__Expression_af111e19f47f86e3a2848bc187fdf645f}\label{classMath__Expression_af111e19f47f86e3a2848bc187fdf645f}} 
+{\bfseries \$\+\_\+expression} = \textquotesingle{}\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classMath__Expression_a9a1df3b0f4d9f00a79568f0efcc9d8a9}\label{classMath__Expression_a9a1df3b0f4d9f00a79568f0efcc9d8a9}} 
+{\bfseries \$\+\_\+status} = self\+::\+S\+\_\+\+V\+A\+L\+ID
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMath__Expression_accdab3a89dc93b194ccfc99c7aebd013}\label{classMath__Expression_accdab3a89dc93b194ccfc99c7aebd013}} 
+static {\bfseries \$\+\_\+registered\+Operators} = array()
+\item 
+\mbox{\Hypertarget{classMath__Expression_afb047c09dc6cf6f07c5e3747a1a650a4}\label{classMath__Expression_afb047c09dc6cf6f07c5e3747a1a650a4}} 
+static {\bfseries \$\+\_\+registered\+Structures} = array()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/phpmath/\+Math\+\_\+\+Expression/Expression.\+php\end{DoxyCompactItemize}

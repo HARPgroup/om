@@ -1,0 +1,282 @@
+\hypertarget{classPEAR__DependencyDB}{}\doxysection{P\+E\+A\+R\+\_\+\+Dependency\+DB Class Reference}
+\label{classPEAR__DependencyDB}\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a5a9f33f0bdf858c16735ab41fe3606f5}{set\+Config}} (\&\$config, \$depdb=false)
+\item 
+\mbox{\Hypertarget{classPEAR__DependencyDB_a5d2aea7ac0188066879c6215c766ec0c}\label{classPEAR__DependencyDB_a5d2aea7ac0188066879c6215c766ec0c}} 
+{\bfseries has\+Write\+Access} ()
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_aada7dec1e977be8c5444daa1c52c34be}{assert\+Deps\+DB}} ()
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a4371e7a9a2b07660025a6aef751428e1}{get\+Dependent\+Packages}} (\&\$pkg)
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a69b408eaae8968ef50a35c0ccaca17be}{get\+Dependent\+Package\+Dependencies}} (\&\$pkg)
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_afac864d99d71d7b2dd6a13324e99a651}{get\+Dependencies}} (\&\$pkg)
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a5d2ab88dec107372bd014e1981232603}{depends\+On}} (\$parent, \$child)
+\item 
+\mbox{\Hypertarget{classPEAR__DependencyDB_a93adf5a317f34663730ba9dc2f74484d}\label{classPEAR__DependencyDB_a93adf5a317f34663730ba9dc2f74484d}} 
+{\bfseries \+\_\+depends\+On} (\$parent, \$child, \&\$checked)
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_ad74f49077473c7c51f140c7510cb8f2a}{install\+Package}} (\&\$package)
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a52c62bb89ac839350ec7ed646595b769}{uninstall\+Package}} (\&\$pkg)
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_aaf5d716b8e262603058061ba85d02de8}{rebuild\+DB}} ()
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a1c19130ad5fd67dca82102100752180e}{\+\_\+lock}} (\$mode=L\+O\+C\+K\+\_\+\+EX)
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a7fe0ab8bf06790ded7414ee3d15ca3b5}{\+\_\+unlock}} ()
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a8cc9decf015e7baa2708ae2058726296}{\+\_\+get\+Dep\+DB}} ()
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a086317f0836060a0c6fc83224cb4f4ac}{\+\_\+write\+Dep\+DB}} (\&\$deps)
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_afc1cb77923aa370b9519061bb4975ad5}{\+\_\+set\+Package\+Deps}} (\&\$data, \&\$pkg)
+\item 
+\mbox{\hyperlink{classPEAR__DependencyDB_a1bfa833bbb7476978c977b7835ed70de}{\+\_\+register\+Dep}} (\&\$data, \&\$pkg, \$dep, \$type, \$group=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\& \mbox{\hyperlink{classPEAR__DependencyDB_a849a0d4a9ca1b1f080c6f07e47209b30}{singleton}} (\&\$config, \$depdb=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__DependencyDB_ac00c715f46dee6ffc8d7c432b173c983}\label{classPEAR__DependencyDB_ac00c715f46dee6ffc8d7c432b173c983}} 
+{\bfseries \$\+\_\+config}
+\item 
+\mbox{\Hypertarget{classPEAR__DependencyDB_ac7a08b10955802ec2a0153e747f96e77}\label{classPEAR__DependencyDB_ac7a08b10955802ec2a0153e747f96e77}} 
+{\bfseries \$\+\_\+registry}
+\item 
+\mbox{\Hypertarget{classPEAR__DependencyDB_a876f845dfbdd5f29b21ff58ff627d989}\label{classPEAR__DependencyDB_a876f845dfbdd5f29b21ff58ff627d989}} 
+{\bfseries \$\+\_\+depdb} = false
+\item 
+\mbox{\Hypertarget{classPEAR__DependencyDB_a63b9ce16764a6bcf21d2ac118fb14574}\label{classPEAR__DependencyDB_a63b9ce16764a6bcf21d2ac118fb14574}} 
+{\bfseries \$\+\_\+lockfile} = false
+\item 
+\mbox{\Hypertarget{classPEAR__DependencyDB_a2961f10f736d2c822a65bbb691ddafb4}\label{classPEAR__DependencyDB_a2961f10f736d2c822a65bbb691ddafb4}} 
+{\bfseries \$\+\_\+lock\+Fp} = false
+\item 
+\mbox{\Hypertarget{classPEAR__DependencyDB_a4c79f93a4ab7c3d4fca347395aa6cd2c}\label{classPEAR__DependencyDB_a4c79f93a4ab7c3d4fca347395aa6cd2c}} 
+{\bfseries \$\+\_\+version} = \textquotesingle{}1.\+0\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classPEAR__DependencyDB_a25c0fba8a2ab569ff056fb4ff25388a6}\label{classPEAR__DependencyDB_a25c0fba8a2ab569ff056fb4ff25388a6}} 
+{\bfseries \$\+\_\+cache}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a8cc9decf015e7baa2708ae2058726296}\label{classPEAR__DependencyDB_a8cc9decf015e7baa2708ae2058726296}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!\_getDepDB@{\_getDepDB}}
+\index{\_getDepDB@{\_getDepDB}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{\_getDepDB()}{\_getDepDB()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::\+\_\+get\+Dep\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Load the dependency database from disk, or return the cache \begin{DoxyReturn}{Returns}
+array$\vert$\+P\+E\+A\+R\+\_\+\+Error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a1c19130ad5fd67dca82102100752180e}\label{classPEAR__DependencyDB_a1c19130ad5fd67dca82102100752180e}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!\_lock@{\_lock}}
+\index{\_lock@{\_lock}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{\_lock()}{\_lock()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::\+\_\+lock (\begin{DoxyParamCaption}\item[{}]{\$mode = {\ttfamily LOCK\+\_\+EX} }\end{DoxyParamCaption})}
+
+Register usage of the dependency \mbox{\hyperlink{classDB}{DB}} to prevent race conditions 
+\begin{DoxyParams}{Parameters}
+{\em int} & one of the L\+O\+C\+K\+\_\+$\ast$ constants \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true$\vert$\+P\+E\+A\+R\+\_\+\+Error @access private 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a1bfa833bbb7476978c977b7835ed70de}\label{classPEAR__DependencyDB_a1bfa833bbb7476978c977b7835ed70de}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!\_registerDep@{\_registerDep}}
+\index{\_registerDep@{\_registerDep}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{\_registerDep()}{\_registerDep()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::\+\_\+register\+Dep (\begin{DoxyParamCaption}\item[{\&}]{\$data,  }\item[{\&}]{\$pkg,  }\item[{}]{\$dep,  }\item[{}]{\$type,  }\item[{}]{\$group = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & the database \\
+\hline
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2} & \\
+\hline
+{\em array} & the specific dependency \\
+\hline
+{\em required$\vert$optional} & whether this is a required or an optional dep \\
+\hline
+{\em string$\vert$false} & dependency group this dependency is from, or false for ordinary dep \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__DependencyDB_afc1cb77923aa370b9519061bb4975ad5}\label{classPEAR__DependencyDB_afc1cb77923aa370b9519061bb4975ad5}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!\_setPackageDeps@{\_setPackageDeps}}
+\index{\_setPackageDeps@{\_setPackageDeps}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{\_setPackageDeps()}{\_setPackageDeps()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::\+\_\+set\+Package\+Deps (\begin{DoxyParamCaption}\item[{\&}]{\$data,  }\item[{\&}]{\$pkg }\end{DoxyParamCaption})}
+
+Register all dependencies from a package in the dependencies database, in essence \char`\"{}installing\char`\"{} the package\textquotesingle{}s dependency information 
+\begin{DoxyParams}{Parameters}
+{\em array} & the database \\
+\hline
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2} & @access private \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a7fe0ab8bf06790ded7414ee3d15ca3b5}\label{classPEAR__DependencyDB_a7fe0ab8bf06790ded7414ee3d15ca3b5}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!\_unlock@{\_unlock}}
+\index{\_unlock@{\_unlock}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{\_unlock()}{\_unlock()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::\+\_\+unlock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Release usage of dependency \mbox{\hyperlink{classDB}{DB}} \begin{DoxyReturn}{Returns}
+true$\vert$\+P\+E\+A\+R\+\_\+\+Error @access private 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a086317f0836060a0c6fc83224cb4f4ac}\label{classPEAR__DependencyDB_a086317f0836060a0c6fc83224cb4f4ac}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!\_writeDepDB@{\_writeDepDB}}
+\index{\_writeDepDB@{\_writeDepDB}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{\_writeDepDB()}{\_writeDepDB()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::\+\_\+write\+Dep\+DB (\begin{DoxyParamCaption}\item[{\&}]{\$deps }\end{DoxyParamCaption})}
+
+Write out the dependency database to disk 
+\begin{DoxyParams}{Parameters}
+{\em array} & the database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true$\vert$\+P\+E\+A\+R\+\_\+\+Error @access private 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_aada7dec1e977be8c5444daa1c52c34be}\label{classPEAR__DependencyDB_aada7dec1e977be8c5444daa1c52c34be}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!assertDepsDB@{assertDepsDB}}
+\index{assertDepsDB@{assertDepsDB}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{assertDepsDB()}{assertDepsDB()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::assert\+Deps\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Create the dependency database, if it doesn\textquotesingle{}t exist. Error if the database is newer than the code reading it. \begin{DoxyReturn}{Returns}
+void$\vert$\+P\+E\+A\+R\+\_\+\+Error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a5d2ab88dec107372bd014e1981232603}\label{classPEAR__DependencyDB_a5d2ab88dec107372bd014e1981232603}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!dependsOn@{dependsOn}}
+\index{dependsOn@{dependsOn}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{dependsOn()}{dependsOn()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::depends\+On (\begin{DoxyParamCaption}\item[{}]{\$parent,  }\item[{}]{\$child }\end{DoxyParamCaption})}
+
+Determine whether \$parent depends on \$child, near or deep 
+\begin{DoxyParams}{Parameters}
+{\em array$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2} & \\
+\hline
+{\em array$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__DependencyDB_afac864d99d71d7b2dd6a13324e99a651}\label{classPEAR__DependencyDB_afac864d99d71d7b2dd6a13324e99a651}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!getDependencies@{getDependencies}}
+\index{getDependencies@{getDependencies}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{getDependencies()}{getDependencies()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::get\+Dependencies (\begin{DoxyParamCaption}\item[{\&}]{\$pkg }\end{DoxyParamCaption})}
+
+Get a list of dependencies of this installed package 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2$\vert$array} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array$\vert$false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a69b408eaae8968ef50a35c0ccaca17be}\label{classPEAR__DependencyDB_a69b408eaae8968ef50a35c0ccaca17be}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!getDependentPackageDependencies@{getDependentPackageDependencies}}
+\index{getDependentPackageDependencies@{getDependentPackageDependencies}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{getDependentPackageDependencies()}{getDependentPackageDependencies()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::get\+Dependent\+Package\+Dependencies (\begin{DoxyParamCaption}\item[{\&}]{\$pkg }\end{DoxyParamCaption})}
+
+Get a list of the actual dependencies of installed packages that depend on a package. 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2$\vert$array} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array$\vert$false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a4371e7a9a2b07660025a6aef751428e1}\label{classPEAR__DependencyDB_a4371e7a9a2b07660025a6aef751428e1}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!getDependentPackages@{getDependentPackages}}
+\index{getDependentPackages@{getDependentPackages}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{getDependentPackages()}{getDependentPackages()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::get\+Dependent\+Packages (\begin{DoxyParamCaption}\item[{\&}]{\$pkg }\end{DoxyParamCaption})}
+
+Get a list of installed packages that depend on this package 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2$\vert$array} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array$\vert$false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_ad74f49077473c7c51f140c7510cb8f2a}\label{classPEAR__DependencyDB_ad74f49077473c7c51f140c7510cb8f2a}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!installPackage@{installPackage}}
+\index{installPackage@{installPackage}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{installPackage()}{installPackage()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::install\+Package (\begin{DoxyParamCaption}\item[{\&}]{\$package }\end{DoxyParamCaption})}
+
+Register dependencies of a package that is being installed or upgraded 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__DependencyDB_aaf5d716b8e262603058061ba85d02de8}\label{classPEAR__DependencyDB_aaf5d716b8e262603058061ba85d02de8}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!rebuildDB@{rebuildDB}}
+\index{rebuildDB@{rebuildDB}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{rebuildDB()}{rebuildDB()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::rebuild\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Rebuild the dependency \mbox{\hyperlink{classDB}{DB}} by reading registry entries. \begin{DoxyReturn}{Returns}
+true$\vert$\+P\+E\+A\+R\+\_\+\+Error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a5a9f33f0bdf858c16735ab41fe3606f5}\label{classPEAR__DependencyDB_a5a9f33f0bdf858c16735ab41fe3606f5}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!setConfig@{setConfig}}
+\index{setConfig@{setConfig}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{setConfig()}{setConfig()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::set\+Config (\begin{DoxyParamCaption}\item[{\&}]{\$config,  }\item[{}]{\$depdb = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Set up the registry/location of dependency \mbox{\hyperlink{classDB}{DB}} 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Config$\vert$false} & \\
+\hline
+{\em string$\vert$false} & full path to the dependency database, or false to use default \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a849a0d4a9ca1b1f080c6f07e47209b30}\label{classPEAR__DependencyDB_a849a0d4a9ca1b1f080c6f07e47209b30}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!singleton@{singleton}}
+\index{singleton@{singleton}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{singleton()}{singleton()}}
+{\footnotesize\ttfamily \& P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::singleton (\begin{DoxyParamCaption}\item[{\&}]{\$config,  }\item[{}]{\$depdb = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get a raw dependency database. Calls \mbox{\hyperlink{classPEAR__DependencyDB_a5a9f33f0bdf858c16735ab41fe3606f5}{set\+Config()}} and \mbox{\hyperlink{classPEAR__DependencyDB_aada7dec1e977be8c5444daa1c52c34be}{assert\+Deps\+D\+B()}} 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Config} & \\
+\hline
+{\em string$\vert$false} & full path to the dependency database, or false to use default \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+P\+E\+A\+R\+\_\+\+Dependency\+D\+B$\vert$\+P\+E\+A\+R\+\_\+\+Error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__DependencyDB_a52c62bb89ac839350ec7ed646595b769}\label{classPEAR__DependencyDB_a52c62bb89ac839350ec7ed646595b769}} 
+\index{PEAR\_DependencyDB@{PEAR\_DependencyDB}!uninstallPackage@{uninstallPackage}}
+\index{uninstallPackage@{uninstallPackage}!PEAR\_DependencyDB@{PEAR\_DependencyDB}}
+\doxysubsubsection{\texorpdfstring{uninstallPackage()}{uninstallPackage()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+D\+B\+::uninstall\+Package (\begin{DoxyParamCaption}\item[{\&}]{\$pkg }\end{DoxyParamCaption})}
+
+Remove dependencies of a package that is being uninstalled, or upgraded.
+
+Upgraded packages first uninstall, then install 
+\begin{DoxyParams}{Parameters}
+{\em P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v1$\vert$\+P\+E\+A\+R\+\_\+\+Package\+File\+\_\+v2$\vert$array} & If an array, then it must have indices \textquotesingle{}channel\textquotesingle{} and \textquotesingle{}package\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/Dependency\+D\+B.\+php\end{DoxyCompactItemize}

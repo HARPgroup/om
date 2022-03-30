@@ -1,0 +1,636 @@
+\hypertarget{classDB__sybase}{}\doxysection{D\+B\+\_\+sybase Class Reference}
+\label{classDB__sybase}\index{DB\_sybase@{DB\_sybase}}
+
+
+Inheritance diagram for D\+B\+\_\+sybase\+:
+% FIG 0
+
+
+Collaboration diagram for D\+B\+\_\+sybase\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__sybase_a73367cc1380913b7fd2cfc8b3f498804}{D\+B\+\_\+sybase}} ()
+\item 
+\mbox{\hyperlink{classDB__sybase_a6ec4f175116157843e1e87d31065a790}{connect}} (\$dsn, \$persistent=false)
+\item 
+\mbox{\hyperlink{classDB__sybase_a268b2df7f8ea982a084575b705cc6e47}{disconnect}} ()
+\item 
+\mbox{\hyperlink{classDB__sybase_a92048f80d805bfc7a556a3e60e9ce18c}{simple\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\mbox{\hyperlink{classDB__sybase_aa5bd464e356a1deaa795fddff764eca6}{next\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__sybase_a7aa13c58954d6bdb2ea8c0b1ab3acf02}{fetch\+Into}} (\$result, \&\$arr, \$fetchmode, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__sybase_a208b95fd467904732d3f53aac38f148e}{free\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__sybase_a9ffeffc5e55cc758195d6eac4b44eb86}{num\+Cols}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__sybase_ad443d75625cea5c5b4b1cd194800df24}{num\+Rows}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__sybase_ad369c40e266c56e9e44dc0b876999e1f}{affected\+Rows}} ()
+\item 
+\mbox{\hyperlink{classDB__sybase_a27390784b6f591c77d8a806fead54523}{next\+Id}} (\$seq\+\_\+name, \$ondemand=true)
+\item 
+\mbox{\hyperlink{classDB__sybase_aa1e7b7d26c6c0456b666ab4859e01307}{create\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__sybase_a5ac5286adb451a8706751c0a5bd20102}{drop\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__sybase_a9fe7150dd8a4c576d76c9c97af8ac769}{quote\+Float}} (\$float)
+\item 
+\mbox{\hyperlink{classDB__sybase_aafb881acb09a287795116b8aef1269ff}{auto\+Commit}} (\$onoff=false)
+\item 
+\mbox{\hyperlink{classDB__sybase_a489753de7ad514a6ec82cc6f98867228}{commit}} ()
+\item 
+\mbox{\hyperlink{classDB__sybase_a67dbe1d281981164c4fcae89b53dd830}{rollback}} ()
+\item 
+\mbox{\hyperlink{classDB__sybase_ac42e66a9117fffb5a9fea2ddc0b138cc}{sybase\+Raise\+Error}} (\$errno=null)
+\item 
+\mbox{\hyperlink{classDB__sybase_a46afe8b48d2bad6b091aba4fc911499e}{error\+Native}} ()
+\item 
+\mbox{\hyperlink{classDB__sybase_a274b2e1c3adbb6d0ab20c038a142c7e3}{error\+Code}} (\$errormsg)
+\item 
+\mbox{\hyperlink{classDB__sybase_a3d29786b4e9a37c7a4e07378c146ea23}{table\+Info}} (\$result, \$mode=null)
+\item 
+\mbox{\hyperlink{classDB__sybase_ab5f268fa16d008df9b9dfd4be8107f44}{\+\_\+sybase\+\_\+field\+\_\+flags}} (\$table, \$column)
+\item 
+\mbox{\hyperlink{classDB__sybase_a651aad1329971fb172607a84ec0b9dfc}{\+\_\+add\+\_\+flag}} (\&\$array, \$value)
+\item 
+\mbox{\hyperlink{classDB__sybase_a07bdd96e4f4054eca51151f5eafcb28d}{get\+Special\+Query}} (\$type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDB__sybase_a6768dfe17d63c86560c2aaa321e2abd6}\label{classDB__sybase_a6768dfe17d63c86560c2aaa321e2abd6}} 
+{\bfseries \$phptype} = \textquotesingle{}sybase\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classDB__sybase_addce58fc26b1f397b91d7534051eb42a}\label{classDB__sybase_addce58fc26b1f397b91d7534051eb42a}} 
+{\bfseries \$dbsyntax} = \textquotesingle{}sybase\textquotesingle{}
+\item 
+{\bfseries \$features}
+\item 
+{\bfseries \$errorcode\+\_\+map}
+\item 
+\mbox{\Hypertarget{classDB__sybase_a38035f977c3b2fac1259e9ddb792e836}\label{classDB__sybase_a38035f977c3b2fac1259e9ddb792e836}} 
+{\bfseries \$connection}
+\item 
+\mbox{\Hypertarget{classDB__sybase_a0c3e8858422f0626de0641583da1ec5d}\label{classDB__sybase_a0c3e8858422f0626de0641583da1ec5d}} 
+{\bfseries \$dsn} = array()
+\item 
+\mbox{\Hypertarget{classDB__sybase_a6dade9dce74af6e76451e38c99b06d1f}\label{classDB__sybase_a6dade9dce74af6e76451e38c99b06d1f}} 
+{\bfseries \$autocommit} = true
+\item 
+\mbox{\hyperlink{classDB__sybase_a83fec5aaf1b4ae9e930be6b6750401ae}{\$transaction\+\_\+opcount}} = 0
+\item 
+\mbox{\Hypertarget{classDB__sybase_a05ec128c87b86a8ff58f10bf76321059}\label{classDB__sybase_a05ec128c87b86a8ff58f10bf76321059}} 
+{\bfseries \$\+\_\+db} = \textquotesingle{}\textquotesingle{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__sybase_a651aad1329971fb172607a84ec0b9dfc}\label{classDB__sybase_a651aad1329971fb172607a84ec0b9dfc}} 
+\index{DB\_sybase@{DB\_sybase}!\_add\_flag@{\_add\_flag}}
+\index{\_add\_flag@{\_add\_flag}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{\_add\_flag()}{\_add\_flag()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::\+\_\+add\+\_\+flag (\begin{DoxyParamCaption}\item[{\&}]{\$array,  }\item[{}]{\$value }\end{DoxyParamCaption})}
+
+Adds a string to the flags array if the flag is not yet in there
+\begin{DoxyItemize}
+\item if there is no flag present the array is created
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$array} & reference of flags array to add a value to \\
+\hline
+mixed & {\em \$value} & value to add to the flag array\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+@access private \mbox{\Hypertarget{classDB__sybase_ab5f268fa16d008df9b9dfd4be8107f44}\label{classDB__sybase_ab5f268fa16d008df9b9dfd4be8107f44}} 
+\index{DB\_sybase@{DB\_sybase}!\_sybase\_field\_flags@{\_sybase\_field\_flags}}
+\index{\_sybase\_field\_flags@{\_sybase\_field\_flags}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{\_sybase\_field\_flags()}{\_sybase\_field\_flags()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::\+\_\+sybase\+\_\+field\+\_\+flags (\begin{DoxyParamCaption}\item[{}]{\$table,  }\item[{}]{\$column }\end{DoxyParamCaption})}
+
+Get the flags for a field
+
+Currently supports\+:
+\begin{DoxyItemize}
+\item $<$samp$>$unique\+\_\+key$<$/samp$>$ (unique index, unique check or primary\+\_\+key)
+\item $<$samp$>$multiple\+\_\+key$<$/samp$>$ (multi-\/key index)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$table} & the table name \\
+\hline
+string & {\em \$column} & the field name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string space delimited string of flags. Empty string if none.
+\end{DoxyReturn}
+@access private \mbox{\Hypertarget{classDB__sybase_ad369c40e266c56e9e44dc0b876999e1f}\label{classDB__sybase_ad369c40e266c56e9e44dc0b876999e1f}} 
+\index{DB\_sybase@{DB\_sybase}!affectedRows@{affectedRows}}
+\index{affectedRows@{affectedRows}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{affectedRows()}{affectedRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::affected\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determines the number of rows affected by a data maniuplation query
+
+0 is returned for queries that don\textquotesingle{}t manipulate data.
+
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a05a802d72feb861012eb7ebfdbe00e84}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_aafb881acb09a287795116b8aef1269ff}\label{classDB__sybase_aafb881acb09a287795116b8aef1269ff}} 
+\index{DB\_sybase@{DB\_sybase}!autoCommit@{autoCommit}}
+\index{autoCommit@{autoCommit}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{autoCommit()}{autoCommit()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::auto\+Commit (\begin{DoxyParamCaption}\item[{}]{\$onoff = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Enables or disables automatic commits
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$onoff} & true turns it on, false turns it off\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object if the driver doesn\textquotesingle{}t support auto-\/committing transactions. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ad28b0f99a6bc3cdbf921804ec7720078}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a489753de7ad514a6ec82cc6f98867228}\label{classDB__sybase_a489753de7ad514a6ec82cc6f98867228}} 
+\index{DB\_sybase@{DB\_sybase}!commit@{commit}}
+\index{commit@{commit}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Commits the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a36868fcbeee42d96e00faeac7e82cb81}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a6ec4f175116157843e1e87d31065a790}\label{classDB__sybase_a6ec4f175116157843e1e87d31065a790}} 
+\index{DB\_sybase@{DB\_sybase}!connect@{connect}}
+\index{connect@{connect}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::connect (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$persistent = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Connect to the database server, log in and open the database
+
+Don\textquotesingle{}t call this method directly. Use \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect()}} instead.
+
+\mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}}\textquotesingle{}s sybase driver supports the following extra D\+SN options\+:
+\begin{DoxyItemize}
+\item appname The application name to use on this connection. Available since \mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}} 1.\+7.\+0.
+\item charset The character set to use on this connection. Available since \mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}} 1.\+7.\+0.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$dsn} & the data source name \\
+\hline
+bool & {\em \$persistent} & should the connection be persistent?\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__sybase_aa1e7b7d26c6c0456b666ab4859e01307}\label{classDB__sybase_aa1e7b7d26c6c0456b666ab4859e01307}} 
+\index{DB\_sybase@{DB\_sybase}!createSequence@{createSequence}}
+\index{createSequence@{createSequence}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{createSequence()}{createSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::create\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Creates a new sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the new sequence\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+sybase\+::next\+I\+D(), \mbox{\hyperlink{classDB__sybase_a5ac5286adb451a8706751c0a5bd20102}{D\+B\+\_\+sybase\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a73367cc1380913b7fd2cfc8b3f498804}\label{classDB__sybase_a73367cc1380913b7fd2cfc8b3f498804}} 
+\index{DB\_sybase@{DB\_sybase}!DB\_sybase@{DB\_sybase}}
+\index{DB\_sybase@{DB\_sybase}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{DB\_sybase()}{DB\_sybase()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::\+D\+B\+\_\+sybase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This constructor calls {\ttfamily \$this-\/$>$\mbox{\hyperlink{classDB__common_aa5163360915c02c99d8d048b4728c3cc}{D\+B\+\_\+common()}}}
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__sybase_a268b2df7f8ea982a084575b705cc6e47}\label{classDB__sybase_a268b2df7f8ea982a084575b705cc6e47}} 
+\index{DB\_sybase@{DB\_sybase}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disconnects from the database server
+
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__sybase_a5ac5286adb451a8706751c0a5bd20102}\label{classDB__sybase_a5ac5286adb451a8706751c0a5bd20102}} 
+\index{DB\_sybase@{DB\_sybase}!dropSequence@{dropSequence}}
+\index{dropSequence@{dropSequence}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{dropSequence()}{dropSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::drop\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Deletes a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence to be deleted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common\+::drop\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+sybase\+::next\+I\+D(), \mbox{\hyperlink{classDB__sybase_aa1e7b7d26c6c0456b666ab4859e01307}{D\+B\+\_\+sybase\+::create\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a274b2e1c3adbb6d0ab20c038a142c7e3}\label{classDB__sybase_a274b2e1c3adbb6d0ab20c038a142c7e3}} 
+\index{DB\_sybase@{DB\_sybase}!errorCode@{errorCode}}
+\index{errorCode@{errorCode}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{errorCode()}{errorCode()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::error\+Code (\begin{DoxyParamCaption}\item[{}]{\$errormsg }\end{DoxyParamCaption})}
+
+Determines P\+E\+A\+R\+::\+DB error code from the database\textquotesingle{}s text error message.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$errormsg} & error message returned from the database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer an error number from a \mbox{\hyperlink{classDB}{DB}} error constant 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a94d409cd5836c29a3b4fc90b45ed3364}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a46afe8b48d2bad6b091aba4fc911499e}\label{classDB__sybase_a46afe8b48d2bad6b091aba4fc911499e}} 
+\index{DB\_sybase@{DB\_sybase}!errorNative@{errorNative}}
+\index{errorNative@{errorNative}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{errorNative()}{errorNative()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::error\+Native (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the D\+B\+MS\textquotesingle{} native error message produced by the last query
+
+\begin{DoxyReturn}{Returns}
+string the D\+B\+MS\textquotesingle{} error message 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a5b451dc88229cf12de5a0845ba53a377}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a7aa13c58954d6bdb2ea8c0b1ab3acf02}\label{classDB__sybase_a7aa13c58954d6bdb2ea8c0b1ab3acf02}} 
+\index{DB\_sybase@{DB\_sybase}!fetchInto@{fetchInto}}
+\index{fetchInto@{fetchInto}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{fetchInto()}{fetchInto()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::fetch\+Into (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{\&}]{\$arr,  }\item[{}]{\$fetchmode,  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Places a row from the result set into the given array
+
+Formating of the array and the data therein are configurable. See \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} for more information.
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & the query result resource \\
+\hline
+array & {\em \$arr} & the referenced array to put the data in \\
+\hline
+int & {\em \$fetchmode} & how the resulting array should be indexed \\
+\hline
+int & {\em \$rownum} & the row number to fetch (0 = first row)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK on success, N\+U\+LL when the end of a result set is reached or on failure
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__sybase_a208b95fd467904732d3f53aac38f148e}\label{classDB__sybase_a208b95fd467904732d3f53aac38f148e}} 
+\index{DB\_sybase@{DB\_sybase}!freeResult@{freeResult}}
+\index{freeResult@{freeResult}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{freeResult()}{freeResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::free\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Deletes the result set and frees the memory occupied by the result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE if \$result is invalid
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__sybase_a07bdd96e4f4054eca51151f5eafcb28d}\label{classDB__sybase_a07bdd96e4f4054eca51151f5eafcb28d}} 
+\index{DB\_sybase@{DB\_sybase}!getSpecialQuery@{getSpecialQuery}}
+\index{getSpecialQuery@{getSpecialQuery}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{getSpecialQuery()}{getSpecialQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::get\+Special\+Query (\begin{DoxyParamCaption}\item[{}]{\$type }\end{DoxyParamCaption})}
+
+Obtains the query string needed for listing a given type of objects
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$type} & the kind of objects you want to retrieve\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the S\+QL query string or null if the driver doesn\textquotesingle{}t support the object type requested
+\end{DoxyReturn}
+@access protected \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a822d61267fea12aebe53a4a33bf9015d}{D\+B\+\_\+common\+::get\+List\+Of()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a2550ff7e5023d193614ab722d9aa3eb9}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a27390784b6f591c77d8a806fead54523}\label{classDB__sybase_a27390784b6f591c77d8a806fead54523}} 
+\index{DB\_sybase@{DB\_sybase}!nextId@{nextId}}
+\index{nextId@{nextId}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{nextId()}{nextId()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::next\+Id (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name,  }\item[{}]{\$ondemand = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Returns the next free id in a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence \\
+\hline
+boolean & {\em \$ondemand} & when true, the seqence is automatically created if it does not exist\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the next id number in the sequence. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+D\+B\+\_\+common\+::next\+I\+D(), \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, \mbox{\hyperlink{classDB__sybase_aa1e7b7d26c6c0456b666ab4859e01307}{D\+B\+\_\+sybase\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__sybase_a5ac5286adb451a8706751c0a5bd20102}{D\+B\+\_\+sybase\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ae654bec375517d041f1920ab0cc4703b}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_aa5bd464e356a1deaa795fddff764eca6}\label{classDB__sybase_aa5bd464e356a1deaa795fddff764eca6}} 
+\index{DB\_sybase@{DB\_sybase}!nextResult@{nextResult}}
+\index{nextResult@{nextResult}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{nextResult()}{nextResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::next\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Move the internal sybase result pointer to the next available result
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & valid sybase result resource\\
+\hline
+\end{DoxyParams}
+@access public
+
+\begin{DoxyReturn}{Returns}
+true if a result is available otherwise return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__sybase_a9ffeffc5e55cc758195d6eac4b44eb86}\label{classDB__sybase_a9ffeffc5e55cc758195d6eac4b44eb86}} 
+\index{DB\_sybase@{DB\_sybase}!numCols@{numCols}}
+\index{numCols@{numCols}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{numCols()}{numCols()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::num\+Cols (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of columns in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of columns. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__sybase_ad443d75625cea5c5b4b1cd194800df24}\label{classDB__sybase_ad443d75625cea5c5b4b1cd194800df24}} 
+\index{DB\_sybase@{DB\_sybase}!numRows@{numRows}}
+\index{numRows@{numRows}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{numRows()}{numRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::num\+Rows (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of rows in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a605433b6d3412f7d2c24287553965382}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a9fe7150dd8a4c576d76c9c97af8ac769}\label{classDB__sybase_a9fe7150dd8a4c576d76c9c97af8ac769}} 
+\index{DB\_sybase@{DB\_sybase}!quoteFloat@{quoteFloat}}
+\index{quoteFloat@{quoteFloat}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{quoteFloat()}{quoteFloat()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::quote\+Float (\begin{DoxyParamCaption}\item[{}]{\$float }\end{DoxyParamCaption})}
+
+Formats a float value for use within a query in a locale-\/independent manner.
+
+
+\begin{DoxyParams}{Parameters}
+{\em float} & the float value to be quoted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the quoted string. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a75285540e4848bff4ff4ac65328920df}{D\+B\+\_\+common\+::quote\+Smart()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since release 1.\+7.\+8. 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ae1b2d9935a570ddab5ec99d2be892442}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a67dbe1d281981164c4fcae89b53dd830}\label{classDB__sybase_a67dbe1d281981164c4fcae89b53dd830}} 
+\index{DB\_sybase@{DB\_sybase}!rollback@{rollback}}
+\index{rollback@{rollback}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{rollback()}{rollback()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::rollback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reverts the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a03b635b3130360516cb504b7f6095891}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__sybase_a92048f80d805bfc7a556a3e60e9ce18c}\label{classDB__sybase_a92048f80d805bfc7a556a3e60e9ce18c}} 
+\index{DB\_sybase@{DB\_sybase}!simpleQuery@{simpleQuery}}
+\index{simpleQuery@{simpleQuery}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{simpleQuery()}{simpleQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::simple\+Query (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Sends a query to the database server
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & the S\+QL query string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed + a \mbox{\hyperlink{categoryPHP}{P\+HP}} result resrouce for successful S\+E\+L\+E\+CT queries
+\begin{DoxyItemize}
+\item the D\+B\+\_\+\+OK constant for other successful queries
+\item a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__sybase_ac42e66a9117fffb5a9fea2ddc0b138cc}\label{classDB__sybase_ac42e66a9117fffb5a9fea2ddc0b138cc}} 
+\index{DB\_sybase@{DB\_sybase}!sybaseRaiseError@{sybaseRaiseError}}
+\index{sybaseRaiseError@{sybaseRaiseError}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{sybaseRaiseError()}{sybaseRaiseError()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::sybase\+Raise\+Error (\begin{DoxyParamCaption}\item[{}]{\$errno = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Produces a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object regarding the current problem
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$errno} & if the error is being manually raised pass a D\+B\+\_\+\+E\+R\+R\+O\+R$\ast$ constant here. If this isn\textquotesingle{}t passed the error information gathered from the D\+B\+MS.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a3b60dee1050625ee683af046033bbe26}{D\+B\+\_\+common\+::raise\+Error()}}, \mbox{\hyperlink{classDB__sybase_a46afe8b48d2bad6b091aba4fc911499e}{D\+B\+\_\+sybase\+::error\+Native()}}, \mbox{\hyperlink{classDB__sybase_a274b2e1c3adbb6d0ab20c038a142c7e3}{D\+B\+\_\+sybase\+::error\+Code()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__sybase_a3d29786b4e9a37c7a4e07378c146ea23}\label{classDB__sybase_a3d29786b4e9a37c7a4e07378c146ea23}} 
+\index{DB\_sybase@{DB\_sybase}!tableInfo@{tableInfo}}
+\index{tableInfo@{tableInfo}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{tableInfo()}{tableInfo()}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::table\+Info (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{}]{\$mode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Returns information about a table or a result set
+
+N\+O\+TE\+: only supports \textquotesingle{}table\textquotesingle{} and \textquotesingle{}flags\textquotesingle{} if {\itshape \$result} is a table name.
+
+
+\begin{DoxyParams}[1]{Parameters}
+object | string & {\em \$result} & \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} object from a query or a string containing the name of a table. While this also accepts a query result resource identifier, this behavior is deprecated. \\
+\hline
+int & {\em \$mode} & a valid table\+Info mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array an associative array with the information requested. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common\+::table\+Info()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+6.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__sybase_a80e3a619804d72204ac1639eadaeb575}\label{classDB__sybase_a80e3a619804d72204ac1639eadaeb575}} 
+\index{DB\_sybase@{DB\_sybase}!\$errorcode\_map@{\$errorcode\_map}}
+\index{\$errorcode\_map@{\$errorcode\_map}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{\$errorcode\_map}{$errorcode\_map}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::\$errorcode\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__sybase_a0302c7f254898708d3a088d62a211fc5}\label{classDB__sybase_a0302c7f254898708d3a088d62a211fc5}} 
+\index{DB\_sybase@{DB\_sybase}!\$features@{\$features}}
+\index{\$features@{\$features}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{\$features}{$features}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::\$features}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'limit'}         => \textcolor{stringliteral}{'emulate'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'new\_link'}      => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'numrows'}       => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'pconnect'}      => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'prepare'}       => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'ssl'}           => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'transactions'}  => \textcolor{keyword}{true},}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__sybase_a83fec5aaf1b4ae9e930be6b6750401ae}\label{classDB__sybase_a83fec5aaf1b4ae9e930be6b6750401ae}} 
+\index{DB\_sybase@{DB\_sybase}!\$transaction\_opcount@{\$transaction\_opcount}}
+\index{\$transaction\_opcount@{\$transaction\_opcount}!DB\_sybase@{DB\_sybase}}
+\doxysubsubsection{\texorpdfstring{\$transaction\_opcount}{$transaction\_opcount}}
+{\footnotesize\ttfamily D\+B\+\_\+sybase\+::\$transaction\+\_\+opcount = 0}
+
+The quantity of transactions begun
+
+\{ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+D\+B/sybase.\+php\end{DoxyCompactItemize}

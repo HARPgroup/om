@@ -1,0 +1,124 @@
+\hypertarget{classPEAR__Autoloader}{}\doxysection{P\+E\+A\+R\+\_\+\+Autoloader Class Reference}
+\label{classPEAR__Autoloader}\index{PEAR\_Autoloader@{PEAR\_Autoloader}}
+
+
+Inheritance diagram for P\+E\+A\+R\+\_\+\+Autoloader\+:
+% FIG 0
+
+
+Collaboration diagram for P\+E\+A\+R\+\_\+\+Autoloader\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Autoloader_aa518fbdac933e815363e87c84927ef27}{add\+Autoload}} (\$method, \$classname=null)
+\item 
+\mbox{\hyperlink{classPEAR__Autoloader_adcfe46090d73e098aa6ca51d9448f9d6}{remove\+Autoload}} (\$method)
+\item 
+\mbox{\hyperlink{classPEAR__Autoloader_a94e728c5f20cb87cd161355823a1b624}{add\+Aggregate\+Object}} (\$classname)
+\item 
+\mbox{\hyperlink{classPEAR__Autoloader_a7efe9ca0bca821c7e2f7820ee7bea0d7}{remove\+Aggregate\+Object}} (\$classname)
+\item 
+\mbox{\hyperlink{classPEAR__Autoloader_a0bfec7c323c3107b96b57a591dbb5f9b}{\+\_\+\+\_\+call}} (\$method, \$args, \&\$retval)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPEAR__Autoloader_a172b3e26a7eba15b7945b582e5b01386}\label{classPEAR__Autoloader_a172b3e26a7eba15b7945b582e5b01386}} 
+{\bfseries \$\+\_\+autoload\+\_\+map} = array()
+\item 
+\mbox{\Hypertarget{classPEAR__Autoloader_ac3e074ca71097876dad5c48a5212b84f}\label{classPEAR__Autoloader_ac3e074ca71097876dad5c48a5212b84f}} 
+{\bfseries \$\+\_\+method\+\_\+map} = array()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Autoloader_a0bfec7c323c3107b96b57a591dbb5f9b}\label{classPEAR__Autoloader_a0bfec7c323c3107b96b57a591dbb5f9b}} 
+\index{PEAR\_Autoloader@{PEAR\_Autoloader}!\_\_call@{\_\_call}}
+\index{\_\_call@{\_\_call}!PEAR\_Autoloader@{PEAR\_Autoloader}}
+\doxysubsubsection{\texorpdfstring{\_\_call()}{\_\_call()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Autoloader\+::\+\_\+\+\_\+call (\begin{DoxyParamCaption}\item[{}]{\$method,  }\item[{}]{\$args,  }\item[{\&}]{\$retval }\end{DoxyParamCaption})}
+
+Overloaded object call handler, called each time an undefined/aggregated method is invoked. This method repeats the call in the right aggregate object and passes on the return value.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$method} & which method that was called\\
+\hline
+string & {\em \$args} & An array of the parameters passed in the original call\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed The return value from the aggregated method, or a \mbox{\hyperlink{classPEAR}{P\+E\+AR}} error if the called method was unknown. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Autoloader_a94e728c5f20cb87cd161355823a1b624}\label{classPEAR__Autoloader_a94e728c5f20cb87cd161355823a1b624}} 
+\index{PEAR\_Autoloader@{PEAR\_Autoloader}!addAggregateObject@{addAggregateObject}}
+\index{addAggregateObject@{addAggregateObject}!PEAR\_Autoloader@{PEAR\_Autoloader}}
+\doxysubsubsection{\texorpdfstring{addAggregateObject()}{addAggregateObject()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Autoloader\+::add\+Aggregate\+Object (\begin{DoxyParamCaption}\item[{}]{\$classname }\end{DoxyParamCaption})}
+
+Add an aggregate object to this object. If the specified class is not defined, loading it will be attempted following \mbox{\hyperlink{classPEAR}{P\+E\+AR}}\textquotesingle{}s file naming scheme. All the methods in the class will be aggregated, except private ones (name starting with an underscore) and constructors.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$classname} & what class to instantiate for the object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Autoloader_aa518fbdac933e815363e87c84927ef27}\label{classPEAR__Autoloader_aa518fbdac933e815363e87c84927ef27}} 
+\index{PEAR\_Autoloader@{PEAR\_Autoloader}!addAutoload@{addAutoload}}
+\index{addAutoload@{addAutoload}!PEAR\_Autoloader@{PEAR\_Autoloader}}
+\doxysubsubsection{\texorpdfstring{addAutoload()}{addAutoload()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Autoloader\+::add\+Autoload (\begin{DoxyParamCaption}\item[{}]{\$method,  }\item[{}]{\$classname = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Add one or more autoload entries.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$method} & which method to autoload\\
+\hline
+string & {\em \$classname} & (optional) which class to find the method in. If the \$method parameter is an array, this parameter may be omitted (and will be ignored if not), and the \$method parameter will be treated as an associative array with method names as keys and class names as values.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Autoloader_a7efe9ca0bca821c7e2f7820ee7bea0d7}\label{classPEAR__Autoloader_a7efe9ca0bca821c7e2f7820ee7bea0d7}} 
+\index{PEAR\_Autoloader@{PEAR\_Autoloader}!removeAggregateObject@{removeAggregateObject}}
+\index{removeAggregateObject@{removeAggregateObject}!PEAR\_Autoloader@{PEAR\_Autoloader}}
+\doxysubsubsection{\texorpdfstring{removeAggregateObject()}{removeAggregateObject()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Autoloader\+::remove\+Aggregate\+Object (\begin{DoxyParamCaption}\item[{}]{\$classname }\end{DoxyParamCaption})}
+
+Remove an aggregate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$classname} & the class of the object to remove\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE if an object was removed, F\+A\+L\+SE if not
+\end{DoxyReturn}
+@access public \mbox{\Hypertarget{classPEAR__Autoloader_adcfe46090d73e098aa6ca51d9448f9d6}\label{classPEAR__Autoloader_adcfe46090d73e098aa6ca51d9448f9d6}} 
+\index{PEAR\_Autoloader@{PEAR\_Autoloader}!removeAutoload@{removeAutoload}}
+\index{removeAutoload@{removeAutoload}!PEAR\_Autoloader@{PEAR\_Autoloader}}
+\doxysubsubsection{\texorpdfstring{removeAutoload()}{removeAutoload()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Autoloader\+::remove\+Autoload (\begin{DoxyParamCaption}\item[{}]{\$method }\end{DoxyParamCaption})}
+
+Remove an autoload entry.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$method} & which method to remove the autoload entry for\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE if an entry was removed, F\+A\+L\+SE if not
+\end{DoxyReturn}
+@access public 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/Autoloader.\+php\end{DoxyCompactItemize}

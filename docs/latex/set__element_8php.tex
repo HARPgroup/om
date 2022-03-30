@@ -1,0 +1,55 @@
+\hypertarget{set__element_8php}{}\doxysection{php/src/set\+\_\+element.php File Reference}
+\label{set__element_8php}\index{php/src/set\_element.php@{php/src/set\_element.php}}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{set__element_8php_a05339de801f975ba8329daab5c6c4a35}\label{set__element_8php_a05339de801f975ba8329daab5c6c4a35}} 
+{\bfseries \$noajax} = 1
+\item 
+\mbox{\Hypertarget{set__element_8php_a2f28e5fb44fe0a6fe4073aa0245c9c8e}\label{set__element_8php_a2f28e5fb44fe0a6fe4073aa0245c9c8e}} 
+{\bfseries \$projectid} = 3
+\item 
+\mbox{\Hypertarget{set__element_8php_adeb519b7ebfdb7c3bcfa5a97a02210d7}\label{set__element_8php_adeb519b7ebfdb7c3bcfa5a97a02210d7}} 
+{\bfseries \$scid} = 28
+\item 
+\mbox{\Hypertarget{set__element_8php_a8ff4f31f4a47f60b565106c282c02a7d}\label{set__element_8php_a8ff4f31f4a47f60b565106c282c02a7d}} 
+if(count(\$argv)$<$ 5) {\bfseries \$supported} = array()
+\item 
+\mbox{\Hypertarget{set__element_8php_ae843bbb6907105950a6e0527ea9ea731}\label{set__element_8php_ae843bbb6907105950a6e0527ea9ea731}} 
+{\bfseries \$setprop\+\_\+mode} = (\$setprop\+\_\+mode === N\+U\+LL) ? \textquotesingle{}\textquotesingle{} \+: \$setprop\+\_\+mode
+\item 
+\mbox{\Hypertarget{set__element_8php_a8d31b0ad9cccde7e2d857097672ed6cf}\label{set__element_8php_a8d31b0ad9cccde7e2d857097672ed6cf}} 
+{\bfseries \$overwrite} = (\$overwrite === N\+U\+LL) ? F\+A\+L\+SE \+: \$overwrite
+\item 
+if(isset(\$argv\mbox{[}7\mbox{]})) {\bfseries else}
+\item 
+\mbox{\Hypertarget{set__element_8php_a8c1fa0eaaf39efb524835cfb59ed65c6}\label{set__element_8php_a8c1fa0eaaf39efb524835cfb59ed65c6}} 
+{\bfseries \$loadres} = un\+Serialize\+Single\+Model\+Object(\$elid)
+\item 
+\mbox{\Hypertarget{set__element_8php_a11efeb925c603cf8ffa272991574a7a8}\label{set__element_8php_a11efeb925c603cf8ffa272991574a7a8}} 
+{\bfseries \$thisobject} = \$loadres\mbox{[}\textquotesingle{}object\textquotesingle{}\mbox{]}
+\item 
+\mbox{\Hypertarget{set__element_8php_a9621a51267c5ae39242307138c69ef47}\label{set__element_8php_a9621a51267c5ae39242307138c69ef47}} 
+{\bfseries \$type\+\_\+change} = F\+A\+L\+SE
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Load model element from J\+S\+ON code.
+\begin{DoxyItemize}
+\item If elementid property is set, try to retrieve local mode element from db 
+\end{DoxyItemize}
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{set__element_8php_a7480cacc9a3e5ba3ac04d10b70b61131}\label{set__element_8php_a7480cacc9a3e5ba3ac04d10b70b61131}} 
+\index{set\_element.php@{set\_element.php}!else@{else}}
+\index{else@{else}!set\_element.php@{set\_element.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily if (isset( \$argv\mbox{[}7\mbox{]})) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{   \$overwrite = FALSE}
+
+\end{DoxyCode}

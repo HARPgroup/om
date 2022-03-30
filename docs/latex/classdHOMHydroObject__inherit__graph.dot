@@ -1,0 +1,25 @@
+digraph "dHOMHydroObject"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="dHOMHydroObject",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="dHOMModelElement",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdHOMModelElement.html",tooltip=" "];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="dHOMBaseObjectClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdHOMBaseObjectClass.html",tooltip=" "];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="dHVariablePluginDefaultOM",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdHVariablePluginDefaultOM.html",tooltip=" "];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="dHVariablePluginDefault",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="dHOMHydroImpoundment",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdHOMHydroImpoundment.html",tooltip=" "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="dHOMHydroImpoundmentSmall",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdHOMHydroImpoundmentSmall.html",tooltip=" "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="dHOMHydroObjectOtherProps",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdHOMHydroObjectOtherProps.html",tooltip=" "];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="dHOMUSGSChannelGeomObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdHOMUSGSChannelGeomObject.html",tooltip=" "];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="dHOMUSGSChannelGeomObject_sub",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdHOMUSGSChannelGeomObject__sub.html",tooltip=" "];
+}

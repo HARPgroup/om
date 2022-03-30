@@ -1,0 +1,267 @@
+\hypertarget{classDB__result}{}\doxysection{D\+B\+\_\+result Class Reference}
+\label{classDB__result}\index{DB\_result@{DB\_result}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__result_a413a48021fa8caee30a89af8f91a4813}{D\+B\+\_\+result}} (\&\$dbh, \$result, \$options=array())
+\item 
+\mbox{\hyperlink{classDB__result_a8e2a26687ba0beffe48238a0a58b0c66}{set\+Option}} (\$key, \$value=null)
+\item 
+\& \mbox{\hyperlink{classDB__result_acb925df45cef3c70afa06d4902122168}{fetch\+Row}} (\$fetchmode=D\+B\+\_\+\+F\+E\+T\+C\+H\+M\+O\+D\+E\+\_\+\+D\+E\+F\+A\+U\+LT, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{fetch\+Into}} (\&\$arr, \$fetchmode=D\+B\+\_\+\+F\+E\+T\+C\+H\+M\+O\+D\+E\+\_\+\+D\+E\+F\+A\+U\+LT, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{num\+Cols}} ()
+\item 
+\mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{num\+Rows}} ()
+\item 
+\mbox{\hyperlink{classDB__result_ac51b39bb358c81e8f17e06aff92babfd}{next\+Result}} ()
+\item 
+\mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{free}} ()
+\item 
+\mbox{\hyperlink{classDB__result_ac805b3bdb085ce9a3046772021f189ad}{table\+Info}} (\$mode=null)
+\item 
+\mbox{\hyperlink{classDB__result_a89d54da9924edf029b9f8a71c685e9a0}{get\+Query}} ()
+\item 
+\mbox{\hyperlink{classDB__result_ac7bf38be6426b733d5aa6f963c5e2b4b}{get\+Row\+Counter}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDB__result_ac014c0e33db0b0a3d2807664037f128e}\label{classDB__result_ac014c0e33db0b0a3d2807664037f128e}} 
+{\bfseries \$autofree}
+\item 
+\mbox{\Hypertarget{classDB__result_a8fc976a53fafafb4585cf6c634259be8}\label{classDB__result_a8fc976a53fafafb4585cf6c634259be8}} 
+{\bfseries \$dbh}
+\item 
+\mbox{\Hypertarget{classDB__result_a17516fbbaeb3481f161fbd8c52853f19}\label{classDB__result_a17516fbbaeb3481f161fbd8c52853f19}} 
+{\bfseries \$fetchmode}
+\item 
+\mbox{\Hypertarget{classDB__result_a4f79b1760dbf1b649fff478157ebf80c}\label{classDB__result_a4f79b1760dbf1b649fff478157ebf80c}} 
+{\bfseries \$fetchmode\+\_\+object\+\_\+class}
+\item 
+\mbox{\Hypertarget{classDB__result_a4abdce9c8b9fb050ad1135cbd5ddc88c}\label{classDB__result_a4abdce9c8b9fb050ad1135cbd5ddc88c}} 
+{\bfseries \$limit\+\_\+count} = null
+\item 
+\mbox{\Hypertarget{classDB__result_a37bd533c019b78afbcd3cf4a96c00400}\label{classDB__result_a37bd533c019b78afbcd3cf4a96c00400}} 
+{\bfseries \$limit\+\_\+from} = null
+\item 
+\mbox{\Hypertarget{classDB__result_af9d873358c3a1a2f5d54b44df640ed87}\label{classDB__result_af9d873358c3a1a2f5d54b44df640ed87}} 
+{\bfseries \$parameters}
+\item 
+\mbox{\Hypertarget{classDB__result_aa758b571932a51049b2b4c48e90b63dc}\label{classDB__result_aa758b571932a51049b2b4c48e90b63dc}} 
+{\bfseries \$query}
+\item 
+\mbox{\Hypertarget{classDB__result_aaa147082edbf5159624a840701a295bc}\label{classDB__result_aaa147082edbf5159624a840701a295bc}} 
+{\bfseries \$result}
+\item 
+\mbox{\Hypertarget{classDB__result_a7bf221b774b2ba4ea3bbd01565632bf3}\label{classDB__result_a7bf221b774b2ba4ea3bbd01565632bf3}} 
+{\bfseries \$row\+\_\+counter} = null
+\item 
+\mbox{\hyperlink{classDB__result_a4e1efdb676ca16108bce4330ecee322b}{\$statement}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__result_a413a48021fa8caee30a89af8f91a4813}\label{classDB__result_a413a48021fa8caee30a89af8f91a4813}} 
+\index{DB\_result@{DB\_result}!DB\_result@{DB\_result}}
+\index{DB\_result@{DB\_result}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{DB\_result()}{DB\_result()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::\+D\+B\+\_\+result (\begin{DoxyParamCaption}\item[{\&}]{\$dbh,  }\item[{}]{\$result,  }\item[{}]{\$options = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+This constructor sets the object\textquotesingle{}s properties
+
+
+\begin{DoxyParams}[1]{Parameters}
+object & {\em \&\$dbh} & the \mbox{\hyperlink{classDB}{DB}} object reference \\
+\hline
+resource & {\em \$result} & the result resource id \\
+\hline
+array & {\em \$options} & an associative array with result options\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__result_acb1fad1816a3d198d312e6a046bb4924}\label{classDB__result_acb1fad1816a3d198d312e6a046bb4924}} 
+\index{DB\_result@{DB\_result}!fetchInto@{fetchInto}}
+\index{fetchInto@{fetchInto}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{fetchInto()}{fetchInto()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::fetch\+Into (\begin{DoxyParamCaption}\item[{\&}]{\$arr,  }\item[{}]{\$fetchmode = {\ttfamily DB\+\_\+FETCHMODE\+\_\+DEFAULT},  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Fetch a row of data into an array which is passed by reference
+
+The type of array returned can be controlled either by setting this method\textquotesingle{}s {\itshape \$fetchmode} parameter or by changing the default fetch mode set\+Fetch\+Mode() before calling this method.
+
+There are two options for standardizing the information returned from databases, ensuring their values are consistent when changing D\+B\+MS\textquotesingle{}s. These portability options can be turned on when creating a new \mbox{\hyperlink{classDB}{DB}} object or by using \mbox{\hyperlink{classDB__result_a8e2a26687ba0beffe48238a0a58b0c66}{set\+Option()}}.
+
+
+\begin{DoxyItemize}
+\item {\itshape D\+B\+\_\+\+P\+O\+R\+T\+A\+B\+I\+L\+I\+T\+Y\+\_\+\+L\+O\+W\+E\+R\+C\+A\+SE} convert names of fields to lower case
+\item {\itshape D\+B\+\_\+\+P\+O\+R\+T\+A\+B\+I\+L\+I\+T\+Y\+\_\+\+R\+T\+R\+IM} right trim the data
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \&\$arr} & the variable where the data should be placed \\
+\hline
+int & {\em \$fetchmode} & the constant indicating how to format the data \\
+\hline
+int & {\em \$rownum} & the row number to fetch (index starts at 0)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK if a row is processed, N\+U\+LL when the end of the result set is reached or a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a81b5267f14a138091ce8b5d02e985a75}{D\+B\+\_\+common\+::set\+Option()}}, \mbox{\hyperlink{classDB__common_ab30a9bd6dad315d4c6daeac66dda4c0e}{D\+B\+\_\+common\+::set\+Fetch\+Mode()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__result_acb925df45cef3c70afa06d4902122168}\label{classDB__result_acb925df45cef3c70afa06d4902122168}} 
+\index{DB\_result@{DB\_result}!fetchRow@{fetchRow}}
+\index{fetchRow@{fetchRow}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{fetchRow()}{fetchRow()}}
+{\footnotesize\ttfamily \& D\+B\+\_\+result\+::fetch\+Row (\begin{DoxyParamCaption}\item[{}]{\$fetchmode = {\ttfamily DB\+\_\+FETCHMODE\+\_\+DEFAULT},  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Fetch a row of data and return it by reference into an array
+
+The type of array returned can be controlled either by setting this method\textquotesingle{}s {\itshape \$fetchmode} parameter or by changing the default fetch mode set\+Fetch\+Mode() before calling this method.
+
+There are two options for standardizing the information returned from databases, ensuring their values are consistent when changing D\+B\+MS\textquotesingle{}s. These portability options can be turned on when creating a new \mbox{\hyperlink{classDB}{DB}} object or by using \mbox{\hyperlink{classDB__result_a8e2a26687ba0beffe48238a0a58b0c66}{set\+Option()}}.
+
+
+\begin{DoxyItemize}
+\item {\itshape D\+B\+\_\+\+P\+O\+R\+T\+A\+B\+I\+L\+I\+T\+Y\+\_\+\+L\+O\+W\+E\+R\+C\+A\+SE} convert names of fields to lower case
+\item {\itshape D\+B\+\_\+\+P\+O\+R\+T\+A\+B\+I\+L\+I\+T\+Y\+\_\+\+R\+T\+R\+IM} right trim the data
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$fetchmode} & the constant indicating how to format the data \\
+\hline
+int & {\em \$rownum} & the row number to fetch (index starts at 0)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed an array or object containing the row\textquotesingle{}s data, N\+U\+LL when the end of the result set is reached or a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a81b5267f14a138091ce8b5d02e985a75}{D\+B\+\_\+common\+::set\+Option()}}, \mbox{\hyperlink{classDB__common_ab30a9bd6dad315d4c6daeac66dda4c0e}{D\+B\+\_\+common\+::set\+Fetch\+Mode()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}\label{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}} 
+\index{DB\_result@{DB\_result}!free@{free}}
+\index{free@{free}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{free()}{free()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::free (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Frees the resources allocated for this result set
+
+\begin{DoxyReturn}{Returns}
+bool true on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__result_a89d54da9924edf029b9f8a71c685e9a0}\label{classDB__result_a89d54da9924edf029b9f8a71c685e9a0}} 
+\index{DB\_result@{DB\_result}!getQuery@{getQuery}}
+\index{getQuery@{getQuery}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{getQuery()}{getQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::get\+Query (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determine the query string that created this result
+
+\begin{DoxyReturn}{Returns}
+string the query string
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+7.\+0 
+\end{DoxySince}
+\mbox{\Hypertarget{classDB__result_ac7bf38be6426b733d5aa6f963c5e2b4b}\label{classDB__result_ac7bf38be6426b733d5aa6f963c5e2b4b}} 
+\index{DB\_result@{DB\_result}!getRowCounter@{getRowCounter}}
+\index{getRowCounter@{getRowCounter}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{getRowCounter()}{getRowCounter()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::get\+Row\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Tells which row number is currently being processed
+
+\begin{DoxyReturn}{Returns}
+integer the current row being looked at. Starts at 1. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__result_ac51b39bb358c81e8f17e06aff92babfd}\label{classDB__result_ac51b39bb358c81e8f17e06aff92babfd}} 
+\index{DB\_result@{DB\_result}!nextResult@{nextResult}}
+\index{nextResult@{nextResult}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{nextResult()}{nextResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::next\+Result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the next result if a batch of queries was executed
+
+\begin{DoxyReturn}{Returns}
+bool true if a new result is available or false if not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__result_ab5427f8d851836e07f7992d5130096e3}\label{classDB__result_ab5427f8d851836e07f7992d5130096e3}} 
+\index{DB\_result@{DB\_result}!numCols@{numCols}}
+\index{numCols@{numCols}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{numCols()}{numCols()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::num\+Cols (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the the number of columns in a result set
+
+\begin{DoxyReturn}{Returns}
+int the number of columns. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__result_a845e17693212c16caf3ce8a08a477685}\label{classDB__result_a845e17693212c16caf3ce8a08a477685}} 
+\index{DB\_result@{DB\_result}!numRows@{numRows}}
+\index{numRows@{numRows}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{numRows()}{numRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::num\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the number of rows in a result set
+
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__result_a8e2a26687ba0beffe48238a0a58b0c66}\label{classDB__result_a8e2a26687ba0beffe48238a0a58b0c66}} 
+\index{DB\_result@{DB\_result}!setOption@{setOption}}
+\index{setOption@{setOption}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{setOption()}{setOption()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::set\+Option (\begin{DoxyParamCaption}\item[{}]{\$key,  }\item[{}]{\$value = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Set options for the \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} object
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$key} & the option to set \\
+\hline
+mixed & {\em \$value} & the value to set the option to\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__result_ac805b3bdb085ce9a3046772021f189ad}\label{classDB__result_ac805b3bdb085ce9a3046772021f189ad}} 
+\index{DB\_result@{DB\_result}!tableInfo@{tableInfo}}
+\index{tableInfo@{tableInfo}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{tableInfo()}{tableInfo()}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::table\+Info (\begin{DoxyParamCaption}\item[{}]{\$mode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common\+::table\+Info()}} 
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000008}{Deprecated}}]Method deprecated some time before Release 1.\+2 \end{DoxyRefDesc}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__result_a4e1efdb676ca16108bce4330ecee322b}\label{classDB__result_a4e1efdb676ca16108bce4330ecee322b}} 
+\index{DB\_result@{DB\_result}!\$statement@{\$statement}}
+\index{\$statement@{\$statement}!DB\_result@{DB\_result}}
+\doxysubsubsection{\texorpdfstring{\$statement}{$statement}}
+{\footnotesize\ttfamily D\+B\+\_\+result\+::\$statement}
+
+The prepared statement resource id created by \mbox{\hyperlink{categoryPHP}{P\+HP}} in \$dbh
+
+This resource is only available when the result set was created using a driver\textquotesingle{}s native execute() method, not \mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}}\textquotesingle{}s emulated one.
+
+Copied here incase it changes in \$dbh, which is referenced
+
+\{ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/D\+B.\+php\end{DoxyCompactItemize}

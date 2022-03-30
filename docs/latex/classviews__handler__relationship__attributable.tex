@@ -1,0 +1,75 @@
+\hypertarget{classviews__handler__relationship__attributable}{}\doxysection{views\+\_\+handler\+\_\+relationship\+\_\+attributable Class Reference}
+\label{classviews__handler__relationship__attributable}\index{views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}}
+
+
+Inheritance diagram for views\+\_\+handler\+\_\+relationship\+\_\+attributable\+:
+% FIG 0
+
+
+Collaboration diagram for views\+\_\+handler\+\_\+relationship\+\_\+attributable\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classviews__handler__relationship__attributable_a65f914d77dbfb6c9223a7579a6a15886}{init}} (\&\$view, \&\$options)
+\item 
+\mbox{\hyperlink{classviews__handler__relationship__attributable_a91b52bf1fbe848ee119dc632cce14030}{label}} ()
+\item 
+\mbox{\Hypertarget{classviews__handler__relationship__attributable_ad3eee33d99e0ca9c484cf0e9d4edaa87}\label{classviews__handler__relationship__attributable_ad3eee33d99e0ca9c484cf0e9d4edaa87}} 
+{\bfseries option\+\_\+definition} ()
+\item 
+\mbox{\hyperlink{classviews__handler__relationship__attributable_ab59b64b0e7c74b3ed7be345ef4ed1ea4}{options\+\_\+form}} (\&\$form, \&\$form\+\_\+state)
+\item 
+\mbox{\hyperlink{classviews__handler__relationship__attributable_a5c46196e39765da8ee4c5d725564c9da}{ensure\+\_\+my\+\_\+table}} ()
+\item 
+\mbox{\hyperlink{classviews__handler__relationship__attributable_af2ba879a638abefdd619d87b86a4214e}{query}} ()
+\item 
+\mbox{\hyperlink{classviews__handler__relationship__attributable_a07343e3ccfc95f96b8fba522039d5aa4}{use\+\_\+group\+\_\+by}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple relationship handler that allows a attributes to be joined to field table entries which then permits things like \char`\"{}attributable\char`\"{} Entity References -\/ used by dh\+\_\+properties and dh\+\_\+timeseries 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classviews__handler__relationship__attributable_a5c46196e39765da8ee4c5d725564c9da}\label{classviews__handler__relationship__attributable_a5c46196e39765da8ee4c5d725564c9da}} 
+\index{views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}!ensure\_my\_table@{ensure\_my\_table}}
+\index{ensure\_my\_table@{ensure\_my\_table}!views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}}
+\doxysubsubsection{\texorpdfstring{ensure\_my\_table()}{ensure\_my\_table()}}
+{\footnotesize\ttfamily views\+\_\+handler\+\_\+relationship\+\_\+attributable\+::ensure\+\_\+my\+\_\+table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Ensure the main table for this handler is in the query. This is used a lot. \mbox{\Hypertarget{classviews__handler__relationship__attributable_a65f914d77dbfb6c9223a7579a6a15886}\label{classviews__handler__relationship__attributable_a65f914d77dbfb6c9223a7579a6a15886}} 
+\index{views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}!init@{init}}
+\index{init@{init}!views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily views\+\_\+handler\+\_\+relationship\+\_\+attributable\+::init (\begin{DoxyParamCaption}\item[{\&}]{\$view,  }\item[{\&}]{\$options }\end{DoxyParamCaption})}
+
+Init handler to let relationships live on tables other than the table they operate on. \mbox{\Hypertarget{classviews__handler__relationship__attributable_a91b52bf1fbe848ee119dc632cce14030}\label{classviews__handler__relationship__attributable_a91b52bf1fbe848ee119dc632cce14030}} 
+\index{views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}!label@{label}}
+\index{label@{label}!views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}}
+\doxysubsubsection{\texorpdfstring{label()}{label()}}
+{\footnotesize\ttfamily views\+\_\+handler\+\_\+relationship\+\_\+attributable\+::label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get this field\textquotesingle{}s label. \mbox{\Hypertarget{classviews__handler__relationship__attributable_ab59b64b0e7c74b3ed7be345ef4ed1ea4}\label{classviews__handler__relationship__attributable_ab59b64b0e7c74b3ed7be345ef4ed1ea4}} 
+\index{views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}!options\_form@{options\_form}}
+\index{options\_form@{options\_form}!views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}}
+\doxysubsubsection{\texorpdfstring{options\_form()}{options\_form()}}
+{\footnotesize\ttfamily views\+\_\+handler\+\_\+relationship\+\_\+attributable\+::options\+\_\+form (\begin{DoxyParamCaption}\item[{\&}]{\$form,  }\item[{\&}]{\$form\+\_\+state }\end{DoxyParamCaption})}
+
+Default options form that provides the label widget that all fields should have. \mbox{\Hypertarget{classviews__handler__relationship__attributable_af2ba879a638abefdd619d87b86a4214e}\label{classviews__handler__relationship__attributable_af2ba879a638abefdd619d87b86a4214e}} 
+\index{views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}!query@{query}}
+\index{query@{query}!views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}}
+\doxysubsubsection{\texorpdfstring{query()}{query()}}
+{\footnotesize\ttfamily views\+\_\+handler\+\_\+relationship\+\_\+attributable\+::query (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Called to implement a relationship in a query. \mbox{\Hypertarget{classviews__handler__relationship__attributable_a07343e3ccfc95f96b8fba522039d5aa4}\label{classviews__handler__relationship__attributable_a07343e3ccfc95f96b8fba522039d5aa4}} 
+\index{views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}!use\_group\_by@{use\_group\_by}}
+\index{use\_group\_by@{use\_group\_by}!views\_handler\_relationship\_attributable@{views\_handler\_relationship\_attributable}}
+\doxysubsubsection{\texorpdfstring{use\_group\_by()}{use\_group\_by()}}
+{\footnotesize\ttfamily views\+\_\+handler\+\_\+relationship\+\_\+attributable\+::use\+\_\+group\+\_\+by (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+You can\textquotesingle{}t groupby a relationship. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+drupal/om/views/handlers/\mbox{\hyperlink{views__handler__relationship__attributable_8inc}{views\+\_\+handler\+\_\+relationship\+\_\+attributable.\+inc}}\end{DoxyCompactItemize}

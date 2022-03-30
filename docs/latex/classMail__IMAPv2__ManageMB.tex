@@ -1,0 +1,99 @@
+\hypertarget{classMail__IMAPv2__ManageMB}{}\doxysection{Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+Manage\+MB Class Reference}
+\label{classMail__IMAPv2__ManageMB}\index{Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}}
+
+
+Inheritance diagram for Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+Manage\+MB\+:
+% FIG 0
+
+
+Collaboration diagram for Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+Manage\+MB\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMail__IMAPv2__ManageMB_ae6dbd1566a5644a41bc48e37b201d886}{Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+Manage\+MB}} (\$connection, \$get\+\_\+info=T\+R\+UE)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2__ManageMB_aa447f2b92a2cbfc58e0d5811899c92c8}{manage\+MB}} (\$action, \$mb\+\_\+name, \$mb\+\_\+rename=N\+U\+LL)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2__ManageMB_a1a5becdfcc6ab689a9b376a8c286fff3}{manage\+Mail}} (\$action, \$msg\+\_\+list, \$dest\+\_\+mb)
+\item 
+\mbox{\hyperlink{classMail__IMAPv2__ManageMB_ae0bae0ee82f35667737df5197b0afd25}{import\+Mail}} (\$dest\+\_\+mb, \$messages)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMail__IMAPv2__ManageMB_ae0bae0ee82f35667737df5197b0afd25}\label{classMail__IMAPv2__ManageMB_ae0bae0ee82f35667737df5197b0afd25}} 
+\index{Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}!importMail@{importMail}}
+\index{importMail@{importMail}!Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}}
+\doxysubsubsection{\texorpdfstring{importMail()}{importMail()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+Manage\+M\+B\+::import\+Mail (\begin{DoxyParamCaption}\item[{}]{\$dest\+\_\+mb,  }\item[{}]{\$messages }\end{DoxyParamCaption})}
+
+This method provides the functionality to import M\+I\+ME messages into the server using the \mbox{\hyperlink{}{imap\+\_\+append}} method.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$dest\+\_\+mb} & The destination mailbox where the messages will be imported to. \\
+\hline
+array & {\em \$messages} & An array of M\+I\+ME messages to import.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+B\+O\+OL @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+append @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP_ManageMB/importMail}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P\+\_\+\+Manage\+M\+B/import\+Mail}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classMail__IMAPv2__ManageMB_ae6dbd1566a5644a41bc48e37b201d886}\label{classMail__IMAPv2__ManageMB_ae6dbd1566a5644a41bc48e37b201d886}} 
+\index{Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}!Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}}
+\index{Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}!Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}}
+\doxysubsubsection{\texorpdfstring{Mail\_IMAPv2\_ManageMB()}{Mail\_IMAPv2\_ManageMB()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+Manage\+M\+B\+::\+Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+Manage\+MB (\begin{DoxyParamCaption}\item[{}]{\$connection,  }\item[{}]{\$get\+\_\+info = {\ttfamily TRUE} }\end{DoxyParamCaption})}
+
+@tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP_ManageMB/Mail_IMAP_ManageMB}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P\+\_\+\+Manage\+M\+B/\+Mail\+\_\+\+I\+M\+A\+P\+\_\+\+Manage\+MB}} \mbox{\Hypertarget{classMail__IMAPv2__ManageMB_a1a5becdfcc6ab689a9b376a8c286fff3}\label{classMail__IMAPv2__ManageMB_a1a5becdfcc6ab689a9b376a8c286fff3}} 
+\index{Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}!manageMail@{manageMail}}
+\index{manageMail@{manageMail}!Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}}
+\doxysubsubsection{\texorpdfstring{manageMail()}{manageMail()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+Manage\+M\+B\+::manage\+Mail (\begin{DoxyParamCaption}\item[{}]{\$action,  }\item[{}]{\$msg\+\_\+list,  }\item[{}]{\$dest\+\_\+mb }\end{DoxyParamCaption})}
+
+This method manages the mail inside of a mailbox and allows mail to be copied or moved from the mailbox that the user is connected to to the specified mailbox.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$action} & One of copy$\vert$move if copy, a copy of the message will remain in the current mailbox. If move the message is permenently moved to the specified mailbox. \\
+\hline
+array & {\em \$msg\+\_\+list} & An array of messages to move, see (\mbox{\hyperlink{}{\} or  imap\+\_\+mail\+\_\+move\} for more options. The array is imploded into a comma separated list, therefore other options such as 1\+:10 syntax or $\ast$ syntax may be specified in the array.  string \$dest\+\_\+mb The destination mailbox, such as \textquotesingle{}I\+N\+B\+O\+X.\+Drafts\textquotesingle{} or \textquotesingle{}I\+N\+B\+O\+X.\+Sent\textquotesingle{}  B\+O\+OL  public  imap\+\_\+mail\+\_\+copy  imap\+\_\+mail\+\_\+move  \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP_ManageMB/manageMail}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P\+\_\+\+Manage\+M\+B/manage\+Mail}} }}\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMail__IMAPv2__ManageMB_aa447f2b92a2cbfc58e0d5811899c92c8}\label{classMail__IMAPv2__ManageMB_aa447f2b92a2cbfc58e0d5811899c92c8}} 
+\index{Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}!manageMB@{manageMB}}
+\index{manageMB@{manageMB}!Mail\_IMAPv2\_ManageMB@{Mail\_IMAPv2\_ManageMB}}
+\doxysubsubsection{\texorpdfstring{manageMB()}{manageMB()}}
+{\footnotesize\ttfamily Mail\+\_\+\+I\+M\+A\+Pv2\+\_\+\+Manage\+M\+B\+::manage\+MB (\begin{DoxyParamCaption}\item[{}]{\$action,  }\item[{}]{\$mb\+\_\+name,  }\item[{}]{\$mb\+\_\+rename = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+This method creates, renames and deletes mailboxes from the server.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$action} & One of create$\vert$rename$\vert$delete, this tells the method what you want to do with a mailbox. \\
+\hline
+string & {\em \$mb\+\_\+name} & The name of the mailbox to create, delete or rename. \\
+\hline
+string & {\em \$mb\+\_\+rename} & (optional) New name for the mailbox, if it is being renamed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+B\+O\+OL @access public 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+imap\+\_\+createmailbox 
+
+imap\+\_\+renamemailbox 
+
+imap\+\_\+deletemailbox @tutorial \href{http://www.smilingsouls.net/Mail_IMAP?content=Mail_IMAP_ManageMB/manageMB}{\texttt{ http\+://www.\+smilingsouls.\+net/\+Mail\+\_\+\+I\+M\+A\+P?content=\+Mail\+\_\+\+I\+M\+A\+P\+\_\+\+Manage\+M\+B/manage\+MB}} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+I\+M\+A\+Pv2/\+Manage\+M\+B/Manage\+M\+B.\+php\end{DoxyCompactItemize}

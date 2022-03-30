@@ -1,0 +1,610 @@
+\hypertarget{classDB__fbsql}{}\doxysection{D\+B\+\_\+fbsql Class Reference}
+\label{classDB__fbsql}\index{DB\_fbsql@{DB\_fbsql}}
+
+
+Inheritance diagram for D\+B\+\_\+fbsql\+:
+% FIG 0
+
+
+Collaboration diagram for D\+B\+\_\+fbsql\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__fbsql_af14e2f205aa9e21ff4993d1d1474b0df}{D\+B\+\_\+fbsql}} ()
+\item 
+\mbox{\hyperlink{classDB__fbsql_a70a233a6be77b9c8720e740f6354ffa0}{connect}} (\$dsn, \$persistent=false)
+\item 
+\mbox{\hyperlink{classDB__fbsql_a88fe48244adb96a6408c76c969c86ca2}{disconnect}} ()
+\item 
+\mbox{\hyperlink{classDB__fbsql_a65f9d9c6cbb4c4e028836da5a321e2cb}{simple\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}})
+\item 
+\mbox{\hyperlink{classDB__fbsql_a5f6640a4c6411fd8901f176c20feb8f0}{next\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__fbsql_ae7b9d7bf31359aca3aa5d500056172a8}{fetch\+Into}} (\$result, \&\$arr, \$fetchmode, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__fbsql_acf6dd519dd4354b375b4d629a53cf816}{free\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__fbsql_a57b3274e1e5c9fcd0a17cb851688f2a9}{auto\+Commit}} (\$onoff=false)
+\item 
+\mbox{\hyperlink{classDB__fbsql_aa6430d93ae35f495b41ba49aa579eee4}{commit}} ()
+\item 
+\mbox{\hyperlink{classDB__fbsql_a4fde31c012211c9ce2acef171090340d}{rollback}} ()
+\item 
+\mbox{\hyperlink{classDB__fbsql_a38fa3b9562578adf13afa506fb120b2f}{num\+Cols}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__fbsql_a9e9145e73f7de63b75cc08f1862a5f3f}{num\+Rows}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__fbsql_aa5596079f3b21728d1cb8461efe2c837}{affected\+Rows}} ()
+\item 
+\mbox{\hyperlink{classDB__fbsql_af37fadc1c8f101e836cb203dff5e82ab}{next\+Id}} (\$seq\+\_\+name, \$ondemand=true)
+\item 
+\mbox{\hyperlink{classDB__fbsql_a4cbe26af7350dd1302c407d8fb687e08}{create\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__fbsql_a9e0e132dd554874a07ee79ca4abb2377}{drop\+Sequence}} (\$seq\+\_\+name)
+\item 
+\mbox{\hyperlink{classDB__fbsql_a26509ad942791fc7fea61f7856b37fe5}{modify\+Limit\+Query}} (\$\mbox{\hyperlink{classDB__common_a961c0df5165833b212be8ec7e7efbfe8}{query}}, \$from, \$count, \$params=array())
+\item 
+\mbox{\hyperlink{classDB__fbsql_a79f0a3a5f90febde5f47b91d971db148}{quote\+Boolean}} (\$boolean)
+\item 
+\mbox{\hyperlink{classDB__fbsql_a27d90f5a0e44a7be87cb660fa0aa92fb}{quote\+Float}} (\$float)
+\item 
+\mbox{\hyperlink{classDB__fbsql_a945567440038abdbe05b019d793c0bb1}{fbsql\+Raise\+Error}} (\$errno=null)
+\item 
+\mbox{\hyperlink{classDB__fbsql_ac0f17ed45ad7ff04cc809f1d217f7db7}{error\+Native}} ()
+\item 
+\mbox{\hyperlink{classDB__fbsql_a0ff1679f07340257a688271732a566ca}{table\+Info}} (\$result, \$mode=null)
+\item 
+\mbox{\hyperlink{classDB__fbsql_aaccef765b0035ccd597388c035a40739}{get\+Special\+Query}} (\$type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDB__fbsql_aa010f5a69e5a7799230e1410d8b4486a}\label{classDB__fbsql_aa010f5a69e5a7799230e1410d8b4486a}} 
+{\bfseries \$phptype} = \textquotesingle{}fbsql\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classDB__fbsql_aac368c959d1f2dc35b0aac0d56b0a42f}\label{classDB__fbsql_aac368c959d1f2dc35b0aac0d56b0a42f}} 
+{\bfseries \$dbsyntax} = \textquotesingle{}fbsql\textquotesingle{}
+\item 
+{\bfseries \$features}
+\item 
+{\bfseries \$errorcode\+\_\+map}
+\item 
+\mbox{\Hypertarget{classDB__fbsql_a676f0ffd94230e71d85226d047cebd0d}\label{classDB__fbsql_a676f0ffd94230e71d85226d047cebd0d}} 
+{\bfseries \$connection}
+\item 
+\mbox{\Hypertarget{classDB__fbsql_a2230c3307a7bd0466f20b43b480e5e39}\label{classDB__fbsql_a2230c3307a7bd0466f20b43b480e5e39}} 
+{\bfseries \$dsn} = array()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__fbsql_aa5596079f3b21728d1cb8461efe2c837}\label{classDB__fbsql_aa5596079f3b21728d1cb8461efe2c837}} 
+\index{DB\_fbsql@{DB\_fbsql}!affectedRows@{affectedRows}}
+\index{affectedRows@{affectedRows}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{affectedRows()}{affectedRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::affected\+Rows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Determines the number of rows affected by a data maniuplation query
+
+0 is returned for queries that don\textquotesingle{}t manipulate data.
+
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a05a802d72feb861012eb7ebfdbe00e84}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_a57b3274e1e5c9fcd0a17cb851688f2a9}\label{classDB__fbsql_a57b3274e1e5c9fcd0a17cb851688f2a9}} 
+\index{DB\_fbsql@{DB\_fbsql}!autoCommit@{autoCommit}}
+\index{autoCommit@{autoCommit}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{autoCommit()}{autoCommit()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::auto\+Commit (\begin{DoxyParamCaption}\item[{}]{\$onoff = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Enables or disables automatic commits
+
+
+\begin{DoxyParams}[1]{Parameters}
+bool & {\em \$onoff} & true turns it on, false turns it off\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object if the driver doesn\textquotesingle{}t support auto-\/committing transactions. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ad28b0f99a6bc3cdbf921804ec7720078}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_aa6430d93ae35f495b41ba49aa579eee4}\label{classDB__fbsql_aa6430d93ae35f495b41ba49aa579eee4}} 
+\index{DB\_fbsql@{DB\_fbsql}!commit@{commit}}
+\index{commit@{commit}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Commits the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a36868fcbeee42d96e00faeac7e82cb81}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_a70a233a6be77b9c8720e740f6354ffa0}\label{classDB__fbsql_a70a233a6be77b9c8720e740f6354ffa0}} 
+\index{DB\_fbsql@{DB\_fbsql}!connect@{connect}}
+\index{connect@{connect}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::connect (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$persistent = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Connect to the database server, log in and open the database
+
+Don\textquotesingle{}t call this method directly. Use \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect()}} instead.
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$dsn} & the data source name \\
+\hline
+bool & {\em \$persistent} & should the connection be persistent?\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__fbsql_a4cbe26af7350dd1302c407d8fb687e08}\label{classDB__fbsql_a4cbe26af7350dd1302c407d8fb687e08}} 
+\index{DB\_fbsql@{DB\_fbsql}!createSequence@{createSequence}}
+\index{createSequence@{createSequence}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{createSequence()}{createSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::create\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Creates a new sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the new sequence\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+fbsql\+::next\+I\+D(), \mbox{\hyperlink{classDB__fbsql_a9e0e132dd554874a07ee79ca4abb2377}{D\+B\+\_\+fbsql\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a058834196645842fc4c43701d945c995}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_af14e2f205aa9e21ff4993d1d1474b0df}\label{classDB__fbsql_af14e2f205aa9e21ff4993d1d1474b0df}} 
+\index{DB\_fbsql@{DB\_fbsql}!DB\_fbsql@{DB\_fbsql}}
+\index{DB\_fbsql@{DB\_fbsql}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{DB\_fbsql()}{DB\_fbsql()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::\+D\+B\+\_\+fbsql (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This constructor calls {\ttfamily \$this-\/$>$\mbox{\hyperlink{classDB__common_aa5163360915c02c99d8d048b4728c3cc}{D\+B\+\_\+common()}}}
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__fbsql_a88fe48244adb96a6408c76c969c86ca2}\label{classDB__fbsql_a88fe48244adb96a6408c76c969c86ca2}} 
+\index{DB\_fbsql@{DB\_fbsql}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disconnects from the database server
+
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__fbsql_a9e0e132dd554874a07ee79ca4abb2377}\label{classDB__fbsql_a9e0e132dd554874a07ee79ca4abb2377}} 
+\index{DB\_fbsql@{DB\_fbsql}!dropSequence@{dropSequence}}
+\index{dropSequence@{dropSequence}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{dropSequence()}{dropSequence()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::drop\+Sequence (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name }\end{DoxyParamCaption})}
+
+Deletes a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence to be deleted\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common\+::drop\+Sequence()}}, \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, D\+B\+\_\+fbsql\+::next\+I\+D(), \mbox{\hyperlink{classDB__fbsql_a4cbe26af7350dd1302c407d8fb687e08}{D\+B\+\_\+fbsql\+::create\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a7e5efc565bc94090d10af55081e5eb3c}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_ac0f17ed45ad7ff04cc809f1d217f7db7}\label{classDB__fbsql_ac0f17ed45ad7ff04cc809f1d217f7db7}} 
+\index{DB\_fbsql@{DB\_fbsql}!errorNative@{errorNative}}
+\index{errorNative@{errorNative}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{errorNative()}{errorNative()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::error\+Native (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the D\+B\+MS\textquotesingle{} native error code produced by the last query
+
+\begin{DoxyReturn}{Returns}
+int the D\+B\+MS\textquotesingle{} error code 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a5b451dc88229cf12de5a0845ba53a377}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_a945567440038abdbe05b019d793c0bb1}\label{classDB__fbsql_a945567440038abdbe05b019d793c0bb1}} 
+\index{DB\_fbsql@{DB\_fbsql}!fbsqlRaiseError@{fbsqlRaiseError}}
+\index{fbsqlRaiseError@{fbsqlRaiseError}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{fbsqlRaiseError()}{fbsqlRaiseError()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::fbsql\+Raise\+Error (\begin{DoxyParamCaption}\item[{}]{\$errno = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Produces a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object regarding the current problem
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$errno} & if the error is being manually raised pass a D\+B\+\_\+\+E\+R\+R\+O\+R$\ast$ constant here. If this isn\textquotesingle{}t passed the error information gathered from the D\+B\+MS.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object the \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a3b60dee1050625ee683af046033bbe26}{D\+B\+\_\+common\+::raise\+Error()}}, \mbox{\hyperlink{classDB__fbsql_ac0f17ed45ad7ff04cc809f1d217f7db7}{D\+B\+\_\+fbsql\+::error\+Native()}}, \mbox{\hyperlink{classDB__common_a94d409cd5836c29a3b4fc90b45ed3364}{D\+B\+\_\+common\+::error\+Code()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__fbsql_ae7b9d7bf31359aca3aa5d500056172a8}\label{classDB__fbsql_ae7b9d7bf31359aca3aa5d500056172a8}} 
+\index{DB\_fbsql@{DB\_fbsql}!fetchInto@{fetchInto}}
+\index{fetchInto@{fetchInto}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{fetchInto()}{fetchInto()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::fetch\+Into (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{\&}]{\$arr,  }\item[{}]{\$fetchmode,  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Places a row from the result set into the given array
+
+Formating of the array and the data therein are configurable. See \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} for more information.
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & the query result resource \\
+\hline
+array & {\em \$arr} & the referenced array to put the data in \\
+\hline
+int & {\em \$fetchmode} & how the resulting array should be indexed \\
+\hline
+int & {\em \$rownum} & the row number to fetch (0 = first row)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK on success, N\+U\+LL when the end of a result set is reached or on failure
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__fbsql_acf6dd519dd4354b375b4d629a53cf816}\label{classDB__fbsql_acf6dd519dd4354b375b4d629a53cf816}} 
+\index{DB\_fbsql@{DB\_fbsql}!freeResult@{freeResult}}
+\index{freeResult@{freeResult}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{freeResult()}{freeResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::free\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Deletes the result set and frees the memory occupied by the result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE if \$result is invalid
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__fbsql_aaccef765b0035ccd597388c035a40739}\label{classDB__fbsql_aaccef765b0035ccd597388c035a40739}} 
+\index{DB\_fbsql@{DB\_fbsql}!getSpecialQuery@{getSpecialQuery}}
+\index{getSpecialQuery@{getSpecialQuery}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{getSpecialQuery()}{getSpecialQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::get\+Special\+Query (\begin{DoxyParamCaption}\item[{}]{\$type }\end{DoxyParamCaption})}
+
+Obtains the query string needed for listing a given type of objects
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$type} & the kind of objects you want to retrieve\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the S\+QL query string or null if the driver doesn\textquotesingle{}t support the object type requested
+\end{DoxyReturn}
+@access protected \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a822d61267fea12aebe53a4a33bf9015d}{D\+B\+\_\+common\+::get\+List\+Of()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a2550ff7e5023d193614ab722d9aa3eb9}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_a26509ad942791fc7fea61f7856b37fe5}\label{classDB__fbsql_a26509ad942791fc7fea61f7856b37fe5}} 
+\index{DB\_fbsql@{DB\_fbsql}!modifyLimitQuery@{modifyLimitQuery}}
+\index{modifyLimitQuery@{modifyLimitQuery}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{modifyLimitQuery()}{modifyLimitQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::modify\+Limit\+Query (\begin{DoxyParamCaption}\item[{}]{\$query,  }\item[{}]{\$from,  }\item[{}]{\$count,  }\item[{}]{\$params = {\ttfamily array()} }\end{DoxyParamCaption})}
+
+Adds L\+I\+M\+IT clauses to a query string according to current D\+B\+MS standards
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$query} & the query to modify \\
+\hline
+int & {\em \$from} & the row to start to fetching (0 = the first row) \\
+\hline
+int & {\em \$count} & the numbers of rows to fetch \\
+\hline
+mixed & {\em \$params} & array, string or numeric data to be used in execution of the statement. Quantity of items passed must match quantity of placeholders in query\+: meaning 1 placeholder for non-\/array parameters or 1 placeholder per array element.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the query string with L\+I\+M\+IT clauses added
+\end{DoxyReturn}
+@access protected 
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a011e994cb95ac8c332c1a61071b49329}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_af37fadc1c8f101e836cb203dff5e82ab}\label{classDB__fbsql_af37fadc1c8f101e836cb203dff5e82ab}} 
+\index{DB\_fbsql@{DB\_fbsql}!nextId@{nextId}}
+\index{nextId@{nextId}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{nextId()}{nextId()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::next\+Id (\begin{DoxyParamCaption}\item[{}]{\$seq\+\_\+name,  }\item[{}]{\$ondemand = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Returns the next free id in a sequence
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$seq\+\_\+name} & name of the sequence \\
+\hline
+boolean & {\em \$ondemand} & when true, the seqence is automatically created if it does not exist\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the next id number in the sequence. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+D\+B\+\_\+common\+::next\+I\+D(), \mbox{\hyperlink{classDB__common_a696d93d6773bc2ab000eac18a8db1322}{D\+B\+\_\+common\+::get\+Sequence\+Name()}}, \mbox{\hyperlink{classDB__fbsql_a4cbe26af7350dd1302c407d8fb687e08}{D\+B\+\_\+fbsql\+::create\+Sequence()}}, \mbox{\hyperlink{classDB__fbsql_a9e0e132dd554874a07ee79ca4abb2377}{D\+B\+\_\+fbsql\+::drop\+Sequence()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ae654bec375517d041f1920ab0cc4703b}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_a5f6640a4c6411fd8901f176c20feb8f0}\label{classDB__fbsql_a5f6640a4c6411fd8901f176c20feb8f0}} 
+\index{DB\_fbsql@{DB\_fbsql}!nextResult@{nextResult}}
+\index{nextResult@{nextResult}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{nextResult()}{nextResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::next\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Move the internal fbsql result pointer to the next available result
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & valid fbsql result resource\\
+\hline
+\end{DoxyParams}
+@access public
+
+\begin{DoxyReturn}{Returns}
+true if a result is available otherwise return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__fbsql_a38fa3b9562578adf13afa506fb120b2f}\label{classDB__fbsql_a38fa3b9562578adf13afa506fb120b2f}} 
+\index{DB\_fbsql@{DB\_fbsql}!numCols@{numCols}}
+\index{numCols@{numCols}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{numCols()}{numCols()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::num\+Cols (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of columns in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of columns. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__fbsql_a9e9145e73f7de63b75cc08f1862a5f3f}\label{classDB__fbsql_a9e9145e73f7de63b75cc08f1862a5f3f}} 
+\index{DB\_fbsql@{DB\_fbsql}!numRows@{numRows}}
+\index{numRows@{numRows}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{numRows()}{numRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::num\+Rows (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Gets the number of rows in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a605433b6d3412f7d2c24287553965382}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_a79f0a3a5f90febde5f47b91d971db148}\label{classDB__fbsql_a79f0a3a5f90febde5f47b91d971db148}} 
+\index{DB\_fbsql@{DB\_fbsql}!quoteBoolean@{quoteBoolean}}
+\index{quoteBoolean@{quoteBoolean}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{quoteBoolean()}{quoteBoolean()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::quote\+Boolean (\begin{DoxyParamCaption}\item[{}]{\$boolean }\end{DoxyParamCaption})}
+
+Formats a boolean value for use within a query in a locale-\/independent manner.
+
+
+\begin{DoxyParams}{Parameters}
+{\em boolean} & the boolean value to be quoted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the quoted string. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a75285540e4848bff4ff4ac65328920df}{D\+B\+\_\+common\+::quote\+Smart()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since release 1.\+7.\+8. 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_af90403db6c0774156bd4756b1532ae65}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_a27d90f5a0e44a7be87cb660fa0aa92fb}\label{classDB__fbsql_a27d90f5a0e44a7be87cb660fa0aa92fb}} 
+\index{DB\_fbsql@{DB\_fbsql}!quoteFloat@{quoteFloat}}
+\index{quoteFloat@{quoteFloat}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{quoteFloat()}{quoteFloat()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::quote\+Float (\begin{DoxyParamCaption}\item[{}]{\$float }\end{DoxyParamCaption})}
+
+Formats a float value for use within a query in a locale-\/independent manner.
+
+
+\begin{DoxyParams}{Parameters}
+{\em float} & the float value to be quoted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the quoted string. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a75285540e4848bff4ff4ac65328920df}{D\+B\+\_\+common\+::quote\+Smart()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since release 1.\+7.\+8. 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ae1b2d9935a570ddab5ec99d2be892442}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_a4fde31c012211c9ce2acef171090340d}\label{classDB__fbsql_a4fde31c012211c9ce2acef171090340d}} 
+\index{DB\_fbsql@{DB\_fbsql}!rollback@{rollback}}
+\index{rollback@{rollback}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{rollback()}{rollback()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::rollback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reverts the current transaction
+
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a03b635b3130360516cb504b7f6095891}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__fbsql_a65f9d9c6cbb4c4e028836da5a321e2cb}\label{classDB__fbsql_a65f9d9c6cbb4c4e028836da5a321e2cb}} 
+\index{DB\_fbsql@{DB\_fbsql}!simpleQuery@{simpleQuery}}
+\index{simpleQuery@{simpleQuery}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{simpleQuery()}{simpleQuery()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::simple\+Query (\begin{DoxyParamCaption}\item[{}]{\$query }\end{DoxyParamCaption})}
+
+Sends a query to the database server
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & the S\+QL query string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed + a \mbox{\hyperlink{categoryPHP}{P\+HP}} result resrouce for successful S\+E\+L\+E\+CT queries
+\begin{DoxyItemize}
+\item the D\+B\+\_\+\+OK constant for other successful queries
+\item a \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__fbsql_a0ff1679f07340257a688271732a566ca}\label{classDB__fbsql_a0ff1679f07340257a688271732a566ca}} 
+\index{DB\_fbsql@{DB\_fbsql}!tableInfo@{tableInfo}}
+\index{tableInfo@{tableInfo}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{tableInfo()}{tableInfo()}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::table\+Info (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{}]{\$mode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Returns information about a table or a result set
+
+
+\begin{DoxyParams}[1]{Parameters}
+object | string & {\em \$result} & \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} object from a query or a string containing the name of a table. While this also accepts a query result resource identifier, this behavior is deprecated. \\
+\hline
+int & {\em \$mode} & a valid table\+Info mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array an associative array with the information requested. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common\+::table\+Info()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__fbsql_aacc8b609e41202bcfd9919415c52367a}\label{classDB__fbsql_aacc8b609e41202bcfd9919415c52367a}} 
+\index{DB\_fbsql@{DB\_fbsql}!\$errorcode\_map@{\$errorcode\_map}}
+\index{\$errorcode\_map@{\$errorcode\_map}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{\$errorcode\_map}{$errorcode\_map}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::\$errorcode\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{         22 => DB\_ERROR\_SYNTAX,}
+\DoxyCodeLine{         85 => DB\_ERROR\_ALREADY\_EXISTS,}
+\DoxyCodeLine{        108 => DB\_ERROR\_SYNTAX,}
+\DoxyCodeLine{        116 => DB\_ERROR\_NOSUCHTABLE,}
+\DoxyCodeLine{        124 => DB\_ERROR\_VALUE\_COUNT\_ON\_ROW,}
+\DoxyCodeLine{        215 => DB\_ERROR\_NOSUCHFIELD,}
+\DoxyCodeLine{        217 => DB\_ERROR\_INVALID\_NUMBER,}
+\DoxyCodeLine{        226 => DB\_ERROR\_NOSUCHFIELD,}
+\DoxyCodeLine{        231 => DB\_ERROR\_INVALID,}
+\DoxyCodeLine{        239 => DB\_ERROR\_TRUNCATED,}
+\DoxyCodeLine{        251 => DB\_ERROR\_SYNTAX,}
+\DoxyCodeLine{        266 => DB\_ERROR\_NOT\_FOUND,}
+\DoxyCodeLine{        357 => DB\_ERROR\_CONSTRAINT\_NOT\_NULL,}
+\DoxyCodeLine{        358 => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        360 => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{        361 => DB\_ERROR\_CONSTRAINT,}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__fbsql_a0b40807ed7b3c25b95ae61c5f6b718f9}\label{classDB__fbsql_a0b40807ed7b3c25b95ae61c5f6b718f9}} 
+\index{DB\_fbsql@{DB\_fbsql}!\$features@{\$features}}
+\index{\$features@{\$features}!DB\_fbsql@{DB\_fbsql}}
+\doxysubsubsection{\texorpdfstring{\$features}{$features}}
+{\footnotesize\ttfamily D\+B\+\_\+fbsql\+::\$features}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'limit'}         => \textcolor{stringliteral}{'alter'},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'new\_link'}      => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'numrows'}       => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'pconnect'}      => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'prepare'}       => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'ssl'}           => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'transactions'}  => \textcolor{keyword}{true},}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+D\+B/fbsql.\+php\end{DoxyCompactItemize}

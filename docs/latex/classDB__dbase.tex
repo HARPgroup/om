@@ -1,0 +1,324 @@
+\hypertarget{classDB__dbase}{}\doxysection{D\+B\+\_\+dbase Class Reference}
+\label{classDB__dbase}\index{DB\_dbase@{DB\_dbase}}
+
+
+Inheritance diagram for D\+B\+\_\+dbase\+:
+% FIG 0
+
+
+Collaboration diagram for D\+B\+\_\+dbase\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB__dbase_a738b0042a1f05ff5f78e2983d045b72f}{D\+B\+\_\+dbase}} ()
+\item 
+\mbox{\hyperlink{classDB__dbase_ab3c2678e036d4d58d69e2878ce2cba53}{connect}} (\$dsn, \$persistent=false)
+\item 
+\mbox{\hyperlink{classDB__dbase_a9b08f3c41e0b84432048e47449d4f01f}{disconnect}} ()
+\item 
+\mbox{\Hypertarget{classDB__dbase_a49e14908eec2ce892b373dbaa07ea380}\label{classDB__dbase_a49e14908eec2ce892b373dbaa07ea380}} 
+\& {\bfseries query} (\$query=null)
+\item 
+\mbox{\hyperlink{classDB__dbase_ae1b3647050dc75fad08fb0554679c00e}{fetch\+Into}} (\$result, \&\$arr, \$fetchmode, \$rownum=null)
+\item 
+\mbox{\hyperlink{classDB__dbase_a647382cacad8ea641693039a46b9aea7}{free\+Result}} (\$result)
+\item 
+\mbox{\hyperlink{classDB__dbase_a4042d0766f2a32be93b8995c372bf78f}{num\+Cols}} (\$\mbox{\hyperlink{classfoo}{foo}})
+\item 
+\mbox{\hyperlink{classDB__dbase_a760536cb6dd26e13da8c9c3fe8150f19}{num\+Rows}} (\$\mbox{\hyperlink{classfoo}{foo}})
+\item 
+\mbox{\hyperlink{classDB__dbase_a0c103401659045b07ff029b89e2498cb}{quote\+Boolean}} (\$boolean)
+\item 
+\mbox{\hyperlink{classDB__dbase_ab05d8c37b15297cd15a576040b7932ad}{table\+Info}} (\$result=null, \$mode=null)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDB__dbase_a9feb4b4ecc09678a5eb85f97cf761216}\label{classDB__dbase_a9feb4b4ecc09678a5eb85f97cf761216}} 
+{\bfseries \$phptype} = \textquotesingle{}dbase\textquotesingle{}
+\item 
+\mbox{\Hypertarget{classDB__dbase_a53b48c0f141ad2017b923405fd40cf12}\label{classDB__dbase_a53b48c0f141ad2017b923405fd40cf12}} 
+{\bfseries \$dbsyntax} = \textquotesingle{}dbase\textquotesingle{}
+\item 
+{\bfseries \$features}
+\item 
+{\bfseries \$errorcode\+\_\+map}
+\item 
+\mbox{\Hypertarget{classDB__dbase_a32752882bef2b331a0c23a7ac6edc0e9}\label{classDB__dbase_a32752882bef2b331a0c23a7ac6edc0e9}} 
+{\bfseries \$connection}
+\item 
+\mbox{\Hypertarget{classDB__dbase_a7a6472dcd1898772db99f1419fca6cb7}\label{classDB__dbase_a7a6472dcd1898772db99f1419fca6cb7}} 
+{\bfseries \$dsn} = array()
+\item 
+\mbox{\Hypertarget{classDB__dbase_a03cfe836c2f66dd6499401a5277aee56}\label{classDB__dbase_a03cfe836c2f66dd6499401a5277aee56}} 
+{\bfseries \$res\+\_\+row} = array()
+\item 
+\mbox{\Hypertarget{classDB__dbase_a65db7eafe58d04ac6f6add01b00abb8f}\label{classDB__dbase_a65db7eafe58d04ac6f6add01b00abb8f}} 
+{\bfseries \$result} = 0
+\item 
+{\bfseries \$types}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDB__dbase_ab3c2678e036d4d58d69e2878ce2cba53}\label{classDB__dbase_ab3c2678e036d4d58d69e2878ce2cba53}} 
+\index{DB\_dbase@{DB\_dbase}!connect@{connect}}
+\index{connect@{connect}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::connect (\begin{DoxyParamCaption}\item[{}]{\$dsn,  }\item[{}]{\$persistent = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Connect to the database and create it if it doesn\textquotesingle{}t exist
+
+Don\textquotesingle{}t call this method directly. Use \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect()}} instead.
+
+\mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}}\textquotesingle{}s dbase driver supports the following extra D\+SN options\+:
+\begin{DoxyItemize}
+\item mode An integer specifying the read/write mode to use (0 = read only, 1 = write only, 2 = read/write). Available since \mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}} 1.\+7.\+0.
+\item fields An array of arrays that \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s dbase\+\_\+create() function needs to create a new database. This information is used if the d\+Base file specified in the \char`\"{}database\char`\"{} segment of the D\+SN does not exist. For more info, see the \mbox{\hyperlink{categoryPHP}{P\+HP}} manual\textquotesingle{}s \mbox{\hyperlink{}{dbase\+\_\+create()}} page. Available since \mbox{\hyperlink{classPEAR}{P\+E\+AR}} \mbox{\hyperlink{classDB}{DB}} 1.\+7.\+0.
+\end{DoxyItemize}
+
+Example of how to connect and establish a new d\+Base file if necessary\+: {\ttfamily  require\+\_\+once \textquotesingle{}D\+B.\+php\textquotesingle{};}
+
+{\ttfamily \$dsn = array( \textquotesingle{}phptype\textquotesingle{} =$>$ \textquotesingle{}dbase\textquotesingle{}, \textquotesingle{}database\textquotesingle{} =$>$ \textquotesingle{}/path/and/name/of/dbase/file\textquotesingle{}, \textquotesingle{}mode\textquotesingle{} =$>$ 2, \textquotesingle{}fields\textquotesingle{} =$>$ array( array(\textquotesingle{}a\textquotesingle{}, \textquotesingle{}N\textquotesingle{}, 5, 0), array(\textquotesingle{}b\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, 40), array(\textquotesingle{}c\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, 255), array(\textquotesingle{}d\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, 20), ), ); \$options = array( \textquotesingle{}debug\textquotesingle{} =$>$ 2, \textquotesingle{}portability\textquotesingle{} =$>$ D\+B\+\_\+\+P\+O\+R\+T\+A\+B\+I\+L\+I\+T\+Y\+\_\+\+A\+LL, );}
+
+{\ttfamily \$db = \mbox{\hyperlink{classDB_aeb85aee47641c578522883780a06f7e2}{D\+B\+::connect}}(\$dsn, \$options); if (\mbox{\hyperlink{classPEAR_aa2608099ea852b3e982928aab10482ba}{P\+E\+A\+R\+::is\+Error}}(\$db)) \{ die(\$db-\/$>$get\+Message()); \} }
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$dsn} & the data source name \\
+\hline
+bool & {\em \$persistent} & should the connection be persistent?\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int D\+B\+\_\+\+OK on success. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__dbase_a738b0042a1f05ff5f78e2983d045b72f}\label{classDB__dbase_a738b0042a1f05ff5f78e2983d045b72f}} 
+\index{DB\_dbase@{DB\_dbase}!DB\_dbase@{DB\_dbase}}
+\index{DB\_dbase@{DB\_dbase}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{DB\_dbase()}{DB\_dbase()}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::\+D\+B\+\_\+dbase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This constructor calls {\ttfamily \$this-\/$>$\mbox{\hyperlink{classDB__common_aa5163360915c02c99d8d048b4728c3cc}{D\+B\+\_\+common()}}}
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__dbase_a9b08f3c41e0b84432048e47449d4f01f}\label{classDB__dbase_a9b08f3c41e0b84432048e47449d4f01f}} 
+\index{DB\_dbase@{DB\_dbase}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Disconnects from the database server
+
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE on failure 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDB__dbase_ae1b3647050dc75fad08fb0554679c00e}\label{classDB__dbase_ae1b3647050dc75fad08fb0554679c00e}} 
+\index{DB\_dbase@{DB\_dbase}!fetchInto@{fetchInto}}
+\index{fetchInto@{fetchInto}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{fetchInto()}{fetchInto()}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::fetch\+Into (\begin{DoxyParamCaption}\item[{}]{\$result,  }\item[{\&}]{\$arr,  }\item[{}]{\$fetchmode,  }\item[{}]{\$rownum = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Places a row from the result set into the given array
+
+Formating of the array and the data therein are configurable. See \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} for more information.
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & the query result resource \\
+\hline
+array & {\em \$arr} & the referenced array to put the data in \\
+\hline
+int & {\em \$fetchmode} & how the resulting array should be indexed \\
+\hline
+int & {\em \$rownum} & the row number to fetch (0 = first row)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed D\+B\+\_\+\+OK on success, N\+U\+LL when the end of a result set is reached or on failure
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_acb1fad1816a3d198d312e6a046bb4924}{D\+B\+\_\+result\+::fetch\+Into()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__dbase_a647382cacad8ea641693039a46b9aea7}\label{classDB__dbase_a647382cacad8ea641693039a46b9aea7}} 
+\index{DB\_dbase@{DB\_dbase}!freeResult@{freeResult}}
+\index{freeResult@{freeResult}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{freeResult()}{freeResult()}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::free\+Result (\begin{DoxyParamCaption}\item[{}]{\$result }\end{DoxyParamCaption})}
+
+Deletes the result set and frees the memory occupied by the result set.
+
+This method is a no-\/op for dbase, as there aren\textquotesingle{}t result resources in the same sense as most other database backends.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool T\+R\+UE on success, F\+A\+L\+SE if \$result is invalid
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a4cdbf43a00c874d0bd7bdb816f06b0c7}{D\+B\+\_\+result\+::free()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__dbase_a4042d0766f2a32be93b8995c372bf78f}\label{classDB__dbase_a4042d0766f2a32be93b8995c372bf78f}} 
+\index{DB\_dbase@{DB\_dbase}!numCols@{numCols}}
+\index{numCols@{numCols}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{numCols()}{numCols()}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::num\+Cols (\begin{DoxyParamCaption}\item[{}]{\$foo }\end{DoxyParamCaption})}
+
+Gets the number of columns in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of columns. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_ab5427f8d851836e07f7992d5130096e3}{D\+B\+\_\+result\+::num\+Cols()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classDB__dbase_a760536cb6dd26e13da8c9c3fe8150f19}\label{classDB__dbase_a760536cb6dd26e13da8c9c3fe8150f19}} 
+\index{DB\_dbase@{DB\_dbase}!numRows@{numRows}}
+\index{numRows@{numRows}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{numRows()}{numRows()}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::num\+Rows (\begin{DoxyParamCaption}\item[{}]{\$foo }\end{DoxyParamCaption})}
+
+Gets the number of rows in a result set
+
+This method is not meant to be called directly. Use \mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} instead. It can\textquotesingle{}t be declared \char`\"{}protected\char`\"{} because \mbox{\hyperlink{classDB__result}{D\+B\+\_\+result}} is a separate object.
+
+
+\begin{DoxyParams}[1]{Parameters}
+resource & {\em \$result} & \mbox{\hyperlink{categoryPHP}{P\+HP}}\textquotesingle{}s query result resource\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int the number of rows. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__result_a845e17693212c16caf3ce8a08a477685}{D\+B\+\_\+result\+::num\+Rows()}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_a605433b6d3412f7d2c24287553965382}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__dbase_a0c103401659045b07ff029b89e2498cb}\label{classDB__dbase_a0c103401659045b07ff029b89e2498cb}} 
+\index{DB\_dbase@{DB\_dbase}!quoteBoolean@{quoteBoolean}}
+\index{quoteBoolean@{quoteBoolean}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{quoteBoolean()}{quoteBoolean()}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::quote\+Boolean (\begin{DoxyParamCaption}\item[{}]{\$boolean }\end{DoxyParamCaption})}
+
+Formats a boolean value for use within a query in a locale-\/independent manner.
+
+
+\begin{DoxyParams}{Parameters}
+{\em boolean} & the boolean value to be quoted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string the quoted string. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_a75285540e4848bff4ff4ac65328920df}{D\+B\+\_\+common\+::quote\+Smart()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since release 1.\+7.\+8. 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_af90403db6c0774156bd4756b1532ae65}{D\+B\+\_\+common}}.
+
+\mbox{\Hypertarget{classDB__dbase_ab05d8c37b15297cd15a576040b7932ad}\label{classDB__dbase_ab05d8c37b15297cd15a576040b7932ad}} 
+\index{DB\_dbase@{DB\_dbase}!tableInfo@{tableInfo}}
+\index{tableInfo@{tableInfo}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{tableInfo()}{tableInfo()}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::table\+Info (\begin{DoxyParamCaption}\item[{}]{\$result = {\ttfamily null},  }\item[{}]{\$mode = {\ttfamily null} }\end{DoxyParamCaption})}
+
+Returns information about the current database
+
+
+\begin{DoxyParams}[1]{Parameters}
+mixed & {\em \$result} & T\+H\+IS IS U\+N\+U\+S\+ED IN D\+B\+A\+SE. The current database is examined regardless of what is provided here. \\
+\hline
+int & {\em \$mode} & a valid table\+Info mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array an associative array with the information requested. A \mbox{\hyperlink{classDB__Error}{D\+B\+\_\+\+Error}} object on failure.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common\+::table\+Info()}} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+Method available since Release 1.\+7.\+0 
+\end{DoxySince}
+
+
+Reimplemented from \mbox{\hyperlink{classDB__common_ada043b88b43fa9724ee84f355c34de7c}{D\+B\+\_\+common}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDB__dbase_ad10894a480c6dcbfa7f7f98466b1db02}\label{classDB__dbase_ad10894a480c6dcbfa7f7f98466b1db02}} 
+\index{DB\_dbase@{DB\_dbase}!\$errorcode\_map@{\$errorcode\_map}}
+\index{\$errorcode\_map@{\$errorcode\_map}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{\$errorcode\_map}{$errorcode\_map}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::\$errorcode\+\_\+map}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__dbase_ab181651b789e612b13710cbfaf9c374f}\label{classDB__dbase_ab181651b789e612b13710cbfaf9c374f}} 
+\index{DB\_dbase@{DB\_dbase}!\$features@{\$features}}
+\index{\$features@{\$features}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{\$features}{$features}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::\$features}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{stringliteral}{'limit'}         => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'new\_link'}      => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'numrows'}       => \textcolor{keyword}{true},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'pconnect'}      => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'prepare'}       => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'ssl'}           => \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{stringliteral}{'transactions'}  => \textcolor{keyword}{false},}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classDB__dbase_a12c72dcda7b9447bbe68598c458f2349}\label{classDB__dbase_a12c72dcda7b9447bbe68598c458f2349}} 
+\index{DB\_dbase@{DB\_dbase}!\$types@{\$types}}
+\index{\$types@{\$types}!DB\_dbase@{DB\_dbase}}
+\doxysubsubsection{\texorpdfstring{\$types}{$types}}
+{\footnotesize\ttfamily D\+B\+\_\+dbase\+::\$types}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= array(}
+\DoxyCodeLine{        \textcolor{charliteral}{'C'} => \textcolor{stringliteral}{'character'},}
+\DoxyCodeLine{        \textcolor{charliteral}{'D'} => \textcolor{stringliteral}{'date'},}
+\DoxyCodeLine{        \textcolor{charliteral}{'L'} => \textcolor{stringliteral}{'boolean'},}
+\DoxyCodeLine{        \textcolor{charliteral}{'M'} => \textcolor{stringliteral}{'memo'},}
+\DoxyCodeLine{        \textcolor{charliteral}{'N'} => \textcolor{stringliteral}{'number'},}
+\DoxyCodeLine{    )}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+D\+B/dbase.\+php\end{DoxyCompactItemize}

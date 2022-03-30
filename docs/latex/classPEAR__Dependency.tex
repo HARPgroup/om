@@ -1,0 +1,294 @@
+\hypertarget{classPEAR__Dependency}{}\doxysection{P\+E\+A\+R\+\_\+\+Dependency Class Reference}
+\label{classPEAR__Dependency}\index{PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_a613c12f827eebbc3b62100036934e97a}{P\+E\+A\+R\+\_\+\+Dependency}} (\&\$registry)
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_a95da8f135622a04da9a22d724fdeb2b6}{call\+Check\+Method}} (\&\$errmsg, \$opts)
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_ae2c7d559d9b08f2020afe0c6bdc12e01}{check\+Package}} (\&\$errmsg, \$name, \$req=null, \$relation=\textquotesingle{}has\textquotesingle{}, \$opt=false, \$\mbox{\hyperlink{classchannel}{channel}}=\textquotesingle{}pear.\+php.\+net\textquotesingle{})
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_a633d06b08799805786eab7f28a684ed7}{check\+Package\+Uninstall}} (\&\$error, \&\$warning, \$package, \$\mbox{\hyperlink{classchannel}{channel}}=\textquotesingle{}pear.\+php.\+net\textquotesingle{})
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_abfc738dfbbb08523f97ed47dc3414b3b}{check\+Extension}} (\&\$errmsg, \$name, \$req=null, \$relation=\textquotesingle{}has\textquotesingle{}, \$opt=false)
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_a6244a18595ff0e3ec65ac14facf7867d}{check\+OS}} (\&\$errmsg, \$os)
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_a7b7580133028ceca69e2e730fe4da03c}{check\+P\+HP}} (\&\$errmsg, \$req, \$relation=\textquotesingle{}ge\textquotesingle{})
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_a9ac55843c3110a714fa25c1c2177465c}{check\+Program}} (\&\$errmsg, \$program)
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_ab7aa7bcc079e4f6e2dfe9a16dd4f454c}{check\+S\+A\+PI}} (\&\$errmsg, \$name, \$req=null, \$relation=\textquotesingle{}has\textquotesingle{})
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_a8584757cbb6d4400bfb6b856ccc74f0b}{check\+Zend}} (\&\$errmsg, \$req, \$relation=\textquotesingle{}ge\textquotesingle{})
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_a10d2bb5edb81a20a1b26b2ec98a4fa5c}{sign\+Operator}} (\$operator)
+\item 
+\mbox{\hyperlink{classPEAR__Dependency_aada043d8c49bff27acc409dbfd73076b}{code\+From\+Relation}} (\$relation, \$version, \$req, \$opt=false)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Dependency check for \mbox{\hyperlink{classPEAR}{P\+E\+AR}} packages
+
+The class is based on the dependency R\+FC that can be found at \href{http://cvs.php.net/cvs.php/pearweb/rfc}{\texttt{ http\+://cvs.\+php.\+net/cvs.\+php/pearweb/rfc}}. It requires \mbox{\hyperlink{categoryPHP}{P\+HP}} $>$= 4.\+1
+
+\begin{DoxyAuthor}{Author}
+Tomas V.\+V.\+Vox \href{mailto:cox@idecnet.com}{\texttt{ cox@idecnet.\+com}} 
+
+Stig Bakken \href{mailto:ssb@php.net}{\texttt{ ssb@php.\+net}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPEAR__Dependency_a95da8f135622a04da9a22d724fdeb2b6}\label{classPEAR__Dependency_a95da8f135622a04da9a22d724fdeb2b6}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!callCheckMethod@{callCheckMethod}}
+\index{callCheckMethod@{callCheckMethod}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{callCheckMethod()}{callCheckMethod()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::call\+Check\+Method (\begin{DoxyParamCaption}\item[{\&}]{\$errmsg,  }\item[{}]{\$opts }\end{DoxyParamCaption})}
+
+This method maps the X\+ML dependency definition to the corresponding one from \mbox{\hyperlink{classPEAR__Dependency}{P\+E\+A\+R\+\_\+\+Dependency}}
+
+
+\begin{DoxyPre}
+\$opts => Array
+   (
+       [type] => pkg
+       [rel] => ge
+       [version] => 3.4
+       [name] => HTML\_Common
+       [optional] => false
+   )
+\end{DoxyPre}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & Error message \\
+\hline
+{\em array} & Options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_abfc738dfbbb08523f97ed47dc3414b3b}\label{classPEAR__Dependency_abfc738dfbbb08523f97ed47dc3414b3b}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!checkExtension@{checkExtension}}
+\index{checkExtension@{checkExtension}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{checkExtension()}{checkExtension()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::check\+Extension (\begin{DoxyParamCaption}\item[{\&}]{\$errmsg,  }\item[{}]{\$name,  }\item[{}]{\$req = {\ttfamily null},  }\item[{}]{\$relation = {\ttfamily \textquotesingle{}has\textquotesingle{}},  }\item[{}]{\$opt = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Extension dependencies check method
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$name} & Name of the extension to test \\
+\hline
+string & {\em \$req\+\_\+ext\+\_\+ver} & Required extension version to compare with \\
+\hline
+string & {\em \$relation} & How to compare versions with eachother \\
+\hline
+bool & {\em \$opt} & Whether the relationship is optional\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed bool false if no error or the error string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_a6244a18595ff0e3ec65ac14facf7867d}\label{classPEAR__Dependency_a6244a18595ff0e3ec65ac14facf7867d}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!checkOS@{checkOS}}
+\index{checkOS@{checkOS}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{checkOS()}{checkOS()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::check\+OS (\begin{DoxyParamCaption}\item[{\&}]{\$errmsg,  }\item[{}]{\$os }\end{DoxyParamCaption})}
+
+Operating system dependencies check method
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$os} & Name of the operating system\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed bool false if no error or the error string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_ae2c7d559d9b08f2020afe0c6bdc12e01}\label{classPEAR__Dependency_ae2c7d559d9b08f2020afe0c6bdc12e01}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!checkPackage@{checkPackage}}
+\index{checkPackage@{checkPackage}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{checkPackage()}{checkPackage()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::check\+Package (\begin{DoxyParamCaption}\item[{\&}]{\$errmsg,  }\item[{}]{\$name,  }\item[{}]{\$req = {\ttfamily null},  }\item[{}]{\$relation = {\ttfamily \textquotesingle{}has\textquotesingle{}},  }\item[{}]{\$opt = {\ttfamily false},  }\item[{}]{\$channel = {\ttfamily \textquotesingle{}pear.php.net\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Package dependencies check method
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$errmsg} & Empty string, it will be populated with an error message, if any \\
+\hline
+string & {\em \$name} & Name of the package to test \\
+\hline
+string & {\em \$req} & The package version required \\
+\hline
+string & {\em \$relation} & How to compare versions with each other \\
+\hline
+bool & {\em \$opt} & Whether the relationship is optional \\
+\hline
+string & {\em \$channel} & Channel name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed bool false if no error or the error string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_a633d06b08799805786eab7f28a684ed7}\label{classPEAR__Dependency_a633d06b08799805786eab7f28a684ed7}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!checkPackageUninstall@{checkPackageUninstall}}
+\index{checkPackageUninstall@{checkPackageUninstall}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{checkPackageUninstall()}{checkPackageUninstall()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::check\+Package\+Uninstall (\begin{DoxyParamCaption}\item[{\&}]{\$error,  }\item[{\&}]{\$warning,  }\item[{}]{\$package,  }\item[{}]{\$channel = {\ttfamily \textquotesingle{}pear.php.net\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Check package dependencies on uninstall
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$error} & The resultant error string \\
+\hline
+string & {\em \$warning} & The resultant warning string \\
+\hline
+string & {\em \$name} & Name of the package to test \\
+\hline
+string & {\em \$channel} & Channel name of the package\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true if there were errors 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_a7b7580133028ceca69e2e730fe4da03c}\label{classPEAR__Dependency_a7b7580133028ceca69e2e730fe4da03c}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!checkPHP@{checkPHP}}
+\index{checkPHP@{checkPHP}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{checkPHP()}{checkPHP()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::check\+P\+HP (\begin{DoxyParamCaption}\item[{\&}]{\$errmsg,  }\item[{}]{\$req,  }\item[{}]{\$relation = {\ttfamily \textquotesingle{}ge\textquotesingle{}} }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{categoryPHP}{P\+HP}} version check method
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$req} & which version to compare \\
+\hline
+string & {\em \$relation} & how to compare the version\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed bool false if no error or the error string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_a9ac55843c3110a714fa25c1c2177465c}\label{classPEAR__Dependency_a9ac55843c3110a714fa25c1c2177465c}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!checkProgram@{checkProgram}}
+\index{checkProgram@{checkProgram}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{checkProgram()}{checkProgram()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::check\+Program (\begin{DoxyParamCaption}\item[{\&}]{\$errmsg,  }\item[{}]{\$program }\end{DoxyParamCaption})}
+
+External program check method. Looks for executable files in directories listed in the P\+A\+TH environment variable.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$program} & which program to look for\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed bool false if no error or the error string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_ab7aa7bcc079e4f6e2dfe9a16dd4f454c}\label{classPEAR__Dependency_ab7aa7bcc079e4f6e2dfe9a16dd4f454c}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!checkSAPI@{checkSAPI}}
+\index{checkSAPI@{checkSAPI}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{checkSAPI()}{checkSAPI()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::check\+S\+A\+PI (\begin{DoxyParamCaption}\item[{\&}]{\$errmsg,  }\item[{}]{\$name,  }\item[{}]{\$req = {\ttfamily null},  }\item[{}]{\$relation = {\ttfamily \textquotesingle{}has\textquotesingle{}} }\end{DoxyParamCaption})}
+
+S\+A\+PI backend check method. Version comparison is not yet available here.
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$name} & name of S\+A\+PI backend \\
+\hline
+string & {\em \$req} & which version to compare \\
+\hline
+string & {\em \$relation} & how to compare versions (currently hardcoded to \textquotesingle{}has\textquotesingle{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed bool false if no error or the error string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_a8584757cbb6d4400bfb6b856ccc74f0b}\label{classPEAR__Dependency_a8584757cbb6d4400bfb6b856ccc74f0b}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!checkZend@{checkZend}}
+\index{checkZend@{checkZend}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{checkZend()}{checkZend()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::check\+Zend (\begin{DoxyParamCaption}\item[{\&}]{\$errmsg,  }\item[{}]{\$req,  }\item[{}]{\$relation = {\ttfamily \textquotesingle{}ge\textquotesingle{}} }\end{DoxyParamCaption})}
+
+Zend version check method
+
+
+\begin{DoxyParams}[1]{Parameters}
+string & {\em \$req} & which version to compare \\
+\hline
+string & {\em \$relation} & how to compare the version\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+mixed bool false if no error or the error string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_aada043d8c49bff27acc409dbfd73076b}\label{classPEAR__Dependency_aada043d8c49bff27acc409dbfd73076b}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!codeFromRelation@{codeFromRelation}}
+\index{codeFromRelation@{codeFromRelation}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{codeFromRelation()}{codeFromRelation()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::code\+From\+Relation (\begin{DoxyParamCaption}\item[{}]{\$relation,  }\item[{}]{\$version,  }\item[{}]{\$req,  }\item[{}]{\$opt = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Convert relation into corresponding code
+
+@access public 
+\begin{DoxyParams}{Parameters}
+{\em string} & Relation \\
+\hline
+{\em string} & Version \\
+\hline
+{\em string} & Requirement \\
+\hline
+{\em bool} & Optional dependency indicator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_a613c12f827eebbc3b62100036934e97a}\label{classPEAR__Dependency_a613c12f827eebbc3b62100036934e97a}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!PEAR\_Dependency@{PEAR\_Dependency}}
+\index{PEAR\_Dependency@{PEAR\_Dependency}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{PEAR\_Dependency()}{PEAR\_Dependency()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::\+P\+E\+A\+R\+\_\+\+Dependency (\begin{DoxyParamCaption}\item[{\&}]{\$registry }\end{DoxyParamCaption})}
+
+Constructor
+
+@access public 
+\begin{DoxyParams}{Parameters}
+{\em object} & Registry object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPEAR__Dependency_a10d2bb5edb81a20a1b26b2ec98a4fa5c}\label{classPEAR__Dependency_a10d2bb5edb81a20a1b26b2ec98a4fa5c}} 
+\index{PEAR\_Dependency@{PEAR\_Dependency}!signOperator@{signOperator}}
+\index{signOperator@{signOperator}!PEAR\_Dependency@{PEAR\_Dependency}}
+\doxysubsubsection{\texorpdfstring{signOperator()}{signOperator()}}
+{\footnotesize\ttfamily P\+E\+A\+R\+\_\+\+Dependency\+::sign\+Operator (\begin{DoxyParamCaption}\item[{}]{\$operator }\end{DoxyParamCaption})}
+
+Converts text comparing operators to them sign equivalents
+
+Example\+: \textquotesingle{}ge\textquotesingle{} to \textquotesingle{}$>$=\textquotesingle{}
+
+@access public 
+\begin{DoxyParams}{Parameters}
+{\em string} & Operator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string Sign equivalent 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+php/lib/\+P\+E\+A\+R/\+P\+E\+A\+R/Dependency.\+php\end{DoxyCompactItemize}

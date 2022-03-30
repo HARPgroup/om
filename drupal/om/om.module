@@ -255,7 +255,7 @@ function om_model_getSetProperty($values, $singularity = 'name', $save = TRUE, $
   return $om_model;
 }
 
-function om_load_dh_property($entity, $model_name) {
+function om_load_dh_property($entity, $model_name, $plugin_load = FALSE) {
 
   $model_entity_type = $entity->entityType();
   $fid = $entity->identifier();
@@ -265,6 +265,10 @@ function om_load_dh_property($entity, $model_name) {
     'propname' => $model_name,
   );
   $model = om_get_property($values);
+  if ($plugin_load and is_object($model)) {
+    $plugin = dh_variables_getPlugins($model);
+    $plugin->loadProperties($model);
+  }
   return $model;
 }
 

@@ -468,9 +468,9 @@ class XML_Unserializer extends PEAR
                 }
                 $result = $this->_parser->parse();
             } else {
-//error_log("Parsing string input");        
+error_log("Parsing string input");        
                 $result = $this->_parser->parseString($data,true);
-//error_log("Finished Parsing string input");        
+error_log("Finished Parsing string input");        
             }
         } else {
            $this->_parser->setInput($data);

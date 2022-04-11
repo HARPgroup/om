@@ -28,7 +28,7 @@
 
 $xajaxscript = "xajax_modeling.element.php";
 include_once ("xajax_config.php");
-include_once ("$libpath/adg/xajaxgrid.inc.php");
+include_once ("$libpath/xdg/xajaxgrid.inc.php");
 # includes the status bar routines
 $xajax->registerFunction("showAddElementForm");
 $xajax->registerFunction("showAddElementResult");

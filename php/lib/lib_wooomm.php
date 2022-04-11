@@ -6239,7 +6239,7 @@ function applyPropsToObject($projectid, $thisobject, $prop_array, $allowRecreate
                }
             }
             $propval = $prop_array[$thisprop];
-            if (is_array($propval[0])) {
+            if (is_array($propval) and array_key_exists(0,$propval) and is_array($propval[0])) {
                $debugHTML .= " $thisprop is nested array.<br>";
                $propval = $prop_array[$thisprop][0];
                $debugHTML .= " $thisprop " . print_r($propval,1) . "<br>";
@@ -7857,6 +7857,7 @@ function unSerializeSingleModelObjectDB($dbobj, $elementid, $input_props = array
 function om_xml_array($elem_xml) {
   // test new xml code
   include_once("/var/www/html/lib/pear-core/PEAR/XMLParser.php");
+  $object_data = FALSE;
   $parser = new PEAR_XMLParser;
   $prez = $parser->parse($elem_xml);
   $object_data = $parser->getData();
@@ -7921,8 +7922,8 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
         error_log("Calling getObjectXML(listobject, $elementid) " . $qresult['error']);
         return FALSE;
       }
-      error_log("Query RESULT");
-      error_log(var_dump($qresult));
+      //error_log("Query RESULT");
+      //error_log(var_dump($qresult));
       $record = $qresult['record'];
       $returnArray['error'] .= " Retrieving object $elementid : " . $qresult['query'] . " ; <br>";
       $returnArray['record'] = $record;

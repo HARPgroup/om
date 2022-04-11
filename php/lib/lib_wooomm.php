@@ -7957,7 +7957,6 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
          }
       }
    }
-   error_log("All Components retrieved for $elementid" );
 
    if ($debug) {
       $returnArray['debug'] .= "Creating Unserializer<br>";
@@ -7996,10 +7995,10 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
    }
    // dump the result
    $thisobject = $unserializer->getUnserializedData();
-   if ($debug) {
+   //if ($debug) {
       error_log("Finished Unserializing<br>");
       error_log("Unserialize object class: " . get_class($thisobject));
-   }
+   //}
 
    # make sure this is a valid object
    if (!is_object($thisobject) or !($result === true)) {

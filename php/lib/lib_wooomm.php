@@ -7937,7 +7937,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
          //error_log("Calling getCachedOperatorXML(listobject, $elementid, $i, $cache_runid)");
          $opresult = getCachedOperatorXML($listobject, $elementid, $i, $cache_runid);
       } else {
-        // error_log("Calling getOperatorXML(listobject, $elementid, $i)" );
+         error_log("Calling getOperatorXML(listobject, $elementid, $i)" );
          $opresult = getOperatorXML($listobject, $elementid, $i);
       }
       $thisxml = $opresult['xml'];

@@ -7887,6 +7887,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
       $returnArray['debug'] .= "End Unser Objects<br>";
    }
 
+      error_log(var_dump($listobject));
    if ($elementid > 0) {
       if ($cached) {
         error_log("Calling getCachedObjectXML(listobject, $elementid, $cache_runid)");

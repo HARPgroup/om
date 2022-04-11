@@ -7979,6 +7979,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
    //error_log("Unserializing<br>");
    // unserialize the object. Use "false" since this is not a document, "true" if it is a document
    error_log("unserializer->unserialize $elementid" );
+   $elem_xml = str_replace(array("\r", "\n"), '', $elem_xml);
    $result = $unserializer->unserialize($elem_xml, false);
    error_log("Finished unserializer->unserialize $elementid" );
    $returnArray['elemtype'] = $unserializer->getRootName();

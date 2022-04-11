@@ -7094,10 +7094,10 @@ function saveCachedQuery($formValues, $thisobject = -1) {
    
    // load up querywizard object
    // if we are passed an object, then we go ahead and save it otherwise we create it and apply some values to it
-   if (!is_object($thisobject)) {
-      $creation = createObjectType($elemtype, $formValues);
-      $thisobject = $creation['object'];
-   }
+  if (!is_object($thisobject)) {
+    $creation = createObjectType($elemtype, $formValues);
+    $thisobject = $creation['object'];
+  }
    $cresult = compactSerializeObject($thisobject);
    $innerHTML .= $cresult['innerHTML'];
    $debughtml .= $cresult['debugHTML'];
@@ -7854,6 +7854,28 @@ function unSerializeSingleModelObjectDB($dbobj, $elementid, $input_props = array
    return $retarr;
 }
 
+function om_xml_array($elem_xml) {
+  // test new xml code
+  include_once("/var/www/html/lib/pear-core/PEAR/XMLParser.php");
+  $parser = new PEAR_XMLParser;
+  $prez = $parser->parse($elem_xml);
+  $object_data = $parser->getData();
+  return $object_data;
+}
+
+function om_make_object($object_class, $props, $allowRecreate = TRUE, $debug = 0) {
+  if (class_exists($object_class)) {
+    $thisobject = new $object_class;
+    // set properties
+    //  - note: we can soon use this native object method: $thisobject->setProp('all', $openmi_json, 'json-2d');
+    //  - but, the applyPropsToObject() method has one advantage in that it checks to see if the object should
+    //    have it's recreate() method triggered.
+    $result = applyPropsToObject(FALSE, $thisobject, $props, $allowRecreate, $debug);
+    return $result['object'];
+  } else {
+    return FALSE;
+  }
+}
 
 function unSerializeSingleModelObject($elementid, $input_props = array(), $debug = 0, $runtime_db = FALSE, $cached = FALSE, $cache_runid = -2 ) {
    global $listobject, $tmpdir, $shellcopy, $ucitables, $scenarioid, $outdir, $outurl, $goutdir, $gouturl, $unserobjects, $adminsetuparray, $wdm_messagefile, $basedir, $model_startdate, $model_enddate;
@@ -7887,7 +7909,6 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
       $returnArray['debug'] .= "End Unser Objects<br>";
    }
 
-error_log("list Object" . get_class($listobject));
    if ($elementid > 0) {
       if ($cached) {
         error_log("Calling getCachedObjectXML(listobject, $elementid, $cache_runid)");
@@ -7903,7 +7924,7 @@ error_log("list Object" . get_class($listobject));
       error_log("Query RESULT");
       error_log(var_dump($qresult));
       $record = $qresult['record'];
-      $returnArray['error'] .= " Retreiving object $elementid : " . $qresult['query'] . " ; <br>";
+      $returnArray['error'] .= " Retrieving object $elementid : " . $qresult['query'] . " ; <br>";
       $returnArray['record'] = $record;
       $returnArray['record']['elem_xml'] = '';
       $returnArray['record']['elementid'] = $elementid;
@@ -7960,7 +7981,9 @@ error_log("list Object" . get_class($listobject));
          }
       }
    }
-
+   
+   /*
+  // ***** BEGIN Old Method *****
    if ($debug) {
       $returnArray['debug'] .= "Creating Unserializer<br>";
    }
@@ -7968,7 +7991,6 @@ error_log("list Object" . get_class($listobject));
    $options = array("complexType" => "object");
    // tell the unserializer to create an array of properties
    #$options = array("complexType" => "array");
-
    // create object 
    if (!class_exists('XML_Unserializer')) {
       error_log("class XML_Unserializer - PEAR class needs to be installed ");
@@ -7983,7 +8005,6 @@ error_log("list Object" . get_class($listobject));
    // unserialize the object. Use "false" since this is not a document, "true" if it is a document
    error_log("unserializer->unserialize $elementid" );
    
-   $elem_xml = str_replace(array("\r", "\n"), '', $elem_xml);
    $result = $unserializer->unserialize($elem_xml, false);
    error_log("Finished unserializer->unserialize $elementid" );
    $returnArray['elemtype'] = $unserializer->getRootName();
@@ -7999,30 +8020,25 @@ error_log("list Object" . get_class($listobject));
    }
    // dump the result
    $thisobject = $unserializer->getUnserializedData();
-   
-   /*
-  // test new xml code
-  include_once("/var/www/html/lib/pear-core/PEAR/XMLParser.php");
-  $parser = new PEAR_XMLParser;
-  error_log($elem_xml);
-  $prez = $parser->parse($elem_xml);
-  $thisobject = $parser->getData();
-  error_log(var_dump($thisobject));
-  $returnArray['elemtype'] = $parser->_root;
-  error_log("Element Type: " . $returnArray['elemtype']);
-  if (!($prez === TRUE)) {
-    error_log('Parse error');
-  } else {
-    if ($debug) {
-      error_log("Unserialize found element type: " . $returnArray['elemtype']);
-    }
-  }
+  // ***** END Old Method *****
   */
+   
+  // ***** BEGIN New Method *****
+  $object_data = om_xml_array($elem_xml);
+  $object_class = $object_data['object_class'];
+  $thisobject = om_make_object($object_class, $object_data, TRUE, $debug);
+  // ***** END New Method *****
+  error_log("Element Type: " . $returnArray['elemtype']);
+  if ($thisobject === FALSE)) {
+    error_log('Parse error');
+    $result = FALSE;
+  }
    //if ($debug) {
       error_log("Finished getUnserializedData()<br>");
       error_log("Unserialize object class: " . get_class($thisobject));
    //}
 
+  $returnArray['elemtype'] = $object_class;
    # make sure this is a valid object
    if (!is_object($thisobject) or !($result === true)) {
       # problem re-serializing
@@ -8169,12 +8185,22 @@ error_log("list Object" . get_class($listobject));
     if ($debug) {
       error_log("Unserializing op $dz" );
     }
+    // ***** BEGIN Old Method *****
+    /*
     $result = $unserializer->unserialize($thisop, false);
-    if ($debug) {
-      error_log("Successfully Unserialized op $dz of " . count($opxmls));
-      $returnArray['debug'] .= "<br><b>Result of Unserializing</b><br>";
-    }
     if ($result === true) {
+      $opobject = $unserializer->getUnserializedData();
+    } else {
+      $opobject = FALSE;
+    }
+    */
+    // ***** END Old Method *****
+    
+    // ***** BEGIN New Method *****
+    $op_object_data = om_xml_array($thisop);
+    $opobject = om_make_object($op_object_data['object_class'], $op_object_data, TRUE, $debug);
+    // ***** END New Method *****
+    if (!($opobject === FALSE)) {
       // dump the result
       $opobject = $unserializer->getUnserializedData();
       if ($debug) {
@@ -8208,23 +8234,6 @@ error_log("list Object" . get_class($listobject));
         $opobject->logerrors = 0;
       }
       $opobject->parentobject = $thisobject;
-      // **************************************************
-      // MODIFIED TO CASCADE ALL SUB-COMP PROPERTIES:
-      // **************************************************
-      /*
-      // now, get any properties from the parent that this subobject is supossed to see
-      if ($opobject->debug) {
-         error_log("Getting parent properties for adminsetup for $opobject->name ");
-      }
-      $adminsetuparray = getParentProps($opobject, $thisobject, $adminsetuparray);
-      $opobject->listobject->adminsetuparray = $adminsetuparray;
-      if (method_exists($opobject, 'wake')) {
-         $opobject->wake();
-      }
-      */
-      // **************************************************
-      // END - MODIFIED TO SHARE ALL SUB-COMP PROPERTIES
-      // **************************************************
       $opobject->basedir = $basedir;
       $opobject->outdir = $outdir;
       $opobject->outurl = $outurl;

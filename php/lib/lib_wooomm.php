@@ -6222,6 +6222,7 @@ function applyPropsToObject($projectid, $thisobject, $prop_array, $allowRecreate
 	$recreate = 0;
    $debugHTML .= "Object unserialized <br>\n";
    $props = (array)$thisobject;
+   $propstr = '';
    # now set the object properties with the information passed in
    foreach (array_keys($props) as $thisprop) {
       $propstr .= ',' . $thisprop;
@@ -8033,6 +8034,8 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   if ($thisobject === FALSE) {
     error_log('Parse error');
     $result = FALSE;
+  } else {
+    $result = TRUE;
   }
    //if ($debug) {
       error_log("Finished getUnserializedData()<br>");
@@ -8244,7 +8247,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
       # a scope that is local to the containing object, set them to be a decimal on the parent elementid
       $opobject->componentid = "$elementid" . "." . $j;
       $opobject->object_class = get_class($opobject);
-      //error_log("$opobject->name class = $opobject->object_class");
+      error_log("$opobject->name class = $opobject->object_class");
       if ($debug) {
         $returnArray['debug'] .= print_r($opobject,1);
         $returnArray['debug'] .= "<br><b>Unserializing operators</b><br>";
@@ -8919,7 +8922,7 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
    }
    //error_log("Checking for $elementid - cache_level = $cache_level, cache_type = $cache_type, cache_id = $cache_id, current_level = $current_level <br>");
    $returnArray['error'] .= "Checking element order for $elementid .<br>";
-   
+   $cache_sql = '';
    switch ($cache_type) {
       case 'level':
       if ($current_level >= $cache_level) {

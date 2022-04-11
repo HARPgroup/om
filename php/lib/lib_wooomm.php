@@ -8003,6 +8003,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   $parser = new PEAR_XMLParser;
   $prez = $parser->parse($elem_xml);
   $thisobject = $parser->getData();
+  var_dump($thisobject);
   $returnArray['elemtype'] = $parser->_root;
   if (!($prez === TRUE)) {
     error_log('Parse error');

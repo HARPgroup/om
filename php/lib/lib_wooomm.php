@@ -7982,7 +7982,7 @@ error_log("list Object" . get_class($listobject));
    //error_log("Unserializing<br>");
    // unserialize the object. Use "false" since this is not a document, "true" if it is a document
    error_log("unserializer->unserialize $elementid" );
-   /*
+   
    $elem_xml = str_replace(array("\r", "\n"), '', $elem_xml);
    $result = $unserializer->unserialize($elem_xml, false);
    error_log("Finished unserializer->unserialize $elementid" );
@@ -7999,8 +7999,8 @@ error_log("list Object" . get_class($listobject));
    }
    // dump the result
    $thisobject = $unserializer->getUnserializedData();
-   */
    
+   /*
   // test new xml code
   include_once("/var/www/html/lib/pear-core/PEAR/XMLParser.php");
   $parser = new PEAR_XMLParser;
@@ -8017,6 +8017,7 @@ error_log("list Object" . get_class($listobject));
       error_log("Unserialize found element type: " . $returnArray['elemtype']);
     }
   }
+  */
    //if ($debug) {
       error_log("Finished getUnserializedData()<br>");
       error_log("Unserialize object class: " . get_class($thisobject));

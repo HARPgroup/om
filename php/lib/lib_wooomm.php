@@ -8004,7 +8004,7 @@ error_log("list Object" . get_class($listobject));
   // test new xml code
   include_once("/var/www/html/lib/pear-core/PEAR/XMLParser.php");
   $parser = new PEAR_XMLParser;
-  error_log(var_dump($elem_xml));
+  error_log($elem_xml);
   $prez = $parser->parse($elem_xml);
   $thisobject = $parser->getData();
   error_log(var_dump($thisobject));

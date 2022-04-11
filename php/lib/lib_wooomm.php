@@ -7899,6 +7899,8 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
         error_log("Calling getObjectXML(listobject, $elementid) " . $qresult['error']);
         return FALSE;
       }
+      error_log("Query RESULT");
+      error_log(var_dump($qresult));
       $record = $qresult['record'];
       $returnArray['error'] .= " Retreiving object $elementid : " . $qresult['query'] . " ; <br>";
       $returnArray['record'] = $record;

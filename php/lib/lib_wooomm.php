@@ -8009,11 +8009,12 @@ error_log("list Object" . get_class($listobject));
   $thisobject = $parser->getData();
   error_log(var_dump($thisobject));
   $returnArray['elemtype'] = $parser->_root;
+  error_log("Element Type: " . $returnArray['elemtype']);
   if (!($prez === TRUE)) {
     error_log('Parse error');
   } else {
     if ($debug) {
-      error_log("Unserialize found elemen type: " . $returnArray['elemtype']);
+      error_log("Unserialize found element type: " . $returnArray['elemtype']);
     }
   }
    //if ($debug) {

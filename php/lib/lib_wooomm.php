@@ -7979,6 +7979,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
    //error_log("Unserializing<br>");
    // unserialize the object. Use "false" since this is not a document, "true" if it is a document
    error_log("unserializer->unserialize $elementid" );
+   /*
    $elem_xml = str_replace(array("\r", "\n"), '', $elem_xml);
    $result = $unserializer->unserialize($elem_xml, false);
    error_log("Finished unserializer->unserialize $elementid" );
@@ -7993,6 +7994,22 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
          error_log("Unserialize found elemen type: " . $returnArray['elemtype']);
       }
    }
+   */
+   
+  // test new xml code
+  include_once("/var/www/html/lib/pear-core/PEAR/XMLParser.php");
+  $parser = new PEAR_XMLParser;
+  $parser->parse($elem_xml);
+  $prez = $parser->getData();
+  $returnArray['elemtype'] = $parser->_root;
+  if (!($prez === TRUE)) {
+    error_log('Parse error');
+  } else {
+    if ($debug) {
+      error_log("Unserialize found elemen type: " . $returnArray['elemtype']);
+    }
+  }
+  
    if ($debug) {
       $returnArray['debug'] .= "Result of Unserializing<br>";
    }

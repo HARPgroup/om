@@ -8205,8 +8205,6 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
     $opobject = om_make_object($op_object_data['object_class'], $op_object_data, TRUE, $debug);
     // ***** END New Method *****
     if (!($opobject === FALSE)) {
-      // dump the result
-      $opobject = $unserializer->getUnserializedData();
       if ($debug) {
         error_log("Op $dz has name " . $opobject->name);
       }

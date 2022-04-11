@@ -7874,6 +7874,7 @@ function om_make_object($object_class, $props, $allowRecreate = TRUE, $debug = 0
     $result = applyPropsToObject(FALSE, $thisobject, $props, $allowRecreate, $debug);
     return $result['object'];
   } else {
+    error_log("Requested class '$object_class' does not exist");
     return FALSE;
   }
 }
@@ -8029,7 +8030,6 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   $object_class = $object_data['object_class'];
   $thisobject = om_make_object($object_class, $object_data, TRUE, $debug);
   // ***** END New Method *****
-  error_log("Element Type: " . $returnArray['elemtype']);
   if ($thisobject === FALSE) {
     error_log('Parse error');
     $result = FALSE;

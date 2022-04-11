@@ -8001,6 +8001,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   // test new xml code
   include_once("/var/www/html/lib/pear-core/PEAR/XMLParser.php");
   $parser = new PEAR_XMLParser;
+  error_log(var_dump($elem_xml));
   $prez = $parser->parse($elem_xml);
   $thisobject = $parser->getData();
   error_log(var_dump($thisobject));

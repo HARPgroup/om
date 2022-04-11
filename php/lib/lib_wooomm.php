@@ -7892,10 +7892,10 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
         error_log("Calling getCachedObjectXML(listobject, $elementid, $cache_runid)");
          $qresult = getCachedObjectXML($listobject, $elementid, $cache_runid);
       } else {
-         //error_log("Calling getObjectXML(listobject, $elementid) ");
+         error_log("Calling getObjectXML(listobject, $elementid) ");
          $qresult = getObjectXML($listobject, $elementid);
       }
-      if ($qresult['error']) {
+      if (isset($qresult['error'])) {
         error_log("Calling getObjectXML(listobject, $elementid) " . $qresult['error']);
         return FALSE;
       }
@@ -7980,6 +7980,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
    // unserialize the object. Use "false" since this is not a document, "true" if it is a document
    error_log("unserializer->unserialize $elementid" );
    $result = $unserializer->unserialize($elem_xml, false);
+   error_log("Finished unserializer->unserialize $elementid" );
    $returnArray['elemtype'] = $unserializer->getRootName();
    if (is_object($returnArray['elemtype'])) {
       if (get_class($returnArray['elemtype']) == 'PEAR_Error') {
@@ -7991,7 +7992,6 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
          error_log("Unserialize found elemen type: " . $returnArray['elemtype']);
       }
    }
-   error_log("Finished unserializer->unserialize $elementid" );
    if ($debug) {
       $returnArray['debug'] .= "Result of Unserializing<br>";
    }

@@ -8029,7 +8029,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   $thisobject = om_make_object($object_class, $object_data, TRUE, $debug);
   // ***** END New Method *****
   error_log("Element Type: " . $returnArray['elemtype']);
-  if ($thisobject === FALSE)) {
+  if ($thisobject === FALSE) {
     error_log('Parse error');
     $result = FALSE;
   }

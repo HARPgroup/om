@@ -7978,6 +7978,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
    }
    //error_log("Unserializing<br>");
    // unserialize the object. Use "false" since this is not a document, "true" if it is a document
+   error_log("unserializer->unserialize $elementid" );
    $result = $unserializer->unserialize($elem_xml, false);
    $returnArray['elemtype'] = $unserializer->getRootName();
    if (is_object($returnArray['elemtype'])) {
@@ -7990,13 +7991,14 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
          error_log("Unserialize found elemen type: " . $returnArray['elemtype']);
       }
    }
+   error_log("Finished unserializer->unserialize $elementid" );
    if ($debug) {
       $returnArray['debug'] .= "Result of Unserializing<br>";
    }
    // dump the result
    $thisobject = $unserializer->getUnserializedData();
    //if ($debug) {
-      error_log("Finished Unserializing<br>");
+      error_log("Finished getUnserializedData()<br>");
       error_log("Unserialize object class: " . get_class($thisobject));
    //}
 

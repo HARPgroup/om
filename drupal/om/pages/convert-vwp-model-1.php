@@ -44,6 +44,21 @@ if (count($args) < 3) {
     // do the conversion
     // flowby
     
+    $ft = om_load_dh_property($src_model, 'flowby_type');
+    $flowby_name = ($ft->propcode == '1') ? "tiered_flowby" : "simple_flowby";
+    $f1 = om_load_dh_property($src_model, $flowby_name, TRUE);
+    $f2 = om_load_dh_property($dest_model, 'flowby_current', TRUE);
+    // warn if missing a variable 
+    if (!in_array($f1->cfb_var->propcode, $dest_local_vars)) {
+      dsm("Can No Find Conditional variable for flowby " . $f1->cfb_var->propcode . " on " . $dest_model->propname . " - must manually configure");
+    }
+    // set the varid then save to load new properties 
+    entity_delete('dh_properties', $f2->pid);
+    // now use the copy command to get this all 
+    // disable pushing on the dest_model till the end 
+    $stash = om_dh_stashlink($dest_model);
+    om_copy_properties($src_model, $dest_model, "$flowby_name|flowby_current", TRUE, TRUE, TRUE);
+    om_dh_unstashlink($dest_model, $stash);
     
     // impoundment (if present)
     $imp1 = om_load_dh_property($src_model, 'impoundment');

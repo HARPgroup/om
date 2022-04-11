@@ -4809,7 +4809,9 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
 
    if (!isset($formValues['geomx']) or ($formValues['geomx'] == '') ) {
       $listobject->querystring = "  select st_x(st_centroid(st_extent(the_geom))) as geomx, st_y(st_centroid(st_extent(the_geom))) as geomy ";
-      $listobject->querystring .= " from proj_subsheds ";
+      // proj_subsheds disappeared, is this causing an error? Seems like this doesn't have any real use.
+      //$listobject->querystring .= " from proj_subsheds ";
+      $listobject->querystring .= " from proj_points ";
       $listobject->querystring .= " where $sscond ";
       if ($debug) {
          $taboutput->tab_HTML['debug'] .= "$listobject->querystring<br>";

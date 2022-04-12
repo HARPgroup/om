@@ -8601,7 +8601,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    
    error_log("unSerializeModelObject called for $elementid <br>");
    $modelcontainerid = (!isset($modelcontainerid)) ? $elementid : $modelcontainerid;
-   error_log("**** calling getElementName(, $elementid)"));
+   error_log("**** calling getElementName(, $elementid)");
    $elemname = getElementName($listobject, $elementid);
    $modelcontainername = (!isset($modelcontainername)) ? $elemname : $modelcontainername;
    
@@ -8627,7 +8627,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
       $model_startdate = '';
       $returnArray['error'] .= "Global model_startdate not defined .<br>";
    }
-   //error_log("Checking start date <br>");
+   error_log("Checking start date <br>");
    if (isset($input_props['model_startdate'])) {
       $conv_time = new DateTime($input_props['model_startdate']);
       $model_startdate = $conv_time->format('Y-m-d H:i:s');
@@ -8637,7 +8637,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
       $model_enddate = '';
       $returnArray['error'] .= "Global model_enddate not defined .<br>";
    }
-   //error_log("Checking end date <br>");
+   error_log("Checking end date <br>");
    if (isset($input_props['model_enddate'])) {
       $conv_time = new DateTime($input_props['model_enddate']);
       $model_enddate = $conv_time->format('Y-m-d H:i:s');

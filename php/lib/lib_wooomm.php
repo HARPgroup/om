@@ -5327,6 +5327,7 @@ if (is_object($thisobject)) {
    //$innerHTML .= "</table>";
 
    return $innerHTML;
+   error_log("*** Completed addElementFormPanel()");
 
 }
 
@@ -7913,14 +7914,14 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
 
    if ($elementid > 0) {
       if ($cached) {
-        error_log("Calling getCachedObjectXML(listobject, $elementid, $cache_runid)");
+         error_log("Calling getCachedObjectXML(listobject, $elementid, $cache_runid)");
          $qresult = getCachedObjectXML($listobject, $elementid, $cache_runid);
       } else {
          error_log("Calling getObjectXML(listobject, $elementid) ");
          $qresult = getObjectXML($listobject, $elementid);
       }
       if (isset($qresult['error'])) {
-        error_log("Calling getObjectXML(listobject, $elementid) " . $qresult['error']);
+        error_log("Error geting object XML (listobject, $elementid) " . $qresult['error']);
         return FALSE;
       }
       //error_log("Query RESULT");
@@ -8031,15 +8032,15 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   $thisobject = om_make_object($object_class, $object_data, TRUE, $debug);
   // ***** END New Method *****
   if ($thisobject === FALSE) {
-    error_log('Parse error');
+    //error_log('Parse error');
     $result = FALSE;
   } else {
     $result = TRUE;
   }
-   //if ($debug) {
+   if ($debug) {
       error_log("Finished getUnserializedData()<br>");
       error_log("Unserialize object class: " . get_class($thisobject));
-   //}
+   }
 
   $returnArray['elemtype'] = $object_class;
    # make sure this is a valid object
@@ -8244,7 +8245,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
       # a scope that is local to the containing object, set them to be a decimal on the parent elementid
       $opobject->componentid = "$elementid" . "." . $j;
       $opobject->object_class = get_class($opobject);
-      error_log("$opobject->name class = $opobject->object_class");
+      //error_log("$opobject->name class = $opobject->object_class");
       if ($debug) {
         $returnArray['debug'] .= print_r($opobject,1);
         $returnArray['debug'] .= "<br><b>Unserializing operators</b><br>";
@@ -8254,7 +8255,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
     }
   }
   if ($debug) {
-    error_log("Finished adding $j propeties.");
+    error_log("Finished adding $j properties.");
   }
   // **************************************************
   // MODIFIED TO CASCADE ALL SUB-COMP PROPERTIES:
@@ -8323,7 +8324,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   if ($debug) {
     $returnArray['debug'] .= " Searching for Input objects in $thisobject->name <br>";
   }
-  error_log("Creating blank objects for linked siblings ");
+  //error_log("Creating blank objects for linked siblings ");
   foreach ($linkrecs as $thisrec) {
     $src_id = $thisrec['src_id'];
     $src_prop = $thisrec['src_prop'];
@@ -8352,7 +8353,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   #$thisobject->setStateVar();
   $returnArray['object'] = $thisobject;
   #$debug = 0;
-  error_log("Returning object results");
+  error_log("Returning object $thisobject->name");
   return $returnArray;
 }
 
@@ -8744,7 +8745,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
                $child_cache_level = $cache_level;
             }
             $params = 
-            //error_log("Unserializing child $src_id of parent $elementid");
+            error_log("Unserializing child $src_id of parent $elementid");
             $linkobjarray = unSerializeModelObject($src_id, array(), $model_listobj, $child_cache_level, $cache_id, $current_level + 1, $set_status);
             $linkerror = $linkobjarray['error'];
             $linkdebug = $linkobjarray['debug'];
@@ -8901,7 +8902,7 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
    // now, check if this run has been requested with model data caching on (cache_level >= 0)
    // can also perform a check on the cache based on run-date.  If cache_level is a date, then 
    // we use that logic instead
-   error_log("Evaluating intval($strtotime) = $cache_level");
+   //error_log("Evaluating intval($strtotime) = $cache_level");
    if ( $cache_level <> -1) {
       $returnArray['error'] .= "Evaluating intval($cache_level) = " . intval($cache_level) . "<br>";
       //if (intval($cache_level) === $cache_level) {

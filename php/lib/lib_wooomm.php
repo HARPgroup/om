@@ -5290,7 +5290,7 @@ if (is_object($thisobject)) {
    #################################################################################
    ###                START Panel 5 - Data Analysis and Editing View             ###
    #################################################################################
-   //error_log(" Showing Sub-components");
+   error_log("*** Showing Data Analysis");
    # show model elements contained components
    $taboutput->tab_HTML['analysis'] .= "<table><tr><td valign=top width=50%><b>Analysis:</b>";
    $awin = showAnalysisWindow($formValues, $thisobject);

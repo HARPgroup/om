@@ -912,7 +912,7 @@ function showFormVars($dbobj,$thisrecord,$adminsetup,$showlabels, $showmissing, 
 
    }
 
-   $pkvalue = $thisrecord[$pkcol];
+   $pkvalue = isset($thisrecord[$pkcol]) ? $thisrecord[$pkcol] : '';
    if ($multiform) {
       if (!($multiformindex === NULL)) {
          $pkvalue = $multiformindex;
@@ -1645,7 +1645,7 @@ function showFormVars($dbobj,$thisrecord,$adminsetup,$showlabels, $showmissing, 
    if ($multiform and $tableinfo['showPlusMinus']) {
       $finishHTML .= "$headsep";
       $formName = $tableinfo['formName'];
-      $adname = $tableinfo['adname'];
+      $adname = isset($tableinfo['adname']) ? $tableinfo['adname'] : '';
       $parentname = $tableinfo['parentname'];
       $childname = $tableinfo['childname'];
       //$finishHTML .= showGenericButton('+'."[$pkvalue]",'+', "xajax_formRowPlus(xajax.getFormValues(\"$formName\"),\"$formName\",\"$parentname\",\"$childname\",\"$adname\"); return false;", 1, $disabled);

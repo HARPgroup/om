@@ -8682,6 +8682,19 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    $returnArray['error'] .= $cache_res['error'];
    //error_log("Element $elementid: checkObjectCacheStatus(order = $order, cache_level = $cache_level, cache_id = $cache_id, current_level = $current_level) :: Cache Type: $cache_type - Cacheable - $cacheable ");
    error_log("Element $elementid: Cache Settings: " . print_r($cache_res,1));
+   switch ($cache_res['cache_host_status']) {
+     case -1:
+       setStatus($listobject, -1, "Error: Cache request for $elementid timed out", $serverip, 1, $cache_id, -1, 1);
+     break;
+     case 0:
+       if (($cache_type <> 'disabled') and ($cache_file_exists == 0)) {
+         setStatus($listobject, -1, "Error: Could not find cache file $cache_file for $elementid", $serverip, 1, $cache_id, -1, 1);
+       }
+     break;
+     default:
+       // do nothing, cache is OK 
+     break;
+   }
    
    if ( ($cache_type <> 'disabled') and (count($unserobjects) >= 1) ) {
       error_log("Loading $elemname ($elementid) as cached.");
@@ -8905,7 +8918,7 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
   // otherwise, we proceed along normal lines
 
   $cache_file_exists = 0;
-  $returnArray = array('error'=>'', 'cache_type'=>'', 'cache_file_exists'=>0);
+  $returnArray = array('error'=>'', 'cache_type'=>'', 'cache_file_exists'=>0, 'cache_host_status' => 0);
   // now, check if this run has been requested with model data caching on (cache_level >= 0)
   // can also perform a check on the cache based on run-date.  If cache_level is a date, then 
   // we use that logic instead
@@ -8972,7 +8985,6 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
     }
   }
   error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
-  $cache_file_exists = 0;
   // verify that the file exists
   $returnArray['error'] .= $cache_sql . "<br>";
   $listobject->querystring = $cache_sql;
@@ -9006,20 +9018,25 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
     $context = stream_context_create($aStreamOptions);
     $fe = fopen($cache_file,'r', FALSE, $context);
     if ($fe === FALSE) {
+      // cache file retrieval failed.  It is either missing, or unreachable, neither of which is good.
       $cache_type = 'disabled';
+      $info = stream_get_meta_data($fe);
+      if ($info['timed_out']) {
+        $returnArray['cache_host_status'] = -1; // minus 1 means timed out 
+      }
       $cache_file_exists = 0;
       $file_size = filesize($cache_file);
       $returnArray['error'] .= "Cache file $cache_file does not exist (Exists: $fe and Size: $file_size ) - cacheing disabled.<br>";
     } else {
       $cache_file_exists = 1;
       fclose($fe);
+      $returnArray['cache_host_status'] = 1;
       $returnArray['error'] .= "Found Cache file $cache_file for $elementid.<br>";
     }
   } else {
      $cache_type = 'disabled';
-     $returnArray['error'] .= "Cache file $cache_file not found - cacheing disabled.<br>";
+     $returnArray['error'] .= "Cached run $cache_file not found - cacheing disabled.<br>";
   }
-  setStatus($listobject, -1, "Could not find cache file $cache_file for $elementid", $serverip, 1, $cache_id, -1, 1);
     
   $returnArray['error'] .= " cache_level = $cache_level, current_level = $current_level, cache_file_exists = $cache_file_exists, cache_type = $cache_type, number of components = " . count($unserobjects) . "<br>";
   $returnArray['cache_type'] = $cache_type;

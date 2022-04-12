@@ -1092,7 +1092,8 @@ function showFormVars($dbobj,$thisrecord,$adminsetup,$showlabels, $showmissing, 
             case 3:
             //$debug = 1;
             // select list
-               list($listtable, $listpkcol, $listcols, $sortcol, $slabels, $extrawhere, $rows, $tbl_type) = array_pad(explode(':', $thisparams),6,'');
+              $print_str = '';
+               list($listtable, $listpkcol, $listcols, $sortcol, $slabels, $extrawhere, $rows, $tbl_type) = array_pad(explode(':', $thisparams),8,'');
                //error_log("explode result: ($listtable, $listpkcol, $listcols, $sortcol, $slabels, $extrawhere, $rows) ");
                if ($debug) {
                   $formHTML .= "<br> Param string: $thisparams<br>";

@@ -5021,7 +5021,10 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
          $taboutput->tab_HTML['debug'] .= "Unserializing<br>";
       }
       // unserialize the object. Use "false" since this is not a document, "true" if it is a document
-      $result = $unserializer->unserialize($elem_xml, false);
+      // replace**
+      $object_data = om_xml_array($elem_xml);
+      $thisobject = om_make_object($object_data['object_class'], $object_data, TRUE, $debug);
+      //$result = $unserializer->unserialize($elem_xml, false);
       if ($actiontype == 'clone') {
          $formValues['name'] = $elemname . '(copy)';
       }
@@ -5933,19 +5936,13 @@ function compactSerializeObject($thisobject, $debug = 0) {
 
 function loadElement($elem_xml, $parentobject = -1) {
    global $debug, $listobject, $adminsetuparray, $fno, $timer;
-   $options = array("complexType" => "object");
-   #$options = array("complexType" => "array");
-   $unserializer = new XML_Unserializer($options);
    $thisdebug = '';
    if ($debug) {
       $thisdebug .= "Unserializing<br>";
    }
-   // unserialize the object. Use "false" since this is not a document, "true" if it is a document
-   # base this on the submitted XML, otherwise, retrieve the existing object
-   $result = $unserializer->unserialize($elem_xml, false);
-   $thisobject = $unserializer->getUnserializedData();
-   #$elemtype = $unserializer->getRootName();
-   if ($result) {
+  $object_data = om_xml_array($elem_xml);
+  $thisobject = om_make_object($object_data['object_class'], $object_data, TRUE, $debug);
+   if (is_object($thisobject)) {
       if (property_exists($thisobject, 'listobject')) {
          if ($debug) {
             $thisdebug .= "Setting a listobject object on this object.<br>";

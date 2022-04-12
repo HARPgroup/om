@@ -8928,7 +8928,7 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
       $returnArray['error'] .= "Cache level is -1, forcing disabled<br>";
       $cache_type = 'disabled';
    }
-   //error_log("Checking for $elementid - cache_level = $cache_level, cache_type = $cache_type, cache_id = $cache_id, current_level = $current_level <br>");
+   error_log("Checking for $elementid - cache_level = $cache_level, cache_type = $cache_type, cache_id = $cache_id, current_level = $current_level <br>");
    $returnArray['error'] .= "Checking element order for $elementid .<br>";
    $cache_sql = '';
    switch ($cache_type) {
@@ -8971,7 +8971,7 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
          $returnArray['error'] .= "$elementid is a $order'th order element, 'cacheable' setting = $cacheable - cacheing disabled.<br>";
       }
    }
-   //error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
+   error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
    $cache_file_exists = 0;
    //if ($cache_type <> 'disabled') {
       // verify that the file exists

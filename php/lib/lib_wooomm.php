@@ -8895,135 +8895,140 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
 }
 
 function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $cache_id, $current_level, $model_startdate, $model_enddate, $debug=0) {
-   global $unserobjects;
-   // cache_level = 0 means all except the top-most parent will be run as cached time series (if possible)
-   // cache_level = 1 means all except the immediate children of this object
-   // if cache_level >= 0 and current_level >= cache_level then we go ahead and make time series out of these
-   //   cached time series characteristics
-   // current level begins as -1 since the top-most object cannot be run from cache
-   // if cache_level >= 0 then cache_level will still be greater than the first level at the first object
-   // otherwise, we proceed along normal lines
-   
-   $cache_file_exists = 0;
-   $returnArray = array('error'=>'', 'cache_type'=>'', 'cache_file_exists'=>0);
-   // now, check if this run has been requested with model data caching on (cache_level >= 0)
-   // can also perform a check on the cache based on run-date.  If cache_level is a date, then 
-   // we use that logic instead
-   //error_log("Evaluating intval($strtotime) = $cache_level");
-   if ( $cache_level <> -1) {
-      $returnArray['error'] .= "Evaluating intval($cache_level) = " . intval($cache_level) . "<br>";
-      //if (intval($cache_level) === $cache_level) {
-      if ( !(strtotime($cache_level)) ) {
-         // cache_level is an integer
-         $cache_type = 'level';
-         //error_log("strtotime($cache_level) Failed: Found CacheType = date $cache_level ");
-         $returnArray['error'] .= "Cache level is an integer<br>";
-      } else {
-         // cache_level is a date
-         $cache_type = 'date';
-         //error_log("Found CacheType = date $cache_level ");
-         $returnArray['error'] .= "Cache level is a date<br>";
-      }
-   } else {
-      $returnArray['error'] .= "Cache level is -1, forcing disabled<br>";
-      $cache_type = 'disabled';
-   }
-   error_log("Checking for $elementid - cache_level = $cache_level, cache_type = $cache_type, cache_id = $cache_id, current_level = $current_level <br>");
-   $returnArray['error'] .= "Checking element order for $elementid .<br>";
-   $cache_sql = '';
-   switch ($cache_type) {
-      case 'level':
-      if ($current_level >= $cache_level) {
-         $cache_file = '';
-         // check for cached file
-         $cache_sql = "  select a.elemname, b.output_file, b.remote_url, b.host from scen_model_run_elements as b, scen_model_element as a ";
-         $cache_sql .= " where a.elementid = $elementid and b.elementid = $elementid ";
-         $cache_sql .= "    and b.runid = $cache_id ";
-         $returnArray['error'] .= "Current level $current_level > cache Level $cache_level - querying database for cache file: $cache_sql .<br>";
-      } else {
-         $cache_type = 'disabled';
-         //error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
-         $returnArray['error'] .= "Current level $current_level is less than cache Level $cache_level - cacheing disabled.<br>";
-      }
-      break;
-      
-      case 'date':
-         $cache_file = '';
-         // check for cached file
-         $cache_sql = "  select a.elemname, b.output_file, b.remote_url, b.host from scen_model_run_elements as b, scen_model_element as a ";
-         $cache_sql .= " where a.elementid = $elementid and b.elementid = $elementid ";
-         $cache_sql .= "    and b.runid = $cache_id ";
-         $cache_sql .= "    and b.run_date >= '$cache_level' ";
-         $cache_sql .= "    and b.starttime <= '$model_startdate' ";
-         $cache_sql .= "    and b.endtime >= '$model_enddate' ";
-      break;
-      
-   }
+  global $unserobjects, $serverip;
+  // cache_level = 0 means all except the top-most parent will be run as cached time series (if possible)
+  // cache_level = 1 means all except the immediate children of this object
+  // if cache_level >= 0 and current_level >= cache_level then we go ahead and make time series out of these
+  //   cached time series characteristics
+  // current level begins as -1 since the top-most object cannot be run from cache
+  // if cache_level >= 0 then cache_level will still be greater than the first level at the first object
+  // otherwise, we proceed along normal lines
 
-   
-   // check to see if we have manually defined this as uncacheable
-   $cacheable = getElementCacheable($listobject, $elementid);
-   // need to check to see if this is a container with children, if it is NOT we do not want to run it as cached
-   if ($cacheable <> 3) {
-      // level 3 allows for persistent caching of 0th level objects
-      if ( ($order == 0) or (! ($cacheable == 1))) {
-         $cache_type = 'disabled';
-         $returnArray['error'] .= "$elementid is a $order'th order element, 'cacheable' setting = $cacheable - cacheing disabled.<br>";
-      }
-   }
-   error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
-   $cache_file_exists = 0;
-   //if ($cache_type <> 'disabled') {
-      // verify that the file exists
-      $returnArray['error'] .= $cache_sql . "<br>";
-      $listobject->querystring = $cache_sql;
-      //error_log("Cache SQL: $cache_sql");
-      $listobject->performQuery();
-      if ($listobject->numrows > 0) {
-         // BEGIN - new method
-         // use new log file retrieval routine
-         $file_host = $listobject->getRecordValue(1,'host');
-         $output_file = $listobject->getRecordValue(1,'output_file');
-         $remote_url = $listobject->getRecordValue(1,'remote_url');
-         if ($file_host <> $serverip) {
-            $cache_file = $remote_url;
-            error_log("*** remote file cache check: $cache_file");
-         } else {
-            $cache_file = $output_file;
-            error_log("*** Local file cache check: $cache_file");
-         }
-         $returnArray['file_host'] = $file_host;
-         $returnArray['cache_file'] = $cache_file;
-         $returnArray['remote_url'] = $remote_url;
-         $returnArray['output_file'] = $output_file;
-         // END - new method
-         // old method of file retrieval, broke when spanning hosts
-         //$cache_file = $listobject->getRecordValue(1,'output_file');
-         $fe = fopen($cache_file,'r');
-         $file_size = filesize($cache_file);
-         //if ($fe and ($file_size > 0)) {
-         if ($fe) {
-            $cache_file_exists = 1;
-            fclose($fe);
-            $returnArray['error'] .= "Found Cache file $cache_file for $elementid.<br>";
-         } else {
-            $cache_type = 'disabled';
-            $returnArray['error'] .= "Cache file $cache_file does not exist (Exists: $fe and Size: $file_size ) - cacheing disabled.<br>";
-         }
-      } else {
-         $cache_type = 'disabled';
-         $returnArray['error'] .= "Cache file $cache_file not found - cacheing disabled.<br>";
-      }
-   //}
-      
-   $returnArray['error'] .= " cache_level = $cache_level, current_level = $current_level, cache_file_exists = $cache_file_exists, cache_type = $cache_type, number of components = " . count($unserobjects) . "<br>";
-   $returnArray['cache_type'] = $cache_type;
-   $returnArray['cache_file_exists'] = $cache_file_exists;
-   $returnArray['cacheable'] = $cacheable;
-   if ($debug) {
-      error_log($returnArray['error']);
-   }
-   return $returnArray;
+  $cache_file_exists = 0;
+  $returnArray = array('error'=>'', 'cache_type'=>'', 'cache_file_exists'=>0);
+  // now, check if this run has been requested with model data caching on (cache_level >= 0)
+  // can also perform a check on the cache based on run-date.  If cache_level is a date, then 
+  // we use that logic instead
+  //error_log("Evaluating intval($strtotime) = $cache_level");
+  if ( $cache_level <> -1) {
+    $returnArray['error'] .= "Evaluating intval($cache_level) = " . intval($cache_level) . "<br>";
+    //if (intval($cache_level) === $cache_level) {
+    if ( !(strtotime($cache_level)) ) {
+      // cache_level is an integer
+      $cache_type = 'level';
+      //error_log("strtotime($cache_level) Failed: Found CacheType = date $cache_level ");
+      $returnArray['error'] .= "Cache level is an integer<br>";
+    } else {
+      // cache_level is a date
+      $cache_type = 'date';
+      //error_log("Found CacheType = date $cache_level ");
+      $returnArray['error'] .= "Cache level is a date<br>";
+    }
+  } else {
+    $returnArray['error'] .= "Cache level is -1, forcing disabled<br>";
+    $cache_type = 'disabled';
+  }
+  error_log("Checking for $elementid - cache_level = $cache_level, cache_type = $cache_type, cache_id = $cache_id, current_level = $current_level <br>");
+  $returnArray['error'] .= "Checking element order for $elementid .<br>";
+  $cache_sql = '';
+  switch ($cache_type) {
+    case 'level':
+    if ($current_level >= $cache_level) {
+      $cache_file = '';
+      // check for cached file
+      $cache_sql = "  select a.elemname, b.output_file, b.remote_url, b.host from scen_model_run_elements as b, scen_model_element as a ";
+      $cache_sql .= " where a.elementid = $elementid and b.elementid = $elementid ";
+      $cache_sql .= "    and b.runid = $cache_id ";
+      $returnArray['error'] .= "Current level $current_level > cache Level $cache_level - querying database for cache file: $cache_sql .<br>";
+    } else {
+      $cache_type = 'disabled';
+      //error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
+      $returnArray['error'] .= "Current level $current_level is less than cache Level $cache_level - cacheing disabled.<br>";
+    }
+    break;
+    
+    case 'date':
+      $cache_file = '';
+      // check for cached file
+      $cache_sql = "  select a.elemname, b.output_file, b.remote_url, b.host from scen_model_run_elements as b, scen_model_element as a ";
+      $cache_sql .= " where a.elementid = $elementid and b.elementid = $elementid ";
+      $cache_sql .= "    and b.runid = $cache_id ";
+      $cache_sql .= "    and b.run_date >= '$cache_level' ";
+      $cache_sql .= "    and b.starttime <= '$model_startdate' ";
+      $cache_sql .= "    and b.endtime >= '$model_enddate' ";
+    break;
+    
+  }
+
+
+  // check to see if we have manually defined this as uncacheable
+  $cacheable = getElementCacheable($listobject, $elementid);
+  // need to check to see if this is a container with children, if it is NOT we do not want to run it as cached
+  if ($cacheable <> 3) {
+    // level 3 allows for persistent caching of 0th level objects
+    if ( ($order == 0) or (! ($cacheable == 1))) {
+       $cache_type = 'disabled';
+       $returnArray['error'] .= "$elementid is a $order'th order element, 'cacheable' setting = $cacheable - cacheing disabled.<br>";
+    }
+  }
+  error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
+  $cache_file_exists = 0;
+  // verify that the file exists
+  $returnArray['error'] .= $cache_sql . "<br>";
+  $listobject->querystring = $cache_sql;
+  //error_log("Cache SQL: $cache_sql");
+  $listobject->performQuery();
+  if ($listobject->numrows > 0) {
+     // BEGIN - new method
+     // use new log file retrieval routine
+     $file_host = $listobject->getRecordValue(1,'host');
+     $output_file = $listobject->getRecordValue(1,'output_file');
+     $remote_url = $listobject->getRecordValue(1,'remote_url');
+     if ($file_host <> $serverip) {
+        $cache_file = $remote_url;
+        error_log("*** remote file cache check: $cache_file");
+     } else {
+        $cache_file = $output_file;
+        error_log("*** Local file cache check: $cache_file");
+     }
+     $returnArray['file_host'] = $file_host;
+     $returnArray['cache_file'] = $cache_file;
+     $returnArray['remote_url'] = $remote_url;
+     $returnArray['output_file'] = $output_file;
+     // END - new method
+     // old method of file retrieval, broke when spanning hosts
+     //$cache_file = $listobject->getRecordValue(1,'output_file');
+     // set up context to prevent locking on missing file
+    $aStreamOptions = array(
+      'http' => array('timeout' => 5.5,
+      'user_agent' => 'Mozilla or something like that')
+    );
+    $context = stream_context_create($aStreamOptions);
+    $fe = fopen($cache_file,'r', FALSE, $context);
+    if ($fe === FALSE) {
+      $cache_type = 'disabled';
+      $cache_file_exists = 0;
+      $file_size = filesize($cache_file);
+      $returnArray['error'] .= "Cache file $cache_file does not exist (Exists: $fe and Size: $file_size ) - cacheing disabled.<br>";
+    } else {
+      $cache_file_exists = 1;
+      fclose($fe);
+      $returnArray['error'] .= "Found Cache file $cache_file for $elementid.<br>";
+    }
+  } else {
+     $cache_type = 'disabled';
+     $returnArray['error'] .= "Cache file $cache_file not found - cacheing disabled.<br>";
+  }
+  setStatus($listobject, -1, "Could not find cache file $cache_file for $elementid", $serverip, 1, $cache_id, -1, 1);
+    
+  $returnArray['error'] .= " cache_level = $cache_level, current_level = $current_level, cache_file_exists = $cache_file_exists, cache_type = $cache_type, number of components = " . count($unserobjects) . "<br>";
+  $returnArray['cache_type'] = $cache_type;
+  $returnArray['cache_file_exists'] = $cache_file_exists;
+  $returnArray['cacheable'] = $cacheable;
+  if ($debug) {
+    error_log($returnArray['error']);
+  }
+  return $returnArray;
 }
 
 function getInputLinkages($listobject, $elementid, $linktypes = array(2,3)) {

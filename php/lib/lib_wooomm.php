@@ -7861,6 +7861,7 @@ function om_xml_array($elem_xml) {
   $object_data = FALSE;
   $parser = new PEAR_XMLParser;
   $prez = $parser->parse($elem_xml);
+  error_log("Parser _root:" . $parser->_root);
   $object_data = $parser->getData();
   return $object_data;
 }

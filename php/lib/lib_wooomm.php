@@ -7861,8 +7861,11 @@ function om_xml_array($elem_xml) {
   $object_data = FALSE;
   $parser = new PEAR_XMLParser;
   $prez = $parser->parse($elem_xml);
-  error_log("Parser _root:" . $parser->_root);
   $object_data = $parser->getData();
+  //error_log("Parser _root:" . $parser->_root);
+  if (!isset($object_data['object_class'])) {
+    $object_data['object_class'] = $parser->_root;
+  }
   return $object_data;
 }
 
@@ -8029,7 +8032,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
    
   // ***** BEGIN New Method *****
   $object_data = om_xml_array($elem_xml);
-  error_log("XML:" . $elem_xml);
+  //error_log("XML:" . $elem_xml);
   $object_class = $object_data['object_class'];
   $thisobject = om_make_object($object_class, $object_data, TRUE, $debug);
   // ***** END New Method *****

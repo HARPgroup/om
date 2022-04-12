@@ -8987,8 +8987,10 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
          $remote_url = $listobject->getRecordValue(1,'remote_url');
          if ($file_host <> $serverip) {
             $cache_file = $remote_url;
+            error_log("*** remote file cache check: $cache_file");
          } else {
             $cache_file = $output_file;
+            error_log("*** Local file cache check: $cache_file");
          }
          $returnArray['file_host'] = $file_host;
          $returnArray['cache_file'] = $cache_file;

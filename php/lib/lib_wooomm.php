@@ -5111,7 +5111,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
    #################################################################################
    ###                        Panel 2 - Linked Properties                        ###
    #################################################################################
-   error_log(" Showing Linked Properties");
+   error_log("***  Showing Linked Properties");
    $taboutput->tab_HTML['inputs'] .= "<font class='heading2'>Local Property Linkages</font><br>";
    
    if ($showtime) {
@@ -5229,7 +5229,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
    #################################################################################
    ###                      Panel 4 - Sub-components (processors)                ###
    #################################################################################
-   error_log(" Showing Sub-components");
+   error_log("*** Showing Sub-components");
 if (is_object($thisobject)) {
    //error_log("DEBUG: calling operatorEditForm()" );
    //error_log("DEBUG: Before calling operatorEditForm() - Parent publicProps(): " . print_r($thisobject->getPropertyClass(array('publicvars')),1 ));
@@ -5473,10 +5473,6 @@ if (is_object($parentobject)) {
    }
    // end - handle passing of parent properties
 
-   //$debug = 1;
-   // create object
-   $options = array("complexType" => "object");
-   $unserializer = new XML_Unserializer($options);
    if ($debug) {
       $innerHTML .= "<br>retrieving saved operator<br>";
       $split = $timer->startSplit();
@@ -6523,8 +6519,7 @@ function showModelEditForm($formValues, $elem_xml, $applyvalues = 1, $disabled=0
          $modelFormArray['debug'] .= $thisload['debug'];
       }
    }
-
-
+   error_log("*** showModelEditForm called for " . $thisobject->name);
 
    $elemtype = get_class($thisobject);
 

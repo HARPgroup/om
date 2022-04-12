@@ -8601,6 +8601,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    
    error_log("unSerializeModelObject called for $elementid <br>");
    $modelcontainerid = (!isset($modelcontainerid)) ? $elementid : $modelcontainerid;
+   error_log("**** calling getElementName(, $elementid)"));
    $elemname = getElementName($listobject, $elementid);
    $modelcontainername = (!isset($modelcontainername)) ? $elemname : $modelcontainername;
    
@@ -8667,18 +8668,20 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    }
    
    // check on caching status of this object
+   error_log("**** calling getElementOrder(, $elementid)"));
    $order = getElementOrder($listobject, $elementid);
    $cache_file_exists = 0;
    
    // new cache check sub-routine
    
+   error_log("**** calling checkObjectCacheStatus(, $elementid)"));
    $cache_res = checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $cache_id, $current_level, $model_startdate, $model_enddate, $debug);
    $cache_type = $cache_res['cache_type'];
    $cache_file_exists = $cache_res['cache_file_exists'];
    $cacheable = $cache_res['cacheable'];
    $returnArray['error'] .= $cache_res['error'];
    //error_log("Element $elementid: checkObjectCacheStatus(order = $order, cache_level = $cache_level, cache_id = $cache_id, current_level = $current_level) :: Cache Type: $cache_type - Cacheable - $cacheable ");
-   //error_log("Element $elementid: Cache Settings: " . print_r($cache_res,1));
+   error_log("Element $elementid: Cache Settings: " . print_r($cache_res,1));
    
    if ( ($cache_type <> 'disabled') and (count($unserobjects) >= 1) ) {
       error_log("Loading $elemname ($elementid) as cached.");

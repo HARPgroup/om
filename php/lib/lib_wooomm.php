@@ -4947,6 +4947,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
    # stash the new element type in case this is a change
    $newelemtype = $elemtype;
    $thisobject = -1;
+   error_log("*** Loaded element from database ");
    if ($elementid > 0) {
       # wew are looking at an already created object, check the perms
       $elemperms = getScenElementPerms($listobject, $elementid, $userid, $usergroupids, $debug);
@@ -4975,6 +4976,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
       $taboutput->tab_HTML['debug'] .= "<br>Initial Object Sub-components:<br>" . print_r(array_keys($thisobject->processors),1) . "<br>";
    }
   $taboutput->tab_HTML['debug'] .= "Unserializing object took: " . round($timer->startSplit(),5) . " <br>";
+   error_log("*** Unserialized element");
 
    //error_log("Object Returned ");
    # now, we have our object instantiated, and populated with its changed data, we will call the create() method
@@ -5041,6 +5043,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
    } else {
       $elemform = '';
    }
+   error_log("*** showModelEditForm element");
 
 
    # show object type browser, to reset object type, or load the blank form for the requested type

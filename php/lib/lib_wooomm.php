@@ -8668,13 +8668,13 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    }
    
    // check on caching status of this object
-   error_log("**** calling getElementOrder(, $elementid)"));
+   error_log("**** calling getElementOrder(, $elementid)");
    $order = getElementOrder($listobject, $elementid);
    $cache_file_exists = 0;
    
    // new cache check sub-routine
    
-   error_log("**** calling checkObjectCacheStatus(, $elementid)"));
+   error_log("**** calling checkObjectCacheStatus(, $elementid)");
    $cache_res = checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $cache_id, $current_level, $model_startdate, $model_enddate, $debug);
    $cache_type = $cache_res['cache_type'];
    $cache_file_exists = $cache_res['cache_file_exists'];

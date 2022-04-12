@@ -7846,7 +7846,7 @@ function loadModelElement($elementid, $input_props = array(), $use_cached = 1, $
    }
    $ret['debugHTML'] .= $result['debug'];
    $ret['record'] = $result['record'];
-   //error_log("Returning result from unSerializeSingleModelObject");
+   error_log("Returning result from loadModelElement");
    return $ret;
 }
 

@@ -26,6 +26,8 @@ ln -s /media/NAS2/omdata /var/www/html/data
 rm /var/www/html/scripts
 ln -s /opt/model/om/scripts /var/www/html/scripts
 
+rm /var/www/html/lib/db_functions.php
+ln -s /opt/model/om/php/lib/db_functions.php /var/www/html/lib/db_functions.php
 rm /var/www/html/lib/phpmath 
 ln -s /opt/model/om/php/lib/phpmath /var/www/html/lib/phpmath
 rm /var/www/html/lib/lib_hydrology.php

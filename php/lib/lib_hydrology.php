@@ -267,6 +267,9 @@ class modelObject {
 
   function varsToSetOnParent($format='vals') {
     $vars = array();
+    if (!is_array($this->wvars)) {
+      $this->wvars = array();
+    }
     foreach ($this->wvars as $thisvar) {
        if ($this->debug) {
           $this->logDebug("This var will create $this->name" . "_" . "$thisvar on parent.<br>\n");

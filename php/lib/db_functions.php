@@ -2945,7 +2945,7 @@ class tabbedListObject {
 
    function init() {
       foreach ($this->tab_names as $thistab) {
-         $this->tab_HTML[$thistab] = $this->tab_headers[$thistab];
+         $this->tab_HTML[$thistab] = array_key_exists($thistab, $this->tab_headers) ? $this->tab_headers[$thistab] : $thistab;
       }
       if (count($this->tab_names) == 0) {
          $this->default_tab = 'default';

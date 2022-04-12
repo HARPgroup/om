@@ -8599,7 +8599,7 @@ function getElementCacheable($listobject, $elementid) {
 function unSerializeModelObject($elementid, $input_props = array(), $model_listobj = '', $cache_level = -1, $cache_id = -1, $current_level = -1, $set_status = TRUE) {
    global $listobject, $tmpdir, $shellcopy, $ucitables, $scenarioid, $debug, $outdir, $outurl, $goutdir, $gouturl, $unserobjects, $adminsetuparray, $wdm_messagefile, $wdimex_exe, $basedir, $model_startdate, $model_enddate, $serverip, $modeldb, $modelcontainerid, $modelcontainername;
    
-   //error_log("unSerializeModelObject called for $elementid <br>");
+   error_log("unSerializeModelObject called for $elementid <br>");
    $modelcontainerid = (!isset($modelcontainerid)) ? $elementid : $modelcontainerid;
    $elemname = getElementName($listobject, $elementid);
    $modelcontainername = (!isset($modelcontainername)) ? $elemname : $modelcontainername;
@@ -8729,7 +8729,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
       }
       foreach ($linkrecs as $thisrec) {
          $src_id = $thisrec['elementid'];
-         //error_log("Found child $src_id of parent $elementid");
+         error_log("Found child $src_id of parent $elementid");
          if ($debug) {
             $returnArray['debug'] .= " Searching for $src_id in " . print_r(array_keys($unserobjects)) . '<br>';
          }
@@ -8781,13 +8781,16 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
             $returnArray['debug'] .= " Adding Component $linkobj->name  <br>";
          }
          $thisobject->addComponent($linkobj);
+         error_log("Added child $linkobj->name ($src_id)");
       }
 
+      error_log("*** Contained child models added");
       # retrieve input linkages
       $linkrecs = getInputLinkages($listobject, $elementid, array(2,3)); 
       if ($debug) {
          $returnArray['debug'] .= " Searching for Input objects in $thisobject->name <br>";
       }
+      error_log("*** Adding Input Linkages");
       foreach ($linkrecs as $thisrec) {
          $src_id = $thisrec['src_id'];
          $src_prop = $thisrec['src_prop'];
@@ -8878,6 +8881,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
             }
          }
       }
+      error_log("*** Finished Adding Input Linkages");
    }
 
    #$thisobject->setStateVar();

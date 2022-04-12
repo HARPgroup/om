@@ -8324,7 +8324,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   if ($debug) {
     $returnArray['debug'] .= " Searching for Input objects in $thisobject->name <br>";
   }
-  //error_log("Creating blank objects for linked siblings ");
+  error_log("Creating blank objects for linked siblings ");
   foreach ($linkrecs as $thisrec) {
     $src_id = $thisrec['src_id'];
     $src_prop = $thisrec['src_prop'];
@@ -8353,7 +8353,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   #$thisobject->setStateVar();
   $returnArray['object'] = $thisobject;
   #$debug = 0;
-  //error_log("Returning object results");
+  error_log("Returning object results");
   return $returnArray;
 }
 
@@ -8539,6 +8539,9 @@ function getParentProps($thisobject, $parentobject, $adminsetuparray) {
    # get the shell properties for this WHO object type
    $whotemplate = getWHOXML($elemtype);
    $pproptypes = $whotemplate['parentprops'];
+   if (!is_array($pproptypes)) {
+     $pproptypes = array();
+   }
    if ($thisobject->debug) {
       //error_log("Found:" . print_r($pproptypes,1));
    }

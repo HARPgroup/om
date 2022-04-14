@@ -28,7 +28,8 @@ $lsm_info = array(
 error_log("Model query: " . print_r($lsm_info,1));
 $lseg_model = om_get_property($lsm_info);
 error_log("Model pid: " . $lseg_model->pid);
-$lseg_model = om_model_getSetProperty($values, 'all', FALSE);
+$lseg_model = om_model_getSetProperty($lsm_info, 'all', FALSE);
+error_log("Model pid: " . $lseg_model->pid);
 exit;
 
 if ($lseg_model === FALSE) {   

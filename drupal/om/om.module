@@ -332,6 +332,7 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
   $plugin = dh_variables_getPlugins($copy);
   if (get_class($plugin) == 'dHOMElementConnect') {
     $copy->propcode = 0;
+    $copy->propvalue = 0; // blank the element to connect to because we don't connect to multiple
     $copy->save();
   }
   if ($overwrite or $copy->is_new) {

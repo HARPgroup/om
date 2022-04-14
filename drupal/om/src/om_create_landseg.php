@@ -8,6 +8,7 @@ while ($arg = drush_shift()) {
 }
 
 $cbp6_template = 6564010;
+$ro_template_elid = 352129; // we could jsut as easily get this from the template object that we copied
 if (count($args) >= 2) {
   $rseg_hydroid = $args[0]; // river segment 
   $lseg_hydroid = $args[1]; // land-river segment 
@@ -18,6 +19,9 @@ if (count($args) >= 2) {
 // check if a model already exists
 $lseg_pid = FALSE;
 
+// **********************************************
+// ***** Load the Features Rseg &Lseg
+// **********************************************
 $rseg_feature = entity_load_single('dh_feature', $rseg_hydroid);
 $lseg_feature = entity_load_single('dh_feature', $lseg_hydroid);
 $lsm_info = array(
@@ -27,6 +31,10 @@ $lsm_info = array(
   'featureid' => $lseg_hydroid
 );
 
+
+// **********************************************
+// ***** Insure the Land Segment model
+// **********************************************
 $lseg_model = om_get_property($lsm_info, 'all');
 if ($lseg_model === FALSE) {   
   // if not create it
@@ -36,6 +44,9 @@ if ($lseg_model === FALSE) {
 } else {
   error_log("Found Model with pid: $lseg_model->pid");
 }
+// **********************************************
+// ***** Populate basic attributes of the Land Segment model
+// **********************************************
 $lseg_model->landseg = substr($lseg_feature->hydrocode, 0, 6);
 $lseg_model->riverseg = substr($lseg_feature->hydrocode, 7);
 $lseg_model->modelpath = '/media/model/p532';
@@ -58,8 +69,9 @@ if ($oc === FALSE) {
 error_log("OM pid: " . $oc->pid);
 error_log("OM elid: " . $oc->propvalue);
 
+// **********************************************
 // load the river segment model to get the CBP6 container
-
+// **********************************************
 $rsm_info = array(
   'propcode' => 'vahydro-1.0',
   'varkey' => 'om_water_model_node',
@@ -84,6 +96,9 @@ if ($rseg_model === FALSE) {
   die;
 }
 error_log("CBP6 Model container: " . $cbp6_flows->pid);
+// **********************************************
+// Make a connection between land and river model in vahydro 
+// **********************************************
 $link = array(
    'varkey' => 'om_map_model_linkage',
    'propname' => $lseg_model->propname,
@@ -98,5 +113,12 @@ $link = om_model_getSetProperty($link, 'name');
 $link->save();
 error_log("Link: " . $link->pid);
 // create a child linked property in vahydro 
+
+// get elementid for OM cbp6 container 
+$cbp6_link = om_load_dh_property($cbp6_flows, "om_element_connection");
+$cbp6_elid = $cbp6_link->propvalue;
+
+$cmd = "cd /var/www/html/om; php copy_element.php 37 $ro_template_elid $cbp6_elid";
+$cmd = "cd /var/www/html/om; php fn_addObjectLink.php srcid destid"
 
 ?>

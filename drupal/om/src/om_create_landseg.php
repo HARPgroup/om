@@ -93,6 +93,7 @@ $link = array(
 error_log("Link info:" . print_r($link, 1));
 $link = om_model_getSetProperty($link, 'name');
 $link->save();
+error_log("Link: " . $link->pid);
 // create a child linked property in vahydro 
 
 ?>

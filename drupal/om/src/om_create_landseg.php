@@ -31,7 +31,7 @@ exit;
 
 if ($lseg_model === FALSE) {   
   // if not create it
-  $new_lseg_pid = shell_exec("drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $cbp6_template dh_feature $lseg_hydroid /"File-Based Land Segment Runoff Template/" 1");
+  $new_lseg_pid = shell_exec("drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $cbp6_template dh_feature $lseg_hydroid \"File-Based Land Segment Runoff Template\" 1");
   $lseg_model = entity_load_single('dh_properties', $lseg_pid);
 }
 

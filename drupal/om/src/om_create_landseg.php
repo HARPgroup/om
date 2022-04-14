@@ -43,6 +43,7 @@ $lseg_model->save();
 $oc = $lseg_model->om_element_connection;
 
 // now create a model if it doesn't have an om_element_connection 
+error_log("OM pid: " . $oc->pid);
 error_log("OM elid: " . $oc->propvalue);
   
 ?>

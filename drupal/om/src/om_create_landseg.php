@@ -43,9 +43,34 @@ $lseg_model->save();
 $plugin = dh_variables_getPlugins($lseg_model);
 $plugin->loadProperties($lseg_model);
 $oc = om_load_dh_property($lseg_model, "om_element_connection");
-
+if ($oc === FALSE) {
+  // we must create a holder for an OM connection - this should not be necessary because the template had one
+  $values = array(
+    'varkey' => 'om_element_connection',
+    'entity_type' => 'dh_properties',
+    'propname' => 'om_element_connection',
+    'propcode' => '0',
+    
+  om_model_getSetProperty($values, 'name');
+} 
 // now create a model if it doesn't have an om_element_connection 
 error_log("OM pid: " . $oc->pid);
 error_log("OM elid: " . $oc->propvalue);
-  
+
+// load the river segment model to get the CBP6 container
+
+$rsm_info = array(
+  'propcode' => 'vahydro-1.0',
+  'varkey' => 'om_water_model_node',
+  'entity_type' => 'dh_feature',
+  'featureid' => $lseg_hydroid
+);
+$rseg_model = om_get_property($lsm_info, 'all');
+
+if ($rseg_model === FALSE) {
+  error_log("Could not load watershed model segment");
+  die;
+}
+error_log("River Model pid: " . $rseg_model->pid);
+
 ?>

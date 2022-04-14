@@ -8,7 +8,7 @@ while ($arg = drush_shift()) {
 }
 
 $cbp6_template = 6564010;
-$ro_template_elid = 352129; // we could jsut as easily get this from the template object that we copied
+$om_lseg_template_elid = 352129; // we could jsut as easily get this from the template object that we copied
 if (count($args) >= 2) {
   $rseg_hydroid = $args[0]; // river segment 
   $lseg_hydroid = $args[1]; // land-river segment 
@@ -116,20 +116,30 @@ $link->save();
 error_log("Link: " . $link->pid);
 // create a child linked property in vahydro 
 
-// get elementid for OM cbp6 container 
-$cbp6_link = om_load_dh_property($cbp6_flows, "om_element_connection");
-$cbp6_elid = $cbp6_link->propvalue;
-
-$cmd = "cd /var/www/html/om; php copy_element.php 37 $ro_template_elid $cbp6_elid";
-$new_elid = shell_exec($cmd);
-
-error_log("Output of create element = $new_elid");
-if (intval($new_elid) > 0) {
-  error_log("Created a model element with elementid = $new_elid");
-  $oc->propvalue = $new_elid;
-  $oc->propcode = 'push_once';
-  error_log("Pushing Data");
+if (!($oc->propvalue > 0)) {
+  // we do not yet have a remote model object
+  // create one
+  // get elementid for OM cbp6 container 
+  $cbp6_link = om_load_dh_property($cbp6_flows, "om_element_connection");
+  $cbp6_elid = $cbp6_link->propvalue;
+  // now tell the connection object to do a one time clone of a basic object 
+  $oc->propcode = 'clone';
+  $oc->om_template_id = $om_lseg_template_elid;
+  $oc->remote_parentid = $cbp6_elid;
   $oc->save();
+  $cmd = "cd /var/www/html/om; php copy_element.php 37  ";
+  $new_elid = shell_exec($cmd);
+}
+// now push
+if ($oc->propvalue > 0) {
+  error_log("Output of create element = $new_elid");
+  if (intval($new_elid) > 0) {
+    error_log("Created a model element with elementid = $new_elid");
+    $oc->propvalue = $new_elid;
+    $oc->propcode = 'push_once';
+    error_log("Pushing Data");
+    $oc->save();
+  }
 }
 
 error_log("Complete. Now update land use.");

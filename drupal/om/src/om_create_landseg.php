@@ -63,7 +63,7 @@ $rsm_info = array(
   'propcode' => 'vahydro-1.0',
   'varkey' => 'om_water_model_node',
   'entity_type' => 'dh_feature',
-  'featureid' => $lseg_hydroid
+  'featureid' => $rseg_hydroid
 );
 $rseg_model = om_get_property($rsm_info, 'all');
 

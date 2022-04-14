@@ -21,7 +21,7 @@ $lseg_pid = FALSE;
 $lseg_feature = entity_load_single('dh_feature', $lseg_hydroid);
 $lsm_info = array(
   'propcode' => 'vahydro-1.0',
-  'varid' => 'om_class_cbp_eos_file',
+  'varkey' => 'om_class_cbp_eos_file',
   'entity_type' => 'dh_feature',
   'featureid' => $lseg_hydroid
 );

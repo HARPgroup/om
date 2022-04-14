@@ -71,6 +71,7 @@ if ($rseg_model === FALSE) {
   error_log("Could not load watershed model segment");
   die;
 }
+error_log("River Model pid: " . $rseg_model->pid);
 $ro_container = om_load_dh_property($rseg_model, "1. Local Runoff Inflows");
 if ($rseg_model === FALSE) {
   error_log("Could not load runoff container");
@@ -89,9 +90,9 @@ $link = array(
    'propcode' => 'dh_properties',
    'link_type' => 3
 );
+error_log("Link info:" . print_r($link, 1));
 $link = om_model_getSetProperty($link, 'name');
 $link->save();
 // create a child linked property in vahydro 
-error_log("River Model pid: " . $rseg_model->pid);
 
 ?>

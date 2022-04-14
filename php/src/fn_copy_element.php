@@ -39,7 +39,7 @@ if (isset($argv[5])) {
 $recreate = array();
 
 if ($debug) {
-  error_log("Creating a copy and setting these params: " . print_r($params,1) . "\n");
+  //error_log("Creating a copy and setting these params: " . print_r($params,1) . "\n");
 }
 
 
@@ -47,7 +47,7 @@ if ($destination > 0) {
    // get scenarioid from destination parent
    $info = getElementInfo($listobject, $destination, 1);
    $scenid = $info['scenarioid'];
-   error_log("Parent Info: " . print_r($info,1) . "\n");
+   //error_log("Parent Info: " . print_r($info,1) . "\n");
 }
 //die;
 

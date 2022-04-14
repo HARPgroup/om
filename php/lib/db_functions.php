@@ -912,7 +912,7 @@ function showFormVars($dbobj,$thisrecord,$adminsetup,$showlabels, $showmissing, 
 
    }
 
-   $pkvalue = $thisrecord[$pkcol];
+   $pkvalue = isset($thisrecord[$pkcol]) ? $thisrecord[$pkcol] : '';
    if ($multiform) {
       if (!($multiformindex === NULL)) {
          $pkvalue = $multiformindex;
@@ -1092,7 +1092,8 @@ function showFormVars($dbobj,$thisrecord,$adminsetup,$showlabels, $showmissing, 
             case 3:
             //$debug = 1;
             // select list
-               list($listtable, $listpkcol, $listcols, $sortcol, $slabels, $extrawhere, $rows, $tbl_type) = array_pad(explode(':', $thisparams),6,'');
+              $print_str = '';
+               list($listtable, $listpkcol, $listcols, $sortcol, $slabels, $extrawhere, $rows, $tbl_type) = array_pad(explode(':', $thisparams),8,'');
                //error_log("explode result: ($listtable, $listpkcol, $listcols, $sortcol, $slabels, $extrawhere, $rows) ");
                if ($debug) {
                   $formHTML .= "<br> Param string: $thisparams<br>";
@@ -1644,7 +1645,7 @@ function showFormVars($dbobj,$thisrecord,$adminsetup,$showlabels, $showmissing, 
    if ($multiform and $tableinfo['showPlusMinus']) {
       $finishHTML .= "$headsep";
       $formName = $tableinfo['formName'];
-      $adname = $tableinfo['adname'];
+      $adname = isset($tableinfo['adname']) ? $tableinfo['adname'] : '';
       $parentname = $tableinfo['parentname'];
       $childname = $tableinfo['childname'];
       //$finishHTML .= showGenericButton('+'."[$pkvalue]",'+', "xajax_formRowPlus(xajax.getFormValues(\"$formName\"),\"$formName\",\"$parentname\",\"$childname\",\"$adname\"); return false;", 1, $disabled);
@@ -2945,7 +2946,7 @@ class tabbedListObject {
 
    function init() {
       foreach ($this->tab_names as $thistab) {
-         $this->tab_HTML[$thistab] = $this->tab_headers[$thistab];
+         $this->tab_HTML[$thistab] = array_key_exists($thistab, $this->tab_headers) ? $this->tab_headers[$thistab] : $thistab;
       }
       if (count($this->tab_names) == 0) {
          $this->default_tab = 'default';

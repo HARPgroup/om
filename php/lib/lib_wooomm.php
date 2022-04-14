@@ -3727,6 +3727,10 @@ function showElementInputBrowser($formValues, $disabled=0) {
       # unserialize the property list
       $result = $unserializer->unserialize($prop_xml, false);
       $proplist = $unserializer->getUnserializedData();
+      error_log("Old prop_list:" . print_r($proplist,1));
+      $proplist = om_xml_array($prop_xml);
+      error_log("New prop_list:" . print_r($proplist,1));
+      
       $prop_form = array();
       $k = 0;
       foreach ($proplist as $thisprop) {
@@ -4809,7 +4813,9 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
 
    if (!isset($formValues['geomx']) or ($formValues['geomx'] == '') ) {
       $listobject->querystring = "  select st_x(st_centroid(st_extent(the_geom))) as geomx, st_y(st_centroid(st_extent(the_geom))) as geomy ";
-      $listobject->querystring .= " from proj_subsheds ";
+      // proj_subsheds disappeared, is this causing an error? Seems like this doesn't have any real use.
+      //$listobject->querystring .= " from proj_subsheds ";
+      $listobject->querystring .= " from proj_points ";
       $listobject->querystring .= " where $sscond ";
       if ($debug) {
          $taboutput->tab_HTML['debug'] .= "$listobject->querystring<br>";
@@ -4941,6 +4947,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
    # stash the new element type in case this is a change
    $newelemtype = $elemtype;
    $thisobject = -1;
+   error_log("*** Loaded element from database ");
    if ($elementid > 0) {
       # wew are looking at an already created object, check the perms
       $elemperms = getScenElementPerms($listobject, $elementid, $userid, $usergroupids, $debug);
@@ -4969,6 +4976,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
       $taboutput->tab_HTML['debug'] .= "<br>Initial Object Sub-components:<br>" . print_r(array_keys($thisobject->processors),1) . "<br>";
    }
   $taboutput->tab_HTML['debug'] .= "Unserializing object took: " . round($timer->startSplit(),5) . " <br>";
+   error_log("*** Unserialized element");
 
    //error_log("Object Returned ");
    # now, we have our object instantiated, and populated with its changed data, we will call the create() method
@@ -5013,7 +5021,10 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
          $taboutput->tab_HTML['debug'] .= "Unserializing<br>";
       }
       // unserialize the object. Use "false" since this is not a document, "true" if it is a document
-      $result = $unserializer->unserialize($elem_xml, false);
+      // replace**
+      $object_data = om_xml_array($elem_xml);
+      $thisobject = om_make_object($object_data['object_class'], $object_data, TRUE, $debug);
+      //$result = $unserializer->unserialize($elem_xml, false);
       if ($actiontype == 'clone') {
          $formValues['name'] = $elemname . '(copy)';
       }
@@ -5035,6 +5046,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
    } else {
       $elemform = '';
    }
+   error_log("*** showModelEditForm element");
 
 
    # show object type browser, to reset object type, or load the blank form for the requested type
@@ -5099,7 +5111,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
    #################################################################################
    ###                        Panel 2 - Linked Properties                        ###
    #################################################################################
-   error_log(" Showing Linked Properties");
+   error_log("***  Showing Linked Properties");
    $taboutput->tab_HTML['inputs'] .= "<font class='heading2'>Local Property Linkages</font><br>";
    
    if ($showtime) {
@@ -5217,7 +5229,7 @@ function addElementFormPanel($formValues, $who_xmlobjects) {
    #################################################################################
    ###                      Panel 4 - Sub-components (processors)                ###
    #################################################################################
-   error_log(" Showing Sub-components");
+   error_log("*** Showing Sub-components");
 if (is_object($thisobject)) {
    //error_log("DEBUG: calling operatorEditForm()" );
    //error_log("DEBUG: Before calling operatorEditForm() - Parent publicProps(): " . print_r($thisobject->getPropertyClass(array('publicvars')),1 ));
@@ -5278,7 +5290,7 @@ if (is_object($thisobject)) {
    #################################################################################
    ###                START Panel 5 - Data Analysis and Editing View             ###
    #################################################################################
-   //error_log(" Showing Sub-components");
+   error_log("*** Showing Data Analysis");
    # show model elements contained components
    $taboutput->tab_HTML['analysis'] .= "<table><tr><td valign=top width=50%><b>Analysis:</b>";
    $awin = showAnalysisWindow($formValues, $thisobject);
@@ -5315,6 +5327,7 @@ if (is_object($thisobject)) {
    //$innerHTML .= "</table>";
 
    return $innerHTML;
+   error_log("*** Completed addElementFormPanel()");
 
 }
 
@@ -5461,10 +5474,6 @@ if (is_object($parentobject)) {
    }
    // end - handle passing of parent properties
 
-   //$debug = 1;
-   // create object
-   $options = array("complexType" => "object");
-   $unserializer = new XML_Unserializer($options);
    if ($debug) {
       $innerHTML .= "<br>retrieving saved operator<br>";
       $split = $timer->startSplit();
@@ -5924,19 +5933,13 @@ function compactSerializeObject($thisobject, $debug = 0) {
 
 function loadElement($elem_xml, $parentobject = -1) {
    global $debug, $listobject, $adminsetuparray, $fno, $timer;
-   $options = array("complexType" => "object");
-   #$options = array("complexType" => "array");
-   $unserializer = new XML_Unserializer($options);
    $thisdebug = '';
    if ($debug) {
       $thisdebug .= "Unserializing<br>";
    }
-   // unserialize the object. Use "false" since this is not a document, "true" if it is a document
-   # base this on the submitted XML, otherwise, retrieve the existing object
-   $result = $unserializer->unserialize($elem_xml, false);
-   $thisobject = $unserializer->getUnserializedData();
-   #$elemtype = $unserializer->getRootName();
-   if ($result) {
+  $object_data = om_xml_array($elem_xml);
+  $thisobject = om_make_object($object_data['object_class'], $object_data, TRUE, $debug);
+   if (is_object($thisobject)) {
       if (property_exists($thisobject, 'listobject')) {
          if ($debug) {
             $thisdebug .= "Setting a listobject object on this object.<br>";
@@ -6220,6 +6223,7 @@ function applyPropsToObject($projectid, $thisobject, $prop_array, $allowRecreate
 	$recreate = 0;
    $debugHTML .= "Object unserialized <br>\n";
    $props = (array)$thisobject;
+   $propstr = '';
    # now set the object properties with the information passed in
    foreach (array_keys($props) as $thisprop) {
       $propstr .= ',' . $thisprop;
@@ -6237,7 +6241,7 @@ function applyPropsToObject($projectid, $thisobject, $prop_array, $allowRecreate
                }
             }
             $propval = $prop_array[$thisprop];
-            if (is_array($propval[0])) {
+            if (is_array($propval) and array_key_exists(0,$propval) and is_array($propval[0])) {
                $debugHTML .= " $thisprop is nested array.<br>";
                $propval = $prop_array[$thisprop][0];
                $debugHTML .= " $thisprop " . print_r($propval,1) . "<br>";
@@ -6516,8 +6520,7 @@ function showModelEditForm($formValues, $elem_xml, $applyvalues = 1, $disabled=0
          $modelFormArray['debug'] .= $thisload['debug'];
       }
    }
-
-
+   error_log("*** showModelEditForm called for " . $thisobject->name);
 
    $elemtype = get_class($thisobject);
 
@@ -7092,10 +7095,10 @@ function saveCachedQuery($formValues, $thisobject = -1) {
    
    // load up querywizard object
    // if we are passed an object, then we go ahead and save it otherwise we create it and apply some values to it
-   if (!is_object($thisobject)) {
-      $creation = createObjectType($elemtype, $formValues);
-      $thisobject = $creation['object'];
-   }
+  if (!is_object($thisobject)) {
+    $creation = createObjectType($elemtype, $formValues);
+    $thisobject = $creation['object'];
+  }
    $cresult = compactSerializeObject($thisobject);
    $innerHTML .= $cresult['innerHTML'];
    $debughtml .= $cresult['debugHTML'];
@@ -7839,7 +7842,7 @@ function loadModelElement($elementid, $input_props = array(), $use_cached = 1, $
    }
    $ret['debugHTML'] .= $result['debug'];
    $ret['record'] = $result['record'];
-   //error_log("Returning result from unSerializeSingleModelObject");
+   error_log("Returning result from loadModelElement");
    return $ret;
 }
 
@@ -7852,6 +7855,35 @@ function unSerializeSingleModelObjectDB($dbobj, $elementid, $input_props = array
    return $retarr;
 }
 
+function om_xml_array($elem_xml) {
+  // test new xml code
+  // see: https://github.com/pear/pear-core/blob/master/PEAR/XMLParser.php
+  include_once("/var/www/html/lib/pear-core/PEAR/XMLParser.php");
+  $object_data = FALSE;
+  $parser = new PEAR_XMLParser;
+  $prez = $parser->parse($elem_xml);
+  $object_data = $parser->getData();
+  //error_log("Parser _root:" . $parser->_root);
+  if (!isset($object_data['object_class'])) {
+    $object_data['object_class'] = $parser->_root;
+  }
+  return $object_data;
+}
+
+function om_make_object($object_class, $props, $allowRecreate = TRUE, $debug = 0) {
+  if (class_exists($object_class)) {
+    $thisobject = new $object_class;
+    // set properties
+    //  - note: we can soon use this native object method: $thisobject->setProp('all', $openmi_json, 'json-2d');
+    //  - but, the applyPropsToObject() method has one advantage in that it checks to see if the object should
+    //    have it's recreate() method triggered.
+    $result = applyPropsToObject(FALSE, $thisobject, $props, $allowRecreate, $debug);
+    return $result['object'];
+  } else {
+    error_log("Requested class '$object_class' does not exist");
+    return FALSE;
+  }
+}
 
 function unSerializeSingleModelObject($elementid, $input_props = array(), $debug = 0, $runtime_db = FALSE, $cached = FALSE, $cache_runid = -2 ) {
    global $listobject, $tmpdir, $shellcopy, $ucitables, $scenarioid, $outdir, $outurl, $goutdir, $gouturl, $unserobjects, $adminsetuparray, $wdm_messagefile, $basedir, $model_startdate, $model_enddate;
@@ -7887,18 +7919,20 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
 
    if ($elementid > 0) {
       if ($cached) {
-        error_log("Calling getCachedObjectXML(listobject, $elementid, $cache_runid)");
+         error_log("Calling getCachedObjectXML(listobject, $elementid, $cache_runid)");
          $qresult = getCachedObjectXML($listobject, $elementid, $cache_runid);
       } else {
-         //error_log("Calling getObjectXML(listobject, $elementid) ");
+         error_log("Calling getObjectXML(listobject, $elementid) ");
          $qresult = getObjectXML($listobject, $elementid);
       }
-      if ($qresult['error']) {
-        error_log("Calling getObjectXML(listobject, $elementid) " . $qresult['error']);
+      if (isset($qresult['error'])) {
+        error_log("Error geting object XML (listobject, $elementid) " . $qresult['error']);
         return FALSE;
       }
+      //error_log("Query RESULT");
+      //error_log(var_dump($qresult));
       $record = $qresult['record'];
-      $returnArray['error'] .= " Retreiving object $elementid : " . $qresult['query'] . " ; <br>";
+      $returnArray['error'] .= " Retrieving object $elementid : " . $qresult['query'] . " ; <br>";
       $returnArray['record'] = $record;
       $returnArray['record']['elem_xml'] = '';
       $returnArray['record']['elementid'] = $elementid;
@@ -7935,7 +7969,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
          //error_log("Calling getCachedOperatorXML(listobject, $elementid, $i, $cache_runid)");
          $opresult = getCachedOperatorXML($listobject, $elementid, $i, $cache_runid);
       } else {
-        // error_log("Calling getOperatorXML(listobject, $elementid, $i)" );
+         //error_log("Calling getOperatorXML(listobject, $elementid, $i)" );
          $opresult = getOperatorXML($listobject, $elementid, $i);
       }
       $thisxml = $opresult['xml'];
@@ -7955,7 +7989,9 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
          }
       }
    }
-
+   
+   /*
+  // ***** BEGIN Old Method *****
    if ($debug) {
       $returnArray['debug'] .= "Creating Unserializer<br>";
    }
@@ -7963,7 +7999,6 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
    $options = array("complexType" => "object");
    // tell the unserializer to create an array of properties
    #$options = array("complexType" => "array");
-
    // create object 
    if (!class_exists('XML_Unserializer')) {
       error_log("class XML_Unserializer - PEAR class needs to be installed ");
@@ -7976,7 +8011,10 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
    }
    //error_log("Unserializing<br>");
    // unserialize the object. Use "false" since this is not a document, "true" if it is a document
+   error_log("unserializer->unserialize $elementid" );
+   
    $result = $unserializer->unserialize($elem_xml, false);
+   error_log("Finished unserializer->unserialize $elementid" );
    $returnArray['elemtype'] = $unserializer->getRootName();
    if (is_object($returnArray['elemtype'])) {
       if (get_class($returnArray['elemtype']) == 'PEAR_Error') {
@@ -7988,16 +8026,29 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
          error_log("Unserialize found elemen type: " . $returnArray['elemtype']);
       }
    }
-   if ($debug) {
-      $returnArray['debug'] .= "Result of Unserializing<br>";
-   }
    // dump the result
    $thisobject = $unserializer->getUnserializedData();
+  // ***** END Old Method *****
+  */
+   
+  // ***** BEGIN New Method *****
+  $object_data = om_xml_array($elem_xml);
+  //error_log("XML:" . $elem_xml);
+  $object_class = $object_data['object_class'];
+  $thisobject = om_make_object($object_class, $object_data, TRUE, $debug);
+  // ***** END New Method *****
+  if ($thisobject === FALSE) {
+    //error_log('Parse error');
+    $result = FALSE;
+  } else {
+    $result = TRUE;
+  }
    if ($debug) {
-      error_log("Finished Unserializing<br>");
+      error_log("Finished getUnserializedData()<br>");
       error_log("Unserialize object class: " . get_class($thisobject));
    }
 
+  $returnArray['elemtype'] = $object_class;
    # make sure this is a valid object
    if (!is_object($thisobject) or !($result === true)) {
       # problem re-serializing
@@ -8144,14 +8195,22 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
     if ($debug) {
       error_log("Unserializing op $dz" );
     }
+    // ***** BEGIN Old Method *****
+    /*
     $result = $unserializer->unserialize($thisop, false);
-    if ($debug) {
-      error_log("Successfully Unserialized op $dz of " . count($opxmls));
-      $returnArray['debug'] .= "<br><b>Result of Unserializing</b><br>";
-    }
     if ($result === true) {
-      // dump the result
       $opobject = $unserializer->getUnserializedData();
+    } else {
+      $opobject = FALSE;
+    }
+    */
+    // ***** END Old Method *****
+    
+    // ***** BEGIN New Method *****
+    $op_object_data = om_xml_array($thisop);
+    $opobject = om_make_object($op_object_data['object_class'], $op_object_data, TRUE, $debug);
+    // ***** END New Method *****
+    if (!($opobject === FALSE)) {
       if ($debug) {
         error_log("Op $dz has name " . $opobject->name);
       }
@@ -8183,23 +8242,6 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
         $opobject->logerrors = 0;
       }
       $opobject->parentobject = $thisobject;
-      // **************************************************
-      // MODIFIED TO CASCADE ALL SUB-COMP PROPERTIES:
-      // **************************************************
-      /*
-      // now, get any properties from the parent that this subobject is supossed to see
-      if ($opobject->debug) {
-         error_log("Getting parent properties for adminsetup for $opobject->name ");
-      }
-      $adminsetuparray = getParentProps($opobject, $thisobject, $adminsetuparray);
-      $opobject->listobject->adminsetuparray = $adminsetuparray;
-      if (method_exists($opobject, 'wake')) {
-         $opobject->wake();
-      }
-      */
-      // **************************************************
-      // END - MODIFIED TO SHARE ALL SUB-COMP PROPERTIES
-      // **************************************************
       $opobject->basedir = $basedir;
       $opobject->outdir = $outdir;
       $opobject->outurl = $outurl;
@@ -8219,7 +8261,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
     }
   }
   if ($debug) {
-    error_log("Finished adding $j propeties.");
+    error_log("Finished adding $j properties.");
   }
   // **************************************************
   // MODIFIED TO CASCADE ALL SUB-COMP PROPERTIES:
@@ -8317,7 +8359,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   #$thisobject->setStateVar();
   $returnArray['object'] = $thisobject;
   #$debug = 0;
-  //error_log("Returning object results");
+  error_log("Returning object $thisobject->name");
   return $returnArray;
 }
 
@@ -8503,6 +8545,9 @@ function getParentProps($thisobject, $parentobject, $adminsetuparray) {
    # get the shell properties for this WHO object type
    $whotemplate = getWHOXML($elemtype);
    $pproptypes = $whotemplate['parentprops'];
+   if (!is_array($pproptypes)) {
+     $pproptypes = array();
+   }
    if ($thisobject->debug) {
       //error_log("Found:" . print_r($pproptypes,1));
    }
@@ -8560,8 +8605,9 @@ function getElementCacheable($listobject, $elementid) {
 function unSerializeModelObject($elementid, $input_props = array(), $model_listobj = '', $cache_level = -1, $cache_id = -1, $current_level = -1, $set_status = TRUE) {
    global $listobject, $tmpdir, $shellcopy, $ucitables, $scenarioid, $debug, $outdir, $outurl, $goutdir, $gouturl, $unserobjects, $adminsetuparray, $wdm_messagefile, $wdimex_exe, $basedir, $model_startdate, $model_enddate, $serverip, $modeldb, $modelcontainerid, $modelcontainername;
    
-   //error_log("unSerializeModelObject called for $elementid <br>");
+   error_log("unSerializeModelObject called for $elementid <br>");
    $modelcontainerid = (!isset($modelcontainerid)) ? $elementid : $modelcontainerid;
+   error_log("**** calling getElementName(, $elementid)");
    $elemname = getElementName($listobject, $elementid);
    $modelcontainername = (!isset($modelcontainername)) ? $elemname : $modelcontainername;
    
@@ -8587,7 +8633,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
       $model_startdate = '';
       $returnArray['error'] .= "Global model_startdate not defined .<br>";
    }
-   //error_log("Checking start date <br>");
+   error_log("Checking start date <br>");
    if (isset($input_props['model_startdate'])) {
       $conv_time = new DateTime($input_props['model_startdate']);
       $model_startdate = $conv_time->format('Y-m-d H:i:s');
@@ -8597,7 +8643,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
       $model_enddate = '';
       $returnArray['error'] .= "Global model_enddate not defined .<br>";
    }
-   //error_log("Checking end date <br>");
+   error_log("Checking end date <br>");
    if (isset($input_props['model_enddate'])) {
       $conv_time = new DateTime($input_props['model_enddate']);
       $model_enddate = $conv_time->format('Y-m-d H:i:s');
@@ -8628,18 +8674,33 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    }
    
    // check on caching status of this object
+   error_log("**** calling getElementOrder(, $elementid)");
    $order = getElementOrder($listobject, $elementid);
    $cache_file_exists = 0;
    
    // new cache check sub-routine
    
+   error_log("**** calling checkObjectCacheStatus(, $elementid)");
    $cache_res = checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $cache_id, $current_level, $model_startdate, $model_enddate, $debug);
    $cache_type = $cache_res['cache_type'];
    $cache_file_exists = $cache_res['cache_file_exists'];
    $cacheable = $cache_res['cacheable'];
    $returnArray['error'] .= $cache_res['error'];
    //error_log("Element $elementid: checkObjectCacheStatus(order = $order, cache_level = $cache_level, cache_id = $cache_id, current_level = $current_level) :: Cache Type: $cache_type - Cacheable - $cacheable ");
-   //error_log("Element $elementid: Cache Settings: " . print_r($cache_res,1));
+   error_log("Element $elementid: Cache Settings: " . print_r($cache_res,1));
+   switch ($cache_res['cache_host_status']) {
+     case -1:
+       setStatus($listobject, -1, "Error: Cache request for $elementid timed out", $serverip, 1, $cache_id, -1, 1);
+     break;
+     case 0:
+       if (($cache_type <> 'disabled') and ($cache_file_exists == 0)) {
+         setStatus($listobject, -1, "Error: Could not find cache file $cache_file for $elementid", $serverip, 1, $cache_id, -1, 1);
+       }
+     break;
+     default:
+       // do nothing, cache is OK 
+     break;
+   }
    
    if ( ($cache_type <> 'disabled') and (count($unserobjects) >= 1) ) {
       error_log("Loading $elemname ($elementid) as cached.");
@@ -8690,7 +8751,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
       }
       foreach ($linkrecs as $thisrec) {
          $src_id = $thisrec['elementid'];
-         //error_log("Found child $src_id of parent $elementid");
+         error_log("Found child $src_id of parent $elementid");
          if ($debug) {
             $returnArray['debug'] .= " Searching for $src_id in " . print_r(array_keys($unserobjects)) . '<br>';
          }
@@ -8706,7 +8767,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
                $child_cache_level = $cache_level;
             }
             $params = 
-            //error_log("Unserializing child $src_id of parent $elementid");
+            error_log("Unserializing child $src_id of parent $elementid");
             $linkobjarray = unSerializeModelObject($src_id, array(), $model_listobj, $child_cache_level, $cache_id, $current_level + 1, $set_status);
             $linkerror = $linkobjarray['error'];
             $linkdebug = $linkobjarray['debug'];
@@ -8742,13 +8803,16 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
             $returnArray['debug'] .= " Adding Component $linkobj->name  <br>";
          }
          $thisobject->addComponent($linkobj);
+         error_log("Added child $linkobj->name ($src_id)");
       }
 
+      error_log("*** Contained child models added");
       # retrieve input linkages
       $linkrecs = getInputLinkages($listobject, $elementid, array(2,3)); 
       if ($debug) {
          $returnArray['debug'] .= " Searching for Input objects in $thisobject->name <br>";
       }
+      error_log("*** Adding Input Linkages");
       foreach ($linkrecs as $thisrec) {
          $src_id = $thisrec['src_id'];
          $src_prop = $thisrec['src_prop'];
@@ -8839,6 +8903,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
             }
          }
       }
+      error_log("*** Finished Adding Input Linkages");
    }
 
    #$thisobject->setStateVar();
@@ -8849,133 +8914,144 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
 }
 
 function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $cache_id, $current_level, $model_startdate, $model_enddate, $debug=0) {
-   global $unserobjects;
-   // cache_level = 0 means all except the top-most parent will be run as cached time series (if possible)
-   // cache_level = 1 means all except the immediate children of this object
-   // if cache_level >= 0 and current_level >= cache_level then we go ahead and make time series out of these
-   //   cached time series characteristics
-   // current level begins as -1 since the top-most object cannot be run from cache
-   // if cache_level >= 0 then cache_level will still be greater than the first level at the first object
-   // otherwise, we proceed along normal lines
-   
-   $cache_file_exists = 0;
-   $returnArray = array('error'=>'', 'cache_type'=>'', 'cache_file_exists'=>0);
-   // now, check if this run has been requested with model data caching on (cache_level >= 0)
-   // can also perform a check on the cache based on run-date.  If cache_level is a date, then 
-   // we use that logic instead
-   error_log("Evaluating intval($strtotime) = $cache_level");
-   if ( $cache_level <> -1) {
-      $returnArray['error'] .= "Evaluating intval($cache_level) = " . intval($cache_level) . "<br>";
-      //if (intval($cache_level) === $cache_level) {
-      if ( !(strtotime($cache_level)) ) {
-         // cache_level is an integer
-         $cache_type = 'level';
-         //error_log("strtotime($cache_level) Failed: Found CacheType = date $cache_level ");
-         $returnArray['error'] .= "Cache level is an integer<br>";
-      } else {
-         // cache_level is a date
-         $cache_type = 'date';
-         //error_log("Found CacheType = date $cache_level ");
-         $returnArray['error'] .= "Cache level is a date<br>";
-      }
-   } else {
-      $returnArray['error'] .= "Cache level is -1, forcing disabled<br>";
-      $cache_type = 'disabled';
-   }
-   //error_log("Checking for $elementid - cache_level = $cache_level, cache_type = $cache_type, cache_id = $cache_id, current_level = $current_level <br>");
-   $returnArray['error'] .= "Checking element order for $elementid .<br>";
-   
-   switch ($cache_type) {
-      case 'level':
-      if ($current_level >= $cache_level) {
-         $cache_file = '';
-         // check for cached file
-         $cache_sql = "  select a.elemname, b.output_file, b.remote_url, b.host from scen_model_run_elements as b, scen_model_element as a ";
-         $cache_sql .= " where a.elementid = $elementid and b.elementid = $elementid ";
-         $cache_sql .= "    and b.runid = $cache_id ";
-         $returnArray['error'] .= "Current level $current_level > cache Level $cache_level - querying database for cache file: $cache_sql .<br>";
-      } else {
-         $cache_type = 'disabled';
-         //error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
-         $returnArray['error'] .= "Current level $current_level is less than cache Level $cache_level - cacheing disabled.<br>";
-      }
-      break;
-      
-      case 'date':
-         $cache_file = '';
-         // check for cached file
-         $cache_sql = "  select a.elemname, b.output_file, b.remote_url, b.host from scen_model_run_elements as b, scen_model_element as a ";
-         $cache_sql .= " where a.elementid = $elementid and b.elementid = $elementid ";
-         $cache_sql .= "    and b.runid = $cache_id ";
-         $cache_sql .= "    and b.run_date >= '$cache_level' ";
-         $cache_sql .= "    and b.starttime <= '$model_startdate' ";
-         $cache_sql .= "    and b.endtime >= '$model_enddate' ";
-      break;
-      
-   }
+  global $unserobjects, $serverip;
+  // cache_level = 0 means all except the top-most parent will be run as cached time series (if possible)
+  // cache_level = 1 means all except the immediate children of this object
+  // if cache_level >= 0 and current_level >= cache_level then we go ahead and make time series out of these
+  //   cached time series characteristics
+  // current level begins as -1 since the top-most object cannot be run from cache
+  // if cache_level >= 0 then cache_level will still be greater than the first level at the first object
+  // otherwise, we proceed along normal lines
 
-   
-   // check to see if we have manually defined this as uncacheable
-   $cacheable = getElementCacheable($listobject, $elementid);
-   // need to check to see if this is a container with children, if it is NOT we do not want to run it as cached
-   if ($cacheable <> 3) {
-      // level 3 allows for persistent caching of 0th level objects
-      if ( ($order == 0) or (! ($cacheable == 1))) {
-         $cache_type = 'disabled';
-         $returnArray['error'] .= "$elementid is a $order'th order element, 'cacheable' setting = $cacheable - cacheing disabled.<br>";
+  $cache_file_exists = 0;
+  $returnArray = array('error'=>'', 'cache_type'=>'', 'cache_file_exists'=>0, 'cache_host_status' => 0);
+  // now, check if this run has been requested with model data caching on (cache_level >= 0)
+  // can also perform a check on the cache based on run-date.  If cache_level is a date, then 
+  // we use that logic instead
+  //error_log("Evaluating intval($strtotime) = $cache_level");
+  if ( $cache_level <> -1) {
+    $returnArray['error'] .= "Evaluating intval($cache_level) = " . intval($cache_level) . "<br>";
+    //if (intval($cache_level) === $cache_level) {
+    if ( !(strtotime($cache_level)) ) {
+      // cache_level is an integer
+      $cache_type = 'level';
+      //error_log("strtotime($cache_level) Failed: Found CacheType = date $cache_level ");
+      $returnArray['error'] .= "Cache level is an integer<br>";
+    } else {
+      // cache_level is a date
+      $cache_type = 'date';
+      //error_log("Found CacheType = date $cache_level ");
+      $returnArray['error'] .= "Cache level is a date<br>";
+    }
+  } else {
+    $returnArray['error'] .= "Cache level is -1, forcing disabled<br>";
+    $cache_type = 'disabled';
+  }
+  error_log("Checking for $elementid - cache_level = $cache_level, cache_type = $cache_type, cache_id = $cache_id, current_level = $current_level <br>");
+  $returnArray['error'] .= "Checking element order for $elementid .<br>";
+  $cache_sql = '';
+  switch ($cache_type) {
+    case 'level':
+    if ($current_level >= $cache_level) {
+      $cache_file = '';
+      // check for cached file
+      $cache_sql = "  select a.elemname, b.output_file, b.remote_url, b.host from scen_model_run_elements as b, scen_model_element as a ";
+      $cache_sql .= " where a.elementid = $elementid and b.elementid = $elementid ";
+      $cache_sql .= "    and b.runid = $cache_id ";
+      $returnArray['error'] .= "Current level $current_level > cache Level $cache_level - querying database for cache file: $cache_sql .<br>";
+    } else {
+      $cache_type = 'disabled';
+      //error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
+      $returnArray['error'] .= "Current level $current_level is less than cache Level $cache_level - cacheing disabled.<br>";
+    }
+    break;
+    
+    case 'date':
+      $cache_file = '';
+      // check for cached file
+      $cache_sql = "  select a.elemname, b.output_file, b.remote_url, b.host from scen_model_run_elements as b, scen_model_element as a ";
+      $cache_sql .= " where a.elementid = $elementid and b.elementid = $elementid ";
+      $cache_sql .= "    and b.runid = $cache_id ";
+      $cache_sql .= "    and b.run_date >= '$cache_level' ";
+      $cache_sql .= "    and b.starttime <= '$model_startdate' ";
+      $cache_sql .= "    and b.endtime >= '$model_enddate' ";
+    break;
+    
+  }
+
+
+  // check to see if we have manually defined this as uncacheable
+  $cacheable = getElementCacheable($listobject, $elementid);
+  // need to check to see if this is a container with children, if it is NOT we do not want to run it as cached
+  if ($cacheable <> 3) {
+    // level 3 allows for persistent caching of 0th level objects
+    if ( ($order == 0) or (! ($cacheable == 1))) {
+       $cache_type = 'disabled';
+       $returnArray['error'] .= "$elementid is a $order'th order element, 'cacheable' setting = $cacheable - cacheing disabled.<br>";
+    }
+  }
+  error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
+  // verify that the file exists
+  $returnArray['error'] .= $cache_sql . "<br>";
+  $listobject->querystring = $cache_sql;
+  //error_log("Cache SQL: $cache_sql");
+  $listobject->performQuery();
+  if ($listobject->numrows > 0) {
+     // BEGIN - new method
+     // use new log file retrieval routine
+     $file_host = $listobject->getRecordValue(1,'host');
+     $output_file = $listobject->getRecordValue(1,'output_file');
+     $remote_url = $listobject->getRecordValue(1,'remote_url');
+     if ($file_host <> $serverip) {
+        $cache_file = $remote_url;
+        error_log("*** remote file cache check: $cache_file");
+     } else {
+        $cache_file = $output_file;
+        error_log("*** Local file cache check: $cache_file");
+     }
+     $returnArray['file_host'] = $file_host;
+     $returnArray['cache_file'] = $cache_file;
+     $returnArray['remote_url'] = $remote_url;
+     $returnArray['output_file'] = $output_file;
+     // END - new method
+     // old method of file retrieval, broke when spanning hosts
+     //$cache_file = $listobject->getRecordValue(1,'output_file');
+     // set up context to prevent locking on missing file
+    $aStreamOptions = array(
+      'http' => array('timeout' => 5.5,
+      'user_agent' => 'Mozilla or something like that')
+    );
+    $context = stream_context_create($aStreamOptions);
+    $fe = fopen($cache_file,'r', FALSE, $context);
+    if ($fe === FALSE) {
+      // cache file retrieval failed.  It is either missing, or unreachable, neither of which is good.
+      $cache_type = 'disabled';
+      $info = stream_get_meta_data($fe);
+      if ($info['timed_out']) {
+        $returnArray['cache_host_status'] = -1; // minus 1 means timed out 
       }
-   }
-   //error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
-   $cache_file_exists = 0;
-   //if ($cache_type <> 'disabled') {
-      // verify that the file exists
-      $returnArray['error'] .= $cache_sql . "<br>";
-      $listobject->querystring = $cache_sql;
-      //error_log("Cache SQL: $cache_sql");
-      $listobject->performQuery();
-      if ($listobject->numrows > 0) {
-         // BEGIN - new method
-         // use new log file retrieval routine
-         $file_host = $listobject->getRecordValue(1,'host');
-         $output_file = $listobject->getRecordValue(1,'output_file');
-         $remote_url = $listobject->getRecordValue(1,'remote_url');
-         if ($file_host <> $serverip) {
-            $cache_file = $remote_url;
-         } else {
-            $cache_file = $output_file;
-         }
-         $returnArray['file_host'] = $file_host;
-         $returnArray['cache_file'] = $cache_file;
-         $returnArray['remote_url'] = $remote_url;
-         $returnArray['output_file'] = $output_file;
-         // END - new method
-         // old method of file retrieval, broke when spanning hosts
-         //$cache_file = $listobject->getRecordValue(1,'output_file');
-         $fe = fopen($cache_file,'r');
-         $file_size = filesize($cache_file);
-         //if ($fe and ($file_size > 0)) {
-         if ($fe) {
-            $cache_file_exists = 1;
-            fclose($fe);
-            $returnArray['error'] .= "Found Cache file $cache_file for $elementid.<br>";
-         } else {
-            $cache_type = 'disabled';
-            $returnArray['error'] .= "Cache file $cache_file does not exist (Exists: $fe and Size: $file_size ) - cacheing disabled.<br>";
-         }
-      } else {
-         $cache_type = 'disabled';
-         $returnArray['error'] .= "Cache file $cache_file not found - cacheing disabled.<br>";
-      }
-   //}
-      
-   $returnArray['error'] .= " cache_level = $cache_level, current_level = $current_level, cache_file_exists = $cache_file_exists, cache_type = $cache_type, number of components = " . count($unserobjects) . "<br>";
-   $returnArray['cache_type'] = $cache_type;
-   $returnArray['cache_file_exists'] = $cache_file_exists;
-   $returnArray['cacheable'] = $cacheable;
-   if ($debug) {
-      error_log($returnArray['error']);
-   }
-   return $returnArray;
+      $cache_file_exists = 0;
+      $file_size = filesize($cache_file);
+      $returnArray['error'] .= "Cache file $cache_file does not exist (Exists: $fe and Size: $file_size ) - cacheing disabled.<br>";
+    } else {
+      $cache_file_exists = 1;
+      fclose($fe);
+      $returnArray['cache_host_status'] = 1;
+      $returnArray['error'] .= "Found Cache file $cache_file for $elementid.<br>";
+    }
+  } else {
+     $cache_type = 'disabled';
+     $returnArray['error'] .= "Cached run $cache_file not found - cacheing disabled.<br>";
+  }
+    
+  $returnArray['error'] .= " cache_level = $cache_level, current_level = $current_level, cache_file_exists = $cache_file_exists, cache_type = $cache_type, number of components = " . count($unserobjects) . "<br>";
+  $returnArray['cache_type'] = $cache_type;
+  $returnArray['cache_file_exists'] = $cache_file_exists;
+  $returnArray['cacheable'] = $cacheable;
+  if ($debug) {
+    error_log($returnArray['error']);
+  }
+  return $returnArray;
 }
 
 function getInputLinkages($listobject, $elementid, $linktypes = array(2,3)) {

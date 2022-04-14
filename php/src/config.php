@@ -21,14 +21,9 @@ if (!isset($debug)) {
    $debug = 0;
 }
 //$debug = 1;
-#ini_set('display_errors', 'On');
-#ini_set('error_reporting', 'E_ALL');
-#error_reporting(E_ALL & ~E_STRICT);
-error_reporting(E_ERROR);
+//ini_set('display_errors', 'On');
+//error_reporting(E_ERROR);
 //error_reporting(E_ALL);
-//ini_set('display_errors', TRUE);
-//ini_set('display_startup_errors', TRUE);
-#error_reporting(E_NONE);
 
 global $indir, $outdir, $outurl, $goutdir, $gouturl, $goutpath;
 $scriptname = $_SERVER['PHP_SELF'];
@@ -61,7 +56,7 @@ include_once("$libpath/psql_functions.php");
 include_once("$libpath/lib_oracle.php");
 include_once("$libpath/lib_odbc.php");
 include_once("$libpath/file_functions.php");
-$connstring = "host=$dbip dbname=$dbname user=$dbuser password=$dbpass";
+$connstring = "host=$dbip dbname=$dbname user=$dbuser password=$dbpass port=$dbport";
 $dbconn = pg_connect($connstring, PGSQL_CONNECT_FORCE_NEW);
 $stat = pg_connection_status($dbconn);
 if ($stat === PGSQL_CONNECTION_OK) {
@@ -217,7 +212,7 @@ $analysis_db = new pgsql_QueryObject;
 $analysis_db->dbconn = $dbconn;
 
 // linkage to cbp database with ICPRB info
-$connstring = "host=$vwuds_dbip dbname=cbp user=$dbuser password=$dbpass";
+$connstring = "host=$cbp_dbip dbname=cbp user=$dbuser password=$dbpass port=$cbp_port";
 $dbconn = pg_connect($connstring, PGSQL_CONNECT_FORCE_NEW);
 $cbp_listobject = new pgsql_QueryObject;
 $cbp_listobject->connstring = $connstring;

@@ -50,7 +50,7 @@ if ($oc === FALSE) {
     'entity_type' => 'dh_properties',
     'propname' => 'om_element_connection',
     'propcode' => '0',
-    
+  );
   om_model_getSetProperty($values, 'name');
 } 
 // now create a model if it doesn't have an om_element_connection 

@@ -62,10 +62,12 @@ if ($oc === FALSE) {
   $values = array(
     'varkey' => 'om_element_connection',
     'entity_type' => 'dh_properties',
+    'featureid' => $lseg_model->pid,
     'propname' => 'om_element_connection',
     'propcode' => '0',
   );
   om_model_getSetProperty($values, 'name');
+  error_log("Added om_element_connection to $lseg_model->pid");
 } 
 // now create a model if it doesn't have an om_element_connection 
 error_log("OM pid: " . $oc->pid);

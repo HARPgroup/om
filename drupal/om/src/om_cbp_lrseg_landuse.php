@@ -23,6 +23,9 @@ if (count($args) >= 2) {
   $query_type = $args[0];
   $model_name = $args[1];
   $vahydro_pid = $args[2];
+  if (count($args) > 3) {
+    $scenario = $args[3];
+  }
 } else {
   print("Usage: php om_cbp_lrseg_landuse.php query_type model_name/file vahydro_pid \n");
   die;

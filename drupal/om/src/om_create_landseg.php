@@ -72,8 +72,16 @@ if ($rseg_model === FALSE) {
   die;
 }
 $ro_container = om_load_dh_property($rseg_model, "1. Local Runoff Inflows");
+if ($rseg_model === FALSE) {
+  error_log("Could not load runoff container");
+  die;
+}
 $cbp6_flows = om_load_dh_property($ro_container, "CBP6 Runoff");
-
+if ($rseg_model === FALSE) {
+  error_log("Could not load CBP6 container");
+  die;
+}
+error_log("CBP6 Model container: " . $cbp6_flows->pid);
 $link = array(
    'varkey' => 'om_map_model_linkage',
    'propname' => $lseg_model->propname,

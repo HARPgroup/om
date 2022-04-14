@@ -122,6 +122,8 @@ $cbp6_elid = $cbp6_link->propvalue;
 
 $cmd = "cd /var/www/html/om; php copy_element.php 37 $ro_template_elid $cbp6_elid";
 $new_elid = shell_exec($cmd);
+
+error_log("Output of create element = $new_elid");
 if (intval($new_elid) > 0) {
   error_log("Created a model element with elementid = $new_elid");
   $oc->propvalue = $new_elid;

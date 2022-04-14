@@ -8,8 +8,13 @@ while ($arg = drush_shift()) {
 }
 
 $cbp6_template = 6564010;
-$rseg_hydroid = $a(1); // river segment 
-$lseg_hydroid = $a(2); // land-river segment 
+if (count($args) >= 2) {
+  $rseg_hydroid = $a(0); // river segment 
+  $lseg_hydroid = $a(1); // land-river segment 
+} else {
+  error_log("Usage: php om_create_landseg.php riverseg_hydroid landseg_hydroid");
+  die;
+}
 // check if a model already exists
 $lseg_pid = FALSE;
 

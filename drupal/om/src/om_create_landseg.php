@@ -18,6 +18,7 @@ if (count($args) >= 2) {
 // check if a model already exists
 $lseg_pid = FALSE;
 
+$rseg_feature = entity_load_single('dh_feature', $rseg_hydroid);
 $lseg_feature = entity_load_single('dh_feature', $lseg_hydroid);
 $lsm_info = array(
   'propcode' => 'vahydro-1.0',
@@ -25,15 +26,15 @@ $lsm_info = array(
   'entity_type' => 'dh_feature',
   'featureid' => $lseg_hydroid
 );
-error_log("Model query: " . print_r($lsm_info,1));
-$lseg_model = om_get_property($lsm_info, 'all');
-error_log("Model pid: " . $lseg_model->pid);
-exit;
 
+$lseg_model = om_get_property($lsm_info, 'all');
 if ($lseg_model === FALSE) {   
   // if not create it
-  $new_lseg_pid = shell_exec("drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $cbp6_template dh_feature $lseg_hydroid \"File-Based Land Segment Runoff Template\" 1");
+  $lseg_model = om_copy_properties($rseg_feature, $lseg_feature, "File-Based Land Segment Runoff Template", TRUE, TRUE, 1);
   $lseg_model = entity_load_single('dh_properties', $lseg_pid);
+  error_log("Created New Model");
+} else {
+  error_log("Found Model with pid: $lseg_model->pid");
 }
 
   

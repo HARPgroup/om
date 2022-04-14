@@ -127,8 +127,8 @@ if (!($oc->propvalue > 0)) {
   $oc->om_template_id = $om_lseg_template_elid;
   $oc->remote_parentid = $cbp6_elid;
   $oc->save();
-  $cmd = "cd /var/www/html/om; php copy_element.php 37  ";
-  $new_elid = shell_exec($cmd);
+  $oc = om_load_dh_property($lseg_model, "om_element_connection");
+
 }
 // now push
 if ($oc->propvalue > 0) {

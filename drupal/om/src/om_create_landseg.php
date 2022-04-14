@@ -9,8 +9,8 @@ while ($arg = drush_shift()) {
 
 $cbp6_template = 6564010;
 if (count($args) >= 2) {
-  $rseg_hydroid = $a(0); // river segment 
-  $lseg_hydroid = $a(1); // land-river segment 
+  $rseg_hydroid = $a[0]; // river segment 
+  $lseg_hydroid = $a[1]; // land-river segment 
 } else {
   error_log("Usage: php om_create_landseg.php riverseg_hydroid landseg_hydroid");
   die;

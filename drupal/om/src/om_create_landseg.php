@@ -35,7 +35,7 @@ $lsm_info = array(
 // **********************************************
 // ***** Insure the Land Segment model
 // **********************************************
-$lseg_model = om_get_property($lsm_info, 'all');
+$lseg_model = om_get_property($lsm_info, 'propcode_singular');
 if ($lseg_model === FALSE) {   
   // if not create it
   $lseg_model = om_copy_properties($rseg_feature, $lseg_feature, "File-Based Land Segment Runoff Template", TRUE, TRUE, 1);
@@ -119,6 +119,8 @@ $cbp6_link = om_load_dh_property($cbp6_flows, "om_element_connection");
 $cbp6_elid = $cbp6_link->propvalue;
 
 $cmd = "cd /var/www/html/om; php copy_element.php 37 $ro_template_elid $cbp6_elid";
+$output = shell_exec($cmd);
+error_log(
 $cmd = "cd /var/www/html/om; php fn_addObjectLink.php srcid destid"
 
 ?>

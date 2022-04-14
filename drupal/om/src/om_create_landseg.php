@@ -40,5 +40,9 @@ $lseg_model->landseg = substr($lseg_feature->hydrocode, 0, 6);
 $lseg_model->riverseg = substr($lseg_feature->hydrocode, 7);
 $lseg_model->propname = $lseg_feature->hydrocode;
 $lseg_model->save();
+$oc = $lseg_model->om_element_connection;
+
+// now create a model if it doesn't have an om_element_connection 
+error_log("OM elid: " . $oc->propvalue);
   
 ?>

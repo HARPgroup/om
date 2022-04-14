@@ -65,7 +65,7 @@ $rsm_info = array(
   'entity_type' => 'dh_feature',
   'featureid' => $lseg_hydroid
 );
-$rseg_model = om_get_property($lsm_info, 'all');
+$rseg_model = om_get_property($rsm_info, 'all');
 
 if ($rseg_model === FALSE) {
   error_log("Could not load watershed model segment");

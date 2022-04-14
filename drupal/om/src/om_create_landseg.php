@@ -45,7 +45,7 @@ if ($lseg_model === FALSE) {
 } else {
   error_log("Found Model with pid: $lseg_model->pid");
 }
-exit;
+
 // **********************************************
 // ***** Populate basic attributes of the Land Segment model
 // **********************************************

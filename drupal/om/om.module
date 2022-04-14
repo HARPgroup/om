@@ -275,6 +275,7 @@ function om_load_dh_property($entity, $model_name, $plugin_load = FALSE) {
 function om_get_property($values, $singularity = 'name') {
   $pids = dh_get_properties($values, $singularity);
   //dpm($values,'values');
+  error_log("values:" . print_r((array)$values, 1)); 
   //dpm($pids,'pids');
   error_log("Pids:" . print_r((array)$pids, 1)); 
   $om_model = FALSE;

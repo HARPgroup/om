@@ -26,7 +26,7 @@ $lsm_info = array(
   'featureid' => $lseg_hydroid
 );
 $lseg_model = om_get_property($lsm_info);
-error_log("Model pid: " . $lseg_model->pid;
+error_log("Model pid: " . $lseg_model->pid);
 exit;
 
 if ($lseg_model === FALSE) {   

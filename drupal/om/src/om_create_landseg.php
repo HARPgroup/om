@@ -86,6 +86,7 @@ error_log("CBP6 Model container: " . $cbp6_flows->pid);
 $link = array(
    'varkey' => 'om_map_model_linkage',
    'propname' => $lseg_model->propname,
+   'featureid' => $cbp6_flows->pid,
    'propvalue' => $lseg_model->pid,
    'entity_type' => 'dh_properties',
    'propcode' => 'dh_properties',

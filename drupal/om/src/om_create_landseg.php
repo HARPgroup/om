@@ -36,9 +36,10 @@ $lsm_info = array(
 // ***** Insure the Land Segment model
 // **********************************************
 $lseg_model = om_get_property($lsm_info, 'propcode_singular');
+$cbp6_template_model = entity_load_single('dh_properties', $cbp6_template);
 if ($lseg_model === FALSE) {   
   // if not create it
-  $lseg_model = om_copy_properties($cbp6_template, $lseg_feature, "File-Based Land Segment Runoff Template", TRUE, TRUE, 1);
+  $lseg_model = om_copy_properties($cbp6_template_model, $lseg_feature, "File-Based Land Segment Runoff Template", TRUE, TRUE, 1);
   $lseg_model = entity_load_single('dh_properties', $lseg_pid);
   error_log("Created New Model");
 } else {

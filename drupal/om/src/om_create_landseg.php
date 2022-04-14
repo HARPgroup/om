@@ -36,6 +36,9 @@ if ($lseg_model === FALSE) {
 } else {
   error_log("Found Model with pid: $lseg_model->pid");
 }
-
+$lseg_model->landseg = substr($lseg_feature->hydrocode, 0, 6);
+$lseg_model->riverseg = substr($lseg_feature->hydrocode, 7);
+$lseg_model->propname = $lseg_feature->hydrocode;
+$lseg_model->save();
   
 ?>

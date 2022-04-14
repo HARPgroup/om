@@ -71,6 +71,19 @@ if ($rseg_model === FALSE) {
   error_log("Could not load watershed model segment");
   die;
 }
+$ro_container = om_load_dh_property($rseg_model, "1. Local Runoff Inflows");
+$cbp6_flows = om_load_dh_property($ro_container, "CBP6 Runoff");
+
+$link = array(
+   'varkey' => 'om_map_model_linkage',
+   'propname' => $lseg_model->propname,
+   'propvalue' => $lseg_model->pid,
+   'propcode' => 'dh_properties',
+   'link_type' => 3
+);
+$link = om_model_getSetProperty($link, 'name');
+$link->save();
+// create a child linked property in vahydro 
 error_log("River Model pid: " . $rseg_model->pid);
 
 ?>

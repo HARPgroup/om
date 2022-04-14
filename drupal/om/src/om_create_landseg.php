@@ -121,8 +121,15 @@ $cbp6_link = om_load_dh_property($cbp6_flows, "om_element_connection");
 $cbp6_elid = $cbp6_link->propvalue;
 
 $cmd = "cd /var/www/html/om; php copy_element.php 37 $ro_template_elid $cbp6_elid";
-$output = shell_exec($cmd);
-error_log("Exec: $cmd = \n" . $output);
-$cmd = "cd /var/www/html/om; php fn_addObjectLink.php srcid destid"
+$new_elid = shell_exec($cmd);
+if (intval($new_elid) > 0) {
+  error_log("Created a model element with elementid = $new_elid");
+  $oc->propvalue = $new_elid;
+  $oc->propcode = 'push_once';
+  error_log("Pushing Data");
+  $oc->save();
+}
+
+error_log("Complete. Now update land use.");
 
 ?>

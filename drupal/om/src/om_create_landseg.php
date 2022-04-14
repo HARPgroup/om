@@ -67,7 +67,9 @@ if ($oc === FALSE) {
     'propcode' => '0',
   );
   om_model_getSetProperty($values, 'name');
+  $oc = om_load_dh_property($lseg_model, "om_element_connection");
   error_log("Added om_element_connection to $lseg_model->pid");
+  
 } 
 // now create a model if it doesn't have an om_element_connection 
 error_log("OM pid: " . $oc->pid);

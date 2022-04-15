@@ -22,14 +22,17 @@ print("Un-serializing Model Object <br>");
 $debug = 0;
 
 $elementid = 6;
-
+$steps = 2;
 if (isset($_GET['elementid'])) {
-   $elementid = $_GET['elementid'];
+  $elementid = $_GET['elementid'];
 }
 if (count($argv) > 3) {
-   $modelid = $argv[1]; // the model container 
-   $runid = $argv[2]; // the model container 
-   $targetid = $argv[3]; // the element to test 
+  $modelid = $argv[1]; // the model container 
+  $runid = $argv[2]; // the model container 
+  $targetid = $argv[3]; // the element to test 
+}
+if (count($argv) > 4) {
+  $steps = $argv[4]; // the element to test 
 }
 
 global $modeldb, $listobject, $tmpdir, $shellcopy, $ucitables, $scenarioid, $outdir, $outurl, $goutdir, $gouturl, $unserobjects, $adminsetuparray, $wdm_messagefile, $basedir, $model_startdate, $model_enddate;

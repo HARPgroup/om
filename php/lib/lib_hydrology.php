@@ -1051,7 +1051,8 @@ class modelObject {
       if (property_exists($this, $pname)) {
         $this->applyJSONPropArray($pname, $pvalue);
       } else {
-        $this->applyJSONComponentArray($pname, $pvalue);
+        $prop = $this->applyJSONComponentArray($pname, $pvalue);
+        error_log("Final prop object " . $prop->name . " of class " . get_class($prop) );
       }
     }
   }
@@ -1107,6 +1108,7 @@ class modelObject {
     }
     // Now, we should have an object set in $this->processors
     // Load the object and call 
+    return $prop;
   }
   
   function applyJSONComponentArrayold($pname, $pvalue) {

@@ -102,6 +102,7 @@ if (is_object($thisobject)) {
       $debughtml .= $cresult['debugHTML'];
       error_log("Saving single operator as ID $operatorid on $elid");
       $xml = $cresult['object_xml'];
+      error_log("XML:" . $xml);
       // store in database
       $store_result = storeElemOperator($elid, $operatorid, $xml);
     }

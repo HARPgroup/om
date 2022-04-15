@@ -2988,7 +2988,15 @@ function saveObjectSubComponents($listobject, $thisobject, $elid, $overwrite=0, 
          if ($debug) {
             error_log("Iterating through processors" . print_r(array_keys($thisobject->processors),1) . " <br>\n");
          }
-         foreach ($thisobject->processors as $thisproc) {
+        $operatorid = 0;
+        foreach ($thisobject->processors as $comp_name => $thisproc) {
+          $operatorid++;
+          $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
+          error_log("Saving single operator as ID $operatorid");
+          $xml = $cresult['object_xml'];
+          // store in database
+          $store_result = storeElemOperator($elid, $operatorid, $xml);
+          /*
             # compact up processors if they are valid
             if (is_object($thisproc)) {
               if ($debug) {
@@ -3066,6 +3074,7 @@ function saveObjectSubComponents($listobject, $thisobject, $elid, $overwrite=0, 
             } else {
                $innerHTML .= "$thisprocname not an object <br>";
             }
+          */
 
          }
       }

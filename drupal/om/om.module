@@ -703,7 +703,7 @@ function om_set_element($elementid, $exp_json) {
   $cmd .= "php set_element.php $elementid \"$exp_json\"";
   //dpm( $php_path, "Exec Path ");
   //dpm( $cmd, "Executing ");
-  error_log("$cmd");
+  //error_log("$cmd");
   $elid = shell_exec($cmd);
   return $elid;
 }

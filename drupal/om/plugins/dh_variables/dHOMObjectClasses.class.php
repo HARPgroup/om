@@ -250,14 +250,10 @@ class dHVariablePluginDefaultOM extends dHVariablePluginDefault {
   public function updateProperties(&$entity) {
     // @todo: move this to the base plugin class 
     $props = $this->getDefaults($entity);
-    //dpm($entity, "Calling updateProperties");
-    //dpm($props, "Iterating over attached properties");
-    //error_log("Props for $entity->propname " . print_r(array_keys($props),1));
     foreach ($props as $thisvar) {
       $iprop = $this->insureProperty($entity, $thisvar);
       //$this->insureProperty($entity, $thisvar);
       if (!isset($thisvar['embed']) or ($thisvar['embed'] === TRUE)) {
-        //error_log("Saving " . $thisvar['propname']);
         // load the property 
         // if a property with propname is set on $entity, send its value to the plugin 
         //   * plugin should be stored on the property object already
@@ -267,33 +263,26 @@ class dHVariablePluginDefaultOM extends dHVariablePluginDefault {
           if (!is_object($entity->{$thisvar['propname']})) {
             // this has been set by the form API as a value 
             // so we need to load/create a property then set the value
-            //dpm($thisvar, "Creating object before saving ");
             $thisvar['featureid'] = $entity->{$this->row_map['id']};
             //@todo: this needs to use the plugin handler for this instead of assuming propvalue instead of propcode
             //       why isn't this already an object after convert_attributes_to_dh_props is called?
             //     Location (the featureid loader property) is already loaded, but Location Sharing is NOT -- why????
             $prop = om_model_getSetProperty($thisvar, 'name');
-            //dpm($prop, "object after creation");
             // now, apply the stashed value to the property
             foreach ($prop->dh_variables_plugins as $plugin) {
               // the default method will guess location based on the value unless overridden by the plugin
               $plugin->applyEntityAttribute($prop, $entity->{$thisvar['propname']});
             }
-            //dpm($prop, "object after plugins");
-            //dsm("Saving Newly loaded object " . $thisvar['propname']);
             entity_save('dh_properties', $prop);
           } else {
-            $prop = $entity->{$thisvar['propname']};
-            //error_log("saving sub-comp $thisvar[propname] of class " . get_class($prop) . " entity pid: $entity->pid");
-            // already a loaded form object, so just let it rip.
-            //dsm("Saving preloaded object " . $thisvar['propname']);
+            $prop = $entity->{$thisvar['propname']};\
+            // already a loaded form object, so just let it rip.\
             entity_save('dh_properties', $prop);
           }
         }
       } else {
         // just check here that we need to save properties that are not embedded, but have never been created
         if (empty($iprop->pid)) {
-          //dpm($iprop,"saving non-embedded prop for first time");
           entity_save('dh_properties', $iprop);
         }
       }
@@ -1296,7 +1285,7 @@ class dHOMElementConnect extends dHOMBaseObjectClass {
         if (!is_object($elid)) {
           dsm("Pushing property $prop->propname to remote");
           error_log("Pushing property $prop->propname to remote");
-          $prop->save();
+          entity_save('dh_properties', $prop);
         } else {
           dsm("Skipping stand-alone model object $prop->propname ");
         }

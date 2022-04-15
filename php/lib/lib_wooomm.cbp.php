@@ -637,23 +637,27 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
     // handles file movement in the background, choices among source types
     // could do 
     // filepath (base dir) + out/land/ + scenario + eos + landseg 
-    //error_log("Global Modes: $run_mode, $flow_mode ");
+    error_log("Global Modes: $run_mode, $flow_mode ");
     // if component flow_scenario is set, 
     // then override the scenario setting and the file name 
     if (isset($this->processors['flow_scenario'])) {
       if (method_exists($this->processors['flow_scenario'], 'evaluateMatrix')) {
+        error_log("flow_scenario = evaluateMatrix($flow_mode) ");
         $flow_scenario = $this->processors['flow_scenario']->evaluateMatrix($flow_mode);
       } else {
+        error_log("no evaluateMatrix() on flow_scenario methods " . print_r(get_class_methods($this->processors['flow_scenario']),1));
         $flow_scenario = $this->getProp('flow_scenario');
       }
       if (strlen(trim($flow_scenario)) > 0) {
-        //error_log("flow_scenario prop found: $flow_scenario ");
+        error_log("flow_scenario prop found: $flow_scenario ");
         //error_log("State array:" . print_r($this->state,1));
         $this->scenario = $flow_scenario;
         $this->filepath = implode("/", array($this->modelpath, 'out/land', $this->scenario, 'eos', $this->landseg .'_0111-0211-0411.csv' ));
         error_log("Scenario: $this->scenario, Filepath: $this->filepath");
         $this->setDBCacheName();
       }
+    } else {
+      error_log("$this->name does not have a flow_scenario component");
     }
     $retfile = $this->filepath;
     return $retfile;
@@ -661,6 +665,9 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
   
    function init() {
       parent::init();
+      // now we hard code max memory values here as it is a specific component and one size should fit all
+      // at least until memory and processor power goes bananas
+      $this->max_memory_values = 24 * 365 * 2; // hours, times days per years, times year 
       //$this->getLandUses();
    }
    function toArray() {
@@ -1003,13 +1010,71 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
      error_log("Lu array: " . print_r($this->lunames,1));
     }
   }
-   function getCurrentDataSlice() {
-     parent::getCurrentDataSlice();
-     //error_log("getCurrentDataSlice @ " . $this->timer->thistime->format("U") . ":" . $this->listobject->querystring);
-     //$tsdat = $this->tsvalues;
-     //$tsdata1 = array_shift($tsdat);
-     //error_log("tsdata 1: " . print_r($tsdata1,1));
-   }
+   
+  function getCurrentDataSlice() {
+    # need to get a certain, sensible number of values that match two criteria:
+    #   1) do not exceed the max_memory_values
+    #  OR
+    #   2) only get enough to encompass the current dt
+    $current_time = $this->timer->thistime->format("U");
+    // do this to give us a sane starting time at first get 
+    $dt = $this->dt;
+    if ($this->timer->steps == 0 ) {
+      // subtracting dt here insures that we will be "inside" the time interval
+      $this->lasttimesec = $current_time - $dt;
+    }
+    if ($this->listobject->tableExists($this->db_cache_name)) {
+      // get all from last time to now 
+      $this->listobject->querystring = "  select count(*) as numts, min(\"timestamp\") as mints, max(\"timestamp\") as maxts ";
+      $this->listobject->querystring .= " from  \"$this->db_cache_name\"";
+      $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec and \"timestamp\" <= ($current_time + $dt * $this->max_memory_values) ";
+      if ($this->debug) {
+        $this->logDebug($this->listobject->querystring);
+      }
+      $outimes = -1; // never show if < 0
+      if ($this->timer->steps < $outimes) {
+        error_log("getCurrentDataSlice $this->name");
+        error_log($this->listobject->querystring);
+      }
+      $this->listobject->performQuery();
+      $numts = $this->listobject->getRecordValue(1,'numts');
+      if ($this->debug) {
+        $this->logDebug("$numts values remaining in cache\n");
+      }
+      // @todo: check this out.  I think it should set limit to be max_memory_values if numts > max_memory_mb
+      //                         Otherwise, what is this accomplishing other than loading all ts all the time?
+      if ($numts < $this->max_memory_values) {
+        $limit = $numts;
+      } else {
+        $limit = $this->max_memory_values;
+      }
+      $this->listobject->querystring = "  SELECT * ";
+      $this->listobject->querystring .= " FROM  " . $this->db_cache_name;
+      $this->listobject->querystring .= " WHERE \"timestamp\" > $this->lasttimesec ";
+      $this->listobject->querystring .= " ORDER BY \"timestamp\"";
+      $this->listobject->querystring .= " LIMIT $limit ";
+      if ($this->debug) {
+        $this->logDebug($this->listobject->querystring);
+      }
+      if ($this->timer->steps < $outimes) {
+        error_log($this->listobject->querystring);
+      }
+      $this->listobject->performQuery();
+      $tvs = $this->listobject->queryrecords;
+      $this->tsvalues = array();
+      foreach ($tvs as $thistv) {
+        $ts = $thistv['timestamp'];
+        $this->tsvalues[$ts] = $thistv;
+        $keys = array_keys($thistv);
+        $firstkey = $keys[0];
+        //error_log("At Timestamp $ts adding: $firstkey = " . $thistv[$firstkey]);
+      }
+    }
+    
+    if ($this->debug) {
+       $this->logDebug("$this->name getCurrentDataSlice() added " . count($this->tsvalues) . " to tsvalues array");
+    }
+  }
 
   function setSimTimer($thistimer) {
     parent::setSimTimer($thistimer);

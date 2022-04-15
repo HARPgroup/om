@@ -2988,7 +2988,53 @@ function saveObjectSubComponents($listobject, $thisobject, $elid, $overwrite=0, 
          if ($debug) {
             error_log("Iterating through processors" . print_r(array_keys($thisobject->processors),1) . " <br>\n");
          }
-         foreach ($thisobject->processors as $thisproc) {
+        $operatorid = 0;
+        foreach ($thisobject->processors as $comp_name => $thisproc) {
+          $operatorid++;
+          $oc = get_class($thisobject->processors[$comp_name]);
+          // need to store object_class because new xml routine does not use outer tag
+          $thisobject->processors[$comp_name]->object_class = $oc; 
+          $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
+          error_log("Saving single operator as ID $operatorid with class = $oc");
+          $xml = $cresult['object_xml'];
+          // store in database
+          $store_result = storeElemOperator($elid, $operatorid, $xml);
+         }
+      }
+      $innerHTML .= "$k procs stored <br>";
+   }
+   
+   return $innerHTML;
+}
+
+function saveObjectSubComponentsOld($listobject, $thisobject, $elid, $overwrite=0, $debug = 0 ) {
+   $innerHTML = '';
+   if (is_object($thisobject)) {
+      $k = 1;
+      if (property_exists($thisobject, 'processors')) {
+         $numprocs = count($thisobject->processors);
+
+         $listobject->querystring = " update scen_model_element set elemoperators = ARRAY[''::text] ";
+         $listobject->querystring .= " where elementid = $elid ";
+         if ($debug) {
+            error_log("$listobject->querystring<br>");
+         }
+         $listobject->performQuery();
+         $innerHTML .= "New object has $numprocs sub-components added to it <br>";
+         $innerHTML .= "Processor Names: " . print_r(array_keys($thisobject->processors),1) . " <br>";
+         if ($debug) {
+            error_log("Iterating through processors" . print_r(array_keys($thisobject->processors),1) . " <br>\n");
+         }
+        $operatorid = 0;
+        foreach ($thisobject->processors as $comp_name => $thisproc) {
+          /*
+          $operatorid++;
+          $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
+          error_log("Saving single operator as ID $operatorid");
+          $xml = $cresult['object_xml'];
+          // store in database
+          $store_result = storeElemOperator($elid, $operatorid, $xml);
+          */
             # compact up processors if they are valid
             if (is_object($thisproc)) {
               if ($debug) {
@@ -7878,6 +7924,7 @@ function om_make_object($object_class, $props, $allowRecreate = TRUE, $debug = 0
     //  - but, the applyPropsToObject() method has one advantage in that it checks to see if the object should
     //    have it's recreate() method triggered.
     $result = applyPropsToObject(FALSE, $thisobject, $props, $allowRecreate, $debug);
+    $result['object']->object_class = $object_class;
     return $result['object'];
   } else {
     error_log("Requested class '$object_class' does not exist");
@@ -8208,6 +8255,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
     
     // ***** BEGIN New Method *****
     $op_object_data = om_xml_array($thisop);
+    //error_log("XML:" . $thisop);
     $opobject = om_make_object($op_object_data['object_class'], $op_object_data, TRUE, $debug);
     // ***** END New Method *****
     if (!($opobject === FALSE)) {
@@ -8260,9 +8308,9 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
       $j++;
     }
   }
-  if ($debug) {
+  //if ($debug) {
     error_log("Finished adding $j properties.");
-  }
+  //}
   // **************************************************
   // MODIFIED TO CASCADE ALL SUB-COMP PROPERTIES:
   // **************************************************

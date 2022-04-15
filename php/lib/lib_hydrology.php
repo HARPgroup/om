@@ -1051,12 +1051,67 @@ class modelObject {
       if (property_exists($this, $pname)) {
         $this->applyJSONPropArray($pname, $pvalue);
       } else {
-        $this->applyJSONComponentArray($pname, $pvalue);
+        $prop = $this->applyJSONComponentArray($pname, $pvalue);
+        error_log("Final prop object " . $prop->name . " of class " . get_class($prop) );
       }
     }
   }
   
   function applyJSONComponentArray($pname, $pvalue) {
+    // this is not a property on the base class, look for processors
+    $skips = array('id', 'om_element_connection', 'host');
+    // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 
+    
+    //error_log("Notice: Looking to add $pname as processor ");
+    if (!is_array($pvalue)) {
+      error_log("Warning: Skipping component $pname because json did not have array. ");
+      return;
+    }
+    if (!isset($pvalue['object_class']) ) {
+      error_log("Warning: Skipping component $pname because json did not have object_class. ");
+      return;
+    }
+    // @todo: include plumbing from set_subprop.php to handle robust json property setting.
+    // Does a sub-comp of this name exist? Or, is this an object_class change?
+    $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
+    $object_class = $pvalue['object_class'];
+    if (is_object($prop)) {
+      if ($prop->object_clas <> $object_class) {
+        $prop = FALSE;
+      }
+    }
+    // if either is true, we insert a brand new object 
+    if ($prop === FALSE) {
+      if (!class_exists($object_class)) {
+        error_log("Error: Object class $object_class can not be found. Skipping $pname .");
+        return;
+      }
+      if (
+        is_subclass_of($object_class, 'modelObject')
+        or is_subclass_of($object_class, 'modelSubObject')
+      ) {
+        $syobj = new $object_class;
+        $this->addOperator($pname, $syobj);
+        //error_log("Added $pname as component type $object_class .");
+        // re-retrieve to make sure that the object is not cloned.
+        $prop = $this->processors[$pname];
+      } else {
+        error_log("$object_class is not an addable component");
+      }
+    }
+    // recursively calls setPropJSON2d on the subcomp.
+    if (method_exists($prop, 'setPropJSON2d') ) {
+      error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");
+      $prop->setPropJSON2d($pname, $pvalue, 'json_decoded');
+    } else {
+      error_log("Can not locate method setPropJSON2d() on $prop->name");
+    }
+    // Now, we should have an object set in $this->processors
+    // Load the object and call 
+    return $prop;
+  }
+  
+  function applyJSONComponentArrayold($pname, $pvalue) {
     // this is not a property on the base class, look for processors
     $skips = array('id', 'om_element_connection', 'host');
     // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 
@@ -1072,10 +1127,10 @@ class modelObject {
     }
     // @todo: include plumbing from set_subprop.php to handle robust json property setting.
     // Does a sub-comp of this name exist? Or, is this an object_class change?
+    $object_class = $pvalue['object_class'];
     $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
     if (is_object($prop)) {
-      $object_class = $prop->object_class;
-      if ($pvalue['object_class'] <> $object_class) {
+      if ($pvalue['object_class'] <> get_class($prop) ) {
         $prop = FALSE;
       }
     }
@@ -1086,6 +1141,7 @@ class modelObject {
         return;
       }
       $syobj = new $object_class;
+      $syobj->object_class = $object_class;
       $this->addOperator($pname, $syobj);
       error_log("Added $pname as component type $object_class .");
       // re-retrieve to make sure that the object is not cloned.

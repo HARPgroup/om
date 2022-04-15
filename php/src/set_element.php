@@ -33,9 +33,9 @@ error_log("Retrieved $thisobject->name");
 $thisobject->setProp('all', $openmi_json, 'json-2d');
 // @todo: handle these for now we just want to see if it works 
 //saveModelObject($elid, $thisobject, array('name' => $thisobject->name));
-//$res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
+$res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
 //error_log("Finished.\n");
-$ret = saveModelObject($elid, $thisobject, array('name' => $thisobject->name), TRUE);
+$ret = saveModelObject($elid, $thisobject, array('name' => $thisobject->name), FALSE);
 
 error_log("Save Query: " . $ret['debugHTML']);
 ?>

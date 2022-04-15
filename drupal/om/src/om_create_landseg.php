@@ -139,7 +139,7 @@ if (!($oc->propvalue > 0)) {
 // now push
 if ($oc->propvalue > 0) {
   error_log("Pushing Data");
-  $exp = $this->exportOpenMI($lseg_model);
+  $exp = $plugin->exportOpenMI($lseg_model);
   dpm($exp,"Using JSON export mode");
   $exp_json = addslashes(json_encode($exp[$lseg_model->propname]));
   om_set_element($oc->propvalue, $exp_json);

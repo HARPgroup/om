@@ -1067,15 +1067,15 @@ class modelObject {
       return;
     }
     if (!isset($pvalue['object_class']) ) {
-      error_log("Warning: Skipping component $pname because json did not have array. ");
+      error_log("Warning: Skipping component $pname because json did not have object_class. ");
       return;
     }
+    $object_class = $pvalue['object_class'];
     // @todo: include plumbing from set_subprop.php to handle robust json property setting.
     // Does a sub-comp of this name exist? Or, is this an object_class change?
     $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
     if (is_object($prop)) {
-      $object_class = $prop->object_class;
-      if ($pvalue['object_class'] <> $object_class) {
+      if ($prop->object_class <> $object_class) {
         $prop = FALSE;
       }
     }

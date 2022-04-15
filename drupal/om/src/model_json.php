@@ -15,6 +15,8 @@ $exp = $plugin->exportOpenMI($model);
 $exp_json = $exp[$model->propname];
 if ($slashes === 1) {
   $exp_json = addslashes(json_encode($exp_json));
+} else {
+  $exp_json = json_encode($exp_json);
 }
 echo $exp_json;
 

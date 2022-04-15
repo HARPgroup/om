@@ -1027,7 +1027,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       // get all from last time to now 
       $this->listobject->querystring = "  select count(*) as numts, min(\"timestamp\") as mints, max(\"timestamp\") as maxts ";
       $this->listobject->querystring .= " from  \"$this->db_cache_name\"";
-      $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec and \"timestamp\" <= ($current_time + $dt * $this->max_memory_values) ";
+      $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec::bigint and \"timestamp\" <= ($current_time::bigint + $dt * $this->max_memory_values) ";
       if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
       }

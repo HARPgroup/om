@@ -46,6 +46,7 @@ $model->initTimer();
 $model->setSessionID();
 $model->init();
 $target = loadModelElement($targetid);
+$target = $target['object'];
 error_log("All Objects " . array_keys($unserobjects,1));
 error_log("Model Objects " . array_keys($model->components,1));
 error_log("Target info ($targetid) = " . get_class($target) . ' ' . $target->name);

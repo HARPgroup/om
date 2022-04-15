@@ -26,6 +26,7 @@ $steps = 2;
 if (isset($_GET['elementid'])) {
   $elementid = $_GET['elementid'];
 }
+error_log("argv" . print_r($argv,1));
 if (count($argv) > 3) {
   $modelid = $argv[1]; // the model container 
   $runid = $argv[2]; // the model container 

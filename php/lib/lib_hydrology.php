@@ -1070,12 +1070,12 @@ class modelObject {
       error_log("Warning: Skipping component $pname because json did not have object_class. ");
       return;
     }
-    $object_class = $pvalue['object_class'];
     // @todo: include plumbing from set_subprop.php to handle robust json property setting.
     // Does a sub-comp of this name exist? Or, is this an object_class change?
     $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
+    $object_class = $pvalue['object_class'];
     if (is_object($prop)) {
-      if ($prop->object_class <> $object_class) {
+      if ($prop->object_clas <> $object_class) {
         $prop = FALSE;
       }
     }
@@ -1085,15 +1085,26 @@ class modelObject {
         error_log("Error: Object class $object_class can not be found. Skipping $pname .");
         return;
       }
-      $syobj = new $object_class;
-      $this->addOperator($pname, $syobj);
-      error_log("Added $pname as component type $object_class .");
-      // re-retrieve to make sure that the object is not cloned.
-      $prop = $this->processors[$pname];
+      if (
+        is_subclass_of($object_class, 'modelObject')
+        or is_subclass_of($object_class, 'modelSubObject')
+      ) {
+        $syobj = new $object_class;
+        $this->addOperator($pname, $syobj);
+        error_log("Added $pname as component type $object_class .");
+        // re-retrieve to make sure that the object is not cloned.
+        $prop = $this->processors[$pname];
+      } else {
+        error_log("$object_class is not an addable component");
+      }
     }
     // recursively calls setPropJSON2d on the subcomp.
-    error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");
-    $prop->setPropJSON2d($pname, $pvalue, 'json_decoded');
+    if (method_exists($prop, 'setPropJSON2d') ) {
+      error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");
+      $prop->setPropJSON2d($pname, $pvalue, 'json_decoded');
+    } else {
+      error_log("Can not locate method setPropJSON2d() on $prop->name");
+    }
     // Now, we should have an object set in $this->processors
     // Load the object and call 
   }

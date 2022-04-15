@@ -49,12 +49,6 @@ if ($lseg_model === FALSE) {
 // **********************************************
 // ***** Populate basic attributes of the Land Segment model
 // **********************************************
-$lseg_model->landseg = substr($lseg_feature->hydrocode, 0, 6);
-$lseg_model->riverseg = substr($lseg_feature->hydrocode, 7);
-$lseg_model->modelpath = '/media/model/p532';
-$lseg_model->version = 'p532';
-$lseg_model->propname = $lseg_feature->hydrocode;
-$lseg_model->save();
 $plugin = dh_variables_getPlugins($lseg_model);
 $plugin->loadProperties($lseg_model);
 $oc = om_load_dh_property($lseg_model, "om_element_connection");
@@ -143,7 +137,18 @@ if (!($oc->propvalue > 0)) {
   error_log("Output of create element = $oc->provalue");
 
 }
-// now push
+// now push changes 
+$lseg_model->landseg = substr($lseg_feature->hydrocode, 0, 6);
+$lseg_model->riverseg = substr($lseg_feature->hydrocode, 7);
+$lseg_model->modelpath = '/media/model/p532';
+$lseg_model->version = 'p532';
+$lseg_model->propname = $lseg_feature->hydrocode;
+// when we use the exportOpenMI method, we don't need to push everything on save
+// so we shouodl disable the OC, save the model,
+// then do the push, then later we can come back and re-enable the push on save 
+$oc->propcode = 0;
+$oc->save();
+$lseg_model->save();
 if ($oc->propvalue > 0) {
   error_log("Pushing Data");
   $exp = $plugin->exportOpenMI($lseg_model);
@@ -152,6 +157,9 @@ if ($oc->propvalue > 0) {
   om_set_element($oc->propvalue, $exp_json);
   error_log("Finished Pushing Data");
 }
+// now set to save on auto. 
+$oc->propcode = 1;
+$oc->save();
 
 error_log("Complete. Now update land use.");
 

@@ -133,18 +133,16 @@ if (!($oc->propvalue > 0)) {
   $oc->remote_parentid = $cbp6_elid;
   $oc->save();
   $oc = om_load_dh_property($lseg_model, "om_element_connection");
+  error_log("Output of create element = $oc->provalue");
 
 }
 // now push
 if ($oc->propvalue > 0) {
-  error_log("Output of create element = $new_elid");
-  if (intval($new_elid) > 0) {
-    error_log("Created a model element with elementid = $new_elid");
-    $oc->propvalue = $new_elid;
-    $oc->propcode = 'push_once';
-    error_log("Pushing Data");
-    $oc->save();
-  }
+  error_log("Created a model element with elementid = $oc->propvalue");
+  $oc->propcode = 'push_once';
+  error_log("Pushing Data");
+  $oc->save();
+  error_log("Finished Pushing Data");
 }
 
 error_log("Complete. Now update land use.");

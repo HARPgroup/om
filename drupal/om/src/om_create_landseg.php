@@ -143,10 +143,6 @@ if ($oc->propvalue > 0) {
   dpm($exp,"Using JSON export mode");
   $exp_json = addslashes(json_encode($exp[$lseg_model->propname]));
   om_set_element($oc->propvalue, $exp_json);
-  /*
-  $oc->propcode = 'push_once';
-  $oc->save();
-  */
   error_log("Finished Pushing Data");
 }
 

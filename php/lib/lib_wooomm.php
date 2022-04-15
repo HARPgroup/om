@@ -8270,9 +8270,9 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
       $j++;
     }
   }
-  if ($debug) {
+  //if ($debug) {
     error_log("Finished adding $j properties.");
-  }
+  //}
   // **************************************************
   // MODIFIED TO CASCADE ALL SUB-COMP PROPERTIES:
   // **************************************************

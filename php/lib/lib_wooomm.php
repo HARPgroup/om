@@ -7887,6 +7887,7 @@ function om_make_object($object_class, $props, $allowRecreate = TRUE, $debug = 0
     //  - but, the applyPropsToObject() method has one advantage in that it checks to see if the object should
     //    have it's recreate() method triggered.
     $result = applyPropsToObject(FALSE, $thisobject, $props, $allowRecreate, $debug);
+    $result['object']->object_class = $object_class;
     return $result['object'];
   } else {
     error_log("Requested class '$object_class' does not exist");

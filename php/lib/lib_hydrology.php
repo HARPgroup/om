@@ -1127,10 +1127,10 @@ class modelObject {
     }
     // @todo: include plumbing from set_subprop.php to handle robust json property setting.
     // Does a sub-comp of this name exist? Or, is this an object_class change?
+    $object_class = $pvalue['object_class'];
     $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
     if (is_object($prop)) {
-      $object_class = $prop->object_class;
-      if ($pvalue['object_class'] <> $object_class) {
+      if ($pvalue['object_class'] <> get_class($prop) ) {
         $prop = FALSE;
       }
     }

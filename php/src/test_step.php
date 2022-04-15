@@ -37,10 +37,6 @@ global $modeldb, $listobject, $tmpdir, $shellcopy, $ucitables, $scenarioid, $out
 
 $model_elements = loadModelUsingCached($modeldb, $modelid, $runid, $cache_runid, $input_props, $cache_level, $cache_list, $run_date);
 $model = $model_elements['object'];
-$target = loadModelElement($targetid);
-error_log("All Objects " . array_keys($unserobjects,1));
-error_log("Model Objects " . array_keys($model->components,1));
-error_log("Target info = " . get_class($target) . ' ' . $target->name);
 $model->outdir = $outdir;
 $model->outurl = $outurl;
 $model->modelhost = $serverip;
@@ -49,6 +45,10 @@ $model->systemlog_obj = $listobject;
 $model->initTimer();
 $model->setSessionID();
 $model->init();
+$target = loadModelElement($targetid);
+error_log("All Objects " . array_keys($unserobjects,1));
+error_log("Model Objects " . array_keys($model->components,1));
+error_log("Target info ($targetid) = " . get_class($target) . ' ' . $target->name);
 for ($i = 1; $i <= $steps ; $i++) {
   $model->step();
   error_log("State for " . $target->name . print_r($target->state,1));

@@ -1056,7 +1056,7 @@ class modelObject {
     }
   }
   
-  function applyJSONComponentArray2($pname, $pvalue) {
+  function applyJSONComponentArray($pname, $pvalue) {
     // this is not a property on the base class, look for processors
     $skips = array('id', 'om_element_connection', 'host');
     // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 
@@ -1109,7 +1109,7 @@ class modelObject {
     // Load the object and call 
   }
   
-  function applyJSONComponentArray($pname, $pvalue) {
+  function applyJSONComponentArrayold($pname, $pvalue) {
     // this is not a property on the base class, look for processors
     $skips = array('id', 'om_element_connection', 'host');
     // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 

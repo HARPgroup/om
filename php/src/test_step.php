@@ -39,6 +39,7 @@ $model_elements = loadModelUsingCached($modeldb, $modelid, $runid, $cache_runid,
 $model = $model_elements['object'];
 $target = loadModelElement($targetid);
 error_log("All Objects " . array_keys($unserobjects,1));
+error_log("Model Objects " . array_keys($model->components,1));
 error_log("Target info = " . get_class($target) . ' ' . $target->name);
 $model->outdir = $outdir;
 $model->outurl = $outurl;

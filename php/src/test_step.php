@@ -38,6 +38,8 @@ global $modeldb, $listobject, $tmpdir, $shellcopy, $ucitables, $scenarioid, $out
 $model_elements = loadModelUsingCached($modeldb, $modelid, $runid, $cache_runid, $input_props, $cache_level, $cache_list, $run_date);
 $model = $model_elements['object'];
 $target = loadModelElement($targetid);
+error_log("All Objects " . array_keys($unserobjects,1));
+error_log("Target info = " . get_class($target) . ' ' . $target->name);
 $model->outdir = $outdir;
 $model->outurl = $outurl;
 $model->modelhost = $serverip;

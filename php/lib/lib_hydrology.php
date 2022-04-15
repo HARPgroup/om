@@ -1048,7 +1048,7 @@ class modelObject {
       if ($pname == 'object_class') {
         continue;
       }
-      if (property_exists($this, $pname)) {
+      if (property_exists($this, $pname) and !isset($pvalue['object_class'])) {
         $this->applyJSONPropArray($pname, $pvalue);
       } else {
         $prop = $this->applyJSONComponentArray($pname, $pvalue);

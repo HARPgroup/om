@@ -1062,7 +1062,7 @@ class modelObject {
     $skips = array('id', 'om_element_connection', 'host');
     // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 
     
-    error_log("Notice: Looking to add $pname as processor ");
+    //error_log("Notice: Looking to add $pname as processor ");
     if (!is_array($pvalue)) {
       error_log("Warning: Skipping component $pname because json did not have array. ");
       return;
@@ -1092,7 +1092,7 @@ class modelObject {
       ) {
         $syobj = new $object_class;
         $this->addOperator($pname, $syobj);
-        error_log("Added $pname as component type $object_class .");
+        //error_log("Added $pname as component type $object_class .");
         // re-retrieve to make sure that the object is not cloned.
         $prop = $this->processors[$pname];
       } else {

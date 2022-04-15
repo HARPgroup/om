@@ -8255,7 +8255,7 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
     
     // ***** BEGIN New Method *****
     $op_object_data = om_xml_array($thisop);
-    error_log("XML:" . $thisop);
+    //error_log("XML:" . $thisop);
     $opobject = om_make_object($op_object_data['object_class'], $op_object_data, TRUE, $debug);
     // ***** END New Method *****
     if (!($opobject === FALSE)) {

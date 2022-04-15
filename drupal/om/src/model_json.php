@@ -14,6 +14,7 @@ $plugin->loadProperties($model);
 $exp = $plugin->exportOpenMI($model);
 $exp_json = $exp[$model->propname];
 if (intval($pretty) == 1) {
+  error_log("******* Using pretty print");
   $exp_json = json_encode($exp_json, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
 } else {
   $exp_json = addslashes(json_encode($exp_json));

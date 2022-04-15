@@ -7,16 +7,16 @@ while ($arg = drush_shift()) {
   $args[] = $arg;
 }
 $pid = $args[0];
-$slashes = $arg[1];
+$pretty = $arg[1];
 $model = entity_load_single('dh_properties', $pid);
 $plugin = dh_variables_getPlugins($model);
 $plugin->loadProperties($model);
 $exp = $plugin->exportOpenMI($model);
 $exp_json = $exp[$model->propname];
-if ($slashes === 1) {
-  $exp_json = addslashes(json_encode($exp_json));
+if ($pretty === 1) {
+  $exp_json = json_encode($exp_json, JSON_PRETTY_PRINT);
 } else {
-  $exp_json = json_encode($exp_json);
+  $exp_json = addslashes(json_encode($exp_json));
 }
 echo $exp_json;
 

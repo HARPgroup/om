@@ -1,3 +1,4 @@
+
 <?php
 # set up db connection
 $noajax = 1;
@@ -87,7 +88,7 @@ if (is_object($thisobject)) {
     //    $thisobject->processors['impoundment']->setProp('storage_stage_area', 'JSON storage table');
     //   * These should also omit the object_class since they should fail if they do not exist, rather than adding
     //error_log("Calling thisobject->processors[$comp_name]->setProp($subprop_name, $subprop_value, $setprop_mode); on object of class " . get_class($thisobject->processors[$comp_name]));
-    error_log("Calling setProp() on $subprop_name");
+    error_log("Calling setProp() on $subprop_name, object_class = " . get_class($thisobject->processors[$comp_name]));
     $thisobject->processors[$comp_name]->setProp($subprop_name, $subprop_value, $setprop_mode);
     $thisobject->processors[$comp_name]->objectclass = $comp_class;
     $operatorid = array_search($comp_name, array_keys($thisobject->processors));
@@ -99,8 +100,9 @@ if (is_object($thisobject)) {
       $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
       $innerHTML .= $cresult['innerHTML'];
       $debughtml .= $cresult['debugHTML'];
-      error_log("Saving single operator as ID $operatorid");
+      error_log("Saving single operator as ID $operatorid on $elid");
       $xml = $cresult['object_xml'];
+      error_log("XML:" . $xml);
       // store in database
       $store_result = storeElemOperator($elid, $operatorid, $xml);
     }

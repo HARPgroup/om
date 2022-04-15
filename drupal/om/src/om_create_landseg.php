@@ -138,9 +138,15 @@ if (!($oc->propvalue > 0)) {
 }
 // now push
 if ($oc->propvalue > 0) {
-  $oc->propcode = 'push_once';
   error_log("Pushing Data");
+  $exp = $this->exportOpenMI($lseg_model);
+  dpm($exp,"Using JSON export mode");
+  $exp_json = addslashes(json_encode($exp[$lseg_model->propname]));
+  om_set_element($oc->propvalue, $exp_json);
+  /*
+  $oc->propcode = 'push_once';
   $oc->save();
+  */
   error_log("Finished Pushing Data");
 }
 

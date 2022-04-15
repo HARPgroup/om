@@ -1304,7 +1304,7 @@ class dHOMElementConnect extends dHOMBaseObjectClass {
     }
   }
   
-  public function cloneRemoteElement($entity) {
+  public function cloneRemoteElement(&$entity) {
     global $base_url;
     $parent = $this->getParentEntity($entity);
     $cmd = "cd $this->path \n";

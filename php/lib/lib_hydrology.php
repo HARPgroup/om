@@ -1141,6 +1141,7 @@ class modelObject {
         return;
       }
       $syobj = new $object_class;
+      $syobj->object_class = $object_class;
       $this->addOperator($pname, $syobj);
       error_log("Added $pname as component type $object_class .");
       // re-retrieve to make sure that the object is not cloned.

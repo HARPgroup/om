@@ -708,6 +708,15 @@ function om_set_element($elementid, $exp_json) {
   return $elid;
 }
 
+function om_get_om_model($elid) {
+  global $om;
+  $uri = $om . "?elementid=$elid";
+  error_log("Opening $uri ");
+  $json = file_get_contents ($uri);
+  //error_log("json:" . $json);
+  $om_object = json_decode($json);
+  return $om_object;
+}
 
 function om_get_model_status($elementid, $mins = 120, $format = '') {
   // use format = 'list' to see the raw liostobject (default for no elementid)

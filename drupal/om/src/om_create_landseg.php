@@ -75,7 +75,14 @@ if ($oc === FALSE) {
 // now create a model if it doesn't have an om_element_connection 
 error_log("OM pid: " . $oc->pid);
 error_log("OM elid: " . $oc->propvalue);
-
+// verify that the remote model exists
+if ($oc->propvalue > 0) {
+  $om_model = om_get_om_model($oc->propvalue);
+  if (empty($om_model)) {
+    error_log("Could not find linked OM model.  Resetting.");
+    $oc->propvalue = 0;
+  }
+}
 // **********************************************
 // load the river segment model to get the CBP6 container
 // **********************************************

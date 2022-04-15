@@ -1036,6 +1036,7 @@ class modelObject {
     //if ($this->json2d) {
     // expects openMI style objects in json format 
     error_log("Calling setPropJSON2d($propname)");
+    $base_types = array("textField", "matrix", "array", "table"); // these can be set on base object all others must be subcomps
     $raw_json = $propvalue;
     // this is being called recursively, or by another routine that has already translated from json 
     if ($view == 'json_decoded') {
@@ -1053,8 +1054,7 @@ class modelObject {
         and 
         ( 
           (!isset($pvalue['object_class']))
-          or 
-          ($pvalue['object_class'] == "textField")
+          or in_array($pvalue['object_class'], $base_types)
         )
       ) {
         $this->applyJSONPropArray($pname, $pvalue);

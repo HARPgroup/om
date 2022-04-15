@@ -8,6 +8,8 @@ while ($arg = drush_shift()) {
 }
 $pid = $args[0];
 $model = entity_load_single('dh_properties', $pid);
+$plugin = dh_variables_getPlugins($model);
+$plugin->loadProperties($model);
 $oc = om_load_dh_property($model, "om_element_connection");
 error_log("Synching Data for $model->propname with elid = " . $oc->propvalue);
 // now push

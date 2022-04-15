@@ -21,11 +21,7 @@ error_reporting(E_ERROR);
 print("Un-serializing Model Object <br>");
 $debug = 0;
 
-$elementid = 6;
 $steps = 2;
-if (isset($_GET['elementid'])) {
-  $elementid = $_GET['elementid'];
-}
 error_log("argv" . print_r($argv,1));
 if (count($argv) > 3) {
   $modelid = $argv[1]; // the model container 
@@ -39,7 +35,7 @@ if (count($argv) > 4) {
 global $modeldb, $listobject, $tmpdir, $shellcopy, $ucitables, $scenarioid, $outdir, $outurl, $goutdir, $gouturl, $unserobjects, $adminsetuparray, $wdm_messagefile, $basedir, $model_startdate, $model_enddate;
 
 
-$model_elements = loadModelUsingCached($modeldb, $elementid, $runid, $cache_runid, $input_props, $cache_level, $cache_list, $run_date);
+$model_elements = loadModelUsingCached($modeldb, $modelid, $runid, $cache_runid, $input_props, $cache_level, $cache_list, $run_date);
 $model = $model_elements['object'];
 $target = loadModelElement($targetid);
 $model->outdir = $outdir;

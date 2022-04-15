@@ -7,7 +7,7 @@ while ($arg = drush_shift()) {
   $args[] = $arg;
 }
 $pid = $args[0];
-$pretty = $arg[1];
+$pretty = $args[1];
 $model = entity_load_single('dh_properties', $pid);
 $plugin = dh_variables_getPlugins($model);
 $plugin->loadProperties($model);

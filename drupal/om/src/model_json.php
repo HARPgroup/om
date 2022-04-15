@@ -13,7 +13,7 @@ $plugin = dh_variables_getPlugins($model);
 $plugin->loadProperties($model);
 $exp = $plugin->exportOpenMI($model);
 $exp_json = $exp[$model->propname];
-if ($pretty === 1) {
+if (intval($pretty) == 1) {
   $exp_json = json_encode($exp_json, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
 } else {
   $exp_json = addslashes(json_encode($exp_json));

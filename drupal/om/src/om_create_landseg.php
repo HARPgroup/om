@@ -138,7 +138,6 @@ if (!($oc->propvalue > 0)) {
 }
 // now push
 if ($oc->propvalue > 0) {
-  error_log("Created a model element with elementid = $oc->propvalue");
   $oc->propcode = 'push_once';
   error_log("Pushing Data");
   $oc->save();

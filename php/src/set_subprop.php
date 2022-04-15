@@ -88,7 +88,7 @@ if (is_object($thisobject)) {
     //    $thisobject->processors['impoundment']->setProp('storage_stage_area', 'JSON storage table');
     //   * These should also omit the object_class since they should fail if they do not exist, rather than adding
     //error_log("Calling thisobject->processors[$comp_name]->setProp($subprop_name, $subprop_value, $setprop_mode); on object of class " . get_class($thisobject->processors[$comp_name]));
-    error_log("Calling setProp() on $subprop_name");
+    error_log("Calling setProp() on $subprop_name, object_class = " . get_class($thisobject->processors[$comp_name]));
     $thisobject->processors[$comp_name]->setProp($subprop_name, $subprop_value, $setprop_mode);
     $thisobject->processors[$comp_name]->objectclass = $comp_class;
     $operatorid = array_search($comp_name, array_keys($thisobject->processors));

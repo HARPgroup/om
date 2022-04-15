@@ -46,7 +46,7 @@ $model->systemlog_obj = $listobject;
 $model->initTimer();
 $model->setSessionID();
 $model->init();
-for ($i = 1; $i < $num ; $i++) {
+for ($i = 1; $i < $steps ; $i++) {
   $model->step();
   error_log("State" . print_r($target->state,1));
 }

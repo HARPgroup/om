@@ -61,6 +61,8 @@ ln -s /opt/model/om/php/lib/PEAR /var/www/html/lib/PEAR
 # live
 rm /var/www/html/om/xajax_modeling.common.php
 ln -s /opt/model/om/php/src/xajax_modeling.common.php /var/www/html/om/xajax_modeling.common.php
+rm /var/www/html/om/test_step.php
+ln -s /opt/model/om/php/src/test_step.php /var/www/html/om/test_step.php
 rm /var/www/html/om/set_element.php
 ln -s  /opt/model/om/php/src/set_element.php /var/www/html/om/set_element.php
 rm /var/www/html/om/who_xmlobjects.frisk.php

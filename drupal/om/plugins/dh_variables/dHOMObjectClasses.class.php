@@ -2177,7 +2177,7 @@ class dHOM_ModelVersion extends dHVariablePluginDefault {
 }
 
 class dHOMDataMatrix extends dHOMSubComp {
-  var $object_class = 'DataMatrix';
+  var $object_class = 'dataMatrix';
   var $default_bundle = 'om_data_matrix';
   var $matrix_field = 'field_dh_matrix';
   var $json2d = TRUE; // use JSON 2d for all remote syncs, much faster

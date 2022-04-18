@@ -517,7 +517,7 @@ class modelObject {
     // now, go through and see if any sub-components have db types set
     foreach ($this->processors as $thisproc) {
        
-       if (property_exists($thisproc, 'value_dbcolumntype')) {
+       if (property_exists($thisproc, 'value_dbcolumntype') and !empty($thisproc->value_dbcolumntype)) {
           // this does not work, since the logtypes is looking for string format, NOT a db column type
           //$logtypes[$thisproc->name] = $thisproc->value_dbcolumntype;
           // howwever, this should be OK
@@ -4301,7 +4301,7 @@ class dataMatrix extends modelSubObject {
    // How to evaluate each cell in the matrix (type reference looks for variable in state array, type auto uses old method which guesses based on contents at each timestep)
    var $eval_type = 'auto'; // auto, numeric, string, reference 
    var $valuetype = 0; // 0 - returns entire array (normal), 1 - single column lookup (col), 2 - 2 column lookup (col & row)
-   var $value_dbcolumntype = 'numeric'; // can be a db type, or an equation, which resolves to numeric in db storage
+   var $value_dbcolumntype = ''; // can be a db type, or an equation, which resolves to numeric in db storage
    var $keycol1 = ''; // key for 1st lookup variable
    var $lutype1 = 0; // lookup type for first lookup variable: 0 - exact match; 1 - interpolate values; 2 - stair step
    var $keycol2 = ''; // key for 2nd lookup variable
@@ -4607,7 +4607,16 @@ class dataMatrix extends modelSubObject {
          break;
       }
    }
-   
+      
+  function setDataColumnTypes() {
+    parent::setDataColumnTypes();
+    // this sets the default return type for logging.
+    // If the user has set a non-empty value, we return it here
+    if (!empty($this->value_dbcolumntype)) {
+      $this->setSingleDataColumnType($this->name, $this->value_dbcolumntype, $this->defaultval);
+    }
+  }
+  
    function search_state($thisvar, $use_default = FALSE) {
     if (!is_array($this->arData)) {
        $this->arData = array();

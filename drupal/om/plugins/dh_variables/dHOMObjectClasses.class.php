@@ -2243,7 +2243,7 @@ class dHOMDataMatrix extends dHOMSubComp {
       ),
       'value_dbcolumntype' => array(
         'entity_type' => $entity->entityType(),
-        'propcode_default' => 'numeric',
+        'propcode_default' => 'auto', // auto is the old method and we need to maintain consistency
         'propname' => 'value_dbcolumntype',
         'vardesc' => 'How to store data in the runtime log table.',
         'title' => 'DB Value Type',

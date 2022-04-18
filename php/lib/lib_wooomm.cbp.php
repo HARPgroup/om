@@ -1028,10 +1028,10 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       $this->listobject->querystring = "  select count(*) as numts, min(\"timestamp\") as mints, max(\"timestamp\") as maxts ";
       $this->listobject->querystring .= " from  \"$this->db_cache_name\"";
       $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec::bigint and \"timestamp\" <= ($current_time::bigint + $dt * $this->max_memory_values) ";
-      if ($this->debug) {
+      //if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
-      }
-      $outimes = -1; // never show if < 0
+      //}
+      $outimes = 5; // never show if < 0
       if ($this->timer->steps < $outimes) {
         error_log("getCurrentDataSlice $this->name");
         error_log($this->listobject->querystring);

@@ -1067,7 +1067,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
         $this->tsvalues[$ts] = $thistv;
         $keys = array_keys($thistv);
         $firstkey = $keys[0];
-        //error_log("At Timestamp $ts adding: $firstkey = " . $thistv[$firstkey]);
+        error_log("At Timestamp $ts adding: $firstkey = " . $thistv[$firstkey]);
       }
     }
     

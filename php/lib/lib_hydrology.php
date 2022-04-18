@@ -4298,7 +4298,10 @@ class dataMatrix extends modelSubObject {
    // additionally, the return values may be variable references
    
    var $object_class = 'dataMatrix'; // will be set externally but could be overridden
+   // How to evaluate each cell in the matrix (type reference looks for variable in state array, type auto uses old method which guesses based on contents at each timestep)
+   var $eval_type = 0; // auto, numeric, string, reference 
    var $valuetype = 0; // 0 - returns entire array (normal), 1 - single column lookup (col), 2 - 2 column lookup (col & row)
+   var $value_dbcolumntype = 'numeric'; // can be a db type, or an equation, which resolvesto numeric in db storage
    var $keycol1 = ''; // key for 1st lookup variable
    var $lutype1 = 0; // lookup type for first lookup variable: 0 - exact match; 1 - interpolate values; 2 - stair step
    var $keycol2 = ''; // key for 2nd lookup variable
@@ -4605,21 +4608,53 @@ class dataMatrix extends modelSubObject {
       }
    }
    
+   function search_state($thisvar, $use_default = FALSE) {
+    if (!is_array($this->arData)) {
+       $this->arData = array();
+    }
+    $skeys = array_keys($this->arData);
+    if (in_array($thisvar, $skeys)) {
+      $thisval = $this->arData[$thisvar];
+    } else {
+      // slight behavior change from before which returned the variable itself
+      // was: $thisval = $thisvar; 
+      // which essentially made the fallback handling type string, which supported 
+      // strings that existed in the database without proper formatting, but could
+      // break simulations so we will $use_default = FALSE for now to retain backward compat 
+      if ($use_default) {
+        $thisval = $this->defaultval; 
+      } else {
+        $thisval = $thisvar;
+      }
+    }
+    return $thisval;
+  }
+   
    function evalMatrixVar($thisvar) {
       // this checks to see if a value is a variable reference, string, or a number
-      if (!is_array($this->arData)) {
-         $this->arData = array();
-      }
-      $skeys = array_keys($this->arData);
-      if(trim($thisvar,"'\":") <> $thisvar) {
-         // this is a string variable, as indicated by ' or "
-         $thisval = trim($thisvar,"'\":");
-      } else {
-         if (in_array($thisvar, $skeys)) {
-            $thisval = $this->arData[$thisvar];
-         } else {
+      switch($this->eval_type) {
+        case 'numeric':
+          $thisval = floatval($thisvar);
+          break;
+        case 'string':
+          $thisval = trim($thisvar,"'\":");
+          break;
+        case 'reference':
+          $thisval = $this->search_state($thisvar, TRUE);
+          break;
+        case 'auto':
+        default:
+          if (is_numeric($thisvar)) {
             $thisval = $thisvar;
-         }
+          } else {
+            if(trim($thisvar,"'\":") <> $thisvar) {
+              // this is a string variable, as indicated by ' or "
+              $thisval = trim($thisvar,"'\":");
+            } else {
+              $thisval = $this->search_state($thisvar);
+            }
+          }
+        break;
       }
       //$this->logDebug("Checking Lookup Key: $thisvar , value: $thisval ");
       //error_log("Checking Lookup Key: $thisvar , value: $thisval ");

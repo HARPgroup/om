@@ -1031,9 +1031,9 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       $this->listobject->querystring .= " from  \"$this->db_cache_name\"";
       $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec::bigint and \"timestamp\" <= ($current_time::bigint + $this->ts_dt * $this->max_memory_values) ";
       // max memory values has been set to accomodate 2 years of hourly data (2 * 365 * 24) 
-      //if ($this->debug) {
+      if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
-      //}
+      }
       $outimes = 5; // never show if < 0
       if ($this->timer->steps < $outimes) {
         error_log("getCurrentDataSlice $this->name");

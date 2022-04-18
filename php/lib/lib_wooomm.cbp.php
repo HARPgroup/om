@@ -1032,10 +1032,10 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
         $this->logDebug($this->listobject->querystring);
       //}
       $outimes = 5; // never show if < 0
-      //if ($this->timer->steps < $outimes) {
+      if ($this->timer->steps < $outimes) {
         error_log("getCurrentDataSlice $this->name");
         error_log($this->listobject->querystring);
-      //}
+      }
       $this->listobject->performQuery();
       $numts = $this->listobject->getRecordValue(1,'numts');
       if ($this->debug) {
@@ -1056,9 +1056,9 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
       }
-      //if ($this->timer->steps < $outimes) {
+      if ($this->timer->steps < $outimes) {
         error_log($this->listobject->querystring);
-      //}
+      }
       $this->listobject->performQuery();
       $tvs = $this->listobject->queryrecords;
       $this->tsvalues = array();

@@ -2239,7 +2239,17 @@ class dHOMDataMatrix extends dHOMSubComp {
         'title' => 'Cell Eval Type',
         'singularity' => 'name_singular',
         'featureid' => $entity->identifier(),
-        'varid' => dh_varkey2varid('om_class_Constant', TRUE),
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
+      ),
+      'value_dbcolumntype' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => 'numeric',
+        'propname' => 'value_dbcolumntype',
+        'vardesc' => 'How to store data in the runtime log table.',
+        'title' => 'DB Value Type',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
       ),
       'lutype1' => array(
         'entity_type' => $entity->entityType(),

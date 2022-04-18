@@ -4301,7 +4301,7 @@ class dataMatrix extends modelSubObject {
    // How to evaluate each cell in the matrix (type reference looks for variable in state array, type auto uses old method which guesses based on contents at each timestep)
    var $eval_type = 0; // auto, numeric, string, reference 
    var $valuetype = 0; // 0 - returns entire array (normal), 1 - single column lookup (col), 2 - 2 column lookup (col & row)
-   var $value_dbcolumntype = 'numeric'; // can be a db type, or an equation, which resolvesto numeric in db storage
+   var $value_dbcolumntype = 'numeric'; // can be a db type, or an equation, which resolves to numeric in db storage
    var $keycol1 = ''; // key for 1st lookup variable
    var $lutype1 = 0; // lookup type for first lookup variable: 0 - exact match; 1 - interpolate values; 2 - stair step
    var $keycol2 = ''; // key for 2nd lookup variable

@@ -859,8 +859,8 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
                         // to cubic-feet (* 43560 ft-per-acre)
                         // to cfs (/timestep)
                         $thisflow = ( ($this->state[$lu_flowvar]/12.0) * $luarea * 43560.0) / $this->hspf_timestep;
-                        $comp_vals[$thiscomp] += $thisflow;
-                        $Qout += $thisflow;
+                        $comp_vals[$thiscomp] += floatval($thisflow);
+                        $Qout += floatval($thisflow);
                         if ($this->debug) {
                            $this->logDebug("Adding $lu_flowvar @ $thisflow cfs to Qout ($Qout) ");
                            $this->logDebug("<br>\n");

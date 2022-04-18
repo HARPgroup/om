@@ -5824,6 +5824,8 @@ class timeSeriesInput extends modelObject {
          $mem_use = (memory_get_usage(true) / (1024.0 * 1024.0));
          $mem_use_malloc = (memory_get_usage(false) / (1024.0 * 1024.0));
          //error_log("Memory Use after caching timeseries data on $this->name = $mem_use ( $mem_use_malloc )<br>\n");
+      } else {
+        error_log("TimeSeriesInput $this->name not calling getCurrentDataSlice(): count(tsvalues) = " . count($this->tsvalues) . " max # of recs in memory: $this->max_memory_values <br>");
       }
       // disabled the time series search and retrieval if there is nothing to retrieve
       //if ($this->tscount == 0) {

@@ -598,6 +598,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
   var $landseg = ''; # land segment: i.e., A24001
   var $riverseg = ''; // optional, this will only be used during calls to "create()" method, restricting the historical land use to the given river and land segment intersection
   var $max_memory_values = 500;
+  var $ts_dt = 3600; // hourly, in seconds
   var $locationid = -1;
   var $romode = 'component';
   var $hspf_timestep = 3600.0;
@@ -1028,7 +1029,8 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       // get all from last time to now 
       $this->listobject->querystring = "  select count(*) as numts, min(\"timestamp\") as mints, max(\"timestamp\") as maxts ";
       $this->listobject->querystring .= " from  \"$this->db_cache_name\"";
-      $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec::bigint and \"timestamp\" <= ($current_time::bigint + $dt * $this->max_memory_values) ";
+      $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec::bigint and \"timestamp\" <= ($current_time::bigint + $this->ts_dt * $this->max_memory_values) ";
+      // max memory values has been set to accomodate 2 years of hourly data (2 * 365 * 24) 
       //if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
       //}

@@ -4613,7 +4613,7 @@ class dataMatrix extends modelSubObject {
     // this sets the default return type for logging.
     // If the user has set a non-empty value, we return it here
     if (!empty($this->value_dbcolumntype)) {
-      $this->setSingleDataColumnType($this->name, $this->value_dbcolumntype, $this->defaultval);
+      $this->parentobject->setSingleDataColumnType($this->name, $this->value_dbcolumntype, $this->defaultval);
     }
   }
   

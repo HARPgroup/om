@@ -742,6 +742,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
     //         4. Otherwise, proceed as normal     
     // check for a file, if set, use it to populate the lookup table, otherwise, use the CSV string
     // if table exists, just return, all is cool.
+    error_log("*** Looking for Cache Table $this->db_cache_name ");
     if (is_object($modeldb)) {
       if ($modeldb->tableExists($this->db_cache_name)) {
        error_log("Cache Table $this->db_cache_name already exists. Returning.");

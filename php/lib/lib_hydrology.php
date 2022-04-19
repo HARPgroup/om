@@ -517,7 +517,7 @@ class modelObject {
     // now, go through and see if any sub-components have db types set
     foreach ($this->processors as $thisproc) {
        
-       if (property_exists($thisproc, 'value_dbcolumntype')) {
+       if (property_exists($thisproc, 'value_dbcolumntype') and !empty($thisproc->value_dbcolumntype)) {
           // this does not work, since the logtypes is looking for string format, NOT a db column type
           //$logtypes[$thisproc->name] = $thisproc->value_dbcolumntype;
           // howwever, this should be OK
@@ -4298,7 +4298,10 @@ class dataMatrix extends modelSubObject {
    // additionally, the return values may be variable references
    
    var $object_class = 'dataMatrix'; // will be set externally but could be overridden
+   // How to evaluate each cell in the matrix (type reference looks for variable in state array, type auto uses old method which guesses based on contents at each timestep)
+   var $eval_type = 'auto'; // auto, numeric, string, reference 
    var $valuetype = 0; // 0 - returns entire array (normal), 1 - single column lookup (col), 2 - 2 column lookup (col & row)
+   var $value_dbcolumntype = ''; // can be a db type, or an equation, which resolves to numeric in db storage
    var $keycol1 = ''; // key for 1st lookup variable
    var $lutype1 = 0; // lookup type for first lookup variable: 0 - exact match; 1 - interpolate values; 2 - stair step
    var $keycol2 = ''; // key for 2nd lookup variable
@@ -4604,22 +4607,63 @@ class dataMatrix extends modelSubObject {
          break;
       }
    }
+      
+  function setDataColumnTypes() {
+    parent::setDataColumnTypes();
+    // this sets the default return type for logging.
+    // If the user has set a non-empty value, we return it here
+    if (!empty($this->value_dbcolumntype)) {
+      $this->parentobject->setSingleDataColumnType($this->name, $this->value_dbcolumntype, $this->defaultval);
+    }
+  }
+  
+   function search_state($thisvar, $use_default = FALSE) {
+    if (!is_array($this->arData)) {
+       $this->arData = array();
+    }
+    $skeys = array_keys($this->arData);
+    if (in_array($thisvar, $skeys)) {
+      $thisval = $this->arData[$thisvar];
+    } else {
+      // slight behavior change from before which returned the variable itself
+      // was: $thisval = $thisvar; 
+      // which essentially made the fallback handling type string, which supported 
+      // strings that existed in the database without proper formatting, but could
+      // break simulations so we will $use_default = FALSE for now to retain backward compat 
+      if ($use_default) {
+        $thisval = $this->defaultval; 
+      } else {
+        $thisval = $thisvar;
+      }
+    }
+    return $thisval;
+  }
    
    function evalMatrixVar($thisvar) {
       // this checks to see if a value is a variable reference, string, or a number
-      if (!is_array($this->arData)) {
-         $this->arData = array();
-      }
-      $skeys = array_keys($this->arData);
-      if(trim($thisvar,"'\":") <> $thisvar) {
-         // this is a string variable, as indicated by ' or "
-         $thisval = trim($thisvar,"'\":");
-      } else {
-         if (in_array($thisvar, $skeys)) {
-            $thisval = $this->arData[$thisvar];
-         } else {
+      switch($this->eval_type) {
+        case 'numeric':
+          $thisval = floatval($thisvar);
+          break;
+        case 'string':
+          $thisval = trim($thisvar,"'\":");
+          break;
+        case 'reference':
+          $thisval = $this->search_state($thisvar, TRUE);
+          break;
+        case 'auto':
+        default:
+          if (is_numeric($thisvar)) {
             $thisval = $thisvar;
-         }
+          } else {
+            if(trim($thisvar,"'\":") <> $thisvar) {
+              // this is a string variable, as indicated by ' or "
+              $thisval = trim($thisvar,"'\":");
+            } else {
+              $thisval = $this->search_state($thisvar);
+            }
+          }
+        break;
       }
       //$this->logDebug("Checking Lookup Key: $thisvar , value: $thisval ");
       //error_log("Checking Lookup Key: $thisvar , value: $thisval ");
@@ -5789,6 +5833,8 @@ class timeSeriesInput extends modelObject {
          $mem_use = (memory_get_usage(true) / (1024.0 * 1024.0));
          $mem_use_malloc = (memory_get_usage(false) / (1024.0 * 1024.0));
          //error_log("Memory Use after caching timeseries data on $this->name = $mem_use ( $mem_use_malloc )<br>\n");
+      } else {
+        error_log("TimeSeriesInput $this->name not calling getCurrentDataSlice(): count(tsvalues) = " . count($this->tsvalues) . " max # of recs in memory: $this->max_memory_values <br>");
       }
       // disabled the time series search and retrieval if there is nothing to retrieve
       //if ($this->tscount == 0) {

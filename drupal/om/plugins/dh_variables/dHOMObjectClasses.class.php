@@ -2230,6 +2230,27 @@ class dHOMDataMatrix extends dHOMSubComp {
         'featureid' => $entity->identifier(),
         'varid' => dh_varkey2varid('om_class_Constant', TRUE),
       ),
+      'eval_type' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => 'auto',
+        'propvalue_default' => 1,
+        'propname' => 'eval_type',
+        'vardesc' => 'How to evaluate each cell in the matrix (type reference looks for variable in state array, type auto uses old method which guesses based on contents at each timestep).',
+        'title' => 'Cell Eval Type',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
+      ),
+      'value_dbcolumntype' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => 'auto', // auto is the old method and we need to maintain consistency
+        'propname' => 'value_dbcolumntype',
+        'vardesc' => 'How to store data in the runtime log table.',
+        'title' => 'DB Value Type',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
+      ),
       'lutype1' => array(
         'entity_type' => $entity->entityType(),
         'propcode_default' => NULL,
@@ -2459,6 +2480,39 @@ class dHOMDataMatrix extends dHOMSubComp {
     //dpm($entity,'entity');
     //dpm($form,'form');
     // now, format the lookup type fields 
+    $eval_types = array(
+      "auto",
+      "numeric",
+      "string",
+      "reference",
+    );
+    $eval_options = array_combine($eval_types, $eval_types);
+    // value_dbcolumntype = how this is stored in the runtime database
+    // eval_type = how this is evaulated: variable, numeric, equation, string 
+    $form['eval_type']['#type'] = 'select';
+    $form['eval_type']['#options'] = $eval_options;
+    $form['eval_type']['#size'] = 1;
+    $form['eval_type']["#empty_value"] = "";
+    $form['eval_type']["#empty_option"] = "Not Set";
+    $form['eval_type']["#description"] = "How to evaluate the variables. For type 'equation' the variable will be evaluated as an equation each time-step, then stored as type numeric in the database.";
+    $dbtypes = array(
+      "auto",
+      "numeric",
+      "varchar(32)",
+      "varchar(64)",
+      "varchar(128)",
+      "json",
+    );
+    $db_options = array_combine($dbtypes, $dbtypes);
+    $db_options['json'] .= " (" . t("not yet enabled") . ")";
+    // value_dbcolumntype = how this is stored in the runtime database
+    // evaltype = how this is evaulated: variable, numeric, equation, string 
+    $form['value_dbcolumntype']['#type'] = 'select';
+    $form['value_dbcolumntype']['#options'] = $db_options;
+    $form['value_dbcolumntype']['#size'] = 1;
+    $form['value_dbcolumntype']["#empty_value"] = "";
+    $form['value_dbcolumntype']["#empty_option"] = "Not Set";
+    $form['value_dbcolumntype']["#description"] = "How to store the variable in the runtime db.";
     $lutypes = array(
       0 => "Exact Match",
       1 => "Interpolated",

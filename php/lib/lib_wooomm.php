@@ -8735,7 +8735,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    $cacheable = $cache_res['cacheable'];
    $returnArray['error'] .= $cache_res['error'];
    //error_log("Element $elementid: checkObjectCacheStatus(order = $order, cache_level = $cache_level, cache_id = $cache_id, current_level = $current_level) :: Cache Type: $cache_type - Cacheable - $cacheable ");
-   error_log("Element $elementid: Cache Settings: " . print_r($cache_res,1));
+   //error_log("Element $elementid: Cache Settings: " . print_r($cache_res,1));
    switch ($cache_res['cache_host_status']) {
      case -1:
        setStatus($listobject, -1, "Error: Cache request for $elementid timed out", $serverip, 1, $cache_id, -1, 1);

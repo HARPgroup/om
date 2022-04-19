@@ -104,9 +104,11 @@ foreach ($data as $element) {
     // restore original object synch if it exists
     //$dcc = 1; // force
     if ($dcc) {
+      error_log("*** Retrieving stashed link info.");
       $link = om_dh_unstashlink($dest_entity, $dcc, 'om_element_connection');
       // do a final save if the link calls for it
-      $copy->save();
+      error_log("*** NOT Saving element again.");
+      //$copy->save();
       // should try to reset the link on the copy to "never save" if desired - default behavior SHOULD be to reset to never save 
     }
   }

@@ -1068,6 +1068,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
             $elid = $plugin->findRemoteOMElement($parent, $path);
           }
           $this->set_remote = property_exists($plugin, 'set_remote') ? $plugin->set_remote : 0;
+          error_log("**** SET REMOTE on Plkugin = " . $plugin->set_remote);
         }
       }
     }

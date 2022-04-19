@@ -82,7 +82,7 @@ foreach ($data as $element) {
   }
   
   // set the Runoff File Path
-  $lu_filepath = implode('/', array($basepath, $version, $scenario, 'land', 'lutable_ ' $landseg . '.csv'));
+  $lu_filepath = implode('/', array($basepath, $version, $scenario, 'land', 'lutable_ ' . $landseg . '.csv'));
   $csv = om_readDelimitedFile($lu_filepath);
   error_log("Opening " . $lu_filepath);
   if (is_object($plugin )) {

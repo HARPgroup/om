@@ -7,14 +7,20 @@ while ($arg = drush_shift()) {
   $args[] = $arg;
 }
 
+$basepath = '/media/model';
 $cbp6_template = 6564010;
 $om_lseg_template_elid = 352129; // we could jsut as easily get this from the template object that we copied
-if (count($args) >= 2) {
+if (count($args) >= 4) {
   $rseg_hydroid = $args[0]; // river segment 
   $lseg_hydroid = $args[1]; // land-river segment 
+  $version = $args[2];
+  $scenario = $args[3];
+  if (count($args) > 4) {
+    $basepath = $args[4];
+  }
 } else {
-  error_log("Usage: php om_create_landseg.php riverseg_hydroid landseg_hydroid [luyear=year]");
-  die;
+  error_log("Usage: php om_create_landseg.php riverseg_hydroid landseg_hydroid version(p6,p532) scenario [basepath=$basepath]");
+  exit;
 }
 // check if a model already exists
 $lseg_pid = FALSE;
@@ -141,7 +147,7 @@ if (!($oc->propvalue > 0)) {
 $lseg_model->landseg = substr($lseg_feature->hydrocode, 0, 6);
 $lseg_model->riverseg = substr($lseg_feature->hydrocode, 7);
 $lseg_model->modelpath = '/media/model/p532';
-$lseg_model->version = 'p532';
+$lseg_model->version = $version;
 $lseg_model->propname = $lseg_feature->hydrocode;
 // when we use the exportOpenMI method, we don't need to push everything on save
 // so we shouodl disable the OC, save the model,
@@ -162,5 +168,5 @@ $oc->propcode = 1;
 $oc->save();
 
 error_log("Complete. Now update land use.");
-
+echo $lseg_model->pid;
 ?>

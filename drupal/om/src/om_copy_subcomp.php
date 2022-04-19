@@ -108,7 +108,12 @@ foreach ($data as $element) {
       $link = om_dh_unstashlink($dest_entity, $dcc, 'om_element_connection');
       // do a final save if the link calls for it
       error_log("*** NOT Saving element again.");
-      //$copy->save();
+      $copy = entity_load_single('dh_properties', $copy->pid);
+      $plugin = dh_variables_getPlugins($parent);
+      if (is_object($plugin) and method_exists('loadProperties', $plugin)) {
+        $plugin->loadProperties($copy);
+      }
+      $copy->save();
       // should try to reset the link on the copy to "never save" if desired - default behavior SHOULD be to reset to never save 
     }
   }

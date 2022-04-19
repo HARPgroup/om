@@ -6,6 +6,7 @@ module_load_include('inc', 'om', 'src/om_translate_to_dh');
 $basepath = '/media/model';
 $luname = 'landuse'; // we could opt to add another lu matrix
 $last_year = 2050; // final year to append
+$vahydro_version = 'vahydro-1.0';
 //$basepath = '/media/NAS/omdata/p6/out/land';
 $args = array();
 while ($arg = drush_shift()) {
@@ -22,10 +23,13 @@ if (count($args) >= 2) {
     $luname = $args[4];
   }
   if (count($args) > 5) {
-    $basepath = $args[5];
+    $vahydro_version = $args[5];
+  }
+  if (count($args) > 6) {
+    $basepath = $args[6];
   }
 } else {
-  error_log("Usage: php om_cbp_lrseg_landuse_file_import.php query_type vahydro_pid/file version scenario [last_year=$last_year] [luname=landuse] [basepath=/media/model/]\n");
+  error_log("Usage: php om_cbp_lrseg_landuse_file_import.php query_type vahydro_pid/file version scenario [last_year=$last_year] [luname=landuse] [vahydro_version-$vahydro_version] [basepath=/media/model/]\n");
   error_log("Note: To skip appending a final column with a large year, set last_year=0 .");
   die;
 }
@@ -50,7 +54,7 @@ if ($query_type == 'file') {
   $data = array();
   $data[] = array(
     'vahydro_pid' => $vahydro_pid,
-    'version' => $version,
+    'version' => $vahydro_version,
     'scenario' => $scenario,
     'luname' => $luname,
     'basepath' => $basepath,

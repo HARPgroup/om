@@ -844,6 +844,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     if ($json2d and !$force and ($entity->embedded === TRUE) ) {
       return;
     }
+    error_log("**** synchronize() called from $entity->propname");
     $elid = $this->findRemoteOMElement($entity, $path);
     $new_save = om_load_dh_property($entity, 'use_new_save');
     if (is_object($new_save) or ($this->use_new_save === TRUE)) {

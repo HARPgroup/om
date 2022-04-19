@@ -67,13 +67,13 @@ foreach ($data as $element) {
   }
   $lseg_model = entity_load_single('dh_properties', $vahydro_pid);
   if (!is_object($lseg_model)) {
-    error_log("Could not load objet with PID $vahydro_pid");
+    error_log("Could not load object with PID $vahydro_pid");
     exit;
   }
   $plugin = dh_variables_getPlugins($lseg_model);
   $plugin->loadProperties($lseg_model);
   $landseg = $lseg_model->landseg->propcode;
-  // use getset instead of this below 
+  // load the landuse component, or create a blank one if it doesn't exist
   $lu_info = array(
      'varkey' => 'om_class_DataMatrix',
      'propname' => $luname,

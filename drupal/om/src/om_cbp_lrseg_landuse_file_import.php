@@ -65,6 +65,14 @@ foreach ($data as $element) {
     error_log(print_r($element,1));
     die;
   }
+  $lseg_model = entity_load_single('dh_properties', $vahydro_pid);
+  if (!is_object($lseg_model)) {
+    error_log("Could not load objet with PID $vahydro_pid");
+    exit;
+  }
+  $plugin = dh_variables_getPlugins($lseg_model);
+  $plugin->loadProperties($lseg_model);
+  $landseg = $lseg_model->landseg->propcode;
   // use getset instead of this below 
   $lu_info = array(
      'varkey' => 'om_class_DataMatrix',
@@ -80,7 +88,6 @@ foreach ($data as $element) {
     // we need to create it 
     error_log("Creating a new matrix named $luname ");
   }
-  $landseg = $vahydro_lu->landseg->propcode;
   // set the Runoff File Path
   $lu_filepath = implode('/', array($basepath, $version, $scenario, 'land', 'lutable_ ' . $landseg . '.csv'));
   $csv = om_readDelimitedFile($lu_filepath);

@@ -517,7 +517,7 @@ class modelObject {
     // now, go through and see if any sub-components have db types set
     foreach ($this->processors as $thisproc) {
        
-       if (property_exists($thisproc, 'value_dbcolumntype') and !empty($thisproc->value_dbcolumntype)) {
+       if (property_exists($thisproc, 'value_dbcolumntype') and !empty($thisproc->value_dbcolumntype) and !($thisproc->value_dbcolumntype == 'auto')) {
           // this does not work, since the logtypes is looking for string format, NOT a db column type
           //$logtypes[$thisproc->name] = $thisproc->value_dbcolumntype;
           // howwever, this should be OK
@@ -4612,7 +4612,7 @@ class dataMatrix extends modelSubObject {
     parent::setDataColumnTypes();
     // this sets the default return type for logging.
     // If the user has set a non-empty value, we return it here
-    if (!empty($this->value_dbcolumntype)) {
+    if (!empty($this->value_dbcolumntype) and !($this->value_dbcolumntype == 'auto')) {
       $this->parentobject->setSingleDataColumnType($this->name, $this->value_dbcolumntype, $this->defaultval);
     }
   }

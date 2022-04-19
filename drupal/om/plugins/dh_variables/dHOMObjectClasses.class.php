@@ -596,6 +596,7 @@ class dHVariablePluginNumericAttribute extends dHVariablePluginDefault {
 class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
   // @todo: inherit dHVariablePluginDefaultOM, which will handle auto-adding of subprops in EditForm
   var $object_class = FALSE; // use to be BlankShell, but BlankShell will all be saved as modelElement 
+  var $use_new_save = FALSE; // use to be BlankShell, but BlankShell will all be saved as modelElement 
   var $path = "/var/www/html/om/";
   var $state = array();
   var $setvarnames = array();
@@ -836,19 +837,18 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
   }
   
   public function synchronize(&$entity, $force = FALSE) {
-    //dpm($entity, "New synchronize method used");
-    // Skip if this is a child of an object that uses json2d for synch,unless $force == TRUE
     $json2d = $this->checkParentJSON($entity);
-    // we DO want to force if this element has been edited solo, and skip loading the parent.
-    // how to verify that, though?
-    //dpm("synchronize called with elid = $elid, json2d = $json2d, and set_remote = $this->set_remote");
+    // - We will skip if this is a child of an object that uses json2d for synch, 
+    //   unless $force == TRUE, or embedded 
+    // - If NOT embedded (edited solo), we DO want to force and skip loading the parent.
     if ($json2d and !$force and ($entity->embedded === TRUE) ) {
       return;
     }
     $elid = $this->findRemoteOMElement($entity, $path);
     $new_save = om_load_dh_property($entity, 'use_new_save');
-    if (is_object($new_save)) {
+    if (is_object($new_save) or ($this->use_new_save === TRUE)) {
       if ($new_save->propvalue == 1) {
+        // We should check if this is a non-sub-component otherwise, the om_set_element method will be incorrect.
         dpm("Using new save method");
         $exp = $this->exportOpenMI($entity);
         dpm($exp,"Using JSON export mode");

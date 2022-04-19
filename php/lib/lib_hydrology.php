@@ -5855,12 +5855,13 @@ class timeSeriesInput extends modelObject {
    }
    
    function getCurrentDataSlice() {
-      # need to get a certain, sensible number of values that match two criteria:
-      #   1) do not exceed the max_memory_values
-      #  OR
-      #   2) only get enough to encompass the current dt
-      # see CBPLandDataConnectionFile class for a fixed version of this that acts properly.  
-      # THis just grabs everything which is OK for daily time series, not hourly
+      // need to get a certain, sensible number of values that match two criteria:
+      //   1) do not exceed the max_memory_values
+      //  OR
+      //   2) only get enough to encompass the current dt
+      // see CBPLandDataConnectionFile class for a fixed version of this that acts properly.  
+      $current_time = $this->timer->thistime->format("U");
+      // do this in case we are in a before the epoch time period and the default value of lasttimesec = 0
       if ($this->lasttimesec > $current_time) {
          $this->lasttimesec = $current_time;
       }

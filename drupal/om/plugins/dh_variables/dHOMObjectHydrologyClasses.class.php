@@ -143,6 +143,7 @@ class dHOMHydroObjectOtherProps extends dHOMHydroObject {
 class dHOMHydroImpoundment extends dHOMHydroObject {
   var $object_class = 'hydroImpoundment';
   var $attach_method = 'contained';
+  //var $use_new_save = TRUE;
   //var $json2d = TRUE; // only enable this when the main classes support json which for now only subcomps do
   
   public function hiddenFields() {
@@ -501,6 +502,8 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
   var $base = 1.0; // base width of channel 
   var $Z = 1.0; // side slope ratio 
   var $n = 0.002; // Manning's n
+  var $use_new_save = TRUE;
+  var $json2d = TRUE;
   
   public function getDefaults($entity, &$defaults = array()) {
     $defaults = parent::getDefaults($entity, $defaults);

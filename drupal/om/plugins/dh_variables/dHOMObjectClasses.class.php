@@ -8,6 +8,7 @@ class dHVariablePluginDefaultOM extends dHVariablePluginDefault {
   // **** BEGIN - Experimental un-used Component Adding Methods
   //        the property $component_defaults and method add_component_default() are not currently used
   var $component_defaults = FALSE; // will be initialized in getDefaults or other place.
+  var $set_remote = FALSE; // should we push changes?
   public function add_component_default($config) {
     if ($this->component_defaults === FALSE) {
       $this->component_defaults = array();
@@ -1146,6 +1147,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
 class dHOMElementConnect extends dHOMBaseObjectClass {
   var $object_class = FALSE;
   var $can_embed = FALSE; // om_element_connection can never be embedded.
+  var $set_remote = FALSE; // should we push changes?
   
   public function findRemoteOMElement($entity, &$path) {
     // since this connector is the final model container, we know the elid is by definition the propvalue

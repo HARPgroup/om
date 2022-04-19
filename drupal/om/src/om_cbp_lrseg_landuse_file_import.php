@@ -92,12 +92,13 @@ foreach ($data as $element) {
   // set the Runoff File Path
   $lu_filepath = implode('/', array($basepath, $version, 'out', 'land', $scenario, 'landuse', 'lutable_' . $landseg . '_' . $riverseg . '.csv'));
   $csv = om_readDelimitedFile($lu_filepath);
+  $lu_plugin = dh_variables_getPlugins($vahydro_lu);
   error_log("Opening " . $lu_filepath);
-  if (is_object($plugin )) {
-    //error_log("Checking plugin " . get_class($plugin));
-    if (method_exists($plugin, 'setCSVTableField')) {
+  if (is_object($lu_plugin )) {
+    error_log("Checking plugin " . get_class($lu_plugin));
+    if (method_exists($lu_plugin, 'setCSVTableField')) {
       error_log("Setting csv" . print_r($csv,1));
-      $plugin->setCSVTableField($vahydro_lu, $csv);
+      $lu_plugin->setCSVTableField($vahydro_lu, $csv);
     }
   }
   // save the lu matrix (cannot be embedded ... yet)

@@ -101,6 +101,7 @@ foreach ($data as $element) {
     $final_value = end($luline); // get the last value in the array, which will be either a year or the acreage for that year 
     if ($l == 1) {
       $final_year = end($luline);
+      $final_value = $last_year; // we overwrite because we want our desired ending year
     }
     // for each data year, if requested, we copy the last value onto the final_year 
     if ($last_year > $final_year) {

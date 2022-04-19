@@ -13,7 +13,7 @@ if (count($args) >= 2) {
   $rseg_hydroid = $args[0]; // river segment 
   $lseg_hydroid = $args[1]; // land-river segment 
 } else {
-  error_log("Usage: php om_create_landseg.php riverseg_hydroid landseg_hydroid");
+  error_log("Usage: php om_create_landseg.php riverseg_hydroid landseg_hydroid [luyear=year]");
   die;
 }
 // check if a model already exists

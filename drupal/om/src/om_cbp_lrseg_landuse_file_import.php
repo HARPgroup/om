@@ -5,6 +5,7 @@ module_load_include('inc', 'om', 'src/om_translate_to_dh');
 // drush scr modules/om/src/om_cbp_lrseg_landuse_file_import.php cmd N51045_JU1_7690_7490 4745316
 $basepath = '/media/model';
 $luname = 'landuse'; // we could opt to add another lu matrix
+$last_year = 2050; // final year to append
 //$basepath = '/media/NAS/omdata/p6/out/land';
 $args = array();
 while ($arg = drush_shift()) {
@@ -24,7 +25,8 @@ if (count($args) >= 2) {
     $basepath = $args[5];
   }
 } else {
-  print("Usage: php om_cbp_lrseg_landuse_file_import.php query_type vahydro_pid/file version scenario [luname=landuse] [basepath=/media/model/]\n");
+  error_log("Usage: php om_cbp_lrseg_landuse_file_import.php query_type vahydro_pid/file version scenario [last_year=$last_year] [luname=landuse] [basepath=/media/model/]\n");
+  error_log("Note: To skip appending a final column with a large year, set last_year=0 .");
   die;
 }
 
@@ -92,6 +94,19 @@ foreach ($data as $element) {
   // set the Runoff File Path
   $lu_filepath = implode('/', array($basepath, $version, 'out', 'land', $scenario, 'landuse', 'lutable_' . $landseg . '_' . $riverseg . '.csv'));
   $csv = om_readDelimitedFile($lu_filepath);
+  // append a final year to insure that we can get land use when the year is outside the dataset 
+  $l = 0;
+  foreach ($csv as $lno => $luline) {
+    $l++; // number of lines handled 
+    $final_value = end($luline); // get the last value in the array, which will be either a year or the acreage for that year 
+    if ($l == 1) {
+      $final_year = end($luline);
+    }
+    // for each data year, if requested, we copy the last value onto the final_year 
+    if ($last_year > $final_year) {
+      $csv[$lno][] = $final_value;
+    }
+  }
   $lu_plugin = dh_variables_getPlugins($vahydro_lu);
   error_log("Opening " . $lu_filepath);
   if (is_object($lu_plugin )) {

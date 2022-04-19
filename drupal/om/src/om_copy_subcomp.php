@@ -85,6 +85,7 @@ foreach ($data as $element) {
   $dest_entity_type = $element['dest_entity_type'];
   $dest_id = $element['dest_id'];
   $propname = $element['propname'];
+  $cascade = $element['cascade'];
   // skip a self-copy
   if ( ($src_id == $dest_id) and ($src_entity_type == $dest_entity_type) and (count(explode("|", $propname)) == 1) ) {
     error_log("Self-copy not allowed (src_entity and dest_entity are the same)");

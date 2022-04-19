@@ -73,6 +73,7 @@ foreach ($data as $element) {
   $plugin = dh_variables_getPlugins($lseg_model);
   $plugin->loadProperties($lseg_model);
   $landseg = $lseg_model->landseg->propcode;
+  $riverseg = $lseg_model->riverseg->propcode;
   // load the landuse component, or create a blank one if it doesn't exist
   $lu_info = array(
      'varkey' => 'om_class_DataMatrix',
@@ -89,7 +90,7 @@ foreach ($data as $element) {
     error_log("Creating a new matrix named $luname ");
   }
   // set the Runoff File Path
-  $lu_filepath = implode('/', array($basepath, $version, 'out', 'land', $scenario, 'landuse', 'lutable_ ' . $landseg . '.csv'));
+  $lu_filepath = implode('/', array($basepath, $version, 'out', 'land', $scenario, 'landuse', 'lutable_' . $landseg . '_' . $riverseg . '.csv'));
   $csv = om_readDelimitedFile($lu_filepath);
   error_log("Opening " . $lu_filepath);
   if (is_object($plugin )) {

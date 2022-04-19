@@ -8,15 +8,6 @@ global $om, $php_path;
 $om = 'http://localhost/om/get_model.php';
 $php_path = "/var/www/html/om/";
 
-function om_get_om_model($elid) {
-  global $om;
-  $uri = $om . "?elementid=$elid";
-  error_log("Opening $uri ");
-  $json = file_get_contents ($uri);
-  //error_log("json:" . $json);
-  $om_object = json_decode($json);
-  return $om_object;
-}
 
 function om_load_dh_model($query_type, $fid, $model_name, $model_varkey = 'om_model_element', $object_class = 'modelContainer', $model_scenario = 'vahydro-1.0') {
   if ($model_varkey == 'varcode') {

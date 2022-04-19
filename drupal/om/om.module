@@ -255,7 +255,7 @@ function om_model_getSetProperty($values, $singularity = 'name', $save = TRUE, $
   return $om_model;
 }
 
-function om_load_dh_property($entity, $model_name) {
+function om_load_dh_property($entity, $model_name, $plugin_load = FALSE) {
 
   $model_entity_type = $entity->entityType();
   $fid = $entity->identifier();
@@ -265,12 +265,17 @@ function om_load_dh_property($entity, $model_name) {
     'propname' => $model_name,
   );
   $model = om_get_property($values);
+  if ($plugin_load and is_object($model)) {
+    $plugin = dh_variables_getPlugins($model);
+    $plugin->loadProperties($model);
+  }
   return $model;
 }
 
 function om_get_property($values, $singularity = 'name') {
   $pids = dh_get_properties($values, $singularity);
   //dpm($values,'values');
+  //error_log("values:" . print_r((array)$values, 1)); 
   //dpm($pids,'pids');
   //error_log("Pids:" . print_r((array)$pids, 1)); 
   $om_model = FALSE;
@@ -327,6 +332,7 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
   $plugin = dh_variables_getPlugins($copy);
   if (get_class($plugin) == 'dHOMElementConnect') {
     $copy->propcode = 0;
+    $copy->propvalue = 0; // blank the element to connect to because we don't connect to multiple
     $copy->save();
   }
   if ($overwrite or $copy->is_new) {
@@ -697,11 +703,20 @@ function om_set_element($elementid, $exp_json) {
   $cmd .= "php set_element.php $elementid \"$exp_json\"";
   //dpm( $php_path, "Exec Path ");
   //dpm( $cmd, "Executing ");
-  error_log("$cmd");
+  //error_log("$cmd");
   $elid = shell_exec($cmd);
   return $elid;
 }
 
+function om_get_om_model($elid) {
+  global $om;
+  $uri = $om . "?elementid=$elid";
+  error_log("Opening $uri ");
+  $json = file_get_contents ($uri);
+  //error_log("json:" . $json);
+  $om_object = json_decode($json);
+  return $om_object;
+}
 
 function om_get_model_status($elementid, $mins = 120, $format = '') {
   // use format = 'list' to see the raw liostobject (default for no elementid)

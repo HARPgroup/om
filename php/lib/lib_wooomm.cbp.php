@@ -598,6 +598,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
   var $landseg = ''; # land segment: i.e., A24001
   var $riverseg = ''; // optional, this will only be used during calls to "create()" method, restricting the historical land use to the given river and land segment intersection
   var $max_memory_values = 500;
+  var $ts_dt = 3600; // hourly, in seconds
   var $locationid = -1;
   var $romode = 'component';
   var $hspf_timestep = 3600.0;
@@ -742,6 +743,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
     //         4. Otherwise, proceed as normal     
     // check for a file, if set, use it to populate the lookup table, otherwise, use the CSV string
     // if table exists, just return, all is cool.
+    error_log("*** Looking for Cache Table $this->db_cache_name ");
     if (is_object($modeldb)) {
       if ($modeldb->tableExists($this->db_cache_name)) {
        error_log("Cache Table $this->db_cache_name already exists. Returning.");
@@ -857,8 +859,8 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
                         // to cubic-feet (* 43560 ft-per-acre)
                         // to cfs (/timestep)
                         $thisflow = ( ($this->state[$lu_flowvar]/12.0) * $luarea * 43560.0) / $this->hspf_timestep;
-                        $comp_vals[$thiscomp] += $thisflow;
-                        $Qout += $thisflow;
+                        $comp_vals[$thiscomp] += floatval($thisflow);
+                        $Qout += floatval($thisflow);
                         if ($this->debug) {
                            $this->logDebug("Adding $lu_flowvar @ $thisflow cfs to Qout ($Qout) ");
                            $this->logDebug("<br>\n");
@@ -1027,11 +1029,12 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       // get all from last time to now 
       $this->listobject->querystring = "  select count(*) as numts, min(\"timestamp\") as mints, max(\"timestamp\") as maxts ";
       $this->listobject->querystring .= " from  \"$this->db_cache_name\"";
-      $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec and \"timestamp\" <= ($current_time + $dt * $this->max_memory_values) ";
+      $this->listobject->querystring .= " where \"timestamp\" > $this->lasttimesec::bigint and \"timestamp\" <= ($current_time::bigint + $this->ts_dt * $this->max_memory_values) ";
+      // max memory values has been set to accomodate 2 years of hourly data (2 * 365 * 24) 
       if ($this->debug) {
         $this->logDebug($this->listobject->querystring);
       }
-      $outimes = -1; // never show if < 0
+      $outimes = 5; // never show if < 0
       if ($this->timer->steps < $outimes) {
         error_log("getCurrentDataSlice $this->name");
         error_log($this->listobject->querystring);

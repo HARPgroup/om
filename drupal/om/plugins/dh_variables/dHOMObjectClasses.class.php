@@ -250,14 +250,10 @@ class dHVariablePluginDefaultOM extends dHVariablePluginDefault {
   public function updateProperties(&$entity) {
     // @todo: move this to the base plugin class 
     $props = $this->getDefaults($entity);
-    //dpm($entity, "Calling updateProperties");
-    //dpm($props, "Iterating over attached properties");
-    //error_log("Props for $entity->propname " . print_r(array_keys($props),1));
     foreach ($props as $thisvar) {
       $iprop = $this->insureProperty($entity, $thisvar);
       //$this->insureProperty($entity, $thisvar);
       if (!isset($thisvar['embed']) or ($thisvar['embed'] === TRUE)) {
-        //error_log("Saving " . $thisvar['propname']);
         // load the property 
         // if a property with propname is set on $entity, send its value to the plugin 
         //   * plugin should be stored on the property object already
@@ -267,33 +263,26 @@ class dHVariablePluginDefaultOM extends dHVariablePluginDefault {
           if (!is_object($entity->{$thisvar['propname']})) {
             // this has been set by the form API as a value 
             // so we need to load/create a property then set the value
-            //dpm($thisvar, "Creating object before saving ");
             $thisvar['featureid'] = $entity->{$this->row_map['id']};
             //@todo: this needs to use the plugin handler for this instead of assuming propvalue instead of propcode
             //       why isn't this already an object after convert_attributes_to_dh_props is called?
             //     Location (the featureid loader property) is already loaded, but Location Sharing is NOT -- why????
             $prop = om_model_getSetProperty($thisvar, 'name');
-            //dpm($prop, "object after creation");
             // now, apply the stashed value to the property
             foreach ($prop->dh_variables_plugins as $plugin) {
               // the default method will guess location based on the value unless overridden by the plugin
               $plugin->applyEntityAttribute($prop, $entity->{$thisvar['propname']});
             }
-            //dpm($prop, "object after plugins");
-            //dsm("Saving Newly loaded object " . $thisvar['propname']);
             entity_save('dh_properties', $prop);
           } else {
-            $prop = $entity->{$thisvar['propname']};
-            //error_log("saving sub-comp $thisvar[propname] of class " . get_class($prop) . " entity pid: $entity->pid");
-            // already a loaded form object, so just let it rip.
-            //dsm("Saving preloaded object " . $thisvar['propname']);
+            $prop = $entity->{$thisvar['propname']};\
+            // already a loaded form object, so just let it rip.\
             entity_save('dh_properties', $prop);
           }
         }
       } else {
         // just check here that we need to save properties that are not embedded, but have never been created
         if (empty($iprop->pid)) {
-          //dpm($iprop,"saving non-embedded prop for first time");
           entity_save('dh_properties', $iprop);
         }
       }
@@ -679,8 +668,10 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     return $publix;
   }
 
-  function getLocalVars() {
+  function getLocalVars($entity) {
     // gets all viewable variables
+    // NOT YET FULLY OPERATIONAL
+    $this->state = array();
     $publix = array_unique(array_merge(array_keys($this->state), $this->getPublicProps($entity), $this->getPublicProcs($entity), $this->getPublicInputs($entity)));
 
     return $publix;
@@ -1294,7 +1285,7 @@ class dHOMElementConnect extends dHOMBaseObjectClass {
         if (!is_object($elid)) {
           dsm("Pushing property $prop->propname to remote");
           error_log("Pushing property $prop->propname to remote");
-          $prop->save();
+          entity_save('dh_properties', $prop);
         } else {
           dsm("Skipping stand-alone model object $prop->propname ");
         }
@@ -1302,7 +1293,7 @@ class dHOMElementConnect extends dHOMBaseObjectClass {
     }
   }
   
-  public function cloneRemoteElement($entity) {
+  public function cloneRemoteElement(&$entity) {
     global $base_url;
     $parent = $this->getParentEntity($entity);
     $cmd = "cd $this->path \n";
@@ -2186,7 +2177,7 @@ class dHOM_ModelVersion extends dHVariablePluginDefault {
 }
 
 class dHOMDataMatrix extends dHOMSubComp {
-  var $object_class = 'DataMatrix';
+  var $object_class = 'dataMatrix';
   var $default_bundle = 'om_data_matrix';
   var $matrix_field = 'field_dh_matrix';
   var $json2d = TRUE; // use JSON 2d for all remote syncs, much faster
@@ -2238,6 +2229,27 @@ class dHOMDataMatrix extends dHOMSubComp {
         'singularity' => 'name_singular',
         'featureid' => $entity->identifier(),
         'varid' => dh_varkey2varid('om_class_Constant', TRUE),
+      ),
+      'eval_type' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => 'auto',
+        'propvalue_default' => 1,
+        'propname' => 'eval_type',
+        'vardesc' => 'How to evaluate each cell in the matrix (type reference looks for variable in state array, type auto uses old method which guesses based on contents at each timestep).',
+        'title' => 'Cell Eval Type',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
+      ),
+      'value_dbcolumntype' => array(
+        'entity_type' => $entity->entityType(),
+        'propcode_default' => 'auto', // auto is the old method and we need to maintain consistency
+        'propname' => 'value_dbcolumntype',
+        'vardesc' => 'How to store data in the runtime log table.',
+        'title' => 'DB Value Type',
+        'singularity' => 'name_singular',
+        'featureid' => $entity->identifier(),
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
       ),
       'lutype1' => array(
         'entity_type' => $entity->entityType(),
@@ -2468,6 +2480,39 @@ class dHOMDataMatrix extends dHOMSubComp {
     //dpm($entity,'entity');
     //dpm($form,'form');
     // now, format the lookup type fields 
+    $eval_types = array(
+      "auto",
+      "numeric",
+      "string",
+      "reference",
+    );
+    $eval_options = array_combine($eval_types, $eval_types);
+    // value_dbcolumntype = how this is stored in the runtime database
+    // eval_type = how this is evaulated: variable, numeric, equation, string 
+    $form['eval_type']['#type'] = 'select';
+    $form['eval_type']['#options'] = $eval_options;
+    $form['eval_type']['#size'] = 1;
+    $form['eval_type']["#empty_value"] = "";
+    $form['eval_type']["#empty_option"] = "Not Set";
+    $form['eval_type']["#description"] = "How to evaluate the variables. For type 'equation' the variable will be evaluated as an equation each time-step, then stored as type numeric in the database.";
+    $dbtypes = array(
+      "auto",
+      "numeric",
+      "varchar(32)",
+      "varchar(64)",
+      "varchar(128)",
+      "json",
+    );
+    $db_options = array_combine($dbtypes, $dbtypes);
+    $db_options['json'] .= " (" . t("not yet enabled") . ")";
+    // value_dbcolumntype = how this is stored in the runtime database
+    // evaltype = how this is evaulated: variable, numeric, equation, string 
+    $form['value_dbcolumntype']['#type'] = 'select';
+    $form['value_dbcolumntype']['#options'] = $db_options;
+    $form['value_dbcolumntype']['#size'] = 1;
+    $form['value_dbcolumntype']["#empty_value"] = "";
+    $form['value_dbcolumntype']["#empty_option"] = "Not Set";
+    $form['value_dbcolumntype']["#description"] = "How to store the variable in the runtime db.";
     $lutypes = array(
       0 => "Exact Match",
       1 => "Interpolated",

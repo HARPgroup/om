@@ -267,6 +267,9 @@ class modelObject {
 
   function varsToSetOnParent($format='vals') {
     $vars = array();
+    if (!is_array($this->wvars)) {
+      $this->wvars = array();
+    }
     foreach ($this->wvars as $thisvar) {
        if ($this->debug) {
           $this->logDebug("This var will create $this->name" . "_" . "$thisvar on parent.<br>\n");
@@ -514,7 +517,7 @@ class modelObject {
     // now, go through and see if any sub-components have db types set
     foreach ($this->processors as $thisproc) {
        
-       if (property_exists($thisproc, 'value_dbcolumntype')) {
+       if (property_exists($thisproc, 'value_dbcolumntype') and !empty($thisproc->value_dbcolumntype)) {
           // this does not work, since the logtypes is looking for string format, NOT a db column type
           //$logtypes[$thisproc->name] = $thisproc->value_dbcolumntype;
           // howwever, this should be OK
@@ -1033,6 +1036,7 @@ class modelObject {
     //if ($this->json2d) {
     // expects openMI style objects in json format 
     error_log("Calling setPropJSON2d($propname)");
+    $base_types = array("textField", "matrix", "array", "table"); // these can be set on base object all others must be subcomps
     $raw_json = $propvalue;
     // this is being called recursively, or by another routine that has already translated from json 
     if ($view == 'json_decoded') {
@@ -1045,10 +1049,18 @@ class modelObject {
       if ($pname == 'object_class') {
         continue;
       }
-      if (property_exists($this, $pname)) {
+      if (
+        property_exists($this, $pname) 
+        and 
+        ( 
+          (!isset($pvalue['object_class']))
+          or in_array($pvalue['object_class'], $base_types)
+        )
+      ) {
         $this->applyJSONPropArray($pname, $pvalue);
       } else {
-        $this->applyJSONComponentArray($pname, $pvalue);
+        $prop = $this->applyJSONComponentArray($pname, $pvalue);
+        error_log("Final prop object " . $prop->name . " of class " . get_class($prop) );
       }
     }
   }
@@ -1058,21 +1070,21 @@ class modelObject {
     $skips = array('id', 'om_element_connection', 'host');
     // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 
     
-    error_log("Notice: Looking to add $pname as processor ");
+    //error_log("Notice: Looking to add $pname as processor ");
     if (!is_array($pvalue)) {
       error_log("Warning: Skipping component $pname because json did not have array. ");
       return;
     }
     if (!isset($pvalue['object_class']) ) {
-      error_log("Warning: Skipping component $pname because json did not have array. ");
+      error_log("Warning: Skipping component $pname because json did not have object_class. ");
       return;
     }
     // @todo: include plumbing from set_subprop.php to handle robust json property setting.
     // Does a sub-comp of this name exist? Or, is this an object_class change?
     $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
+    $object_class = $pvalue['object_class'];
     if (is_object($prop)) {
-      $object_class = $prop->object_class;
-      if ($pvalue['object_class'] <> $object_class) {
+      if ($prop->object_clas <> $object_class) {
         $prop = FALSE;
       }
     }
@@ -1082,17 +1094,29 @@ class modelObject {
         error_log("Error: Object class $object_class can not be found. Skipping $pname .");
         return;
       }
-      $syobj = new $object_class;
-      $this->addOperator($pname, $syobj);
-      error_log("Added $pname as component type $object_class .");
-      // re-retrieve to make sure that the object is not cloned.
-      $prop = $this->processors[$pname];
+      if (
+        is_subclass_of($object_class, 'modelObject')
+        or is_subclass_of($object_class, 'modelSubObject')
+      ) {
+        $syobj = new $object_class;
+        $this->addOperator($pname, $syobj);
+        //error_log("Added $pname as component type $object_class .");
+        // re-retrieve to make sure that the object is not cloned.
+        $prop = $this->processors[$pname];
+      } else {
+        error_log("$object_class is not an addable component");
+      }
     }
     // recursively calls setPropJSON2d on the subcomp.
-    error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");
-    $prop->setPropJSON2d($pname, $pvalue, 'json_decoded');
+    if (method_exists($prop, 'setPropJSON2d') ) {
+      error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");
+      $prop->setPropJSON2d($pname, $pvalue, 'json_decoded');
+    } else {
+      error_log("Can not locate method setPropJSON2d() on $prop->name");
+    }
     // Now, we should have an object set in $this->processors
     // Load the object and call 
+    return $prop;
   }
   
   function applyJSONPropArray($pname, $pvalue) {
@@ -4274,7 +4298,10 @@ class dataMatrix extends modelSubObject {
    // additionally, the return values may be variable references
    
    var $object_class = 'dataMatrix'; // will be set externally but could be overridden
+   // How to evaluate each cell in the matrix (type reference looks for variable in state array, type auto uses old method which guesses based on contents at each timestep)
+   var $eval_type = 'auto'; // auto, numeric, string, reference 
    var $valuetype = 0; // 0 - returns entire array (normal), 1 - single column lookup (col), 2 - 2 column lookup (col & row)
+   var $value_dbcolumntype = ''; // can be a db type, or an equation, which resolves to numeric in db storage
    var $keycol1 = ''; // key for 1st lookup variable
    var $lutype1 = 0; // lookup type for first lookup variable: 0 - exact match; 1 - interpolate values; 2 - stair step
    var $keycol2 = ''; // key for 2nd lookup variable
@@ -4580,22 +4607,63 @@ class dataMatrix extends modelSubObject {
          break;
       }
    }
+      
+  function setDataColumnTypes() {
+    parent::setDataColumnTypes();
+    // this sets the default return type for logging.
+    // If the user has set a non-empty value, we return it here
+    if (!empty($this->value_dbcolumntype)) {
+      $this->parentobject->setSingleDataColumnType($this->name, $this->value_dbcolumntype, $this->defaultval);
+    }
+  }
+  
+   function search_state($thisvar, $use_default = FALSE) {
+    if (!is_array($this->arData)) {
+       $this->arData = array();
+    }
+    $skeys = array_keys($this->arData);
+    if (in_array($thisvar, $skeys)) {
+      $thisval = $this->arData[$thisvar];
+    } else {
+      // slight behavior change from before which returned the variable itself
+      // was: $thisval = $thisvar; 
+      // which essentially made the fallback handling type string, which supported 
+      // strings that existed in the database without proper formatting, but could
+      // break simulations so we will $use_default = FALSE for now to retain backward compat 
+      if ($use_default) {
+        $thisval = $this->defaultval; 
+      } else {
+        $thisval = $thisvar;
+      }
+    }
+    return $thisval;
+  }
    
    function evalMatrixVar($thisvar) {
       // this checks to see if a value is a variable reference, string, or a number
-      if (!is_array($this->arData)) {
-         $this->arData = array();
-      }
-      $skeys = array_keys($this->arData);
-      if(trim($thisvar,"'\":") <> $thisvar) {
-         // this is a string variable, as indicated by ' or "
-         $thisval = trim($thisvar,"'\":");
-      } else {
-         if (in_array($thisvar, $skeys)) {
-            $thisval = $this->arData[$thisvar];
-         } else {
+      switch($this->eval_type) {
+        case 'numeric':
+          $thisval = floatval($thisvar);
+          break;
+        case 'string':
+          $thisval = trim($thisvar,"'\":");
+          break;
+        case 'reference':
+          $thisval = $this->search_state($thisvar, TRUE);
+          break;
+        case 'auto':
+        default:
+          if (is_numeric($thisvar)) {
             $thisval = $thisvar;
-         }
+          } else {
+            if(trim($thisvar,"'\":") <> $thisvar) {
+              // this is a string variable, as indicated by ' or "
+              $thisval = trim($thisvar,"'\":");
+            } else {
+              $thisval = $this->search_state($thisvar);
+            }
+          }
+        break;
       }
       //$this->logDebug("Checking Lookup Key: $thisvar , value: $thisval ");
       //error_log("Checking Lookup Key: $thisvar , value: $thisval ");
@@ -5765,6 +5833,8 @@ class timeSeriesInput extends modelObject {
          $mem_use = (memory_get_usage(true) / (1024.0 * 1024.0));
          $mem_use_malloc = (memory_get_usage(false) / (1024.0 * 1024.0));
          //error_log("Memory Use after caching timeseries data on $this->name = $mem_use ( $mem_use_malloc )<br>\n");
+      } else {
+        error_log("TimeSeriesInput $this->name not calling getCurrentDataSlice(): count(tsvalues) = " . count($this->tsvalues) . " max # of recs in memory: $this->max_memory_values <br>");
       }
       // disabled the time series search and retrieval if there is nothing to retrieve
       //if ($this->tscount == 0) {

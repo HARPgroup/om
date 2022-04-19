@@ -26,8 +26,10 @@ else
   template=$CBP_RO_TEMPLATE
   cbp_path=$CBP_EXPORT_DIR
 fi
-filename="$cbp_path/land/$scenario/eos/${landseg}_0111-0211-0411.csv"
+
+filename="$cbp_path/out/land/$scenario/eos/${landseg}_0111-0211-0411.csv"
 tablename="cbp_${version}_${scenario}_${landseg}"
+
 tablename=`echo $tablename | tr '[:upper:]' '[:lower:]'`
 hdrcols=`head -n 1 $filename`
 
@@ -40,6 +42,10 @@ template=`echo "$template_table_file" | cut -d'.' -f1`
 echo "Populating $tablename from $template"
 
 set -f
+if [ $overwrite -eq 1 ]; then
+  echo "drop table $tablename " | psql -U postgres -p 5444 model_scratch
+fi
+
 csql=" create table $tablename as select * from $template limit 0;"
 isql="copy $tablename ($hdrcols) from '$filename' WITH CSV HEADER "
 isql="$isql; update $tablename set timestamp = extract(epoch from thisdate) "

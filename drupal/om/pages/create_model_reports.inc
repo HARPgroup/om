@@ -7,6 +7,7 @@
 // - model run name, if not existing, create
 // initial behavior will just run the create scripts and DO NOT OVERWRITE 
 // later version may allow checkbox behavior described below.
+// Usage: om-model-reports/[pid]/[runid_xx]&template=
 
 $arg = arg();
 $parms = drupal_get_query_parameters();
@@ -21,6 +22,7 @@ $run_name = $arg[2 + $aoff];
 //dsm("pid = $pid, $run_name = $run_name");
 $model = entity_load_single('dh_properties', $pid);
 //dpm($model, 'model');
+
 if (is_object($model)) {
   $entity = entity_load_single($model->entity_type, $model->featureid);
   switch ($entity->bundle) {
@@ -37,6 +39,10 @@ if (is_object($model)) {
     default:
     echo "Cannot handle object of entity_type = $model->entity_type, bundle = $entity->bundle ";
     exit;
+  }
+  // can override the template to copy from another scenario or model if needed
+  if (isset($parms['template'])) {
+    $tr_pid = $parms['template'];
   }
   $template_entity = entity_load_single('dh_properties', $tr_pid);
   // create, but don't overwrite properties on model

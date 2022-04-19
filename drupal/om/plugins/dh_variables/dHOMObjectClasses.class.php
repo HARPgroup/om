@@ -847,7 +847,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     $elid = $this->findRemoteOMElement($entity, $path);
     $new_save = om_load_dh_property($entity, 'use_new_save');
     if (is_object($new_save) or ($this->use_new_save === TRUE)) {
-      if ( ($new_save->propvalue == 1) or ($this->use_new_save === TRUE)) {
+      if ( ($new_save->propvalue == 1) or ($this->use_new_save === TRUE) and (intval($this->set_remote) > 0)) {
         // We should check if this is a non-sub-component otherwise, the om_set_element method will be incorrect.
         dpm("Using new save method");
         $exp = $this->exportOpenMI($entity);

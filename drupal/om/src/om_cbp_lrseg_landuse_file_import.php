@@ -80,7 +80,7 @@ foreach ($data as $element) {
     // we need to create it 
     error_log("Creating a new matrix named $luname ");
   }
-  
+  $landseg = $vahydro_lu->landseg->propcode;
   // set the Runoff File Path
   $lu_filepath = implode('/', array($basepath, $version, $scenario, 'land', 'lutable_ ' . $landseg . '.csv'));
   $csv = om_readDelimitedFile($lu_filepath);

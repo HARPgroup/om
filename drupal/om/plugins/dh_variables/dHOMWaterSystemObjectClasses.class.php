@@ -79,6 +79,8 @@ class dHOMWaterSystemObject extends dHOMModelElement {
   var $object_class = 'waterSupplyElement';
   var $attach_method = 'contained';
   var $om_template_id = 340402; // remote server template ID, set FALSE if not used.
+  var $use_new_save = TRUE;
+  var $json2d = TRUE;
   
   public function hiddenFields() {
     $hidden = array_merge(array('propvalue'), parent::hiddenFields());

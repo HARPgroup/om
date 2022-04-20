@@ -995,7 +995,8 @@ function shakeTree($listobject, $sip, $num_sim, $recid, $run_id, $startdate, $en
       }
       //if ($debug) {
          error_log("Model Run for Element $recid Forked \n");
-         error_log("With parameters: " . print_r($run_params,1) . " \n");
+         error_log("Model Run Parameters: ");
+         error_log(print_r($run_params,1));
       //}
       deleteRunRecord($listobject, $recid, $run_id);
    } else {

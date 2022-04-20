@@ -40,7 +40,7 @@ class modelObject {
    // 0 is default, least favored, unlimited number
   var $run_mode = 0; // for operational modelControl broadcast, or linear linkage
   var $flow_mode = 1; // for meteorology/landuse modelControl broadcast, or linear linkage
-  var $mode_global = FALSE; // whether or not to use the global run and flow modes or to allow override (via prop links, broadcasts, etc)
+  var $mode_global = TRUE; // whether or not to use the global run and flow modes or to allow override (via prop links, broadcasts, etc)
   var $cacheable = 1; 
   // ******************************************
   // ******* END - Settable Properties ********

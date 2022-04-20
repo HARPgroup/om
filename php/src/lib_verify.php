@@ -982,7 +982,7 @@ function shakeTree($listobject, $sip, $num_sim, $recid, $run_id, $startdate, $en
       if (isset($run_params['dt'])) {
         $prop_array['dt'] = $run_params['dt'];
       }
-      error_log("Setting runtime properties on element $recid " . print_r($prop_array,1));
+      error_log("Setting runtime properties on element $recid " . json_encode($prop_array,1));
       updateObjectProps($projectid, $recid, $prop_array);
       // check status one last time just in case another thread has called this one in the interim
       $status_update = verifyRunStatus($listobject, $recid);

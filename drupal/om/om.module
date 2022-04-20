@@ -301,6 +301,10 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
     watchdog('om', "Property $propname  does not exist on source entity of type " . get_class($src_entity));
     return FALSE;
   }
+  $plugin = dh_variables_getPlugins($src_prop);
+  if (get_class($plugin) == 'dHOMElementConnect') {
+    return FALSE;
+  }
   $info = $src_prop->entityInfo();
   $copyable = array_unique(array_merge(array('varid', 'bundle'), array_values($info['property info'])));
   //error_log("Copyable " . print_r($copyable,1));
@@ -328,12 +332,6 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
         $copy->{$fieldname} = $src_prop->{$fieldname};
       }
     }
-  }
-  $plugin = dh_variables_getPlugins($copy);
-  if (get_class($plugin) == 'dHOMElementConnect') {
-    $copy->propcode = 0;
-    $copy->propvalue = 0; // blank the element to connect to because we don't connect to multiple
-    $copy->save();
   }
   if ($overwrite or $copy->is_new) {
     $copy->save();
@@ -364,7 +362,11 @@ function om_copy_properties($src_entity, $dest_entity, $propname, $fields = TRUE
     foreach ($default_subprops as $thisprop) {
       //error_log("Copying $thisprop[propname] from $src_prop->pid to $copy->pid");
       $sub = om_copy_properties($src_prop, $copy, $thisprop['propname'], $fields, $defprops, $allprops, $overwrite);
-      $copy->{$thisprop['propname']} = $sub;
+      if (!($sub === FALSE)) {
+        $copy->{$thisprop['propname']} = $sub;
+      } else {
+        error_log("Did no copy property " . $thisprop['propname']);
+      }
     }
   }
   if ($overwrite or $is_new) {

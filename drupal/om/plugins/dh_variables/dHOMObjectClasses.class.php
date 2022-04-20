@@ -8,6 +8,7 @@ class dHVariablePluginDefaultOM extends dHVariablePluginDefault {
   // **** BEGIN - Experimental un-used Component Adding Methods
   //        the property $component_defaults and method add_component_default() are not currently used
   var $component_defaults = FALSE; // will be initialized in getDefaults or other place.
+  var $set_remote = FALSE; // should we push changes?
   public function add_component_default($config) {
     if ($this->component_defaults === FALSE) {
       $this->component_defaults = array();
@@ -844,10 +845,11 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     if ($json2d and !$force and ($entity->embedded === TRUE) ) {
       return;
     }
+    //error_log("**** synchronize() called from $entity->propname");
     $elid = $this->findRemoteOMElement($entity, $path);
     $new_save = om_load_dh_property($entity, 'use_new_save');
     if (is_object($new_save) or ($this->use_new_save === TRUE)) {
-      if ( ($new_save->propvalue == 1) or ($this->use_new_save === TRUE)) {
+      if ( ($new_save->propvalue == 1) or ($this->use_new_save === TRUE) and (intval($this->set_remote) > 0)) {
         // We should check if this is a non-sub-component otherwise, the om_set_element method will be incorrect.
         dpm("Using new save method");
         $exp = $this->exportOpenMI($entity);
@@ -1145,6 +1147,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
 class dHOMElementConnect extends dHOMBaseObjectClass {
   var $object_class = FALSE;
   var $can_embed = FALSE; // om_element_connection can never be embedded.
+  var $set_remote = FALSE; // should we push changes?
   
   public function findRemoteOMElement($entity, &$path) {
     // since this connector is the final model container, we know the elid is by definition the propvalue

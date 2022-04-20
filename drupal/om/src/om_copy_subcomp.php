@@ -96,7 +96,7 @@ foreach ($data as $element) {
     error_log("Loading Dest entity $dest_entity_type : $dest_id");
     $dest_entity = entity_load_single($dest_entity_type, $dest_id);
     // cache and disable object synch if it exists
-    $dcc = om_dh_stashlink($src_entity, 'om_element_connection');  
+    $dcc = om_dh_stashlink($dest_entity, 'om_element_connection');  
     error_log("Calling om_copy_properties ");
     $copy = om_copy_properties($src_entity, $dest_entity, $propname, TRUE, TRUE, $cascade);
     // om_copy_properties($src_entity, $dest_entity, $propname, $fields = FALSE, $defprops = FALSE, $allprops = FALSE)
@@ -104,8 +104,15 @@ foreach ($data as $element) {
     // restore original object synch if it exists
     //$dcc = 1; // force
     if ($dcc) {
-      $link = om_dh_unstashlink($src_entity, $dcc, 'om_element_connection');
+      error_log("*** Retrieving stashed link info.");
+      $link = om_dh_unstashlink($dest_entity, $dcc, 'om_element_connection');
       // do a final save if the link calls for it
+      error_log("*** NOT Saving element again.");
+      $copy = entity_load_single('dh_properties', $copy->pid);
+      $plugin = dh_variables_getPlugins($parent);
+      if (is_object($plugin) and method_exists('loadProperties', $plugin)) {
+        $plugin->loadProperties($copy);
+      }
       $copy->save();
       // should try to reset the link on the copy to "never save" if desired - default behavior SHOULD be to reset to never save 
     }

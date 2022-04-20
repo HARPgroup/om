@@ -7239,7 +7239,7 @@ function copySubComponent($src_elementid, $src_opname, $dest_elementid = -1, $de
    if ($dest_elementid == -1) {
       $dest_elementid = $src_elementid;
    }
-   error_log("floatval($src_elementid) = " . floatval($src_elementid) . "\n");
+   //error_log("floatval($src_elementid) = " . floatval($src_elementid) . "\n");
    if (floatval($src_elementid) == -1) {
       $src_elementid = $dest_elementid;
    }
@@ -7280,7 +7280,7 @@ function deleteSubComponent($elementid, $opname) {
    global $listobject, $debug, $adminsetuparray;
    $innerHTML = '';
    
-   error_log("floatval($elementid) = " . floatval($elementid) . "\n");
+   //error_log("floatval($elementid) = " . floatval($elementid) . "\n");
    if (floatval($elementid) == -1) {
       error_log("Element ID is -1 - nothing to do.");
       return;
@@ -8308,9 +8308,9 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
       $j++;
     }
   }
-  //if ($debug) {
+  if ($debug) {
     error_log("Finished adding $j properties.");
-  //}
+  }
   // **************************************************
   // MODIFIED TO CASCADE ALL SUB-COMP PROPERTIES:
   // **************************************************
@@ -8655,7 +8655,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    
    error_log("unSerializeModelObject called for $elementid <br>");
    $modelcontainerid = (!isset($modelcontainerid)) ? $elementid : $modelcontainerid;
-   error_log("**** calling getElementName(, $elementid)");
+   //error_log("**** calling getElementName(, $elementid)");
    $elemname = getElementName($listobject, $elementid);
    $modelcontainername = (!isset($modelcontainername)) ? $elemname : $modelcontainername;
    
@@ -8722,13 +8722,13 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
    }
    
    // check on caching status of this object
-   error_log("**** calling getElementOrder(, $elementid)");
+   //error_log("**** calling getElementOrder(, $elementid)");
    $order = getElementOrder($listobject, $elementid);
    $cache_file_exists = 0;
    
    // new cache check sub-routine
    
-   error_log("**** calling checkObjectCacheStatus(, $elementid)");
+   //error_log("**** calling checkObjectCacheStatus(, $elementid)");
    $cache_res = checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $cache_id, $current_level, $model_startdate, $model_enddate, $debug);
    $cache_type = $cache_res['cache_type'];
    $cache_file_exists = $cache_res['cache_file_exists'];
@@ -8762,8 +8762,8 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
       
       $returnArray['error'] .= "Cached object created for $elementid <br>";
       $returnArray['error'] .= "Used New Caching Routine <br>";
-      error_log("Cached object created for $elementid <br>");
-      error_log('cache info: ' . print_r($res['tableinfo'],1));
+      //error_log("Cached object created for $elementid <br>");
+      //error_log('cache info: ' . print_r($res['tableinfo'],1));
          
       // return the object 
       
@@ -8799,7 +8799,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
       }
       foreach ($linkrecs as $thisrec) {
          $src_id = $thisrec['elementid'];
-         error_log("Found child $src_id of parent $elementid");
+         //error_log("Found child $src_id of parent $elementid");
          if ($debug) {
             $returnArray['debug'] .= " Searching for $src_id in " . print_r(array_keys($unserobjects)) . '<br>';
          }
@@ -8815,7 +8815,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
                $child_cache_level = $cache_level;
             }
             $params = 
-            error_log("Unserializing child $src_id of parent $elementid");
+            //error_log("Unserializing child $src_id of parent $elementid");
             $linkobjarray = unSerializeModelObject($src_id, array(), $model_listobj, $child_cache_level, $cache_id, $current_level + 1, $set_status);
             $linkerror = $linkobjarray['error'];
             $linkdebug = $linkobjarray['debug'];
@@ -8854,7 +8854,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
          error_log("Added child $linkobj->name ($src_id)");
       }
 
-      error_log("*** Contained child models added");
+      //error_log("*** Contained child models added");
       # retrieve input linkages
       $linkrecs = getInputLinkages($listobject, $elementid, array(2,3)); 
       if ($debug) {
@@ -8951,7 +8951,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
             }
          }
       }
-      error_log("*** Finished Adding Input Linkages");
+      //error_log("*** Finished Adding Input Linkages");
    }
 
    #$thisobject->setStateVar();
@@ -9038,7 +9038,7 @@ function checkObjectCacheStatus($listobject, $elementid, $order, $cache_level, $
        $returnArray['error'] .= "$elementid is a $order'th order element, 'cacheable' setting = $cacheable - cacheing disabled.<br>";
     }
   }
-  error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
+  //error_log("Cacheable Check: $cacheable = getElementCacheable(listobject, $elementid) <br>");
   // verify that the file exists
   $returnArray['error'] .= $cache_sql . "<br>";
   $listobject->querystring = $cache_sql;

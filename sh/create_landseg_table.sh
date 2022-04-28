@@ -27,7 +27,7 @@ else
   cbp_path=$CBP_EXPORT_DIR
 fi
 
-filename="$cbp_path/out/land/$scenario/eos/${landseg}_0111-0211-0411.csv"
+filename="$cbp_path/land/$scenario/eos/${landseg}_0111-0211-0411.csv"
 tablename="cbp_${version}_${scenario}_${landseg}"
 
 tablename=`echo $tablename | tr '[:upper:]' '[:lower:]'`

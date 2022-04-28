@@ -6159,6 +6159,14 @@ class timeSeriesInput extends modelObject {
       }
    }
 
+  function searchTimeSeries2($searchtime = -99999, $starttime = -99999) {
+    // use faster methods, array_shift, to get data 
+    // array_shift until timestamp exceeds current, then we store 
+    // prev_data = last piece of data *before* the current timestep 
+    // next_data = next piece of data *after* the current timestep + dt 
+    // curr_data = all pieces of data between previous and next timestep 
+  }
+   
    function searchTimeSeries($searchtime = -99999, $starttime = -99999) {
       # returns an array of values that corresponds to the state array at the given time
       # alows the user to specify a start time, if not passed in (-99999)

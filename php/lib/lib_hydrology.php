@@ -1044,7 +1044,7 @@ class modelObject {
     } else {
       $json_props = json_decode($propvalue, TRUE);
     }
-    error_log("JSON Prop names = " . print_r(array_keys($json_props,1)));
+    error_log("JSON Prop names = " . print_r(array_keys($json_props),1));
     foreach ($json_props as $pname => $pvalue) {
       error_log("setPropJSON2d: this->setClassProp($pname)");
       if ($pname == 'object_class') {

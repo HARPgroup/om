@@ -28,6 +28,7 @@ if ($openmi_json === 'test') {
 $json_obj = json_decode(trim($openmi_json), TRUE);
 error_log("**** json_obj[name] = " . $json_obj['name']);
 error_log("json_last_error() " . json_last_error());
+error_log("json encoding " . mb_detect_encoding());
 error_log("Calling unSerializeSingleModelObject($elid)"); 
 $loadres = unSerializeSingleModelObject($elid);
 $thisobject = $loadres['object'];

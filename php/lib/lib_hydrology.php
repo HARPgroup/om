@@ -1038,6 +1038,7 @@ class modelObject {
     error_log("Calling setPropJSON2d($propname)");
     $base_types = array("textField", "matrix", "array", "table"); // these can be set on base object all others must be subcomps
     $raw_json = $propvalue;
+    error_log("RAW JSON = " . $raw_json);
     // this is being called recursively, or by another routine that has already translated from json 
     if ($view == 'json_decoded') {
       $json_props = $propvalue;

@@ -25,6 +25,8 @@ if ($openmi_json === 'test') {
   $elid = 340268;
   $openmi_json = file_get_contents('https://raw.githubusercontent.com/HARPgroup/om/master/data/json/difficult_run.json');
 }
+$json_obj = json_decode(trim($openmi_json), TRUE);
+error_log("**** json_obj[name] = " . $json_obj['name']);
 
 error_log("Calling unSerializeSingleModelObject($elid)"); 
 $loadres = unSerializeSingleModelObject($elid);
@@ -36,8 +38,6 @@ $thisobject->setProp('all', $openmi_json, 'json-2d');
 //saveModelObject($elid, $thisobject, array('name' => $thisobject->name));
 $res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
 //error_log("Finished.\n");
-$json_obj = json_decode($openmi_json, TRUE);
-error_log("**** json_obj[name] = " . $json_obj['name']);
 $ret = saveModelObject($elid, $thisobject, array('name' => $json_obj['name']), FALSE);
 
 error_log("Save Query: " . $ret['debugHTML']);

@@ -36,6 +36,7 @@ $thisobject->setProp('all', $openmi_json, 'json-2d');
 $res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
 //error_log("Finished.\n");
 $json_obj = json_decode($openmi_json);
+error_log("json_obj['name'] = " . $json_obj['name']);
 $ret = saveModelObject($elid, $thisobject, array('name' => $json_obj['name']), FALSE);
 
 error_log("Save Query: " . $ret['debugHTML']);

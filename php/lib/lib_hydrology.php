@@ -1039,13 +1039,14 @@ class modelObject {
     $base_types = array("textField", "matrix", "array", "table"); // these can be set on base object all others must be subcomps
     $raw_json = $propvalue;
     error_log("RAW JSON = " . $raw_json);
+    $raw_props = json_decode($raw_json, TRUE);
+    error_log("JSON raw_props names = " . print_r(array_keys($raw_props),1));
     // this is being called recursively, or by another routine that has already translated from json 
     if ($view == 'json_decoded') {
       $json_props = $propvalue;
     } else {
       $json_props = json_decode($propvalue, TRUE);
     }
-    error_log("JSON Prop names = " . print_r(array_keys($json_props),1));
     foreach ($json_props as $pname => $pvalue) {
       error_log("setPropJSON2d: this->setClassProp($pname)");
       if ($pname == 'object_class') {

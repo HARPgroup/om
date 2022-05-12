@@ -17,9 +17,11 @@ if (count($args) >= 4) {
 } elseif ($query_type == 'pid') {
   $vars['pid'] = $args[1];
 } else {
-  error_log("Usage: php om_saveprop.php query_type entity_type featureid propname");
+  error_log("Usage: drush scr om_saveprop.php query_type entity_type/pid featureid propname");
   error_log("Note: 'file' is not yet enabled");
   error_log("Note: Use featureid = -1 for all ");
+  error_log("Note: For query_type = pid only 2 arguments are used, and 1nd argument is the pid of the property to be saved ");
+  error_log("Ex: drush scr om_saveprop.php pid 1099999");
   die;
 }
 

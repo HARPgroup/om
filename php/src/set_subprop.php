@@ -42,6 +42,7 @@ if (is_object($thisobject)) {
   // this is a subcomp, so add if need be
   if (in_array($setprop_mode, array('json-2d', 'json-1d'))) {
     error_log("Trying to set $comp_name -> $subprop_name from JSON  \n");
+    $subprop_value = stripslashes($subprop_value);
   } else {
     error_log("Trying to set $comp_name -> $subprop_name = $subprop_value \n");
   }

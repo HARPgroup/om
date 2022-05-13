@@ -831,7 +831,7 @@ class wsp_1tierflowby extends wsp_flowby {
   // this adds a special handler for items with a "matrix" property.
   // arrays have already been parsed by json2d handler that calls this 
   // so we rearrange as 1-d, implode, and call setupMatrix
-    error_log("setClassProp ($propname, $view) wsp_1tierflowby propvalue = ". print_r($propvalue,1));
+    //error_log("setClassProp ($propname, $view) wsp_1tierflowby propvalue = ". print_r($propvalue,1));
     switch ($propname) {
       case 'matrix':
         switch ($view) {

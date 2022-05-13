@@ -1315,6 +1315,7 @@ class dHOMModelElement extends dHOMBaseObjectClass {
   // model version/scenario.  However, a model object may belong to 
   // multiple scenarios which can be defined by the om_model_scenario subcomp
   var $object_class = 'modelObject';
+  var $use_new_save = TRUE; // this is a standalone, use new method
   
   public function hiddenFields() {
     $hidden = parent::hiddenFields();
@@ -1462,6 +1463,7 @@ class dHOMModelContainer extends dHOMModelElement {
 class dHOMSubComp extends dHOMBaseObjectClass {
   // this class has a name, and a description, an exec_hierarchy and other atributes
   // @todo: add basic handling of things other than descriptions
+  var $use_new_save = FALSE; // this is a sub-comp, it already has a separate method
   
   public function setAllRemoteProperties($entity, $elid, $path) {
     // this toggles parent method with full object json transfer

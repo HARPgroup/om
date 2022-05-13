@@ -31,8 +31,17 @@ error_log("**** json_obj[name] = " . $json_obj['name']);
 error_log("json_last_error() " . json_last_error());
 error_log("json encoding " . mb_detect_encoding());
 error_log("Calling unSerializeSingleModelObject($elid)"); 
-$loadres = unSerializeSingleModelObject($elid);
-$thisobject = $loadres['object'];
+
+if ($elid > 0) {
+  $loadres = unSerializeSingleModelObject($elid);
+  $thisobject = $loadres['object'];
+} else {
+  # need to handle case where we create a new element.
+  # get object_class 
+  # create new blank object 
+  # set all props
+  # save 
+}
 error_log("Retrieved $thisobject->name"); 
 error_log("$openmi_json"); 
 $thisobject->setProp('all', $openmi_json, 'json-2d');

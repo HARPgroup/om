@@ -788,6 +788,7 @@ class dHOMUSGSChannelGeomObject extends dHOMHydroObject {
 
 class dHOMUSGSChannelGeomObject_sub extends dHOMUSGSChannelGeomObject {
   var $object_class = 'USGSChannelGeomObject_sub';
+  var $use_new_save = FALSE; // this is a sub-comp, it already has a separate method
   var $json2d = TRUE;
   
   public function setAllRemoteProperties($entity, $elid, $path) {

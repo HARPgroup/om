@@ -840,7 +840,8 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
   public function synchronize(&$entity, $force = FALSE) {
     $json2d = $this->checkParentJSON($entity);
     // - We will skip if this is a child of an object that uses json2d for synch, 
-    //   unless $force == TRUE, or embedded 
+    //   unless $force == TRUE, or not embedded 
+    // - Will skip if parent has use_new_save and this is embedded
     // - If NOT embedded (edited solo), we DO want to force and skip loading the parent.
     if ($json2d and !$force and ($entity->embedded === TRUE) ) {
       return;
@@ -1083,6 +1084,10 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     $pplug = dh_variables_getPlugins($parent);
     if (is_object($pplug)) {
       if ($pplug->json2d) {
+        return TRUE;
+      }
+      // 
+      if ($pplug->use_new_save) {
         return TRUE;
       }
       if (method_exists($pplug, 'checkParentJSON')) {

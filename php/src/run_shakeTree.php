@@ -110,7 +110,8 @@ $years = $end_year - $start_year;
 if ($years <= 0) {
    $years = 1;
 }
-$sleep_factor = $years * 2; // give it some time to accumulate  a cache
+$ts_sleep_factor = ($dt > 0) ? 86400/$dt : 1;
+$sleep_factor = $years * 2 * $ts_sleep_factor; // give it some time to accumulate  a cache
 if ($sleep_factor < 40) {
    $sleep_factor = 40;
 }

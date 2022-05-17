@@ -2969,7 +2969,11 @@ class wsp_vpdesvwuds extends timeSeriesInput {
          } else {
             $mopct = 0.08333;
          }
-         $wd = $annualwd * $mopct / $modays;
+         if (is_float($annualwd) and is_float($mopct) and is_float($modays)) {
+           $wd = $annualwd * $mopct / $modays;
+         } else {
+           $wd = 0;
+         }
       } else {
          $wd = 0.0;
       }

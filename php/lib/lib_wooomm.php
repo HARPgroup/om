@@ -6398,6 +6398,10 @@ function saveModelObject($elementid, $thisobject, $prop_array, $debug = 0) {
             $ca = $prop_array['cacheable'];
             $listobject->querystring .= " cacheable = " . intval($ca) . ", ";
          }
+         if (isset($prop_array['object_class'])) {
+            $c1 = $prop_array['object_class'];
+            $listobject->querystring .= " objectclass = '" . $c1 . "', ";
+         }
          if (isset($prop_array['custom1'])) {
             $c1 = $prop_array['custom1'];
             $listobject->querystring .= " custom1 = '" . $listobject->escapeString($c1) . "', ";

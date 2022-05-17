@@ -49,7 +49,11 @@ $thisobject->setProp('all', $openmi_json, 'json-2d');
 //saveModelObject($elid, $thisobject, array('name' => $thisobject->name));
 $res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);
 //error_log("Finished.\n");
-$ret = saveModelObject($elid, $thisobject, array('name' => $json_obj['name']), FALSE);
+$params = array('name' => $json_obj['name']);
+if (isset($json_obj['object_class'])) {
+  $params['object_class'] = $json_obj['object_class'];
+}
+$ret = saveModelObject($elid, $thisobject, $params, FALSE);
 
 error_log("Save Query: " . $ret['debugHTML']);
 ?>

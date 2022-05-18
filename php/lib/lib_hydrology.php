@@ -439,7 +439,7 @@ class modelObject {
        }
 
        $this->dbcolumntypes[$colname] = $type;
-       if ( (strlen($type) > 0) and (strtolower($type) <> 'null') ) {
+       if ( (strlen($type) > 0) and (strtolower($type) <> 'null') and !(in_array($colname, $this->data_cols)) ) {
           $this->data_cols[] = $colname;
           $this->logformats[$colname] = '%s';
        }

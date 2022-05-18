@@ -735,10 +735,10 @@ class modelObject {
     $ser = explode(',', $this->serialist);
     error_log("sleep() called on $this->name");
     if (is_array($this->data_cols)) {
-      error_reporting("Pre-unique data_cols count = " . count($this->data_cols));
+      error_log("Pre-unique data_cols count = " . count($this->data_cols));
       $this->data_cols = array_unique($this->data_cols);
     } else {
-      error_reporting("sleep() method data_cols is not an array");
+      error_log("sleep() method data_cols is not an array");
     }
     foreach ($ser as $thisvar) {
        if (property_exists($this, $thisvar)) {

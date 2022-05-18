@@ -6466,6 +6466,7 @@ function updateObjectProps($projectid, $elementid, $prop_array, $debug = 0) {
    $debugHTML .= $apres['debugHTML'];
    
    $saveres = saveModelObject($elementid, $thisobject, $prop_array, $debug);
+	if ($debug) error_log("saveModelObject returned " . $saveres['debugHTML'];
    $innerHTML .= $saveres['innerHTML'];
    $debugHTML .= $saveres['debugHTML'];
    

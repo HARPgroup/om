@@ -4543,11 +4543,18 @@ class dataMatrix extends modelSubObject {
       return $maxwidth;
    }
    
-   function init() {
-      parent::init();
-      $this->formatMatrix();
-      $this->recordInvars();
-   }
+  function init() {
+    parent::init();
+    $this->formatMatrix();
+    $this->recordInvars();
+    // valuetype 0, aka "normal" is crazy.  need to assume it is returning an array which needs to be handled
+    // valuetype 3 = 'csv', which seems like text or array to me, so make it bigger text than type 0
+    if (in_array($this->valuetype, array( 0,3 ))) {
+      if (empty($this->value_dbcolumntype) or ($this->value_dbcolumntype == 'auto')) {
+        $this->value_dbcolumntype = $this->valuetype == 3) ? 'varchar(255)' : 'varchar(32)';
+      }
+    }
+  }
    
    function create() {
       parent::create();

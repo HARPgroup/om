@@ -753,6 +753,7 @@ class modelObject {
     $this->formvars = array();
     $this->inputs = array();
     $this->state = array();
+    $this->data_cols = array();
     $this->datasources = array();
     $this->setvarnames = array();
     $this->errorstring = '';

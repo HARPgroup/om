@@ -5870,6 +5870,7 @@ function compactSerializeObject($thisobject, $debug = 0) {
       }
       # do any other cleanup you can
       if (method_exists($thisobject, 'sleep')) {
+          error_log("Sleep() method exists on object_class = " . get_class($thisobject));
          $thisobject->sleep();
       } else {
         error_log("Sleep() method does not exist on $thisobject->name");

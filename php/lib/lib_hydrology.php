@@ -733,7 +733,7 @@ class modelObject {
   function sleep() {
     // things to do before this goes away, or gets stored
     $ser = explode(',', $this->serialist);
-    error_reporting("sleep() called on $this->name");
+    error_log("sleep() called on $this->name");
     if (is_array($this->data_cols)) {
       error_reporting("Pre-unique data_cols count = " . count($this->data_cols));
       $this->data_cols = array_unique($this->data_cols);

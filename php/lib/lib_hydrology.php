@@ -656,6 +656,9 @@ class modelObject {
           */
        }
     }
+    if (is_array($this->data_cols)) {
+       $this->data_cols = array_unique($this->data_cols);
+    }
     if (!is_array($this->setvarnames)) {
        $this->setvarnames = array();
     }
@@ -730,6 +733,9 @@ class modelObject {
   function sleep() {
     // things to do before this goes away, or gets stored
     $ser = explode(',', $this->serialist);
+    if (is_array($this->data_cols)) {
+       $this->data_cols = array_unique($this->data_cols);
+    }
     foreach ($ser as $thisvar) {
        if (property_exists($this, $thisvar)) {
           $this->$thisvar = serialize($this->$thisvar);

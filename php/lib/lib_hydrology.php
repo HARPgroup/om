@@ -737,6 +737,8 @@ class modelObject {
     if (is_array($this->data_cols)) {
       error_log("Pre-unique data_cols count = " . count($this->data_cols));
       $this->data_cols = array_unique($this->data_cols);
+      error_log("Post-unique data_cols count = " . count($this->data_cols));
+      $this->data_cols = array_unique($this->data_cols);
     } else {
       error_log("sleep() method data_cols is not an array");
     }

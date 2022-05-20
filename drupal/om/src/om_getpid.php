@@ -20,7 +20,7 @@ if (count($args) >= 3) {
   error_log("Usage: php om_getpid.php entity_type featureid propname [propcode]");
   die;
 }
-if ( ($vars['propname'] === 'NULL') and (!isset($vars['propcode']) ) {
+if ( ($vars['propname'] === 'NULL') and !isset($vars['propcode']) ) {
   error_log("If propname == NULL propcode must be given");
   error_log("Usage: php om_getpid.php entity_type featureid propname [propcode]");
   die;

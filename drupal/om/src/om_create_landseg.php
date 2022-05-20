@@ -1,7 +1,7 @@
 #!/user/bin/env drush
 <?php
 module_load_include('inc', 'om', 'src/om_translate_to_dh');
-
+error_log("Note: this routine is called  create 'landseg' but its actually creating a model for an LRseg");
 $args = array();
 while ($arg = drush_shift()) {
   $args[] = $arg;
@@ -19,7 +19,7 @@ if (count($args) >= 4) {
     $basepath = $args[4];
   }
 } else {
-  error_log("Usage: php om_create_landseg.php riverseg_hydroid landseg_hydroid version(p6,p532) scenario [basepath=$basepath]");
+  error_log("Usage: php om_create_landseg.php riverseg_hydroid lrseg_hydroid version(p6,p532) scenario [basepath=$basepath]");
   exit;
 }
 // check if a model already exists

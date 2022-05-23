@@ -26,6 +26,8 @@ ln -s /media/NAS2/omdata /var/www/html/data
 rm /var/www/html/scripts
 ln -s /opt/model/om/scripts /var/www/html/scripts
 
+rm /var/www/html/lib/met_qa.php
+ln -s /opt/model/om/php/src/met_qa.php /var/www/html/src/met_qa.php
 rm /var/www/html/lib/db_functions.php
 ln -s /opt/model/om/php/lib/db_functions.php /var/www/html/lib/db_functions.php
 rm /var/www/html/lib/phpmath 

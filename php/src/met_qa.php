@@ -13,7 +13,8 @@ if (count($argv) < 3) {
   die;
 }
 $landseg = $argv[1];
-$scenario = $argv[2];
+$version = $argv[2];
+$scenario = $argv[3];
 
 switch ($version) {
   case 'cbp6':

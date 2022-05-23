@@ -39,7 +39,7 @@ $out = array(
 );
 
 $modeldb->querystring = "  select min(timestamp) as startdate, max(timestamp) as enddate, count(*) as num_recs ";
-$modeldb->querystring .= " from \"$tablename\" ";
+$modeldb->querystring .= " from \"" . $out['table_name'] . "\" ";
 $modeldb->performQuery();
 
 error_log($modeldb->querystring);

@@ -1,18 +1,32 @@
 !/bin/bash
 
-entity_type=$1
-entity_id=$2
+hydrocode=$1
+version=$2
+template=75275
 
 if [ $# -lt 3 ]; then
-  echo 1>&2 "Usage: get_or_copy_prop.sh entity_type entity_id system_name [om_parent=NULL] [template_entity_type] [template_entity_id] [src_propname]" >&2
+  echo 1>&2 "Usage: om_qa_met.sh hydrocode model_version(cbp6,cbp532)" >&2
   exit 2
 fi 
 
-pid=`drush scr modules/om/src/om_getpid.php entity_type entity_id NULL cbp6`
+ftype="$version_landseg"
 
-# get the feature hydroid 
-# search for an existing model of the proper version
-# copy a model if none exists 
-# run the QA routine to verify existence of runoff table, length and stats
+# get the feature hydroid for the given landseg code and model version ftype
+hydroid=`drush scr modules/om/src/dh_search_feature.php $hydrocode landunit $ftype`
+# find the model 
+pid=`drush scr modules/om/src/om_getpid.php dh_feature $hydroid NULL $version`
 
-if [ $om_parent -gt 0 ]; then
+
+# create a new model if one does not exist for this version and land segment
+if [ -z "$pid" ]; then 
+  drush scr modules/om/src/om_copy_subcomp.php cmd dh_feature $template dh_feature $hydroid "Land Segment Model CBP"
+fi 
+
+# Call php script to look for model_scratch table for this land segment 
+  # this should be a simple OM script that is non-destructive, read-only
+  # do basic analysis of table contents.
+  # return JSON
+  
+# Call R script with model pid and analysis JSON 
+  # push summary info back to database 
+  # single most improtant thing: did the import work and yield something that looks OK in terms of date range?

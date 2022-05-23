@@ -4,7 +4,7 @@ hydrocode=$1
 version=$2
 template=75275
 
-if [ $# -lt 3 ]; then
+if [ $# -lt 2 ]; then
   echo 1>&2 "Usage: om_qa_met.sh hydrocode model_version(cbp6,cbp532)" >&2
   exit 2
 fi 

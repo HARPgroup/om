@@ -30,7 +30,7 @@ switch ($version) {
 //error_reporting(E_ALL);
 ##include_once("./lib_batchmodel.php");
 $out = array(
-  'table_name' =>'cbp_' . $prefix . '_' . $scenario . '_' . $landseg,
+  'table_name' => strtolower('cbp_' . $prefix . '_' . $scenario . '_' . $landseg),
   'table_exists' => 0,
   'num_recs' => 0,
   'startdate' => '',

@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 hydrocode=$1
 version=$2

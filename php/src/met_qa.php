@@ -42,6 +42,8 @@ $modeldb->querystring = "  select min(timestamp) as startdate, max(timestamp) as
 $modeldb->querystring .= " from \"$tablename\" ";
 $modeldb->performQuery();
 
+error_log($modeldb->querystring);
+
 if ($modeldb->numrows > 0) {
   $out['table_exists'] = 1;
   $out['startdate'] = $modeldb->getRecordValue(1, "startdate");

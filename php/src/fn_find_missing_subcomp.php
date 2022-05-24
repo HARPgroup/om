@@ -28,11 +28,15 @@ if ($elementid > 0) {
 $listobject->performQuery();
 error_log("$listobject->querystring ");
 $elements = $listobject->queryrecords;
-$bad_els = array();
-$bad_props = array();
-$bad_deets = array();
 $i = 0;
-$j = 0;
+$j = 0; // absent
+$bad_els = array();
+$bad_props = array(); // not used
+$bad_deets = array();
+$k = 0; // present
+$has_els = array();
+$has_props = array(); // not used
+$has_deets = array();
 foreach ($elements as $element) {
   $elid = $element['elementid'];
   $riverseg = $element['custom2'];
@@ -60,12 +64,31 @@ foreach ($elements as $element) {
       $bad_deets[$elid] = array('elementid'=>$elid, 'vahydro_pid' => $vahydro_hydroid);
     }
     $bad_deets[$elid][$thisproc->name] = 'empty';
+  } else {
+    $k++;
+    if (!in_array($vahydro_hydroid, $has_pids)) {
+      if ($vahydro_hydroid > 0) {
+        $has_pids[] = $vahydro_hydroid;
+      }
+    }
+    if (!in_array($elid, $has_els)) {
+      $has_els[] = $elid;
+    }
+    if (!isset($has_deets[$elid])) {
+      $has_deets[$elid] = array('elementid'=>$elid, 'vahydro_pid' => $vahydro_hydroid);
+    }
   }
 }
+error_log("***********************************************");
 error_log("Elements Missing $subcomp: " . implode(" ", $bad_els));
 error_log("VAHydro pids : " . implode(" ", $bad_pids));
 error_log("Details: " . print_r($bad_deets,1));
 error_log("Total Missing items $j out of $i checked.");
 
+error_log("***********************************************");
+error_log("Elements WITH $subcomp: " . implode(" ", $has_els));
+error_log("VAHydro pids : " . implode(" ", $has_pids));
+error_log("Details: " . print_r($has_deets,1));
+error_log("Total Missing items $j out of $i checked.");
 
 ?>

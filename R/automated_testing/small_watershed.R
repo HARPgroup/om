@@ -9,6 +9,7 @@ source("/var/www/R/config.R")
 # UT Rockfish on Mount Alto
 elid <- 352161
 runid = 201
+ro_elid = 352163
 
 dat <- om_get_rundata(elid, runid, site=omsite)
-
+rdat <- om_get_rundata(ro_elid, runid, site=omsite)

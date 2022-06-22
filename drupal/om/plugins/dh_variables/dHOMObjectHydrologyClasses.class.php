@@ -11,6 +11,9 @@ $class = ctools_plugin_get_class($plugin_def, 'handler');
 class dHOMHydroObject extends dHOMModelElement {
   var $object_class = 'hydroObject';
   var $attach_method = 'contained';
+  var $use_new_save = TRUE;
+  var $json2d = TRUE;
+  
   
   public function hiddenFields() {
     $hidden = array_merge(array('propcode', 'propvalue'), parent::hiddenFields());

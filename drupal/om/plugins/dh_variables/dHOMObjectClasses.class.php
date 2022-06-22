@@ -1665,21 +1665,16 @@ class dHOMEquation extends dHOMSubComp {
   
   public function attachNamedForm(&$form, $entity) {
     $varinfo = $entity->varid ? dh_vardef_info($entity->varid) : FALSE;
-    dpm($entity,'entity info');
-    dpm($varinfo,'var info');
     if (!$varinfo) {
       return FALSE;
     }
-    // create a blank to house the original form info
-    $pform = array();
-    $this->formRowEdit($pform, $entity);
-    dpm($pform,'form field as stand-alone: ');
-    // harvest pieces I want to keep
     $mname = $this->handleFormPropname($entity->propname);
-    $form[$mname] = $pform['propcode'];
-    $form[$mname]['#title'] = isset($entity->title) ? t($entity->title) : t($entity->propname);
-    $form[$mname]['#description'] = t($entity->vardesc);
-    dpm($form[$mname],'form field: ' . $mname);
+    $rowform[$mname] = array(
+      '#title' => isset($entity->title) ? t($entity->title) : t($entity->propname),
+      '#type' => 'textfield',
+      '#description' => t($entity->vardesc),
+      '#default_value' => !empty($row->propcode) ? $row->propcode : "0.0",
+    );
   }
   
   public function setAllRemoteProperties($entity, $elid, $path) {

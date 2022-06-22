@@ -1651,6 +1651,7 @@ class dHOMEquation extends dHOMSubComp {
   
   public function formRowEdit(&$form, $entity) {
     parent::formRowEdit($form, $entity);
+    dpm($form,"equation before 1st customization");
     $form['propcode']['#title'] = '';
     $form['propcode']['#prefix'] = ' = ';
     $engines = array(

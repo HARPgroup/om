@@ -1662,6 +1662,21 @@ class dHOMEquation extends dHOMSubComp {
     $form['engine']['#size'] = 1;
   }
   
+  public function attachNamedForm(&$form, $entity) {
+    $varinfo = $entity->varid ? dh_vardef_info($entity->varid) : FALSE;
+    if (!$varinfo) {
+      return FALSE;
+    }
+    // create a blank to house the original form info
+    $pform = array();
+    $this->formRowEdit($pform, $entity);
+    // harvest pieces I want to keep
+    $mname = $this->handleFormPropname($entity->propname);
+    $form[$mname] = $pform['propcode'];
+    $form[$mname]['#title'] = isset($entity->title) ? t($entity->title) : t($entity->propname);
+    $form[$mname]['#description'] = t($entity->vardesc);
+  }
+  
   public function setAllRemoteProperties($entity, $elid, $path) {
     // this replaces parent method in favor of full object json transfer
     // @todo: make this work for all at base class 
@@ -1782,6 +1797,20 @@ class dHOMStatistic extends dHOMSubComp {
     $form['statname']['#size'] = 1;
     $form['statname']["#empty_value"] = "";
     // column lookup 
+  }
+  public function attachNamedForm(&$form, $entity) {
+    $varinfo = $entity->varid ? dh_vardef_info($entity->varid) : FALSE;
+    if (!$varinfo) {
+      return FALSE;
+    }
+    // create a blank to house the original form info
+    $pform = array();
+    $this->formRowEdit($pform, $entity);
+    // harvest pieces I want to keep
+    $mname = $this->handleFormPropname($entity->propname);
+    $form[$mname] = $pform['propcode'];
+    $form[$mname]['#title'] = isset($entity->title) ? t($entity->title) : t($entity->propname);
+    $form[$mname]['#description'] = t($entity->vardesc);
   }
  
 }

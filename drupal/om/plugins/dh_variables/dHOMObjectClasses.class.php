@@ -1673,7 +1673,7 @@ class dHOMEquation extends dHOMSubComp {
       '#title' => isset($entity->title) ? t($entity->title) : t($entity->propname),
       '#type' => 'textfield',
       '#description' => t($entity->vardesc),
-      '#default_value' => !empty($row->propcode) ? $row->propcode : "0.0",
+      '#default_value' => !empty($entity->propcode) ? $entity->propcode : "0.0",
     );
   }
   

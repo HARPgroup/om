@@ -1665,6 +1665,7 @@ class dHOMEquation extends dHOMSubComp {
   
   public function attachNamedForm(&$form, $entity) {
     $varinfo = $entity->varid ? dh_vardef_info($entity->varid) : FALSE;
+    dpm($entity,'entity info');
     dpm($varinfo,'var info');
     if (!$varinfo) {
       return FALSE;

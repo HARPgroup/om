@@ -1669,7 +1669,7 @@ class dHOMEquation extends dHOMSubComp {
       return FALSE;
     }
     $mname = $this->handleFormPropname($entity->propname);
-    $rowform[$mname] = array(
+    $form[$mname] = array(
       '#title' => isset($entity->title) ? t($entity->title) : t($entity->propname),
       '#type' => 'textfield',
       '#description' => t($entity->vardesc),

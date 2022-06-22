@@ -1664,6 +1664,7 @@ class dHOMEquation extends dHOMSubComp {
   
   public function attachNamedForm(&$form, $entity) {
     $varinfo = $entity->varid ? dh_vardef_info($entity->varid) : FALSE;
+    dpm($varinfio,'var infi');
     if (!$varinfo) {
       return FALSE;
     }
@@ -1675,6 +1676,7 @@ class dHOMEquation extends dHOMSubComp {
     $form[$mname] = $pform['propcode'];
     $form[$mname]['#title'] = isset($entity->title) ? t($entity->title) : t($entity->propname);
     $form[$mname]['#description'] = t($entity->vardesc);
+    dpm($form[$mname],'var infi');
   }
   
   public function setAllRemoteProperties($entity, $elid, $path) {

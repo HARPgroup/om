@@ -1671,7 +1671,7 @@ class dHOMEquation extends dHOMSubComp {
     // create a blank to house the original form info
     $pform = array();
     $this->formRowEdit($pform, $entity);
-    dpm($pform,'form field as stand-alone: ';
+    dpm($pform,'form field as stand-alone: ');
     // harvest pieces I want to keep
     $mname = $this->handleFormPropname($entity->propname);
     $form[$mname] = $pform['propcode'];

@@ -856,6 +856,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
         // We should check if this is a non-sub-component otherwise, the om_set_element method will be incorrect.
         dpm("Using new save method");
         $exp = $this->exportOpenMI($entity);
+        dsm($entity, 'entity - does it have valuetype??');
         dpm($exp,"Using JSON export mode");
         $exp_json = addslashes(json_encode($exp[$entity->propname]));
         // now strip escaped single quotes because 
@@ -2352,10 +2353,6 @@ class dHOMDataMatrix extends dHOMSubComp {
       $datatable = $this->tableDefault($entity);
       $this->setCSVTableField($entity, $datatable);
     }
-  }
-  public function synchronize(&$entity, $force = FALSE) {
-    dsm($entity, 'entity - does it have valuetype??');
-    parent::synchronize($entity, $force);
   }
   
   public function loadProperties(&$entity, $overwrite = FALSE, $propname = FALSE, $force_embed = FALSE) {

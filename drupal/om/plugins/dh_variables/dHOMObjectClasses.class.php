@@ -2356,8 +2356,8 @@ class dHOMDataMatrix extends dHOMSubComp {
   }
   
   public function loadProperties(&$entity, $overwrite = FALSE, $propname = FALSE, $force_embed = FALSE) {
-    
     parent::loadProperties($entity, $overwrite, $propname, $force_embed);
+    dpm($entity,"dataMatrix $entity->propname loadProperties() returned");
     /*
     // causes an error if we do this when editing via drush. nowhere else?
     if (!(property_exists($entity, 'valuetype'))){

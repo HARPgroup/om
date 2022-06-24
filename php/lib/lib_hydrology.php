@@ -1048,7 +1048,7 @@ class modelObject {
     //if (get_class($this) == 'Equation') {
     //if ($this->json2d) {
     // expects openMI style objects in json format 
-    error_log("Calling setPropJSON2d($propname)");
+    error_log("Calling setPropJSON2d($propname, [propvalue], $view)");
     $base_types = array("textField", "matrix", "array", "table"); // these can be set on base object all others must be subcomps
     $raw_json = $propvalue;
     //error_log("RAW JSON = " . $raw_json);

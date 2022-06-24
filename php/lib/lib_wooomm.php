@@ -663,7 +663,7 @@ function getModelRunStatus($listobject, $elementid, $qrunid = '', $qhost = '', $
    $listobject->querystring .= "        replace(remote_url,'runlog'||b.runid||'.'||b.elementid, 'report'||b.elementid||'-'||b.runid) ";
    $listobject->querystring .= "      ELSE report ";
    $listobject->querystring .= "    END as report ";
-   $listobject->querystring .= " from system_status as a, scen_model_element as b ";
+   $listobject->querystring .= " from system_status as a ";
    $listobject->querystring .= " left outer join scen_model_element as b ";
    $listobject->querystring .= "    on( a.element_key = b.elementid ) ";
    $listobject->querystring .= " left outer join scen_model_run_elements as c ";

@@ -657,10 +657,10 @@ function getModelRunStatus($listobject, $elementid, $qrunid = '', $qhost = '', $
    $interval = '';
    $elemname = '';
    $listobject->querystring = "  select a.status_flag, a.status_mesg, a.last_updated, b.elemname, ";
-   $listobject->querystring .= "    now() as thistime, a.host, b.runid, ";
+   $listobject->querystring .= "    now() as thistime, a.host, c.runid, ";
    $listobject->querystring .= "    CASE ";
    $listobject->querystring .= "      WHEN report is NULL THEN  ";
-   $listobject->querystring .= "        replace(remote_url,'runlog'||b.runid||'.'||b.elementid, 'report'||b.elementid||'-'||b.runid) ";
+   $listobject->querystring .= "        replace(remote_url,'runlog'||c.runid||'.'||b.elementid, 'report'||b.elementid||'-'||c.runid) ";
    $listobject->querystring .= "      ELSE report ";
    $listobject->querystring .= "    END as report ";
    $listobject->querystring .= " from system_status as a ";

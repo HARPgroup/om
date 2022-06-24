@@ -78,18 +78,6 @@ if (is_object($thisobject)) {
 
   error_log("Updating $subprop_name with mode $setprop_mode");
   if (isset($thisobject->processors[$comp_name]) and ($comp_name <> $prop_name) ) {
-    //error_log("Trying to change thisobject->processors[$comp_name] subprop $subprop_name  = $subprop_value; ");
-    // now, we have insured that the component exists, we try to set the property supplied
-    // the setProp() method should be coded to handle all of these
-    // generally, if something is a sub-comp of a sub-comp like 
-    // so, if we added an equation on the base of an object, we would make several calls like:
-    //    $thisobject->processors['safeyield_mgd']->setProp('description', "Some text");
-    //    $thisobject->processors['safeyield_mgd']->setProp('equation', "x + 2");
-    // if this was a sub-sub-comp, like storage_stage_area on hydroImpSmall we should be called ONLY once:
-    //    $thisobject->processors['impoundment']->setProp('storage_stage_area', 'JSON storage table');
-    //   * These should also omit the object_class since they should fail if they do not exist, rather than adding
-    //error_log("Calling thisobject->processors[$comp_name]->setProp($subprop_name, $subprop_value, $setprop_mode); on object of class " . get_class($thisobject->processors[$comp_name]));
-    //error_log("Calling setProp() on $subprop_name, object_class = " . get_class($thisobject->processors[$comp_name]));
     $thisobject->processors[$comp_name]->setProp($subprop_name, $subprop_value, $setprop_mode);
     $thisobject->processors[$comp_name]->objectclass = $comp_class;
     $operatorid = array_search($comp_name, array_keys($thisobject->processors));

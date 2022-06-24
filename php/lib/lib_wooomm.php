@@ -6456,7 +6456,7 @@ function updateObjectProps($projectid, $elementid, $prop_array, $debug = 0) {
    $innerHTML = 'Called updateObjectProps()';
    //error_log("Called updateObjectProps()\n");
    $debugHTML = '';
-   $debug = 1;
+   //$debug = 1;
    $retarr = array();
    //$loadres = unSerializeSingleModelObject($elementid);
    $loadres = loadModelElement($elementid, array(), 1);

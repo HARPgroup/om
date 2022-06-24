@@ -1011,6 +1011,7 @@ class modelObject {
     // sets a specific state variable to a specific value
     switch ($view) {
       case 'json-2d':
+      case 'json_decoded':
         //error_log("Props of " . get_class($this) . " = " . print_r(get_class_vars(get_class($this)),1));
         if (property_exists($this, 'json2d')) {
           $this->setPropJSON2d($propname, $propvalue, $view);

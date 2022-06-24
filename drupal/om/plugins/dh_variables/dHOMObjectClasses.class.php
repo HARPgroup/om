@@ -856,6 +856,10 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
         $exp = $this->exportOpenMI($entity);
         dpm($exp,"Using JSON export mode");
         $exp_json = addslashes(json_encode($exp[$entity->propname]));
+        // now strip escaped single quotes because 
+        // valid json ONLY permits escapes of double quotes since all 
+        // json elements should be surrounded in double quotes.
+        $exp_json = str_replace("\'", $exp_json);
         om_set_element($elid, $exp_json);
         return;
       }

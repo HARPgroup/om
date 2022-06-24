@@ -2354,8 +2354,8 @@ class dHOMDataMatrix extends dHOMSubComp {
     }
   }
   public function synchronize(&$entity, $force = FALSE) {
-    parent::synchronize($entity, $force);
     dsm($entity, 'entity - does it have valuetype??');
+    parent::synchronize($entity, $force);
   }
   
   public function loadProperties(&$entity, $overwrite = FALSE, $propname = FALSE, $force_embed = FALSE) {

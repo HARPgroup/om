@@ -810,6 +810,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     //$entity->propname = 'blankShell';
     $this->saveObjectClass($entity);
     parent::insert($entity);
+    $this->loadProperties($entity, FALSE);
     $this->synchronize($entity);
   }
   
@@ -2380,7 +2381,7 @@ class dHOMDataMatrix extends dHOMSubComp {
     parent::setAllRemoteProperties($entity, $elid, $path);
     array_unshift($path, 'equation');
     */
-    $this->loadProperties($entity, FALSE);
+    //$this->loadProperties($entity, FALSE);
     $ppath = $path;
     array_unshift($ppath, $entity->propname);
     if ($entity->valuetype->propvalue === NULL){

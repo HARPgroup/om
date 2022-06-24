@@ -265,7 +265,7 @@ function om_load_dh_property($entity, $model_name, $plugin_load = FALSE) {
     'propname' => $model_name,
   );
   $model = om_get_property($values);
-  if ($plugin_load and is_object($model)) {
+  if ($plugin_load and is_object($model) and method_exists($plugin, 'loadProperties')) {
     $plugin = dh_variables_getPlugins($model);
     $plugin->loadProperties($model);
   }

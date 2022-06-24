@@ -810,7 +810,6 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     //$entity->propname = 'blankShell';
     $this->saveObjectClass($entity);
     parent::insert($entity);
-    $this->loadProperties($entity, FALSE);
     $this->synchronize($entity);
   }
   
@@ -819,6 +818,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     //dsm("update() " . $entity->propname);
     $this->saveObjectClass($entity);
     parent::update($entity);
+    $this->loadProperties($entity, FALSE);
     // should we do this here?
     $this->synchronize($entity);
   }

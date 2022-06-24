@@ -2995,7 +2995,7 @@ function saveObjectSubComponents($listobject, $thisobject, $elid, $overwrite=0, 
           // need to store object_class because new xml routine does not use outer tag
           $thisobject->processors[$comp_name]->object_class = $oc; 
           $cresult = compactSerializeObject($thisobject->processors[$comp_name]);
-          error_log("Saving single operator as ID $operatorid with class = $oc");
+          error_log("Saving $comp_name operator as ID $operatorid with class = $oc");
           $xml = $cresult['object_xml'];
           // store in database
           $store_result = storeElemOperator($elid, $operatorid, $xml);

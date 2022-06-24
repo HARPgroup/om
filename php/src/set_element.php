@@ -43,7 +43,7 @@ if ($elid > 0) {
   # save 
 }
 error_log("Retrieved $thisobject->name"); 
-error_log("$openmi_json"); 
+//error_log("$openmi_json"); 
 $thisobject->setProp('all', $openmi_json, 'json-2d');
 // @todo: handle these for now we just want to see if it works 
 //saveModelObject($elid, $thisobject, array('name' => $thisobject->name));
@@ -55,5 +55,5 @@ if (isset($json_obj['object_class'])) {
 }
 $ret = saveModelObject($elid, $thisobject, $params, FALSE);
 
-error_log("Save Query: " . $ret['debugHTML']);
+//error_log("Save Query: " . $ret['debugHTML']);
 ?>

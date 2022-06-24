@@ -1086,7 +1086,7 @@ class modelObject {
     $skips = array('id', 'om_element_connection', 'host');
     // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 
     
-    //error_log("Notice: Looking to add $pname as processor ");
+    error_log("Notice: Trying to save $pname as processor ");
     if (!is_array($pvalue)) {
       error_log("Warning: Skipping component $pname because json did not have array. ");
       return;
@@ -1136,6 +1136,7 @@ class modelObject {
   }
   
   function applyJSONPropArray($pname, $pvalue) {
+    error_log("Saving class property $pname");
     if (!is_array($pvalue)) {
       // handle normal attributes
       $this->setClassProp($pname, $pvalue, "");

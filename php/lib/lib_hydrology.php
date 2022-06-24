@@ -733,14 +733,14 @@ class modelObject {
   function sleep() {
     // things to do before this goes away, or gets stored
     $ser = explode(',', $this->serialist);
-    error_log("sleep() called on $this->name");
+    //error_log("sleep() called on $this->name");
     if (is_array($this->data_cols)) {
-      error_log("Pre-unique data_cols count = " . count($this->data_cols));
+      //error_log("Pre-unique data_cols count = " . count($this->data_cols));
       $this->data_cols = array_unique($this->data_cols);
-      error_log("Post-unique data_cols count = " . count($this->data_cols));
+      //error_log("Post-unique data_cols count = " . count($this->data_cols));
       $this->data_cols = array_unique($this->data_cols);
     } else {
-      error_log("sleep() method data_cols is not an array");
+      //error_log("sleep() method data_cols is not an array");
     }
     foreach ($ser as $thisvar) {
        if (property_exists($this, $thisvar)) {

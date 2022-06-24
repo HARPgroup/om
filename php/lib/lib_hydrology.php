@@ -1044,7 +1044,10 @@ class modelObject {
    * formatted in OpenMI style 
    */
   function setPropJSON2d($propname, $propvalue, $view = '') {
-    // this can set all attributes of an object class in one lloop
+    // this can set all attributes of an object class in one loop
+    // this behaves a little differently than previous versions, whereby, 
+    // if you want to update all attributes of a sub-comp at once, you call that sub-comps 
+    // own setProp() routine, then it handles the rest.
     //if (get_class($this) == 'Equation') {
     //if ($this->json2d) {
     // expects openMI style objects in json format 
@@ -1053,7 +1056,7 @@ class modelObject {
     $raw_json = $propvalue;
     //error_log("RAW JSON = " . $raw_json);
     $raw_props = json_decode($raw_json, TRUE);
-    //error_log("JSON raw_props names = " . print_r(array_keys($raw_props),1));
+    error_log("JSON raw_props names = " . print_r(array_keys($raw_props),1));
     // this is being called recursively, or by another routine that has already translated from json 
     if ($view == 'json_decoded') {
       $json_props = $propvalue;

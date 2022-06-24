@@ -25,8 +25,8 @@ if ($openmi_json === 'test') {
   $elid = 340268;
   $openmi_json = file_get_contents('https://raw.githubusercontent.com/HARPgroup/om/master/data/json/difficult_run.json');
 }
-error_log("**** openmi_json = " . $openmi_json);
 $openmi_json = stripslashes($openmi_json);
+error_log("**** openmi_json = " . $openmi_json);
 $json_obj = json_decode(trim($openmi_json), TRUE);
 error_log("**** json_obj[name] = " . $json_obj['name']);
 error_log("json_last_error() " . json_last_error());

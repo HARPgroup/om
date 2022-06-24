@@ -859,7 +859,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
         // now strip escaped single quotes because 
         // valid json ONLY permits escapes of double quotes since all 
         // json elements should be surrounded in double quotes.
-        $exp_json = str_replace("\'", $exp_json);
+        $exp_json = str_replace("\'", "'", $exp_json);
         om_set_element($elid, $exp_json);
         return;
       }

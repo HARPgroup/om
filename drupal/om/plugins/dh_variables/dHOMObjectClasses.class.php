@@ -2352,6 +2352,10 @@ class dHOMDataMatrix extends dHOMSubComp {
       $this->setCSVTableField($entity, $datatable);
     }
   }
+  public function synchronize(&$entity, $force = FALSE) {
+    parent::synchronize($entity, $force);
+    dsm($entity, 'entity - does it have valuetype??');
+  }
   
   public function loadProperties(&$entity, $overwrite = FALSE, $propname = FALSE, $force_embed = FALSE) {
     

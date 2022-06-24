@@ -1052,7 +1052,7 @@ class modelObject {
     //if (get_class($this) == 'Equation') {
     //if ($this->json2d) {
     // expects openMI style objects in json format 
-    error_log("Calling setPropJSON2d($propname, [propvalue], $view)");
+    //error_log("Calling setPropJSON2d($propname, [propvalue], $view)");
     $base_types = array("textField", "matrix", "array", "table"); // these can be set on base object all others must be subcomps
     // this is being called recursively, or by another routine that has already translated from json 
     if ($view == 'json_decoded') {
@@ -1060,7 +1060,7 @@ class modelObject {
     } else {
       $json_props = json_decode($propvalue, TRUE);
     }
-    error_log("JSON names = " . print_r(array_keys($json_props),1));
+    //error_log("JSON names = " . print_r(array_keys($json_props),1));
     foreach ($json_props as $pname => $pvalue) {
       error_log("setPropJSON2d: this->setPropJSON2d($pname)");
       if ($pname == 'object_class') {
@@ -1086,8 +1086,12 @@ class modelObject {
     // this is not a property on the base class, look for processors
     $skips = array('id', 'om_element_connection', 'host');
     // @TODO: we may handle om_element_connection as an entry in the map_model_linkages table 
+    // @todo: this doe all the things that are done in set_element.php, in terms of
+    //        adding a new property if one does not exists or if type change requested
+    //        so, we can just call this routine from there if we like.
+    //        this may also handle type change?
     
-    error_log("Notice: Trying to save $pname as processor ");
+    //error_log("Notice: Trying to save $pname as processor ");
     if (!is_array($pvalue)) {
       error_log("Warning: Skipping component $pname because json did not have array. ");
       return;
@@ -1126,7 +1130,10 @@ class modelObject {
     }
     // recursively calls setPropJSON2d on the subcomp.
     if (method_exists($prop, 'setPropJSON2d') ) {
-      error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");
+      //error_log("Updating properties on $pname (type = $object_class) with setPropJSON2d .");
+      // is there a reason to do setProp() instead of setPropJSON2d 
+      // as setProp calls setPropJSON2d, but *might* do other things in some cases?
+      //$prop->setProp($pname, $pvalue, 'json_decoded');
       $prop->setPropJSON2d($pname, $pvalue, 'json_decoded');
     } else {
       error_log("Can not locate method setPropJSON2d() on $prop->name");
@@ -1137,7 +1144,7 @@ class modelObject {
   }
   
   function applyJSONPropArray($pname, $pvalue) {
-    error_log("Saving class property $pname");
+    //error_log("Saving class property $pname");
     if (!is_array($pvalue)) {
       // handle normal attributes
       $this->setClassProp($pname, $pvalue, "");

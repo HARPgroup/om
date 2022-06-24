@@ -77,7 +77,7 @@ if (is_object($thisobject)) {
   }
 
   error_log("Updating $subprop_name with mode $setprop_mode");
-  if (isset($thisobject->processors[$comp_name]) and ($comp_name <> $prop_name) ) {
+  if (isset($thisobject->processors[$comp_name])) {
     error_log("Calling setProp($subprop_name, [...some data...], $setprop_mode)");
     $thisobject->processors[$comp_name]->setProp($subprop_name, $subprop_value, $setprop_mode);
     $thisobject->processors[$comp_name]->objectclass = $comp_class;
@@ -97,6 +97,8 @@ if (is_object($thisobject)) {
       // store in database
       $store_result = storeElemOperator($elid, $operatorid, $xml);
     }
+  } else {
+    error_log("Could not add property $subprop_name to $elid");
   }
   //error_log("Save result: $result_html");
 }

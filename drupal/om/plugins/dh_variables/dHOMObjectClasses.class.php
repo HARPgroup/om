@@ -2380,6 +2380,7 @@ class dHOMDataMatrix extends dHOMSubComp {
     parent::setAllRemoteProperties($entity, $elid, $path);
     array_unshift($path, 'equation');
     */
+    $this->loadProperties($entity, FALSE);
     $ppath = $path;
     array_unshift($ppath, $entity->propname);
     if ($entity->valuetype->propvalue === NULL){

@@ -1184,7 +1184,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
         );
       }
       if ( ($thisname == 'valuetype') ) {
-        dpm($sub_export, " $entity->propname openMI");
+        dpm($sub_export, " $entity->propname valuetype openMI");
       }
       $export[$entity->propname][$thisname] = $sub_export[$sub_entity->propname];
     }

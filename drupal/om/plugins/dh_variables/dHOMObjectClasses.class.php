@@ -1160,7 +1160,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     $export = $this->exportOpenMIBase($entity);
     // load subComponents 
     $procnames = dh_get_dh_propnames('dh_properties', $entity->identifier());
-    $procnames = array_merge($procnames, array_keys($entity->getDefaults()));
+    $procnames = array_merge($procnames, array_keys($this->getDefaults($entity)));
     foreach ($procnames as $thisname) {
       $sub_entity = is_object($entity->{$thisname}) 
         ? $entity->{$thisname} 

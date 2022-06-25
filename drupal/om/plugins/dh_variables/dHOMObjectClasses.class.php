@@ -114,7 +114,6 @@ class dHVariablePluginDefaultOM extends dHVariablePluginDefault {
   }
   
   public function update(&$entity) {
-    //dpm($entity,'update()');
     // check for transition from for value to prop
     $this->convert_attributes_to_dh_props($entity);
     $this->updateProperties($entity);
@@ -812,6 +811,11 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     parent::insert($entity);
     $this->loadProperties($entity, FALSE);
     $this->synchronize($entity);
+  }
+  
+  public function exportOpenMI($entity) {
+    dpm($entity, "Calling exportOpenMI");
+    $export = parent::exportOpenMI($entity);
   }
   
   public function update(&$entity) {

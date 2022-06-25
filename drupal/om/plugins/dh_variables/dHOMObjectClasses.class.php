@@ -813,11 +813,6 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     $this->synchronize($entity);
   }
   
-  public function exportOpenMI($entity) {
-    dpm($entity, "Calling exportOpenMI for $entity->propname");
-    $export = parent::exportOpenMI($entity);
-  }
-  
   public function update(&$entity) {
     //$entity->propname = 'blankShell';
     //dsm("update() " . $entity->propname);
@@ -1157,6 +1152,35 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
   public function dh_getValue($entity, $ts = FALSE, $propname = FALSE, $config = array()) {
     // @todo: implement om routines getPropertyAttribute() in base class 
     return $this->getPropertyAttribute($entity);
+  }
+  
+  public function exportOpenMI($entity) {
+    // creates an array that can later be serialized as json, xml, or whatever
+    $export = $this->exportOpenMIBase($entity);
+    // load subComponents 
+    $procnames = dh_get_dh_propnames('dh_properties', $entity->identifier());
+    foreach ($procnames as $thisname) {
+      $sub_entity = is_object($entity->{$thisname}) 
+        ? $entity->{$thisname} 
+        : om_load_dh_property($entity, $thisname, TRUE);
+      $plugin = dh_variables_getPlugins($sub_entity);
+      //dpm($plugin,'plugin');
+      if (is_object($plugin) and method_exists($plugin, 'exportOpenMI')) {
+        $sub_export = $plugin->exportOpenMI($sub_entity);
+      } else {
+        $sub_export = array(
+          $sub_entity->propname => array(
+            'host' => $_SERVER['HTTP_HOST'], 
+            'id' => $sub_entity->pid, 
+            'name' => $sub_entity->propname, 
+            'value' => $sub_entity->propvalue, 
+            'code' => $sub_entity->propcode, 
+          )
+        );
+      }
+      $export[$entity->propname][$thisname] = $sub_export[$sub_entity->propname];
+    }
+    return $export;
   }
 }
 

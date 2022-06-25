@@ -265,6 +265,10 @@ function om_load_dh_property($entity, $model_name, $plugin_load = FALSE) {
     'propname' => $model_name,
   );
   $model = om_get_property($values);
+  // we check here to load plugin, only because it was original behavior.
+  // in reality, this is likely a need in all cases since important defaults 
+  // in the load space might be needed.  IN fact, this default behavior 
+  // should probably go into the base class methods for properties.
   if ($plugin_load and is_object($model)) {
     $plugin = dh_variables_getPlugins($model);
     if (method_exists($plugin, 'loadProperties')) {

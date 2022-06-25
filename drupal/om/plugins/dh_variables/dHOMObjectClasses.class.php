@@ -1159,6 +1159,10 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     // creates an array that can later be serialized as json, xml, or whatever
     $export = $this->exportOpenMIBase($entity);
     // load subComponents 
+    // this maybe *should* be done in a very early part of the normal 
+    // model loading process.  There have been errors that prevented this
+    // perhaps due to functions that assumed pid was already set?  
+    // @todo: figure this out so that other chains work better.
     $procnames = dh_get_dh_propnames('dh_properties', $entity->identifier());
     $procnames = array_merge($procnames, array_keys($this->getDefaults($entity)));
     foreach ($procnames as $thisname) {
@@ -1167,9 +1171,6 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
         : om_load_dh_property($entity, $thisname, TRUE);
       $plugin = dh_variables_getPlugins($sub_entity);
       //dpm($plugin,'plugin');
-      if ( ($thisname == 'valuetype') ) {
-        dpm($sub_entity, "$thisname on $entity->propname");
-      }
       if (is_object($plugin) and method_exists($plugin, 'exportOpenMI')) {
         $sub_export = $plugin->exportOpenMI($sub_entity);
         $has_plug = TRUE;
@@ -1184,9 +1185,6 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
             'code' => $sub_entity->propcode, 
           )
         );
-      }
-      if ( ($thisname == 'valuetype') ) {
-        dpm($sub_export, " $entity->propname valuetype openMI");
       }
       $export[$entity->propname][$thisname] = $sub_export[$sub_entity->propname];
     }
@@ -2393,10 +2391,6 @@ class dHOMDataMatrix extends dHOMSubComp {
     }
   }
   
-  public function loadProperties(&$entity, $overwrite = FALSE, $propname = FALSE, $force_embed = FALSE) {
-    parent::loadProperties($entity, $overwrite, $propname, $force_embed);
-    dpm($entity,"dataMatrix $entity->propname loadProperties() returned");
-  }
   
   // this class has a name, and a description, an exec_hierarchy and other atributes
   // @todo: add basic handling of things other than descriptions

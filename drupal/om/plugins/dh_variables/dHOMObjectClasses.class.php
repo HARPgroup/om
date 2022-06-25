@@ -1165,9 +1165,14 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
         : om_load_dh_property($entity, $thisname, TRUE);
       $plugin = dh_variables_getPlugins($sub_entity);
       //dpm($plugin,'plugin');
+      if ( ($thisname == 'valuetype') ) {
+        dpm($sub_entity, "$thisname on $entity->propname");
+      }
       if (is_object($plugin) and method_exists($plugin, 'exportOpenMI')) {
         $sub_export = $plugin->exportOpenMI($sub_entity);
+        $has_plug = TRUE;
       } else {
+        $has_plug = FALSE;
         $sub_export = array(
           $sub_entity->propname => array(
             'host' => $_SERVER['HTTP_HOST'], 
@@ -1177,6 +1182,9 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
             'code' => $sub_entity->propcode, 
           )
         );
+      }
+      if ( ($thisname == 'valuetype') ) {
+        dpm($sub_export, " $entity->propname openMI");
       }
       $export[$entity->propname][$thisname] = $sub_export[$sub_entity->propname];
     }

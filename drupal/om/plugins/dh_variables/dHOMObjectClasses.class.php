@@ -814,7 +814,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
   }
   
   public function exportOpenMI($entity) {
-    dpm($entity, "Calling exportOpenMI");
+    dpm($entity, "Calling exportOpenMI for $entity->propname");
     $export = parent::exportOpenMI($entity);
   }
   

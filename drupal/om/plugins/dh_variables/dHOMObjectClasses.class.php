@@ -1155,10 +1155,12 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
   }
   
   public function exportOpenMI($entity) {
+    // this method is here temporarily for debugging 
     // creates an array that can later be serialized as json, xml, or whatever
     $export = $this->exportOpenMIBase($entity);
     // load subComponents 
     $procnames = dh_get_dh_propnames('dh_properties', $entity->identifier());
+    $procnames = array_merge($procnames, array_keys($entity->getDefaults()));
     foreach ($procnames as $thisname) {
       $sub_entity = is_object($entity->{$thisname}) 
         ? $entity->{$thisname} 
@@ -2394,19 +2396,6 @@ class dHOMDataMatrix extends dHOMSubComp {
   public function loadProperties(&$entity, $overwrite = FALSE, $propname = FALSE, $force_embed = FALSE) {
     parent::loadProperties($entity, $overwrite, $propname, $force_embed);
     dpm($entity,"dataMatrix $entity->propname loadProperties() returned");
-    /*
-    // causes an error if we do this when editing via drush. nowhere else?
-    if (!(property_exists($entity, 'valuetype'))){
-      $vars = $this->getDefaults($entity);
-      $thisvar = $vars['valuetype'];
-      $this->insureProperty($entity, $thisvar);
-      $om_matrix = $this->tablefieldToOMMatrix($entity->field_dh_matrix);
-      $rows = $om_matrix['rows'];
-      $cols = $om_matrix['cols'];
-      // Guess if needed 0 - array (normal), 1 - 1-col lookup, 2 - 2-col lookup
-      $entity->valuetype->propvalue = ($cols > 2) ? 2 : 1; 
-    }
-    */
   }
   
   // this class has a name, and a description, an exec_hierarchy and other atributes

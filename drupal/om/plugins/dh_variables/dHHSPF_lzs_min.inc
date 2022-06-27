@@ -12,6 +12,7 @@ $plugin = array(
     'isregular' => 0,
     'timestep' => 0,
     'timeunits' => 'n/a',
+    'multiplicity' => 'tspan_singular',
     'nodataval' => 0,
     'data_entry' => 'value',
     'plugin' => 'dHOMConstant',

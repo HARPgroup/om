@@ -1153,43 +1153,6 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
     // @todo: implement om routines getPropertyAttribute() in base class 
     return $this->getPropertyAttribute($entity);
   }
-  
-  public function exportOpenMI($entity) {
-    // this method is here temporarily for debugging 
-    // creates an array that can later be serialized as json, xml, or whatever
-    $export = $this->exportOpenMIBase($entity);
-    // load subComponents 
-    // this maybe *should* be done in a very early part of the normal 
-    // model loading process.  There have been errors that prevented this
-    // perhaps due to functions that assumed pid was already set?  
-    // @todo: figure this out so that other chains work better.
-    $procnames = dh_get_dh_propnames('dh_properties', $entity->identifier());
-    $procnames = array_merge($procnames, array_keys($this->getDefaults($entity)));
-    foreach ($procnames as $thisname) {
-      $sub_entity = is_object($entity->{$thisname}) 
-        ? $entity->{$thisname} 
-        : om_load_dh_property($entity, $thisname, TRUE);
-      $plugin = dh_variables_getPlugins($sub_entity);
-      //dpm($plugin,'plugin');
-      if (is_object($plugin) and method_exists($plugin, 'exportOpenMI')) {
-        $sub_export = $plugin->exportOpenMI($sub_entity);
-        $has_plug = TRUE;
-      } else {
-        $has_plug = FALSE;
-        $sub_export = array(
-          $sub_entity->propname => array(
-            'host' => $_SERVER['HTTP_HOST'], 
-            'id' => $sub_entity->pid, 
-            'name' => $sub_entity->propname, 
-            'value' => $sub_entity->propvalue, 
-            'code' => $sub_entity->propcode, 
-          )
-        );
-      }
-      $export[$entity->propname][$thisname] = $sub_export[$sub_entity->propname];
-    }
-    return $export;
-  }
 }
 
 class dHOMElementConnect extends dHOMBaseObjectClass {
@@ -1694,7 +1657,7 @@ class dHOMEquation extends dHOMSubComp {
   
   public function formRowEdit(&$form, $entity) {
     parent::formRowEdit($form, $entity);
-    dpm($form,"equation before 1st customization");
+    //dpm($form,"equation before 1st customization");
     $form['propcode']['#title'] = '';
     $form['propcode']['#prefix'] = ' = ';
     $engines = array(

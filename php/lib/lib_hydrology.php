@@ -15674,7 +15674,7 @@ class hydroImpSmall extends hydroImpoundment {
       return $innerHTML;
    }
    
-  function setProp($propname, $propvalue, $view = '') {
+  function setPropOld($propname, $propvalue, $view = '') {
     //$json_object = json_decode($json);
     //if (is_object($thisobject) and $json_object
     // subprop_name can be name:subname 

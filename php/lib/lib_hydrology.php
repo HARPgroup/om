@@ -1009,6 +1009,8 @@ class modelObject {
    */
   function setProp($propname, $propvalue, $view = '') {
     // sets a specific state variable to a specific value
+    // pull these apart as they are no longer relevant if json
+    list($propname, $subpropb_name) = explode(':', $propname);
     switch ($view) {
       case 'json-2d':
       case 'json_decoded':

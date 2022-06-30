@@ -313,6 +313,7 @@ class dHOMHydroImpoundment extends dHOMHydroObject {
 class dHOMHydroImpoundmentSmall extends dHOMHydroImpoundment {
   var $object_class = 'hydroImpSmall'; 
   var $json2d = TRUE;
+  var $use_new_save = FALSE; // this is a sub-comp, it already has a separate method
   public function getDefaults($entity, &$defaults = array()) {
     $defaults = parent::getDefaults($entity, $defaults);
     // must account for these which are handled specially from local variables on the subcomp version
@@ -468,6 +469,13 @@ class dHOMHydroImpoundmentSmall extends dHOMHydroImpoundment {
   
   public function setAllRemoteProperties($entity, $elid, $path) {
     // this toggles parent method with full object json transfer
+    // this method is copied from the modelSubComp class 
+    // todo: perhaps these should implement interfaces, and then
+    //       the setAllRemoteProperties or synchronize methods could check 
+    //       for some other method that if it is defined then we know it is a 
+    //       subcomp and will use that. 
+    // Also: is setAllRemoteProperties() now deprecated on the modelObject class
+    //       since synchronize does everything including all subcomps?
     if ($this->json2d) {
       $ppath = $path;
       array_unshift($ppath, $entity->propname);

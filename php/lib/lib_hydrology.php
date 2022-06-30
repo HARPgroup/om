@@ -1010,7 +1010,7 @@ class modelObject {
   function setProp($propname, $propvalue, $view = '') {
     // sets a specific state variable to a specific value
     // pull these apart as they are no longer relevant if json
-    list($propname, $subpropb_name) = explode(':', $propname);
+    list($propname, $subprop_name) = explode(':', $propname);
     switch ($view) {
       case 'json-2d':
       case 'json_decoded':
@@ -1063,6 +1063,10 @@ class modelObject {
       $json_props = json_decode($propvalue, TRUE);
     }
     //error_log("JSON names = " . print_r(array_keys($json_props),1));
+    if ($propname <> 'all') {
+      // encapsulate a single prop to use this feature.
+      $json_props = array($propname => $json_props);
+    }
     foreach ($json_props as $pname => $pvalue) {
       error_log("setPropJSON2d: this->setPropJSON2d($pname)");
       if ($pname == 'object_class') {
@@ -1082,6 +1086,7 @@ class modelObject {
         error_log("Final prop object " . $prop->name . " of class " . get_class($prop) );
       }
     }
+  }
   }
   
   function applyJSONComponentArray($pname, $pvalue) {
@@ -15676,7 +15681,7 @@ class hydroImpSmall extends hydroImpoundment {
       return $innerHTML;
    }
    
-  function setPropOld($propname, $propvalue, $view = '') {
+  function setProp($propname, $propvalue, $view = '') {
     //$json_object = json_decode($json);
     //if (is_object($thisobject) and $json_object
     // subprop_name can be name:subname 

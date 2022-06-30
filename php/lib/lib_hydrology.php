@@ -1087,7 +1087,6 @@ class modelObject {
       }
     }
   }
-  }
   
   function applyJSONComponentArray($pname, $pvalue) {
     // this is not a property on the base class, look for processors

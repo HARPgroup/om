@@ -1072,6 +1072,9 @@ class modelObject {
       if ($pname == 'object_class') {
         continue;
       }
+      if ($pname == 'name') {
+        continue;
+      }
       if (
         property_exists($this, $pname) 
         and 
@@ -1111,7 +1114,7 @@ class modelObject {
     $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
     $object_class = $pvalue['object_class'];
     if (is_object($prop)) {
-      if ($prop->object_clas <> $object_class) {
+      if ($prop->object_class <> $object_class) {
         $prop = FALSE;
       }
     }

@@ -1585,6 +1585,31 @@ class dHOMSubComp extends dHOMBaseObjectClass {
     return $publix;
   }
   
+  public function formRowEdit(&$form, $entity) {
+    parent::formRowEdit($form, $entity);
+    //dpm($form,"equation before 1st customization");
+    $form['propname']['#title'] = 'Name';
+    $form['propcode']['#title'] = 'Code';
+    $form['propcode']['#prefix'] = ' = ';
+    $form['propvalue']['#title'] = 'Value';
+    $form['propcode']['#prefix'] = ' = ';
+  }
+  
+  public function attachNamedForm(&$form, $entity) {
+    $varinfo = $entity->varid ? dh_vardef_info($entity->varid) : FALSE;
+    if (!$varinfo) {
+      return FALSE;
+    }
+    $mname = $this->handleFormPropname($entity->propname);
+    $form[$mname] = array(
+      '#title' => isset($entity->title) ? t($entity->title) : t($entity->propname),
+      '#type' => 'textfield',
+      '#description' => t($entity->vardesc),
+      '#default_value' => !empty($entity->propcode) ? $entity->propcode : "0.0",
+    );
+  }
+  
+  
   public function exportOpenMIBase($entity) {
     // creates the base properties for this class
     $export = array(

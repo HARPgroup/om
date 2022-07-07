@@ -1476,6 +1476,10 @@ class dHOMSubComp extends dHOMBaseObjectClass {
   // @todo: add basic handling of things other than descriptions
   var $use_new_save = FALSE; // this is a sub-comp, it already has a separate method
   
+  public function hiddenFields() {
+    return array('pid', 'startdate', 'enddate', 'varid', 'featureid', 'entity_type', 'bundle','dh_link_admin_pr_condition');
+  }
+  
   public function setAllRemoteProperties($entity, $elid, $path) {
     // this toggles parent method with full object json transfer
     if ($this->json2d) {

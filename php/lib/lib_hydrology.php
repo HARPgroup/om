@@ -1009,6 +1009,8 @@ class modelObject {
    */
   function setProp($propname, $propvalue, $view = '') {
     // sets a specific state variable to a specific value
+    // pull these apart as they are no longer relevant if json
+    list($propname, $subprop_name) = explode(':', $propname);
     switch ($view) {
       case 'json-2d':
       case 'json_decoded':
@@ -1061,9 +1063,15 @@ class modelObject {
       $json_props = json_decode($propvalue, TRUE);
     }
     //error_log("JSON names = " . print_r(array_keys($json_props),1));
+    if ($propname <> 'all') {
+      // any special andling needed for ALL?  So far no.
+    }
     foreach ($json_props as $pname => $pvalue) {
       error_log("setPropJSON2d: this->setPropJSON2d($pname)");
       if ($pname == 'object_class') {
+        continue;
+      }
+      if ($pname == 'name') {
         continue;
       }
       if (
@@ -1105,7 +1113,7 @@ class modelObject {
     $prop = isset($this->processors[$pname]) ? $this->processors[$pname] : FALSE;
     $object_class = $pvalue['object_class'];
     if (is_object($prop)) {
-      if ($prop->object_clas <> $object_class) {
+      if ($prop->object_class <> $object_class) {
         $prop = FALSE;
       }
     }

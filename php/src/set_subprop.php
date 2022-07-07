@@ -46,6 +46,11 @@ if (is_object($thisobject)) {
   } else {
     error_log("Trying to set $comp_name -> $subprop_name = $subprop_value \n");
   }
+  error_log("*** Conditional to Overwrite or Add Sub-Comp");
+  error_log("*** Overwrite = $overwrite");
+  error_log("*** isset(thisobject->processors[$comp_name] = " . isset($thisobject->processors[$comp_name]));
+  error_log("*** get_class(thisobject->processors[$comp_name]) <> $comp_class) = " . get_class($thisobject->processors[$comp_name]) );
+  error_log("*** ($comp_name == $subprop_name)");
   if ( $overwrite or (!isset($thisobject->processors[$comp_name])) 
     or (
       (  get_class($thisobject->processors[$comp_name]) <> $comp_class) 

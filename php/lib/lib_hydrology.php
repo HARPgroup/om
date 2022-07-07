@@ -1064,8 +1064,7 @@ class modelObject {
     }
     //error_log("JSON names = " . print_r(array_keys($json_props),1));
     if ($propname <> 'all') {
-      // encapsulate a single prop to use this feature.
-      //$json_props = array($propname => $json_props);
+      // any special andling needed for ALL?  So far no.
     }
     foreach ($json_props as $pname => $pvalue) {
       error_log("setPropJSON2d: this->setPropJSON2d($pname)");

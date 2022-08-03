@@ -839,6 +839,9 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
          $lumatrix = $landuse_matrix->matrix_formatted;
          foreach ($lumatrix as $luname=>$values) {
             $luarea = $landuse_matrix->evaluateMatrix($luname, $thisyear);
+if ($this->timer->steps < 2) {
+  error_log("$luname = $luarea at $thisyear");
+}
             if (is_numeric($luarea)) {
                if ($this->debug) {
                   $this->logDebug("Found Land use $luname with area $luarea<br>\n");

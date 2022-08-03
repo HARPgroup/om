@@ -2332,6 +2332,7 @@ class dHOMDataMatrix extends dHOMSubComp {
         'embed' => TRUE,
         'entity_type' => $entity->entityType(),
         'propcode_default' => NULL,
+        'embed' => TRUE,
         'propname' => 'lutype1',
         'vardesc' => 'Row Lookup Type.',
         'title' => 'Row Lookup Type',
@@ -2342,6 +2343,7 @@ class dHOMDataMatrix extends dHOMSubComp {
       'lutype2' => array(
         'embed' => TRUE,
         'entity_type' => $entity->entityType(),
+        'embed' => TRUE,
         'propcode_default' => NULL,
         'propname' => 'lutype2',
         'vardesc' => 'Column Lookup Type (2-dimensional lookups).',

@@ -71,6 +71,9 @@ foreach ($data as $element) {
   error_log("VARID land use element: " . $vahydro_lu->varid);
   $vahydro_lu->keycol1 = '';
   $vahydro_lu->keycol2 = 'luyear';
+  $vahydro_lu->lutype1 = 0;
+  $vahydro_lu->lutype2 = 1;
+  $vahydro_lu->valuetype = 2; // set at as 2-d lookup
   // set model container properties
   $vahydro_model->scenario = $scenario;
   $vahydro_model->version = $version;
@@ -96,7 +99,13 @@ foreach ($data as $element) {
   // we save the parent model element, which saves all attached properties, except the landuse matrix
   $vahydro_model->save();
   // save the lu matrix (cannot be embedded ... yet)
-  //error_log("saving LU as bundle " . $vahydro_lu->bundle);
-  $vahydro_lu->save();
+  error_log("************************" );
+  error_log("************************" );
+  error_log("************************" );
+  error_log("saving LU as bundle " . $vahydro_lu->bundle);
+  //$plugin->convert_attributes_to_dh_props($vahydro_lu);
+  //$vahydro_lu->save();
+  entity_save('dh_properties', $vahydro_lu);
 }
+
 ?>

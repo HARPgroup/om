@@ -17,16 +17,12 @@ library(hydrotools)
 ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)
 
+
 # Read Args
 argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
-
-# pid <- 4713208 #Salem
-# elid <- 249169  #Salem
-# runid <- 600
-
 
 finfo <- fn_get_runfile_info(elid, runid)
 remote_url <- finfo$remote_url
@@ -781,7 +777,6 @@ print(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.hydrograph_dry', 0.0, ds)
 ###############################################
 ###############################################
-
 
 
 ###############################################

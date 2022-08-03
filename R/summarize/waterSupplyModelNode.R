@@ -700,11 +700,14 @@ png(fname, width = 700, height = 700)
 legend_text = c("Baseline Flow","Scenario Flow")
 fdc_plot <- hydroTSM::fdc(
   cbind(datpd[names(datpd)== base_var], datpd[names(datpd)== comp_var]),
-  yat = c(0.10,1,5,10,25,100,400),
+  # yat = c(0.10,1,5,10,25,100,400),
+  # yat = c(round(min(datpd),0),500,1000,5000,10000),
+  yat = seq(round(min(datpd),0),round(max(datpd),0), by = 500),
   leg.txt = legend_text,
   main=paste("Flow Duration Curve","\n","(Model Flow Period ",sdate," to ",edate,")",sep=""),
   ylab = "Flow (cfs)",
-  ylim=c(1.0, 5000),
+  # ylim=c(1.0, 5000),
+  ylim=c(min(datpd), max(datpd)),
   cex.main=1.75,
   cex.axis=1.50,
   leg.cex=2,

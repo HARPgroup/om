@@ -2273,6 +2273,7 @@ class dHOMDataMatrix extends dHOMSubComp {
     $defaults = parent::getDefaults($entity, $defaults);
     $defaults += array(
       'keycol1' => array(
+        'embed' => TRUE,
         'entity_type' => $entity->entityType(),
         'propcode_default' => NULL,
         'propname' => 'keycol1',
@@ -2283,6 +2284,7 @@ class dHOMDataMatrix extends dHOMSubComp {
         'varid' => dh_varkey2varid('om_class_PublicVars', TRUE),
       ),
       'keycol2' => array(
+        'embed' => TRUE,
         'entity_type' => $entity->entityType(),
         'propcode_default' => NULL,
         'propname' => 'keycol2',
@@ -2327,6 +2329,7 @@ class dHOMDataMatrix extends dHOMSubComp {
         'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
       ),
       'lutype1' => array(
+        'embed' => TRUE,
         'entity_type' => $entity->entityType(),
         'propcode_default' => NULL,
         'propname' => 'lutype1',
@@ -2337,6 +2340,7 @@ class dHOMDataMatrix extends dHOMSubComp {
         'varid' => dh_varkey2varid('om_class_Constant', TRUE),
       ),
       'lutype2' => array(
+        'embed' => TRUE,
         'entity_type' => $entity->entityType(),
         'propcode_default' => NULL,
         'propname' => 'lutype2',

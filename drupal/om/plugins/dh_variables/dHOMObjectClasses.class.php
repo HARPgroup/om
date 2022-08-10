@@ -2230,6 +2230,50 @@ class dHOM_ModelScenario extends dHVariablePluginDefault {
   }
 }
 
+class dHOM_ModelRun extends dHVariablePluginDefault {
+  // this is a timeseries record of a model run.
+  var $object_class = FALSE;
+  public function hiddenFields() {
+    return array('pid', 'varid', 'featureid', 'entity_type', 'bundle','dh_link_admin_pr_condition');
+  }
+  // @todo: Scenario should accomodate sub-comps that detail analyses to be performed on parent object 
+  //  Things from the scen_model_run_elements table 
+  //    - runid
+  //    - runfile
+  //    - host
+  //    - output_file
+  //    - fullpath
+  //    - remote_path
+  //    - remote_url
+  //    - rundate
+  //    - starttime
+  //    - endtime
+  //    - elementid
+  //  Watershed model specific items
+  //    - flow_mode
+  //    - run_mode 
+  // @todo: Automatically run analyses comps defined on element 
+  //    - dHOM_ModelScenario elements look to parent to find comps of type dHOM_Analysis to run when updating scen record
+  
+  public function getRunData() {
+    // returns run CSV
+  }
+  public function exportOpenMIBase($entity) {
+    // creates the base properties for this class
+    $export = array(
+      $entity->propname => array(
+        'id' => $entity->tid, 
+        'name' => $entity->tscode, 
+        'startdate' => $entity->tstime, 
+        'enddate' => $entity->tsendtime, 
+        'modified' => $entity->modified, 
+        'value' => $entity->tsvalue, 
+      )
+    );
+    return $export;
+  }
+}
+
 class dHOM_Analysis extends dHVariablePluginDefault {
   var $object_class = FALSE;
   public function hiddenFields() {
@@ -2332,7 +2376,6 @@ class dHOMDataMatrix extends dHOMSubComp {
         'embed' => TRUE,
         'entity_type' => $entity->entityType(),
         'propcode_default' => NULL,
-        'embed' => TRUE,
         'propname' => 'lutype1',
         'vardesc' => 'Row Lookup Type.',
         'title' => 'Row Lookup Type',
@@ -2343,7 +2386,6 @@ class dHOMDataMatrix extends dHOMSubComp {
       'lutype2' => array(
         'embed' => TRUE,
         'entity_type' => $entity->entityType(),
-        'embed' => TRUE,
         'propcode_default' => NULL,
         'propname' => 'lutype2',
         'vardesc' => 'Column Lookup Type (2-dimensional lookups).',

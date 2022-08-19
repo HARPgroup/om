@@ -3132,6 +3132,20 @@ class broadCastObject extends modelSubObject {
       }
    }
    
+   
+   
+  function getPublicProps() {
+    # gets only properties that are visible (must be manually defined)
+    $publix = parent::getPublicProps();
+    if ($this->broadcast_mode == 'read') {
+      for ($i = 0; $i < count($this->local_varname); $i++) {
+        $local = $this->local_varname[$i];
+        array_push($publix,$local);
+      }
+    }
+      return $publix;
+  }
+   
    function init() {
       parent::init();
       // has an entirely different approach to getting inputs

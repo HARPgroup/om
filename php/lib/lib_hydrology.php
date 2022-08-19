@@ -1505,8 +1505,6 @@ class modelObject {
     // gets all viewable variables
     $publix = array_unique(array_merge(array_keys($this->state), $this->setvarnames, $this->getPublicProps(), $this->getPublicProcs(), $this->getPublicInputs()));
 
-      error_log("getPublicVars() called on $this->name");
-      error_log("- props: " . print_r($publix,1));
     return $publix;
   }
 

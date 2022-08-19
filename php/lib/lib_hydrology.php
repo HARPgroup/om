@@ -13529,6 +13529,8 @@ class HSPFContainer extends modelContainer {
       $procs = $this->getPublicProcs();
       
       $publix = array_unique(array_merge(array_keys($this->state), $this->getPublicProps(), $this->getPublicProcs(), $this->getPublicInputs(), $this->getPlotgens()));
+      error_log("getPublicVars() called on $this->name");
+      error_log("- props: " . print_r($publix,1));
       return $publix;
    }
    

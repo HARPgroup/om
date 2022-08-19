@@ -6574,7 +6574,7 @@ function showModelEditForm($formValues, $elem_xml, $applyvalues = 1, $disabled=0
          $modelFormArray['debug'] .= $thisload['debug'];
       }
    }
-   error_log("*** showModelEditForm called for " . $thisobject->name);
+   //error_log("*** showModelEditForm called for " . $thisobject->name);
 
    $elemtype = get_class($thisobject);
 

@@ -3773,9 +3773,9 @@ function showElementInputBrowser($formValues, $disabled=0) {
       # unserialize the property list
       $result = $unserializer->unserialize($prop_xml, false);
       $proplist = $unserializer->getUnserializedData();
-      error_log("Old prop_list:" . print_r($proplist,1));
+      //error_log("Old prop_list:" . print_r($proplist,1));
       $proplist = om_xml_array($prop_xml);
-      error_log("New prop_list:" . print_r($proplist,1));
+      //error_log("New prop_list:" . print_r($proplist,1));
       
       $prop_form = array();
       $k = 0;
@@ -6574,7 +6574,7 @@ function showModelEditForm($formValues, $elem_xml, $applyvalues = 1, $disabled=0
          $modelFormArray['debug'] .= $thisload['debug'];
       }
    }
-   error_log("*** showModelEditForm called for " . $thisobject->name);
+   //error_log("*** showModelEditForm called for " . $thisobject->name);
 
    $elemtype = get_class($thisobject);
 

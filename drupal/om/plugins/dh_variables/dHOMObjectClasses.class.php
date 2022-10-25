@@ -1157,6 +1157,7 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
 
 class dHOMElementConnect extends dHOMBaseObjectClass {
   var $object_class = FALSE;
+  var $default_bundle = 'dh_properties';
   var $can_embed = FALSE; // om_element_connection can never be embedded.
   var $set_remote = FALSE; // should we push changes?
   

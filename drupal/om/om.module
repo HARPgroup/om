@@ -104,9 +104,9 @@ function om_run_id_options() {
         '6014' => t('Draft Permit Term Max w/Proposed - 1998-2002, alt. 4 (#6014)'),
         '6015' => t('Draft Permit Term Max w/Proposed - 1998-2002, alt. 5 (#6015)'),
       ),
-      'Drought Evaluation Runs (flow_mode = 7)' => array(
-        '900' => t('Full Time Period (1984-now + Mash-up drought (#700)'),
-        '901' => t('Last 4 Years (now-4 + Mash-up drought (#701)'),
+      'Drought Evaluation Runs (flow_mode = 9)' => array(
+        '900' => t('Full Time Period (1984-now + Mash-up drought (#900)'),
+        '901' => t('Last 4 Years (now-4 + Mash-up drought (#901)'),
       ),
       'Full Runs' => array(
         '0' => t('Pre-Condition (#0)'),

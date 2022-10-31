@@ -104,6 +104,10 @@ function om_run_id_options() {
         '6014' => t('Draft Permit Term Max w/Proposed - 1998-2002, alt. 4 (#6014)'),
         '6015' => t('Draft Permit Term Max w/Proposed - 1998-2002, alt. 5 (#6015)'),
       ),
+      'Drought Evaluation Runs (flow_mode = 7)' => array(
+        '700' => t('Full Time Period (1984-now + Mash-up drought (#700)'),
+        '701' => t('Last 4 Years (now-4 + Mash-up drought (#701)'),
+      ),
       'Full Runs' => array(
         '0' => t('Pre-Condition (#0)'),
         '1' => t('Historical Conditions (#1)'),
@@ -188,7 +192,7 @@ function om_run_mode_options() {
     '4' => t('Permit Term Max + Current (#4)'),
     '5' => t('Custom Admin Run (#5)'),
     '6' => t('Permit Dev: Permit Max + Proposed + Current (#6)'),
-    '7' => t('Custom Admin Run (#7)'),
+    '7' => t('Drought Mash-up Run (#7)'),
     '8' => t('Custom Admin Run (#8)'),
     '9' => t('VWP Exempt (#9)'),
     '10' => t('2020 Demand'),

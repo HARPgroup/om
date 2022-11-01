@@ -33,6 +33,7 @@ if (is_object($model)) {
     break;
     
     case 'watershed':
+    case 'waterbody':
     $tr_pid = 6541481;
     break;
     

@@ -8,7 +8,7 @@ if (isset($a[2])) {
   $pid = $a[2];
   $mode = $a[3];
 } else {
-  echo "Usage: /[pid]/mode(json,single_json,vardef,debug)<br>";
+  echo "Usage: /[pid]/mode(json,single_json,vardef,debug)/no_results(0,1)<br>";
 }
 if ($pid <> NULL) {
   $prop = entity_load_single('dh_properties', $pid);
@@ -19,11 +19,18 @@ if ($pid <> NULL) {
 
   //dpm($exp,'Export');
   //dpm($vars,'Vars');
+  // strip off the results if requested
+  if ($no_results) {
+    foreach (array_keys($exp[$prop->propname]) as $key) {
+      if (substr($key,0,6) == 'runid_') {
+        unset($exp[$prop->propname][$key]);
+      }
+    }
+  }
 
-  // tis may no lionger be used, as drupal_export_json handles it?  But we *could* use this if it is better.
+  // tis may no longer be used, as drupal_export_json handles it?  But we *could* use this if it is better.
   $exp_json = json_encode($exp, JSON_PRETTY_PRINT);
   $vars_json = json_encode($vars, JSON_PRETTY_PRINT);
-
   switch ($mode) {
     case 'vardef':
       drupal_json_output($vars);

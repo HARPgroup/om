@@ -7536,8 +7536,13 @@ class hydroImpoundment extends hydroObject {
       if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
          $release = $this->state['flowby']; // assumed to be in cfs
       }
+      // this checks for release subcomps on a standalone impoundment 
       if ( isset($this->state['release']) and (is_numeric($this->state['release'])) ) {
          $release = $this->state['release']; // assumed to be in cfs
+      }
+      // this checks for release input on a subcomp impoundment
+      if ( isset($this->arData['release']) and (is_numeric($this->arData['release'])) ) {
+         $release = $this->arData['release']; // assumed to be in cfs
       }
       // this code is the better way, using a "release" variable which should ALSO be supported
       // release variable should always override flowby since it is the new method.  

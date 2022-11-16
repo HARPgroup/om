@@ -7526,15 +7526,15 @@ class hydroImpoundment extends hydroObject {
       $demand = $this->state['demand']; // assumed to be in MGD
       $refill = $this->state['refill']; // assumed to be in MGD
       $discharge = $this->state['discharge']; // assumed to be in MGD
-      if (property_exists($this, 'release') and isset($this->arData[$this->release])) {
-        $flowby = $this->arData[$this->release];
-      } else {
+      //if (property_exists($this, 'release') and isset($this->arData[$this->release])) {
+      //  $flowby = $this->arData[$this->release];
+      //} else {
         if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
            $flowby = $this->state['flowby']; // assumed to be in cfs
         } else {
            $flowby = 0;
         }
-      }
+      //}
       error_log("Release var: $this->release = ". $this->arData[$this->release]);
       error_log("Verify Flowby value = $flowby");
       // maintain backward compatibility with old ET nomenclature

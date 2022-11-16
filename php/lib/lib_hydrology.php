@@ -7661,6 +7661,7 @@ class hydroImpoundment extends hydroObject {
       $this->state['depth'] = $stage;
       $this->state['Storage'] = $Storage;
       $this->state['spill'] = $spill;
+      $this->state['release'] = $release;
       $this->state['area'] = $area;
       $this->state['evap_acfts'] = $evap_acfts;
       $this->state['storage_mg'] = $Storage / 3.07;
@@ -15395,7 +15396,7 @@ class hydroImpSmall extends hydroImpoundment {
       // now, overwrite crucial variables from parent to this objects state array
       foreach ($this->rvars as $thisvar) {
          if ($thisvar == 'release') {
-            $this->setStateVar('flowby',$this->arData['release']);
+            //$this->setStateVar('flowby',$this->arData['release']);
             $this->setStateVar('flowby',$this->arData[$this->release]);
             if ($this->debug) {
                $this->logDebug("Setting variable 'flowby' to parent value for release: " . $this->arData[$this->$thisvar] . "<br>");
@@ -15454,14 +15455,10 @@ class hydroImpSmall extends hydroImpoundment {
       $demand = $this->state['demand']; // assumed to be in MGD
       $refill = $this->state['refill']; // assumed to be in MGD
       $discharge = $this->state['discharge']; // assumed to be in MGD
-      if (property_exists($this, 'release') and isset($this->arData[$this->release])) {
-        $flowby = $this->arData[$this->release];
+      if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
+         $flowby = $this->state['flowby']; // assumed to be in cfs
       } else {
-        if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
-           $flowby = $this->state['flowby']; // assumed to be in cfs
-        } else {
-           $flowby = 0;
-        }
+         $flowby = 0;
       }
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {

@@ -15454,7 +15454,7 @@ class hydroImpSmall extends hydroImpoundment {
          $flowby = 0;
       }
       error_log("Release var: $this->release = ". $this->arData[$this->release]);
-      error_log("Verify Flowby var = $flowby");
+      error_log("Verify Flowby value = $flowby");
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {
          $pan_evap = $this->state['et_in'];

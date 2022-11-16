@@ -38,6 +38,8 @@ drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_prop
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid vwp_max_mgd
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid vwp_base_mgd
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid vwp_demand_mgd
+# chooses max based on permit status/runmode
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid max_mgd
 
 
 # Deprecated - was old part of vwp templates.  Try to remove.

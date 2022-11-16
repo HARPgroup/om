@@ -15390,7 +15390,8 @@ class hydroImpSmall extends hydroImpoundment {
       foreach ($this->rvars as $thisvar) {
          if ($thisvar == 'release') {
             $this->setStateVar('flowby',$this->arData['release']);
-            //$this->setStateVar('flowby',$this->arData[$this->release]);
+            $this->setStateVar('flowby',$this->arData[$this->release]);
+            error_log("Release var: $this->release");
             if ($this->debug) {
                $this->logDebug("Setting variable 'flowby' to parent value for release: " . $this->arData[$this->$thisvar] . "<br>");
             }

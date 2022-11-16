@@ -2490,8 +2490,17 @@ class modelObject {
     while (count($queue) > 0) {
        $thisdepend = array_shift($queue);
        $pvars = $this->processors[$thisdepend]->vars;
+       // handle rvars.  Is there a better way at the subcomp level?
+       // shouldn't vars already have this?
        if (is_array($this->processors[$thisdepend]->rvars) and !empty($this->processors[$thisdepend]->rvars) ){
-         $pvars = array_unique(array_merge($pvars, $this->processors[$thisdepend]->rvars));
+         foreach ($this->processors[$thisdepend]->rvars as $varstring) {
+           if (property_exists($this->processors[$thisdepend], $varstring)) {
+             if (!empty($this->processors[$thisdepend]->{$varstring})) {
+               $pvars[] = $this->processors[$thisdepend]->{$varstring};
+             }
+           }
+         }
+         $pvars = array_unique($pvars);
        }
        //$watchlist = array('impoundment', 'local_channel');
        //$this->debug = in_array( $this->processors[$depend]->name, $watchlist) ? 1 : 0;

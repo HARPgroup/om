@@ -2493,13 +2493,16 @@ class modelObject {
        // handle rvars.  Is there a better way at the subcomp level?
        // shouldn't vars already have this?
        if (is_array($this->processors[$thisdepend]->rvars) and !empty($this->processors[$thisdepend]->rvars) ){
+         $dbg = array();
          foreach ($this->processors[$thisdepend]->rvars as $varstring) {
            if (property_exists($this->processors[$thisdepend], $varstring)) {
              if (!empty($this->processors[$thisdepend]->{$varstring})) {
                $pvars[] = $this->processors[$thisdepend]->{$varstring};
+               $dbg[] = $this->processors[$thisdepend]->{$varstring};
              }
            }
          }
+         error_log("Adding to dependency for $thisdepend: " . print_r($dbg,1));
          $pvars = array_unique($pvars);
        }
        //$watchlist = array('impoundment', 'local_channel');

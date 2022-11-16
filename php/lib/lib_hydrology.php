@@ -7561,8 +7561,6 @@ class hydroImpoundment extends hydroObject {
       // release variable should always override flowby since it is the new method.  
       // Lake anna is the only standalone impoundment with both a "flowby" and "release"
       // variable, and flowy = release in that case so it is covered.
-      error_log("Release var: $this->release = ". $this->arData[$this->release]);
-      error_log("Verify Flowby value = $release");
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {
          $pan_evap = $this->state['et_in'];

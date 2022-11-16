@@ -7511,8 +7511,6 @@ class hydroImpoundment extends hydroObject {
       // now we will execute our local sub-comps to process any data obtained from children via broadcast
       // execute sub-components
       $this->execProcessors();
-      error_log("Release var: $this->release = ". $this->arData[$this->release]);
-      error_log("Verify Flowby value = $flowby");
       
       if ($this->debug) {
          $this->logDebug("Step Begin state[] array contents " . print_r($this->state,1) . " <br>\n");
@@ -7528,10 +7526,16 @@ class hydroImpoundment extends hydroObject {
       $demand = $this->state['demand']; // assumed to be in MGD
       $refill = $this->state['refill']; // assumed to be in MGD
       $discharge = $this->state['discharge']; // assumed to be in MGD
-      if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
-         $flowby = $this->state['flowby']; // assumed to be in cfs
+      error_log("Release var: $this->release = ". $this->arData[$this->release]);
+      error_log("Verify Flowby value = $flowby");
+      if (property_exists($this, 'release') and isset($this->arData[$this->release])) {
+        $flowby = $this->arData[$this->release];
       } else {
-         $flowby = 0;
+        if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
+           $flowby = $this->state['flowby']; // assumed to be in cfs
+        } else {
+           $flowby = 0;
+        }
       }
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {
@@ -15450,10 +15454,14 @@ class hydroImpSmall extends hydroImpoundment {
       $demand = $this->state['demand']; // assumed to be in MGD
       $refill = $this->state['refill']; // assumed to be in MGD
       $discharge = $this->state['discharge']; // assumed to be in MGD
-      if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
-         $flowby = $this->state['flowby']; // assumed to be in cfs
+      if (property_exists($this, 'release') and isset($this->arData[$this->release])) {
+        $flowby = $this->arData[$this->release];
       } else {
-         $flowby = 0;
+        if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
+           $flowby = $this->state['flowby']; // assumed to be in cfs
+        } else {
+           $flowby = 0;
+        }
       }
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {

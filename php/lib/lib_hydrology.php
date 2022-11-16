@@ -2490,6 +2490,9 @@ class modelObject {
     while (count($queue) > 0) {
        $thisdepend = array_shift($queue);
        $pvars = $this->processors[$thisdepend]->vars;
+       if (is_array($this->processors[$thisdepend]->rvars) and !empty($this->processors[$thisdepend]->rvars) ){
+         $pvars = array_unique(array_merge($pvars, $this->processors[$thisdepend]->rvars));
+       }
        //$watchlist = array('impoundment', 'local_channel');
        //$this->debug = in_array( $this->processors[$depend]->name, $watchlist) ? 1 : 0;
        if ($this->debug) {
@@ -7527,11 +7530,12 @@ class hydroImpoundment extends hydroObject {
       $refill = $this->state['refill']; // assumed to be in MGD
       $discharge = $this->state['discharge']; // assumed to be in MGD
       // In original method of doing this we recognized flowby as the release variable
-      // so we support that.  THis should never be used.
+      // so we support that.  This should never be used.
       // Note: this code is used also by the hydroImp_small component if the riser option is OFF.
       //       in that case, we copy the release variable from the hysroImp_small into the state as flowby 
       // this is crazy and convoluted and should be fixed by ID'ing any reservoirs with a 
       //        either flowby subcomps or inputs that really control release and renaming them.
+      //        see issue where we do that: https://github.com/HARPgroup/vahydro/issues/719
       $release = 0;
       if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
          $release = $this->state['flowby']; // assumed to be in cfs

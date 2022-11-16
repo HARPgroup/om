@@ -15391,7 +15391,6 @@ class hydroImpSmall extends hydroImpoundment {
          if ($thisvar == 'release') {
             $this->setStateVar('flowby',$this->arData['release']);
             $this->setStateVar('flowby',$this->arData[$this->release]);
-            error_log("Release var: $this->release = ". $this->arData[$this->release]);
             if ($this->debug) {
                $this->logDebug("Setting variable 'flowby' to parent value for release: " . $this->arData[$this->$thisvar] . "<br>");
             }
@@ -15454,6 +15453,8 @@ class hydroImpSmall extends hydroImpoundment {
       } else {
          $flowby = 0;
       }
+      error_log("Release var: $this->release = ". $this->arData[$this->release]);
+      error_log("Verify Flowby var = $flowby");
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {
          $pan_evap = $this->state['et_in'];

@@ -7526,17 +7526,20 @@ class hydroImpoundment extends hydroObject {
       $demand = $this->state['demand']; // assumed to be in MGD
       $refill = $this->state['refill']; // assumed to be in MGD
       $discharge = $this->state['discharge']; // assumed to be in MGD
-      //if (property_exists($this, 'release') and isset($this->arData[$this->release])) {
-      //  $flowby = $this->arData[$this->release];
-      //} else {
+      // In original method of doing this we recognized flowby as the release variable
+      // so we support that.  THis should never be used.
+      // Note: this code is used also by the hydroImp_small component if the riser option is OFF.
+      //       in that case, we copy the release variable from the hysroImp_small into the state as flowby 
+      // this is crazy and convoluted and should be fixed by ID'ing any reservoirs with a 
+      //        either flowby subcomps or inputs that really control release and renaming them.
         if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
-           $flowby = $this->state['flowby']; // assumed to be in cfs
+           $release = $this->state['flowby']; // assumed to be in cfs
         } else {
-           $flowby = 0;
+           $release = 0;
         }
       //}
       error_log("Release var: $this->release = ". $this->arData[$this->release]);
-      error_log("Verify Flowby value = $flowby");
+      error_log("Verify Flowby value = $release");
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {
          $pan_evap = $this->state['et_in'];
@@ -7598,22 +7601,22 @@ class hydroImpoundment extends hydroObject {
       // change in storage
       if ($this->debug) {
          $this->logDebug("Calculating Volume Change: storechange = S0 + ((Qin - flowby) * dt / 43560.0)+ (1.547 * refill * dt / 43560.0) - (1.547 * demand * dt /  43560.0) - (evap_acfts * dt) + (precip_acfts * dt); <br>\n");
-         $this->logDebug(" :::: $storechange = $S0 + (($Qin - $flowby) * $dt / 43560.0)+ (1.547 * $refill * $dt / 43560.0) - (1.547 * $demand * $dt /  43560.0) - ($evap_acfts * $dt) + ($precip_acfts * $dt); <br>\n");
+         $this->logDebug(" :::: $storechange = $S0 + (($Qin - $release) * $dt / 43560.0)+ (1.547 * $refill * $dt / 43560.0) - (1.547 * $demand * $dt /  43560.0) - ($evap_acfts * $dt) + ($precip_acfts * $dt); <br>\n");
       }
-      $storechange = $S0 + (($Qin - $flowby) * $dt / 43560.0) + (1.547 * $discharge * $dt / 43560.0)  + (1.547 * $refill * $dt / 43560.0) - (1.547 * $demand * $dt /  43560.0) - ($evap_acfts * $dt) + ($precip_acfts * $dt);
+      $storechange = $S0 + (($Qin - $release) * $dt / 43560.0) + (1.547 * $discharge * $dt / 43560.0)  + (1.547 * $refill * $dt / 43560.0) - (1.547 * $demand * $dt /  43560.0) - ($evap_acfts * $dt) + ($precip_acfts * $dt);
       if ($storechange < 0) {
          // what to do with flowby & wd?
          // if storechange is less than zero, its magnitude represents the deficit of flowby+demand
          // we can either choose to evenly distribute them or assume that demand wins
          $deficit_acft = abs($storechange);
-         $s_avail = (1.547 * $demand * $dt /  43560.0) + ($flowby * $dt /  43560.0) - $deficit_acft;
+         $s_avail = (1.547 * $demand * $dt /  43560.0) + ($release * $dt /  43560.0) - $deficit_acft;
          if ($s_avail <= (1.547 * $demand * $dt /  43560.0)) {
             // no water available for flowby
-            $flowby = 0.0;
+            $release = 0.0;
             $demand_met_mgd = $s_avail * 43560.0 / (1.547 * $dt);
          } else {
             // flowby is remainder
-            $flowby = ($s_avail - (1.547 * $demand * $dt /  43560.0)) * 43560.0 / $dt;
+            $release = ($s_avail - (1.547 * $demand * $dt /  43560.0)) * 43560.0 / $dt;
             $demand_met_mgd = $demand;
          }
          $storechange = 0;
@@ -7633,7 +7636,7 @@ class hydroImpoundment extends hydroObject {
       if (isset($this->processors['Qout'])) {
          $Qout = $this->state['Qout']; // we have subclassed this witha stage-discharge relationship or oher
       } else {
-         $Qout = $spill + $flowby;
+         $Qout = $spill + $release;
       }
       
       // local unit conversion dealios

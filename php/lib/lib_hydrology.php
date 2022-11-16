@@ -7526,8 +7526,6 @@ class hydroImpoundment extends hydroObject {
       $demand = $this->state['demand']; // assumed to be in MGD
       $refill = $this->state['refill']; // assumed to be in MGD
       $discharge = $this->state['discharge']; // assumed to be in MGD
-      error_log("Release var: $this->release = ". $this->arData[$this->release]);
-      error_log("Verify Flowby value = $flowby");
       if (property_exists($this, 'release') and isset($this->arData[$this->release])) {
         $flowby = $this->arData[$this->release];
       } else {
@@ -7537,6 +7535,8 @@ class hydroImpoundment extends hydroObject {
            $flowby = 0;
         }
       }
+      error_log("Release var: $this->release = ". $this->arData[$this->release]);
+      error_log("Verify Flowby value = $flowby");
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {
          $pan_evap = $this->state['et_in'];

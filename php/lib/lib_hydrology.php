@@ -7532,12 +7532,17 @@ class hydroImpoundment extends hydroObject {
       //       in that case, we copy the release variable from the hysroImp_small into the state as flowby 
       // this is crazy and convoluted and should be fixed by ID'ing any reservoirs with a 
       //        either flowby subcomps or inputs that really control release and renaming them.
-        if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
-           $release = $this->state['flowby']; // assumed to be in cfs
-        } else {
-           $release = 0;
-        }
-      //}
+      $release = 0;
+      if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
+         $release = $this->state['flowby']; // assumed to be in cfs
+      }
+      if ( isset($this->state['release']) and (is_numeric($this->state['release'])) ) {
+         $release = $this->state['release']; // assumed to be in cfs
+      }
+      // this code is the better way, using a "release" variable which should ALSO be supported
+      // release variable should always override flowby since it is the new method.  
+      // Lake anna is the only standalone impoundment with both a "flowby" and "release"
+      // variable, and flowy = release in that case so it is covered.
       error_log("Release var: $this->release = ". $this->arData[$this->release]);
       error_log("Verify Flowby value = $release");
       // maintain backward compatibility with old ET nomenclature

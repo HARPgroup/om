@@ -7511,6 +7511,8 @@ class hydroImpoundment extends hydroObject {
       // now we will execute our local sub-comps to process any data obtained from children via broadcast
       // execute sub-components
       $this->execProcessors();
+      error_log("Release var: $this->release = ". $this->arData[$this->release]);
+      error_log("Verify Flowby value = $flowby");
       
       if ($this->debug) {
          $this->logDebug("Step Begin state[] array contents " . print_r($this->state,1) . " <br>\n");
@@ -15453,8 +15455,6 @@ class hydroImpSmall extends hydroImpoundment {
       } else {
          $flowby = 0;
       }
-      //error_log("Release var: $this->release = ". $this->arData[$this->release]);
-      error_log("Verify Flowby value = $flowby");
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {
          $pan_evap = $this->state['et_in'];

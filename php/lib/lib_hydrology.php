@@ -15399,7 +15399,7 @@ class hydroImpSmall extends hydroImpoundment {
       // now, overwrite crucial variables from parent to this objects state array
       foreach ($this->rvars as $thisvar) {
          if ($thisvar == 'release') {
-            // we set both flowby amd release to this since the old standalone component
+            // we set both "flowby" and "release" to this since the old standalone component
             // code recognizes flowby as te variable to release.  Since these small subcomp
             // impoundments use the standalone step() metohd code when risers are disabled 
             // we set the flowby value as well as the release value in the state table.  

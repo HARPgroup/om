@@ -2490,6 +2490,21 @@ class modelObject {
     while (count($queue) > 0) {
        $thisdepend = array_shift($queue);
        $pvars = $this->processors[$thisdepend]->vars;
+       // handle rvars.  Is there a better way at the subcomp level?
+       // shouldn't vars already have this?
+       if (is_array($this->processors[$thisdepend]->rvars) and !empty($this->processors[$thisdepend]->rvars) ){
+         $dbg = array();
+         foreach ($this->processors[$thisdepend]->rvars as $varstring) {
+           if (property_exists($this->processors[$thisdepend], $varstring)) {
+             if (!empty($this->processors[$thisdepend]->{$varstring})) {
+               $pvars[] = $this->processors[$thisdepend]->{$varstring};
+               $dbg[] = $this->processors[$thisdepend]->{$varstring};
+             }
+           }
+         }
+         error_log("Adding to dependency for $thisdepend: " . print_r($dbg,1));
+         $pvars = array_unique($pvars);
+       }
        //$watchlist = array('impoundment', 'local_channel');
        //$this->debug = in_array( $this->processors[$depend]->name, $watchlist) ? 1 : 0;
        if ($this->debug) {
@@ -7526,11 +7541,29 @@ class hydroImpoundment extends hydroObject {
       $demand = $this->state['demand']; // assumed to be in MGD
       $refill = $this->state['refill']; // assumed to be in MGD
       $discharge = $this->state['discharge']; // assumed to be in MGD
+      // In original method of doing this we recognized flowby as the release variable
+      // so we support that.  This should never be used.
+      // Note: this code is used also by the hydroImp_small component if the riser option is OFF.
+      //       in that case, we copy the release variable from the hysroImp_small into the state as flowby 
+      // this is crazy and convoluted and should be fixed by ID'ing any reservoirs with a 
+      //        either flowby subcomps or inputs that really control release and renaming them.
+      //        see issue where we do that: https://github.com/HARPgroup/vahydro/issues/719
+      $release = 0;
       if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
-         $flowby = $this->state['flowby']; // assumed to be in cfs
-      } else {
-         $flowby = 0;
+         $release = $this->state['flowby']; // assumed to be in cfs
       }
+      // this checks for release subcomps on a standalone impoundment 
+      if ( isset($this->state['release']) and (is_numeric($this->state['release'])) ) {
+         $release = $this->state['release']; // assumed to be in cfs
+      }
+      // this checks for release input on a subcomp impoundment
+      if ( isset($this->arData['release']) and (is_numeric($this->arData['release'])) ) {
+         $release = $this->arData['release']; // assumed to be in cfs
+      }
+      // this code is the better way, using a "release" variable which should ALSO be supported
+      // release variable should always override flowby since it is the new method.  
+      // Lake anna is the only standalone impoundment with both a "flowby" and "release"
+      // variable, and flowy = release in that case so it is covered.
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {
          $pan_evap = $this->state['et_in'];
@@ -7592,22 +7625,22 @@ class hydroImpoundment extends hydroObject {
       // change in storage
       if ($this->debug) {
          $this->logDebug("Calculating Volume Change: storechange = S0 + ((Qin - flowby) * dt / 43560.0)+ (1.547 * refill * dt / 43560.0) - (1.547 * demand * dt /  43560.0) - (evap_acfts * dt) + (precip_acfts * dt); <br>\n");
-         $this->logDebug(" :::: $storechange = $S0 + (($Qin - $flowby) * $dt / 43560.0)+ (1.547 * $refill * $dt / 43560.0) - (1.547 * $demand * $dt /  43560.0) - ($evap_acfts * $dt) + ($precip_acfts * $dt); <br>\n");
+         $this->logDebug(" :::: $storechange = $S0 + (($Qin - $release) * $dt / 43560.0)+ (1.547 * $refill * $dt / 43560.0) - (1.547 * $demand * $dt /  43560.0) - ($evap_acfts * $dt) + ($precip_acfts * $dt); <br>\n");
       }
-      $storechange = $S0 + (($Qin - $flowby) * $dt / 43560.0) + (1.547 * $discharge * $dt / 43560.0)  + (1.547 * $refill * $dt / 43560.0) - (1.547 * $demand * $dt /  43560.0) - ($evap_acfts * $dt) + ($precip_acfts * $dt);
+      $storechange = $S0 + (($Qin - $release) * $dt / 43560.0) + (1.547 * $discharge * $dt / 43560.0)  + (1.547 * $refill * $dt / 43560.0) - (1.547 * $demand * $dt /  43560.0) - ($evap_acfts * $dt) + ($precip_acfts * $dt);
       if ($storechange < 0) {
          // what to do with flowby & wd?
          // if storechange is less than zero, its magnitude represents the deficit of flowby+demand
          // we can either choose to evenly distribute them or assume that demand wins
          $deficit_acft = abs($storechange);
-         $s_avail = (1.547 * $demand * $dt /  43560.0) + ($flowby * $dt /  43560.0) - $deficit_acft;
+         $s_avail = (1.547 * $demand * $dt /  43560.0) + ($release * $dt /  43560.0) - $deficit_acft;
          if ($s_avail <= (1.547 * $demand * $dt /  43560.0)) {
             // no water available for flowby
-            $flowby = 0.0;
+            $release = 0.0;
             $demand_met_mgd = $s_avail * 43560.0 / (1.547 * $dt);
          } else {
             // flowby is remainder
-            $flowby = ($s_avail - (1.547 * $demand * $dt /  43560.0)) * 43560.0 / $dt;
+            $release = ($s_avail - (1.547 * $demand * $dt /  43560.0)) * 43560.0 / $dt;
             $demand_met_mgd = $demand;
          }
          $storechange = 0;
@@ -7627,7 +7660,7 @@ class hydroImpoundment extends hydroObject {
       if (isset($this->processors['Qout'])) {
          $Qout = $this->state['Qout']; // we have subclassed this witha stage-discharge relationship or oher
       } else {
-         $Qout = $spill + $flowby;
+         $Qout = $spill + $release;
       }
       
       // local unit conversion dealios
@@ -7655,6 +7688,7 @@ class hydroImpoundment extends hydroObject {
       $this->state['depth'] = $stage;
       $this->state['Storage'] = $Storage;
       $this->state['spill'] = $spill;
+      $this->state['release'] = $release;
       $this->state['area'] = $area;
       $this->state['evap_acfts'] = $evap_acfts;
       $this->state['storage_mg'] = $Storage / 3.07;
@@ -15389,6 +15423,10 @@ class hydroImpSmall extends hydroImpoundment {
       // now, overwrite crucial variables from parent to this objects state array
       foreach ($this->rvars as $thisvar) {
          if ($thisvar == 'release') {
+            // we set both "flowby" and "release" to this since the old standalone component
+            // code recognizes flowby as te variable to release.  Since these small subcomp
+            // impoundments use the standalone step() metohd code when risers are disabled 
+            // we set the flowby value as well as the release value in the state table.  
             $this->setStateVar('flowby',$this->arData['release']);
             $this->setStateVar('flowby',$this->arData[$this->release]);
             if ($this->debug) {

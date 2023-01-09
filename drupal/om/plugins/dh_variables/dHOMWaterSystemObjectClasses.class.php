@@ -41,7 +41,7 @@ class dHOMwaterSupplyModelNode extends dHOMModelElement {
         'featureid' => $entity->identifier(),
         'varname' => 'riverseg',
         'vardesc' => 'riverseg.',
-        'varid' => dh_varkey2varid('om_class_textField', TRUE),
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
       ), 
       'run_mode' => array(
         'entity_type' => $entity->entityType(),

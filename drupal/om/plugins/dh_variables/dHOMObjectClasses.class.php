@@ -1760,16 +1760,8 @@ class dHOMEquation extends dHOMSubComp {
       $entity->propname => array(
         'id' => $entity->pid, 
         'name' => $entity->propname, 
-        'default' => array(
-          'name' => 'default',
-          'object_class' => 'textField',
-          'value' => $entity->propvalue
-        ), 
-        'equation' => array(
-          'name' => 'equation',
-          'object_class' => 'textField',
-          'value' =>  $entity->propcode
-        ), 
+        'default' => $entity->propvalue,
+        'equation' => $entity->propcode, 
       )
     );
     return $export;

@@ -36,7 +36,7 @@ class dHOMHydroObject extends dHOMModelElement {
         'featureid' => $entity->identifier(),
         'varname' => 'riverseg',
         'vardesc' => 'riverseg.',
-        'varid' => dh_varkey2varid('om_class_textField', TRUE),
+        'varid' => dh_varkey2varid('om_class_AlphanumericConstant', TRUE),
       ), 
       'area' => array(
         'entity_type' => $entity->entityType(),

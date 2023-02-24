@@ -2173,7 +2173,7 @@ class modelObject {
                 $sqldfp = fopen($this->outdir . "/" . 'def.' . $this->componentid . "." . $this->runid . ".sql",'w');
                 fwrite($sqldfp, $createsql);
                 $this->debugstring = '';
-                fclose($dfp);
+                fclose($sqldfp);
              }
           //}
        } else {

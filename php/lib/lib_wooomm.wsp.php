@@ -1176,6 +1176,7 @@ class wsp_conservation extends modelSubObject {
    var $custom_cons_var = '';
    var $status_var = 'drought_status';
    var $name = 'conservation';
+   var $value_dbcolumntype = 'float8';
    
 
    function showEditForm($formname, $disabled=0) {

@@ -2600,6 +2600,7 @@ class dHOMDataMatrix extends dHOMSubComp {
     $form['eval_type']["#description"] = "How to evaluate the variables. For type 'equation' the variable will be evaluated as an equation each time-step, then stored as type numeric in the database.";
     $dbtypes = array(
       "auto",
+      "float8",
       "numeric",
       "varchar(32)",
       "varchar(64)",

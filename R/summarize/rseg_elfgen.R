@@ -333,6 +333,13 @@ elfgen_huc <- function(
     vahydro_post_metric_to_scenprop(prop_huc$pid, 'erom_q0001e_mean', code_out, 'erom_q0001e_mean', outlet_flow, ds)
 
     #Elf$plot post - posted underneath elfgen_richness_change_huc_level scenario property------------
+    dR10 <- richness_change(elf$stats, "pctchg" = 10)
+    # -0.3140797
+    dR20 <- richness_change(elf$stats, "pctchg" = 20)
+    # -0.6651909
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'om_class_Constant', NULL, 'dNT_10pct', dR10, ds)
+    vahydro_post_metric_to_scenprop(prop_huc$pid, 'om_class_Constant', NULL, 'dNT_20pct', dR20, ds)
+    
 
   } else {
     print("NOT POSTING PROPERTIES TO VAHYDRO")

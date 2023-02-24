@@ -2170,7 +2170,7 @@ class modelObject {
                $this->reportstring .= "Runtime Table SQL: " . $createsql . "\n\n<br>";
                  // write the SQL def 
                 $sqldfp = fopen($this->outdir . "/" . 'def.' . $this->componentid . "." . $this->runid . ".sql",'w');
-                fwrite($dfp, $createsql);
+                fwrite($sqldfp, $createsql);
                 $this->debugstring = '';
                 fclose($dfp);
              }

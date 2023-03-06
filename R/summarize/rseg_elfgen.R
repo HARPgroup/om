@@ -121,7 +121,7 @@ elfgen_huc <- function(
 
   #MORE EFFICIENT SQL
   outlet_nhdplus_segment <-sqldf("select * from nhdplus_df ORDER BY propvalue DESC LIMIT 1")
-  # print(outlet_nhdplus_segment)
+  print(outlet_nhdplus_segment)
   hydroid_out <- outlet_nhdplus_segment$hydroid
   code_out <- outlet_nhdplus_segment$hydrocode
   rseg.name <- outlet_nhdplus_segment$Containing_Feature_Name

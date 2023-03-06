@@ -249,6 +249,8 @@ elfgen_huc <- function(
   prop_huc <- RomProperty$new(ds, inputs, TRUE)
   prop_huc$save(TRUE)
 
+  print(prop_huc)
+  
   #Scenario Property posts
   if (post_props == 'YES'){
     print("POSTING PROPERTIES TO VAHYDRO...")

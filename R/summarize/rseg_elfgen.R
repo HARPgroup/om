@@ -121,6 +121,7 @@ elfgen_huc <- function(
   nhdplus_df <- read.csv(file=nhdplus_views, header=TRUE, sep=",")
   #hydroid_out <-sqldf("select hydroid from nhdplus_df where propvalue in (select max(propvalue) from nhdplus_df)")
 
+  print(paste("length(nhdplus_df): ", length(nhdplus_df)))
   print(paste("nhdplus_df: ", nhdplus_df))
   
   #MORE EFFICIENT SQL

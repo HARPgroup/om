@@ -116,13 +116,37 @@ elfgen_huc <- function(
 
   #Determines watershed outlet nhd+ segment and hydroid
   nhdplus_views <- paste(site,'dh-feature-containing-export', hydroid, 'watershed/nhdplus/nhdp_drainage_sqmi',  sep = '/')
-  print(paste("nhdplus_views: ", nhdplus_views))
+  # print(paste("nhdplus_views: ", nhdplus_views))
   
   nhdplus_df <- read.csv(file=nhdplus_views, header=TRUE, sep=",")
   #hydroid_out <-sqldf("select hydroid from nhdplus_df where propvalue in (select max(propvalue) from nhdplus_df)")
 
-  print(paste("length(nhdplus_df): ", length(nhdplus_df)))
-  print(paste("nhdplus_df: ", nhdplus_df))
+  print(paste("length(nhdplus_df): ", length(nhdplus_df[,1])))
+  # print(paste("nhdplus_df: ", nhdplus_df))
+  
+  
+  if (dataset == 'IchthyMaps'){
+    dataname='Ichthy'
+  }else{
+    dataname='EDAS'
+  }
+  # prevents error "Error in if (is.na(config[[i]])) { : argument is of length zero"
+  # error caused when no nhdplus segs are returned -> often for location outside of VA
+  if(length(nhdplus_df[,1]) < 1) {
+    inputs <- list(
+      varkey = 'om_class_Constant',
+      propname = paste('elfgen_', dataname,'_', huc_level, sep=''),
+      entity_type = 'dh_properties',
+      bundle = "dh_properties",
+      # propcode = watershed.code
+      propcode = NULL,
+      featureid = scenprop$pid,
+      propvalue = 9999)
+    prop_huc <- RomProperty$new(ds, inputs, TRUE)
+    prop_huc$save(TRUE)
+    stop("No nhdplus segment found for this location")
+  }
+  
   
   #MORE EFFICIENT SQL
   outlet_nhdplus_segment <-sqldf("select * from nhdplus_df ORDER BY propvalue DESC LIMIT 1")
@@ -233,11 +257,11 @@ elfgen_huc <- function(
   #   featureid = scenprop$pid)
   # prop_huc<-getProperty(inputs, site)
 
-  if (dataset == 'IchthyMaps'){
-    dataname='Ichthy'
-  }else{
-    dataname='EDAS'
-  }
+  # if (dataset == 'IchthyMaps'){
+  #   dataname='Ichthy'
+  # }else{
+  #   dataname='EDAS'
+  # }
 
   inputs <- list(
     varkey = 'om_class_Constant',

@@ -116,12 +116,15 @@ elfgen_huc <- function(
 
   #Determines watershed outlet nhd+ segment and hydroid
   nhdplus_views <- paste(site,'dh-feature-containing-export', hydroid, 'watershed/nhdplus/nhdp_drainage_sqmi',  sep = '/')
+  print(paste("nhdplus_views: ", nhdplus_views))
+  
   nhdplus_df <- read.csv(file=nhdplus_views, header=TRUE, sep=",")
   #hydroid_out <-sqldf("select hydroid from nhdplus_df where propvalue in (select max(propvalue) from nhdplus_df)")
 
+  print(paste("nhdplus_df: ", nhdplus_df))
+  
   #MORE EFFICIENT SQL
   outlet_nhdplus_segment <-sqldf("select * from nhdplus_df ORDER BY propvalue DESC LIMIT 1")
-  print(outlet_nhdplus_segment)
   hydroid_out <- outlet_nhdplus_segment$hydroid
   code_out <- outlet_nhdplus_segment$hydrocode
   rseg.name <- outlet_nhdplus_segment$Containing_Feature_Name

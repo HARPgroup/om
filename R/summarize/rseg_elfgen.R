@@ -112,7 +112,7 @@ elfgen_huc <- function(
   quantile <- 0.8
   yaxis_thresh <- 53
 
-  post_props <- 'YES' #HELPFUL TO SET TO 'NO' DURING TESTING
+  # post_props <- 'YES' #HELPFUL TO SET TO 'NO' DURING TESTING
 
   #Determines watershed outlet nhd+ segment and hydroid
   nhdplus_views <- paste(site,'dh-feature-containing-export', hydroid, 'watershed/nhdplus/nhdp_drainage_sqmi',  sep = '/')
@@ -319,7 +319,7 @@ elfgen_huc <- function(
   
   
   #Scenario Property posts
-  if (post_props == 'YES'){
+  # if (post_props == 'YES'){
     print("POSTING PROPERTIES TO VAHYDRO...")
 
     # if (dataset == 'IchthyMaps'){
@@ -413,9 +413,9 @@ elfgen_huc <- function(
     vahydro_post_metric_to_scenprop(prop_huc$pid, 'om_class_Constant', NULL, 'dNT_20pct', dR20, ds)
     
 
-  } else {
-    print("NOT POSTING PROPERTIES TO VAHYDRO")
-  }
+  # } else {
+  #   print("NOT POSTING PROPERTIES TO VAHYDRO")
+  # }
 
   #Elf$plot saving functions
 

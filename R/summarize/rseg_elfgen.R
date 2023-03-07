@@ -280,9 +280,21 @@ elfgen_huc <- function(
   prop_huc <- RomProperty$new(ds, inputs, TRUE)
   prop_huc$save(TRUE)
 
-  print(prop_huc)
   
-  print(paste("prop_huc$pid ",prop_huc$pid,sep=""))
+  prop_huc<- RomProperty$new(
+    ds,
+    list(
+      propname=paste('elfgen_', dataname,'_', huc_level, sep=''),
+      featureid = scenprop$pid,
+      varkey = 'om_class_Constant'
+    ),
+    TRUE
+  )
+  
+  
+  # print(prop_huc)
+  # 
+  # print(paste("prop_huc$pid ",prop_huc$pid,sep=""))
   ###################################
   # prop_huc <- RomProperty$new(
   #   ds,

@@ -265,6 +265,8 @@ elfgen_huc <- function(
   #   dataname='EDAS'
   # }
 
+  print(paste("prop_huc$pid ",prop_huc$pid,sep=""))
+  
   inputs <- list(
     varkey = 'om_class_Constant',
     propname = paste('elfgen_', dataname,'_', huc_level, sep=''),

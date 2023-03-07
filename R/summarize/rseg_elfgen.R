@@ -309,11 +309,15 @@ elfgen_huc <- function(
     ),
     TRUE
   )
-  if (is.na(prop_huc$pid)) {
-    prop_huc$propname = paste('elfgen_', dataname,'_', huc_level, sep='')
-    prop_huc$varid = ds$get_vardef('om_class_Constant')$varid
-    prop_huc$save(TRUE)
-  }
+  prop_huc$save(TRUE)
+  # if (is.na(prop_huc$pid)) {
+  #   prop_huc$propname = paste('elfgen_', dataname,'_', huc_level, sep='')
+  #   prop_huc$varid = ds$get_vardef('om_class_Constant')$varid
+  #   prop_huc$save(TRUE)
+  # }
+  
+  props <- RomProperty$new(ds, list(pid=scenprop$pid), TRUE)
+  print(props)
   ###################################
   
   

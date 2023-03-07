@@ -299,28 +299,46 @@ elfgen_huc <- function(
   ###################################
   print("I made it here, before posting property")
   
-  prop_huc <- RomProperty$new(
-    ds,
-    list(
-      varkey = 'om_class_Constant',
-      propname = paste('elfgen_', dataname,'_', huc_level, sep=''),
-      entity_type = 'dh_properties',
-      bundle = "dh_properties",
-      propcode = watershed.code,
-      featureid = scenprop$pid,
-      propvalue = NULL
-    ),
-    TRUE
-  )
-  prop_huc$save(TRUE)
+  # prop_huc <- RomProperty$new(
+  #   ds,
+  #   list(
+  #     varkey = 'om_class_Constant',
+  #     propname = paste('elfgen_', dataname,'_', huc_level, sep=''),
+  #     entity_type = 'dh_properties',
+  #     bundle = "dh_properties",
+  #     propcode = watershed.code,
+  #     featureid = scenprop$pid,
+  #     propvalue = NULL
+  #   ),
+  #   TRUE
+  # )
+  # prop_huc$save(TRUE)
   # if (is.na(prop_huc$pid)) {
   #   prop_huc$propname = paste('elfgen_', dataname,'_', huc_level, sep='')
   #   prop_huc$varid = ds$get_vardef('om_class_Constant')$varid
   #   prop_huc$save(TRUE)
   # }
   
+  #----------------------------
+  elfgen_container <- RomProperty$new(
+    ds, list(
+      varkey="om_class_Constant", 
+      featureid=scenprop$pid,
+      entity_type='dh_properties',
+      propname = 'test'
+    ),
+    TRUE
+  )
+  
+  elfgen_container$propcode <- as.character('test')
+  elfgen_container$save(TRUE)
+  
+  #----------------------------
+  
   print("I made it here, after posting property")
   
+  # props <- RomProperty$new(ds, list(featureid=scenprop$pid), TRUE)
+  # print(props)
   props <- RomProperty$new(ds, list(featureid=scenprop$pid), TRUE)
   print(props)
   print("I made it here, after print props property")

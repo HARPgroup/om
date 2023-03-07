@@ -409,6 +409,6 @@ elfgen_huc <- function(
       vahydro_post_metric_to_scenprop(prop_huc$pid, 'dh_image_file', furl, 'fig.elfgen', 0.0, ds)
   }
 
-  print('DONE')
-  return('DONE')
+  print('elf plot generated')
+  return(confidence$plot)
 }

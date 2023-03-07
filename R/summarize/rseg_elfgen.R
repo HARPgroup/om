@@ -471,10 +471,10 @@ elfgen_huc <- function(
   print(fname)
   ggsave(fname, plot = confidence$plot, width = 7, height = 5.5)
 
-  if (post_props == 'YES'){
+  # if (post_props == 'YES'){
       print(paste("Saved file: ", fname, "with URL", furl))
       vahydro_post_metric_to_scenprop(prop_huc$pid, 'dh_image_file', furl, 'fig.elfgen', 0.0, ds)
-  }
+  # }
 
   print('elf plot generated')
   return(confidence$plot)

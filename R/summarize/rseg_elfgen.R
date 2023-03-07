@@ -146,8 +146,8 @@ elfgen_huc <- function(
     prop_huc <- RomProperty$new(ds, inputs, TRUE)
     prop_huc$save(TRUE)
     # stop("No nhdplus segment found for this location")
-    # print('No nhdplus segment found for this location')
-    return('No nhdplus segment found for this location')
+    print('No nhdplus segment found for this location')
+    return(NULL)
   }
   
   

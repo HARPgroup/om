@@ -331,7 +331,8 @@ elfgen_huc <- function(
     TRUE
   )
   
-  elfgen_container$propcode <- as.character('test')
+  # elfgen_container$propcode <- as.character('test')
+  elfgen_container$propcode <- as.character(watershed.code)
   elfgen_container$save(TRUE)
   # prop_huc <- elfgen_container
   #----------------------------

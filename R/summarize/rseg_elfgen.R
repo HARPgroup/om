@@ -265,7 +265,6 @@ elfgen_huc <- function(
   #   dataname='EDAS'
   # }
 
-  print(paste("prop_huc$pid ",prop_huc$pid,sep=""))
   
   inputs <- list(
     varkey = 'om_class_Constant',
@@ -275,6 +274,9 @@ elfgen_huc <- function(
     propcode = watershed.code,
     featureid = scenprop$pid,
     propvalue = NULL)
+  
+  print(paste("inputs ",inputs,sep=""))
+  
   prop_huc <- RomProperty$new(ds, inputs, TRUE)
   prop_huc$save(TRUE)
 

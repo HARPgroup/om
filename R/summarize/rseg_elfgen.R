@@ -140,10 +140,11 @@ elfgen_huc <- function(
       bundle = "dh_properties",
       propcode = 'no nhdplus found',
       featureid = scenprop$pid,
+      # featureid = 7019894,
       propvalue = NULL)
     prop_huc <- RomProperty$new(ds, inputs, TRUE)
     prop_huc$save(TRUE)
-
+    # stop("No nhdplus segment found for this location")
     print('No nhdplus segment found for this location')
     return(NULL)
   }
@@ -276,6 +277,30 @@ elfgen_huc <- function(
   prop_huc$save(TRUE)
 
   print(prop_huc)
+  
+  print(paste("prop_huc$pid ",prop_huc$pid,sep=""))
+  ###################################
+  # prop_huc <- RomProperty$new(
+  #   ds,
+  #   list(
+  #     varkey = 'om_class_Constant',
+  #     propname = paste('elfgen_', dataname,'_', huc_level, sep=''),
+  #     entity_type = 'dh_properties',
+  #     bundle = "dh_properties",
+  #     propcode = watershed.code,
+  #     featureid = scenprop$pid,
+  #     propvalue = NULL
+  #   ), 
+  #   TRUE
+  # )
+  # if (is.na(prop_huc$pid)) {
+  #   prop_huc$propname = paste('elfgen_', dataname,'_', huc_level, sep='')
+  #   prop_huc$varid = ds$get_vardef('om_class_Constant')$varid
+  #   prop_huc$save(TRUE)
+  # }
+  ###################################
+  
+  
   
   #Scenario Property posts
   if (post_props == 'YES'){

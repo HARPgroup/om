@@ -319,8 +319,11 @@ elfgen_huc <- function(
   #   prop_huc$save(TRUE)
   # }
   
-  props <- RomProperty$new(ds, list(pid=scenprop$pid), TRUE)
+  print("I made it here, after posting property")
+  
+  props <- RomProperty$new(ds, list(featureid=scenprop$pid), TRUE)
   print(props)
+  print("I made it here, after print props property")
   ###################################
   
   

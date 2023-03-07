@@ -242,7 +242,8 @@ elfgen_huc <- function(
                 "xlabel" = "Mean Annual Flow (ft3/s)",
                 "ylabel" = "Fish Species Richness")
 
-
+  print("I made it here, before confidence")
+  
   confidence <- elfgen_confidence(elf,rseg.name,outlet_flow,yaxis_thresh,cuf)
 
   # if (dataset == 'IchthyMaps'){
@@ -296,6 +297,8 @@ elfgen_huc <- function(
   # 
   # print(paste("prop_huc$pid ",prop_huc$pid,sep=""))
   ###################################
+  print("I made it here, before posting property")
+  
   prop_huc <- RomProperty$new(
     ds,
     list(

@@ -332,7 +332,7 @@ elfgen_huc <- function(
   
   elfgen_container$propcode <- as.character('test')
   elfgen_container$save(TRUE)
-  
+  prop_huc <- elfgen_container
   #----------------------------
   
   print("I made it here, after posting property")

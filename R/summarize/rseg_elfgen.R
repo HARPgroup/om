@@ -133,18 +133,36 @@ elfgen_huc <- function(
   # prevents error "Error in if (is.na(config[[i]])) { : argument is of length zero"
   # error caused when no nhdplus segs are returned -> often for location outside of VA
   if(length(nhdplus_df[,1]) < 1) {
-    inputs <- list(
-      varkey = 'om_class_Constant',
-      propname = paste('elfgen_', dataname,'_', huc_level, sep=''),
-      entity_type = 'dh_properties',
-      bundle = "dh_properties",
-      propcode = 'no nhdplus found',
-      featureid = scenprop$pid,
-      # featureid = 7019894,
-      propvalue = NULL)
-    elfgen_container <- RomProperty$new(ds, inputs, TRUE)
-    elfgen_container$save(TRUE)
+    # inputs <- list(
+    #   varkey = 'om_class_Constant',
+    #   propname = paste('elfgen_', dataname,'_', huc_level, sep=''),
+    #   entity_type = 'dh_properties',
+    #   bundle = "dh_properties",
+    #   propcode = 'no nhdplus found',
+    #   featureid = scenprop$pid,
+    #   # featureid = 7019894,
+    #   propvalue = NULL)
+    # elfgen_container <- RomProperty$new(ds, inputs, TRUE)
+    # elfgen_container$save(TRUE)
     # stop("No nhdplus segment found for this location")
+    
+    
+    #----------------------------
+    elfgen_container <- RomProperty$new(
+      ds, list(
+        varkey="om_class_Constant", 
+        featureid=scenprop$pid,
+        entity_type='dh_properties',
+        propname = as.character(paste('elfgen_', dataname,'_', huc_level, sep=''))
+      ),
+      TRUE
+    )
+    
+    # elfgen_container$propcode <- as.character('test')
+    elfgen_container$propcode <- as.character('no nhdplus found')
+    elfgen_container$save(TRUE)
+    # prop_huc <- elfgen_container
+    #----------------------------
     print('No nhdplus segment found for this location')
     return(NULL)
   }

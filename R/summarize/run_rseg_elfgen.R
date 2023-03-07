@@ -1,47 +1,148 @@
-#----------------------------------------------
-site <- "http://deq2.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
-#----------------------------------------------
-# Load Libraries
+# TEST 1 (has enough data)
 basepath='/var/www/R';
-
-source(paste(basepath,'config.R', sep='/'))
+source("/var/www/R/config.R")
 source(paste(om_location,'R/summarize','rseg_elfgen.R',sep='/'))
-library(stringr)
-library(sqldf)
-library(elfgen)
-library(ggplot2)
 
-# dirs/URLs
-save_directory <- "/var/www/html/data/proj3/out"
+ds <- RomDataSource$new(site, rest_uname = rest_uname)
+ds$get_token(rest_pw)
 
-#------------------------------------------------
-#Inputs
+model_scenario <- RomProperty$new(
+  ds,
+  list(
+    featureid=6993101, 
+    entity_type="dh_properties", 
+    propcode="hsp2_2022"
+  ), 
+  TRUE
+)
 
-# Sample inputs
+scenario_name <- "hsp2_2022"
+rseg_hydroid <- 605598
+huc_level <- "huc8"
+Dataset <- "VAHydro-EDAS"
+# model_scenario <- 
+# ds <- 
+# image_dir <- "/media/model/p6/out/river/hsp2_2022/images/"
+image_dir <-"C:/Users/nrf46657/Desktop/GitHub/om/R/summarize/tmp/"
+# save_url <- "http://deq1.bse.vt.edu:81/p6/out/river/hsp2_2022/images"
+save_url <- image_dir
+site <- "http://deq1.bse.vt.edu/d.dh"
 
-# riv_seg <- 'PS3_5990_6161' #PS3_5990_6161' #'TU4_8680_8810' 'TU3_9040_9180' random examples for practice
-# runid<-11
-# pid <- get.overall.vahydro.prop(riv_seg, site = site, token = token)
-# huc_level<- 'huc8'
-# dataset <- 'VAHydro-EDAS' #'VAHydro-EDAS' or 'IchthyMaps'
 
-# Read Args
-argst <- commandArgs(trailingOnly=T)
-pid <- as.integer(argst[1])
-runid <- as.integer(argst[2])
-huc_level <- as.character(argst[3])
-dataset <- as.character(argst[4])
+elfgen_result <- purrr::safely(
+  elfgen_huc(
+    runid = scenario_name,
+    hydroid = rseg_hydroid,
+    huc_level = huc_level,
+    dataset = Dataset,
+    scenprop = model_scenario,
+    ds = ds,
+    save_directory = image_dir,
+    save_url = save_url,
+    site = site
+  )
+)
 
-# #MANUAL TEST
-# pid <- as.integer(4713658)
-# runid <- as.integer(11)
-# huc_level <- as.character("huc8")
-# dataset <- as.character("VAHydro-EDAS")
-#
-inputs<-list(pid=pid)
-property<-getProperty(inputs, site)
-hydroid<-property$featureid
 
-elfgen_location <- paste0('/opt/model/elfgen')
+runid = scenario_name
+hydroid = rseg_hydroid
+huc_level = huc_level
+dataset = Dataset
+scenprop = model_scenario
+ds = ds
+save_directory = image_dir
+save_url = save_url
+site = site
 
-elfgen_huc(runid, hydroid, huc_level, dataset)
+
+################################################################
+################################################################
+# TEST 2 (does not have enough data)
+basepath='/var/www/R';
+source("/var/www/R/config.R")
+source(paste(om_location,'R/summarize','rseg_elfgen.R',sep='/'))
+
+ds <- RomDataSource$new(site, rest_uname = rest_uname)
+ds$get_token(rest_pw)
+
+model_scenario <- RomProperty$new(
+  ds,
+  list(
+    featureid=7019952, 
+    entity_type="dh_properties", 
+    propcode="hsp2_2022"
+  ), 
+  TRUE
+)
+
+scenario_name <- "hsp2_2022"
+rseg_hydroid <- 605512
+huc_level <- "huc8"
+Dataset <- "VAHydro-EDAS"
+image_dir <-"C:/Users/nrf46657/Desktop/GitHub/om/R/summarize/tmp/"
+save_url <- image_dir
+site <- "http://deq1.bse.vt.edu/d.dh"
+
+elfgen_huc(
+  runid = scenario_name,
+  hydroid = rseg_hydroid,
+  huc_level = huc_level,
+  dataset = Dataset,
+  scenprop = model_scenario,
+  ds = ds,
+  save_directory = image_dir,
+  save_url = save_url,
+  site = site
+)
+
+
+################################################################
+################################################################
+# TEST 3 (no nhdplus found)
+basepath='/var/www/R';
+source("/var/www/R/config.R")
+source(paste(om_location,'R/summarize','rseg_elfgen.R',sep='/'))
+
+ds <- RomDataSource$new(site, rest_uname = rest_uname)
+ds$get_token(rest_pw)
+
+model_scenario <- RomProperty$new(
+  ds,
+  list(
+    featureid=7019886, 
+    entity_type="dh_properties", 
+    propcode="hsp2_2022"
+  ), 
+  TRUE
+)
+
+scenario_name <- "hsp2_2022"
+rseg_hydroid <- 605610
+huc_level <- "huc8"
+Dataset <- "VAHydro-EDAS"
+image_dir <-"C:/Users/nrf46657/Desktop/GitHub/om/R/summarize/tmp/"
+save_url <- image_dir
+site <- "http://deq1.bse.vt.edu/d.dh"
+
+elfgen_huc(
+  runid = scenario_name,
+  hydroid = rseg_hydroid,
+  huc_level = huc_level,
+  dataset = Dataset,
+  scenprop = model_scenario,
+  ds = ds,
+  save_directory = image_dir,
+  save_url = save_url,
+  site = site
+)
+
+# 
+# runid = scenario_name
+# hydroid = rseg_hydroid
+# huc_level = huc_level
+# dataset = Dataset
+# scenprop = model_scenario
+# ds = ds
+# save_directory = image_dir
+# save_url = save_url
+# site = site

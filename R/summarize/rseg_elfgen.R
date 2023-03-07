@@ -230,14 +230,44 @@ elfgen_huc <- function(
     watershed.df <- clean_vahydro(watershed.df)
   }
 
-  elf <- elfgen("watershed.df" = watershed.df,
-                "quantile" = quantile,
-                "breakpt" = breakpt,
-                "yaxis_thresh" = yaxis_thresh,
-                "xlabel" = "Mean Annual Flow (ft3/s)",
-                "ylabel" = "Fish Species Richness")
+  #######################################################
+  # run elfgen (with tryCatch to capture any errors originating from elfgen)
+  an.error.occured <- FALSE
+  tryCatch({
+    elf <- elfgen(
+      "watershed.df" = watershed.df,
+      "quantile" = quantile,
+      "breakpt" = breakpt,
+      "yaxis_thresh" = yaxis_thresh,
+      "xlabel" = "Mean Annual Flow (ft3/s)",
+      "ylabel" = "Fish Species Richness"
+    )
+    # print(elfgen_result)
+  }
+  , error = function(e) {
+    an.error.occured <<- e
+  })
 
-  print("I made it here, before confidence")
+  # log errors that originate from within elfgen package functions
+  if(!isFALSE(an.error.occured)) {
+    
+    elfgen_container <- RomProperty$new(
+      ds, list(
+        varkey="om_class_Constant", 
+        featureid=scenprop$pid,
+        entity_type='dh_properties',
+        propname = as.character(paste('elfgen_', dataname,'_', huc_level, sep=''))
+      ),
+      TRUE
+    )
+    elfgen_container$propcode <- as.character(an.error.occured$message)
+    elfgen_container$save(TRUE)
+    
+    print(an.error.occured)
+    return("NULL")
+  } 
+  #######################################################
+  
   
   confidence <- elfgen_confidence(elf,rseg.name,outlet_flow,yaxis_thresh,cuf)
 

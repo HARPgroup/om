@@ -140,11 +140,14 @@ elfgen_huc <- function(
       bundle = "dh_properties",
       # propcode = watershed.code
       propcode = NULL,
-      featureid = scenprop$pid,
+      # featureid = scenprop$pid,
+      featureid = 7019894,
       propvalue = 9999)
     prop_huc <- RomProperty$new(ds, inputs, TRUE)
     prop_huc$save(TRUE)
-    stop("No nhdplus segment found for this location")
+    # stop("No nhdplus segment found for this location")
+    print('No nhdplus segment found for this location')
+    return('No nhdplus segment found for this location')
   }
   
   
@@ -407,4 +410,5 @@ elfgen_huc <- function(
   }
 
   print('DONE')
+  return('DONE')
 }

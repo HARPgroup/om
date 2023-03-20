@@ -39,4 +39,5 @@ drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_prop
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid release_current
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid release_historic
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid release_proposed
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "adj_demand_mgd_local_rsvr|adj_demand_mgd"
 

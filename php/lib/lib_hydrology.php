@@ -63,7 +63,7 @@ class modelObject {
   var $logtable = array();
   var $log_geom = 0; // save space in the log by NOT logging the geometry column
   var $lookups = array();
-  var $processors = array();
+  var $processors = array(); // aka sub-components 
   var $execlist = array();
   var $loglist = array();
   var $column_defs = null;

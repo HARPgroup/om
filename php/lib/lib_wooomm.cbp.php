@@ -197,6 +197,10 @@ class CBPLandDataConnectionBase extends XMLDataConnection {
                      }
                   }
                }
+            } else {
+              if ($this->timer->steps <= 2) {
+                error_log("Could not locate luname: $luname at year $thisyear in: " . print_r($lumatrix,1)); 
+              }
             }
          }
          $Qafps = $Qout / ($area_ac * 43560.0);

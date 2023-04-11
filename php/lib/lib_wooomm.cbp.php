@@ -82,6 +82,7 @@ class CBPLandDataConnectionBase extends XMLDataConnection {
       }
       // execute sub-components
       $this->execProcessors();
+      error_log("$this->name step() at step $this->timer->steps" );       
       if ($this->debug) {
          $this->logDebug("<b>$this->name Sub-processors executed at hour " . $this->state['hour'] . " on " . $this->state['thisdate'] . " week " . $this->state['week'] . " month " . $this->state['month'] . ".</b><br>\n");
       }

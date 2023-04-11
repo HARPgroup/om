@@ -213,6 +213,7 @@ class CBPLandDataConnectionBase extends XMLDataConnection {
           // }
            
          }
+         error_log("$this->name step() at step $this->timer->steps" ); 
          $Qafps = $Qout / ($area_ac * 43560.0);
          if ($this->debug) {
             $this->logdebug("Qout = $Qout <br>\n");

@@ -135,7 +135,8 @@ class CBPLandDataConnectionBase extends XMLDataConnection {
          if (($landuse_var == 'landuse_current') and !isset($this->processors['landuse_current']) ) {
             $landuse_matrix = $this->processors['landuse_historic'];
             $luyear = $this->current_lu_year;
-      */      
+      */   
+      error_log("$this->name step() at step $this->timer->steps" );       
       if ( isset($this->processors[$landuse_var]) ) {
          $landuse_matrix = $this->processors[$landuse_var];
          // get the values for the land uses
@@ -213,7 +214,7 @@ class CBPLandDataConnectionBase extends XMLDataConnection {
           // }
            
          }
-         error_log("$this->name step() at step $this->timer->steps" ); 
+         
          $Qafps = $Qout / ($area_ac * 43560.0);
          if ($this->debug) {
             $this->logdebug("Qout = $Qout <br>\n");

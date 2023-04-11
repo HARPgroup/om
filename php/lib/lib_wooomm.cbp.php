@@ -81,8 +81,7 @@ class CBPLandDataConnectionBase extends XMLDataConnection {
          $this->logDebug("$this->name Inputs obtained. thisdate = " . $this->state['thisdate']);
       }
       // execute sub-components
-      $this->execProcessors();
-      error_log("$this->name step() at step $this->timer->steps" );       
+      $this->execProcessors(); 
       if ($this->debug) {
          $this->logDebug("<b>$this->name Sub-processors executed at hour " . $this->state['hour'] . " on " . $this->state['thisdate'] . " week " . $this->state['week'] . " month " . $this->state['month'] . ".</b><br>\n");
       }
@@ -136,8 +135,7 @@ class CBPLandDataConnectionBase extends XMLDataConnection {
          if (($landuse_var == 'landuse_current') and !isset($this->processors['landuse_current']) ) {
             $landuse_matrix = $this->processors['landuse_historic'];
             $luyear = $this->current_lu_year;
-      */   
-      error_log("$this->name step() at step $this->timer->steps" );       
+      */     
       if ( isset($this->processors[$landuse_var]) ) {
          $landuse_matrix = $this->processors[$landuse_var];
          // get the values for the land uses
@@ -204,16 +202,6 @@ class CBPLandDataConnectionBase extends XMLDataConnection {
                 error_log("Could not locate luname: $luname at year $thisyear in: " . print_r($lumatrix,1)); 
               }
             }
-         }
-         if (!($luarea > 0)) {
-          // if ($this->timer->steps <= 2) {
-             error_log("area_sqmi resolved to 0.0 in lu_matrix:" . print_r($lumatrix,1)); 
-           //}
-         } else {
-           //if ($this->timer->steps <= 2) {
-             error_log("area_sqmi resolved to $luarea at timestep $this->timer->steps" ); 
-          // }
-           
          }
          
          $Qafps = $Qout / ($area_ac * 43560.0);
@@ -792,6 +780,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       }
       // execute sub-components
       $this->execProcessors();
+      //error_log("$this->name step() at step $this->timer->steps" );      
       if ($this->debug) {
          $this->logDebug("<b>$this->name Sub-processors executed at hour " . $this->state['hour'] . " on " . $this->state['thisdate'] . " week " . $this->state['week'] . " month " . $this->state['month'] . ".</b><br>\n");
       }
@@ -856,9 +845,9 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
          $lumatrix = $landuse_matrix->matrix_formatted;
          foreach ($lumatrix as $luname=>$values) {
             $luarea = $landuse_matrix->evaluateMatrix($luname, $thisyear);
-if ($this->timer->steps < 2) {
-  error_log("$luname = $luarea at $thisyear");
-}
+            if ($this->timer->steps < 2) {
+              error_log("$luname = $luarea at $thisyear");
+            }
             if (is_numeric($luarea)) {
                if ($this->debug) {
                   $this->logDebug("Found Land use $luname with area $luarea<br>\n");
@@ -910,6 +899,10 @@ if ($this->timer->steps < 2) {
                      }
                   }
                }
+            } else {
+              if ($this->timer->steps <= 2) {
+                error_log("$luarea non-numeric for luname: $luname at year $thisyear in: " . print_r($lumatrix,1)); 
+              }
             }
          }
          $Qafps = $Qout / ($area_ac * 43560.0);
@@ -918,9 +911,21 @@ if ($this->timer->steps < 2) {
             $this->logdebug("luarea = $luarea <br>\n");
             $this->logdebug("Qafps = $Qout / ($area_ac * 43560.0) <br>\n");
          }
+         if (!($luarea > 0)) {
+           if ($this->timer->steps <= 2) {
+             error_log("area_sqmi resolved to 0.0 in lu_matrix:" . print_r($lumatrix,1)); 
+           }
+         } else {
+           if ($this->timer->steps <= 2) {
+             error_log("area_sqmi resolved to $luarea at timestep $this->timer->steps" ); 
+           }
+         }
       } else {
          if ($this->debug) {
             $this->logdebug("landuse sub-component not found <br>\n");
+            error_log("$this->name: landuse sub-component not found <br>\n");
+         }
+         if ($this->timer->steps <= 2) {
             error_log("$this->name: landuse sub-component not found <br>\n");
          }
       }

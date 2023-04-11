@@ -204,13 +204,13 @@ class CBPLandDataConnectionBase extends XMLDataConnection {
             }
          }
          if (!($luarea > 0)) {
-           if ($this->timer->steps <= 2) {
+          // if ($this->timer->steps <= 2) {
              error_log("area_sqmi resolved to 0.0 in lu_matrix:" . print_r($lumatrix,1)); 
-           }
+           //}
          } else {
-           if ($this->timer->steps <= 2) {
+           //if ($this->timer->steps <= 2) {
              error_log("area_sqmi resolved to $luarea at timestep $this->timer->steps" ); 
-           }
+          // }
            
          }
          $Qafps = $Qout / ($area_ac * 43560.0);

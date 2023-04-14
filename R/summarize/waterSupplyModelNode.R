@@ -139,8 +139,11 @@ if (imp_off == 0) {
     if (!("ps_cumulative_mgd" %in% cols)) {
       dat$ps_cumulative_mgd <- 0.0
     }
+    # a litle different than impoundment, since we want to evaluate refill storage
+    # during short simulations this may appear to be consumption, but is temporary 
+    # detention.  so we take Qin, then add back upstream withdrawals only
     dat$Qbaseline <- dat$impoundment_Qin +
-      (dat$wd_cumulative_mgd - dat$ps_cumulative_mgd) * 1.547
+      (dat$wd_cumulative_mgd - dat$wd_mgd - dat$ps_cumulative_mgd) * 1.547
   }
 }
 

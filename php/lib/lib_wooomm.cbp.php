@@ -917,7 +917,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
            }
          } else {
            if ($this->timer->steps <= 2) {
-             error_log("area_sqmi resolved to $luarea at timestep $this->timer->steps" ); 
+             error_log("area_sqmi resolved to $luarea at timestep " . $this->timer->steps ); 
            }
          }
       } else {

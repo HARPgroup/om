@@ -911,7 +911,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
             $this->logdebug("luarea = $luarea <br>\n");
             $this->logdebug("Qafps = $Qout / ($area_ac * 43560.0) <br>\n");
          }
-         if (!($luarea > 0)) {
+         if (!($area_ac > 0)) {
            if ($this->timer->steps <= 2) {
              error_log("area_sqmi resolved to 0.0 in lu_matrix:" . print_r($lumatrix,1)); 
            }

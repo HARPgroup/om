@@ -3,7 +3,7 @@
 $plugin = array(
   'label' => t('OM Component Class - USGSGageObject'),
   'handler' =>  array(
-    'class' => 'dHOM_USGSGageObject',
+    'class' => 'dHOM_USGSGageSubComp',
     'file' => 'dHOMHelperClasses.class.php',
   ),
   'variable' =>  array(

@@ -66,6 +66,7 @@ class modelObject {
   var $processors = array(); // aka sub-components 
   var $execlist = array();
   var $loglist = array();
+  var $logsql = "";
   var $column_defs = null;
   var $data_cols = array(); // this will be used to populate the log list
   var $arData = array(); // subs for state array in other objects (parent object)
@@ -1982,7 +1983,7 @@ class modelObject {
        }
        $createsql = $this->listobject->array2tmpTable($this->logtable, $this->dbtblname, $columns, $this->dbcolumntypes, 1, $this->bufferlog);
        if ( ($this->timer->steps <= 1) and $this->debug ) {
-          $this->logDebug("Table creatiopn SQL: " . $createsql . "<br>");
+          $this->logDebug("Table creation SQL: " . $createsql . "<br>");
        }
     } else {
        $this->logDebug("List object not set.<br>");
@@ -2157,6 +2158,7 @@ class modelObject {
           }
 
           $createsql = $this->listobject->array2tmpTable(array($thislog), $this->dbtblname, array_keys($thislog), $this->dbcolumntypes, 1, $this->bufferlog);
+          $this->logsql = $createsql;
 
           // always log table creation sql cause why not?
           //if ($this->debug) {

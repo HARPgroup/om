@@ -4,7 +4,7 @@ $plugin = array(
   'label' => t('OM USGS Recharge Object'),
   'handler' =>  array(
     'class' => 'dHOMUSGSRecharge',
-    'file' => 'dHOMWaterSystemObjectClasses.class.php',
+    'file' => 'dHOMObjectHydrologyClasses.class.php',
   ),
   'variable' =>  array(
     'varname' => 'OM USGS Recharge Object',

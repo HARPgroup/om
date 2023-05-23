@@ -7425,6 +7425,7 @@ class hydroImpoundment extends hydroObject {
       $this->setSingleDataColumnType('release', 'float8',0);
       $this->setSingleDataColumnType('maxcapacity', 'float8',0);
       $this->setSingleDataColumnType('refill_full_mgd', 'float8',0);
+      $this->setSingleDataColumnType('spill', 'float8',0);
    }
 
    function init() {
@@ -7666,7 +7667,7 @@ class hydroImpoundment extends hydroObject {
          $Storage = 0.0;
       }
       if (isset($this->processors['Qout'])) {
-         $Qout = $this->state['Qout']; // we have subclassed this witha stage-discharge relationship or oher
+         $Qout = $this->state['Qout']; // we have subclassed this with a stage-discharge relationship or other
       } else {
          $Qout = $spill + $release;
       }

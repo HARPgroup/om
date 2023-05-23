@@ -98,6 +98,19 @@ if (is.na(storage_pct)) {
   usable_pct_p50 <- usable_pcts["50%"]
 }
 
+
+impoundment_days_remaining <- mean(as.numeric(dat$days_remaining) )
+if (is.na(impoundment_days_remaining)) {
+  remaining_days_p0 <- 0
+  remaining_days_p10 <- 0
+  remaining_days_p50 <- 0
+} else {
+  remaining_days = quantile(as.numeric(dat$days_remaining), c(0,0.1,0.5) )
+  remaining_days_p0 <- remaining_days["0%"]
+  remaining_days_p10 <- remaining_days["10%"]
+  remaining_days_p50 <- remaining_days["50%"]
+}
+
 # post em up
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_mgd', wd_mgd, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_mgd', ps_mgd, ds)
@@ -107,6 +120,10 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qin', 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p0', usable_pct_p0, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p10', usable_pct_p10, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'usable_pct_p50', usable_pct_p50, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p0', remaining_days_p0, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p10', remaining_days_p10, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remaining_days_p50', remaining_days_p50, ds)
+
 
 # Dat for Critical Period
 flows <- zoo(dat$Qin, order.by = index(dat));

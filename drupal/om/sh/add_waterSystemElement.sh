@@ -25,8 +25,8 @@ if [ $# -gt 6 ]; then
 fi 
 
 # create the element
-echo "drush scr modules/om/src/om_copy_subcomp.php cmd $template_entity_type $template_entity_id $entity_type $entity_id \"$src_propname|$system_name\"" >&2
-drush scr modules/om/src/om_copy_subcomp.php cmd $template_entity_type $template_entity_id $entity_type $entity_id "$src_propname|$system_name"
+echo "drush scr modules/om/src/om_copy_subcomp.php cmd $template_entity_type $template_entity_id $entity_type $entity_id \"$src_propname|$system_name\" 1" >&2
+drush scr modules/om/src/om_copy_subcomp.php cmd $template_entity_type $template_entity_id $entity_type $entity_id "$src_propname|$system_name" 1
 echo "pid=`drush scr modules/om/src/om_getpid.php $entity_type $entity_id \"$system_name\"`" >&2
 pid=`drush scr modules/om/src/om_getpid.php $entity_type $entity_id "$system_name"`
 

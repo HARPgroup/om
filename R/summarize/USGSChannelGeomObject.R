@@ -65,3 +65,11 @@ if (is.na(Rmean)) {
   Rmean = 0.0
 }
 Qout_meanprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qout_mean', Qout_mean, ds)
+
+# 7q10 -- also requires PearsonDS packages
+x7q10 <- fn_iha_7q10(flows)
+
+if (is.na(x7q10)) {
+  x7q10 = 0.0
+}
+vahydro_post_metric_to_scenprop(scenprop$pid, '7q10', NULL, '7q10', x7q10, ds)

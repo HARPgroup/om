@@ -66,6 +66,20 @@ if (is.na(Rmean)) {
 }
 Qout_meanprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qout_mean', Qout_mean, ds)
 
+flows <- zoo(as.numeric(as.character( dat$Qout )), order.by = index(dat));
+# convert to daily
+flows <- aggregate(
+  flows,
+  as.POSIXct(
+    format(
+      time(flows),
+      format='%Y/%m/%d'),
+    tz='UTC'
+  ),
+  'mean'
+)
+
+
 # 7q10 -- also requires PearsonDS packages
 x7q10 <- fn_iha_7q10(flows)
 

@@ -18,8 +18,8 @@ elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
 
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE);
-syear = min(dat$year)
-eyear = max(dat$year)
+syear = as.integer(min(dat$year))
+eyear = as.integer(max(dat$year))
 if (syear < (eyear - 2)) {
   sdate <- as.Date(paste0(syear,"-10-01"))
   edate <- as.Date(paste0(eyear,"-09-30"))

@@ -7558,11 +7558,11 @@ class hydroImpoundment extends hydroObject {
       //        either flowby subcomps or inputs that really control release and renaming them.
       //        see issue where we do that: https://github.com/HARPgroup/vahydro/issues/719
       $release = 0;
-      if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
+      if ( isset($this->processors['flowby']) and (is_numeric($this->state['flowby'])) ) {
          $release = $this->state['flowby']; // assumed to be in cfs
       }
       // this checks for release subcomps on a standalone impoundment 
-      if ( isset($this->state['release']) and (is_numeric($this->state['release'])) ) {
+      if ( isset($this->processors['release']) and (is_numeric($this->state['release'])) ) {
          $release = $this->state['release']; // assumed to be in cfs
       }
       // this checks for release input on a subcomp impoundment

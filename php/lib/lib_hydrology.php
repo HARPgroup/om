@@ -7411,10 +7411,12 @@ class hydroImpoundment extends hydroObject {
       $this->prop_desc['et_in'] = 'Evapotrasnpiration Input (inches / day)';
       $this->prop_desc['precip_in'] = 'Precipitation (inches / day)';
       $this->prop_desc['evap_mgd'] = 'Calculated rate of evaporation off the lakes surface (MGD).';
+      $this->prop_desc['precip_mgd'] = 'Calculated rate of precipitation on the lakes surface (MGD).';
       $this->prop_desc['demand_met_mgd'] = 'Demand actually satisified (MGD).';
       $this->prop_desc['deficit_acft'] = 'Storage needed to meet desired demand if deficit (acft).';
       $this->setSingleDataColumnType('lake_elev', 'float8',0);
       $this->setSingleDataColumnType('evap_mgd', 'float8',0);
+      $this->setSingleDataColumnType('precip_mgd', 'float8',0);
       $this->setSingleDataColumnType('et_in', 'float8',0);
       $this->setSingleDataColumnType('precip_in', 'float8',0);
       $this->setSingleDataColumnType('pct_use_remain', 'float8',0);
@@ -7447,6 +7449,7 @@ class hydroImpoundment extends hydroObject {
       $this->state['precip_in'] = NULL;
       $this->state['et_in'] = NULL;
       $this->state['evap_mgd'] = 0.0;
+      $this->state['precip_mgd'] = 0.0;
       $this->state['use_remain_mg'] = 0.0;
       $this->state['demand_met_mgd'] = 0.0;
       $this->state['deficit_acft'] = 0.0;
@@ -7474,6 +7477,7 @@ class hydroImpoundment extends hydroObject {
       $this->state['lake_elev'] = 0.0;
       $this->state['pct_use_remain'] = 1.0;
       $this->state['evap_mgd'] = 0.0;
+      $this->state['precip_mgd'] = 0.0;
       $this->state['days_remaining'] = 0.0;
       $this->state['demand_met_mgd'] = 0.0;
       $this->state['deficit_acft'] = 0.0;
@@ -7674,6 +7678,7 @@ class hydroImpoundment extends hydroObject {
       
       // local unit conversion dealios
       $this->state['evap_mgd'] = $evap_acfts * 28157.7;
+      $this->state['precip_mgd'] = $precip_acfts * 28157.7;
       $this->state['pct_use_remain'] = ($Storage - $this->state['unusable_storage']) / ($this->state['maxcapacity'] - $this->state['unusable_storage']);
       $this->state['use_remain_mg'] = ($Storage - $this->state['unusable_storage']) / 3.07;
       if ($this->state['use_remain_mg'] < 0) {
@@ -15240,7 +15245,7 @@ class hydroImpSmall extends hydroImpoundment {
       parent::setState();
       $this->rvars = array('et_in','precip_in','release','demand', 'Qin', 'refill');
       // since this is a subcomp need to explicitly declare which write on parent
-      $this->wvars = array('Qin', 'evap_mgd','Qout','lake_elev','Storage', 'refill_full_mgd', 'demand', 'use_remain_mg', 'days_remaining', 'max_usable', 'riser_stage', 'riser_head', 'riser_mode', 'riser_flow', 'riser_diameter', 'demand_met_mgd', 'its', 'spill', 'release', 'area', 'refill');
+      $this->wvars = array('Qin', 'evap_mgd', 'precip_mgd','Qout','lake_elev','Storage', 'refill_full_mgd', 'demand', 'use_remain_mg', 'days_remaining', 'max_usable', 'riser_stage', 'riser_head', 'riser_mode', 'riser_flow', 'riser_diameter', 'demand_met_mgd', 'its', 'spill', 'release', 'area', 'refill');
       
       $this->initOnParent();
    }
@@ -15632,6 +15637,7 @@ class hydroImpSmall extends hydroImpoundment {
       
       // local unit conversion dealios
       $this->state['evap_mgd'] = $evap_acfts * 28157.7;
+      $this->state['precip_mgd'] = $precip_acfts * 28157.7;
       $this->state['pct_use_remain'] = ($Storage - $this->state['unusable_storage']) / ($this->state['maxcapacity'] - $this->state['unusable_storage']);
       $this->state['use_remain_mg'] = ($Storage - $this->state['unusable_storage']) / 3.07;
       if ($this->state['use_remain_mg'] < 0) {

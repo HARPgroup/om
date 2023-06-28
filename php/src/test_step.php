@@ -1,7 +1,3 @@
-<html>
-<body>
-<h3>Test Model Run</h3>
-
 <?php
 
 
@@ -23,6 +19,12 @@ $debug = 0;
 
 $steps = 2;
 error_log("argv" . print_r($argv,1));
+$subcomp = '';
+
+if (count($argv) <= 3){
+  error_log("Usage: php test_step.php modelid runid targetid [steps] [subcomp]");
+  exit;
+}
 if (count($argv) > 3) {
   $modelid = $argv[1]; // the model container 
   $runid = $argv[2]; // the model container 
@@ -30,6 +32,9 @@ if (count($argv) > 3) {
 }
 if (count($argv) > 4) {
   $steps = $argv[4]; // the element to test 
+}
+if (count($argv) > 5) {
+  $subcomp = $argv[5]; // the subcomp to test 
 }
 
 global $modeldb, $listobject, $tmpdir, $shellcopy, $ucitables, $scenarioid, $outdir, $outurl, $goutdir, $gouturl, $unserobjects, $adminsetuparray, $wdm_messagefile, $basedir, $model_startdate, $model_enddate;
@@ -53,8 +58,12 @@ error_log("Target info ($targetid) = " . get_class($target) . ' ' . $target->nam
 for ($i = 1; $i <= $steps ; $i++) {
   $model->step();
   error_log("State for " . $target->name . print_r($target->state,1));
+  if ($subcomp <> '') {
+    error_log("arData and state for $subcomp" );
+    error_log("arData:" . print_r($target->processors[$subcomp]->arData,1) );
+    error_log("state:" . print_r($target->processors[$subcomp]->state,1) );
+  }
 }
-
 
 
 ?>

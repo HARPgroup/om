@@ -15502,10 +15502,8 @@ class hydroImpSmall extends hydroImpoundment {
       $discharge = $this->state['discharge']; // assumed to be in MGD
       if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
          $flowby = $this->state['flowby']; // assumed to be in cfs
-         error_log("State flowby is set and is_numeric")
       } else {
          $flowby = 0;
-         error_log("FLOWBY set to 0.0 : State flowby is " . . "and is_numeric = " . is_numeric($this->state['flowby']));
       }
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {

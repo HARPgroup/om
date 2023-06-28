@@ -7570,8 +7570,8 @@ class hydroImpoundment extends hydroObject {
          $release = $this->state['release']; // assumed to be in cfs
       }
       // this checks for release input on a subcomp impoundment
-      if ( isset($this->arData['release']) and (is_numeric($this->arData['release'])) ) {
-         $release = $this->arData['release']; // assumed to be in cfs
+      if ( isset($this->state['release']) and (is_numeric($this->state['release'])) ) {
+         $release = $this->state['release']; // assumed to be in cfs
       }
       // this code is the better way, using a "release" variable which should ALSO be supported
       // release variable should always override flowby since it is the new method.  
@@ -15438,10 +15438,10 @@ class hydroImpSmall extends hydroImpoundment {
       foreach ($this->rvars as $thisvar) {
          if ($thisvar == 'release') {
             // we set both "flowby" and "release" to this since the old standalone component
-            // code recognizes flowby as te variable to release.  Since these small subcomp
+            // code recognizes flowby as the variable to release.  Since these small subcomp
             // impoundments use the standalone step() metohd code when risers are disabled 
             // we set the flowby value as well as the release value in the state table.  
-            $this->setStateVar('flowby',$this->arData['release']);
+            $this->setStateVar('release',$this->arData[$this->release]);
             $this->setStateVar('flowby',$this->arData[$this->release]);
             if ($this->debug) {
                $this->logDebug("Setting variable 'flowby' to parent value for release: " . $this->arData[$this->$thisvar] . "<br>");
@@ -15502,8 +15502,10 @@ class hydroImpSmall extends hydroImpoundment {
       $discharge = $this->state['discharge']; // assumed to be in MGD
       if ( isset($this->state['flowby']) and (is_numeric($this->state['flowby'])) ) {
          $flowby = $this->state['flowby']; // assumed to be in cfs
+         error_log("State flowby is set and is_numeric")
       } else {
          $flowby = 0;
+         error_log("FLOWBY set to 0.0 : State flowby is " . . "and is_numeric = " . is_numeric($this->state['flowby']));
       }
       // maintain backward compatibility with old ET nomenclature
       if (!($this->state['et_in'] === NULL)) {

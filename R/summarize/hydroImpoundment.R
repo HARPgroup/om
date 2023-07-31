@@ -35,7 +35,7 @@ cols <- names(dat)
 if ("imp_off" %in% cols) {
   imp_off <- as.integer(median(dat$imp_off))
 } else {
-  # imp_off is NOT in the coks, so impoundment must be active
+  # imp_off is NOT in the cols, so impoundment must be active
   # therefore, we assume that the impoundment is active by intention
   # and that it is a legacy that lacked the imp_off convention
   imp_off = 0
@@ -87,7 +87,7 @@ if (is.na(Qout)) {
   Qout = 0.0
 }
 storage_pct <- mean(as.numeric(dat$pct_use_remain) )
-if (is.na(storage_pct)) {
+if (is.na(storage_pct) || (imp_off == 1)) {
   usable_pct_p0 <- 0
   usable_pct_p10 <- 0
   usable_pct_p50 <- 0
@@ -100,7 +100,7 @@ if (is.na(storage_pct)) {
 
 
 impoundment_days_remaining <- mean(as.numeric(dat$days_remaining) )
-if (is.na(impoundment_days_remaining)) {
+if (is.na(impoundment_days_remaining) || (imp_off == 1)) {
   remaining_days_p0 <- 0
   remaining_days_p10 <- 0
   remaining_days_p50 <- 0

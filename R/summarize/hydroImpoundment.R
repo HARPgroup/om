@@ -110,8 +110,10 @@ if (is.na(impoundment_days_remaining) || (imp_off == 1)) {
   remaining_days_p10 <- remaining_days["10%"]
   remaining_days_p50 <- remaining_days["50%"]
 }
+imp_enabled <- as.numeric(!(0 || imp_off))
 
 # post em up
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'imp_enabled', imp_enabled, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'wd_mgd', wd_mgd, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_mgd', ps_mgd, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'evap_mgd', evap_mgd, ds)

@@ -55,6 +55,10 @@ $target = $target['object'];
 error_log("All Objects " . array_keys($unserobjects,1));
 error_log("Model Objects " . array_keys($model->components,1));
 error_log("Target info ($targetid) = " . get_class($target) . ' ' . $target->name);
+if ($subcomp <> '') {
+  $target->processors[$subcomp]->debug = 1;
+}
+
 for ($i = 1; $i <= $steps ; $i++) {
   $model->step();
   error_log("State for " . $target->name . print_r($target->state,1));
@@ -64,6 +68,6 @@ for ($i = 1; $i <= $steps ; $i++) {
     error_log("state:" . print_r($target->processors[$subcomp]->state,1) );
   }
 }
-
-
+#$model->finish()
+$model->systemLog("Finished Test Run",0);
 ?>

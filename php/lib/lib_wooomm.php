@@ -5633,7 +5633,11 @@ if (is_object($parentobject)) {
          $split = $timer->startSplit();
          $innerHTML .= "<b>debug:</b> split time = $split <br>";
       }
+      
       $elemtype = get_class($thisobject);
+      // try getParentProps() instead of duplicative code
+      getParentProps($thisobject, $parentobject, $adminsetuparray)
+      /*
       # get the shell properties for this WHO object type
       $whotemplate = getWHOXML($elemtype);
       $pproptypes = $whotemplate['parentprops'];
@@ -5673,6 +5677,8 @@ if (is_object($parentobject)) {
             $innerHTML .= "$thispname -&lt; $thisptype = " . print_r($parent_props, 1) . "asrec = ($aslist) " . $asparams . "<br>";
          }
       }
+      // end test replace duplicative code
+      */
       // run the create() function if this is a new object
       if (($compid == 0)) {
          //error_log("Calling create() method for new object ");

@@ -5637,48 +5637,6 @@ if (is_object($parentobject)) {
       $elemtype = get_class($thisobject);
       // try getParentProps() instead of duplicative code
       getParentProps($thisobject, $parentobject, $adminsetuparray);
-      /*
-      # get the shell properties for this WHO object type
-      $whotemplate = getWHOXML($elemtype);
-      $pproptypes = $whotemplate['parentprops'];
-      //$innerHTML .= print_r($pproptypes,1);
-      foreach ($pproptypes as $thispname => $thisptype) {
-         // getASPropsFromParent() is called to populate select lists on a sub-comp
-         // with all the readable properties on the parent object, including 
-         // sub-objects with expoed properties.
-         // This is used by operatorEditForm() and 
-         $asparams = getASPropsFromParent($elemtype, $parentobject, $thispname, $thisptype, $adminsetuparray, $thisobject->debug);
-          if ($thisobject->name == 'release_tier5') {
-             error_log("Modified Params for $thispname: $asparams<br>");
-          }
-         if ($thisobject->debug) {
-            $innerHTML .= "Modified Params for $thispname: $asparams<br>";
-            //error_log("Modified Params for $thispname: $asparams");
-         }
-         if ($debug) {
-            //$innerHTML .= "Original Admin Info for $elemtype:<br>" . print_r($adminsetuparray[$elemtype],1) . "<br>";
-         }
-         # now, look for formats to copy, include any linked child formats (for meta descriptors)
-         if (isset($adminsetuparray[$elemtype]['column info'][$thispname])) {
-            if ($thisobject->debug) {
-               error_log("Updating adminsetup params for $thispname ");
-            }
-            $adminsetuparray[$elemtype]['column info'][$thispname]['params'] = $asparams;
-         }
-         if (isset($adminsetuparray[$elemtype]['table info']['child_formats'])) {
-            foreach ($adminsetuparray[$elemtype]['table info']['child_formats'] as $thisformat) {
-               if (isset($adminsetuparray[$thisformat]['column info'][$thispname])) {
-                  $adminsetuparray[$thisformat]['column info'][$thispname]['params'] = $asparams;
-               }
-            }
-         }
-         # DONE - updating formats
-         if ($debug) {
-            $innerHTML .= "$thispname -&lt; $thisptype = " . print_r($parent_props, 1) . "asrec = ($aslist) " . $asparams . "<br>";
-         }
-      }
-      // end test replace duplicative code
-      */
       // run the create() function if this is a new object
       if (($compid == 0)) {
          //error_log("Calling create() method for new object ");
@@ -5764,9 +5722,6 @@ function getASPropsFromParent($elemtype, $parentobject, $thispname, $thisptype, 
    if ($debug) {
       $innerHTML .= "Getting property, $thispname, type $thisptype from parent.<br>";
       error_log("getASPropsFromParent ( $thispname, $thisptype ) called.");
-   }
-   if ($thispname == 'tier_var') {
-      error_log("getASPropsFromParent ( $elemtype, $parentobject->name, $thispname, $thisptype ) called.");
    }
    
    if (is_object($parentobject)) {
@@ -8632,9 +8587,6 @@ function getParentProps($thisobject, $parentobject, $adminsetuparray) {
          }
       }
       $asparams = getASPropsFromParent($elemtype, $parentobject, $thispname, $thisptype, $adminsetuparray, $thisobject->debug);
-      if ($thisobject->name == 'release_tier5') {
-         error_log("getParentProps() called getASPropsFromParent() Modified Params for $thispname: $asparams<br>");
-      }
       if ($thisobject->debug) {
          //error_log("Modified Params for $thispname: $asparams<br>");
       }

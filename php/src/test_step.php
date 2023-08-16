@@ -58,16 +58,10 @@ error_log("Model Objects " . array_keys($model->components,1));
 error_log("Target info ($targetid) = " . get_class($target) . ' ' . $target->name);
 for ($i = 1; $i <= $steps ; $i++) {
   $model->step();
-  error_log("State for " . $target->name . print_r($target->state,1));
+  error_log("State for " . $target->name . print_r($target->debugFormat($target->state),1));
   if ($subcomp <> '') {
-    $sv = $target->processors[$subcomp]->state;
-    if (isset($sv['the_geom'])) {
-      $sv['the_geom'] = 'HIDDEN';
-    }
-    $ar = $target->processors[$subcomp]->arData;
-    if (isset($ar['the_geom'])) {
-      $ar['the_geom'] = 'HIDDEN';
-    }
+    $sv = $target->debugFormat($target->processors[$subcomp]->state);
+    $ar = $target->debugFormat($target->processors[$subcomp]->arData);
     error_log("arData and state for $subcomp" );
     error_log("arData:" . print_r($ar,1) );
     error_log("state:" . print_r($sv,1) );

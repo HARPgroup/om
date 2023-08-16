@@ -216,7 +216,7 @@ class modelObject {
 
   }
   
-  function debugFormat(&$var) {
+  function debugFormat($var) {
     if (is_array($var)) {
       // search for needed truncation
       if (isset($var['the_geom'])) {
@@ -226,6 +226,7 @@ class modelObject {
     if (is_string($var)) {
       $var = substr($var, 0, 32);
     }
+    return $var;
   }
   
   function setDBTablePrefix() {

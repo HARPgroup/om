@@ -818,6 +818,7 @@ class wsp_1tierflowby extends wsp_flowby {
        break;
        
        case 'keycol1':
+       case 'tier_var':
          $this->tier_var = $propvalue;
          $this->keycol1 = $propvalue;
          error_log("====> keycol1 (tier_var) = $this->tier_var");
@@ -852,9 +853,10 @@ class wsp_1tierflowby extends wsp_flowby {
       break;
 
       case 'keycol1':
+      case 'tier_var':
        $this->tier_var = $propvalue;
        $this->keycol1 = $propvalue;
-       error_log("====> tier_var = $this->tier_var");
+       error_log("====> keycol1/tier_var = $this->tier_var");
       break;
       
       default:

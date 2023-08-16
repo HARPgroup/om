@@ -890,6 +890,7 @@ class USGSRecharge extends modelSubObject {
    var $r_default = 0.0;
    var $r_q = NULL;
    var $r_last_q = NULL; // for stashing during recharge period while calculating
+   var $r_init = 0; // have we been inside any recharge period yet?
    var $b0 = 0.0; // first regression term
    var $b1 = 0.0; // 2nd regression term
    var $p_lt = NULL; // probability of being greater than desired flow level
@@ -957,6 +958,7 @@ class USGSRecharge extends modelSubObject {
             $this->r_q = array_avg($this->accumulator);
             $this->setStateVar('r_q', $this->r_q);
             $inside = 1;
+            $this->r_init = 1; // mark that we have been here
          } else {
             $this->accumulator = array();
          }
@@ -968,11 +970,16 @@ class USGSRecharge extends modelSubObject {
             $this->r_q = array_avg($this->accumulator);
             $this->setStateVar('r_q', $this->r_q);
             $inside = 1;
+            $this->r_init = 1; // mark that we have been here
          } else {
             $this->accumulator = array();
          }
          break;
       
+      }
+      if ( ($inside == 0) and ($this->r_init == 1)) {
+        $this->r_last_q = $this->r_q;
+        $this->setStateVar('r_last_q', $this->r_last_q);
       }
       $this->setStateVar('inside', $inside);
       if ($this->debug) {

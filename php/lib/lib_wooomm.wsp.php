@@ -706,7 +706,7 @@ class wsp_1tierflowby extends wsp_flowby {
       parent::wake();
       $this->setupMatrix();
       error_log("**********************************");
-      error_log("TIER VAR: $this->tier_var");
+      error_log("$this->name -- TIER VAR: $this->tier_var");
       error_log("**********************************");
       // set up the matrix for this element
    }

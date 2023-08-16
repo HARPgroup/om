@@ -216,7 +216,7 @@ class modelObject {
 
   }
   
-  function debugFormat(&$var) {
+  function debugFormat($var) {
     if (is_array($var)) {
       // search for needed truncation
       if (isset($var['the_geom'])) {
@@ -226,6 +226,7 @@ class modelObject {
     if (is_string($var)) {
       $var = substr($var, 0, 32);
     }
+    return $var;
   }
   
   function setDBTablePrefix() {
@@ -15257,7 +15258,7 @@ class hydroImpSmall extends hydroImpoundment {
       parent::setState();
       $this->rvars = array('et_in','precip_in','release','demand', 'Qin', 'refill');
       // since this is a subcomp need to explicitly declare which write on parent
-      $this->wvars = array('Qin', 'evap_mgd', 'precip_mgd','Qout','lake_elev','Storage', 'refill_full_mgd', 'demand', 'use_remain_mg', 'days_remaining', 'max_usable', 'riser_stage', 'riser_head', 'riser_mode', 'riser_flow', 'riser_diameter', 'demand_met_mgd', 'its', 'spill', 'release', 'area', 'refill');
+      $this->wvars = array('Qin', 'evap_mgd', 'precip_mgd','Qout','lake_elev','Storage', 'refill_full_mgd', 'demand', 'use_remain_mg', 'pct_use_remain', 'days_remaining', 'max_usable', 'riser_stage', 'riser_head', 'riser_mode', 'riser_flow', 'riser_diameter', 'demand_met_mgd', 'its', 'spill', 'release', 'area', 'refill');
       
       $this->initOnParent();
    }

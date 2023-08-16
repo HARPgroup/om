@@ -705,6 +705,9 @@ class wsp_1tierflowby extends wsp_flowby {
    function wake() {
       parent::wake();
       $this->setupMatrix();
+      error_log("**********************************");
+      error_log("$this->name -- TIER VAR: $this->tier_var");
+      error_log("**********************************");
       // set up the matrix for this element
    }
    
@@ -818,7 +821,10 @@ class wsp_1tierflowby extends wsp_flowby {
        break;
        
        case 'keycol1':
+       case 'tier_var':
          $this->tier_var = $propvalue;
+         $this->keycol1 = $propvalue;
+         error_log("====> keycol1 (tier_var) = $this->tier_var");
        break;
        
        default:
@@ -850,8 +856,10 @@ class wsp_1tierflowby extends wsp_flowby {
       break;
 
       case 'keycol1':
+      case 'tier_var':
        $this->tier_var = $propvalue;
-       error_log("====> tier_var = $this->tier_var");
+       $this->keycol1 = $propvalue;
+       error_log("====> keycol1/tier_var = $this->tier_var");
       break;
       
       default:

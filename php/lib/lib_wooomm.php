@@ -5759,6 +5759,9 @@ function getASPropsFromParent($elemtype, $parentobject, $thispname, $thisptype, 
       $innerHTML .= "Getting property, $thispname, type $thisptype from parent.<br>";
       error_log("getASPropsFromParent ( $thispname, $thisptype ) called.");
    }
+   if ($thispname == 'tier_var') {
+      error_log("getASPropsFromParent ( $elemtype, $parentobject->name, $thispname, $thisptype ) called.");
+   }
    
    if (is_object($parentobject)) {
       $parent_props = $parentobject->getPropertyClass(array($thisptype));

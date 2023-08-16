@@ -8626,6 +8626,9 @@ function getParentProps($thisobject, $parentobject, $adminsetuparray) {
          }
       }
       $asparams = getASPropsFromParent($elemtype, $parentobject, $thispname, $thisptype, $adminsetuparray, $thisobject->debug);
+      if ($thisobject->name == 'release_tier5') {
+         error_log("getParentProps() called getASPropsFromParent() Modified Params for $thispname: $asparams<br>");
+      }
       if ($thisobject->debug) {
          //error_log("Modified Params for $thispname: $asparams<br>");
       }

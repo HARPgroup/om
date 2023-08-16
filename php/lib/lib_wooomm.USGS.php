@@ -889,6 +889,7 @@ class USGSRecharge extends modelSubObject {
    var $r_end_day = 100; // julian day of period end
    var $r_default = 0.0;
    var $r_q = NULL;
+   var $r_last_q = NULL; // for stashing during recharge period while calculating
    var $b0 = 0.0; // first regression term
    var $b1 = 0.0; // 2nd regression term
    var $p_lt = NULL; // probability of being greater than desired flow level
@@ -903,9 +904,11 @@ class USGSRecharge extends modelSubObject {
       $this->wvars[] = 'p_gt';
       $this->wvars[] = 'p_lt';
       $this->wvars[] = 'r_q';
+      $this->wvars[] = 'r_last_q';
       $this->state['p_gt'] = 0.0;
       $this->state['p_lt'] = 0.0;
-      $this->state['r_q'] = 0.0;
+      $this->state['r_q'] = $this->r_default;
+      $this->state['r_last_q'] = $this->r_default;
       if ($this->r_start_day < $this->r_end_day) {
          // we have a single calendar year date range
          $this->r_type = 'single';
@@ -926,9 +929,11 @@ class USGSRecharge extends modelSubObject {
       $this->setSingleDataColumnType('p_gt', 'float8', 0.0, 1);
       $this->setSingleDataColumnType('p_lt', 'float8', 0.0, 1);
       $this->setSingleDataColumnType('r_q', 'float8', 0.0, 1);
+      $this->setSingleDataColumnType('r_last_q', 'float8', 0.0, 1);
       $this->state['p_gt'] = 0.0;
       $this->state['p_lt'] = 0.0;
-      $this->state['r_q'] = 0.0;
+      $this->state['r_q'] = $this->r_default;
+      $this->state['r_last_q'] = $this->r_default;
    }
    
    function step() {

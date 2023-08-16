@@ -5639,6 +5639,10 @@ if (is_object($parentobject)) {
       $pproptypes = $whotemplate['parentprops'];
       //$innerHTML .= print_r($pproptypes,1);
       foreach ($pproptypes as $thispname => $thisptype) {
+         // getASPropsFromParent() is called to populate select lists on a sub-comp
+         // with all the readable properties on the parent object, including 
+         // sub-objects with expoed properties.
+         // This is used by operatorEditForm() and 
          $asparams = getASPropsFromParent($elemtype, $parentobject, $thispname, $thisptype, $adminsetuparray, $thisobject->debug);
           if ($thisobject->name == 'release_tier5') {
              error_log("Modified Params for $thispname: $asparams<br>");
@@ -5753,7 +5757,7 @@ if (is_object($parentobject)) {
 function getASPropsFromParent($elemtype, $parentobject, $thispname, $thisptype, $adminsetuparray, $debug) {
    if ($debug) {
       $innerHTML .= "Getting property, $thispname, type $thisptype from parent.<br>";
-      //error_log("getASPropsFromParent ( $thispname, $thisptype ) called.");
+      error_log("getASPropsFromParent ( $thispname, $thisptype ) called.");
    }
    
    if (is_object($parentobject)) {

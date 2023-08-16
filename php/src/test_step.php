@@ -52,17 +52,21 @@ $model->setSessionID();
 $model->init();
 $target = loadModelElement($targetid);
 $target = $target['object'];
-$target->debug = 1;
+if ($subcomp <> '') {
+  $sc = $target->processors[$subcomp];
+  $sc->debug = 1;
+  $sc->debugmode = 1; // prints to stderr
+}
 error_log("All Objects " . array_keys($unserobjects,1));
 error_log("Model Objects " . array_keys($model->components,1));
 error_log("Target info ($targetid) = " . get_class($target) . ' ' . $target->name);
 for ($i = 1; $i <= $steps ; $i++) {
   $model->step();
-  error_log("State for " . $target->name . print_r($target->debugFormat($target->state),1));
+  error_log("State for " . $target->name . "(" . get_class($target) . ") " . print_r($target->debugFormat($target->state),1));
   if ($subcomp <> '') {
-    $sv = $target->debugFormat($target->processors[$subcomp]->state);
-    $ar = $target->debugFormat($target->processors[$subcomp]->arData);
-    error_log("arData and state for $subcomp" );
+    $sv = $target->debugFormat($sc->state);
+    $ar = $target->debugFormat($sc->arData);
+    error_log("arData and state for $subcomp" . "(" . get_class($sc) . ") ");
     error_log("arData:" . print_r($ar,1) );
     error_log("state:" . print_r($sv,1) );
   }

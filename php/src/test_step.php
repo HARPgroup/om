@@ -52,6 +52,7 @@ $model->setSessionID();
 $model->init();
 $target = loadModelElement($targetid);
 $target = $target['object'];
+$target->debug = 1;
 error_log("All Objects " . array_keys($unserobjects,1));
 error_log("Model Objects " . array_keys($model->components,1));
 error_log("Target info ($targetid) = " . get_class($target) . ' ' . $target->name);
@@ -59,9 +60,17 @@ for ($i = 1; $i <= $steps ; $i++) {
   $model->step();
   error_log("State for " . $target->name . print_r($target->state,1));
   if ($subcomp <> '') {
+    $sv = $target->processors[$subcomp]->state;
+    if (isset($sv['the_geom'])) {
+      $sv['the_geom'] = 'HIDDEN';
+    }
+    $ar = $target->processors[$subcomp]->arData;
+    if (isset($ar['the_geom'])) {
+      $ar['the_geom'] = 'HIDDEN';
+    }
     error_log("arData and state for $subcomp" );
-    error_log("arData:" . print_r($target->processors[$subcomp]->arData,1) );
-    error_log("state:" . print_r($target->processors[$subcomp]->state,1) );
+    error_log("arData:" . print_r($ar,1) );
+    error_log("state:" . print_r($sv,1) );
   }
 }
 

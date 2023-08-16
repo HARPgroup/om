@@ -216,6 +216,18 @@ class modelObject {
 
   }
   
+  function debugFormat(&$var) {
+    if (is_array($var)) {
+      // search for needed truncation
+      if (isset($var['the_geom'])) {
+        $var['the_geom'] = 'HIDDEN';
+      }
+    }
+    if (is_string($var)) {
+      $var = substr($var, 0, 32);
+    }
+  }
+  
   function setDBTablePrefix() {
     $this->tblprefix = str_replace($targ, $repl, "tmp$this->componentid" . "_"  . str_pad(rand(1,99), 3, '0', STR_PAD_LEFT) . "_");
   }

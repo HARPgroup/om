@@ -5633,39 +5633,10 @@ if (is_object($parentobject)) {
          $split = $timer->startSplit();
          $innerHTML .= "<b>debug:</b> split time = $split <br>";
       }
+      
       $elemtype = get_class($thisobject);
-      # get the shell properties for this WHO object type
-      $whotemplate = getWHOXML($elemtype);
-      $pproptypes = $whotemplate['parentprops'];
-      //$innerHTML .= print_r($pproptypes,1);
-      foreach ($pproptypes as $thispname => $thisptype) {
-         $asparams = getASPropsFromParent($elemtype, $parentobject, $thispname, $thisptype, $adminsetuparray, $thisobject->debug);
-         if ($thisobject->debug) {
-            $innerHTML .= "Modified Params for $thispname: $asparams<br>";
-            //error_log("Modified Params for $thispname: $asparams");
-         }
-         if ($debug) {
-            //$innerHTML .= "Original Admin Info for $elemtype:<br>" . print_r($adminsetuparray[$elemtype],1) . "<br>";
-         }
-         # now, look for formats to copy, include any linked child formats (for meta descriptors)
-         if (isset($adminsetuparray[$elemtype]['column info'][$thispname])) {
-            if ($thisobject->debug) {
-               error_log("Updating adminsetup params for $thispname ");
-            }
-            $adminsetuparray[$elemtype]['column info'][$thispname]['params'] = $asparams;
-         }
-         if (isset($adminsetuparray[$elemtype]['table info']['child_formats'])) {
-            foreach ($adminsetuparray[$elemtype]['table info']['child_formats'] as $thisformat) {
-               if (isset($adminsetuparray[$thisformat]['column info'][$thispname])) {
-                  $adminsetuparray[$thisformat]['column info'][$thispname]['params'] = $asparams;
-               }
-            }
-         }
-         # DONE - updating formats
-         if ($debug) {
-            $innerHTML .= "$thispname -&lt; $thisptype = " . print_r($parent_props, 1) . "asrec = ($aslist) " . $asparams . "<br>";
-         }
-      }
+      // try getParentProps() instead of duplicative code
+      getParentProps($thisobject, $parentobject, $adminsetuparray);
       // run the create() function if this is a new object
       if (($compid == 0)) {
          //error_log("Calling create() method for new object ");
@@ -5750,7 +5721,7 @@ if (is_object($parentobject)) {
 function getASPropsFromParent($elemtype, $parentobject, $thispname, $thisptype, $adminsetuparray, $debug) {
    if ($debug) {
       $innerHTML .= "Getting property, $thispname, type $thisptype from parent.<br>";
-      //error_log("getASPropsFromParent ( $thispname, $thisptype ) called.");
+      error_log("getASPropsFromParent ( $thispname, $thisptype ) called.");
    }
    
    if (is_object($parentobject)) {

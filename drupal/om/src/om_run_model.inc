@@ -257,6 +257,7 @@ function om_run_model_form_run(&$form, &$form_state) {
   // figure out the run mode
   $status = om_get_model_status($elementid);
   $status = (array)$status;
+  dpm($status);
   $status_flag = $status['status_flag'];
   $element['model_status']['#value'] = $status_flag;
   switch($button) {

@@ -572,14 +572,14 @@ function mathProcessor2( $sEquation, $arData, $eqobject, $debug = 0) {
         //$result = @$expression->evaluate();
         $result = $expression->evaluate();
       } catch (Math_Expression_Exception_Fatal $e) {
-        error_log( 'Error in Component:',  $eqobject->name);
+        error_log( 'Error in Component:' . $eqobject->name);
         error_log( 'Source Equation:' . $orig);
         error_log( 'Error Executing Equation:',  $sEquation);
         error_log( 'arSorted:' . print_r(debugFormat($arSorted),1));
         error_log( 'Caught exception: ',  $e->getMessage());
       }
       if ($result === FALSE) {
-        error_log( 'Error in Component:',  $eqobject->name);
+        error_log( 'Error in Component:' . $eqobject->name);
         error_log( 'Source Equation:' . $orig);
         error_log( 'Math_Expression returned FALSE for Equation:' . $sEquation);
         error_log( 'arSorted:' . print_r(debugFormat($arSorted),1));

@@ -60,6 +60,10 @@ if ($subcomp <> '') {
 error_log("All Objects " . array_keys($unserobjects,1));
 error_log("Model Objects " . array_keys($model->components,1));
 error_log("Target info ($targetid) = " . get_class($target) . ' ' . $target->name);
+if ($subcomp <> '') {
+  $target->processors[$subcomp]->debug = 1;
+}
+
 for ($i = 1; $i <= $steps ; $i++) {
   $model->step();
   error_log("State for " . $target->name . "(" . get_class($target) . ") " . print_r($target->debugFormat($target->state),1));
@@ -75,5 +79,4 @@ for ($i = 1; $i <= $steps ; $i++) {
 $outmesg = "<b>Finished test model run. Note - this is not a complete run and re-run should be completed before analyzing data.<br>";
 error_log($outmesg);
 $model->systemLog($outmesg,0);
-
 ?>

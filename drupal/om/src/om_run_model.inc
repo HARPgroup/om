@@ -257,7 +257,7 @@ function om_run_model_form_run(&$form, &$form_state) {
   // figure out the run mode
   $status = om_get_model_status($elementid);
   $status = (array)$status;
-  dpm($status, 'status array');
+  //dpm($status, 'status array');
   $status_flag = $status['status_flag'];
   $element['model_status']['#value'] = $status_flag;
   switch($button) {
@@ -284,7 +284,7 @@ function om_run_model_form_run(&$form, &$form_state) {
     case 'end_model':
       $message = "Request to Terminate model run.";
       $element['model_status']['#value'] = -1;
-      om_message_model($status['elementid'], $status['host'], 'end', $status['runid']);
+      om_message_model($elementid, $status['host'], 'end', $status['runid']);
     break;
     
     default:

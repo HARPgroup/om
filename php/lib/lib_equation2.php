@@ -187,7 +187,7 @@ class Equation extends modelSubObject {
           break;
           default:
           try {
-            $this->result = mathProcessor2( $this->equation, $this->arData, $this->debug);
+            $this->result = mathProcessor2( $this->equation, $this->arData, $this, $this->debug);
           } catch (Exception $e) {
             error_log( 'Error Executing Object:',  $this->name);
             error_log( 'Equation:',  $this->equation);
@@ -502,7 +502,7 @@ class Statistic extends Equation {
 
 
 
-function mathProcessor2( $sEquation, $arData, $debug = 0) {
+function mathProcessor2( $sEquation, $arData, $eqobject, $debug = 0) {
 /* USAGE:
    There are two parameters you pass the function. One being a string equation such as:
 
@@ -572,12 +572,14 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
         //$result = @$expression->evaluate();
         $result = $expression->evaluate();
       } catch (Math_Expression_Exception_Fatal $e) {
+        error_log( 'Error in Component:',  $eqobject->name);
         error_log( 'Error Executing Equation:',  $orig);
         error_log( 'Subbed:' . $sEquation);
         error_log( 'arSorted:' . print_r(debugFormat($arSorted),1));
         error_log( 'Caught exception: ',  $e->getMessage());
       }
       if ($result === FALSE) {
+        error_log( 'Error in Component:',  $eqobject->name);
         error_log( 'Math_Expression returned FALSE for Equation:' . $orig);
         error_log( 'Subbed:' . $sEquation);
         error_log( 'arSorted:' . print_r(debugFormat($arSorted),1));

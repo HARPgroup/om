@@ -574,13 +574,13 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
       } catch (Math_Expression_Exception_Fatal $e) {
         error_log( 'Error Executing Equation:',  $orig);
         error_log( 'Subbed:' . $sEquation);
-        error_log( 'arData:' . print_r(debugFormat($arData),1));
+        error_log( 'arSorted:' . print_r(debugFormat($arSorted),1));
         error_log( 'Caught exception: ',  $e->getMessage());
       }
       if ($result === FALSE) {
         error_log( 'Math_Expression returned FALSE for Equation:' . $orig);
         error_log( 'Subbed:' . $sEquation);
-        error_log( 'arData:' . print_r(debugFormat($arData),1));
+        error_log( 'arSorted:' . print_r(debugFormat($arSorted),1));
         if ($debug) {
            //error_log("Error processing: $orig -> $sEquation ");
         }

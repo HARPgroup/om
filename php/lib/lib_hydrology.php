@@ -15256,15 +15256,6 @@ class hydroImpSmall extends hydroImpoundment {
       }
       $this->initOnParent();
    }
-   
-   function getInputs() {
-      parent::getInputs();
-      $this->setStateVar('Qin',$this->arData[$this->Qin]);
-      $this->setStateVar('release',$this->arData[$this->release]);
-      $this->setStateVar('refill',$this->arData[$this->refill]);
-      $this->setStateVar('demand',$this->arData[$this->demand]);
-      //error_log("Copying $this->q_var and $this->r_var from arData: " . print_r($this->arData,1));
-   }
 
    function setDataColumnTypes() {
       parent::setDataColumnTypes();
@@ -15450,6 +15441,8 @@ class hydroImpSmall extends hydroImpoundment {
       if ($this->debug) {
          $this->logDebug("Variables from parent " . print_r($this->arData,1) . "<br>");
       }
+      
+      //error_log("Copying $this->q_var and $this->r_var from arData: " . print_r($this->arData,1));
       // now, overwrite crucial variables from parent to this objects state array
       foreach ($this->rvars as $thisvar) {
          if ($thisvar == 'release') {
@@ -15475,6 +15468,11 @@ class hydroImpSmall extends hydroImpoundment {
             }
          }
       }
+      // do these here to fix?
+      $this->setStateVar('Qin',$this->arData[$this->Qin]);
+      $this->setStateVar('release',$this->arData[$this->release]);
+      $this->setStateVar('refill',$this->arData[$this->refill]);
+      $this->setStateVar('demand',$this->arData[$this->demand]);
       if ($this->debug) {
          $this->logDebug("Final variables on this object " . print_r($this->state,1) . "<br>");
       }

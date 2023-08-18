@@ -45,6 +45,7 @@ if ($elementid === FALSE) {
   }
   error_log("************ get_modelStatus.php $elementid called **************");
   $info = "json_encode handled object properly.";
+//  $status_update['elementid'] = $elementid;
   $json = json_encode($status_update);
 }
 

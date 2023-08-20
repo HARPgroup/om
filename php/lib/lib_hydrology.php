@@ -15207,12 +15207,12 @@ class hydroImpSmall extends hydroImpoundment {
    var $refill = 0;
    var $et_in = 0;
    var $precip_in = 0;
-   var r_Qin = '';
-   var r_release = '';
-   var r_refill = '';
-   var r_demand = '';
-   var r_et_in = '';
-   var r_precip_in = '';
+   var $r_Qin = '';
+   var $r_release = '';
+   var $r_refill = '';
+   var $r_demand = '';
+   var $r_et_in = '';
+   var $r_precip_in = '';
    // adding to form - must have 
    // * state var set in wake() 
    // * var must exist on class

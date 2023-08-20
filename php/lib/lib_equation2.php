@@ -570,6 +570,10 @@ function mathProcessor2( $sEquation, $arData, $eqobject, $debug = 0) {
       //error_log("Expression created");
       try {
         //$result = @$expression->evaluate();
+        error_log( 'DEBUG in Component:' . $eqobject->name);
+        error_log( 'DEBUG Equation:' . $orig);
+        error_log( 'DEBUG Executing Equation:',  $sEquation);
+        error_log( 'DEBUG arSorted:' . print_r(debugFormat($arSorted),1));
         $result = $expression->evaluate();
       } catch (Math_Expression_Exception_Fatal $e) {
         error_log( 'Error in Component:' . $eqobject->name);

@@ -895,6 +895,7 @@ class USGSRecharge extends modelSubObject {
    var $b1 = 0.0; // 2nd regression term
    var $p_lt = NULL; // probability of being greater than desired flow level
    var $p_gt = NULL; // probability of being less than desired flow level
+   var $json2d = TRUE;
    
    function wake() {
       parent::wake();

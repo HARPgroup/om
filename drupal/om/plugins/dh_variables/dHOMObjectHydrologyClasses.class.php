@@ -325,6 +325,7 @@ class dHOMHydroImpoundmentSmall extends dHOMHydroImpoundment {
         'propvalue_default' => 0.0,
         'propname' => 'Qin',
         'singularity' => 'name_singular',
+        'embed' => TRUE,
         'featureid' => $entity->identifier(),
         'varname' => 'Inflow (cfs)',
         'vardesc' => 'Reservoir inflow variable name.',

@@ -187,7 +187,7 @@ class Equation extends modelSubObject {
           break;
           default:
           try {
-            $this->result = mathProcessor2( $this->equation, $this->arData, $this->debug);
+            $this->result = mathProcessor2( $this->equation, $this->arData, $this, $this->debug);
           } catch (Exception $e) {
             error_log( 'Error Executing Object:',  $this->name);
             error_log( 'Equation:',  $this->equation);
@@ -502,7 +502,7 @@ class Statistic extends Equation {
 
 
 
-function mathProcessor2( $sEquation, $arData, $debug = 0) {
+function mathProcessor2( $sEquation, $arData, $eqobject, $debug = 0) {
 /* USAGE:
    There are two parameters you pass the function. One being a string equation such as:
 
@@ -522,6 +522,7 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
 
 */
 
+    $orig = $sEquation;
     # original code 
     # assumes that variables are given in brackets []
     preg_match_all('/\[([^\]]+)\]/', $sEquation, $arRepVals);
@@ -535,7 +536,6 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
     # by length (descending), and that variable names are not numbers (but may contain numbers) 
     # then we can substitute all of the variables in and then evaluate based on numbers only
     $arDataLength = array();
-    $orig = $sEquation;
     foreach (array_keys($arData) as $thisvar) {
        $vlen = strlen($thisvar);
        # check to see if any variables with this length have been added
@@ -570,15 +570,23 @@ function mathProcessor2( $sEquation, $arData, $debug = 0) {
       //error_log("Expression created");
       try {
         //$result = @$expression->evaluate();
+        // error_log( 'DEBUG in Component:' . $eqobject->name);
+        // error_log( 'DEBUG Equation:' . $orig);
+        // error_log( 'DEBUG Executing Equation:',  $sEquation);
+        // error_log( 'DEBUG arSorted:' . print_r(debugFormat($arSorted),1));
         $result = $expression->evaluate();
       } catch (Math_Expression_Exception_Fatal $e) {
-        error_log( 'Error Executing Equation:',  $orig);
-        error_log( 'Subbed:' . $sEquation);
+        error_log( 'Error in Component:' . $eqobject->name);
+        error_log( 'Source Equation:' . $orig);
+        error_log( 'Error Executing Equation:',  $sEquation);
+        error_log( 'arSorted:' . print_r(debugFormat($arSorted),1));
         error_log( 'Caught exception: ',  $e->getMessage());
       }
       if ($result === FALSE) {
-        error_log( 'Error Executing Equation:' . $orig);
-        error_log( 'Subbed:' . $sEquation);
+        error_log( 'Error in Component:' . $eqobject->name);
+        error_log( 'Source Equation:' . $orig);
+        error_log( 'Math_Expression returned FALSE for Equation:' . $sEquation);
+        error_log( 'arSorted:' . print_r(debugFormat($arSorted),1));
         if ($debug) {
            //error_log("Error processing: $orig -> $sEquation ");
         }

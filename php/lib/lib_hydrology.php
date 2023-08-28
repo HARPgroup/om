@@ -217,16 +217,7 @@ class modelObject {
   }
   
   function debugFormat($var) {
-    if (is_array($var)) {
-      // search for needed truncation
-      if (isset($var['the_geom'])) {
-        $var['the_geom'] = 'HIDDEN';
-      }
-    }
-    if (is_string($var)) {
-      $var = substr($var, 0, 32);
-    }
-    return $var;
+    return debugFormat($var);
   }
   
   function setDBTablePrefix() {
@@ -15216,6 +15207,12 @@ class hydroImpSmall extends hydroImpoundment {
    var $refill = 0;
    var $et_in = 0;
    var $precip_in = 0;
+   var $r_Qin = '';
+   var $r_release = '';
+   var $r_refill = '';
+   var $r_demand = '';
+   var $r_et_in = '';
+   var $r_precip_in = '';
    // adding to form - must have 
    // * state var set in wake() 
    // * var must exist on class
@@ -15260,6 +15257,9 @@ class hydroImpSmall extends hydroImpoundment {
       // since this is a subcomp need to explicitly declare which write on parent
       $this->wvars = array('Qin', 'evap_mgd', 'precip_mgd','Qout','lake_elev','Storage', 'refill_full_mgd', 'demand', 'use_remain_mg', 'pct_use_remain', 'days_remaining', 'max_usable', 'riser_stage', 'riser_head', 'riser_mode', 'riser_flow', 'riser_diameter', 'demand_met_mgd', 'its', 'spill', 'release', 'area', 'refill');
       
+      foreach ($this->rvars as $var) {
+        $this->setStateVar($var,0);
+      }
       $this->initOnParent();
    }
 
@@ -15447,6 +15447,8 @@ class hydroImpSmall extends hydroImpoundment {
       if ($this->debug) {
          $this->logDebug("Variables from parent " . print_r($this->arData,1) . "<br>");
       }
+      
+      //error_log("Copying $this->q_var and $this->r_var from arData: " . print_r($this->arData,1));
       // now, overwrite crucial variables from parent to this objects state array
       foreach ($this->rvars as $thisvar) {
          if ($thisvar == 'release') {
@@ -15472,6 +15474,11 @@ class hydroImpSmall extends hydroImpoundment {
             }
          }
       }
+      // do these here to fix?
+      $this->setStateVar('Qin',$this->arData[$this->Qin]);
+      $this->setStateVar('release',$this->arData[$this->release]);
+      $this->setStateVar('refill',$this->arData[$this->refill]);
+      $this->setStateVar('demand',$this->arData[$this->demand]);
       if ($this->debug) {
          $this->logDebug("Final variables on this object " . print_r($this->state,1) . "<br>");
       }
@@ -16936,4 +16943,19 @@ class omRuntime_SubComponent {
   }
 }
 
+
+  
+function debugFormat($var) {
+  if (is_array($var)) {
+    // search for needed truncation
+    $var = array_merge(...$var);
+    if (isset($var['the_geom'])) {
+      $var['the_geom'] = 'HIDDEN';
+    }
+  }
+  if (is_string($var)) {
+    $var = substr($var, 0, 32);
+  }
+  return $var;
+}
 ?>

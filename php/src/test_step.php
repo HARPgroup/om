@@ -75,6 +75,8 @@ for ($i = 1; $i <= $steps ; $i++) {
     error_log("state:" . print_r($sv,1) );
   }
 }
-#$model->finish()
-$model->systemLog("Finished Test Run",0);
+
+$outmesg = "<b>Finished test model run. Note - this is not a complete run and re-run should be completed before analyzing data.<br>";
+error_log($outmesg);
+$model->systemLog($outmesg,0);
 ?>

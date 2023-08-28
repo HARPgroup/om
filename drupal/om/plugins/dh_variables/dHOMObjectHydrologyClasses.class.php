@@ -833,6 +833,8 @@ class dHOMUSGSChannelGeomObject_sub extends dHOMUSGSChannelGeomObject {
 }
 class dHOMUSGSRecharge extends dHOMSubComp {
   var $object_class = 'USGSRecharge';
+  var $use_new_save = TRUE;
+  var $json2d = TRUE;
   
   public function getDefaults($entity, &$defaults = array()) {
     parent::getDefaults($entity, $defaults);

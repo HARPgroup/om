@@ -1547,7 +1547,7 @@ class dHOMSubComp extends dHOMBaseObjectClass {
     switch (count($comp_path)) {
       case 2:
         // this is a property on a subcomp of the element
-        $setstr = "php delete_subcomp.php $elid $propname ";
+        $setstr = "php delete_subcomp.php $elid \"$propname\" ";
       break;
     }
     if ($setstr and !$test_only) {

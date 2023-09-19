@@ -12,12 +12,8 @@ library(hydrotools)
 ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)
 
-#Load Smin_CPL function
-source(paste0("~/HARParchive/HARP-2023-Summer/fn_get_pd_min.R"),local = TRUE)
-#source(paste0(github_location,"/HARParchive/HARP-2023-Summer/fn_get_pd_min.R"),local = TRUE) #left for testing in R
-
-#save_url <- 'http://deq1.bse.vt.edu:81/p532/out/river/hsp2_2022/impound'
-#save_directory <- '/media/model/p532/out/river/hsp2_2022/impound'
+source(paste0("~/HARParchive/HARP-2023-Summer/fn_get_pd_min.R"),local = TRUE) #Load Smin function
+#source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)
@@ -153,7 +149,6 @@ if (imp_off==0) {
   # Find l30_year for calculation of Smin_L30
   l30 <- loflows["30 Day Min"];
   ndx = which.min(as.numeric(l30[,"30 Day Min"]));
-  l30_Qout = round(loflows[ndx,]$"30 Day Min",6);
   l30_year = loflows[ndx,]$"year";
   
   # Prep for Smin_CPL function
@@ -164,12 +159,10 @@ if (imp_off==0) {
   end_date_90 <- paste0(l90_year,"-12-31")
   
   # Calculate Smin_CPLs using function
-  Smin_L30_acft <- fn_get_pd_min(ts_data = dat, critical_pd_length = 30,
-                            start_date = start_date_30, end_date = end_date_30,
+  Smin_L30_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
                             colname = "Storage")
   
-  Smin_L90_acft <- fn_get_pd_min(ts_data = dat, critical_pd_length = 90,
-                            start_date = start_date_90, end_date = end_date_90,
+  Smin_L90_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
                             colname = "Storage")
   
   # Convert from from ac-ft to mg: 1 mg = 3.069 acre-feet

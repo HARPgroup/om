@@ -17,11 +17,12 @@ library(hydrotools)
 ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)
 
-#Load Smin_CPL function
-source(paste0("~/HARParchive/HARP-2023-Summer/fn_get_pd_min.R"),local = TRUE)
+source("https://github.com/HARPgroup/HARParchive/raw/master/HARP-2023-Summer/fn_get_pd_min.R") #for testing 
+#source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 
-#save_url <- 'http://deq1.bse.vt.edu:81/p532/out/river/hsp2_2022/impound'
-#save_directory <- '/media/model/p532/out/river/hsp2_2022/impound'
+#Temporary:
+save_directory <- '/media/model/p532/out/river/hsp2_2022/impound'
+save_url <- 'http://deq1.bse.vt.edu:81/p532/out/river/hsp2_2022/impound'
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)
@@ -115,11 +116,11 @@ wd_mgd <- wd_mgd + wd_imp_child_mgd
 if ("wd_cumulative_mgd" %in% cols) {
   wd_cumulative_mgd <- mean(as.numeric(dat$wd_cumulative_mgd) )
   if (is.na(wd_cumulative_mgd)) {
-    wd_cumulative_mgd = 0.0
+    wd_cumulative_mgd = wd_mgd
   }
 } else {
-  wd_cumulative_mgd = 0.0
-  dat$wd_cumulative_mgd <- wd_cumulative_mgd
+  wd_cumulative_mgd = wd_mgd
+  dat$wd_cumulative_mgd <- dat$wd_mgd
 }
 
 ps_mgd <- mean(as.numeric(dat$ps_mgd) )
@@ -129,11 +130,11 @@ if (is.na(ps_mgd)) {
 if ("ps_cumulative_mgd" %in% cols) {
   ps_cumulative_mgd <- mean(as.numeric(dat$ps_cumulative_mgd) )
   if (is.na(ps_cumulative_mgd)) {
-    ps_cumulative_mgd = 0.0
+    ps_cumulative_mgd = ps_mgd
   }
 } else {
-  ps_cumulative_mgd = 0.0
-  dat$ps_cumulative_mgd <- ps_cumulative_mgd
+  ps_cumulative_mgd = ps_mgd
+  dat$ps_cumulative_mgd <- dat$ps_mgd
 }
 
 ps_nextdown_mgd <- mean(as.numeric(dat$ps_nextdown_mgd) )
@@ -278,12 +279,10 @@ if (imp_off==0) {
   end_date_90 <- paste0(l90_year,"-12-31")
   
   # Calculate Smin_CPLs using function
-  Smin_L30_acft <- fn_get_pd_min(ts_data = dat, critical_pd_length = 30,
-                                 start_date = start_date_30, end_date = end_date_30,
+  Smin_L30_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
                                  colname = "impoundment_Storage")
   
-  Smin_L90_acft <- fn_get_pd_min(ts_data = dat, critical_pd_length = 90,
-                                 start_date = start_date_90, end_date = end_date_90,
+  Smin_L90_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
                                  colname = "impoundment_Storage")
   
   # Convert from from ac-ft to mg: 1 mg = 3.069 acre-feet
@@ -744,9 +743,15 @@ furl <- paste(
   sep = '/'
 )
 
-#Can't have negative values plotted in a FDC, replace neg Qbaseline w/ 0 
-datpd_pos <- datpd
-datpd_pos[,base_var] <- pmax(datpd_pos[,base_var], 0)
+#FDC fails when plotting neg values, replace neg Qbaseline w/ 0 
+if (any(datpd[,base_var] < 0)) { #check if any Qbaseline < 0
+  datpd_pos <- datpd
+  datpd_pos[,base_var] <- pmax(datpd_pos[,base_var], 0)
+  subtitle <- '*Unreliable FDC caused by Baseline Flow < 0'
+} else { 
+  datpd_pos <- datpd
+  subtitle <- ''
+}
 
 png(fname, width = 700, height = 700)
 legend_text = c("Baseline Flow","Scenario Flow")
@@ -772,10 +777,13 @@ fdc_plot <- hydroTSM::fdc(
   leg.cex=2,
   cex.sub = 1.2
 )
+title(sub = subtitle, adj = 0.85, line = 0.8)
 dev.off()
 
 print(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc', 0.0, ds)
+
+
 ###############################################
 ###############################################
 

@@ -738,7 +738,7 @@ furl <- paste(
   sep = '/'
 )
 
-#FDC fails when plotting neg values, replace neg Qbaseline w/ 0 
+#FDC fails when plotting neg values, so replace neg Qbaseline w/ 0 
 if (any(datpd[,base_var] < 0)) { #check if any Qbaseline < 0
   datpd_pos <- datpd
   datpd_pos[,base_var] <- pmax(datpd_pos[,base_var], 0)
@@ -765,8 +765,6 @@ fdc_plot <- hydroTSM::fdc(
   # ylim=c(1.0, 5000),
   # ylim=c(min(datpd), max(datpd)),
   ylim=c(ymn, ymx),
-#  ylim=c(1, 100), #for an empty fdc when Qout & Qbaseline = 0 
-#  xlim=c(1,100), #for an empty fdc when Qout & Qbaseline = 0 
   cex.main=1.75,
   cex.axis=1.50,
   leg.cex=2,

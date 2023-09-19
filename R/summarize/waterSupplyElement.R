@@ -22,8 +22,7 @@ library(sqldf)
 library(ggnewscale)
 library(dplyr)
 
-source(paste0("~/HARParchive/HARP-2023-Summer/fn_get_pd_min.R"),local = TRUE) #Load Smin function
-#source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
+source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)

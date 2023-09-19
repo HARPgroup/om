@@ -17,12 +17,7 @@ library(hydrotools)
 ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)
 
-source("https://github.com/HARPgroup/HARParchive/raw/master/HARP-2023-Summer/fn_get_pd_min.R") #for testing 
-#source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
-
-#Temporary:
-save_directory <- '/media/model/p532/out/river/hsp2_2022/impound'
-save_url <- 'http://deq1.bse.vt.edu:81/p532/out/river/hsp2_2022/impound'
+source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)

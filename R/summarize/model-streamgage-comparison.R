@@ -26,15 +26,24 @@ runid <- as.integer(argst[2]) # what to store this as
 gage_number <- as.character(argst[3])
 # scenario for the model to compare the gage to vahydro-1.0, CFBASE30Y20180615, p532cal_062211, ...
 mod.scenario <- as.character(argst[4])
+# Inputs if using CBP Model -- otherwise, can ignore
+model_phase <- 'p6/p6_gb604' #or "p532c-sova" (phase 5)
+if (mod.scenario == 'p532cal_062211') {
+  model_phase <- "p532c-sova"# (phase 5)
+}
 if (length(argst) > 4) {
   # should be 1 or zero
-  save_usgs <- as.integer(argst[5])
+  model_phase <- as.character(argst[5])
 } 
 if (length(argst) > 5) {
-  usgs_file_base <- as.character(argst[6])
+  # should be 1 or zero
+  save_usgs <- as.integer(argst[6])
 } 
 if (length(argst) > 6) {
-  export_path <- as.character(argst[7])
+  usgs_file_base <- as.character(argst[7])
+} 
+if (length(argst) > 7) {
+  export_path <- as.character(argst[8])
 } 
 
 
@@ -45,11 +54,6 @@ dat.source1 <- 'gage' # cbp_model
 # If a gage is used -- all data is trimmed to gage timeframe.  Otherwise, start/end date defaults
 # can be found in the gage.timespan.trimmed loop.
 
-# Inputs if using CBP Model -- otherwise, can ignore
-mod.phase <- 'p6/p6_gb604' #or "p532c-sova" (phase 5)
-if (mod.scenario == 'p532cal_062211') {
-  mod.phase <- "p532c-sova"# (phase 5)
-}
 site.or.server <- 'site'
 
 mrun_name <- paste0('runid_', runid)
@@ -107,7 +111,7 @@ if (substr(mod.scenario,1,7) == 'vahydro') {
 } else {
   # this is cbp model, different import procedure
   message("Grabbing CBP model data")
-  model_data <- model_import_data_cfs(riv.seg, mod.phase, mod.scenario, NULL, NULL)
+  model_data <- model_import_data_cfs(riv.seg, model_phase, mod.scenario, NULL, NULL)
   # try to get da from the feature
   da = NULL
   daprop <-  RomProperty$new(ds, list (
@@ -141,7 +145,7 @@ if (max(model_data$date) > max(gage_data$date)) {
 # Now trim the series
 gage_data_formatted <- vahydro_trim_for_iha(gage_data, start.date, end.date)
 if (save_usgs == 1) {
-  usgs_run_file = paste(export_path, usgs_file_base, sep="/")
+  usgs_run_file = paste(export_path, usgs_file_base,)
   write.table(gage_data_formatted, usgs_run_file)
   
 }

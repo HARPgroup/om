@@ -26,6 +26,19 @@ runid <- as.integer(argst[2]) # what to store this as
 gage_number <- as.character(argst[3])
 # scenario for the model to compare the gage to vahydro-1.0, CFBASE30Y20180615, p532cal_062211, ...
 mod.scenario <- as.character(argst[4])
+if (length(argst) > 4) {
+  # should be 1 or zero
+  save_usgs <- as.integer(argst[5])
+} 
+if (length(argst) > 5) {
+  usgs_file_base <- as.character(argst[6])
+} 
+if (length(argst) > 6) {
+  export_path <- as.character(argst[7])
+} 
+
+
+  
 
 # ESSENTIAL INPUTS
 dat.source1 <- 'gage' # cbp_model
@@ -48,7 +61,7 @@ gage_timespan <- get.gage.timespan(gage_number)
 message(paste("Retrieving Gage Info for usgs", gage_number))
 gage <- try(readNWISsite(gage_number))
 
-# Load the VAHydro watershed entity via a riversegment based hydrocode (useful in testing)
+# Load the VAHydro watershed entity via a river segment based hydrocode (useful in testing)
 hydrocode = paste0("vahydrosw_wshed_", riv.seg);
 message(paste("searching for watershed", riv.seg,"with hydrocode", hydrocode))
 feature <- RomFeature$new(ds,list(hydrocode=hydrocode),TRUE)
@@ -127,6 +140,11 @@ if (max(model_data$date) > max(gage_data$date)) {
 
 # Now trim the series
 gage_data_formatted <- vahydro_trim_for_iha(gage_data, start.date, end.date)
+if (save_usgs == 1) {
+  usgs_run_file = paste(export_path, usgs_file_base, sep="/")
+  write.table(gage_data_formatted, usgs_run_file)
+  
+}
 model_data_formatted  <- vahydro_trim_for_iha(model_data, start.date, end.date)
 
 if (gage.timespan.trimmed == TRUE) {

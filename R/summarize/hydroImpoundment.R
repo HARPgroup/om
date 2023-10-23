@@ -12,6 +12,8 @@ library(hydrotools)
 ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)
 
+source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
+
 # Read Args
 argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1])
@@ -129,7 +131,7 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remain
 
 # Dat for Critical Period
 flows <- zoo(dat$Qin, order.by = index(dat));
-loflows <- group2(flows);
+loflows <- group2(flows, year = 'calendar');
 l90 <- loflows["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_Qout = round(loflows[ndx,]$"90 Day Min",6);
@@ -141,6 +143,41 @@ datpd <- window(
   start = l90_start,
   end = l90_end
 );
+
+if (imp_off==0) {
+  # Find l30_year for calculation of Smin_L30
+  l30 <- loflows["30 Day Min"];
+  ndx = which.min(as.numeric(l30[,"30 Day Min"]));
+  l30_year = loflows[ndx,]$"year";
+  
+  # Prep for Smin_CPL function
+  start_date_30 <- paste0(l30_year,"-01-01") # Dates for l90_year
+  end_date_30 <- paste0(l30_year,"-12-31")
+  
+  start_date_90 <- paste0(l90_year,"-01-01") # Dates for l30_year
+  end_date_90 <- paste0(l90_year,"-12-31")
+  
+  # Calculate Smin_CPLs using function
+  Smin_L30_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
+                            colname = "Storage")
+  
+  Smin_L90_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
+                            colname = "Storage")
+  
+  # Convert from from ac-ft to mg: 1 mg = 3.069 acre-feet
+  Smin_L30_mg <- round(Smin_L30_acft/3.069, digits = 3)
+  Smin_L90_mg <- round(Smin_L90_acft/3.069, digits = 3)
+  
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L30_mg', Smin_L30_mg, ds)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L90_mg', Smin_L90_mg, ds)
+
+ } else if (imp_off == 1) { # Set Smin metrics to 0 if impoundment is not active
+  Smin_L30_mg <- 0
+  Smin_L90_mg <- 0
+  
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L30_mg', Smin_L30_mg, ds)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L90_mg', Smin_L90_mg, ds)
+}
 
 # Elevation periods
 

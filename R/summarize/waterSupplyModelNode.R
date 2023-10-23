@@ -17,6 +17,7 @@ library(hydrotools)
 ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)
 
+source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)
@@ -107,18 +108,30 @@ if (is.na(wd_imp_child_mgd)) {
 # combine these two for reporting
 wd_mgd <- wd_mgd + wd_imp_child_mgd
 
-wd_cumulative_mgd <- mean(as.numeric(dat$wd_cumulative_mgd) )
-if (is.na(wd_cumulative_mgd)) {
-  wd_cumulative_mgd = 0.0
+if ("wd_cumulative_mgd" %in% cols) {
+  wd_cumulative_mgd <- mean(as.numeric(dat$wd_cumulative_mgd) )
+  if (is.na(wd_cumulative_mgd)) {
+    wd_cumulative_mgd = wd_mgd
+  }
+} else {
+  wd_cumulative_mgd = wd_mgd
+  dat$wd_cumulative_mgd <- dat$wd_mgd
 }
+
 ps_mgd <- mean(as.numeric(dat$ps_mgd) )
 if (is.na(ps_mgd)) {
   ps_mgd = 0.0
 }
-ps_cumulative_mgd <- mean(as.numeric(dat$ps_cumulative_mgd) )
-if (is.na(ps_cumulative_mgd)) {
-  ps_cumulative_mgd = 0.0
+if ("ps_cumulative_mgd" %in% cols) {
+  ps_cumulative_mgd <- mean(as.numeric(dat$ps_cumulative_mgd) )
+  if (is.na(ps_cumulative_mgd)) {
+    ps_cumulative_mgd = ps_mgd
+  }
+} else {
+  ps_cumulative_mgd = ps_mgd
+  dat$ps_cumulative_mgd <- dat$ps_mgd
 }
+
 ps_nextdown_mgd <- mean(as.numeric(dat$ps_nextdown_mgd) )
 if (is.na(ps_nextdown_mgd)) {
   ps_nextdown_mgd = 0.0
@@ -190,7 +203,8 @@ flows <- aggregate(
   ),
   'mean'
 )
-loflows <- group2(flows, flow_year_type);
+#loflows <- group2(flows, flow_year_type); 
+loflows <- group2(flows, year = 'calendar');
 l90 <- loflows["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_Qout = round(loflows[ndx,]$"90 Day Min",6);
@@ -250,6 +264,36 @@ if (is.na(unmet_demand_mgd)) {
   unmet_demand_mgd = 0.0
 }
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet_demand_mgd', unmet_demand_mgd, ds)
+
+if (imp_off==0) {
+  # Smin_CPL metrics
+  start_date_30 <- paste0(l30_year,"-01-01") # Dates for l90_year
+  end_date_30 <- paste0(l30_year,"-12-31")
+  
+  start_date_90 <- paste0(l90_year,"-01-01") # Dates for l30_year
+  end_date_90 <- paste0(l90_year,"-12-31")
+  
+  # Calculate Smin_CPLs using function
+  Smin_L30_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
+                                 colname = "impoundment_Storage")
+  
+  Smin_L90_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
+                                 colname = "impoundment_Storage")
+  
+  # Convert from from ac-ft to mg: 1 mg = 3.069 acre-feet
+  Smin_L30_mg <- round(Smin_L30_acft/3.069, digits = 3)
+  Smin_L90_mg <- round(Smin_L90_acft/3.069, digits = 3)
+  
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L30_mg', Smin_L30_mg, ds)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L90_mg', Smin_L90_mg, ds)
+  
+} else if (imp_off == 1) {  # Set Smin metrics to 0 if impoundment is not active
+  Smin_L30_mg <- 0
+  Smin_L90_mg <- 0
+  
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L30_mg', Smin_L30_mg, ds)
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L90_mg', Smin_L90_mg, ds)
+}
 
 # Metrics trimmed to climate change scenario timescale (Jan. 1 1990 -- Dec. 31 2000)
 if (syear <= 1990 && eyear >= 2000) {
@@ -694,6 +738,15 @@ furl <- paste(
   sep = '/'
 )
 
+#FDC fails when plotting neg values, so replace neg Qbaseline w/ 0 
+if (any(datpd[,base_var] < 0)) { #check if any Qbaseline < 0
+  datpd_pos <- datpd
+  datpd_pos[,base_var] <- pmax(datpd_pos[,base_var], 0)
+  subtitle <- '*Unreliable FDC caused by Baseline Flow < 0'
+} else { 
+  datpd_pos <- datpd
+  subtitle <- ''
+}
 
 png(fname, width = 700, height = 700)
 legend_text = c("Baseline Flow","Scenario Flow")
@@ -701,7 +754,7 @@ ymn <- 0
 ymx <- max(cbind(as.numeric(unlist(datpd[names(datpd)== base_var])),
                  as.numeric(unlist(datpd[names(datpd)== comp_var]))))
 fdc_plot <- hydroTSM::fdc(
-  cbind(datpd[names(datpd)== base_var], datpd[names(datpd)== comp_var]),
+  cbind(datpd_pos[names(datpd_pos)== base_var], datpd_pos[names(datpd_pos)== comp_var]),
   # yat = c(0.10,1,5,10,25,100,400),
   # yat = c(round(min(datpd),0),500,1000,5000,10000),
   # yat = seq(round(min(datpd),0),round(max(datpd),0), by = 500),
@@ -717,10 +770,13 @@ fdc_plot <- hydroTSM::fdc(
   leg.cex=2,
   cex.sub = 1.2
 )
+title(sub = subtitle, adj = 0.85, line = 0.8)
 dev.off()
 
 print(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc', 0.0, ds)
+
+
 ###############################################
 ###############################################
 

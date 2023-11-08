@@ -7574,7 +7574,9 @@ class hydroImpoundment extends hydroObject {
          $release = $this->state['release']; // assumed to be in cfs
       }
       // this checks for release input on a subcomp impoundment
-      if ( isset($this->state['release']) and (is_numeric($this->state['release'])) ) {
+      if ( isset($this->state['release']) and (is_numeric($this->state['release'])) and property_exists($this, 'release') ) {
+        // this is a subcomp impoundment but NOT using subcomop step() code
+        // but, we know that the value for state['release'] has been set by getInputs()
          $release = $this->state['release']; // assumed to be in cfs
       }
       // this code is the better way, using a "release" variable which should ALSO be supported

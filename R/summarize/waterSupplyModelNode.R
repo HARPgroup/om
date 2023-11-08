@@ -84,7 +84,7 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logf
 
 # does this have an impoundment sub-comp and is imp_off = 0?
 cols <- names(dat)
-imp_off <- NULL# default to no impouhd
+imp_off <- 1# default to no impouhd
 if ("imp_off" %in% cols) {
   imp_off <- as.integer(median(dat$imp_off))
 } else {
@@ -97,6 +97,17 @@ if ("imp_off" %in% cols) {
     imp_off <- 1 # default to no impoundment
   }
 }
+print("**************************************")
+print("**************************************")
+print("**************************************")
+print("**************************************")
+print(paste("IMP_OFF = ", imp_off))
+print("**************************************")
+print("**************************************")
+print("**************************************")
+print("**************************************")
+print("**************************************")
+
 wd_mgd <- mean(as.numeric(dat$wd_mgd) )
 if (is.na(wd_mgd)) {
   wd_mgd = 0.0
@@ -346,6 +357,13 @@ if (syear <= 1990 && eyear >= 2000) {
 message("Plotting critical flow periods")
 # does this have an active impoundment sub-comp
 if (imp_off == 0) {
+print("*******************************************")
+print("*******************************************")
+print("*******************************************")
+print("has IMPOUNDMENT")
+print("*******************************************")
+print("*******************************************")
+print("*******************************************")
 
   if("impoundment" %in% cols) {
     # Plot and analyze impoundment sub-comps
@@ -615,7 +633,16 @@ if (imp_off == 0) {
   # plot Qin, Qout of mainstem, and wd_mgd, and wd_cumulative_mgd
   # TBD
   # l90 2 year
-  # this has an impoundment.  Plot it up.
+  print("**************************************")
+  print("**************************************")
+  print("**************************************")
+  print("**************************************")
+  print("Riverine model only, plotting regular hydrographs.")
+  print("**************************************")
+  print("**************************************")
+  print("**************************************")
+  print("**************************************")
+  # this has no impoundment.  Plot hydrographs only
   # Now zoom in on critical drought period
   pdstart = as.Date(paste0(l90_year,"-06-01") )
   pdend = as.Date(paste0(l90_year, "-11-15") )
@@ -669,6 +696,17 @@ if (imp_off == 0) {
   print(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_flows.2yr', 0.0, ds)
 
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("PLOTTING FULL PERIOD FLOWS")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+
   datpd <- dat
   fname <- paste(
     save_directory,
@@ -704,7 +742,16 @@ if (imp_off == 0) {
   axis(side = 4)
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
   print(paste("Saved file: ", fname, "with URL", furl))
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.flows.all', 0.0, ds)
 
 }

@@ -48,7 +48,7 @@ Si<-as.numeric(S)#Creates a loop variable Si with base value S
 dat$MPMStorage<-numeric(length(dat$impoundment_Qin));dat$MPMStorage[1]<-S
 dat$MPMQout<-numeric(length(dat$impoundment_Qin))
 dat$MPMStage<-numeric(length(dat$impoundment_Qin));dat$MPMStage[1]<-approx(x=SS$Storage,y=SS$Stage,xout=S,rule=1)$y
-#loop that looks at each inflow and calculates storage and outflow simealtaneously by creating a function to 
+#loop that looks at each inflow and calculates storage and outflow simultaneously by creating a function to 
 #find S such that dS=Qin-Qout
 for (i in 2:length(dat$impoundment_Qin)){
   Qin<-as.numeric(dat$impoundment_Qin[i])

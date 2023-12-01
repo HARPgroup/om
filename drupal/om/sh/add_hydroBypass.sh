@@ -13,7 +13,7 @@ if [ $# -gt 1 ]; then
 fi 
 
 
-for i in Qbypass Qavail_divert Qturbine_max Qturbine unmet_demand_bypass_mgd; do
+for i in Qbypass Qavail_divert Qturbine_max Qturbine unmet_demand_hydro_mgd; do
   echo "drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid $i"
   drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid $i
 done

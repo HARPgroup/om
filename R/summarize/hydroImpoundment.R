@@ -45,7 +45,7 @@ if ("imp_off" %in% cols) {
 if ("pct_use_remain" %in% cols) {
   # nothing
 } else {
-  # this uses 10% dead as estimate for those that hae not been re-run
+  # this uses 10% dead as estimate for those that have not been re-run
   # since reporting for pct_use_remain was enabled
   dat$pct_use_remain <- dat$use_remain_mg * 3.07 / (0.9 * dat$maxcapacity)
 }

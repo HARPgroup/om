@@ -218,7 +218,9 @@ if (sum(datdf$unmet_demand_mgd)==0) {
 
 # Metrics that need Zoo (IHA)
 flows <- zoo(as.numeric(as.character( dat$Qintake )), order.by = index(dat));
-loflows <- group2(flows, year = 'calendar');
+## Water year is overridden in group2() by calendar year for L30 and L90 calculations to avoid overestimation of Smin in the current year and underestimation in the next
+## The period of minimum storage in impoundments (period of Smin) often overlaps with Oct 1st 
+loflows <- group2(flows, year = 'calendar'); 
 l90 <- loflows["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_Qout = round(loflows[ndx,]$"90 Day Min",6);

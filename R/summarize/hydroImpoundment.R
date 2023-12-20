@@ -131,6 +131,8 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'remain
 
 # Dat for Critical Period
 flows <- zoo(dat$Qin, order.by = index(dat));
+## Water year is overridden in group2() by calendar year for L30 and L90 calculations to avoid overestimation of Smin in the current year and underestimation in the next
+## The period of minimum storage in impoundments (period of Smin) often overlaps with Oct 1st 
 loflows <- group2(flows, year = 'calendar');
 l90 <- loflows["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));

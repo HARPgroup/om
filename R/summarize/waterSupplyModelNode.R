@@ -25,7 +25,7 @@ pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
 
-finfo <- fn_get_runfile_info(elid, runid)
+finfo <- fn_get_runfile_info(elementid = elid, runid = runid, site=omsite)
 remote_url <- finfo$remote_url
 # Note: when we migrate to om_get_rundata()
 # we must insure that we do NOT use the auto-trim to water year
@@ -223,8 +223,8 @@ ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_Qout = round(loflows[ndx,]$"90 Day Min",6);
 l90_year = loflows[ndx,]$"year";
 
-if (is.na(l90)) {
-  l90_Runit = 0.0
+if (is.na(l90_Qout)) {
+  l90_Qout = 0.0
   l90_year = 0
 }
 

@@ -589,7 +589,7 @@ function getModelActivity($mins, $elementid, $render=TRUE, $limit = 100) {
    $listobject->querystring .= "    on( b.element_key = c.elementid and c.runid = b.runid ) ";
    $listobject->querystring .= " where a.elementid = b.element_key ";
    if ($mins > 0) {
-     $listobject->querystring .= " and b.last_updated >= now() - interval '$mins minutes' ";
+     $listobject->querystring .= " and b.last_updated >= (now() - interval '$mins minutes') ";
    }
    if ($elementid > 0) {
      $listobject->querystring .= " and a.elementid = $elementid ";

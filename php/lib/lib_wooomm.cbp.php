@@ -1429,7 +1429,7 @@ class CBPLandDataConnection_sub extends CBPLandDataConnection {
 class nhdPlusDataSource {
    var $nhd_db = null;
    var $units = 'ft';
-   var $host = '192.168.0.20';
+   var $host = '192.168.0.21';
    var $dbname = 'va_hydro';
    var $username = 'usgs_ro';
    var $password = '@ustin_CL';

@@ -11,10 +11,15 @@
 
 // findNextDown - retrieves the next downstream linkage for this entity - resolves the bug with multiple downstream entities by selecting the downstream link with the shortest path to a common downstream point
 
-function getMergedNHDBasin($hydro_db, $lat, $lon, $extra_basins = 0, $debug = 0, $tol = 0.001, $pct_shrink = 0.9) {
+function getMergedNHDBasin($hydro_db, $lat, $lon = FALSE, $extra_basins = 0, $debug = 0, $tol = 0.001, $pct_shrink = 0.9) {
    $merged_info = array();
    // find the outlet
-   $outlet_info = findNHDSegment($hydro_db, $lat, $lon);
+   if ($lon === FALSE) {
+     $comid = $lat;
+     findNHDSegInfo($hydro_db, $comid);
+   } else {   
+     $outlet_info = findNHDSegment($hydro_db, $lat, $lon);
+   }
    $outlet = $outlet_info['comid'];
    $outletarea = $outlet_info['areasqkm'];
    $nextdown = $outlet;

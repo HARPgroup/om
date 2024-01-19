@@ -1,3 +1,4 @@
+
 <?php
 
 $noajax = 1;
@@ -13,7 +14,12 @@ if ($usgsdb) {
   die;
 }
 list($pointname, $latdd, $londd, $debug, $overwrite) = array($argv[1], $argv[2], $argv[3], $argv[4], $argv[5]);
-$outlet_info = findNHDSegment($usgsdb, $latdd, $londd);
+if ($londd === NULL) {
+  $outlet_info = findNHDSegInfo($usgsdb, $latdd);
+  $londd = FALSE; # this tells getMergedNHDBasin() to use $lat as comid
+} else {
+  $outlet_info = findNHDSegment($usgsdb, $latdd, $londd);
+}
 $outlet = $outlet_info['comid'];
 $area = $outlet_info['areasqkm'];
 $carea = $outlet_info['cumdrainag'];

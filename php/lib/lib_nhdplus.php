@@ -193,9 +193,9 @@ function getMergedNHDShape($dbobj, $seglist, $cache_merge_list = array(), $debug
          $dbobj->querystring .= " ) ";
       }
       $dbobj->querystring .= " ) as foo ";
-      if ($debug) {
+      //if ($debug) {
          error_log("$dbobj->querystring ; <br>\n");
-      }
+      //}
       $dbobj->performQuery();
       if ($dbobj->numrows > 0) {
          $shp = $dbobj->getRecordValue(1,'seg_geom');

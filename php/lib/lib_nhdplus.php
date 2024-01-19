@@ -16,7 +16,7 @@ function getMergedNHDBasin($hydro_db, $lat, $lon = FALSE, $extra_basins = 0, $de
    // find the outlet
    if ($lon === FALSE) {
      $comid = $lat;
-     findNHDSegInfo($hydro_db, $comid);
+     $outlet_info = findNHDSegInfo($hydro_db, $comid);
      error_log("Using comid $comid to query nhd database");
    } else {   
      $outlet_info = findNHDSegment($hydro_db, $lat, $lon);

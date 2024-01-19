@@ -17,6 +17,7 @@ function getMergedNHDBasin($hydro_db, $lat, $lon = FALSE, $extra_basins = 0, $de
    if ($lon === FALSE) {
      $comid = $lat;
      findNHDSegInfo($hydro_db, $comid);
+     error_log("Using comid $comid to query nhd database");
    } else {   
      $outlet_info = findNHDSegment($hydro_db, $lat, $lon);
    }
@@ -37,7 +38,7 @@ function getMergedNHDBasin($hydro_db, $lat, $lon = FALSE, $extra_basins = 0, $de
    $merged_info['outlet_comid'] = $outlet;
    $merged_info['areasqkm'] = $outletarea;
    //Find the tribs for this outlet
-   if ($debug) error_log("\n Getting Tributaries for $outlet<br>\n");
+   error_log("\n Getting Tributaries for $outlet<br>\n");
    //$result = findTribs($hydro_db,$outlet);
    $result = findMergedTribs($hydro_db,$outlet, $debug);
    $merged_info['flow_tree'] = $result;

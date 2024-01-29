@@ -8,7 +8,7 @@ if (count($argv) < 3) {
    die;
 }
 if ($usgsdb) {
-  error_log("Successfully connected to: " . pg_host($usgs_db));
+  error_log("Successfully connected to: " . pg_host($usgsdb));
 } else {
   error_log(pg_last_error($usgsdb));
   die;

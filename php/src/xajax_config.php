@@ -235,10 +235,11 @@ $vwuds_listobject = new pgsql_QueryObject;
 $vwuds_listobject->dbconn = $vwuds_dbconn;
 
 // aquatic bio db
+/*
 $aquatic_biodb_dbconn = pg_connect("host=$vwuds_dbip port=5432 dbname='aquatic_bio' user=$dbuser password=$dbpass");
 $aquatic_biodb = new pgsql_QueryObject;
 $aquatic_biodb->dbconn = $aquatic_biodb_dbconn;
-
+*/
 // END - set up database connections
 
 # misc

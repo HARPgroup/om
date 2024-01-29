@@ -16950,9 +16950,10 @@ class omRuntime_SubComponent {
 function debugFormat($var) {
   if (is_array($var)) {
     // search for needed truncation
-    $var = array_merge(...$var); // note "..." is the "spread operator" https://wiki.php.net/rfc/spread_operator_for_array
     if (isset($var['the_geom'])) {
       $var['the_geom'] = 'HIDDEN';
+    } else {      
+      $var = array_merge(...$var);
     }
   }
   if (is_string($var)) {

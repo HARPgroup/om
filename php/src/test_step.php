@@ -66,12 +66,13 @@ if ($subcomp <> '') {
 
 for ($i = 1; $i <= $steps ; $i++) {
   $model->step();
-  error_log("State for " . $target->name . "(" . get_class($target) . ") " . print_r($target->debugFormat($target->state),1));
+  error_log("State for " . $target->name . "(" . get_class($target) . ") ");
+  error_log("state: " . print_r($target->debugFormat($target->state),1));
   if ($subcomp <> '') {
-    $sv = $target->debugFormat($sc->state);
     $ar = $target->debugFormat($sc->arData);
     error_log("arData and state for $subcomp" . "(" . get_class($sc) . ") ");
     error_log("arData:" . print_r($ar,1) );
+    $sv = $target->debugFormat($sc->state);
     error_log("state:" . print_r($sv,1) );
   }
 }

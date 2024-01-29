@@ -623,16 +623,16 @@ class dHOMConsumptiveUseFractionsPWS extends dHOMDataMatrix {
 
 
 class dHOMWaterSystemPermitStatus extends dHOMtextField {
-  
+  // to be done: reconfigure text columns to integer
   public function getOptions() {
     $fsopts = array(
-      'active' => t('Active'),
-      'exempt' => t('Exempt'),
-      'expired' => t('Expired'),
-      'npne' => t('Non-Permitted, Non-Exempt'),
-      'proposed' => t('Proposed'),
-      'other' => t('Other'),
-      'reissue' => t('Reissue'),
+      'active' => t('Active'), // 1
+      'exempt' => t('Exempt'), // 2
+      'expired' => t('Expired'), // 3
+      'npne' => t('Non-Permitted, Non-Exempt'), // 4
+      'proposed' => t('Proposed'), // 5
+      'other' => t('Other'), // 6
+      'reissue' => t('Reissue'), // 7
     );
     return $fsopts;
   }

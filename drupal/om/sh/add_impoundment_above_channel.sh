@@ -1,6 +1,5 @@
 #!/bin/sh
-# This adds common data matrixes from a template that do not get created 
-# by default with the model type plugin
+# This adds slightly different plumbing for tribs with an impoundment above the channel
 pid=$1
 template=7407892
 

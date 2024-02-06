@@ -293,7 +293,7 @@ ddat2 <- window(
 );
 
 #dmx2 = max(ddat2$Qintake)
-if (pump_store || !imp_enabled) {
+if (!pump_store || !imp_enabled) {
   flow_ts <- ddat2$Qintake
   flow_ts_name = "Source Stream"
   

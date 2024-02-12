@@ -15,5 +15,6 @@ fi
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid ps_local_mgd;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid ps_nextdown_mgd;
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid ps_other_mgd;
-drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid discharge_mgd; 
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid discharge_mgd;
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid discharge_local_mgd; 
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Send to Parent"; 

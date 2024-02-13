@@ -14,9 +14,17 @@ if [ $# -gt 2 ]; then
   entity_id=$3
 fi 
 # Water Supply Model Element Template 
-template=6389644
+template=7423249
 
 
 # make sure it is using the new discharge_mgd variable 
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Reservoir Operations"
+# delete the property refill_max_mgd 
+# since it is included in the Reservoir Operations listener
+# and add refill_allowed_mgd which is set to listen to refill_max_mgd 
+echo "Deleting old refill_max_mgd (it it exists) since it is included in the Reservoir Operations listener"
+drush scr modules/om/src/om_deleteprop.php cmd dh_properties $pid refill_max_mgd
+echo "Add refill_allowed_mgd which is set to listen to refill_max_mgd from broadcast"
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid refill_allowed_mgd
 
+echo "Properties have been copied.  Note: if this is a small trib with impoundment, you must edit the impoundment sub-component and set release = release_cfs (default is zero)"

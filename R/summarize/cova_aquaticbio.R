@@ -47,7 +47,28 @@ if (syear != eyear) {
 }
 cols <- names(dat)
 
+# not yet ready everywhere since all components do NOT have the ws and ps cumulative variables
+# really, this should load the zero run, and compare a similar time period.
+dat$Qbaseline <- dat$Qreach +
+  (dat$wd_cumulative_mgd - dat$ps_cumulative_mgd ) * 1.547
+
+model <- RomProperty(ds, list(pid=pid))
+model_dms <- RomProperty(ds, list(featureid=model$pid, entity_type='dh_properties', varkey='om_class_DataMatrix'))
 
 ifim_dataframe <- vahydro_prop_matrix(ifim_featureid, 'dh_feature','ifim_habitat_table')
 WUA.df <- t(ifim_dataframe)
 targets <- colnames(WUA.df)[-1]
+
+wua_gf <- read.table(
+  "https://raw.githubusercontent.com/HARPgroup/vahydro/master/R/permitting/potomac/potomac_lfaa/wua_gf.csv"
+  , header=TRUE, sep=","
+)
+ifim_da_sqmi = 11010
+ifim_site_name = "Great Falls"
+
+curr_plot_gf100 <- pothab_plot(
+  wua_gf, lf_alt_usgs, "flow_baseline", "flow_obs",
+  1.0, ifim_da_sqmi,
+  "Great Falls", "Current"
+)
+

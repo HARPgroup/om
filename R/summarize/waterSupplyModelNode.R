@@ -108,11 +108,22 @@ print("**************************************")
 print("**************************************")
 print("**************************************")
 
+if (!("wd_mgd" %in% cols)) { 
+  if ("child_wd_mgd" %in% cols) {
+    dat$wd_mgd <- dat$child_wd_mgd
+  } else {
+    dat$wd_mgd <- 0.0
+  }
+}
 wd_mgd <- mean(as.numeric(dat$wd_mgd) )
 if (is.na(wd_mgd)) {
   wd_mgd = 0.0
 }
-wd_imp_child_mgd <- mean(as.numeric(dat$wd_imp_child_mgd) )
+if (("wd_imp_child_mgd" %in% cols)) { 
+  wd_imp_child_mgd <- mean(as.numeric(dat$wd_imp_child_mgd) )
+} else {
+  wd_imp_child_mgd = 0.0
+}
 if (is.na(wd_imp_child_mgd)) {
   wd_imp_child_mgd = 0.0
 }
@@ -129,6 +140,13 @@ if ("wd_cumulative_mgd" %in% cols) { #cumulative variables are needed for calcul
   dat$wd_cumulative_mgd <- dat$wd_mgd
 }
 
+if (!("ps_mgd" %in% cols)) { 
+  if ("child_ps_mgd" %in% cols) {
+    dat$ps_mgd <- dat$child_ps_mgd
+  } else {
+    dat$ps_mgd <- 0.0
+  }
+}
 ps_mgd <- mean(as.numeric(dat$ps_mgd) )
 if (is.na(ps_mgd)) {
   ps_mgd = 0.0

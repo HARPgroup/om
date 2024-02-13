@@ -19,6 +19,8 @@ template=4988636
 
 # make sure it is using the new discharge_mgd variable 
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Reservoir Operations"
+# make sure it has the latest greatest broadcast info which include Qnextdown
+drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid "Listen on Parent"
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid control_impoundment
 drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid impoundment_release_cfs
 

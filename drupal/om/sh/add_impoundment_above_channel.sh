@@ -1,7 +1,7 @@
 #!/bin/sh
 # This adds slightly different plumbing for tribs with an impoundment above the channel
 pid=$1
-template=7407892
+template=7405974 # Curently Ben's Branch, which is not a tamplate, but rather a live element - change soon
 
 if [ $# -lt 1 ]; then
   echo 1>&2 "Usage: add_impoundment_above_channel.sh pid [template=$template]"

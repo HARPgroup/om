@@ -753,6 +753,10 @@ if (imp_off == 0) { #has impoundment
   lines(datpd$Qout,col='blue')
   par(new = TRUE)
   ymx <- max(cbind(datpd$wd_cumulative_mgd * 1.547, datpd$ps_cumulative_mgd * 1.547))
+  if (ymx == 0) {
+    # set arbitrary to allow plotting
+    ymx <- 1
+  }
   plot(
     datpd$wd_cumulative_mgd * 1.547,col='red',
     axes=FALSE, xlab="", ylab="", ylim=c(0,ymx)
@@ -823,6 +827,11 @@ legend_text = c("Baseline Flow","Scenario Flow")
 ymn <- 0
 ymx <- max(cbind(as.numeric(unlist(datpd[names(datpd)== base_var])),
                  as.numeric(unlist(datpd[names(datpd)== comp_var]))))
+if (ymx == 0) {
+  # set arbitrary to allow plotting
+  ymx <- 1
+}
+
 fdc_plot <- hydroTSM::fdc(
   cbind(datpd_pos[names(datpd_pos)== base_var], datpd_pos[names(datpd_pos)== comp_var]),
   # yat = c(0.10,1,5,10,25,100,400),
@@ -890,6 +899,10 @@ ymn <- 0
 #ymx <- 1000
 ymx <- max(cbind(as.numeric(unlist(datpd[names(datpd)== base_var])),
                             as.numeric(unlist(datpd[names(datpd)== comp_var]))))
+if (ymx == 0) {
+  # set arbitrary to allow plotting
+  ymx <- 1
+}
 par(mar = c(5,5,2,5))
 hydrograph_dry <- plot(as.numeric(unlist(datpd[names(datpd)== base_var]))~as.Date(datpd$date),
                        type = "l", lty=2, lwd = 1,ylim=c(ymn,ymx),xlim=c(xmn,xmx),

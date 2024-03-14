@@ -256,7 +256,7 @@ ndx = which.min(as.numeric(l30[,"30 Day Min"]));
 l30_Qout = round(loflows[ndx,]$"30 Day Min",6);
 l30_year = loflows[ndx,]$"year";
 
-if (is.na(l30)) {
+if (is.na(l30_Qout)) {
   l30_Runit = 0.0
   l30_year = 0
 }
@@ -324,7 +324,7 @@ if (syear <= 1990 && eyear >= 2000) {
   l90_Qout_trim = round(loflows_trim[ndx_trim,]$"90 Day Min",6);
   l90_year_trim = loflows_trim[ndx_trim,]$"year";
 
-  if (is.na(l90_trim)) {
+  if (is.na(l90_Qout_trim)) {
     l90_Qout_trim = 0.0
     l90_year_trim = 0
   }
@@ -337,7 +337,7 @@ if (syear <= 1990 && eyear >= 2000) {
   l30_Qout_trim = round(loflows_trim[ndx_trim,]$"30 Day Min",6);
   l30_year_trim = loflows_trim[ndx_trim,]$"year";
 
-  if (is.na(l30_trim)) {
+  if (is.na(l30_Qout_trim)) {
     l30_Qout_trim = 0.0
     l30_year_trim = 0
   }

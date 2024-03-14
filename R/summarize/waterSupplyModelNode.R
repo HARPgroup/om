@@ -59,7 +59,7 @@ if (syear < (eyear - 2)) {
 }
 dat <- as.xts(dat)
 dat <- window(dat, start = sdate, end = edate);
-dat <- as.zoo(dat)
+#dat <- as.zoo(dat)
 mode(dat) <- 'numeric'
 scen.propname<-paste0('runid_', runid)
 

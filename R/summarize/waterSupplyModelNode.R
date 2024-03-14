@@ -669,6 +669,7 @@ if (imp_off == 0) { #has impoundment
     start = pdstart,
     end = pdend
   );
+  datpd <- as.zoo(datpd)
   fname <- paste(
     save_directory,
     paste0(

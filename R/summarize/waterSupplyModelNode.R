@@ -57,7 +57,9 @@ if (syear < (eyear - 2)) {
   edate <- as.Date(paste0(eyear,"-12-31"))
   flow_year_type <- 'calendar'
 }
+dat <- as.xts(dat)
 dat <- window(dat, start = sdate, end = edate);
+dat <- as.zoo(dat)
 mode(dat) <- 'numeric'
 scen.propname<-paste0('runid_', runid)
 

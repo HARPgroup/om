@@ -44,6 +44,9 @@ if (syear != eyear) {
   sdate <- as.Date(paste0(syear,"-02-01"))
   edate <- as.Date(paste0(eyear,"-12-31"))
 }
+dat <- as.xts(dat)
+dat <- window(dat, start = sdate, end = edate);
+dat <- as.zoo(dat)
 cols <- names(dat)
 # does this have an impoundment sub-comp and is imp_off = 0?
 # check for local_impoundment, and if so, rename to impoundment for processing

@@ -33,6 +33,7 @@ if (syear != eyear) {
   edate <- as.Date(paste0(eyear,"-12-31"))
 }
 message(paste("Restricting dates to", sdate, "and", edate))
+dat <- as.xts(dat)
 dat <- window(dat, start = sdate, end = edate);
 message("Zooing Runit")
 Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = as.POSIXct(dat$thisdate));

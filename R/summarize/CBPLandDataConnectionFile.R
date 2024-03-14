@@ -74,7 +74,7 @@ ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_RUnit = round(loflows[ndx,]$"90 Day Min",6);
 l90_year = loflows[ndx,]$"year";
 
-if (is.na(l90)) {
+if (is.na(l90_year)) {
   l90_Runit = 0.0
   l90_year = 0
 }

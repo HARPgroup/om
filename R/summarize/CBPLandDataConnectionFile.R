@@ -22,6 +22,32 @@ pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
 
+# Post up a run summary for this runid
+scen.propname<-paste0('runid_', runid)
+# GETTING SCENARIO PROPERTY FROM VA HYDRO
+sceninfo <- list(
+  varkey = 'om_scenario',
+  propname = scen.propname,
+  featureid = pid,
+  entity_type = "dh_properties",
+  bundle = "dh_properties"
+)
+scenprop <- RomProperty$new( ds, sceninfo, TRUE)
+
+# POST PROPERTY IF IT IS NOT YET CREATED
+if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
+  # create
+  scenprop$save(TRUE)
+} else {
+  # This is a re-run so blank out props first (if they exist)
+  for (pname in c('l90_RUnit', 'l90_year', 'Runit', 'Runit_boxplot_month', 'Runit_boxplot_year')) {
+    null_prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, pname, NULL, ds)
+  }
+  
+}
+
+
+
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE);
 
 syear = as.integer(min(dat$year))
@@ -41,27 +67,6 @@ dat <- window(dat, start = sdate, end = edate);
 dat$Runit <- as.numeric(dat$Qout) / as.numeric(dat$area_sqmi)
 Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = as.POSIXct(dat$thisdate));
 
-#boxplot(as.numeric(dat$Runit) ~ dat$year, ylim=c(0,3))
-# get feature attached to this element id using REST
-element <- getProperty(list(pid=pid), base_url, prop)
-# Post up a run summary for this runid
-scen.propname<-paste0('runid_', runid)
-
-# GETTING SCENARIO PROPERTY FROM VA HYDRO
-sceninfo <- list(
-  varkey = 'om_scenario',
-  propname = scen.propname,
-  featureid = pid,
-  entity_type = "dh_properties",
-  bundle = "dh_properties"
-)
-scenprop <- RomProperty$new( ds, sceninfo, TRUE)
-
-# POST PROPERTY IF IT IS NOT YET CREATED
-if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
-  # create
-  scenprop$save(TRUE)
-}
 
 # POSTING METRICS TO SCENARIO PROPERTIES ON VA HYDRO
 # QA

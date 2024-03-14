@@ -40,8 +40,11 @@ if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
   scenprop$save(TRUE)
 } else {
   # This is a re-run so blank out props first (if they exist)
-  for (pname in c('l90_RUnit', 'l90_year', 'Runit', 'Runit_boxplot_month', 'Runit_boxplot_year')) {
+  for (pname in c('l90_RUnit', 'l90_year', 'Runit')) {
     null_prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, pname, NULL, ds)
+  }
+  for (pname in c('Runit_boxplot_month', 'Runit_boxplot_year')) {
+    null_prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', NULL, pname, NULL, ds)
   }
 }
 

@@ -43,10 +43,7 @@ if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
   for (pname in c('l90_RUnit', 'l90_year', 'Runit', 'Runit_boxplot_month', 'Runit_boxplot_year')) {
     null_prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, pname, NULL, ds)
   }
-  
 }
-
-
 
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE);
 
@@ -63,6 +60,7 @@ if (syear < (eyear - 2)) {
   edate <- as.Date(paste0(eyear,"-12-31"))
   flow_year_type <- 'calendar'
 }
+dat <- as.xts(dat)
 dat <- window(dat, start = sdate, end = edate);
 dat$Runit <- as.numeric(dat$Qout) / as.numeric(dat$area_sqmi)
 Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = as.POSIXct(dat$thisdate));

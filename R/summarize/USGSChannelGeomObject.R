@@ -25,6 +25,7 @@ model_run_end <- max(dat$thisdate)
 dat <- fn_remove_model_warmup(dat)
 sdate <- min(dat$thisdate)
 edate <- max(dat$thisdate)
+flow_year_type <- 'calendar'
 amn <- 10.0 * mean(as.numeric(dat$Qout))
 
 scen.propname<-paste0('runid_', runid)

@@ -19,19 +19,13 @@ scenprop <- om_get_set_model_run(pid, run_name, site, token)
 om_model <- getProperty(list(pid=pid), site, scenprop)
 
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
-mode(dat) <- 'numeric'
-syear = as.integer(min(dat$year))
-eyear = as.integer(max(dat$year))
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"))
-  edate <- as.Date(paste0(eyear,"-09-30"))
-  flow_year_type <- 'water'
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"))
-  edate <- as.Date(paste0(eyear,"-12-31"))
-  flow_year_type <- 'calendar'
-}
-dat <- window(dat, start = sdate, end = edate);
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
+model_run_end <- max(dat$thisdate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 mode(dat) <- 'numeric'
 qm <- mean(dat$Qout)
 datdf <- as.data.frame(dat)

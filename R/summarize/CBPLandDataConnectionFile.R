@@ -54,6 +54,8 @@ model_run_start <- min(dat$thisdate)
 model_run_end <- max(dat$thisdate)
 # eliminate warmup period
 dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 dat$Runit <- as.numeric(dat$Qout) / as.numeric(dat$area_sqmi)
 Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = as.POSIXct(dat$thisdate));
 

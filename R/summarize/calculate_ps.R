@@ -14,16 +14,13 @@ elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
 
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
-syear = min(dat$year)
-eyear = max(dat$year)
-if (syear != eyear) {
-  sdate <- as.Date(paste0(syear,"-10-01"))
-  edate <- as.Date(paste0(eyear,"-09-30"))
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"))
-  edate <- as.Date(paste0(eyear,"-12-31"))
-}
-dat <- window(dat, start = sdate, end = edate);
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
+model_run_end <- max(dat$thisdate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 
 scen.propname<-paste0('runid_', runid)
 

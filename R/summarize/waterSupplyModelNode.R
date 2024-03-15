@@ -31,33 +31,13 @@ remote_url <- finfo$remote_url
 # we must insure that we do NOT use the auto-trim to water year
 # as we want to have the model_run_start and _end for scenario storage
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
-mode(dat) <- 'numeric'
-
-# Hourly to Daily flow timeseries
-#dat = aggregate(
-#  dat,
-#  as.POSIXct(
-#    format(
-#      time(dat),
-#      format='%Y/%m/%d'),
-#    tz='UTC'
-#  ),
-#  'mean'
-#)
-syear = as.integer(min(dat$year))
-eyear = as.integer(max(dat$year))
-model_run_start <- min(dat$thisdate)
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
 model_run_end <- max(dat$thisdate)
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
-  flow_year_type <- 'water'
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
-  flow_year_type <- 'calendar'
-}
-dat <- window(dat, start = sdate, end = edate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 #dat <- as.zoo(dat)
 mode(dat) <- 'numeric'
 scen.propname<-paste0('runid_', runid)

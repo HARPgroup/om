@@ -33,19 +33,13 @@ runid <- as.integer(argst[3])
 finfo <- fn_get_runfile_info(elid, runid,37, site= omsite)
 remote_url <- as.character(finfo$remote_url)
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
-syear = min(dat$year)
-eyear = max(dat$year)
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
-  flow_year_type <- 'water'
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
-  flow_year_type <- 'calendar'
-}
-dat <- window(dat, start = sdate, end = edate)
-dat <- as.zoo(dat)
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
+model_run_end <- max(dat$thisdate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 cols <- names(dat)
 # does this have an impoundment sub-comp and is imp_off = 0?
 # check for local_impoundment, and if so, rename to impoundment for processing

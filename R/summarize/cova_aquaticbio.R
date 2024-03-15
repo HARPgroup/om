@@ -36,18 +36,13 @@ remote_url <- as.character(finfo$remote_url)
 runid_base = 0
 dat_base <- fn_get_runfile(elid, runid_base, site= omsite,  cached = FALSE)
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
-syear = min(dat$year)
-eyear = max(dat$year)
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
-  flow_year_type <- 'water'
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
-  flow_year_type <- 'calendar'
-}
-dat <- window(dat, start = sdate, end = edate)
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
+model_run_end <- max(dat$thisdate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 cols <- names(dat)
 mode(dat) <- 'numeric'
 mode(dat_base) <- 'numeric'

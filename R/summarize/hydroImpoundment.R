@@ -135,8 +135,8 @@ l90 <- loflows["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_Qout = round(loflows[ndx,]$"90 Day Min",6);
 l90_year = loflows[ndx,]$"year";
-l90_start = as.Date(paste0(l90_year - 2,"-01-01"))
-l90_end = as.Date(paste0(l90_year,"-12-31"))
+l90_start = as.POSIXct(paste0(l90_year - 2,"-01-01"), tz="UTC")
+l90_end = as.POSIXct(paste0(l90_year,"-12-31"), tz="UTC")
 datpd <- window(
   dat,
   start = l90_start,
@@ -152,8 +152,8 @@ l90 <- loelevs["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_elev = round(loelevs[ndx,]$"90 Day Min",6);
 l90_elevyear = loelevs[ndx,]$"year";
-l90_elev_start = as.Date(paste0(l90_elevyear - 2,"-01-01"))
-l90_elev_end = as.Date(paste0(l90_elevyear,"-12-31"))
+l90_elev_start = as.POSIXct(paste0(l90_elevyear - 2,"-01-01"), tz="UTC")
+l90_elev_end = as.POSIXct(paste0(l90_elevyear,"-12-31"), tz="UTC")
 elevdatpd <- window(
   dat,
   start = l90_elev_start,

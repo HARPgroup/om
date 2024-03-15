@@ -280,8 +280,8 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet_
 
 # Metrics trimmed to climate change scenario timescale (Jan. 1 1990 -- Dec. 31 2000)
 if (syear <= 1990 && eyear >= 2000) {
-  sdate_trim <- as.Date(paste0(1990,"-10-01"))
-  edate_trim <- as.Date(paste0(2000,"-09-30"))
+  sdate_trim <- as.POSIXct(paste0(1990,"-10-01"), tz='UTC')
+  edate_trim <- as.POSIXct(paste0(2000,"-09-30"), tz='UTC')
 
   dat_trim <- window(dat, start = sdate_trim, end = edate_trim);
   # convert to daily
@@ -397,8 +397,8 @@ if (imp_off == 0) { #has impoundment
 
     # this has an impoundment.  Plot it up.
     # Now zoom in on critical drought period
-    pdstart = as.Date(paste0(l90_year,"-06-01") )
-    pdend = as.Date(paste0(l90_year, "-11-15") )
+    pdstart = as.POSIXct(paste0(l90_year,"-06-01"), tz='UTC' )
+    pdend = as.POSIXct(paste0(l90_year, "-11-15"), tz='UTC' )
     datpd <- window(
       dat,
       start = pdstart,
@@ -448,8 +448,8 @@ if (imp_off == 0) { #has impoundment
     # l90 2 year
     # this has an impoundment.  Plot it up.
     # Now zoom in on critical drought period
-    pdstart = as.Date(paste0( (as.integer(l90_year) - 1),"-01-01") )
-    pdend = as.Date(paste0(l90_year, "-12-31") )
+    pdstart = as.POSIXct(paste0( (as.integer(l90_year) - 1),"-01-01"), tz='UTC' )
+    pdend = as.POSIXct(paste0(l90_year, "-12-31"), tz='UTC' )
     datpd <- window(
       dat,
       start = pdstart,
@@ -572,8 +572,8 @@ if (imp_off == 0) { #has impoundment
     ndx = which.min(as.numeric(l90[,"90 Day Min"]));
     l90_elev = round(loelevs[ndx,]$"90 Day Min",6);
     l90_elevyear = loelevs[ndx,]$"year";
-    l90_elev_start = as.Date(paste0(l90_elevyear - 2,"-01-01"))
-    l90_elev_end = as.Date(paste0(l90_elevyear,"-12-31"))
+    l90_elev_start = as.POSIXct(paste0(l90_elevyear - 2,"-01-01"), tz='UTC')
+    l90_elev_end = as.POSIXct(paste0(l90_elevyear,"-12-31"), tz='UTC')
     elevdatpd <- window(
       dat,
       start = l90_elev_start,
@@ -642,8 +642,8 @@ if (imp_off == 0) { #has impoundment
   
   # Plot hydrographs only (no impoundment)
   # Now zoom in on critical drought period
-  pdstart = as.Date(paste0(l90_year,"-06-01") )
-  pdend = as.Date(paste0(l90_year, "-11-15") )
+  pdstart = as.POSIXct(paste0(l90_year,"-06-01"), tz='UTC' )
+  pdend = as.POSIXct(paste0(l90_year, "-11-15"), tz='UTC' )
   datpd <- window(
     dat,
     start = pdstart,
@@ -844,8 +844,8 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc', 
 # RSEG Hydrograph (Drought Period)
 ###############################################
 # Zoom in on critical drought period
-pdstart = as.Date(paste0(l90_year,"-06-01") )
-pdend = as.Date(paste0(l90_year, "-11-15") )
+pdstart = as.POSIXct(paste0(l90_year,"-06-01"), tz='UTC' )
+pdend = as.POSIXct(paste0(l90_year, "-11-15"), tz='UTC' )
 datpd <- window(
   dat,
   start = pdstart,
@@ -873,8 +873,8 @@ furl <- paste(
 
 png(fname, width = 900, height = 700)
 legend_text = c("Baseline Flow","Scenario Flow")
-xmn <- as.Date(pdstart)
-xmx <- as.Date(pdend)
+xmn <- as.POSIXct(pdstart, tz='UTC')
+xmx <- as.POSIXct(pdend, tz='UTC')
 ymn <- 0
 #ymx <- 1000
 ymx <- max(cbind(as.numeric(unlist(datpd[names(datpd)== base_var])),
@@ -884,7 +884,7 @@ if (ymx == 0) {
   ymx <- 1
 }
 par(mar = c(5,5,2,5))
-hydrograph_dry <- plot(as.numeric(unlist(datpd[names(datpd)== base_var]))~as.Date(datpd$date),
+hydrograph_dry <- plot(as.numeric(unlist(datpd[names(datpd)== base_var]))~as.POSIXct(datpd$date, tz='UTC'),
                        type = "l", lty=2, lwd = 1,ylim=c(ymn,ymx),xlim=c(xmn,xmx),
                        ylab="Flow (cfs)",xlab=paste("Lowest 90 Day Flow Period",pdstart,"to",pdend),
                        main = "Hydrograph: Dry Period",
@@ -893,7 +893,7 @@ hydrograph_dry <- plot(as.numeric(unlist(datpd[names(datpd)== base_var]))~as.Dat
                        cex.lab=1.50
                        )
 par(new = TRUE)
-plot(as.numeric(unlist(datpd[names(datpd)== comp_var]))~as.Date(datpd$date),
+plot(as.numeric(unlist(datpd[names(datpd)== comp_var]))~as.POSIXct(datpd$date, tz='UTC'),
      type = "l",col='brown3', lwd = 2, 
      axes=FALSE,ylim=c(ymn,ymx),xlim=c(xmn,xmx),ylab="",xlab="")
 legend("topright",legend=legend_text,col=c("black","brown3"), 

@@ -40,6 +40,8 @@ model_run_end <- max(dat$thisdate)
 dat <- fn_remove_model_warmup(dat)
 sdate <- min(dat$thisdate)
 edate <- max(dat$thisdate)
+syear <- year(sdate)
+eyear <- year(edate)
 cols <- names(dat)
 # does this have an impoundment sub-comp and is imp_off = 0?
 # check for local_impoundment, and if so, rename to impoundment for processing
@@ -88,8 +90,8 @@ if (!("Qintake" %in% cols)) {
 # yrdat will be used for generating the heatmap with calendar years
 yrdat <- dat
 
-yr_sdate <- as.Date(paste0((as.numeric(syear) + 1),"-01-01"))
-yr_edate <- as.Date(paste0(eyear,"-12-31"))
+yr_sdate <- as.POSIXct(paste0((as.numeric(syear) + 1),"-01-01"), tz='UTC')
+yr_edate <- as.POSIXct(paste0(eyear,"-12-31"), tz='UTC')
 
 yrdat <- window(yrdat, start = yr_sdate, end = yr_edate);
 
@@ -121,7 +123,7 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logf
 #dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE);
 #amn <- 10.0 * mean(as.numeric(dat$Qreach))
 
-#dat <- window(dat, start = as.Date("1984-10-01"), end = as.Date("2014-09-30"));
+#dat <- window(dat, start = as.POSIXct("1984-10-01"), end = as.POSIXct("2014-09-30"));
 #boxplot(as.numeric(dat$Qreach) ~ dat$year, ylim=c(0,amn))
 
 datdf <- as.data.frame(dat)
@@ -284,8 +286,8 @@ dsmo <- sprintf('%02i',dsmo)
 demo <- sprintf('%02i',demo)
 ddat2 <- window(
   dat,
-  start = as.Date(paste0(dsy, "-", dsmo, "-01")),
-  end = as.Date(paste0(dey,"-", demo, "-28") )
+  start = as.POSIXct(paste0(dsy, "-", dsmo, "-01"), tz='UTC'),
+  end = as.POSIXct(paste0(dey,"-", demo, "-28"), tz='UTC' )
 );
 
 #dmx2 = max(ddat2$Qintake)
@@ -370,7 +372,7 @@ dev.off()
 # map2$date <- rownames(map2)
 # map2$base_demand_mgd<-ddat2$base_demand_mgd * 1.547
 # map2$unmetdemand<-ddat2$unmet_demand_mgd * 1.547
-# df <- data.frame(as.Date(map2$date), map2$flow, map2$base_demand_mgd,map2$unmetdemand);
+# df <- data.frame(as.POSIXct(map2$date), map2$flow, map2$base_demand_mgd,map2$unmetdemand);
 # colnames(df)<-c("date","flow","base_demand_mgd","unmetdemand")
 # #options(scipen=5, width = 1400, height = 950)
 # ggplot(df, aes(x=date)) +
@@ -658,8 +660,8 @@ if("impoundment" %in% cols) {
   
   # this has an impoundment.  Plot it up.
   # Now zoom in on critical drought period
-  pdstart = as.Date(paste0(l90_year,"-06-01") )
-  pdend = as.Date(paste0(l90_year, "-11-15") )
+  pdstart = as.POSIXct(paste0(l90_year,"-06-01"), tz='UTC' )
+  pdend = as.POSIXct(paste0(l90_year, "-11-15"), tz='UTC' )
   datpd <- window(
     dat,
     start = pdstart,
@@ -711,8 +713,8 @@ if("impoundment" %in% cols) {
   # l90 2 year
   # this has an impoundment.  Plot it up.
   # Now zoom in on critical drought period
-  pdstart = as.Date(paste0( (as.integer(l90_year) - 1),"-01-01") )
-  pdend = as.Date(paste0(l90_year, "-12-31") )
+  pdstart = as.POSIXct(paste0( (as.integer(l90_year) - 1),"-01-01"), tz='UTC' )
+  pdend = as.POSIXct(paste0(l90_year, "-12-31"), tz='UTC' )
   datpd <- window(
     dat,
     start = pdstart,
@@ -871,8 +873,8 @@ if("impoundment" %in% cols) {
   ndx = which.min(as.numeric(l90[,"90 Day Min"]));
   l90_elev = round(loelevs[ndx,]$"90 Day Min",6);
   l90_elevyear = loelevs[ndx,]$"year";
-  l90_elev_start = as.Date(paste0(l90_elevyear - 2,"-01-01"))
-  l90_elev_end = as.Date(paste0(l90_elevyear,"-12-31"))
+  l90_elev_start = as.POSIXct(paste0(l90_elevyear - 2,"-01-01"), tz='UTC')
+  l90_elev_end = as.POSIXct(paste0(l90_elevyear,"-12-31"), tz='UTC')
   elevdatpd <- window(
     dat,
     start = l90_elev_start,

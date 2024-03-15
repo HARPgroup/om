@@ -38,6 +38,8 @@ model_run_end <- max(dat$thisdate)
 dat <- fn_remove_model_warmup(dat)
 sdate <- min(dat$thisdate)
 edate <- max(dat$thisdate)
+syear <- year(sdate)
+eyear <- year(edate)
 flow_year_type <- 'calendar'
 #dat <- as.zoo(dat)
 mode(dat) <- 'numeric'

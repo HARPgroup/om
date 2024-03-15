@@ -179,7 +179,7 @@ lines(datpd[,demvar] * 1.547,col='red')
 axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
 
 # l90 2 year
@@ -225,7 +225,7 @@ lines(datpd[,demvar] * 1.547,col='red')
 axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, ds)
 
 # All Periods
@@ -265,7 +265,7 @@ lines(datpd[,demvar] * 1.547,col='red')
 axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
 
 # Low Elevation Period
@@ -318,6 +318,6 @@ lines(datpd[,demvar] * 1.547,col='red')
 axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
 

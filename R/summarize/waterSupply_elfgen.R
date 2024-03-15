@@ -85,7 +85,7 @@ inputs <- list(
 dataframe <- getProperty(inputs, site)
 
 mean_intake <- dataframe$propvalue
-print(paste("Mean Annual Flow at Intake = ",mean_intake,sep=""))
+message(paste("Mean Annual Flow at Intake = ",mean_intake,sep=""))
 #### Input parameters for retrieving data from VAHydro
 
 watershed.code <- as.character(nhd_code)
@@ -251,10 +251,10 @@ furl <- paste(
   sep = '/'
 )
 
-print(furl)
+message(furl)
 ggsave(furl, width = 7, height = 5.5)
 
-print(paste("Saved file: ", furl, "with URL", furl))
+message(paste("Saved file: ", furl, "with URL", furl))
 
 
 ########## Posting to VAHydro

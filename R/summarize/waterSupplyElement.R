@@ -144,7 +144,7 @@ furl <- paste(
 png(fname)
 barplot(modat$base_demand_mgd ~ modat$month, xlab="Month", ylab="Base Demand (mgd)")
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.monthly_demand', 0.0, ds)
 
 # Calculate
@@ -402,12 +402,12 @@ dev.off()
 #   guides(colour = guide_legend(override.aes = list(size=5)))+
 #   labs(y = "Flow (cfs)", x= paste("Critical Period:",u30_year2, sep=' '))
 # #dev.off()
-# print(fname)
+# message(fname)
 # ggsave(fname,width=7,height=4.75)
 
 ##### Naming for saving and posting to VAHydro
 
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.30daymax_unmet', 0.0, ds)
 
@@ -551,7 +551,7 @@ furl2 <- paste(save_url, paste0('fig.unmet_heatmap.',elid, '.', runid, '.png'),s
 
 ggsave(fname2,plot = unmet_avg, width= 7, height=7)
 
-print(paste('File saved to save_directory:', fname2))
+message(paste('File saved to save_directory:', fname2))
 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl2, 'fig.unmet_heatmap', 0.0, ds)
 
@@ -637,7 +637,7 @@ furl3 <- paste(save_url, paste0('fig.unmet_heatmap_amt.',elid, '.', runid, '.png
 
 ggsave(fname3,plot = unmet_avg, width= 9.5, height=6)
 
-print('File saved to save_directory')
+message('File saved to save_directory')
 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl3, 'fig.unmet_heatmap_amt', 0.0, ds)
 
@@ -711,7 +711,7 @@ if("impoundment" %in% cols) {
   axis(side = 4)
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
   
   # l90 2 year
@@ -791,7 +791,7 @@ if("impoundment" %in% cols) {
   #mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   
   dev.off()
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, ds)
   
   # All Periods
@@ -866,7 +866,7 @@ if("impoundment" %in% cols) {
   #mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   
   dev.off()
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
   
   # Low Elevation Period
@@ -924,7 +924,7 @@ if("impoundment" %in% cols) {
   axis(side = 4)
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
   
 }

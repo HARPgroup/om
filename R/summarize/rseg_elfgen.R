@@ -116,7 +116,7 @@ elfgen_huc <- function(
   #Determine watershed outlet nhd+ segment and hydroid
   nhdplus_views <- paste(site,'dh-feature-containing-export', hydroid, 'watershed/nhdplus/nhdp_drainage_sqmi',  sep = '/')
   nhdplus_df <- read.csv(file=nhdplus_views, header=TRUE, sep=",")
-  print(paste("length(nhdplus_df): ", length(nhdplus_df[,1])))
+  message(paste("length(nhdplus_df): ", length(nhdplus_df[,1])))
   
   if (dataset == 'IchthyMaps'){
     dataname='Ichthy'
@@ -140,7 +140,7 @@ elfgen_huc <- function(
     elfgen_container$propcode <- as.character('no nhdplus found')
     elfgen_container$save(TRUE)
 
-    print('No nhdplus segment found for this location')
+    message('No nhdplus segment found for this location')
     return(NULL)
   }
   
@@ -154,7 +154,7 @@ elfgen_huc <- function(
 
 
   # DEBUG --------------------------------------------------------------------------------------
-  # print(hydroid)
+  # message(hydroid)
 
   # vector of rseg hydroids where the approach "the nhdplus seg with the greatest DA" fails
   # because nhdplus feature overlaps at the outlet of the rseg
@@ -178,7 +178,7 @@ elfgen_huc <- function(
 
   }
 
-  # print(hydroid_out)
+  # message(hydroid_out)
   # --------------------------------------------------------------------------------------------
 
   #Determine cumulative consumptive use fraction for the river segment
@@ -242,7 +242,7 @@ elfgen_huc <- function(
       "xlabel" = "Mean Annual Flow (ft3/s)",
       "ylabel" = "Fish Species Richness"
     )
-    # print(elfgen_result)
+    # message(elfgen_result)
   }
   , error = function(e) {
     an.error.occured <<- e
@@ -263,7 +263,7 @@ elfgen_huc <- function(
     elfgen_container$propcode <- as.character(an.error.occured$message)
     elfgen_container$save(TRUE)
     
-    print(an.error.occured)
+    message(an.error.occured)
     return("NULL")
   } 
   #######################################################
@@ -287,7 +287,7 @@ elfgen_huc <- function(
   elfgen_container$save(TRUE)
   #--------------------------------------------------------------
   
-  print("POSTING PROPERTIES TO VAHYDRO...")
+  message("POSTING PROPERTIES TO VAHYDRO...")
 
   vahydro_post_metric_to_scenprop(elfgen_container$pid, 'om_class_Constant', NULL, 'richness_change_abs', confidence$df$abs_change, ds)
 
@@ -369,12 +369,12 @@ elfgen_huc <- function(
     sep = '/'
   )
 
-  print(fname)
+  message(fname)
   ggsave(fname, plot = confidence$plot, width = 7, height = 5.5)
 
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(elfgen_container$pid, 'dh_image_file', furl, 'fig.elfgen', 0.0, ds)
 
-  print('elf plot generated')
+  message('elf plot generated')
   return(confidence$plot)
 }

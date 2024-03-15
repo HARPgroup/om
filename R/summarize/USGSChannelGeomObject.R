@@ -105,8 +105,8 @@ ndx = which.min(as.numeric(l30[,"30 Day Min"]));
 l30_Qout = round(loflows[ndx,]$"30 Day Min",6);
 l30_year = loflows[ndx,]$"year";
 
-if (is.na(l30)) {
-  l30_Runit = 0.0
+if (is.na(l30_Qout)) {
+  l30_Qout = 0.0
   l30_year = 0
 }
 

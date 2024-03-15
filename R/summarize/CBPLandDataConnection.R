@@ -102,3 +102,5 @@ dev.off()
 message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'Runit_boxplot_year', 0.0, ds)
 
+
+print(1) # to act as positive returning function

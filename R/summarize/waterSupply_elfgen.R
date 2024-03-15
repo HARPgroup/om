@@ -295,3 +295,5 @@ sceninfo <- list(
 # Posting additional properties
 #y val at intake
 #vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'proj_species_rich', int, site, token)
+
+print(1) # to act as positive returning function

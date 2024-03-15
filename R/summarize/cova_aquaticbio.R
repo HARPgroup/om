@@ -110,3 +110,5 @@ curr_plot_5pct <- pothab_plot(
   0.05, ifim_da_sqmi,
   "Posey Hollow", "Current"
 )
+
+print(1) # to act as positive returning function

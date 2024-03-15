@@ -357,3 +357,5 @@ if (imp_off == 0) { #impoundment active
 # Export Smin
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L30_mg', Smin_L30_mg, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L90_mg', Smin_L90_mg, ds)
+
+print(1) # to act as positive returning function

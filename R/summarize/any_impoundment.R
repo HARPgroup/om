@@ -321,3 +321,5 @@ dev.off()
 message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
 
+
+print(1) # to act as positive returning function

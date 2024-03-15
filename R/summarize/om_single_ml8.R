@@ -52,3 +52,4 @@ alf <- fn_iha_mlf(zdat, "August")
 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ml8', alf, site, token)
 
+print(1) # to act as positive returning function

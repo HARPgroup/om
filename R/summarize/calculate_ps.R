@@ -63,3 +63,5 @@ if (is.na(ps_cumulative_mgd)) {
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_mgd', ps_mgd, site, token)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_cumulative_mgd', ps_cumulative_mgd, site, token)
 
+
+print(1) # to act as positive returning function

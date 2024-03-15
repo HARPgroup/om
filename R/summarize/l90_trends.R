@@ -124,3 +124,5 @@ vahydro_post_metric_to_scenprop(trend_prop$pid, 'om_class_Constant', NULL, 'p', 
 vahydro_post_metric_to_scenprop(trend_prop$pid, 'om_class_Constant', NULL, 'rsq', l90_rsq, site, token)
 vahydro_post_metric_to_scenprop(trend_prop$pid, 'om_class_Constant', NULL, 'm', l90_m, site, token)
 vahydro_post_metric_to_scenprop(trend_prop$pid, 'om_class_Constant', NULL, 'b', l90_b, site, token)
+
+print(1) # to act as positive returning function

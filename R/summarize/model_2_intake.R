@@ -3,7 +3,7 @@
 ########################################
 
 model_2_intake <- function(pid,site,intake.df){
-  print("FETCHING INTAKE HYDROID FROM FACILITY:RIVERSEG MODEL PID...")
+  message("FETCHING INTAKE HYDROID FROM FACILITY:RIVERSEG MODEL PID...")
 
   #RETRIEVE FACILITY HYDROID FROM FACILITY:RIVERSEG MODEL PID
   invisible(capture.output(model.dataframe <- getProperty(list(pid = as.numeric(pid)), site))) #PRINT MESSAGES SUPPRESSED
@@ -28,7 +28,7 @@ model_2_intake <- function(pid,site,intake.df){
   )
   invisible(capture.output(riverseg.dataframe <- getProperty(riverseg.inputs, site))) #PRINT MESSAGES SUPPRESSED
   riverseg.code <- riverseg.dataframe$propcode
-  # print(paste("RIVERSEG = ",riverseg.code,sep=""))
+  # message(paste("RIVERSEG = ",riverseg.code,sep=""))
   
   #INITIALIZE EMPTY INTAKE DATAFRAME
   intake.df <- data.frame(hydroid = character(),
@@ -62,10 +62,10 @@ model_2_intake <- function(pid,site,intake.df){
   #PRINT THE HYDROID OF INTAKE(S) WITHIN RIVERSEG
   intake.hydroid <- intake.df$intake.hydroid
   if (length(intake.df[, 1]) == 1) {
-    print(paste("INTAKE HYDROID = ", intake.hydroid, sep = ""))
+    message(paste("INTAKE HYDROID = ", intake.hydroid, sep = ""))
   } else if (length(intake.df[, 1]) > 1) {
-    print("FACILITY HAS MUTIPLE INTAKES WITHIN RIVERSEG")
-    print(intake.hydroid)
+    message("FACILITY HAS MUTIPLE INTAKES WITHIN RIVERSEG")
+    message(intake.hydroid)
   }
  
   #RETURN DATAFRAME OF RIVERSEG & INTAKE(S)

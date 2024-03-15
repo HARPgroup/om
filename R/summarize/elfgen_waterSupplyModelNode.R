@@ -44,3 +44,5 @@ elfgen_richness_change_8 = made_up_elfgen_function()
 elfgen_richness_change_10 = made_up_elfgen_function()
 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'mne9_10', sept_10, ds)
+
+print(1) # to act as positive returning function

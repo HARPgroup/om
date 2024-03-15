@@ -34,18 +34,13 @@ if (pid == '--help') {
 }
 
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
-syear = min(dat$year)
-eyear = max(dat$year)
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
-  flow_year_type <- 'water'
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
-  flow_year_type <- 'calendar'
-}
-dat <- window(dat, start = sdate, end = edate)
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
+model_run_end <- max(dat$thisdate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 # yrdat will be used for generating the heatmap with calendar years
 yrdat <- dat
 
@@ -179,7 +174,7 @@ lines(datpd[,demvar] * 1.547,col='red')
 axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
 
 # l90 2 year
@@ -225,7 +220,7 @@ lines(datpd[,demvar] * 1.547,col='red')
 axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, ds)
 
 # All Periods
@@ -265,7 +260,7 @@ lines(datpd[,demvar] * 1.547,col='red')
 axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
 
 # Low Elevation Period
@@ -318,6 +313,8 @@ lines(datpd[,demvar] * 1.547,col='red')
 axis(side = 4)
 mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
 
+
+print(1) # to act as positive returning function

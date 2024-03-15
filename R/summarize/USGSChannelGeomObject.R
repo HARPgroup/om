@@ -17,19 +17,15 @@ pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
 
-dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE);
-syear = as.integer(min(dat$year))
-eyear = as.integer(max(dat$year))
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
-  flow_year_type <- 'water'
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
-  flow_year_type <- 'calendar'
-}
-dat <- window(dat, start = sdate, end = edate)
+dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
+model_run_end <- max(dat$thisdate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
+flow_year_type <- 'calendar'
 amn <- 10.0 * mean(as.numeric(dat$Qout))
 
 scen.propname<-paste0('runid_', runid)
@@ -96,8 +92,8 @@ ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_Qout = round(loflows[ndx,]$"90 Day Min",6);
 l90_year = loflows[ndx,]$"year";
 
-if (is.na(l90)) {
-  l90_Runit = 0.0
+if (is.na(l90_Qout)) {
+  l90_Qout = 0.0
   l90_year = 0
 }
 
@@ -109,11 +105,13 @@ ndx = which.min(as.numeric(l30[,"30 Day Min"]));
 l30_Qout = round(loflows[ndx,]$"30 Day Min",6);
 l30_year = loflows[ndx,]$"year";
 
-if (is.na(l30)) {
-  l30_Runit = 0.0
+if (is.na(l30_Qout)) {
+  l30_Qout = 0.0
   l30_year = 0
 }
 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_Qout', l30_Qout, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_year', l30_year, ds)
 
+
+print(1) # to act as positive returning function

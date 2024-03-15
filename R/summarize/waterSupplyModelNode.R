@@ -31,33 +31,14 @@ remote_url <- finfo$remote_url
 # we must insure that we do NOT use the auto-trim to water year
 # as we want to have the model_run_start and _end for scenario storage
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
-mode(dat) <- 'numeric'
-
-# Hourly to Daily flow timeseries
-#dat = aggregate(
-#  dat,
-#  as.POSIXct(
-#    format(
-#      time(dat),
-#      format='%Y/%m/%d'),
-#    tz='UTC'
-#  ),
-#  'mean'
-#)
-syear = as.integer(min(dat$year))
-eyear = as.integer(max(dat$year))
-model_run_start <- min(dat$thisdate)
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
 model_run_end <- max(dat$thisdate)
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
-  flow_year_type <- 'water'
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
-  flow_year_type <- 'calendar'
-}
-dat <- window(dat, start = sdate, end = edate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
+flow_year_type <- 'calendar'
 #dat <- as.zoo(dat)
 mode(dat) <- 'numeric'
 scen.propname<-paste0('runid_', runid)
@@ -98,16 +79,16 @@ if ("imp_off" %in% cols) {
     imp_off <- 1 # default to no impoundment
   }
 }
-print("**************************************")
-print("**************************************")
-print("**************************************")
-print("**************************************")
-print(paste("IMP_OFF = ", imp_off))
-print("**************************************")
-print("**************************************")
-print("**************************************")
-print("**************************************")
-print("**************************************")
+message("**************************************")
+message("**************************************")
+message("**************************************")
+message("**************************************")
+message(paste("IMP_OFF = ", imp_off))
+message("**************************************")
+message("**************************************")
+message("**************************************")
+message("**************************************")
+message("**************************************")
 
 if (!("wd_mgd" %in% cols)) { 
   if ("child_wd_mgd" %in% cols) {
@@ -348,13 +329,13 @@ if (syear <= 1990 && eyear >= 2000) {
 message("Plotting critical flow periods")
 # does this have an active impoundment sub-comp
 if (imp_off == 0) { #has impoundment 
-  print("*******************************************")
-  print("*******************************************")
-  print("*******************************************")
-  print("has IMPOUNDMENT")
-  print("*******************************************")
-  print("*******************************************")
-  print("*******************************************")
+  message("*******************************************")
+  message("*******************************************")
+  message("*******************************************")
+  message("has IMPOUNDMENT")
+  message("*******************************************")
+  message("*******************************************")
+  message("*******************************************")
 
   # Smin_CPL metrics
   start_date_30 <- paste0(l30_year,"-01-01") # Dates for l90_year
@@ -461,7 +442,7 @@ if (imp_off == 0) { #has impoundment
            lty = c(1,1,1,1),
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
-    print(paste("Saved file: ", fname, "with URL", furl))
+    message(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
 
     # l90 2 year
@@ -511,7 +492,7 @@ if (imp_off == 0) { #has impoundment
            lty = c(1,1,1,1),
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
-    print(paste("Saved file: ", fname, "with URL", furl))
+    message(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage.2yr', 0.0, ds)
 
     # All Periods
@@ -538,7 +519,7 @@ if (imp_off == 0) { #has impoundment
     png(fname)
     hydroTSM::fdc(cbind(datpd$impoundment_Qin, datpd$impoundment_Qout),ylab="Q (cfs)")
     dev.off()
-    print(paste("Saved file: ", fname, "with URL", furl))
+    message(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc.all.', 0.0, ds)
 
 
@@ -580,7 +561,7 @@ if (imp_off == 0) { #has impoundment
            lty = c(1,1,1,1),
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
-    print(paste("Saved file: ", fname, "with URL", furl))
+    message(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
 
     # Low Elevation Period
@@ -637,7 +618,7 @@ if (imp_off == 0) { #has impoundment
            lty = c(1,1,1,1),
            bg='white',cex=0.8) #ADD LEGEND
     dev.off()
-    print(paste("Saved file: ", fname, "with URL", furl))
+    message(paste("Saved file: ", fname, "with URL", furl))
     vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
 
   }
@@ -645,15 +626,15 @@ if (imp_off == 0) { #has impoundment
   # plot Qin, Qout of mainstem, and wd_mgd, and wd_cumulative_mgd
   # TBD
   # l90 2 year
-  print("**************************************")
-  print("**************************************")
-  print("**************************************")
-  print("**************************************")
-  print("Riverine model only, plotting regular hydrographs.")
-  print("**************************************")
-  print("**************************************")
-  print("**************************************")
-  print("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("Riverine model only, plotting regular hydrographs.")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
+  message("**************************************")
   
   # No storage if there is no impoundment
   Smin_L30_mg <- 0
@@ -711,7 +692,7 @@ if (imp_off == 0) { #has impoundment
   axis(side = 4)
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_flows.2yr', 0.0, ds)
 
   message("**************************************")
@@ -769,7 +750,7 @@ if (imp_off == 0) { #has impoundment
   message("**************************************")
   message("**************************************")
   message("**************************************")
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   message("**************************************")
   message("**************************************")
   message("**************************************")
@@ -851,7 +832,7 @@ fdc_plot <- hydroTSM::fdc(
 title(sub = subtitle, adj = 0.85, line = 0.8)
 dev.off()
 
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc', 0.0, ds)
 
 
@@ -919,7 +900,7 @@ legend("topright",legend=legend_text,col=c("black","brown3"),
        lty=c(2,1), lwd=c(1,2), cex=1.5)
 dev.off()
 
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.hydrograph_dry', 0.0, ds)
 ###############################################
 ###############################################
@@ -941,3 +922,5 @@ elfgen_huc(runid, rseg_hydroid, huc_level, dataset, scenprop, ds, save_directory
 ###############################################
 
 
+
+print(1) # to act as positive returning function

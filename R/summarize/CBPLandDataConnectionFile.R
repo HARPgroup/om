@@ -49,21 +49,13 @@ if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
 }
 
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE);
-
-syear = as.integer(min(dat$year))
-eyear = as.integer(max(dat$year))
-model_run_start <- min(dat$thisdate)
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
 model_run_end <- max(dat$thisdate)
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
-  flow_year_type <- 'water'
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
-  flow_year_type <- 'calendar'
-}
-dat <- window(dat, start = sdate, end = edate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 dat$Runit <- as.numeric(dat$Qout) / as.numeric(dat$area_sqmi)
 Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = as.POSIXct(dat$thisdate));
 
@@ -107,7 +99,7 @@ furl <- paste(
 png(fpath)
 boxplot(as.numeric(dat$Runit) ~ dat$year, ylim=c(0,3))
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'Runit_boxplot_year', 0.0, ds)
 
 # Runoff boxplot
@@ -128,6 +120,8 @@ furl <- paste(
 png(fpath)
 boxplot(as.numeric(dat$Runit) ~ as.integer(dat$month), ylim=c(0,3))
 dev.off()
-print(paste("Saved file: ", fname, "with URL", furl))
+message(paste("Saved file: ", fname, "with URL", furl))
 vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'Runit_boxplot_month', 0.0, ds)
 
+
+print(1) # to act as positive returning function

@@ -212,3 +212,5 @@ message(paste("Scale adjustment for gage record:", wscale))
 if (gage.timespan.trimmed == TRUE) {
   message(paste("Timespans do not overlap, scenario saved as", mrun_name, "with timespan", start.date, "to", end.date))
 }
+
+print(1) # to act as positive returning function

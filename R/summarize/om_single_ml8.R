@@ -16,16 +16,13 @@ runid <- as.integer(argst[3])
 
 dat <- fn_get_runfile(
   elid, runid, site= omsite,  cached = FALSE, outaszoo = FALSE)
-syear = as.integer(min(dat$year))
-eyear = as.integer(max(dat$year))
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"))
-  edate <- as.Date(paste0(eyear,"-09-30"))
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"))
-  edate <- as.Date(paste0(eyear,"-12-31"))
-}
-dat <- window(dat, start = sdate, end = edate);
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
+model_run_end <- max(dat$thisdate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 mode(dat) <- 'numeric'
 scen.propname<-paste0('runid_', runid)
 
@@ -52,3 +49,4 @@ alf <- fn_iha_mlf(zdat, "August")
 
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ml8', alf, site, token)
 
+print(1) # to act as positive returning function

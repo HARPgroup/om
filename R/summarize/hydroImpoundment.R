@@ -21,18 +21,13 @@ elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
 
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
-syear = as.integer(min(dat$year))
-eyear = as.integer(max(dat$year))
-if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
-  flow_year_type <- 'water'
-} else {
-  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
-  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
-  flow_year_type <- 'calendar'
-}
-dat <- window(dat, start = sdate, end = edate)
+# grab model run period before removing warmup period
+model_run_start <- min(dat$thisdate) 
+model_run_end <- max(dat$thisdate)
+# eliminate warmup period
+dat <- fn_remove_model_warmup(dat)
+sdate <- min(dat$thisdate)
+edate <- max(dat$thisdate)
 mode(dat) <- 'numeric'
 # is imp_off = 0?
 cols <- names(dat)
@@ -140,8 +135,8 @@ l90 <- loflows["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_Qout = round(loflows[ndx,]$"90 Day Min",6);
 l90_year = loflows[ndx,]$"year";
-l90_start = as.Date(paste0(l90_year - 2,"-01-01"))
-l90_end = as.Date(paste0(l90_year,"-12-31"))
+l90_start = as.POSIXct(paste0(l90_year - 2,"-01-01"), tz="UTC")
+l90_end = as.POSIXct(paste0(l90_year,"-12-31"), tz="UTC")
 datpd <- window(
   dat,
   start = l90_start,
@@ -157,8 +152,8 @@ l90 <- loelevs["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_elev = round(loelevs[ndx,]$"90 Day Min",6);
 l90_elevyear = loelevs[ndx,]$"year";
-l90_elev_start = as.Date(paste0(l90_elevyear - 2,"-01-01"))
-l90_elev_end = as.Date(paste0(l90_elevyear,"-12-31"))
+l90_elev_start = as.POSIXct(paste0(l90_elevyear - 2,"-01-01"), tz="UTC")
+l90_elev_end = as.POSIXct(paste0(l90_elevyear,"-12-31"), tz="UTC")
 elevdatpd <- window(
   dat,
   start = l90_elev_start,
@@ -225,7 +220,7 @@ if (imp_off == 0) { #impoundment active
   axis(side = 4)
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.l90_imp_storage', 0.0, ds)
 
 
@@ -268,7 +263,7 @@ if (imp_off == 0) { #impoundment active
   axis(side = 4)
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.imp_storage.all', 0.0, ds)
 
 
@@ -303,7 +298,7 @@ if (imp_off == 0) { #impoundment active
   axis(2, at = y_ticks, labels = y_ticks_fmt)
 
   dev.off()
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.fdc.all.', 0.0, ds)
 
 
@@ -345,7 +340,7 @@ if (imp_off == 0) { #impoundment active
   axis(side = 4)
   mtext(side = 4, line = 3, 'Flow/Demand (cfs)')
   dev.off()
-  print(paste("Saved file: ", fname, "with URL", furl))
+  message(paste("Saved file: ", fname, "with URL", furl))
   vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage', 0.0, ds)
 
 } else { #no impoundment
@@ -357,3 +352,5 @@ if (imp_off == 0) { #impoundment active
 # Export Smin
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L30_mg', Smin_L30_mg, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L90_mg', Smin_L90_mg, ds)
+
+print(1) # to act as positive returning function

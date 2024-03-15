@@ -35,17 +35,16 @@ remote_url <- as.character(finfo$remote_url)
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
 syear = min(dat$year)
 eyear = max(dat$year)
-if (syear != eyear) {
-  sdate <- as.Date(paste0(syear,"-10-01"))
-  edate <- as.Date(paste0(eyear,"-09-30"))
+if (syear < (eyear - 2)) {
+  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
+  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
+  flow_year_type <- 'water'
 } else {
-  # special case to handle 1 year model runs
-  # just omit January in order to provide a short warmup period.
-  sdate <- as.Date(paste0(syear,"-02-01"))
-  edate <- as.Date(paste0(eyear,"-12-31"))
+  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
+  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
+  flow_year_type <- 'calendar'
 }
-dat <- as.xts(dat)
-dat <- window(dat, start = sdate, end = edate);
+dat <- window(dat, start = sdate, end = edate)
 dat <- as.zoo(dat)
 cols <- names(dat)
 # does this have an impoundment sub-comp and is imp_off = 0?

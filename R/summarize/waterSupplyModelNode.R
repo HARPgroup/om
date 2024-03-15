@@ -49,16 +49,15 @@ eyear = as.integer(max(dat$year))
 model_run_start <- min(dat$thisdate)
 model_run_end <- max(dat$thisdate)
 if (syear < (eyear - 2)) {
-  sdate <- as.Date(paste0(syear,"-10-01"))
-  edate <- as.Date(paste0(eyear,"-09-30"))
+  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
+  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
   flow_year_type <- 'water'
 } else {
-  sdate <- as.Date(paste0(syear,"-02-01"))
-  edate <- as.Date(paste0(eyear,"-12-31"))
+  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
+  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
   flow_year_type <- 'calendar'
 }
-dat <- as.xts(dat)
-dat <- window(dat, start = sdate, end = edate);
+dat <- window(dat, start = sdate, end = edate)
 #dat <- as.zoo(dat)
 mode(dat) <- 'numeric'
 scen.propname<-paste0('runid_', runid)

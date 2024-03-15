@@ -16,14 +16,16 @@ runid <- as.integer(argst[3])
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
 syear = min(dat$year)
 eyear = max(dat$year)
-if (syear != eyear) {
-  sdate <- as.Date(paste0(syear,"-10-01"))
-  edate <- as.Date(paste0(eyear,"-09-30"))
+if (syear < (eyear - 2)) {
+  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
+  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
+  flow_year_type <- 'water'
 } else {
-  sdate <- as.Date(paste0(syear,"-02-01"))
-  edate <- as.Date(paste0(eyear,"-12-31"))
+  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
+  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
+  flow_year_type <- 'calendar'
 }
-dat <- window(dat, start = sdate, end = edate);
+dat <- window(dat, start = sdate, end = edate)
 
 scen.propname<-paste0('runid_', runid)
 

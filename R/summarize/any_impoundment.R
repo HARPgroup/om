@@ -36,15 +36,16 @@ if (pid == '--help') {
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
 syear = min(dat$year)
 eyear = max(dat$year)
-if (syear != eyear) {
-  sdate <- as.Date(paste0(syear,"-10-01"))
-  edate <- as.Date(paste0(eyear,"-09-30"))
+if (syear < (eyear - 2)) {
+  sdate <- as.Date(paste0(syear,"-10-01"), tz = "UTC")
+  edate <- as.Date(paste0(eyear,"-09-30"), tz = "UTC")
+  flow_year_type <- 'water'
 } else {
-  # special case to handle 1 year model runs
-  # just omit January in order to provide a short warmup period.
-  sdate <- as.Date(paste0(syear,"-02-01"))
-  edate <- as.Date(paste0(eyear,"-12-31"))
+  sdate <- as.Date(paste0(syear,"-02-01"), tz = "UTC")
+  edate <- as.Date(paste0(eyear,"-12-31"), tz = "UTC")
+  flow_year_type <- 'calendar'
 }
+dat <- window(dat, start = sdate, end = edate)
 # yrdat will be used for generating the heatmap with calendar years
 yrdat <- dat
 
@@ -54,7 +55,6 @@ yr_edate <- as.Date(paste0(eyear,"-12-31"))
 yrdat <- window(yrdat, start = yr_sdate, end = yr_edate);
 
 # water year data frame
-dat <- window(dat, start = sdate, end = edate);
 mode(dat) <- 'numeric'
 scen.propname<-paste0('runid_', runid)
 

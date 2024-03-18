@@ -755,7 +755,11 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
        return;
       }
     }
-    parent::tsvaluesFromLogFile($infile);
+    # create_landseg_table.sh $i $land_scenario $db_version 1
+    $exec_str = "create_landseg_table.sh $this->landseg $this->scenario $this->version 1";
+    error_log("Load CBP File:" . $exec_str);
+    shell_exec($exec_str);
+    #parent::tsvaluesFromLogFile($infile);
   }
    
   function tsvalues2listobject($columns = array()) {

@@ -1745,6 +1745,7 @@ class modelObject {
     $this->getInputs();
     if (isset($this->state['debug_start'])) {
       // check if current date matches debug start 
+      error_log("Comparing " . $this->state['debug_start'] . " to " . $this->state['thisdate']);
       if ($this->state['thisdate'] == $this->state['debug_start']) {
         $this->debug = 1;
       }

@@ -1743,6 +1743,19 @@ class modelObject {
     $this->readParentBroadCasts();
     // hard wired inputs override broadcasts
     $this->getInputs();
+    if (isset($this->state['debug_start'])) {
+      // check if current date matches debug start 
+      error_log("Comparing " . $this->state['debug_start'] . " to " . $this->state['thisdate']);
+      if ($this->state['thisdate'] == $this->state['debug_start']) {
+        $this->debug = 1;
+      }
+    }
+    if (isset($this->state['debug_stop'])) {
+      // check if current date matches debug start 
+      if ($this->state['thisdate'] == $this->state['debug_stop']) {
+        $this->debug = 0;
+      }
+    }
     $this->sendChildBroadCasts();
   }
 
@@ -7158,7 +7171,7 @@ class channelObject extends hydroObject {
     if ($this->debug) {
        $this->logDebug("Final Inflows I2 : $I2 = " . $this->state['Qin'] . " + $Qlocal + $discharge <br>\n");
     }
-    $I1 = $this->state['Iold'];
+    $I1 = $this->state['Iold']; // note: Iold is set to Qin during the pre-step, which is effectively the previous timesteps value for Qin
     $O1 = $this->state['Qout'];
     $S1 = $this->state['Storage'];
     $initialStorage = $this->state['Storage'];

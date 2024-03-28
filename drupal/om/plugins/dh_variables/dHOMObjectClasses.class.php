@@ -1048,7 +1048,6 @@ class dHOMBaseObjectClass extends dHVariablePluginDefaultOM {
       'featureid' => $entity->pid,
       'entity_type' => 'dh_properties',
       'bundle' => 'dh_properties',
-      'bundle' => 'om_element_connection',
       'varid' => dh_varkey2varid('om_element_connection', TRUE),
     );
     $elvar = dh_properties_enforce_singularity($elvar_info, 'singular');

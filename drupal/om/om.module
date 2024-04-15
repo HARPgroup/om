@@ -104,9 +104,11 @@ function om_run_id_options() {
         '6014' => t('Draft Permit Term Max w/Proposed - 1998-2002, alt. 4 (#6014)'),
         '6015' => t('Draft Permit Term Max w/Proposed - 1998-2002, alt. 5 (#6015)'),
       ),
-      'Drought Evaluation Runs (flow_mode = 9)' => array(
+      'Drought/Met Evaluation Runs (flow_mode = 9)' => array(
         '900' => t('Full Time Period (1984-now + Mash-up drought (#900)'),
         '901' => t('Last 4 Years (now-4 + Mash-up drought (#901)'),
+        '902' => t('Met Update Last 4 Years (#902)'),
+        '9000' => t('Full Time Period Met Update (#902)'),
       ),
       'WSP Runs(flow_mode = 9)' => array(
         '11' => t('2020 Demand 2020 (#11)'),

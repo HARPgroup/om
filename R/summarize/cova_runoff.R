@@ -60,11 +60,11 @@ if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
 
 # POSTING METRICS TO SCENARIO PROPERTIES ON VA HYDRO
 # QA
-loflows <- group2(Runits);
-l90 <- loflows["90 Day Min"];
-ndx = which.min(as.numeric(l90[,"90 Day Min"]));
-l90_RUnit = round(loflows[ndx,]$"90 Day Min",6);
-l90_year = loflows[ndx,]$"year";
+loflows <- group2(Runits, "calendar")
+l90 <- loflows["90 Day Min"]
+ndx = which.min(as.numeric(l90[,"90 Day Min"]))
+l90_RUnit = round(loflows[ndx,]$"90 Day Min",6)
+l90_year = loflows[ndx,]$"year"
 
 if (is.na(l90_RUnit)) {
   l90_Runit = 0.0

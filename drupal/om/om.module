@@ -108,7 +108,7 @@ function om_run_id_options() {
         '900' => t('Full Time Period (1984-now + Mash-up drought (#900)'),
         '901' => t('Last 4 Years (now-4 + Mash-up drought (#901)'),
         '902' => t('Met Update Last 4 Years (#902)'),
-        '9000' => t('Full Time Period Met Update (#902)'),
+        '9000' => t('Full Time Period Met Update (#9000)'),
       ),
       'WSP Runs(flow_mode = 9)' => array(
         '11' => t('2020 Demand 2020 (#11)'),

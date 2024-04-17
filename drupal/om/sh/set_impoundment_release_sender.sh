@@ -14,7 +14,7 @@ if [ $# -gt 2 ]; then
   entity_id=$3
 fi 
 # Water Supply Model Element Template 
-template=4988636
+template=6717035
 
 
 # make sure it is using the new discharge_mgd variable 

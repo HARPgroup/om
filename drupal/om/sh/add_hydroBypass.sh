@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pid=$1
-template=4988636
+template=4828686
 
 if [ $# -lt 1 ]; then
   echo 1>&2 "Usage: add_hydroBypass.sh model_pid [template_entity_id]" >&2
@@ -13,7 +13,7 @@ if [ $# -gt 1 ]; then
 fi 
 
 
-for i in Qbypass Qavail_divert Qturbine_max Qturbine unmet_demand_hydro_mgd; do
+for i in Qbypass Qavail_divert Qturbine_max Qturbine unmet_demand_hydro_mgd Qturbine_max_current Qturbine_max_proposed Qturbine_max_historic; do
   echo "drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid $i"
   drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid $i
 done

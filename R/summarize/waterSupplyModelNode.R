@@ -347,15 +347,11 @@ if (imp_off == 0) { #has impoundment
   end_date_90 <- paste0(l90_year,"-12-31")
   
   # Calculate Smin_CPLs using function
-  Smin_L30_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
-                                 colname = "impoundment_Storage")
+  Smin_L30_mg <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
+                                 colname = "impoundment_use_remain_mg")
   
-  Smin_L90_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
-                                 colname = "impoundment_Storage")
-  
-  # Convert from from ac-ft to mg: 1 mg = 3.069 acre-feet
-  Smin_L30_mg <- round(Smin_L30_acft/3.069, digits = 3)
-  Smin_L90_mg <- round(Smin_L90_acft/3.069, digits = 3)
+  Smin_L90_mg <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
+                                 colname = "impoundment_use_remain_mg")
   
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L30_mg', Smin_L30_mg, ds)
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L90_mg', Smin_L90_mg, ds)

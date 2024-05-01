@@ -153,6 +153,14 @@ Qout <- mean(as.numeric(dat$Qout) )
 if (is.na(Qout)) {
   Qout = 0.0
 }
+if ("ps_refill_pump_mgd" %in% cols) { #cumulative variables are needed for calculations including Water Availability and combine all upstream contributions
+  ps_refill_pump_mgd <- mean(as.numeric(dat$ps_refill_pump_mgd) )
+  if (is.na(ps_refill_pump_mgd)) {
+    ps_refill_pump_mgd = 0.0
+  }
+} else {
+  ps_refill_pump_mgd = 0.0
+}
 net_consumption_mgd <- wd_cumulative_mgd - ps_cumulative_mgd
 if (is.na(net_consumption_mgd)) {
   net_consumption_mgd = 0.0
@@ -202,6 +210,7 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Qbasel
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_nextdown_mgd', ps_nextdown_mgd, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'consumptive_use_frac', consumptive_use_frac, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'daily_consumptive_use_frac', daily_consumptive_use_frac, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'ps_refill_pump_mgd', ps_refill_pump_mgd, ds)
 
 # Metrics that need Zoo (IHA)
 flows <- zoo(as.numeric(as.character( dat$Qout )), order.by = index(dat));

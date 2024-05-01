@@ -319,22 +319,18 @@ if (!pump_store || !imp_enabled) {
   
   # Storage col could be a couple different names 
   if("local_impoundment_Storage" %in% cols) {
-    storagecol <- "local_impoundment_Storage"
+    storagecol <- "local_impoundment_use_remain_mg"
   }
   if("impoundment_Storage" %in% cols) {
-    storagecol <- "impoundment_Storage"
+    storagecol <- "impoundment_use_remain_mg"
   }
   
   # Calculate Smin_CPLs using function
-  Smin_L30_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
+  Smin_L30_mg <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
                                  colname = storagecol)
   
-  Smin_L90_acft <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
+  Smin_L90_mg <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
                                  colname = storagecol)
-  
-  # Convert from from ac-ft to mg: 1 mg = 3.069 acre-feet
-  Smin_L30_mg <- round(Smin_L30_acft/3.069, digits = 3)
-  Smin_L90_mg <- round(Smin_L90_acft/3.069, digits = 3)
   
 }
 

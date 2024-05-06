@@ -476,7 +476,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     scale_y_reverse(expand=c(0,0), breaks=y_breaks, labels= y_labs) +
     theme(axis.ticks= element_blank()) +
     theme(plot.title = element_text(size = 12, face = "bold",  hjust = 0.5)) +
-    theme(legend.title.align = 0.5)
+    theme(legend.title = element_text(hjust = 0.5))
   
   unmet <- count_grid + new_scale_fill() +
     geom_tile(data = yesum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
@@ -511,7 +511,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     scale_y_reverse(expand=c(0,0), breaks=y_breaks, labels= y_labs) +
     theme(axis.ticks= element_blank()) +
     theme(plot.title = element_text(size = 12, face = "bold",  hjust = 0.5)) +
-    theme(legend.title.align = 0.5)
+    theme(legend.title = element_text(hjust = 0.5))
   
   unmet <- count_grid + new_scale_fill() +
     geom_tile(data = yesum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
@@ -562,7 +562,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     scale_y_reverse(expand=c(0,0), breaks=y_breaks, labels= y_labs) +
     theme(axis.ticks= element_blank()) +
     theme(plot.title = element_text(size = 12, face = "bold",  hjust = 0.5)) +
-    theme(legend.title.align = 0.5)
+    theme(legend.title = element_text(hjust = 0.5))
   
   unmet <- count_grid + new_scale_fill() +
     geom_tile(data = yesum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +
@@ -598,7 +598,7 @@ if (sum(mosum$count_unmet_days) == 0) {
     scale_y_reverse(expand=c(0,0), breaks=y_breaks, labels= y_labs) +
     theme(axis.ticks= element_blank()) +
     theme(plot.title = element_text(size = 12, face = "bold",  hjust = 0.5)) +
-    theme(legend.title.align = 0.5)
+    theme(legend.title = element_text(hjust = 0.5))
   
   unmet <- count_grid + new_scale_fill() +
     geom_tile(data = yesum, color='black', aes(x = month, y = year, fill = count_unmet_days)) +

@@ -78,6 +78,11 @@ function om_run_id_options() {
     or in_array('analyst', $user->roles)
   ) {
     $options += array(
+      'Baseline Runs' => array(
+        '0' => t('Zero-Demand, full time period (#0)'),
+        '100' => t('Zero-Demand, Draft, full time period (#100)'),
+        '101' => t('Zero-Demand, 1998-2002 (#101)'),
+      ),
       'Current Conditions + Current(run_mode = 4)' => array(
         '2' => t('Current Conditions (#2)'),
         '200' => t('Current Conditions, full time period (#200)'),

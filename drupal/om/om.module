@@ -82,6 +82,7 @@ function om_run_id_options() {
         '0' => t('Zero-Demand, full time period (#0)'),
         '100' => t('Zero-Demand, Draft, full time period (#100)'),
         '101' => t('Zero-Demand, 1998-2002 (#101)'),
+        '1000' => t('Zero-Demand, 1984-2014 (#1000)'),
       ),
       'Current Conditions + Current(run_mode = 4)' => array(
         '2' => t('Current Conditions (#2)'),

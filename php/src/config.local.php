@@ -81,6 +81,7 @@ $wdm_messagefile = '/var/www/cgi-bin/message.wdm';
 $hspf_exe = '/var/www/cgi-bin/hspf';
 $wdimex_exe = '/var/www/cgi-bin/wdimex';
 
+
 # local executable for php
 //$php_exe = "/var/www/cgi-bin/php";
 $php_exe = "/usr/bin/php";

@@ -577,9 +577,10 @@ switch ($operation) {
   break;
 
   case 11:
-  //print("listobject ");
-  //print_r((array)$listobject,1);
+  error_log(print("listobject "));
+  error_log(print_r((array)$listobject,1));
   $run_rec = getRunFile($listobject, $elementid, $runid, TRUE);
+  error_log("Run Record for $elementid, $runid:". print_r($run_rec,1));
   unset($run_rec['run_summary']);
   // zip the file up
   $zipurl = $run_rec['remote_url'] . ".zip";

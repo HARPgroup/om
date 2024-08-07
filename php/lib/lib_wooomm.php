@@ -293,8 +293,10 @@ function getRunFile($listobject, $elementid, $runid, $debug = 0) {
    
    $listobject->performQuery();
    if (count($listobject->queryrecords)) {
+      error_log("Found " . count($listobject->queryrecords) . " run records for $elementid $runid");
       return $listobject->queryrecords[0];
    } else {
+      error_log("Warning: Found ZERO run records for $elementid $runid");
       return FALSE;
    }
 }

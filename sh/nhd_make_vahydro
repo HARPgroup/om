@@ -1,0 +1,17 @@
+#!/bin/bash
+comid=$1
+name=$2
+filename=$3
+ftype="vahydro"
+dbhost="dbase2"
+dbname="va_hydro"
+
+sql="copy( select '$name' as name, comid as hydrocode, 
+    st_astext(the_geom) as wkt, 'watershed' as bundle, 'vahydro' as ftype 
+    from nhd_fulldrainage 
+    where comid = '$comid'
+  ) to '/tmp/${filename}' WITH HEADER CSV DELIMITER AS E'\t';
+"
+echo $sql
+echo $sql | psql -h $dbhost $dbname
+sftp dbase2:/tmp/${filename} /var/www/html/files/${ftype}/${filename}

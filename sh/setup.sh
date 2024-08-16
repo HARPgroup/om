@@ -57,10 +57,12 @@ ln -s /opt/model/om/php/lib/psql_functions.php /var/www/html/lib/psql_functions.
 rm /var/www/html/lib/PEAR -Rf
 ln -s /opt/model/om/php/lib/PEAR /var/www/html/lib/PEAR
 
-# dev
+# OM
 # We used to do dev separate from live, because the path is /opt/model/om-dev,  but now we have a 
 # soft-link for opt/model/om to opt/model/om-dev so all is one. we can regenerate if need be later
 # live
+rm /var/www/html/om/nhd_make_vahydro
+ln -s /opt/model/vahydro/sh/nhd_make_vahydro /var/www/html/om/nhd_make_vahydro
 rm /var/www/html/om/xajax_modeling.common.php
 ln -s /opt/model/om/php/src/xajax_modeling.common.php /var/www/html/om/xajax_modeling.common.php
 rm /var/www/html/om/test_step.php

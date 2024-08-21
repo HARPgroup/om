@@ -3304,7 +3304,7 @@ class broadCastObject extends modelSubObject {
       for ($i = 0; $i < count($this->local_varname); $i++) {
          $remote = $this->broadcast_varname[$i];
          $local = $this->local_varname[$i];
-         $target->broadCast($this->broadcast_class, $remote, $this->componentid, $this->arData[$local]);
+         $target->broadCast($this->broadcast_class, $remote, $this->componentid . '_' . $local, $this->arData[$local]);
          $this->logDebug("Broadcasting $this->broadcast_class, $remote, $this->componentid, " . $this->arData[$local] . "<br>");
       }
    }

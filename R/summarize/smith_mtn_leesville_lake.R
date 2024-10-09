@@ -1,3 +1,10 @@
+# Note: this is a custom summary script for the Smith Mountain Lake and Leesville Lake
+#       model object in the vahydro-1.0 model.
+#      - this summarizes the 2 impoundments in terms of total storage remaining
+#      - It calculates the FDC by taking inflow into SML and outflow from Leesville
+#      - by considering these as a lumped impoundment, we can get past the limitations
+#      - of the model which assumes that Leesville always needs to remain full
+#      - and SML provides whatever water is needed to do so.  
 #----------------------------------------------
 site <- "http://deq2.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
 #----------------------------------------------
@@ -5,8 +12,8 @@ site <- "http://deq2.bse.vt.edu/d.dh"    #Specify the site of interest, either d
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 library(stringr)
-library(lubridate)
 library(IHA)
+library("lubridate")
 # dirs/URLs
 save_directory <- "/var/www/html/data/proj3/out"
 library(hydrotools)
@@ -33,21 +40,17 @@ edate <- max(dat$thisdate)
 mode(dat) <- 'numeric'
 # is imp_off = 0?
 cols <- names(dat)
-if ("imp_off" %in% cols) {
-  imp_off <- as.integer(median(dat$imp_off))
-} else {
-  # imp_off is NOT in the cols, so impoundment must be active
-  # therefore, we assume that the impoundment is active by intention
-  # and that it is a legacy that lacked the imp_off convention
-  imp_off = 0
+if (!("imp_off" %in% cols)) {
+  dat$imp_off <- 1
 }
-if ("pct_use_remain" %in% cols) {
-  # nothing
-} else {
-  # this uses 10% dead as estimate for those that have not been re-run
-  # since reporting for pct_use_remain was enabled
-  dat$pct_use_remain <- dat$use_remain_mg * 3.07 / (0.9 * dat$maxcapacity)
-}
+imp_off <- median(dat$imp_off)
+
+# Combine SML and Leesville values for a single aggregate storage
+dat$use_remain_mg <- dat$impoundment_use_remain_mg + dat$Leesville_Lake_use_remain_mg
+dat$max_usable <- dat$Leesville_Lake_max_usable + dat$impoundment_max_usable
+dat$pct_use_remain <- dat$use_remain_mg * 3.07 / dat$max_usable
+dat$evap_mgd <- dat$Leesville_Lake_evap_mgd * 3.07 + (0.9 * dat$impoundment_evap_mgd)
+dat$days_remaining <- dat$use_remain_mg / ( dat$wd_mgd + ( dat$Rbrook/1.547 ) )
 
 scen.propname<-paste0('runid_', runid)
 

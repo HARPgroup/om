@@ -339,7 +339,7 @@ if (syear <= 1990 && eyear >= 2000) {
 
 message("Plotting critical flow periods")
 # does this have an active impoundment sub-comp
-if (imp_off == 0) { #has impoundment 
+if ( (imp_off == 0) & ("impoundment" %in% cols)) { #has impoundment 
   message("*******************************************")
   message("*******************************************")
   message("*******************************************")
@@ -354,18 +354,21 @@ if (imp_off == 0) { #has impoundment
   
   start_date_90 <- paste0(l90_year,"-01-01") # Dates for l30_year
   end_date_90 <- paste0(l90_year,"-12-31")
-  
+  Smin_L30_mg <- 0
+  Smin_L90_mg <- 0
+  # calculate Smin related 
   # Calculate Smin_CPLs using function
   Smin_L30_mg <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
-                                 colname = "impoundment_use_remain_mg")
-  
+                               colname = "impoundment_use_remain_mg")
+ 
   Smin_L90_mg <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
-                                 colname = "impoundment_use_remain_mg")
+                               colname = "impoundment_use_remain_mg")
   
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L30_mg', Smin_L30_mg, ds)
   vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Smin_L90_mg', Smin_L90_mg, ds)
   
-  if("impoundment" %in% cols) {
+
+
     # Plot and analyze impoundment sub-comps
     dat$storage_pct <- dat$impoundment_use_remain_mg * 3.07 / dat$impoundment_max_usable
     #
@@ -624,11 +627,10 @@ if (imp_off == 0) { #has impoundment
            col = c("black", "blue", "green","red"),
            lty = c(1,1,1,1),
            bg='white',cex=0.8) #ADD LEGEND
-    dev.off()
-    message(paste("Saved file: ", fname, "with URL", furl))
-    vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
+  dev.off()
+  message(paste("Saved file: ", fname, "with URL", furl))
+  vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'elev90_imp_storage.all', 0.0, ds)
 
-  }
 } else { #no impoundment 
   # plot Qin, Qout of mainstem, and wd_mgd, and wd_cumulative_mgd
   # TBD

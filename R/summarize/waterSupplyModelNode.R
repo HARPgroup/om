@@ -12,7 +12,8 @@ source(paste(om_location,'R/summarize','rseg_elfgen.R',sep='/'))
 library(stringr)
 # dirs/URLs
 save_directory <- "/var/www/html/data/proj3/out"
-library(hydrotools)
+suppressPackageStartupMessages(library(hydrotools))
+suppressPackageStartupMessages(library(IHA))
 # authenticate
 ds <- RomDataSource$new(site, rest_uname)
 ds$get_token(rest_pw)

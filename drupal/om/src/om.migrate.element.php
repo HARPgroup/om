@@ -140,5 +140,5 @@ foreach ($data as $element) {
   }
 
 }
-
+echo $dh_model->pid;
 ?>

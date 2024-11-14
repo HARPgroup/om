@@ -29,7 +29,7 @@ function om_run_model_form($form, &$form_state, $model = null, $op = 'run') {
   } else {
     dsm("Model object not set");
   }
-  dpm($model,'model');
+  //dpm($model,'model');
   $riverseg = om_load_dh_property($model, 'riverseg');
   
   $form['pid'] = array(

@@ -31,7 +31,9 @@ $cache_date = '2010-10-18 12:00:00';
 $max_simultaneous = 7; // set to 4 while dumping WDMs cause it caues all kinds of slowness
 $scid = 37;
 error_log("Arguments: " . print_r($argv,1));
+
 error_log("Using DBConn to $dbip \n");
+
 if (isset($argv[1])) {
    $operation = $argv[1];
 } else {

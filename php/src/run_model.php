@@ -150,6 +150,6 @@ if (!$runVars['test_only'] and ($runtype <> 'cached_meta_model')) {
   setStatus($listobject, $elementid, $mesg, $serverip, 0, $runid);
 }
 if ($runtype == 'cached_meta_model') {
-  error_log("No summary performed in run_model.php in favor of meta_model work flow.");
+  error_log("No summary performed in run_model.php $elementid in favor of meta_model work flow.");
 }
 ?>

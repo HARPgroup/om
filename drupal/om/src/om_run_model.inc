@@ -29,6 +29,7 @@ function om_run_model_form($form, &$form_state, $model = null, $op = 'run') {
   } else {
     dsm("Model object not set");
   }
+  dpm($model,'model');
   
   $form['pid'] = array(
     '#title' => t('PID'),

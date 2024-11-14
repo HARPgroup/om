@@ -95,7 +95,7 @@ if (isset($argv[13])) {
    $debug = $argv[13];
 } else {
    $debug = 0;
-
+}
 
 if (isset($argv[14])) {
    $dt = $argv[14];

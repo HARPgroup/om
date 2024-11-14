@@ -103,7 +103,20 @@ if (isset($argv[14])) {
 }
 
 if (isset($argv[15])) {
-   $runtype = $argv[15];
+   $pid = $argv[15];
+} else {
+   $pid = NULL;
+}
+
+if (isset($argv[16])) {
+   $riverseg = $argv[16];
+} else {
+   $riverseg = NULL;
+}
+
+if (isset($argv[17])) {
+   $runtype = $argv[17];
+   error_log("************************* Got runtype arg = $runtype");
 } else {
    $runtype = 'cached2';
 }

@@ -841,7 +841,7 @@ function om_run_model($config) {
     $setstr = "/opt/model/meta_model/scripts/om/mm_run_shakeTree $operation $elementid $run_id $startdate $enddate $cache_date $force_overwrite $scid $strict $run_mode ";
     // @todo: this does not do anything.  The run_model.php script and the forkRun() routines are not able to handle this
     //        so for now this is a placeholder.
-    $setstr .= "normal flow_mode=$flow_mode $debug $dt $pid $riverseg";
+    $setstr .= "normal flow_mode=$flow_mode $debug $dt $pid $riverseg cached_meta_model";
     //$test_only = TRUE;
     $php_path = "/opt/model/p6/vadeq/"; # all nova and sova will get model config from here so should be OK?
     break;

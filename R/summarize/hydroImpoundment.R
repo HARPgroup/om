@@ -16,7 +16,7 @@ ds$get_token(rest_pw)
 
 source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 
-# Read Args
+# Read Args Ex: argst <- c(5033170, 231301, 13)
 argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
@@ -137,8 +137,8 @@ l90 <- loflows["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_Qout = round(loflows[ndx,]$"90 Day Min",6);
 l90_year = loflows[ndx,]$"year";
-l90_start = as.POSIXct(paste0(l90_year - 2,"-01-01"), tz="UTC")
-l90_end = as.POSIXct(paste0(l90_year,"-12-31"), tz="UTC")
+l90_start = as.POSIXct(as.Date(paste0(l90_year,"-07-01")) - days(365), tz="UTC")
+l90_end = as.POSIXct(as.Date(paste0(l90_year,"-07-01")) + days(1460), tz="UTC")
 datpd <- window(
   dat,
   start = l90_start,
@@ -154,8 +154,8 @@ l90 <- loelevs["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_elev = round(loelevs[ndx,]$"90 Day Min",6);
 l90_elevyear = loelevs[ndx,]$"year";
-l90_elev_start = as.POSIXct(paste0(l90_elevyear - 2,"-01-01"), tz="UTC")
-l90_elev_end = as.POSIXct(paste0(l90_elevyear,"-12-31"), tz="UTC")
+l90_elev_start = as.POSIXct(as.Date(paste0(l90_elevyear,"-07-01")) - days(365), tz="UTC")
+l90_elev_end = as.POSIXct(as.Date(paste0(l90_elevyear,"-07-01")) + days(730), tz="UTC")
 elevdatpd <- window(
   dat,
   start = l90_elev_start,
@@ -181,7 +181,7 @@ if (imp_off == 0) { #impoundment active
   Smin_L30_mg <- fn_get_pd_min(ts_data = dat, start_date = start_date_30, end_date = end_date_30,
                                  colname = "use_remain_mg")
   
-  Smin_L90_mg <- fn_get_pd_min(ts_data = dat, start_date = start_date_90, end_date = end_date_90,
+  Smin_L90_mg <- fn_get_pd_min(ts_data = dat, start_date = as.Date(start_date_90) - days(135), end_date = as.Date(end_date_90) + days(140),
                                  colname = "use_remain_mg")
   
   # Lake Plots

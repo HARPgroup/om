@@ -36,7 +36,6 @@ Runits <- zoo(as.numeric(as.character( dat$Runit )), order.by = as.POSIXct(dat$t
 #boxplot(as.numeric(dat$Runit) ~ dat$year, ylim=c(0,3))
 # get feature attached to this element id using REST
 message("Finding model property")
-element <- getProperty(list(pid=pid), base_url, prop)
 # Post up a run summary for this runid
 scen.propname<-paste0('runid_', runid)
 

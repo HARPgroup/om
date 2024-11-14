@@ -20,7 +20,7 @@ ds$get_token(rest_pw)
 
 source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 
-# Read Args
+# Read Args argst <- c(4713892, 231299 , 11)
 argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])

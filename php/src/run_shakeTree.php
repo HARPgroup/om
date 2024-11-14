@@ -27,7 +27,6 @@ $startdate = '1984-01-01';
 //$enddate = '1984-12-31';
 $enddate = '2005-12-31';
 $cache_date = '2010-10-18 12:00:00';
-$runtype = 'cached2';
 // specify max models to run at a time
 $max_simultaneous = 7; // set to 4 while dumping WDMs cause it caues all kinds of slowness
 $scid = 37;
@@ -94,13 +93,32 @@ if (isset($argv[13])) {
    $debug = $argv[13];
 } else {
    $debug = 0;
-}
+
 
 if (isset($argv[14])) {
    $dt = $argv[14];
    $url_params['dt'] = $dt;
 } else {
    $dt = 0;
+}
+
+if (isset($argv[15])) {
+   $pid = $argv[15];
+} else {
+   $pid = NULL;
+}
+
+if (isset($argv[16])) {
+   $riverseg = $argv[16];
+} else {
+   $riverseg = NULL;
+}
+
+if (isset($argv[17])) {
+   $runtype = $argv[17];
+   error_log("************************* Got runtype arg = $runtype");
+} else {
+   $runtype = 'cached2';
 }
 
 // set up the sleep factor

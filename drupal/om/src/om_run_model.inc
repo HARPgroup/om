@@ -29,7 +29,23 @@ function om_run_model_form($form, &$form_state, $model = null, $op = 'run') {
   } else {
     dsm("Model object not set");
   }
+  dpm($model,'model');
+  $riverseg = om_load_dh_property($model, 'riverseg');
   
+  $form['pid'] = array(
+    '#title' => t('PID'),
+    '#type' => 'hidden',
+    '#default_value' => $model->pid,
+    '#required' => TRUE,
+    '#weight' => 1,
+  );
+  $form['riverseg'] = array(
+    '#title' => t('River Segment'),
+    '#type' => 'hidden',
+    '#default_value' => $riverseg->propcode,
+    '#required' => TRUE,
+    '#weight' => 1,
+  );
   $form['run_id'] = array(
     '#title' => t('Model Run ID'),
     '#type' => 'select',
@@ -94,6 +110,7 @@ function om_run_model_form($form, &$form_state, $model = null, $op = 'run') {
     '#options' => array(
       'cached' => 'Standard (Container Tree cached)',
       'shake_tree' => 'Tree (Sequential Tree, with caching)',
+      'mm_shake_tree' => 'Tree in Meta-Model',
     ),
     '#size' => 1,
     '#default_value' => empty($model->runtype) ? 'shake_tree' : $model->runtype

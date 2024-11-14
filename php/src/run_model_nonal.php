@@ -108,7 +108,6 @@ switch ($runtype) {
    
    case 'cached':
    case 'cached2':
-   case 'cached_meta_model':
    error_log("Calling runCached() with " . print_r($runVars,1) . "\n");
 //error_reporting(E_ALL);
    // test only uncomment below
@@ -125,31 +124,4 @@ switch ($runtype) {
    
 }
 
-pg_close($modeldb);//boot the model db to prevent temp name collisions?
-if (!$runVars['test_only'] and ($runtype <> 'cached_meta_model')) {
-// handle post-processing
-  $runid = intval(trim($runVars['runid']));
-  $elementid = $runVars['elementid'];
-  $manifest = $outdir . "/manifest.$runid" . "." . $elementid . ".log";
-  error_log("Looking for manifest : $manifest");
-  $elements = file($manifest);
-  foreach ($elements as $elid) {
-    $cmd_output = array();
-    $cmd = "cd $sumdir \n";
-    $elid = intval(trim($elid));
-    $elinfo = getElementInfo($listobject, $elid);
-    $mesg = "Post-processing Element " . $elinfo['elemname'] . " with summarize_element.sh $elid $runid";
-    setStatus($listobject, $elementid, $mesg, $serverip, 0, $runid);
-    $cmd .= "/opt/model/om/drupal/om/sh/summarize_element.sh $elid $runid";
-    error_log("Executing Summary : $cmd");
-    $forkout = exec( $cmd, $cmd_output );
-    $mesg = "Run & Post-Processing Complete for $elid.";
-    setStatus($listobject, $elementid, $mesg, $serverip, 0, $runid);
-  }
-  $mesg = "Run & Post-Processing Complete.";
-  setStatus($listobject, $elementid, $mesg, $serverip, 0, $runid);
-}
-if ($runtype == 'cached_meta_model') {
-  error_log("No summary performed in run_model.php in favor of meta_model work flow.");
-}
 ?>

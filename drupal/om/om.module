@@ -790,6 +790,7 @@ function om_run_model($config) {
   $run_id = $config['run_id'];
   $elementid = $config['elementid'];
   $startdate = $config['startdate'];
+  $riverseg = $config['riverseg'];
   $enddate = $config['enddate'];
   $flow_mode = isset($config['flow_mode']) ? $config['flow_mode']: FALSE;
   $dt = $config['dt'];
@@ -837,10 +838,10 @@ function om_run_model($config) {
     //  strict = 1 - verify with narrow valid criteria
     //  strict = -1 - do not verify, assume it is OK
     $run_mode = $config['run_mode']; // run_mode - model setting for use by internal lists etc. select list of 1-100?
-    $setstr = "/opt/model/meta_model/scripts/om/mm_run_shakeTree $operation $elementid $run_id $startdate $enddate $cache_date $force_overwrite $scid $strict $run_mode normal $pid";
+    $setstr = "/opt/model/meta_model/scripts/om/mm_run_shakeTree $operation $elementid $run_id $startdate $enddate $cache_date $force_overwrite $scid $strict $run_mode ";
     // @todo: this does not do anything.  The run_model.php script and the forkRun() routines are not able to handle this
     //        so for now this is a placeholder.
-    $setstr .= "normal flow_mode=$flow_mode $debug $dt";
+    $setstr .= "normal flow_mode=$flow_mode $debug $dt $pid $riverseg";
     //$test_only = TRUE;
     $php_path = "/opt/model/p6/vadeq/"; # all nova and sova will get model config from here so should be OK?
     break;

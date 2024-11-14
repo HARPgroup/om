@@ -786,6 +786,7 @@ function om_run_model($config) {
   //$test_only = TRUE;
   dpm($config,'submitted to run model');
   // run the model 
+  $pid = $config['pid'];
   $run_id = $config['run_id'];
   $elementid = $config['elementid'];
   $startdate = $config['startdate'];
@@ -836,7 +837,7 @@ function om_run_model($config) {
     //  strict = 1 - verify with narrow valid criteria
     //  strict = -1 - do not verify, assume it is OK
     $run_mode = $config['run_mode']; // run_mode - model setting for use by internal lists etc. select list of 1-100?
-    $setstr = "/opt/model/meta_model/scripts/om/mm_run_shakeTree $operation $elementid $run_id $startdate $enddate $cache_date $force_overwrite $scid $strict $run_mode ";
+    $setstr = "/opt/model/meta_model/scripts/om/mm_run_shakeTree $operation $elementid $run_id $startdate $enddate $cache_date $force_overwrite $scid $strict $run_mode normal $pid";
     // @todo: this does not do anything.  The run_model.php script and the forkRun() routines are not able to handle this
     //        so for now this is a placeholder.
     $setstr .= "normal flow_mode=$flow_mode $debug $dt";

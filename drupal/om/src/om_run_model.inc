@@ -101,6 +101,7 @@ function om_run_model_form($form, &$form_state, $model = null, $op = 'run') {
     '#options' => array(
       'cached' => 'Standard (Container Tree cached)',
       'shake_tree' => 'Tree (Sequential Tree, with caching)',
+      'mm_shake_tree' => 'Tree in Meta-Model',
     ),
     '#size' => 1,
     '#default_value' => empty($model->runtype) ? 'shake_tree' : $model->runtype

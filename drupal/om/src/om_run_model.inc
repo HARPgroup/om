@@ -30,11 +30,19 @@ function om_run_model_form($form, &$form_state, $model = null, $op = 'run') {
     dsm("Model object not set");
   }
   dpm($model,'model');
+  $riverseg = om_load_dh_property($model, 'riverseg');
   
   $form['pid'] = array(
     '#title' => t('PID'),
     '#type' => 'hidden',
     '#default_value' => $model->pid,
+    '#required' => TRUE,
+    '#weight' => 1,
+  );
+  $form['riverseg'] = array(
+    '#title' => t('River Segment'),
+    '#type' => 'hidden',
+    '#default_value' => $riverseg->propcode,
     '#required' => TRUE,
     '#weight' => 1,
   );

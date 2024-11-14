@@ -43,7 +43,7 @@ function om_run_model_form($form, &$form_state, $model = null, $op = 'run') {
     '#title' => t('River Segment'),
     '#type' => 'hidden',
     '#default_value' => $riverseg->propcode,
-    '#required' => TRUE,
+    '#required' => FALSE,
     '#weight' => 1,
   );
   $form['run_id'] = array(

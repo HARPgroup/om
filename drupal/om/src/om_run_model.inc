@@ -30,6 +30,13 @@ function om_run_model_form($form, &$form_state, $model = null, $op = 'run') {
     dsm("Model object not set");
   }
   
+  $form['pid'] = array(
+    '#title' => t('PID'),
+    '#type' => 'hidden',
+    '#default_value' => $model->pid,
+    '#required' => TRUE,
+    '#weight' => 1,
+  );
   $form['run_id'] = array(
     '#title' => t('Model Run ID'),
     '#type' => 'select',

@@ -108,6 +108,7 @@ switch ($runtype) {
    
    case 'cached':
    case 'cached2':
+   case 'cached_meta_model':
    error_log("Calling runCached() with " . print_r($runVars,1) . "\n");
 //error_reporting(E_ALL);
    // test only uncomment below

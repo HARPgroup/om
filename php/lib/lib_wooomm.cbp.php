@@ -655,11 +655,14 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
         $flow_scenario = $this->getProp('flow_scenario');
       }
       if (strlen(trim($flow_scenario)) > 0) {
-        error_log("flow_scenario prop found: $flow_scenario ");
+        error_log("flow_scenario prop found: $flow_scenario \n\n<br>");
+        $this->reportstring .= "flow_scenario prop found: $flow_scenario ";
         //error_log("State array:" . print_r($this->state,1));
         $this->scenario = $flow_scenario;
         $this->filepath = implode("/", array($this->modelpath, 'out/land', $this->scenario, 'eos', $this->landseg .'_0111-0211-0411.csv' ));
         error_log("Scenario: $this->scenario, Filepath: $this->filepath");
+        $this->reportstring .= "Run Mode: $run_mode, Flow Mode: $flow_mode" . "\n\n<br>";
+        $this->reportstring .= "Scenario: $this->scenario, Filepath: $this->filepath" . "\n\n<br>";
         $this->setDBCacheName();
       }
     } else {
@@ -733,6 +736,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
         $this->logDebug("Setting db_cache_name to cbp_  $this->version _ $this->scenario _ $this->landseg");
       }
       error_log("Setting db_cache_name to cbp_  $this->version _ $this->scenario _ $this->landseg");
+      $this->reportstring .= "Setting db_cache_name to cbp_$this->version" . "_$this->scenario" . "_ $this->landseg \n\n<br>";
       $this->db_cache_name = strtolower('cbp_' . implode('_', array($this->version, $this->scenario, $this->landseg)));
       $this->db_cache_persist = TRUE; // we can do this for files that are large and infrequently updated
       //error_log("DSN $this->name set to $this->db_cache_name ");

@@ -11,9 +11,9 @@ basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 save_directory <-  "/var/www/html/data/proj3/out"
 library(hydrotools)
-# authenticate
-ds <- RomDataSource$new(site, rest_uname)
-ds$get_token(rest_pw)
+# authenticate - this is now handled centrally in the config.R
+# ds <- RomDataSource$new(site, rest_uname)
+# ds$get_token(rest_pw)
 
 # Load Local libs
 library(stringr)

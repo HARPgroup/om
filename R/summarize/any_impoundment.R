@@ -1,16 +1,14 @@
 ################################
 #### *** Water Supply Element
 ################################
-library(stringr)
-library(ggplot2)
-library(sqldf)
-library(ggnewscale)
-library(dplyr)
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(sqldf))
+suppressPackageStartupMessages(library(ggnewscale))
+suppressPackageStartupMessages(library(dplyr))
 
 # dirs/URLs
 
-#----------------------------------------------
-site <- "http://deq2.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
 #----------------------------------------------
 # Load Libraries
 basepath='/var/www/R';

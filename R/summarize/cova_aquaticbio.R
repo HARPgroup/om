@@ -11,7 +11,7 @@
 #site <- "http://deq1.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
 #----------------------------------------------
 # Load Libraries
-library(hydrotools)
+suppressPackageStartupMessages(library(hydrotools))
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 source(paste("https://raw.githubusercontent.com/HARPgroup/r-dh-ecohydro",'master/Analysis/habitat','ifim_wua_change_plot.R',sep='/'))
@@ -21,9 +21,6 @@ basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 save_directory <-  "/var/www/html/data/proj3/out"
 library(hydrotools)
-# authenticate
-ds <- RomDataSource$new(site, rest_uname)
-ds$get_token(rest_pw)
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)

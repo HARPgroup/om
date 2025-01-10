@@ -11,16 +11,12 @@ site <- "http://deq1.bse.vt.edu:81/d.dh"    #Specify the site of interest, eithe
 # Load Libraries
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
-library(stringr)
-library(IHA)
-library("lubridate")
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(IHA))
+suppressPackageStartupMessages(library("lubridate"))
 # dirs/URLs
 save_directory <- "/var/www/html/data/proj3/out"
-library(hydrotools)
-# authenticate
-ds <- RomDataSource$new(site, rest_uname)
-ds$get_token(rest_pw)
-
+suppressPackageStartupMessages(library(hydrotools))
 source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 
 # Read Args

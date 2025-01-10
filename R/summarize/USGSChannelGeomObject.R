@@ -1,15 +1,10 @@
 # dirs/URLs
 save_directory <- "/var/www/html/files/fe/plots"
 #----------------------------------------------
-site <- "http://deq2.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
-#----------------------------------------------
 # Load Libraries
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
-library(hydrotools)
-# authenticate
-ds <- RomDataSource$new(site, rest_uname)
-ds$get_token(rest_pw)
+suppressPackageStartupMessages(library(hydrotools))
 
 # Camp Creek - 279191
 argst <- commandArgs(trailingOnly=T)

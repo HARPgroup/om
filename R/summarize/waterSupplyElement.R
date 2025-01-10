@@ -10,17 +10,13 @@ site <- "http://deq1.bse.vt.edu/d.dh"    #Specify the site of interest, either d
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 save_directory <-  "/var/www/html/data/proj3/out"
-library(hydrotools)
-# authenticate
-ds <- RomDataSource$new(site, rest_uname)
-ds$get_token(rest_pw)
-
+suppressPackageStartupMessages(library(hydrotools))
 # Load Local libs
-library(stringr)
-library(ggplot2)
-library(sqldf)
-library(ggnewscale)
-library(dplyr)
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(sqldf))
+suppressPackageStartupMessages(library(ggnewscale))
+suppressPackageStartupMessages(library(dplyr))
 
 source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 

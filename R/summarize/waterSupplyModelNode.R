@@ -15,8 +15,6 @@ save_directory <- "/var/www/html/data/proj3/out"
 suppressPackageStartupMessages(library(hydrotools))
 suppressPackageStartupMessages(library(IHA))
 # authenticate
-ds <- RomDataSource$new(site, rest_uname)
-ds$get_token(rest_pw)
 
 source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
 

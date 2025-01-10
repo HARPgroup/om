@@ -1,5 +1,7 @@
-library(testit) #USED FOR has_warning())
-library(quantreg) #USED FOR rq())
+suppressPackageStartupMessages(library(testit)) #USED FOR has_warning())
+suppressPackageStartupMessages(library(quantreg)) #USED FOR rq())
+suppressPackageStartupMessages(library(nhdplusTools))
+suppressPackageStartupMessages(library(ggplot2))
 
 #LOAD ELFGEN FUNCTIONS
 source(paste(elfgen_location,'R/elfdata-vahydro.R',sep='/'))
@@ -114,9 +116,20 @@ elfgen_huc <- function(
 
 
   #Determine watershed outlet nhd+ segment and hydroid
-  nhdplus_views <- paste(site,'dh-feature-containing-export', hydroid, 'watershed/nhdplus/nhdp_drainage_sqmi',  sep = '/')
-  nhdplus_df <- read.csv(file=nhdplus_views, header=TRUE, sep=",")
+  riverseg_feature <- RomFeature$new(ds, list(hydroid=as.integer(hydroid)), TRUE)
+  contained_df <- riverseg_feature$find_spatial_relations(
+    target_entity = 'dh_feature', 
+    inputs = list(
+      bundle = 'watershed',
+      ftype = 'nhdplus'
+    ),
+    operator = 'st_contains',
+    return_geoms = FALSE,
+    query_remote = TRUE
+  )
+  nhdplus_df <- as.data.frame(get_nhdplus(comid= contained_df$hydrocode))
   message(paste("length(nhdplus_df): ", length(nhdplus_df[,1])))
+  nhdplus_df <- nhdplus_df[,c("comid", "gnis_name", "reachcode", "totdasqkm", "qa_ma")]
   
   if (dataset == 'IchthyMaps'){
     dataname='Ichthy'
@@ -146,40 +159,13 @@ elfgen_huc <- function(
   
   
   #MORE EFFICIENT SQL
-  outlet_nhdplus_segment <-sqldf("select * from nhdplus_df ORDER BY propvalue DESC LIMIT 1")
-  hydroid_out <- outlet_nhdplus_segment$hydroid
-  code_out <- outlet_nhdplus_segment$hydrocode
-  rseg.name <- outlet_nhdplus_segment$Containing_Feature_Name
+  outlet_nhdplus_segment <-sqldf("select * from nhdplus_df ORDER BY totdasqkm DESC LIMIT 1")
+  #Pulls mean annual outlet flow
+  outlet_flow <- outlet_nhdplus_segment$qa_ma #outlet flow as erom_q0001e_mean of nhdplus segment
+  nhd_code <- substr(outlet_nhdplus_segment$reachcode, 1, as.integer(str_remove(huc_level, "huc")))
+  code_out <- outlet_nhdplus_segment$comid
+  rseg.name <- outlet_nhdplus_segment$gnis_name
 
-
-
-  # DEBUG --------------------------------------------------------------------------------------
-  # message(hydroid)
-
-  # vector of rseg hydroids where the approach "the nhdplus seg with the greatest DA" fails
-  # because nhdplus feature overlaps at the outlet of the rseg
-  mis_assigned_hydroid_out <- c(68096,67769,67842,68005,68264)
-  #loop through and re-assign these rsegs with an appropriate outlet nhdplus segment
-  if (hydroid %in% mis_assigned_hydroid_out) {
-
-      hydroid_out <- case_when(hydroid == 68096 ~ 304639,
-                               hydroid == 67769 ~ 335097,
-                               hydroid == 67842 ~ 298104,
-                               hydroid == 68005 ~ 331521,
-                               hydroid == 68264 ~ 314256
-                               )
-
-      code_out <-    case_when(hydroid == 68096 ~ 8616505,
-                               hydroid == 67769 ~ 5908205,
-                               hydroid == 67842 ~ 8572971,
-                               hydroid == 68005 ~ 434106,
-                               hydroid == 68264 ~ 8545673
-                               )
-
-  }
-
-  # message(hydroid_out)
-  # --------------------------------------------------------------------------------------------
 
   #Determine cumulative consumptive use fraction for the river segment
   inputs <- list(
@@ -192,27 +178,8 @@ elfgen_huc <- function(
   prop_cuf <- RomProperty$new(ds, inputs, TRUE)
   cuf <- prop_cuf$propvalue
 
-  #Pulls mean annual outlet flow
-  inputs <- list(
-    varkey = x.metric,
-    featureid = as.numeric(hydroid_out),
-    entity_type = "dh_feature"
-  )
-
-  prop_flow <-  RomProperty$new(ds, inputs, TRUE)
-  outlet_flow <- prop_flow$propvalue #outlet flow as erom_q0001e_mean of nhdplus segment
-
-  #Determines huc of interest for outlet nhd+ segment
-  site_comparison <- paste(site,'dh-feature-contained-within-export', hydroid_out, 'watershed', sep = '/')
-  containing_watersheds <- read.csv(file=site_comparison, header=TRUE, sep=",")
-
-  nhd_code <- sqldf(paste("SELECT hydrocode
-             FROM containing_watersheds
-             WHERE ftype = 'nhd_", huc_level,"'", sep = "" ))
-
-
   #HUC Section---------------------------------------------------------------------------
-  watershed.code <- as.character(nhd_code$hydrocode)
+  watershed.code <- as.character(nhd_code)
   watershed.bundle <- 'watershed'
   watershed.ftype <- paste("nhd_", huc_level, sep = "") #watershed.ftpe[i] when creating function
   datasite <- site
@@ -225,9 +192,85 @@ elfgen_huc <- function(
     watershed.df <- elfdata(watershed.code)
   }else{
     # elfdata_vahydro() function for retrieving data from VAHydro
-    watershed.df <- elfdata_vahydro(watershed.code,watershed.bundle,watershed.ftype,x.metric,y.metric,y.sampres,datasite)
-    # clean_vahydro() function for cleaning data by removing any stations where the ratio of DA:Q is greater than 1000, also aggregates to the maximum richness value at each flow value
-    watershed.df <- clean_vahydro(watershed.df)
+    
+    
+    sql <- "
+  select event.tid,to_timestamp(event.tstime), pv.varkey,
+  biodat.propcode, biodat.propvalue as y_metric, dap.propvalue as x_metric,
+    CASE 
+      WHEN ws.ftype = 'nhd_huc8' THEN REPLACE(ws.hydrocode,'nhd_huc8_','') 
+      WHEN ws.ftype = 'nhd_huc12' THEN REPLACE(ws.hydrocode,'huc12_', '') 
+      WHEN ws.ftype = 'vahydro' THEN REPLACE(ws.hydrocode,'vahydrosw_wshed_','') 
+      ELSE ws.hydrocode
+    END as hydrocode,
+    st.hydroid as station_hydroid
+  from dh_feature_fielded as cov
+  left outer join dh_feature_fielded as ws
+  on (
+    st_contains(cov.dh_geofield_geom, ws.dh_geofield_geom)
+  )
+  left outer join dh_feature_fielded as st
+  on (
+    st_contains(ws.dh_geofield_geom, st.dh_geofield_geom)
+  )
+  left outer join dh_variabledefinition as tsv 
+  on (tsv.varkey = 'aqbio_sample_event')
+  left outer join dh_timeseries as event
+  on (
+    event.varid = tsv.hydroid
+    and event.featureid = st.hydroid
+  ) 
+  left outer join dh_properties as biodat
+  on (
+    biodat.featureid = event.tid
+    and biodat.entity_type = 'dh_timeseries'
+  ) 
+  left outer join dh_variabledefinition as pv 
+  on (
+    pv.varkey = '[bio_varkey]'
+    and pv.hydroid = biodat.varid
+  )
+  left outer join dh_variabledefinition as dav 
+  on (
+    dav.varkey = '[ws_varkey]'
+  )
+  left outer join dh_properties as dap 
+  on (
+    dap.featureid = ws.hydroid
+    and dap.entity_type = 'dh_feature'
+    and dav.hydroid = dap.varid
+  )
+  left outer join dh_variabledefinition as srv 
+  on (
+    srv.varkey = 'sampres'
+  )
+  left outer join dh_properties as sr 
+  on (
+    sr.featureid = event.tid
+    and sr.entity_type = 'dh_timeseries'
+    and srv.hydroid = sr.varid
+  )
+  where pv.hydroid is not null
+  and sr.propcode = '[sampres]'
+  and cov.hydroid = [covid] 
+  and ws.ftype = '[ws_ftype]'
+  and ws.bundle='watershed';
+" 
+    config <- list(
+      covid = riverseg_feature$hydroid,
+      ws_ftype = 'nhdplus',
+      ws_varkey = 'erom_q0001e_mean',
+      bio_varkey = 'aqbio_nt_total',
+      sampres = 'species'
+    )
+    sql <- str_replace_all(sql, '\\[covid\\]', as.character(config$covid))
+    sql <- str_replace_all(sql, '\\[ws_ftype\\]', as.character(config$ws_ftype))
+    sql <- str_replace_all(sql, '\\[ws_varkey\\]', as.character(config$ws_varkey))
+    sql <- str_replace_all(sql, '\\[bio_varkey\\]', as.character(config$bio_varkey))
+    sql <- str_replace_all(sql, '\\[sampres\\]', as.character(config$sampres))
+    
+    watershed.df <- sqldf(sql, conn=ds$connection)
+    watershed.df <- watershed.df[,c('x_metric', 'y_metric', 'hydrocode')]
   }
 
   #######################################################

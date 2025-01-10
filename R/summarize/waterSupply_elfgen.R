@@ -5,10 +5,10 @@
 
 #### Libraries
 
-library(elfgen)
-library(sqldf)
-library(ggplot2)
-library(stringr)
+suppressPackageStartupMessages(library(elfgen))
+suppressPackageStartupMessages(library(sqldf))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(stringr))
 
 
 #### Load in directories and repositories

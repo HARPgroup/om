@@ -4,13 +4,10 @@ site <- "http://deq2.bse.vt.edu/d.dh"    #Specify the site of interest, either d
 # Load Libraries
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
-library(stringr)
+suppressPackageStartupMessages(library(stringr))
 # dirs/URLs
 save_directory <- "/var/www/html/data/proj3/out"
-library(hydrotools)
-# authenticate
-ds <- RomDataSource$new(site, rest_uname)
-ds$get_token(rest_pw)
+suppressPackageStartupMessages(library(hydrotools))
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)

@@ -114,7 +114,7 @@ elfgen_huc <- function(
   quantile <- 0.8
   yaxis_thresh <- 53
 
-
+  pdf(file = NULL) # disable pdf image writing
   #Determine watershed outlet nhd+ segment and hydroid
   riverseg_feature <- RomFeature$new(ds, list(hydroid=as.integer(hydroid)), TRUE)
   contained_df <- riverseg_feature$find_spatial_relations(

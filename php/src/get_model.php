@@ -1,11 +1,14 @@
 <?php
+error_log("get_model.php loaded.");
+error_reporting(E_ALL);
 header('Content-Type: application/json');
-
 # set up db connection
 #include('config.php');
 $noajax = 1;
 $projectid = 3;
+error_log("Loading xajax_modeling.element.php");
 include_once('xajax_modeling.element.php');
+error_log("xajax loaded.");
 $debug = 0;
 
 $elementid = FALSE;

@@ -1,0 +1,141 @@
+#!/bin/bash
+
+src_featureid=$1
+src_entity_type=$2
+propname=$3
+dest_featureid=$4
+dest_entity_type=$5
+dest_name=$6
+include_children=$7
+
+prop_copy_sql="
+\\set src_featureid $src_featureid \n
+\\set src_entity_type '$src_entity_type' \n
+\\set propname '$propname' \n
+\\set dest_featureid $dest_featureid \n
+\\set dest_entity_type '$dest_entity_type' \n
+\\set dest_name '$dest_name' \n
+\\set include_children $include_children \n
+
+select pid as root_pid from dh_properties where featureid = :src_featureid and entity_type = :'src_entity_type' and propname = :'propname' \gset \n\n
+
+
+select count(pid) as exist_pid from dh_properties where featureid = :dest_featureid and entity_type = :'dest_entity_type' and propname = :'dest_name' \gset \n\n
+
+BEGIN; \n
+
+create temp table tmp_clone_prop as select * from dh_properties_fielded limit 0;\n
+
+WITH RECURSIVE prop_tree AS ( \n
+      SELECT p.* \n
+      FROM dh_properties_fielded as p  \n
+      WHERE p.pid = :root_pid \n
+        AND :exist_pid = 0 \n
+      UNION \n
+      SELECT c.* \n
+      FROM dh_properties_fielded as c  \n
+      inner join prop_tree as p \n
+      on (c.featureid = p.pid and c.entity_type = 'dh_properties' and :include_children = 1) \n
+      WHERE :exist_pid = 0 \n
+    ) \n
+INSERT INTO tmp_clone_prop SELECT * from prop_tree; \n
+
+create temp table map_clone_pids (pid BIGINT, clone_pid BIGINT); \n
+
+with rows as ( \n
+  INSERT INTO dh_properties(featureid, entity_type, bundle, module, status, \n
+    propname, propcode, propvalue, varid,  \n
+    modified,startdate, enddate, clone_pid, vid, uid \n
+  ) \n
+  SELECT featureid, entity_type, bundle, module, status,  \n
+    propname, propcode, propvalue, varid,  \n
+    modified,startdate, enddate, pid, vid, uid \n
+  FROM tmp_clone_prop RETURNING pid, clone_pid \n
+) \n
+INSERT INTO map_clone_pids (pid, clone_pid) \n
+SELECT pid, clone_pid \n
+FROM rows ; \n
+
+-- Now, connect to the newly created parent, the new parent will be the  \n\n
+update dh_properties set featureid = map_clone_pids.pid from map_clone_pids \n
+where dh_properties.featureid = map_clone_pids.clone_pid \n
+and dh_properties.entity_type = 'dh_properties'  \n
+and dh_properties.pid in (select pid from map_clone_pids); \n
+
+update dh_properties set featureid = :dest_featureid, propname = :'dest_name' \n
+where pid in (select pid from map_clone_pids where clone_pid = :root_pid);\n
+
+insert into dh_properties_revision(featureid, entity_type, bundle, module, status,  \n
+    propname, propcode, propvalue, varid,  \n
+    modified,startdate, enddate, pid, uid \n
+  )  \n
+select featureid, entity_type, bundle, module, status,  \n
+    propname, propcode, propvalue, varid,  \n
+    modified,startdate, enddate, pid, uid  \n
+from dh_properties where pid in (select pid from map_clone_pids); \n
+
+update dh_properties set vid = a.vid 
+from (
+  select a.pid, b.vid 
+  from map_clone_pids as a
+  left outer join dh_properties_revision as b
+  on (a.pid = b.pid)
+  where b.vid is not null
+) as a
+where dh_properties.pid = a.pid
+; 
+
+-- Copy proptext
+
+insert into field_data_proptext(entity_type , bundle, deleted, entity_id, revision_id, language, delta, proptext_value, proptext_format)
+select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.proptext_value, a.proptext_format
+from dh_properties as b, field_data_proptext as a, map_clone_pids as c
+WHERE a.entity_id in (select clone_pid from map_clone_pids)
+  and a.entity_id = b.clone_pid
+  and a.entity_type = 'dh_properties' 
+  and b.pid = c.pid 
+  and b.pid not in (
+     select entity_id from field_data_proptext
+     where entity_id in (select pid from map_clone_pids) 
+     and entity_type = 'dh_properties'
+  ) 
+;
+
+-- Copy normal matrices
+
+insert into field_data_field_dh_matrix (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_dh_matrix_value, field_dh_matrix_format)
+select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.field_dh_matrix_value, a.field_dh_matrix_format
+from map_clone_pids as c, dh_properties as b, field_data_field_dh_matrix as a
+WHERE a.entity_id in (select clone_pid from map_clone_pids)
+  and a.entity_id = b.clone_pid
+  and a.entity_type = 'dh_properties' 
+  and b.pid = c.pid 
+  and b.pid not in (
+     select entity_id from field_data_field_dh_matrix 
+     where entity_id in (select pid from map_clone_pids) 
+     and entity_type = 'dh_properties'
+  ) 
+;
+-- Copy WSP projection matrices
+-- This is NA for model nested properties, but for a single WSP property it is relevant
+
+
+insert into field_data_field_projection_table (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_projection_table_value, field_projection_table_format)
+select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.field_projection_table_value, a.field_projection_table_format
+from map_clone_pids as c, dh_properties as b, field_data_field_projection_table as a
+WHERE a.entity_id in (select clone_pid from map_clone_pids)
+  and a.entity_id = b.clone_pid
+  and a.entity_type = 'dh_properties' 
+  and b.pid = c.pid 
+  and b.pid not in (
+     select entity_id from field_data_field_projection_table 
+     where entity_id in (select pid from map_clone_pids) 
+     and entity_type = 'dh_properties'
+  ) 
+;
+
+COMMIT;
+"
+
+set -f
+echo -e $prop_copy_sql

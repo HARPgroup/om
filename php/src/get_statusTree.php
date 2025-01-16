@@ -13,7 +13,7 @@ $cbp_listobject->ogis_compliant = 1;
 $cbp_listobject->dbconn = $dbconn;
 $cbp_listobject->adminsetuparray = $adminsetuparray;
 */
-
+$format = 'array';
 if (isset($_GET['elementid'])) {
    $elid = $_GET['elementid'];
    $format = 'table';
@@ -37,6 +37,7 @@ if (isset($_GET['host'])) {
 
 error_log("Calling getStatusTree(listobject, $elid, $runid, $host ");
 $container_tree = getStatusTree($listobject, $elid, $runid, $host);
+error_log("Tree contains:" . count($container_tree));
 switch ($format) {
    case 'array':
       $formatted = "Number of elements in tree = " . count($container_tree) . "\n";

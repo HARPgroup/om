@@ -3,12 +3,12 @@
 template=6717035
 
 if [ $# -lt 1 ]; then
-  echo 1>&2 "Usage: set_impoundment_release_sender vahydro_model_pid [template=auto($template)] [overwrite=0] [debug=0]"
+  echo 1>&2 "Usage: set_impoundment_release_sender vahydro_model_pid [template=default($template)] [overwrite=0] [debug=0]"
   exit 2
 fi
 pid=$1
 if [ $# -gt 1 ]; then
-  if [ "$2" != "auto" ]; then
+  if [ "$2" != "default" ]; then
     template=$2
   fi
 fi  

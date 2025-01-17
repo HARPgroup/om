@@ -6,10 +6,11 @@ if [ $# -lt 3 ]; then
   echo 1>&2 "Usage: om_delete_property dh_feature 146 wd_current_mgy"
   exit 2
 fi 
-
 entity_type=$1
 featureid=$2
 prop_name=$3
+
+delete_sql_file="/tmp/odp_${featureid}_${propname}.sql"
 
 delete_sql="
 
@@ -43,6 +44,7 @@ DELETE FROM field_data_field_projection_table WHERE entity_type = 'dh_properties
 
 COMMIT; \n 
 "
-echo "echo $delete_sql | psql -h $DB_HOST $DB_NAME"
 set -f
-echo -e $delete_sql | psql -h $DB_HOST $DB_NAME
+echo -e $delete_sql > $delete_sql_file
+cat $delete_sql_file | psql -h $DB_HOST $DB_NAME
+rm $delete_sql_file

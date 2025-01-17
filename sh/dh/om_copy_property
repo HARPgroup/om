@@ -2,7 +2,7 @@
 . om_config
 
 if [ $# -lt 5 ]; then
-  echo 1>&2 "Usage: om_copy_property src_entity_type src_featureid dest_entity_type dest_featureid propname[propname|newname] [include_children=1] [overwrite=0]"
+  echo 1>&2 "Usage: om_copy_property src_entity_type src_featureid dest_entity_type dest_featureid propname[propname|newname] [include_children=1] [overwrite=0] [debug=0]"
   exit 2
 fi 
 
@@ -22,10 +22,16 @@ overwrite=0
 if [ $# -gt 6 ]; then
   overwrite=$7
 fi 
+debug=0
+if [ $# -gt 7 ]; then
+  debug=$8
+fi 
 
 if [ "$overwrite" == "1" ]; then 
   om_delete_property $dest_entity_type $dest_featureid $dest_name 
 fi
+
+prop_copy_sql_file="/tmp/odcopy_${featureid}_${propname}.sql"
 
 prop_copy_sql="
 BEGIN; \n
@@ -107,9 +113,9 @@ where dh_properties.pid = a.pid
 
 -- Copy proptext
 
-insert into field_data_proptext(entity_type , bundle, deleted, entity_id, revision_id, language, delta, proptext_value, proptext_format)
+insert into field_data_proptext(entity_type , bundle, deleted, entity_id, revision_id, language, delta, proptext_value, proptext_format) 
 select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.proptext_value, a.proptext_format
-from dh_properties as b, field_data_proptext as a, map_clone_pids as c
+from dh_properties as b, field_data_proptext as a, map_clone_pids as c 
 WHERE a.entity_id in (select clone_pid from map_clone_pids)
   and a.entity_id = b.clone_pid
   and a.entity_type = 'dh_properties' 
@@ -119,11 +125,11 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
      where entity_id in (select pid from map_clone_pids) 
      and entity_type = 'dh_properties'
   ) 
-;
+; \n 
 
 -- Copy normal matrices
 
-insert into field_data_field_dh_matrix (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_dh_matrix_value, field_dh_matrix_format)
+insert into field_data_field_dh_matrix (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_dh_matrix_value, field_dh_matrix_format) 
 select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.field_dh_matrix_value, a.field_dh_matrix_format
 from map_clone_pids as c, dh_properties as b, field_data_field_dh_matrix as a
 WHERE a.entity_id in (select clone_pid from map_clone_pids)
@@ -135,7 +141,7 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
      where entity_id in (select pid from map_clone_pids) 
      and entity_type = 'dh_properties'
   ) 
-;
+; \n
 -- Copy WSP projection matrices
 -- This is NA for model nested properties, but for a single WSP property it is relevant
 
@@ -152,11 +158,18 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
      where entity_id in (select pid from map_clone_pids) 
      and entity_type = 'dh_properties'
   ) 
-;
+;\n
 
-COMMIT; \n
+COMMIT; \n 
 "
 
 echo "echo $prop_copy_sql | psql -h $DB_HOST $DB_NAME"
 set -f
 echo -e $prop_copy_sql | psql -h $DB_HOST $DB_NAME
+
+set -f
+echo -e $prop_copy_sql > $prop_copy_sql_file
+cat $prop_copy_sql_file | psql -h $DB_HOST $DB_NAME
+if [ "$debug" != "1" ]; then
+  rm $prop_copy_sql
+fi

@@ -3,7 +3,7 @@
 template=6717035
 
 if [ $# -lt 1 ]; then
-  echo 1>&2 "Usage: set_impoundment_release_sender.sh vahydro_model_pid [template=auto($template)] [overwrite=0]"
+  echo 1>&2 "Usage: set_impoundment_release_sender.sh vahydro_model_pid [template=auto($template)] [overwrite=0] [debug=0]"
   exit 2
 fi
 pid=$1
@@ -16,13 +16,17 @@ overwrite=0
 if [ $# -gt 2 ]; then
   overwrite=$3
 fi 
+debug=0
+if [ $# -gt 3 ]; then
+  debug=$4
+fi 
 
 
 
 # make sure it is using the new discharge_mgd variable 
-om_copy_property dh_properties $template dh_properties $pid "Reservoir Operations" 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid "Reservoir Operations" 1 $overwrite $debug
 # make sure it has the latest greatest broadcast info which include Qnextdown
-om_copy_property dh_properties $template dh_properties $pid "Listen on Parent" 1 $overwrite
-om_copy_property dh_properties $template dh_properties $pid control_impoundment 1 $overwrite
-om_copy_property dh_properties $template dh_properties $pid impoundment_release_cfs 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid "Listen on Parent" 1 $overwrite $debug
+om_copy_property dh_properties $template dh_properties $pid control_impoundment 1 $overwrite $debug
+om_copy_property dh_properties $template dh_properties $pid impoundment_release_cfs 1 $overwrite $debug
 

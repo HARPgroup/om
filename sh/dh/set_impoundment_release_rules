@@ -1,20 +1,18 @@
 #!/bin/sh
+# Water Supply Model Element Template 
+template=4988636
 
 if [ $# -lt 1 ]; then
-  echo 1>&2 "Usage: set_impoundment_release_rules.sh vahydro_model_pid (entity_type=model parent, default=auto) (entity_id=model parent)"
+  echo 1>&2 "Usage: set_impoundment_release_rules.sh vahydro_model_pid [template=$template] [overwrite=0]"
   exit 2
 fi
 pid=$1
-entity_type='dh_feature'
 if [ $# -gt 1 ]; then
-  entity_type=$2
+  template=$2
 fi 
-entity_id="auto"
 if [ $# -gt 2 ]; then
-  entity_id=$3
+  overwrite=$3
 fi 
-# Water Supply Model Element Template 
-template=4988636
 
 
 # Set destination model to not write
@@ -22,7 +20,7 @@ drush scr modules/om/src/om_setprop.php cmd dh_properties $pid om_element_connec
 
 # make sure it is using the new discharge_mgd variable 
 for i in release release_current release_historic release_proposed refill_transfer_available_mgd refill_transfer_max_mgd; do
-  drush scr modules/om/src/om_copy_subcomp.php cmd dh_properties $template dh_properties $pid $i
+  om_copy_property dh_properties $template dh_properties $pid $i 1 $overwrite
 done
 
 # Restore destination write setting and save

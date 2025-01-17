@@ -1,0 +1,41 @@
+#!/bin/sh
+# Water Supply Model Element Template 
+template=6717035
+
+if [ $# -lt 1 ]; then
+  echo 1>&2 "This is used to model a water suply facility with off-line impoundment"
+  echo 1>&2 "Usage: set_local_impoundment_system_props.sh vahydro_model_pid [template=$template] [overwrite=0]"
+  exit 2
+fi
+pid=$1
+if [ $# -gt 1 ]; then
+  template=$2
+fi 
+if [ $# -gt 2 ]; then
+  overwrite=$3
+fi 
+
+
+# make sure it is using the new discharge_mgd variable 
+om_copy_property dh_properties $template dh_properties $pid available_mgd 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid local_area_sqmi 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid local_flow_cfs 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid local_impoundment 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid refill_available_mgd 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid refill_max_mgd 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid refill_historic_mgd 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid refill_current_mgd 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid refill_proposed_mgd 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid refill_plus_demand 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid refill_pump_mgd 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid "Send to Parent" 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid "Listen on Parent" 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid zero 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid imp_enabled 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid wd_net_mgd 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid release 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid release_current 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid release_historic 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid release_proposed 1 $overwrite
+om_copy_property dh_properties $template dh_properties $pid "adj_demand_mgd_local_rsvr|adj_demand_mgd" 1 $overwrite
+

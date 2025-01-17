@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Water Supply Model Element Template 
-template=6717035
+template=6403272
 if [ $# -lt 1 ]; then
   echo 1>&2 "Usage: set_reservoir_system_props.sh vahydro_model_pid [template=default($template)] [overwrite=0] [debug=0]"
   exit 2
@@ -23,5 +23,5 @@ fi
 
 
 # make sure it is using the new discharge_mgd variable 
-om_copy_property dh_properties $template dh_properties $pid available_mgd $overwrite $debug
+om_copy_property dh_properties $template dh_properties $pid available_mgd 1 $overwrite $debug
 

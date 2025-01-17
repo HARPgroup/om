@@ -41,7 +41,7 @@ DELETE FROM field_data_proptext WHERE entity_type = 'dh_properties' AND entity_i
 
 DELETE FROM field_data_field_projection_table WHERE entity_type = 'dh_properties' AND entity_id in (select pid from tmp_exist_prop); \n
 
-COMMIT; \n
+COMMIT; \n 
 "
 echo "echo $delete_sql | psql -h $DB_HOST $DB_NAME"
 set -f

@@ -157,6 +157,6 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
 COMMIT;
 "
 
+echo "echo $prop_copy_sql | psql -h $DB_HOST $DB_NAME"
 set -f
-echo "echo -e $prop_copy_sql | psql -h $DB_HOST $DB_NAME"
 echo -e $prop_copy_sql | psql -h $DB_HOST $DB_NAME

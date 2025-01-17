@@ -171,5 +171,5 @@ set -f
 echo -e $prop_copy_sql > $prop_copy_sql_file
 cat $prop_copy_sql_file | psql -h $DB_HOST $DB_NAME
 if [ "$debug" != "1" ]; then
-  rm $prop_copy_sql
+  rm $prop_copy_sql_file
 fi

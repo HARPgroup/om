@@ -2,7 +2,7 @@
 . om_config
 
 if [ $# -lt 5 ]; then
-  echo 1>&2 "Usage: om_copy_element src_entity_type src_featureid dest_entity_type dest_featureid propname[propname|newname] [include_children=1] [overwrite=0]"
+  echo 1>&2 "Usage: om_copy_property src_entity_type src_featureid dest_entity_type dest_featureid propname[propname|newname] [include_children=1] [overwrite=0]"
   exit 2
 fi 
 
@@ -28,6 +28,8 @@ if [ "$overwrite" == "1" ]; then
 fi
 
 prop_copy_sql="
+BEGIN; \n
+
 \\set src_featureid $src_featureid \n
 \\set src_entity_type '$src_entity_type' \n
 \\set propname '$propname' \n
@@ -41,7 +43,6 @@ select pid as root_pid from dh_properties where featureid = :src_featureid and e
 
 select count(pid) as exist_pid from dh_properties where featureid = :dest_featureid and entity_type = :'dest_entity_type' and propname = :'dest_name' \gset \n\n
 
-BEGIN; \n
 
 create temp table tmp_clone_prop as select * from dh_properties_fielded limit 0;\n
 
@@ -157,4 +158,5 @@ COMMIT;
 "
 
 set -f
+echo "echo -e $prop_copy_sql | psql -h $DB_HOST $DB_NAME"
 echo -e $prop_copy_sql | psql -h $DB_HOST $DB_NAME

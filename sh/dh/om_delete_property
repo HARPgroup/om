@@ -45,3 +45,4 @@ COMMIT; \n
 "
 set -f
 echo "echo -e $delete_sql | psql -h $DB_HOST $DB_NAME"
+echo -e $delete_sql | psql -h $DB_HOST $DB_NAME

@@ -33,6 +33,12 @@ DELETE FROM dh_properties where pid in (select pid from tmp_exist_prop); \n
 
 DELETE FROM dh_properties_revision where pid in (select pid from tmp_exist_prop); \n
 
+DELETE FROM field_data_field_dh_matrix WHERE entity_type = 'dh_properties' AND entity_id in (select pid from tmp_exist_prop); \n
+
+DELETE FROM field_data_proptext WHERE entity_type = 'dh_properties' AND entity_id in (select pid from tmp_exist_prop); \n
+
+DELETE FROM field_data_field_projection_table WHERE entity_type = 'dh_properties' AND entity_id in (select pid from tmp_exist_prop); \n
+
 COMMIT; \n
 "
 set -f

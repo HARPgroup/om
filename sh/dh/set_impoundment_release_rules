@@ -23,8 +23,8 @@ fi
 
 # make sure it is using the new discharge_mgd variable 
 for i in release release_current release_historic release_proposed refill_transfer_available_mgd refill_transfer_max_mgd; do
-  echo "om_copy_property dh_properties $template dh_properties $pid $i 1 $overwrite"
-  om_copy_property dh_properties $template dh_properties $pid $i 1 $overwrite
+  echo "om_copy_property dh_properties $template dh_properties $pid $i 1 $overwrite 1"
+  om_copy_property dh_properties $template dh_properties $pid $i 1 $overwrite 1
 done
 
 # Restore destination write setting and save

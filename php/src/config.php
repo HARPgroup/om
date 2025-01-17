@@ -53,6 +53,8 @@ if ($debug) {
 // START - set up database connections
 # get database and file libraries
 include_once("$libpath/psql_functions.php");
+$om = 'http://deq1.bse.vt.edu:81/om/get_model.php'
+include_once("$libpath/lib_dh.php");
 include_once("$libpath/lib_oracle.php");
 include_once("$libpath/lib_odbc.php");
 include_once("$libpath/file_functions.php");
@@ -70,6 +72,22 @@ $listobject->connstring = $connstring;
 $listobject->ogis_compliant = 1;
 $listobject->dbconn = $dbconn;
 $listobject->adminsetuparray = $adminsetuparray;
+
+$dh_connstring = "host=$dh_dbip dbname=$dh_dbname user=$dh_dbuser password=$dh_dbpass port=$dh_dbport";
+$dh_dbconn = pg_connect($dh_connstring, PGSQL_CONNECT_FORCE_NEW);
+$stat = pg_connection_status($dh_dbconn);
+if ($stat === PGSQL_CONNECTION_OK) {
+   //error_log( 'Connection status ok');
+} else {
+   error_log( 'Connection status bad');
+   error_log(' Error: ' . pg_last_error($dh_dbconn));
+}
+$dh_listobject = new pgsql_QueryObject;
+$dh_listobject->connstring = $dh_connstring;
+$dh_listobject->ogis_compliant = 1;
+$dh_listobject->dbconn = $dh_dbconn;
+$dh_listobject->adminsetuparray = $adminsetuparray;
+
 
 # custom stream definition to write and read excel files
 #include_once("$libpath/xlsstream/excel.php");

@@ -2,6 +2,8 @@
 
 $dbpass = 'XXXX';
 $dbuser = 'db_admin';
+$dh_dbuser = 'MMMM'
+$dh_dbpass = 'NNNN';
 $session_dbpass = 'YYYY';
 $session_dbuser = 'postgres';
 $runtime_dbpass = 'ZZZZ';

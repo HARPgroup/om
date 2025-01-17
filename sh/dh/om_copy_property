@@ -157,4 +157,4 @@ COMMIT;
 "
 
 set -f
-echo -e $prop_copy_sql
+echo "echo -e $prop_copy_sql | psql -h $DB_HOST $DB_NAME"

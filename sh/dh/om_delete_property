@@ -1,6 +1,8 @@
 #!/bin/bash
+. om_config
+
 if [ $# -lt 3 ]; then
-  echo 1>&2 "Usage: om_delete_property entity_type featureid propname"
+  echo 1>&2 "Usage: om_delete_property entity_type featureid propname "
   echo 1>&2 "Usage: om_delete_property dh_feature 146 wd_current_mgy"
   exit 2
 fi 

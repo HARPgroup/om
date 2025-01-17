@@ -3,13 +3,16 @@
 template=6717035
 
 if [ $# -lt 1 ]; then
-  echo 1>&2 "Usage: set_impoundment_release_sender vahydro_model_pid [template=$template] [overwrite=0]"
+  echo 1>&2 "Usage: set_impoundment_release_sender vahydro_model_pid [template=auto($template)] [overwrite=0]"
   exit 2
 fi
 pid=$1
 if [ $# -gt 1 ]; then
-  template=$2
-fi 
+  if [ "$2" != "auto" ]; then
+    template=$2
+  fi
+fi  
+overwrite=0
 if [ $# -gt 2 ]; then
   overwrite=$3
 fi 

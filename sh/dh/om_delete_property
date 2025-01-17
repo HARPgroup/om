@@ -44,4 +44,4 @@ DELETE FROM field_data_field_projection_table WHERE entity_type = 'dh_properties
 COMMIT; \n
 "
 set -f
-echo "echo -e $delete_sql | psql -h $db_host $db_name"
+echo "echo -e $delete_sql | psql -h $DB_HOST $DB_NAME"

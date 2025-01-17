@@ -31,7 +31,8 @@ if [ "$overwrite" == "1" ]; then
   om_delete_property $dest_entity_type $dest_featureid "$dest_name"
 fi
 
-prop_copy_sql_file="/tmp/odcopy_${featureid}_${propname}.sql"
+fprop=`echo "${propname// /}"`
+prop_copy_sql_file="/tmp/odcopy_${featureid}_${fprop}.sql"
 
 prop_copy_sql="
 BEGIN; \n

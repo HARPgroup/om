@@ -110,9 +110,9 @@ from (
   where b.vid is not null
 ) as a
 where dh_properties.pid = a.pid
-; 
+;  \n
 
--- Copy proptext
+-- Copy proptext \n
 
 insert into field_data_proptext(entity_type , bundle, deleted, entity_id, revision_id, language, delta, proptext_value, proptext_format) 
 select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.proptext_value, a.proptext_format
@@ -128,7 +128,7 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
   ) 
 ; \n 
 
--- Copy normal matrices
+-- Copy normal matrices \n
 
 insert into field_data_field_dh_matrix (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_dh_matrix_value, field_dh_matrix_format) 
 select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.field_dh_matrix_value, a.field_dh_matrix_format
@@ -143,8 +143,8 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
      and entity_type = 'dh_properties'
   ) 
 ; \n
--- Copy WSP projection matrices
--- This is NA for model nested properties, but for a single WSP property it is relevant
+-- Copy WSP projection matrices \n
+-- This is NA for model nested properties, but for a single WSP property it is relevant \n
 
 
 insert into field_data_field_projection_table (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_projection_table_value, field_projection_table_format)

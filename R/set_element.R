@@ -9,9 +9,11 @@ argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1]) # Ex: pid=7693370
 if (length(argst) > 1) {
   elid <- as.integer(argst[2])  
-  pid = as.integer(sqldf(paste0(
+  q = paste0(
     "select featureid from dh_properties where propname = 'om_element_connection' 
-   and propvalue = ", elid),
+   and propvalue = ", elid)
+  message(q)
+  pid = as.integer(sqldf(q,
     connection = ds$connection)$featureid[1]
   )
 }

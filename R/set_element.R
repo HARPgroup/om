@@ -7,7 +7,14 @@ source("https://raw.githubusercontent.com/HARPgroup/hydro-tools/master/R/fac_uti
 
 argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1]) # Ex: pid=7693370
-elid <- as.integer(argst[2])
+if (length(argst) > 1) {
+  elid <- as.integer(argst[2])  
+  pid = as.integer(sqldf(paste0(
+    "select featureid from dh_properties where propname = 'om_element_connection' 
+   and propvalue = ", elid),
+    connection = ds$connection)$featureid[1]
+  )
+}
 
 element_list <- ds$get_json_prop(pid)
 elid <- element_list$om_element_connection$value

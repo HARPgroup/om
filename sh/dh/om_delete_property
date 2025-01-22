@@ -2,13 +2,17 @@
 . om_config
 
 if [ $# -lt 3 ]; then
-  echo 1>&2 "Usage: om_delete_property entity_type featureid propname "
+  echo 1>&2 "Usage: om_delete_property entity_type featureid propname [debug=0]"
   echo 1>&2 "Usage: om_delete_property dh_feature 146 wd_current_mgy"
   exit 2
 fi 
 entity_type=$1
 featureid=$2
 prop_name=$3
+debug=0
+if [ $# -gt 3 ]; then
+  debug=$4
+fi 
 
 delete_sql_file="/tmp/odp_${featureid}_${propname}.sql"
 
@@ -47,4 +51,6 @@ COMMIT; \n
 set -f
 echo -e $delete_sql > $delete_sql_file
 cat $delete_sql_file | psql -h $DB_HOST $DB_NAME
-rm $delete_sql_file
+if [ "$debug" != "1" ]; then
+  rm $delete_sql_file
+fi

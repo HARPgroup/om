@@ -44,6 +44,8 @@ if ($elid > 0) {
 error_log("Retrieved $thisobject->name"); 
 //error_log("$openmi_json"); 
 $thisobject->setProp('all', $json_obj, 'json_decoded');
+// do this manually because the class method skips for some reason?
+$thisobject->name = $json_obj['name'];
 // @todo: handle these for now we just want to see if it works 
 //saveModelObject($elid, $thisobject, array('name' => $thisobject->name));
 $res = saveObjectSubComponents($listobject, $thisobject, $elid, 1, 0);

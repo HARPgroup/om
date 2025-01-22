@@ -28,7 +28,7 @@ if [ $# -gt 7 ]; then
 fi 
 
 if [ "$overwrite" == "1" ]; then 
-  om_delete_property $dest_entity_type $dest_featureid "$dest_name"
+  om_delete_property $dest_entity_type $dest_featureid "$dest_name" $debug
 fi
 
 fprop=`echo "${propname// /}"`

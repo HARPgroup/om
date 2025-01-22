@@ -25,7 +25,7 @@ for (i in names(element_list)) {
     element_list[[i]] <- NULL
   }
 }
-element_json <- jsonlite::prettify(jsonlite::toJSON(element_list))
+element_json <- jsonlite::prettify(jsonlite::toJSON(element_list), auto_unbox = TRUE)
 #element_json <- paste0('"',stringr::str_replace_all(jsonlite::toJSON(element_list),'"','\"'),'"')
 element_path <- paste0("element_", elid,".json")
 write(element_json,element_path)

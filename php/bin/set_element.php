@@ -10,7 +10,7 @@ $projectid = 3;
 $scid = 28;
 error_reporting(E_ERROR);
 error_log("Server array:" . print_r($_SERVER,1));
-include_once('./xajax_modeling.element.php');
+include_once('/var/www/html/om/xajax_modeling.element.php');
 $noajax = 1;
 $projectid = 3;
 

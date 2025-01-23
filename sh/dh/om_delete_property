@@ -5,27 +5,25 @@ if [ $# -lt 2 ]; then
   if [[ "$1" =~ ^[0-9]+$ ]]; then
     pid=$1
     IFS=$'\t' read pid entity_type featureid bundle propname propvalue propcode <<< `om_get_by_pid $pid`
-  else
-    echo 1>&2 "Usage: om_delete_property pid "
-    echo 1>&2 "Usage: om_delete_property entity_type featureid propname [debug=0]"
-    echo 1>&2 "Usage: om_delete_property dh_feature 146 wd_current_mgy"
+    echo "Executing om_delete_property $entity_type $featureid \"$propname\""
     exit 2
   fi
-else 
-  if [ $# -lt 3 ]; then
-    echo 1>&2 "Usage: om_delete_property pid "
-    echo 1>&2 "Usage: om_delete_property entity_type featureid propname [debug=0]"
-    echo 1>&2 "Usage: om_delete_property dh_feature 146 wd_current_mgy"
-    exit 2
-  fi 
-  entity_type=$1
-  featureid=$2
-  propname=$3
-  debug=0
-  if [ $# -gt 3 ]; then
-    debug=$4
-  fi 
-fi
+fi  
+# if the above passes, it just calls this script 
+# otherwise, we have been called in the non-pid format
+if [ $# -lt 3 ]; then
+  echo 1>&2 "Usage: om_delete_property pid "
+  echo 1>&2 "Usage: om_delete_property entity_type featureid propname [debug=0]"
+  echo 1>&2 "Usage: om_delete_property dh_feature 146 wd_current_mgy"
+  exit 2
+fi 
+entity_type=$1
+featureid=$2
+propname=$3
+debug=0
+if [ $# -gt 3 ]; then
+  debug=$4
+fi 
 
 delete_sql_file="/tmp/odp_${featureid}_${propname}.sql"
 

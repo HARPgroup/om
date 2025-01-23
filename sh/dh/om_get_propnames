@@ -13,16 +13,12 @@ src_featureid=$2
 
 sql="
 \\o \n
-
-
+S
   select e.propname
   from dh_properties as e
   WHERE e.featureid = $src_featureid
     and e.entity_type = '$src_entity_type'
 "
 
-
 set -f
-# can't echo this to stdout or it clobbers script pipes
-#echo -e "$sql | psql --csv -A --field-separator=',' -t -h $DB_HOST $DB_NAME"
 echo -e $sql | psql --csv -A --field-separator=" " -t -h $DB_HOST $DB_NAME

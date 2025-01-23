@@ -1,6 +1,8 @@
 #!/bin/bash
 binpath=/usr/local/bin/
 
-cp ./om_config $binpath
-cp ./dh/om_delete_property $binpath
-cp ./dh/om_copy_property $binpath
+cp ./sh/om_config $binpath
+cp ./sh/dh/om_delete_property $binpath
+cp ./sh/dh/om_copy_property $binpath
+cp ./sh/dh/om_get_propnames $binpath
+cp ./sh/dh/om_copy_all_props $binpath

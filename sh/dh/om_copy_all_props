@@ -27,7 +27,9 @@ if [ $# -gt 7 ]; then
 fi 
 
 lns=`om_get_propnames $src_entity_type $src_featureid`
+# IPS technique for names with spaces in them from https://www.cyberciti.biz/tips/handling-filenames-with-spaces-in-bash.html
 IFS=$(echo -en "\n\b")
 for i in $lns; do 
-  echo "om_copy_property $src_entity_type $src_featureid $dest_entity_type $dest_featureid \"$i\" $include_children $overwrite $debug"
+  >&2 echo "om_copy_property $src_entity_type $src_featureid $dest_entity_type $dest_featureid \"$i\" $include_children $overwrite $debug"
+  om_copy_property $src_entity_type $src_featureid $dest_entity_type $dest_featureid "$i" $include_children $overwrite $debug
 done

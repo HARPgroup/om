@@ -20,6 +20,8 @@ fi
 entity_type=$1
 featureid=$2
 propname=$3
+echo $propname 
+exit 2
 debug=0
 if [ $# -gt 3 ]; then
   debug=$4

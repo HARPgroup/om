@@ -18,7 +18,7 @@ sql="
   select o.propname
 
   from dh_properties as e
-  WHER e.pid = $src_featureid
+  WHERE e.pid = $src_featureid
     and e.entity_type = '$src_entity_type'
 "
 

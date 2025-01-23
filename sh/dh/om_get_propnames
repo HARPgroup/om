@@ -2,7 +2,7 @@
 . om_config
 
 if [ $# -lt 1 ]; then
-  echo 1>&2 "Usage: om_get_propnames pid [debug=0]"
+  echo 1>&2 "Usage: om_get_propnames src_entity_type src_featureid [debug=0]"
   exit 2
 fi 
 
@@ -15,12 +15,8 @@ sql="
   select o.propname
 
   from dh_properties as e
-  left outer join dh_properties as o
-  on (
-    e.pid = o.featureid
-    and o.entity_type = 'dh_properties'
-  )
-  where e.pid = '$1'
+  WHER e.pid = $src_featureid
+    and e.entity_type = '$src_entity_type'
 "
 
 

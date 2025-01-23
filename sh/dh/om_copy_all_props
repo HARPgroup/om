@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -lt 5 ]; then
-  echo 1>&2 "Usage: om_copy_all src_entity_type src_featureid dest_entity_type dest_featureid [include_children=1] [overwrite=0] [debug=0]"
+  echo 1>&2 "Usage: om_copy_all_props src_entity_type src_featureid dest_entity_type dest_featureid [include_children=1] [overwrite=0] [debug=0]"
   exit 2
 fi 
 

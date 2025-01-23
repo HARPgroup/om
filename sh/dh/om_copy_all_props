@@ -9,21 +9,17 @@ src_entity_type=$1
 src_featureid=$2
 dest_entity_type=$3
 dest_featureid=$4
-IFS="|" read propname dest_name <<< "$5"
-if [ "$dest_name" == "" ]; then
-  dest_name=$propname
-fi 
 include_children=1
-if [ $# -gt 5 ]; then
-  include_children=$6
+if [ $# -gt 4 ]; then
+  include_children=$5
 fi 
 overwrite=0
-if [ $# -gt 6 ]; then
-  overwrite=$7
+if [ $# -gt 5 ]; then
+  overwrite=$6
 fi 
 debug=0
-if [ $# -gt 7 ]; then
-  debug=$8
+if [ $# -gt 6 ]; then
+  debug=$7
 fi 
 
 lns=`om_get_propnames $src_entity_type $src_featureid`

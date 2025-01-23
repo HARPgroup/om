@@ -29,5 +29,5 @@ fi
 lns=`om_get_propnames $src_entity_type $src_featureid`
 IFS=$(echo -en "\n\b")
 for i in $lns; do 
-  echo "om_copy_property $src_entity_type $src_featureid $dest_entity_type $dest_featureid "$i" $include_children $overwrite $debug"
+  echo "om_copy_property $src_entity_type $src_featureid $dest_entity_type $dest_featureid \"$i\" $include_children $overwrite $debug"
 done

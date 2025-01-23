@@ -10,7 +10,8 @@ sql="
 \\o \n
 
 
-  select STRING_AGG('\"' || o.propname || '\"', ' ')
+  select STRING_AGG(E'\\'' ||o.propname || E'\\'', ' ')
+
   from dh_properties as e
   left outer join dh_properties as o
   on (

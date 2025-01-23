@@ -1,0 +1,27 @@
+#!/bin/bash
+. om_config
+
+if [ $# -lt 1 ]; then
+  echo 1>&2 "Usage: om_get_propnames pid [debug=0]"
+  exit 2
+fi 
+
+sql="
+\\o \n
+
+
+  select STRING_AGG(o.propname, ' ')
+  from dh_properties as e
+  left outer join dh_properties as o
+  on (
+    e.pid = o.featureid
+    and o.entity_type = 'dh_properties'
+  )
+  where e.pid = '$1'
+"
+
+
+set -f
+# can't echo this to stdout or it clobbers script pipes
+#echo -e "$sql | psql --csv -A --field-separator=',' -t -h $dbhost $dbname"
+echo -e $sql | psql --csv -A --field-separator=" " -t -h $dbhost $dbname

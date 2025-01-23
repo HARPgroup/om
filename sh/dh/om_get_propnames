@@ -15,10 +15,9 @@ sql="
 \\o \n
 
 
-  select o.propname
-
+  select e.propname
   from dh_properties as e
-  WHERE e.pid = $src_featureid
+  WHERE e.featureid = $src_featureid
     and e.entity_type = '$src_entity_type'
 "
 

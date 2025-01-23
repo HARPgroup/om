@@ -69,6 +69,8 @@ rm /var/www/html/om/test_step.php
 ln -s /opt/model/om/php/src/test_step.php /var/www/html/om/test_step.php
 rm /var/www/html/om/set_element.php
 ln -s  /opt/model/om/php/src/set_element.php /var/www/html/om/set_element.php
+rm /var/www/html/om/import_element_json.php
+ln -s  /opt/model/om/php/src/import_element_json.php /var/www/html/om/import_element_json.php
 rm /var/www/html/om/who_xmlobjects.frisk.php
 ln -s  /opt/model/om/php/src/who_xmlobjects.frisk.php /var/www/html/om/who_xmlobjects.frisk.php
 rm /var/www/html/om/who_xmlobjects.usgs.php

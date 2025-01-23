@@ -6,11 +6,13 @@ if [ $# -lt 1 ]; then
   exit 2
 fi 
 
+# select STRING_AGG(E'\\'' ||o.propname || E'\\'', ' ')
+
 sql="
 \\o \n
 
 
-  select STRING_AGG(E'\\'' ||o.propname || E'\\'', ' ')
+  select o.propname
 
   from dh_properties as e
   left outer join dh_properties as o

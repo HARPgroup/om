@@ -13,7 +13,7 @@ src_featureid=$2
 
 sql="
 \\o \n
-S
+
   select e.propname
   from dh_properties as e
   WHERE e.featureid = $src_featureid

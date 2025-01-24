@@ -4,8 +4,8 @@
 pid=$1
 template=4988636
 
-if [ $# -lt 1 ] 1 $overwrite $debug then
-  echo 1>&2 "Usage: add_water_system_broadcasts pid  [template=default($template)] [overwrite=0] [debug=0]"
+if [ $# -lt 1 ]; then
+  echo 1>&2 "Usage: add_water_system_broadcasts pid [template=default($template)] [overwrite=0] [debug=0]"
   exit 2
 fi
 pid=$1

@@ -1,14 +1,42 @@
 #!/bin/bash
+. om_config
 
-src_featureid=$1
-src_entity_type=$2
-propname=$3
+if [ $# -lt 5 ]; then
+  echo 1>&2 "Usage: om_copy_property src_entity_type src_featureid dest_entity_type dest_featureid propname[propname|newname] [include_children=1] [overwrite=0] [debug=0]"
+  exit 2
+fi 
+
+src_entity_type=$1
+src_featureid=$2
+dest_entity_type=$3
 dest_featureid=$4
-dest_entity_type=$5
-dest_name=$6
-include_children=$7
+IFS="|" read propname dest_name <<< "$5"
+if [ "$dest_name" == "" ]; then
+  dest_name=$propname
+fi 
+include_children=1
+if [ $# -gt 5 ]; then
+  include_children=$6
+fi 
+overwrite=0
+if [ $# -gt 6 ]; then
+  overwrite=$7
+fi 
+debug=0
+if [ $# -gt 7 ]; then
+  debug=$8
+fi 
+
+if [ "$overwrite" == "1" ]; then 
+  om_delete_property $dest_entity_type $dest_featureid "$dest_name" $debug
+fi
+
+fprop=`echo "${propname// /}"`
+prop_copy_sql_file="/tmp/odcopy_${featureid}_${fprop}.sql"
 
 prop_copy_sql="
+BEGIN; \n
+
 \\set src_featureid $src_featureid \n
 \\set src_entity_type '$src_entity_type' \n
 \\set propname '$propname' \n
@@ -22,7 +50,6 @@ select pid as root_pid from dh_properties where featureid = :src_featureid and e
 
 select count(pid) as exist_pid from dh_properties where featureid = :dest_featureid and entity_type = :'dest_entity_type' and propname = :'dest_name' \gset \n\n
 
-BEGIN; \n
 
 create temp table tmp_clone_prop as select * from dh_properties_fielded limit 0;\n
 
@@ -83,13 +110,13 @@ from (
   where b.vid is not null
 ) as a
 where dh_properties.pid = a.pid
-; 
+;  \n
 
--- Copy proptext
+-- Copy proptext \n
 
-insert into field_data_proptext(entity_type , bundle, deleted, entity_id, revision_id, language, delta, proptext_value, proptext_format)
+insert into field_data_proptext(entity_type , bundle, deleted, entity_id, revision_id, language, delta, proptext_value, proptext_format) 
 select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.proptext_value, a.proptext_format
-from dh_properties as b, field_data_proptext as a, map_clone_pids as c
+from dh_properties as b, field_data_proptext as a, map_clone_pids as c 
 WHERE a.entity_id in (select clone_pid from map_clone_pids)
   and a.entity_id = b.clone_pid
   and a.entity_type = 'dh_properties' 
@@ -99,11 +126,11 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
      where entity_id in (select pid from map_clone_pids) 
      and entity_type = 'dh_properties'
   ) 
-;
+; \n 
 
--- Copy normal matrices
+-- Copy normal matrices \n
 
-insert into field_data_field_dh_matrix (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_dh_matrix_value, field_dh_matrix_format)
+insert into field_data_field_dh_matrix (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_dh_matrix_value, field_dh_matrix_format) 
 select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.field_dh_matrix_value, a.field_dh_matrix_format
 from map_clone_pids as c, dh_properties as b, field_data_field_dh_matrix as a
 WHERE a.entity_id in (select clone_pid from map_clone_pids)
@@ -115,9 +142,9 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
      where entity_id in (select pid from map_clone_pids) 
      and entity_type = 'dh_properties'
   ) 
-;
--- Copy WSP projection matrices
--- This is NA for model nested properties, but for a single WSP property it is relevant
+; \n
+-- Copy WSP projection matrices \n
+-- This is NA for model nested properties, but for a single WSP property it is relevant \n
 
 
 insert into field_data_field_projection_table (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_projection_table_value, field_projection_table_format)
@@ -132,10 +159,14 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
      where entity_id in (select pid from map_clone_pids) 
      and entity_type = 'dh_properties'
   ) 
-;
+;\n
 
-COMMIT;
+COMMIT; \n 
 "
 
 set -f
-echo -e $prop_copy_sql
+echo -e $prop_copy_sql > $prop_copy_sql_file
+cat $prop_copy_sql_file | psql -h $DB_HOST $DB_NAME
+if [ "$debug" != "1" ]; then
+  rm $prop_copy_sql_file
+fi

@@ -1,8 +1,32 @@
 #!/bin/bash
+. om_config
 
-parent_pid=$1
-prop_name=$2
-entity_type=$3
+if [ $# -lt 2 ]; then
+  if [[ "$1" =~ ^[0-9]+$ ]]; then
+    pid=$1
+    IFS=$'\t' read pid entity_type featureid bundle propname propvalue propcode <<< `om_get_by_pid $pid`
+    echo "Executing om_delete_property $entity_type $featureid \"$propname\""
+    exit 2
+  fi
+fi  
+# if the above passes, it just calls this script 
+# otherwise, we have been called in the non-pid format
+if [ $# -lt 3 ]; then
+  echo 1>&2 "Usage: om_delete_property pid "
+  echo 1>&2 "Usage: om_delete_property entity_type featureid propname [debug=0]"
+  echo 1>&2 "Usage: om_delete_property dh_feature 146 wd_current_mgy"
+  exit 2
+fi 
+entity_type=$1
+featureid=$2
+propname=$3
+debug=0
+if [ $# -gt 3 ]; then
+  debug=$4
+fi 
+
+fprop=`echo "${propname// /}"`
+delete_sql_file="/tmp/odp_${featureid}_${fprop}.sql"
 
 delete_sql="
 
@@ -11,11 +35,11 @@ BEGIN; \n
 create temp table tmp_exist_prop as select * from dh_properties_fielded limit 0; \n
 
 WITH RECURSIVE exist_prop AS ( \n
-      SELECT p.*
-      FROM dh_properties_fielded as p 
-      WHERE p.featureid = $parent_pid
-        AND propname = '$prop_name' 
-        AND p.entity_type = '$entity_type'
+      SELECT base.*
+      FROM dh_properties_fielded as base
+      WHERE base.featureid = $featureid
+        AND propname = '$propname' 
+        AND base.entity_type = '$entity_type'
       UNION
       SELECT c.*
       FROM dh_properties_fielded as c 
@@ -28,7 +52,17 @@ DELETE FROM dh_properties where pid in (select pid from tmp_exist_prop); \n
 
 DELETE FROM dh_properties_revision where pid in (select pid from tmp_exist_prop); \n
 
-COMMIT; \n
+DELETE FROM field_data_field_dh_matrix WHERE entity_type = 'dh_properties' AND entity_id in (select pid from tmp_exist_prop); \n
+
+DELETE FROM field_data_proptext WHERE entity_type = 'dh_properties' AND entity_id in (select pid from tmp_exist_prop); \n
+
+DELETE FROM field_data_field_projection_table WHERE entity_type = 'dh_properties' AND entity_id in (select pid from tmp_exist_prop); \n
+
+COMMIT; \n 
 "
 set -f
-echo -e $delete_sql
+echo -e $delete_sql > $delete_sql_file
+cat $delete_sql_file | psql -h $DB_HOST $DB_NAME
+if [ "$debug" != "1" ]; then
+  rm $delete_sql_file
+fi

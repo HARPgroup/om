@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [ $# -lt 5 ]; then
+  echo 1>&2 "Usage: om_copy_all_props src_entity_type src_featureid dest_entity_type dest_featureid [include_children=1] [overwrite=0] [debug=0]"
+  exit 2
+fi 
+
+src_entity_type=$1
+src_featureid=$2
+dest_entity_type=$3
+dest_featureid=$4
+include_children=1
+if [ $# -gt 4 ]; then
+  include_children=$5
+fi 
+overwrite=0
+if [ $# -gt 5 ]; then
+  overwrite=$6
+fi 
+debug=0
+if [ $# -gt 6 ]; then
+  debug=$7
+fi 
+
+lns=`om_get_propnames $src_entity_type $src_featureid`
+# IPS technique for names with spaces in them from https://www.cyberciti.biz/tips/handling-filenames-with-spaces-in-bash.html
+IFS=$(echo -en "\n\b")
+for i in $lns; do 
+  >&2 echo "om_copy_property $src_entity_type $src_featureid $dest_entity_type $dest_featureid \"$i\" $include_children $overwrite $debug"
+  om_copy_property $src_entity_type $src_featureid $dest_entity_type $dest_featureid "$i" $include_children $overwrite $debug
+done

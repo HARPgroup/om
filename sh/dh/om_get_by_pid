@@ -1,0 +1,18 @@
+#!/bin/bash
+# given pid
+# return all info
+# this loads the db info
+. om_config
+
+sql="
+\\o \n
+
+  select e.pid, e.entity_type, e.featureid, e.bundle, e.propname, e.propvalue, e.propcode
+  from dh_properties as e
+  where e.pid = $1
+"
+
+
+set -f
+# Note: can't echo this for debugging as it clobbers the pipes
+echo -e $sql | psql --csv -A --field-separator=$'\t' -t -h $DB_HOST $DB_NAME

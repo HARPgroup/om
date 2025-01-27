@@ -5,13 +5,15 @@ $adminemail = 'rburghol@vt.edu';
 // database connection info
 // main modeling database
 $dbname = 'model';
-//$dbip = '192.168.0.13'; // deq3
-//$cbp_dbip = '192.168.0.20'; // dbase1
-// deq1 - localhost in use tem as of 1/24/2017
-$cbp_dbip = '192.168.0.21'; 
-$cbp_port = 5434;
 $dbip = '192.168.0.21'; // dbase2
 $dbport = 5432;
+// dH database
+$dh_dbname = 'drupal.dh03';
+$dh_dbip = '192.168.0.21'; // dbase2
+$dh_dbport = 5432;
+
+$cbp_dbip = '192.168.0.21'; 
+$cbp_port = 5434;
 // session data database
 $session_dbname = 'model_sessiondata';
 // on local machine deq2

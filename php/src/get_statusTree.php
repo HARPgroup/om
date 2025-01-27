@@ -38,6 +38,7 @@ if (isset($_GET['host'])) {
 error_log("Calling getStatusTree(listobject, $elid, $runid, $host ");
 $container_tree = getStatusTree($listobject, $elid, $runid, $host);
 error_log("Tree contains:" . count($container_tree));
+error_log(print_r($container_tree,1));
 switch ($format) {
    case 'array':
       $formatted = "Number of elements in tree = " . count($container_tree) . "\n";

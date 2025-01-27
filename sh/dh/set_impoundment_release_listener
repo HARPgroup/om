@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Water Supply Model Element Template 
+template=7423249
+
+if [ $# -lt 1 ]; then
+  echo 1>&2 "Usage: set_reservoir_system_props.sh vahydro_model_pid [template=default($template)] [overwrite=0] [debug=0]"
+  exit 2
+fi
+pid=$1
+if [ $# -gt 1 ]; then
+  if [ "$2" != "default" ]; then
+    template=$2
+  fi
+fi  
+overwrite=0
+if [ $# -gt 2 ]; then
+  overwrite=$3
+fi 
+debug=0
+if [ $# -gt 3 ]; then
+  debug=$4
+fi 
+
+
+# make sure it is using the new discharge_mgd variable 
+om_copy_property dh_properties $template dh_properties $pid "Reservoir Operations" 1 $overwrite $debug
+# delete the property refill_max_mgd 
+# since it is included in the Reservoir Operations listener
+# and add refill_allowed_mgd which is set to listen to refill_max_mgd 
+echo "Deleting old refill_max_mgd (it it exists) since it is included in the Reservoir Operations listener" 
+om_delete_property dh_properties $pid refill_max_mgd 
+echo "Add refill_allowed_mgd which is set to listen to refill_max_mgd from broadcast"
+om_copy_property dh_properties $template dh_properties $pid refill_allowed_mgd 1 $overwrite $debug
+echo "Copt available_mgd which is set to use refill_flowby from broadcast"
+om_copy_property dh_properties $template dh_properties $pid available_mgd 1 $overwrite $debug
+
+echo "Properties have been copied.  Note: if this is a small trib with impoundment, you must edit the impoundment sub-component and set release = release_cfs (default is zero)"

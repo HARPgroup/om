@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $# -lt 1 ]; then
-  echo 1>&2 "Usage: set_impoundment_release_sender.sh vahydro_model_pid (entity_type=model parent, default=auto) (entity_id=model parent)"
+  echo 1>&2 "Usage: set_impoundment_refill_sender.sh vahydro_model_pid (entity_type=model parent, default=auto) (entity_id=model parent)"
   exit 2
 fi
 pid=$1

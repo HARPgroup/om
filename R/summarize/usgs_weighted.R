@@ -238,32 +238,36 @@ flows <- aggregate(
 ## Water year is overridden in group2() by calendar year for L30 and L90 calculations to avoid overestimation of Smin in the current year and underestimation in the next
 ## The period of minimum storage in impoundments (period of Smin) often overlaps with Oct 1st 
 #loflows <- group2(flows, flow_year_type); 
-loflows <- group2(flows, year = 'calendar');
-l90 <- loflows["90 Day Min"];
-ndx = which.min(as.numeric(l90[,"90 Day Min"]));
-l90_Qout = round(loflows[ndx,]$"90 Day Min",6);
-l90_year = loflows[ndx,]$"year";
+# h1
+iout <- fn_iha_flow_extreme(flows, "1 Day Max")
+h1_Qout <- iout[1]
+h1_year <- iout[2]
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max1_Qout', h1_Qout, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max1_year', h1_year, ds)
+# h3
+iout <- iha_flow_extreme(flows, "3 Day Max")
+h3_Qout <- iout[1]
+h3_year <- iout[2]
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max3_Qout', h3_Qout, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max3_year', h3_year, ds)
 
-if (is.na(l90_Qout)) {
-  l90_Qout = 0.0
-  l90_year = 0
-}
-
+# l90
+iout <- iha_flow_extreme(flows, "90 Day Min")
+l90_Qout <- iout[1]
+l90_year <- iout[2]
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_Qout', l90_Qout, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_year', l90_year, ds)
 
-l30 <- loflows["30 Day Min"];
-ndx = which.min(as.numeric(l30[,"30 Day Min"]));
-l30_Qout = round(loflows[ndx,]$"30 Day Min",6);
-l30_year = loflows[ndx,]$"year";
-
-if (is.na(l30_Qout)) {
-  l30_Runit = 0.0
-  l30_year = 0
-}
-
+iout <- iha_flow_extreme(flows, "30 Day Min")
+l30_Qout <- iout[1]
+l30_year <- iout[2]
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_Qout', l30_Qout, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_year', l30_year, ds)
+iout <- iha_flow_extreme(flows, "7 Day Min")
+l7_Qout <- iout[1]
+l7_year <- iout[2]
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l7_Qout', l7_Qout, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l7_year', l7_year, ds)
 
 # 7q10 -- also requires PearsonDS packages
 x7q10 <- fn_iha_7q10(flows)

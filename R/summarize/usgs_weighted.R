@@ -15,11 +15,11 @@ suppressPackageStartupMessages(library(IHA))
 # authenticate
 
 # Read Args argst <- c(4713892, 231299 , 11)
-# test argst <- c(7700740, "01646000_PM7_4581_4580", 400, "http://deq1.bse.vt.edu:81/usgs/400/01646000_PM7_4581_4580.out")
+# test argst <- c(7701223, "01619500_PU2_3090_4050", "usgs", "http://deq1.bse.vt.edu:81/usgs/usgs/01619500_PU2_3090_4050.out")
 argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1])
 elid <- as.integer(argst[2]) # elid or segment if using new methods
-runid <- as.integer(argst[3])
+runid <- as.character(argst[3])
 if (length(argst) > 3) {
   # we are using the new method of giving a file path
   runfile <- as.character(argst[4])
@@ -48,7 +48,12 @@ eyear <- year(edate)
 flow_year_type <- 'calendar'
 #dat <- as.zoo(dat)
 mode(dat) <- 'numeric'
-scen.propname<-paste0('runid_', runid)
+# ok with new and old school run names
+if (is.na(as.numeric(runid))) {
+  scen.propname<-paste0('runid_', runid)
+} else {
+  scen.propname <- runid
+}
 
 # GETTING SCENARIO PROPERTY FROM VA HYDRO
 sceninfo <- list(

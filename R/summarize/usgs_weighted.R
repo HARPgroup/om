@@ -49,7 +49,7 @@ flow_year_type <- 'calendar'
 #dat <- as.zoo(dat)
 mode(dat) <- 'numeric'
 # ok with new and old school run names
-if (is.na(as.numeric(runid))) {
+if (!is.na(as.numeric(runid))) {
   scen.propname<-paste0('runid_', runid)
 } else {
   scen.propname <- runid

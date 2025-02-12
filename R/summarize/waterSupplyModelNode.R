@@ -229,35 +229,35 @@ flows <- aggregate(
 #loflows <- group2(flows, flow_year_type); 
 
 # h1
-iout <- fn_iha_flow_extreme(flows, "1 Day Max")
+iout <- fn_fn_iha_flow_extreme(flows, "1 Day Max")
 h1_Qout <- iout[1]
 h1_year <- iout[2]
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max1_Qout', h1_Qout, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max1_year', h1_year, ds)
 # h3
-iout <- iha_flow_extreme(flows, "3 Day Max")
+iout <- fn_iha_flow_extreme(flows, "3 Day Max")
 h3_Qout <- iout[1]
 h3_year <- iout[2]
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max3_Qout', h3_Qout, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max3_year', h3_year, ds)
 
 # l90
-iout <- iha_flow_extreme(flows, "90 Day Min")
+iout <- fn_iha_flow_extreme(flows, "90 Day Min")
 l90_Qout <- iout[1]
 l90_year <- iout[2]
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_Qout', l90_Qout, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_year', l90_year, ds)
 
-iout <- iha_flow_extreme(flows, "30 Day Min")
+iout <- fn_iha_flow_extreme(flows, "30 Day Min")
 l30_Qout <- iout[1]
 l30_year <- iout[2]
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_Qout', l30_Qout, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_year', l30_year, ds)
-iout <- iha_flow_extreme(flows, "7 Day Min")
+iout <- fn_iha_flow_extreme(flows, "7 Day Min")
 l7_Qout <- iout[1]
 l7_year <- iout[2]
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l7_Qout', l7_Qout, ds)
-vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l7_year', l7_year, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l07_Qout', l7_Qout, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l07_year', l7_year, ds)
 
 # 7q10 -- also requires PearsonDS packages
 x7q10 <- fn_iha_7q10(flows)

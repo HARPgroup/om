@@ -239,13 +239,13 @@ flows <- aggregate(
 ## The period of minimum storage in impoundments (period of Smin) often overlaps with Oct 1st 
 #loflows <- group2(flows, flow_year_type); 
 # h1
-iout <- fn_iha_flow_extreme(flows, "1 Day Max")
+iout <- fn_iha_flow_extreme(flows, "1 Day Max", "max")
 h1_Qout <- iout[1]
 h1_year <- iout[2]
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max1_Qout', h1_Qout, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max1_year', h1_year, ds)
 # h3
-iout <- fn_iha_flow_extreme(flows, "3 Day Max")
+iout <- fn_iha_flow_extreme(flows, "3 Day Max", "max")
 h3_Qout <- iout[1]
 h3_year <- iout[2]
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max3_Qout', h3_Qout, ds)

@@ -2507,8 +2507,10 @@ class modelObject {
     $queue = $nonhier;
     $this->logDebug("Beginning Queue \n");
     $this->logDebug($queue);
+    $this->outstring .= "Beginning Queue: " . print_r($queue,1) . "\n";
     $this->logDebug("Beginning independents \n");
     $this->logDebug($independents);
+    $this->outstring .= "Beginning independents: " . print_r($independents,1) . "\n";
     $i = 0;
     $dbc = $this->debug;
     $this->debug = 0;

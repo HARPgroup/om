@@ -1,9 +1,11 @@
 #!/bin/bash
-
 if [ "$1" == "--help" ]; then
-  echo 1>&2 "Usage: set_use_fractions.sh [facility ydroid] "
+  echo 1>&2 "Usage: set_use_fractions.sh [facility hydroid] "
   exit 2
 fi 
+
+om_config=`find_config om.config /etc/om.config`
+. $om_config
 
 frac_query="
   select 'dh_feature' as entity_type, mp.hydroid as featureid,
@@ -54,7 +56,7 @@ fi
 
 echo $frac_query 
 
-echo $frac_query | psql -h dbase2 drupal.dh03 > /tmp/use_fractions.txt 
+echo $frac_query | psql -h $DB_HOST $DB_NAME > /tmp/use_fractions.txt 
 
 n=`< /tmp/use_fractions.txt wc -l`
 nm="$((n - 2))"
@@ -67,11 +69,11 @@ tail -n $nm /tmp/fhead.txt > /tmp/use_fractions.txt
 while IFS= read -r line; do
   #echo "Text read from file: $line"
   IFS="$IFS|" read entity_type featureid varkey propname propvalue <<< "$line"
-  drush scr modules/om/src/om_setprop.php cmd $entity_type $featureid $varkey $propname $propvalue
+  Rscript $OM_ROOT/R/set_property.R $entity_type $featureid $varkey $propname NA "$propvalue"
 done < /tmp/use_fractions.txt 
 
 # now, handle the facility's own gw_frac and sw_frac 
-cat modules/dh_wsp/sql/create_use_fractions_wsp_virtual.sql | psql -h dbase2 drupal.dh03 > /tmp/all_use_fractions.txt
+cat modules/dh_wsp/sql/create_use_fractions_wsp_virtual.sql | psql -h $DB_HOST $DB_NAME > /tmp/all_use_fractions.txt
 
 # Do SW and GW frac calculations
 frac_query="select entity_type, featureid, varkey, propname, propvalue from (
@@ -95,7 +97,7 @@ fi
 
 echo $frac_query 
  
-echo $frac_query | PGOPTIONS='--client-min-messages=warning' psql -h dbase2 drupal.dh03 > /tmp/facility_swgw_fractions.txt 
+echo $frac_query | PGOPTIONS='--client-min-messages=warning' psql -h $DB_HOST $DB_NAME > /tmp/facility_swgw_fractions.txt 
 
 n=`< /tmp/facility_swgw_fractions.txt wc -l`
 nm="$((n - 2))"
@@ -107,6 +109,6 @@ tail -n $nm /tmp/fhead.txt > /tmp/facility_swgw_fractions.txt
 while IFS= read -r line; do
   #echo "Text read from file: $line"
   IFS="$IFS|" read entity_type featureid varkey propname propvalue <<< "$line"
-  echo "drush scr modules/om/src/om_setprop.php cmd $entity_type $featureid $varkey $propname $propvalue"
-  drush scr modules/om/src/om_setprop.php cmd $entity_type $featureid $varkey $propname $propvalue
+  echo "Rscript $OM_ROOT/R/set_property.R $entity_type $featureid $varkey $propname NA \"$propvalue\""
+  Rscript $OM_ROOT/R/set_property.R $entity_type $featureid $varkey $propname NA "$propvalue"
 done < /tmp/facility_swgw_fractions.txt 

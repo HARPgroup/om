@@ -1,16 +1,53 @@
 # Shared config
+# May need to tell R where your libs are
+# some combo of the array below may help
+# .libPaths( 
+#  c( 
+#    .libPaths(), 
+#    "/var/www/R/x86_64-pc-linux-gnu-library/3.6", 
+#    "/var/www/R/x86_64-pc-linux-gnu-library/4.1", 
+#    "/var/www/R/x86_64-pc-linux-gnu-library" 
+#   ) 
+# )
+
 library(pander);
 library(httr);
 library(hydroTSM);
 library(sqldf);
 library(stats);
+library(lubridate)
+library(hydrotools)
 # paths and libs
 source(paste(basepath,'config.local.private',sep='/'));
-source(paste(hydro_tools,"VAHydro-2.0/rest_functions.R", sep = "/")); 
-source(paste(hydro_tools,"VAHydro-1.0/fn_vahydro-1.0.R", sep = "/"));  
-source(paste(hydro_tools,"LowFlow/fn_iha.R", sep = "/"));  
 source(paste(basepath,"auth.private", sep = "/"));#load rest username and password, contained in auth.private file
-source(paste(github_location, "cbp6/code","cbp6_functions.R", sep = "/"));  
-omsite = "http://deq2.bse.vt.edu"
-token <- rest_token(site, token, rest_uname, rest_pw);
-options(timeout=1200); # set timeout to twice default level to avoid abort due to high traffic
+omsite = "http://deq1.bse.vt.edu:81"
+site <- "http://deq1.bse.vt.edu:81/d.dh"    #Specify the site of interest, either d.bet OR d.dh
+json_obj_url <- paste(site, 'node/62', sep="/")
+ext_site = "http://deq1.bse.vt.edu:81"
+#token <- rest_token(site, token, rest_uname, rest_pw);
+options(timeout=1200)  # set timeout to twice default level to avoid abort due to high traffic
+# load a default datasource
+ds <- RomDataSource$new(site, rest_uname = odbc_uname, connection_type = 'odbc', dbname = 'drupal.dh03')
+ds$get_token(rest_pw = odbc_pw)
+#source(paste0(hydro_tools,"/LowFlow/fn_iha.R"))
+
+# set up a caching function for NWIS
+library("memoise")
+dir <- Sys.getenv("USGS_cache_dir")
+if (dir == "") {
+  dir <- tools::R_user_dir(package="dataRetrieval", which="cache")
+}
+if (!dir.exists(dir)) {
+  dir.create(dir, recursive=TRUE)
+}
+# maybe don't use this just yet.
+#unlink(dir, recursive = TRUE, force = TRUE)
+db <- memoise::cache_filesystem(dir)
+one_day <- 24*60^2
+one_year <- 365 * one_day
+memo_readNWISdv <- memoise::memoise(dataRetrieval::readNWISdv, ~memoise::timeout(one_day), cache = db)
+memo_readNWISsite <- memoise::memoise(dataRetrieval::readNWISsite, ~memoise::timeout(one_day), cache = db)
+memo_get_nhdplus <- memoise::memoise(nhdplusTools::get_nhdplus, ~memoise::timeout(one_year), cache = db)
+memo_get_UT <- memoise::memoise(nhdplusTools::get_UT, ~memoise::timeout(one_year), cache = db)
+memo_plot_nhdplus <- memoise::memoise(nhdplusTools::plot_nhdplus, ~memoise::timeout(one_year), cache = db)
+memo_navigate_nldi <- memoise::memoise(nhdplusTools::navigate_nldi, ~memoise::timeout(one_year), cache = db)

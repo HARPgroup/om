@@ -12,6 +12,9 @@ $elementid = FALSE;
 if (isset($_GET['elementid'])) {
    $elementid = $_GET['elementid'];
 }
+if (isset($_GET['mins'])) {
+   $mins = $_GET['mins'];
+}
 if (isset($argv[1])) {
    $elementid = $argv[1];
 }

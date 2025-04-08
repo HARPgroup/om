@@ -49,3 +49,12 @@ memo_get_nhdplus <- memoise::memoise(nhdplusTools::get_nhdplus, ~memoise::timeou
 memo_get_UT <- memoise::memoise(nhdplusTools::get_UT, ~memoise::timeout(one_year), cache = db)
 memo_plot_nhdplus <- memoise::memoise(nhdplusTools::plot_nhdplus, ~memoise::timeout(one_year), cache = db)
 memo_navigate_nldi <- memoise::memoise(nhdplusTools::navigate_nldi, ~memoise::timeout(one_year), cache = db)
+
+#Per the conversation here https://community.rstudio.com/t/r-filling-in-the-names-of-columns-automatically-completely-bizarre-behavior/180577/4
+#The dollar sign [[]] operators in R will return columns using pattern matching
+#even if those columns don't exist. An easy example:
+#data.frame(FacilityID = "VA01",testID = 23)$facility
+#The following options warn the user if this pattern matching was used:
+options("warnPartialMatchDollar" = TRUE)
+options("warnPartialMatchAttr" = TRUE)
+options("warnPartialMatchArgs" = TRUE)

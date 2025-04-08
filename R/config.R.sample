@@ -11,10 +11,8 @@
 # )
 
 library(pander);
-library(httr);
 library(hydroTSM);
 library(sqldf);
-library(stats);
 library(lubridate)
 library(hydrotools)
 # paths and libs

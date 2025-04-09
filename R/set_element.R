@@ -25,12 +25,10 @@ for (i in names(element_list)) {
   if (substr(i,1,6) == 'runid_') {
     element_list[[i]] <- NULL
   }
+  # Remove contained stand-alone components
   if ('om_element_connection' %in% names(element_list[[i]])) {
     element_list[[i]] <- NULL
   }
-}
-# Remove contained stand-alone components
-for (i in names(element_list)) {
 }
 
 element_json <- jsonlite::prettify(jsonlite::toJSON(element_list, auto_unbox = TRUE))

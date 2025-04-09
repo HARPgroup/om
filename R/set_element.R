@@ -20,11 +20,19 @@ if (length(argst) > 1) {
 
 element_list <- ds$get_json_prop(pid)
 elid <- element_list$om_element_connection$value
+# Remove runid data (should also screen for *any* scenario info)
 for (i in names(element_list)) {
   if (substr(i,1,6) == 'runid_') {
     element_list[[i]] <- NULL
   }
+  if ('om_element_connection' %in% names(element_list[[i]])) {
+    element_list[[i]] <- NULL
+  }
 }
+# Remove contained stand-alone components
+for (i in names(element_list)) {
+}
+
 element_json <- jsonlite::prettify(jsonlite::toJSON(element_list, auto_unbox = TRUE))
 #element_json <- paste0('"',stringr::str_replace_all(jsonlite::toJSON(element_list),'"','\"'),'"')
 element_path <- paste0("element_", elid,".json")

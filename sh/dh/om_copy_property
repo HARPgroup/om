@@ -115,7 +115,7 @@ where dh_properties.pid = a.pid
 -- Copy proptext \n
 
 insert into field_data_proptext(entity_type , bundle, deleted, entity_id, revision_id, language, delta, proptext_value, proptext_format) 
-select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.proptext_value, a.proptext_format
+select a.entity_type , a.bundle, a.deleted, b.pid, b.vid, a.language, a.delta, a.proptext_value, a.proptext_format
 from dh_properties as b, field_data_proptext as a, map_clone_pids as c 
 WHERE a.entity_id in (select clone_pid from map_clone_pids)
   and a.entity_id = b.clone_pid
@@ -131,7 +131,7 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
 -- Copy normal matrices \n
 
 insert into field_data_field_dh_matrix (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_dh_matrix_value, field_dh_matrix_format) 
-select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.field_dh_matrix_value, a.field_dh_matrix_format
+select a.entity_type , a.bundle, a.deleted, b.pid, b.vid, a.language, a.delta, a.field_dh_matrix_value, a.field_dh_matrix_format
 from map_clone_pids as c, dh_properties as b, field_data_field_dh_matrix as a
 WHERE a.entity_id in (select clone_pid from map_clone_pids)
   and a.entity_id = b.clone_pid
@@ -148,7 +148,7 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
 
 
 insert into field_data_field_projection_table (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_projection_table_value, field_projection_table_format)
-select a.entity_type , a.bundle, a.deleted, b.pid, a.revision_id, a.language, a.delta, a.field_projection_table_value, a.field_projection_table_format
+select a.entity_type , a.bundle, a.deleted, b.pid, b.vid, a.language, a.delta, a.field_projection_table_value, a.field_projection_table_format
 from map_clone_pids as c, dh_properties as b, field_data_field_projection_table as a
 WHERE a.entity_id in (select clone_pid from map_clone_pids)
   and a.entity_id = b.clone_pid

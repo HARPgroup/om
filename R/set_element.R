@@ -17,9 +17,11 @@ if (length(argst) > 1) {
     connection = ds$connection)$featureid[1]
   )
 }
-
+#message(paste("Found pid: ", pid, "for elementid", elid))
+#message(paste("Calling ds$get_json_prop(",pid,")") )
 element_list <- ds$get_json_prop(pid)
 elid <- element_list$om_element_connection$value
+
 # Remove runid data (should also screen for *any* scenario info)
 for (i in names(element_list)) {
   if (substr(i,1,6) == 'runid_') {

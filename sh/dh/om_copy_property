@@ -130,8 +130,8 @@ WHERE a.entity_id in (select clone_pid from map_clone_pids)
 
 -- Copy normal matrices \n
 
-insert into field_data_field_dh_matrix (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_dh_matrix_value, field_dh_matrix_format) 
-select a.entity_type , a.bundle, a.deleted, b.pid, b.vid, a.language, a.delta, a.field_dh_matrix_value, a.field_dh_matrix_format
+insert into field_data_field_dh_matrix (entity_type , bundle, deleted, entity_id, revision_id, language, delta, field_dh_matrix_value, field_dh_matrix_format, field_dh_matrix_json) 
+select a.entity_type , a.bundle, a.deleted, b.pid, b.vid, a.language, a.delta, a.field_dh_matrix_value, a.field_dh_matrix_format, a.field_dh_matrix_json
 from map_clone_pids as c, dh_properties as b, field_data_field_dh_matrix as a
 WHERE a.entity_id in (select clone_pid from map_clone_pids)
   and a.entity_id = b.clone_pid

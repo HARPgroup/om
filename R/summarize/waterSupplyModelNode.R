@@ -229,7 +229,7 @@ flows <- aggregate(
 #loflows <- group2(flows, flow_year_type); 
 
 # h1
-iout <- fn_fn_iha_flow_extreme(flows, "1 Day Max","max")
+iout <- fn_iha_flow_extreme(flows, "1 Day Max","max")
 h1_Qout <- iout[1]
 h1_year <- iout[2]
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'max1_Qout', h1_Qout, ds)

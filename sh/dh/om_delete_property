@@ -6,6 +6,7 @@ if [ $# -lt 2 ]; then
     pid=$1
     IFS=$'\t' read pid entity_type featureid bundle propname propvalue propcode <<< `om_get_by_pid $pid`
     echo "Executing om_delete_property $entity_type $featureid \"$propname\""
+    om_delete_property $entity_type $featureid $propname
     exit 2
   fi
 fi  

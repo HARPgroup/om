@@ -62,6 +62,20 @@ if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
   scenprop$save(TRUE)
 }
 
+keepers <- c('run_status', 'reports', 'logfile')
+clear_scenario_data <- function(scenprop, keepers) {
+  propnames <- scenprop$propvalues()[,'propname']
+  for (i in propnames) {
+    if (!(i %in% keepers)) {
+      subprop <- scenprop$get_prop(i)
+      if (!is.na(subprop$pid)) {
+        subprop$delete(TRUE)
+      }
+    }
+  }
+}
+clear_scenario_data(scenprop, keepers)
+
 # Post link to run file
 vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NA, ds)
 

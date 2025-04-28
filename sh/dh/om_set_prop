@@ -28,7 +28,7 @@ sql="
     and entity_type = '$src_entity_type'
     and propname = '$propname'
 "
-#echo $sql
+echo $sql
 echo $sql | psql -h $DB_HOST $DB_NAME
 
 sql="
@@ -37,6 +37,6 @@ sql="
     and entity_type = '$src_entity_type'
     and propname = '$propname'
 "
-#echo $sql
+echo $sql
 echo $sql | psql -h $DB_HOST $DB_NAME
 

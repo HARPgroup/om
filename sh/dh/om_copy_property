@@ -42,7 +42,7 @@ if [ "$overwrite" == "1" ]; then
     fi
   fi
 fi
-exit
+
 if [ "$overwrite" == "2" ]; then 
    echo 1>&2 "Property $dest_name exists on $dest_featureid and overwrite == 2 (force) deleting."
   # overwrite regardless of custom setting

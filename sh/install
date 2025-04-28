@@ -9,3 +9,4 @@ cp ./sh/dh/om_get_propnames $binpath
 cp ./sh/dh/om_copy_all_props $binpath
 cp ./sh/dh/om_get_by_pid $binpath
 cp ./sh/dh/om_get_prop $binpath
+cp ./sh/dh/om_set_prop $binpath

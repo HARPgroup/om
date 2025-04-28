@@ -28,8 +28,6 @@ sql="
     and e.entity_type = '$src_entity_type'
     and e.propname = '$propname'
 "
-if [ "$debug" == "1" ]; then
-  echo 1>&2 "$sql"
-fi
+i
 set -f
 echo -e $sql | psql --csv -A --field-separator=" " -t -h $DB_HOST $DB_NAME

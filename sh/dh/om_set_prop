@@ -24,11 +24,19 @@ fi
 
 sql="
   UPDATE dh_properties set $target = $value
-  WHERE e.featureid = $src_featureid
-    and e.entity_type = '$src_entity_type'
-    and e.propname = '$propname'
+  WHERE featureid = $src_featureid
+    and entity_type = '$src_entity_type'
+    and propname = '$propname'
 "
-echo $sql
+#echo $sql
+echo $sql | psql -h $DB_HOST $DB_NAME
 
+sql="
+  UPDATE dh_properties_revision set $target = $value
+  WHERE featureid = $src_featureid
+    and entity_type = '$src_entity_type'
+    and propname = '$propname'
+"
+#echo $sql
+echo $sql | psql -h $DB_HOST $DB_NAME
 
-#echo $sql | psql -h $DB_HOST $DB_NAME

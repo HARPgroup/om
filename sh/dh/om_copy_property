@@ -36,7 +36,7 @@ if [ "$overwrite" == "1" ]; then
     echo 1>&2 "custom = $custom"
     if [ "$custom" != "1" ]; then
       # OK to delete 
-      echo `>&2 "I would delete cause custom <> 1 but wont cause this is a test"
+      echo 1>&2 "I would delete cause custom <> 1 but wont cause this is a test"
 #      om_delete_property $dest_entity_type $dest_featureid "$dest_name" $debug
     else 
       echo 1>&2 "Property $dest_name exists on $dest_featureid and overwrite <> 2 (force) cancelling."

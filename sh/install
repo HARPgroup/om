@@ -8,3 +8,4 @@ cp ./sh/dh/om_copy_property $binpath
 cp ./sh/dh/om_get_propnames $binpath
 cp ./sh/dh/om_copy_all_props $binpath
 cp ./sh/dh/om_get_by_pid $binpath
+cp ./sh/dh/om_get_prop $binpath

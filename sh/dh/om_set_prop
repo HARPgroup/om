@@ -1,0 +1,42 @@
+#!/bin/bash
+. om_config
+
+if [ $# -lt 2 ]; then
+  echo 1>&2 "Usage: om_set_prop src_entity_type src_featureid propname value target[propvalue,propcode,pid] [debug=0]"
+  exit 2
+fi 
+pid=$1
+src_entity_type=$1
+src_featureid=$2
+propname=$3
+value=$4
+target="propvalue"
+if [ $# -gt 4 ]; then 
+  target=$5
+fi
+debug=0
+if [ $# -gt 5 ]; then 
+  debug=$6
+fi
+if [ "$target" == "propcode" ]; then
+  value="'${value}'"
+fi
+
+sql="
+  UPDATE dh_properties set $target = $value
+  WHERE featureid = $src_featureid
+    and entity_type = '$src_entity_type'
+    and propname = '$propname'
+"
+echo $sql
+echo $sql | psql -h $DB_HOST $DB_NAME
+
+sql="
+  UPDATE dh_properties_revision set $target = $value
+  WHERE featureid = $src_featureid
+    and entity_type = '$src_entity_type'
+    and propname = '$propname'
+"
+echo $sql
+echo $sql | psql -h $DB_HOST $DB_NAME
+

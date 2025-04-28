@@ -28,6 +28,6 @@ sql="
     and e.entity_type = '$src_entity_type'
     and e.propname = '$propname'
 "
-i
+
 set -f
 echo -e $sql | psql --csv -A --field-separator=" " -t -h $DB_HOST $DB_NAME

@@ -19,15 +19,16 @@ if [ $# -gt 5 ]; then
   debug=$6
 fi
 if [ "$target" == "propcode" ]; then
-  value="'${}value}'"
+  value="'${value}'"
+fi
 
 sql="
-\\o \n
-
   UPDATE dh_properties set $target = $value
   WHERE e.featureid = $src_featureid
     and e.entity_type = '$src_entity_type'
     and e.propname = '$propname'
 "
+echo $sql
 
-echo $sql | psql -h $DB_HOST $DB_NAME
+
+#echo $sql | psql -h $DB_HOST $DB_NAME

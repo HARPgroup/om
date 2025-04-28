@@ -29,7 +29,6 @@ fi
 echo 1>&2 "Check overwrite code overwrite = $overwrite "
 if [ "$overwrite" == "1" ]; then 
   # check custom setting (protected props will have a custom=1 sub-prop)
-  om_delete_property $dest_entity_type $dest_featureid "$dest_name" $debug
   exist=`om_get_prop $dest_entity_type $dest_featureid $dest_name pid`
   if [ "$exist" != "" ]; then 
     custom=`om_get_prop dh_properties $exist custom propvalue`

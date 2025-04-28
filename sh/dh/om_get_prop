@@ -23,11 +23,13 @@ sql="
 \\o \n
 
   select e.${target}
-  from dh_properties as e
+  from dh_properties_fielded as e
   WHERE e.featureid = $src_featureid
     and e.entity_type = '$src_entity_type'
     and e.propname = '$propname'
 "
-echo $sql
+#if [ "$debug" == "1" ]; then
+#  echo 1>&2 $sql
+#fi
 set -f
 echo -e $sql | psql --csv -A --field-separator=" " -t -h $DB_HOST $DB_NAME

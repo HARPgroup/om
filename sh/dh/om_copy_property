@@ -26,8 +26,27 @@ debug=0
 if [ $# -gt 7 ]; then
   debug=$8
 fi 
-
+echo 1>&2 "Check overwrite code overwrite = $overwrite "
 if [ "$overwrite" == "1" ]; then 
+  # check custom setting (protected props will have a custom=1 sub-prop)
+  om_delete_property $dest_entity_type $dest_featureid "$dest_name" $debug
+  exist=`om_get_prop $dest_entity_type $dest_featureid $dest_name pid`
+  if [ "$exist" != "" ]; then 
+    custom=`om_get_prop dh_properties $exist custom propvalue`
+    echo 1>&2 "custom = $custom"
+    if [ "$custom" != "1" ]; then
+      # OK to delete 
+      echo `>&2 "I would delete cause custom <> 1 but wont cause this is a test"
+#      om_delete_property $dest_entity_type $dest_featureid "$dest_name" $debug
+    else 
+      echo 1>&2 "Property $dest_name exists on $dest_featureid and overwrite <> 2 (force) cancelling."
+      exit
+    fi
+  fi
+fi
+exit
+if [ "$overwrite" == "2" ]; then 
+  # overwrite regardless of custom setting
   om_delete_property $dest_entity_type $dest_featureid "$dest_name" $debug
 fi
 

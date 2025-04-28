@@ -1,9 +1,10 @@
 #!/bin/bash
 . om_config
-
+# handle special case where we are given only the pid of the property to delete
 if [ $# -lt 2 ]; then
   if [[ "$1" =~ ^[0-9]+$ ]]; then
     pid=$1
+    # find the propnames etc to call this full version, to insure a single base routine
     IFS=$'\t' read pid entity_type featureid bundle propname propvalue propcode <<< `om_get_by_pid $pid`
     echo "Executing om_delete_property $entity_type $featureid \"$propname\""
     om_delete_property $entity_type $featureid $propname

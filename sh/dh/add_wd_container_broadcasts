@@ -22,6 +22,6 @@ if [ $# -gt 3 ]; then
 fi 
 
 om_copy_property dh_properties $template dh_properties $pid "Listen on Child" 1 $overwrite $debug
-om_copy_property dh_properties $template dh_properties $pid "Broadcast to Parent" 1 $overwrite $debug
 om_copy_property dh_properties $template dh_properties $pid "Broadcast to Child" 1 $overwrite $debug
+om_copy_property dh_properties $template dh_properties $pid "Broadcast to Parent" 1 $overwrite $debug
 om_copy_property dh_properties $template dh_properties $pid "Listen on Parent" 1 $overwrite $debug

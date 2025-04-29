@@ -30,6 +30,10 @@ fi
 custom=0
 exist=`om_get_prop $src_entity_type $src_featureid "$propname" pid`
 if [ "$exist" != "" ]; then 
+  if [ "$overwrite" == "0" ]; then
+    echo 1>&2 "Property $propname exists and overwrite == 0. Returning."
+    exit
+  fi
   custom=`om_get_prop dh_properties $exist custom propvalue`
   if [ "$custom" == "" ]; then
     custom=0

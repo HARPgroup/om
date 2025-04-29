@@ -46,7 +46,7 @@ else
   exit
 fi
 
-
+set -f
 sql="
   UPDATE dh_properties set $target = $value
   WHERE featureid = $src_featureid
@@ -55,7 +55,7 @@ sql="
 "
 echo $sql
 echo $sql | psql -h $DB_HOST $DB_NAME
-
+set -f
 sql="
   UPDATE dh_properties_revision set $target = $value
   WHERE featureid = $src_featureid

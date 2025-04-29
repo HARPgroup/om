@@ -29,5 +29,6 @@ sql="
     and e.propname = '$propname'
 "
 
-set -f
+# this "set -f" turns off file name expansion, so that if we give an equation with * in it we dont
+# end up with a huge list of files in the propcode
 echo -e $sql | psql --csv -A --field-separator=" " -t -h $DB_HOST $DB_NAME

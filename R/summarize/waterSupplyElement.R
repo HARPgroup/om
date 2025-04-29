@@ -156,6 +156,10 @@ unmet_demand_mgd <- mean(as.numeric(dat$unmet_demand_mgd) )
 if (is.na(unmet_demand_mgd)) {
   unmet_demand_mgd = 0.0
 }
+flowby = 0.0
+if ("flowby" %in% cols) {
+  flowby <- mean(as.numeric(dat$flowby) )
+}
 ps_mgd <- mean(as.numeric(dat$discharge_mgd) )
 if (is.na(ps_mgd)) {
   ps_mgd = 0.0
@@ -192,6 +196,7 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet9
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet30_mgd', unmet30, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet7_mgd', unmet7, ds)
 vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'unmet1_mgd', unmet1, ds)
+vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'flowby', flowby, ds)
 
 # Intake Flows
 iflows <- zoo(as.numeric(dat$Qintake), order.by = index(dat));

@@ -31,6 +31,15 @@ custom=0
 exist=`om_get_prop $src_entity_type $src_featureid "$propname" pid`
 if [ "$exist" != "" ]; then 
   custom=`om_get_prop dh_properties $exist custom propvalue`
+  if [ "$custom" == "" ]; then
+    custom=0
+  else 
+    if [ "$custom" == "1" ]; then
+      if [ "$overwrite" != "2" ]; then
+        echo 1>&2 "Property $propname has custom = 1 and overwrite < 2. Returning."
+        exit
+      fi
+  fi
 else
   echo 1>&2 "Property $propname does not exist. Creation not yet enabled. Returning."
   exit
@@ -42,7 +51,6 @@ sql="
   WHERE featureid = $src_featureid
     and entity_type = '$src_entity_type'
     and propname = '$propname'
-    and (($custom != 1) or ($overwrite = 2))
 "
 echo $sql
 echo $sql | psql -h $DB_HOST $DB_NAME

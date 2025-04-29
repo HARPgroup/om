@@ -2,7 +2,7 @@
 . om_config
 
 if [ $# -lt 2 ]; then
-  echo 1>&2 "Usage: om_set_prop src_entity_type src_featureid propname value target[propvalue,propcode,pid] [overwrite=1(0,1,2)] [debug=0]"
+  echo 1>&2 "Usage: om_set_prop src_entity_type src_featureid propname value target[propvalue,propcode,pid] [overwrite=0(0,1,2)] [debug=0]"
   exit 2
 fi 
 pid=$1
@@ -42,7 +42,7 @@ sql="
   WHERE featureid = $src_featureid
     and entity_type = '$src_entity_type'
     and propname = '$propname'
-    and (($custom <> 1) or ($overwrite = 2))
+    and (($custom != 1) or ($overwrite = 2))
 "
 echo $sql
 echo $sql | psql -h $DB_HOST $DB_NAME

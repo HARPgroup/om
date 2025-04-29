@@ -27,4 +27,6 @@ om_copy_property dh_properties $template dh_properties $pid vwp_exempt_2025_mgd 
 om_copy_property dh_properties $template dh_properties $pid flowby_exempt 1 $overwrite $debug
 # needs up to date main flowby var to allow selection of flowby_exempt based on run_mode
 om_copy_property dh_properties $template dh_properties $pid flowby 1 $overwrite $debug
+om_copy_property dh_properties $template dh_properties $pid base_demand_mgd 1 $overwrite $debug
+om_copy_property dh_properties $template dh_properties $pid base_demand_pstatus_mgd 1 $overwrite $debug
 

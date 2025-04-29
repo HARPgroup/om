@@ -39,6 +39,7 @@ if [ "$exist" != "" ]; then
         echo 1>&2 "Property $propname has custom = 1 and overwrite < 2. Returning."
         exit
       fi
+    fi
   fi
 else
   echo 1>&2 "Property $propname does not exist. Creation not yet enabled. Returning."

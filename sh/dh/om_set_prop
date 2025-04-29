@@ -2,7 +2,7 @@
 . om_config
 
 if [ $# -lt 2 ]; then
-  echo 1>&2 "Usage: om_set_prop src_entity_type src_featureid propname value target[propvalue,propcode,pid] [debug=0]"
+  echo 1>&2 "Usage: om_set_prop src_entity_type src_featureid propname value target[propvalue,propcode,pid] [overwrite=1(0,1,2)] [debug=0]"
   exit 2
 fi 
 pid=$1
@@ -14,19 +14,35 @@ target="propvalue"
 if [ $# -gt 4 ]; then 
   target=$5
 fi
-debug=0
+overwrite=0
 if [ $# -gt 5 ]; then 
-  debug=$6
+  overwrite=$6
+fi
+debug=0
+if [ $# -gt 6 ]; then 
+  debug=$7
 fi
 if [ "$target" == "propcode" ]; then
   value="'${value}'"
 fi
+
+# check custom setting (protected props will have a custom=1 sub-prop)
+custom=0
+exist=`om_get_prop $src_entity_type $src_featureid "$propname" pid`
+if [ "$exist" != "" ]; then 
+  custom=`om_get_prop dh_properties $exist custom propvalue`
+else
+  echo 1>&2 "Property $propname does not exist. Creation not yet enabled. Returning."
+  exit
+fi
+
 
 sql="
   UPDATE dh_properties set $target = $value
   WHERE featureid = $src_featureid
     and entity_type = '$src_entity_type'
     and propname = '$propname'
+    and (($custom <> 1) or ($overwrite = 2))
 "
 echo $sql
 echo $sql | psql -h $DB_HOST $DB_NAME

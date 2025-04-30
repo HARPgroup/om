@@ -23,7 +23,5 @@ if [ $# -gt 3 ]; then
   debug=$4
 fi 
 
-echo "om_copy_property dh_properties $template dh_properties $pid \"Send to Parent\" 1 $overwrite $debug"
 om_copy_property dh_properties $template dh_properties $pid "Send to Parent" 1 $overwrite $debug
-echo "om_copy_property dh_properties $template dh_properties $pid \"Listen on Parent\" 1 $overwrite $debug"
 om_copy_property dh_properties $template dh_properties $pid "Listen on Parent" 1 $overwrite $debug

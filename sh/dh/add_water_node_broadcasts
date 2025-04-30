@@ -1,7 +1,7 @@
 #!/bin/sh
 # This adds common data matrixes from a template that do not get created 
 # by default with the model type plugin
-template=65414
+template=6541481
 if [ $# -lt 1 ]; then
   echo 1>&2 "Usage: add_water_node_broadcasts pid [template=default($template)] [overwrite=0] [debug=0]"
   exit 2

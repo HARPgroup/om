@@ -1,0 +1,26 @@
+#!/bin/sh
+# This adds common data matrixes from a template that do not get created 
+# by default with the model type plugin
+template=6648413
+if [ $# -lt 1 ]; then
+  echo 1>&2 "Usage: add_channel_broadcasts pid [template=default($template)] [overwrite=0] [debug=0]"
+  exit 2
+fi
+pid=$1
+if [ $# -gt 1 ]; then
+  if [ "$2" != "default" ]; then
+    template=$2
+  fi
+fi  
+overwrite=0
+if [ $# -gt 2 ]; then
+  overwrite=$3
+fi 
+debug=0
+if [ $# -gt 3 ]; then
+  debug=$4
+fi 
+
+
+om_copy_property dh_properties $template dh_properties $pid "Broadcast on Parent" 1 $overwrite $debug
+om_copy_property dh_properties $template dh_properties $pid "Listen on Parent" 1 $overwrite $debug

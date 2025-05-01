@@ -30,6 +30,7 @@ om_copy_property dh_properties $template dh_properties $pid ps_other_mgd 1 $over
 om_copy_property dh_properties $template dh_properties $pid fac_demand_mgy 1 $overwrite $debug 
 om_copy_property dh_properties $template dh_properties $pid wd_mgd 1 $overwrite $debug
 om_copy_property dh_properties $template dh_properties $pid discharge_mgd 1 $overwrite $debug 
+om_copy_property dh_properties $template dh_properties $pid process_discharge_frac 1 $overwrite $debug 
 om_copy_property dh_properties $template dh_properties $pid discharge_local_mgd 1 $overwrite $debug 
 om_copy_property dh_properties $template dh_properties $pid discharge_other_mgd 1 $overwrite $debug 
 om_copy_property dh_properties $template dh_properties $pid gw_sw_factor 1 $overwrite $debug

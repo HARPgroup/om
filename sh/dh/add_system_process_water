@@ -1,0 +1,25 @@
+#!/bin/sh
+# This adds common data matrixes from a template that do not get created 
+# by default with the model type plugin
+template=4988636
+if [ $# -lt 1 ]; then
+  echo 1>&2 "Usage: add_system_process_water pid  [template=default($template)] [overwrite=0] [debug=0]"
+  exit 2
+fi
+pid=$1
+if [ $# -gt 1 ]; then
+  if [ "$2" != "default" ]; then
+    template=$2
+  fi
+fi  
+overwrite=0
+if [ $# -gt 2 ]; then
+  overwrite=$3
+fi 
+debug=0
+if [ $# -gt 3 ]; then
+  debug=$4
+fi 
+
+om_copy_property dh_properties $template dh_properties $pid process_discharge_frac 1 $overwrite $debug 
+om_copy_property dh_properties $template dh_properties $pid discharge_local_mgd 1 $overwrite $debug 

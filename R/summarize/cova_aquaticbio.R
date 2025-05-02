@@ -120,7 +120,7 @@ dat_all_flows$Date <- as.Date(
 # not yet ready everywhere since all components do NOT have the ws and ps cumulative variables
 # really, this should load the zero run, and compare a similar time period.
 # If no run zero, we can do this:
-if ( is.boolean(runid_base) ) {
+if ( is.logical(runid_base) ) {
   dat$Qbaseline <- dat$Qreach +
     (dat$wd_cumulative_mgd - dat$ps_cumulative_mgd ) * 1.547
 }

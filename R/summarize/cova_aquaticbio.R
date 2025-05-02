@@ -11,12 +11,14 @@
 #site <- "http://deq1.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
 #----------------------------------------------
 # Load Libraries
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(stringr))
 suppressPackageStartupMessages(library(hydrotools))
 basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
-source(paste("https://raw.githubusercontent.com/HARPgroup/r-dh-ecohydro",'master/Analysis/habitat','ifim_wua_change_plot.R',sep='/'))
-source(paste("https://raw.githubusercontent.com/HARPgroup/r-dh-ecohydro",'master/Analysis/habitat','hab_ts_functions.R',sep='/'))
-source("https://raw.githubusercontent.com/HARPgroup/hydro-tools/refs/heads/master/R/hab_plot.R")
+source(paste0(github_location,"/om/R/habitat/ifim_wua_change_plot.R"))
+source(paste0(github_location,"/om/R/habitat/hab_ts_functions.R"))
+source(paste0(github_location,"/om/R/habitat/hab_plot.R"))
 library(hydrotools)
 save_directory <-  "/var/www/html/data/proj3/out"
 
@@ -27,6 +29,9 @@ argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
+if (length(argst) > 3) {
+  flow_pct <- as.numeric(argst[4])
+}
 # Now, before we handle xtra args we check to load defaults
 # load the model in question
 model <- RomProperty$new(ds, list(pid=pid),TRUE)
@@ -68,7 +73,7 @@ check_defaults <- function(
 runid_base = check_defaults("runid_base", 0, scenario_report_defaults, report_defaults)
 Qcol = check_defaults("habitat_Qcol", "Qreach", scenario_report_defaults, report_defaults)
 wua_name = check_defaults("habitat_wua_name", "wua", scenario_report_defaults, report_defaults)
-
+flow_pct = check_defaults("habitat_flow_pct", 0.25, scenario_report_defaults, report_defaults)
 if (length(argst) > 3) {
   runid_base = as.integer(argst[4])
 }
@@ -136,35 +141,28 @@ WUA.df <- ifim_dataframe[-1,]
 colnames(WUA.df) <- targets
 # this is only used in labeling 
 ifim_da_sqmi = 737 # need to change to dynamic
-curr_plot_100pct <- pothab_plot(
+
+hab_alt_plot <- pothab_plot(
   WUA.df, dat_all_flows, "Qbaseline", "Qout",
-  1.0, ifim_da_sqmi,
+  flow_pct, ifim_da_sqmi,
   "Posey Hollow", "Current"
 )
 
-curr_plot_50pct <- pothab_plot(
-  WUA.df, dat_all_flows, "Qbaseline", "Qout",
-  0.5, ifim_da_sqmi,
-  "Posey Hollow", "Current"
+hab_alt_plot$labels$title = paste("Change in habitat for scenario",runid, "vs scenario",runid_base)
+#Image saving & naming
+fname <- paste(
+  save_directory,
+  paste0('habitat_',flow_pct,'.png'),
+  sep = '/'
 )
 
-curr_plot_25pct <- pothab_plot(
-  WUA.df, dat_all_flows, "Qbaseline", "Qout",
-  0.25, ifim_da_sqmi,
-  "Posey Hollow", "Current"
+furl <- paste(
+  save_url,paste0('habitat_',flow_pct,'.png'),
+  sep = '/'
 )
+ggsave(fname, plot = hab_alt_plot, width = 7, height = 5.5)
+message(paste("Saved file: ", fname, "with URL", furl))
+vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, paste0('habitat_',flow_pct), 0.0, ds)
 
-curr_plot_10pct <- pothab_plot(
-  WUA.df, dat_all_flows, "Qbaseline", "Qout",
-  0.1, ifim_da_sqmi,
-  "Posey Hollow", "Current"
-)
-curr_plot_10pct$labels$title = paste("Change in habitat for scenario",runid, "vs scenario",runid_base)
-
-curr_plot_5pct <- pothab_plot(
-  WUA.df, dat_all_flows, "Qbaseline", "Qout",
-  0.05, ifim_da_sqmi,
-  "Posey Hollow", "Current"
-)
 
 print(1) # to act as positive returning function

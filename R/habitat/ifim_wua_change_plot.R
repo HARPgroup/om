@@ -3,7 +3,8 @@ ifim_wua_change_plot <- function(
   runid_a = "",
   metric_a = "",
   runid_b = "",
-  metric_b = ""
+  metric_b = "",
+  ifim_site_name = ""
 )  {
   q_pctilef <- 100.0 * q_pctile
   #-------------------------------------------------------------------------------------------------

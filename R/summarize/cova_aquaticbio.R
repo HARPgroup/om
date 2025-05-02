@@ -49,13 +49,17 @@ check_defaults <- function(
     propname, default_value, scenario_report_defaults, report_defaults
   ) {
   custom_value = default_value
-  check_custom <- scenario_report_defaults$get_prop(propname)
-  if (!is.na(check_custom$pid)) {
-    custom_value = check_custom$propvalue
-  } else {
-    check_custom <- report_defaults$get_prop(propname)
+  if (typeof(scenario_report_defaults) %in% c('environment', 'list')) {
+    check_custom <- scenario_report_defaults$get_prop(propname)
     if (!is.na(check_custom$pid)) {
       custom_value = check_custom$propvalue
+    } else {
+      if (typeof(scenario_report_defaults) %in% c('environment', 'list')) {
+        check_custom <- report_defaults$get_prop(propname)
+        if (!is.na(check_custom$pid)) {
+          custom_value = check_custom$propvalue
+        }
+      }
     }
   }
   return(custom_value)

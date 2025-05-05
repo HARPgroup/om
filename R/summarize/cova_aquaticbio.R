@@ -45,6 +45,7 @@ sceninfo <- list(
   bundle = "dh_properties"
 )
 scenprop <- RomProperty$new( ds, sceninfo, TRUE)
+scenprop$save(TRUE)
 # Now, load custom scenario/object info
 report_defaults <- model$get_prop("reports")
 scenario_report_defaults <- scenprop$get_prop("reports")

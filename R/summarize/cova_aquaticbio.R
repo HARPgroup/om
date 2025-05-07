@@ -151,14 +151,15 @@ hab_alt_plot <- pothab_plot(
 
 hab_alt_plot$labels$title = paste("Change in habitat for scenario",runid, "vs scenario",runid_base)
 #Image saving & naming
+file_base = paste0('habitat_',flow_pct, '_', elid,'_',runid,'.png')
 fname <- paste(
   save_directory,
-  paste0('habitat_',flow_pct,'.png'),
+  file_base,
   sep = '/'
 )
 
 furl <- paste(
-  save_url,paste0('habitat_',flow_pct,'.png'),
+  save_url,file_base,
   sep = '/'
 )
 ggsave(fname, plot = hab_alt_plot, width = 7, height = 5.5)

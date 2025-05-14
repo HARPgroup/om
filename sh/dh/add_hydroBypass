@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pid=$1
-template=4828686
+template=7504700
 
 if [ $# -lt 1 ]; then
   echo 1>&2 "Usage: add_hydroBypass model_pid [template_entity_id] [overwrite, optional] [debug, optional]" >&2

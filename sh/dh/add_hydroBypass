@@ -1,0 +1,30 @@
+#!/bin/bash
+
+pid=$1
+template=4828686
+
+if [ $# -lt 1 ]; then
+  echo 1>&2 "Usage: add_hydroBypass.sh model_pid [template_entity_id] [overwrite, optional] [debug, optional]" >&2
+  exit 2
+fi
+pid=$1
+if [ $# -gt 1 ]; then
+  if [ "$2" != "default" ]; then
+    template=$2
+  fi
+fi  
+overwrite=0
+if [ $# -gt 2 ]; then
+  overwrite=$3
+fi 
+debug=0
+if [ $# -gt 3 ]; then
+  debug=$4
+fi 
+
+
+for i in Qbypass Qavail_divert Qturbine_max Qturbine unmet_demand_hydro_mgd Qturbine_max_current Qturbine_max_proposed Qturbine_max_historic; do
+  echo "om_copy_property dh_properties $template dh_properties $pid 1 $overwrite $debug"
+  om_copy_property dh_properties $template dh_properties $pid 1 $overwrite $debug
+done
+

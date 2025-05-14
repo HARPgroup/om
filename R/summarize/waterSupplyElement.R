@@ -83,6 +83,11 @@ if (!("unmet_demand_mgd" %in% cols)) {
 if (!("Qintake" %in% cols)) {
   dat$Qintake = dat$Qriver
 }
+# make sure that impoundment Qin is not NA
+datqin <- dat$impoundment_Qin
+datqin[is.na(datqin)] <- 0
+dat$local_impoundment_Qin <- datqin
+dat$impoundment_Qin <- datqin
 # yrdat will be used for generating the heatmap with calendar years
 yrdat <- dat
 

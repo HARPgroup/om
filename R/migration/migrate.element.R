@@ -1,5 +1,4 @@
 source("/var/www/R/config.R")
-omds <- RomDataSource$new(site, rest_uname = odbc_uname, connection_type = 'odbc', dbname = 'model')
 
 elid = 210901 # 212263 | Appomattox River below Brasfield Dam
 elsql = paste0(

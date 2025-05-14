@@ -16,6 +16,7 @@ if (length(argst) > 1) {
   pid = as.integer(sqldf(q,
     connection = ds$connection)$featureid[1]
   )
+  tempDirectory <- argst[3]
 }
 #message(paste("Found pid: ", pid, "for elementid", elid))
 #message(paste("Calling ds$get_json_prop(",pid,")") )
@@ -35,7 +36,7 @@ for (i in names(element_list)) {
 
 element_json <- jsonlite::prettify(jsonlite::toJSON(element_list, auto_unbox = TRUE))
 #element_json <- paste0('"',stringr::str_replace_all(jsonlite::toJSON(element_list),'"','\"'),'"')
-element_path <- paste0("element_", elid,".json")
+element_path <- paste0(tempDirectory,"/element_", elid,".json")
 write(element_json,element_path)
 if (!is.na(elid)) {
   cmd_str <- paste("php import_element_json.php", elid, element_path )

@@ -4,7 +4,7 @@ pid=$1
 template=4828686
 
 if [ $# -lt 1 ]; then
-  echo 1>&2 "Usage: add_hydroBypass.sh model_pid [template_entity_id] [overwrite, optional] [debug, optional]" >&2
+  echo 1>&2 "Usage: add_hydroBypass model_pid [template_entity_id] [overwrite, optional] [debug, optional]" >&2
   exit 2
 fi
 pid=$1
@@ -24,7 +24,7 @@ fi
 
 
 for i in Qbypass Qavail_divert Qturbine_max Qturbine unmet_demand_hydro_mgd Qturbine_max_current Qturbine_max_proposed Qturbine_max_historic; do
-  echo "om_copy_property dh_properties $template dh_properties $pid 1 $overwrite $debug"
-  om_copy_property dh_properties $template dh_properties $pid 1 $overwrite $debug
+  echo "om_copy_property dh_properties $template dh_properties $pid $i 1 $overwrite $debug"
+  om_copy_property dh_properties $template dh_properties $pid $i 1 $overwrite $debug
 done
 

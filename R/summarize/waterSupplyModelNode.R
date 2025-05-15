@@ -65,6 +65,10 @@ if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
 keepers <- c('run_status', 'reports', 'logfile')
 clear_scenario_data <- function(scenprop, keepers) {
   propnames <- scenprop$propvalues()[,'propname']
+  if (is.logical(propnames)) {
+    # no values
+    return
+  }
   for (i in propnames) {
     if (!(i %in% keepers)) {
       subprop <- scenprop$get_prop(i)

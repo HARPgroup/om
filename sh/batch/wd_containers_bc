@@ -1,0 +1,17 @@
+#!/bin/bash
+cd /opt/model/p6/vadeq
+. hspf_config
+filename=$1
+while IFS= read -r line; do
+  #echo "Text read from file: $line"
+  IFS="$IFS," read elid <<< "$line"
+  model_pid=`om_get_by_elid $elid`
+  if [ "$model_pid" != "" ]; then
+    echo "add_wd_container_broadcasts $model_pid"
+    /opt/model/om/sh/dh/add_wd_container_broadcasts $model_pid default 1 
+    echo "Migrating run_model om 501 $elid auto manage migrate &"
+    run_model om 501 $elid auto manage migrate &
+  else 
+    echo "Could not find model element $elid"
+  fi
+done < $filename

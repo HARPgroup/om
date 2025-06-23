@@ -1,0 +1,24 @@
+#!/bin/bash
+# given pid
+# return all info
+# this loads the db info
+. om_config
+
+sql="
+\\o \n
+
+  select e.featureid
+  from dh_properties as p 
+  left outer join dh_properties as e
+  on (
+    e.entity_type = 'dh_properties'
+    and e.featureid = p.pid
+  )
+  where e.propname = 'om_element_connection'
+  and e.propvalue = $1
+  and p.pid is not null
+"
+#echo $sql
+set -f
+# Note: can't echo this for debugging as it clobbers the pipes
+echo -e $sql | psql --csv -A --field-separator=$'\t' -t -h $DB_HOST $DB_NAME

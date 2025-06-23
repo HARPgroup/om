@@ -1072,7 +1072,7 @@ class modelObject {
       // any special andling needed for ALL?  So far no.
     }
     foreach ($json_props as $pname => $pvalue) {
-      error_log("setPropJSON2d($this->name): this->setPropJSON2d($pname)");
+      error_log("setPropJSON2d: this->setPropJSON2d($pname)");
       if ($pname == 'object_class') {
         continue;
       }
@@ -15796,7 +15796,7 @@ class hydroImpSmall extends hydroImpoundment {
     // subprop_name can be name:subname 
     // if so, this is a special sub-prop like hydroImpSmall matrix
     list($subprop_name, $subsub_name) = explode(':', $propname);
-    error_log("Matrix $this->name --> setProp $subprop_name $subsub_name");
+    error_log("Matrix setProp $subprop_name $subsub_name")
     if ( ($subprop_name == 'storage_stage_area') and ($subsub_name == 'matrix') ) {
       // handle calls to set the stage-storage attributes 
       // decode from json if applicable

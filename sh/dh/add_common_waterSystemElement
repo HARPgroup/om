@@ -36,7 +36,7 @@ om_copy_property dh_properties $template dh_properties $pid discharge_other_mgd 
 om_copy_property dh_properties $template dh_properties $pid gw_sw_factor 1 $overwrite $debug
 om_copy_property dh_properties $template dh_properties $pid gw_demand_mgd 1 $overwrite $debug
 om_copy_property dh_properties $template dh_properties $pid discharge_from_gw_mgd 1 $overwrite $debug
-om_copy_property dh_properties $template dh_properties $pid historic_monthly_pct 1 $overwrite $debug
+om_copy_property dh_properties $template dh_properties $pid historic_monthly_pct 1 0 $debug
 om_copy_property dh_properties $template dh_properties $pid "Send to Parent" 1 $overwrite $debug
 om_copy_property dh_properties $template dh_properties $pid "Listen on Parent" 1 $overwrite $debug
-om_copy_property dh_properties $template dh_properties $pid gw_frac 1 $overwrite $debug
+om_copy_property dh_properties $template dh_properties $pid gw_frac 1 0 $debug

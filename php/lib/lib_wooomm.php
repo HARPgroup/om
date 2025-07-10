@@ -8795,7 +8795,7 @@ function unSerializeModelObject($elementid, $input_props = array(), $model_listo
             } else {
                $child_cache_level = $cache_level;
             }
-            $params = 
+            $params = array();
             //error_log("Unserializing child $src_id of parent $elementid");
             $linkobjarray = unSerializeModelObject($src_id, array(), $model_listobj, $child_cache_level, $cache_id, $current_level + 1, $set_status);
             $linkerror = $linkobjarray['error'];

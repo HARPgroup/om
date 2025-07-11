@@ -55,12 +55,8 @@ sceninfo <- list(
 scenprop <- RomProperty$new( ds, sceninfo, TRUE)
 scenprop$startdate <- model_run_start
 scenprop$enddate <- model_run_end
-
-# POST PROPERTY IF IT IS NOT YET CREATED
-if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
-  # create
-  scenprop$save(TRUE)
-}
+# save the date information
+scenprop$save(TRUE)
 
 keepers <- c('run_status', 'reports', 'logfile')
 clear_scenario_data <- function(scenprop, keepers) {

@@ -16,7 +16,7 @@ suppressPackageStartupMessages(library(hydrotools))
 suppressPackageStartupMessages(library(IHA))
 # authenticate
 
-source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
+source('https://github.com/HARPgroup/om/raw/main/R/summarize/fn_get_pd_min.R')
 
 # Read Args argst <- c(4713892, 231299 , 11)
 argst <- commandArgs(trailingOnly=T)

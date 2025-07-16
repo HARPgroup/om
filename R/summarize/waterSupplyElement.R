@@ -18,7 +18,7 @@ suppressPackageStartupMessages(library(sqldf))
 suppressPackageStartupMessages(library(ggnewscale))
 suppressPackageStartupMessages(library(dplyr))
 
-source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
+source('https://github.com/HARPgroup/om/raw/main/R/summarize/fn_get_pd_min.R')
 
 # Read Args
 argst <- commandArgs(trailingOnly=T)

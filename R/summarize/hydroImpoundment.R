@@ -11,7 +11,7 @@ suppressPackageStartupMessages(library(IHA))
 save_directory <- "/var/www/html/data/proj3/out"
 suppressPackageStartupMessages(library(hydrotools))
 
-source('https://github.com/HARPgroup/om/raw/master/R/summarize/fn_get_pd_min.R')
+source('https://github.com/HARPgroup/om/raw/main/R/summarize/fn_get_pd_min.R')
 
 # Read Args Ex: argst <- c(5033170, 231301, 13)
 argst <- commandArgs(trailingOnly=T)

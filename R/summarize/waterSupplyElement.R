@@ -112,12 +112,11 @@ sceninfo <- list(
 # newschool
 #scenprop <- getProperty(sceninfo, site, scenprop)
 scenprop <- RomProperty$new( ds, sceninfo, TRUE)
+scenprop$startdate <- model_run_start
+scenprop$enddate <- model_run_end
+# save the date information
+scenprop$save(TRUE)
 
-# POST PROPERTY IF IT IS NOT YET CREATED
-if (is.na(scenprop$pid) | is.null(scenprop$pid) ) {
-  # create
-  scenprop$save(TRUE)
-}
 vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NULL, ds)
 
 #omsite = site <- "http://deq2.bse.vt.edu"

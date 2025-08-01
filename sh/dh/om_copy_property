@@ -107,7 +107,8 @@ where dh_properties.featureid = map_clone_pids.clone_pid \n
 and dh_properties.entity_type = 'dh_properties'  \n
 and dh_properties.pid in (select pid from map_clone_pids); \n
 
-update dh_properties set featureid = :dest_featureid, propname = :'dest_name' \n
+update dh_properties set featureid = :dest_featureid, propname = :'dest_name', \n
+  entity_type = :'dest_entity_type'  \n
 where pid in (select pid from map_clone_pids where clone_pid = :root_pid);\n
 
 insert into dh_properties_revision(featureid, entity_type, bundle, module, status,  \n

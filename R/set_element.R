@@ -15,7 +15,7 @@ if (length(argst) > 1) {
     modelVersion <- 'vahydro-1.0'
   }
   q = paste0(
-    "select featureid from dh_properties as p
+    "select p.featureid from dh_properties as p
      LEFT JOIN dh_properties as model
      ON p.featureid = model.pid
      where p.propname = 'om_element_connection'

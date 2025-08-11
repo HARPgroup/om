@@ -20,7 +20,7 @@ if (length(argst) > 1) {
      ON p.featureid = model.pid
      where p.propname = 'om_element_connection'
        and p.propvalue = ", elid,
-    "and model.propcode = '",modelVersion,"'"
+    " and model.propcode = '",modelVersion,"'"
   )
   message(q)
   pid = as.integer(sqldf(q,

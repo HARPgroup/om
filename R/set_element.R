@@ -9,9 +9,19 @@ argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1]) # Ex: pid=7693370
 if (length(argst) > 1) {
   elid <- as.integer(argst[2])  
+  if(length(argst) > 3){
+    modelVersion <- argst[4]
+  }else{
+    modelVersion <- 'vahydro-1.0'
+  }
   q = paste0(
-    "select featureid from dh_properties where propname = 'om_element_connection' 
-   and propvalue = ", elid)
+    "select featureid from dh_properties as p
+     LEFT JOIN dh_properties as model
+     ON p.featureid = model.pid
+     where p.propname = 'om_element_connection'
+       and p.propvalue = ", elid,
+    "and model.propcode = '",modelVersion,"'"
+  )
   message(q)
   pid = as.integer(sqldf(q,
     connection = ds$connection)$featureid[1]

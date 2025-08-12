@@ -1,0 +1,32 @@
+#!/bin/bash
+# given pid
+# return all info
+# this loads the db info
+. om_config
+
+sql="
+\\o \n
+
+  select e.featureid
+  from dh_properties as p 
+  left outer join dh_properties as e
+  on (
+    e.entity_type = 'dh_properties'
+    and e.featureid = p.pid
+  )
+  left outer join dh_properties as o
+  on (
+    o.entity_type = 'dh_properties'
+    and o.propname = 'object_class'
+    and o.propcode in ('waterSupplyModelNode')
+    and o.featureid = p.pid
+  )
+  where e.propname = 'riverseg'
+  and e.propcode = '$1'
+  and o.pid is not null
+  and p.pid is not null
+"
+#echo $sql
+set -f
+# Note: can't echo this for debugging as it clobbers the pipes
+echo -e $sql | psql --csv -A --field-separator=$'\t' -t -h $DB_HOST $DB_NAME

@@ -1,0 +1,29 @@
+#!/bin/bash
+# given pid
+# return all info
+# this loads the db info
+. om_config
+
+elid=$1
+RUNOFF_CONTAINER_CUSTOM1=$2
+
+sql="
+  select rc.elementid from scen_model_element as w 
+  left outer join map_model_linkages as crc 
+  on ( 
+    crc.dest_id = w.elementid and crc.linktype = 1 
+  ) 
+  left outer join scen_model_element as rc 
+  on ( 
+    rc.elementid = crc.src_id 
+  ) 
+  where w.elementid = $elid 
+  and rc.custom1 = '$RUNOFF_CONTAINER_CUSTOM1' 
+;"
+
+
+#echo $sql
+
+set -f
+# Note: can't echo this for debugging as it clobbers the pipes
+echo -e $sql | psql --csv -A --field-separator=$'\t' -t -h $DB_HOST model

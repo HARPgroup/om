@@ -196,7 +196,7 @@ if (imp_off == 0) {
 }
 
 Qbaseline <- mean(as.numeric(dat$Qbaseline) )
-if (is.na(Qbaseline)) {
+if (is.na(Qbaseline) || (Qbaseline == 0)) {
   Qbaseline = Qout +
     (wd_cumulative_mgd - ps_cumulative_mgd ) * 1.547
 }

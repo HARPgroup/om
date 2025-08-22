@@ -264,7 +264,7 @@ furl <- paste(
 ##### Define data for graph, just within that defined year, and graph it
 # Lal's code, lines 410-446 (412 commented out)
 
-if (sum(datdf$unmet_demand_mgd)==0) {
+if (unmet_demand_mgd==0) {
   # base it on flow since we have no unmet demand.
   dsql <- paste(
     "select min(month) as dsmo, max(month) as demo

@@ -150,9 +150,6 @@ if (is.na(base_demand_mgd)) {
   warning <- warnings$set_prop('base_demand_mgd', varkey='om_annotation', propcode = paste('base_demand_mgd is NA/NULL in simulation',runid))
 }
 wd_mgd <- mean(as.numeric(dat$wd_mgd) )
-if (wd_mgd == 0) {
-  warning <- warnings$set_prop('wd_mgd', varkey='om_annotation', propcode = paste('wd_mgd is zero (0.0) in simulation',runid))
-}
 if (is.na(wd_mgd)) {
   wd_mgd = 0.0
   warning <- warnings$set_prop('wd_mgd', varkey='om_annotation', propcode = paste('wd_mgd is NA/NULL in simulation',runid))

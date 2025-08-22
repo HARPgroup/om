@@ -147,37 +147,37 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'dh_image_file', furl, 'fig.monthl
 base_demand_mgd <- mean(as.numeric(dat$base_demand_mgd) )
 if (is.na(base_demand_mgd)) {
   base_demand_mgd = 0.0
-  warning <- warnings$set_prop('base_demand_mgd', varkey='om_annotation', proptext = paste('base_demand_mgd is NA/NULL in simulation',runid))
+  warning <- warnings$set_prop('base_demand_mgd', varkey='om_annotation', propcode = paste('base_demand_mgd is NA/NULL in simulation',runid))
 }
 wd_mgd <- mean(as.numeric(dat$wd_mgd) )
 if (wd_mgd == 0) {
-  warning <- warnings$set_prop('wd_mgd', varkey='om_annotation', proptext = paste('wd_mgd is zero (0.0) in simulation',runid))
+  warning <- warnings$set_prop('wd_mgd', varkey='om_annotation', propcode = paste('wd_mgd is zero (0.0) in simulation',runid))
 }
 if (is.na(wd_mgd)) {
   wd_mgd = 0.0
-  warning <- warnings$set_prop('wd_mgd', varkey='om_annotation', proptext = paste('wd_mgd is NA/NULL in simulation',runid))
+  warning <- warnings$set_prop('wd_mgd', varkey='om_annotation', propcode = paste('wd_mgd is NA/NULL in simulation',runid))
 }
 gw_demand_mgd <- mean(as.numeric(dat$gw_demand_mgd) )
 if (is.na(gw_demand_mgd)) {
   gw_demand_mgd = 0.0
-  warning <- warnings$set_prop('gw_demand_mgd', varkey='om_annotation', proptext = paste('gw_demand_mgd is NA/NULL in simulation',runid))
+  warning <- warnings$set_prop('gw_demand_mgd', varkey='om_annotation', propcode = paste('gw_demand_mgd is NA/NULL in simulation',runid))
 }
 unmet_demand_mgd <- mean(as.numeric(dat$unmet_demand_mgd) )
 if (is.na(unmet_demand_mgd)) {
   unmet_demand_mgd = 0.0
   dat$unmet_demand_mgd <- unmet_demand_mgd
-  warning <- warnings$set_prop('unmet_demand_mgd', varkey='om_annotation', proptext = paste('unmet_demand_mgd is NA/NULL in simulation',runid))
+  warning <- warnings$set_prop('unmet_demand_mgd', varkey='om_annotation', propcode  = paste('unmet_demand_mgd is NA/NULL in simulation',runid))
 }
 flowby = 0.0
 if ("flowby" %in% cols) {
   flowby <- mean(as.numeric(dat$flowby) )
 } else {
-  warning <- warnings$set_prop('flowby', varkey='om_annotation', proptext = paste('flowby is not defined in simulation',runid))
+  warning <- warnings$set_prop('flowby', varkey='om_annotation', propcode = paste('flowby is not defined in simulation',runid))
 }
 ps_mgd <- mean(as.numeric(dat$discharge_mgd) )
 if (is.na(ps_mgd)) {
   ps_mgd = 0.0
-  warning <- warnings$set_prop('ps_mgd', varkey='om_annotation', proptext = paste('ps_mgd is NA/NULL in simulation',runid))
+  warning <- warnings$set_prop('ps_mgd', varkey='om_annotation', propcode = paste('ps_mgd is NA/NULL in simulation',runid))
 }
 
 # Analyze unmet demands

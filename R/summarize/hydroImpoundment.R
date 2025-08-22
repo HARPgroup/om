@@ -146,7 +146,7 @@ datpd <- window(
 
 # Dat for Critical Period
 elevs <- zoo(dat$pct_use_remain, order.by = index(dat));
-loelevs <- group2(elevs);
+loelevs <- group2(elevs, year = "calendar");
 l90 <- loelevs["90 Day Min"];
 ndx = which.min(as.numeric(l90[,"90 Day Min"]));
 l90_elev = round(loelevs[ndx,]$"90 Day Min",6);

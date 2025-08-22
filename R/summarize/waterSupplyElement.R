@@ -163,6 +163,7 @@ unmet_demand_mgd <- mean(as.numeric(dat$unmet_demand_mgd) )
 if (is.na(unmet_demand_mgd)) {
   unmet_demand_mgd = 0.0
   dat$unmet_demand_mgd <- unmet_demand_mgd
+  datdf$unmet_demand_mgd <- unmet_demand_mgd
   warning <- warnings$set_prop('unmet_demand_mgd', varkey='om_annotation', propcode  = paste('unmet_demand_mgd is NA/NULL in simulation',runid))
 }
 flowby = 0.0
@@ -219,7 +220,7 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l30_Qi
 
 # Define year at which highest 30 Day Max occurs (Lal's code, line 405)
 #defines critical period based on Qintake if there is no unmet demand
-if (sum(datdf$unmet_demand_mgd)==0) {
+if (unmet_demand_mgd==0) {
   # base it on flow since we have no unmet demand.
   ndx1 = which.min(as.numeric(Qin30[,"30 Day Min"]))
   u30_year2 = uiflows[ndx1,]$"year";
@@ -263,7 +264,7 @@ furl <- paste(
 ##### Define data for graph, just within that defined year, and graph it
 # Lal's code, lines 410-446 (412 commented out)
 
-if (sum(datdf$unmet_demand_mgd)==0) {
+if (unmet_demand_mgd==0) {
   # base it on flow since we have no unmet demand.
   dsql <- paste(
     "select min(month) as dsmo, max(month) as demo

@@ -9489,13 +9489,13 @@ function modelControlForm($projectid, $scenarioid, $elementid) {
 }
 
 function storeElementRunData($listobject, $elementid, $components, $runid, $run_date, $startdate, $enddate, $meanexectime=0, $debug = 0) {
-  global $outdir, $outurl, $serverip, $unserobjects;
+  global $outdir, $outurl, $serverip, $unserobjects, $server_protocol;
   if (trim($meanexectime) == '') {
     $meanexectime = 0;
   }
   $cfilename = $outdir . "/objectlog." . $elementid . "." . $elementid .  ".log";
-  $cfileurl = "http://$serverip" . $outurl . "/objectlog." . $elementid . "." . $elementid .  ".log";
-  $pfileurl = "http://$serverip" . $outurl . "/report" . $elementid . "-" . $runid .  ".log";
+  $cfileurl = "$server_protocol://$serverip" . $outurl . "/objectlog." . $elementid . "." . $elementid .  ".log";
+  $pfileurl = "$server_protocol://$serverip" . $outurl . "/report" . $elementid . "-" . $runid .  ".log";
   $listobject->querystring = "  delete from scen_model_run_elements ";
   $listobject->querystring .= " where elementid = $elementid ";
   $listobject->querystring .= " and runid = -1 ";
@@ -9524,7 +9524,7 @@ function storeElementRunData($listobject, $elementid, $components, $runid, $run_
     }
     $manifest_elements[] = $elementid;  // @todo: this might add a double of the base copy, which is not such a big deal but...
     $rdfilename = $outdir . "/debuglog.$runid" . "." . $elementid . ".log";
-    $pfileurl = "http://$serverip" . $outurl . "/report" . $elementid . "-" . $runid .  ".log";
+    $pfileurl = "$server_protocol://$serverip" . $outurl . "/report" . $elementid . "-" . $runid .  ".log";
     copy($cfilename, $rfilename);
     copy($dfilename, $rdfilename);
     error_log("Model Run Debug Data Copied from $dfilename, $rdfilename ");
@@ -9537,7 +9537,7 @@ function storeElementRunData($listobject, $elementid, $components, $runid, $run_
     };
     $listobject->performQuery();
     // custom to be run on this install - 
-    $rfileurl = "http://$serverip" . $outurl . "/runlog$runid" . "." . $elementid . ".log";
+    $rfileurl = "$server_protocol://$serverip" . $outurl . "/runlog$runid" . "." . $elementid . ".log";
     $listobject->querystring = "  insert into scen_model_run_elements ";
     $listobject->querystring .= " (runid,starttime, endtime, elem_xml,";
     $listobject->querystring .= "  elementid, output_file, remote_url, debugfile, report, ";
@@ -9600,7 +9600,7 @@ function storeElementRunData($listobject, $elementid, $components, $runid, $run_
       };
       $listobject->performQuery();
       // custom to be run on this install - 
-      $rfileurl = "http://$serverip" . $outurl . "/runlog$runid" . "." . $thiscomp . ".log";
+      $rfileurl = "$server_protocol://$serverip" . $outurl . "/runlog$runid" . "." . $thiscomp . ".log";
       $listobject->querystring = "  insert into scen_model_run_elements ";
       $listobject->querystring .= "( runid,starttime, endtime, ";
       $listobject->querystring .= " elem_xml, elementid, output_file, remote_url, exec_time_mean, ";

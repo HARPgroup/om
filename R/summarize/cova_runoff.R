@@ -68,12 +68,21 @@ if (is.na(l90_RUnit)) {
 }
 l90prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_RUnit', l90_RUnit, ds)
 l90yr_prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_year', l90_year, ds)
-
+# post warnings if need be
+if (l90_Runit == 0.0) {
+  warning <- warnings$set_prop('l90_Runit', varkey='om_annotation', propcode = paste('l90_Runit is 0.0 in simulation',runid))
+}
 Runit <- mean(as.numeric(dat$Runit) )
 if (is.na(Runit)) {
   Runit = 0.0
 }
 Runitprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Runit', Runit, ds)
+# post warnings if need be
+Runitprop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'Runit', Runit, ds)
+if (Runit == 0.0) {
+  warning <- warnings$set_prop('Runit', varkey='om_annotation', propcode = paste('Runit is 0.0 in simulation',runid))
+}
+
 
 # Runoff boxplot
 fname <- paste0(

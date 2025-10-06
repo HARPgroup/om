@@ -10633,7 +10633,7 @@ function deleteModelElement($elementid, $debug = 0) {
    $perms = getScenElementPerms($listobject, $elementid, $userid, $usergroupids, $debug);
    if (!($perms && 2)) {
       # check for write access
-      $innerHTML .= "<b>Error: </b> You do not have delete access to this element.<br>";
+      $innerHTML .= "<b>Error: </b> You do not have delete access to this element. (Userid: $userid)<br>";
       $outarr['elementid'] = -1;
    } else {
       # get list of objects that are contained ONLY by this object, delete them

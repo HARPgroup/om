@@ -10625,12 +10625,17 @@ function cloneModelElement($scenarioid, $elementid, $activecontainerid = -1, $co
    return $outarr;
 }
 
-function deleteModelElement($elementid, $debug = 0) {
+function deleteModelElement($elementid, $debug = 0, $root_force=FALSE) {
    global $listobject, $projectid, $userid, $usergroupids, $adminsetuparray;
 
    $innerHTML = '';
 
    $perms = getScenElementPerms($listobject, $elementid, $userid, $usergroupids, $debug);
+   if ($root_force) {
+     if ($userid == 1) {
+       $perms = 2;
+     }
+   }
    if (!($perms && 2)) {
       # check for write access
       $innerHTML .= "<b>Error: </b> You do not have delete access to this element.<br>";

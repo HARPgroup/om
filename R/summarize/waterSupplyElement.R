@@ -117,6 +117,9 @@ scenprop$enddate <- model_run_end
 # save the date information
 scenprop$save(TRUE)
 warnings <- scenprop$set_prop('warnings', varkey='om_annotation')
+if (!is.na(warnings$pid)) {
+  warnings$delete_props(TRUE)
+}
 vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logfile', NULL, ds)
 
 #omsite = site <- "http://deq2.bse.vt.edu"

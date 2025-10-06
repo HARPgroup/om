@@ -16,6 +16,6 @@ if (count($argv) < 2) {
 }
 $elid = $argv[1];
 
-deleteModelElement($elid);
-
+$out = deleteModelElement($elid);
+error_log($out['innerHTML']);
 ?>

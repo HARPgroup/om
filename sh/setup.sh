@@ -93,6 +93,8 @@ rm /var/www/html/om/fn_find_bad_matrices.php
 ln -s /opt/model/om/php/src/fn_find_bad_matrices.php /var/www/html/om/fn_find_bad_matrices.php
 rm /var/www/html/om/fn_find_prop_value.php
 ln -s /opt/model/om/php/src/fn_find_prop_value.php /var/www/html/om/fn_find_prop_value.php
+rm /var/www/html/om/delete_element.php
+ln -s /opt/model/om/php/src/delete_element.php /var/www/html/om/delete_element.php
 rm /var/www/html/om/fn_copy_element.php
 ln -s /opt/model/om/php/src/fn_copy_element.php /var/www/html/om/fn_copy_element.php
 rm /var/www/html/om/fn_rename_group_subcomp.php
@@ -107,6 +109,8 @@ rm  /var/www/html/om/run_model.php
 ln -s /opt/model/om/php/src/run_model.php /var/www/html/om/run_model.php
 rm /var/www/html/om/lib_verify.php
 ln -s /opt/model/om/php/src/lib_verify.php /var/www/html/om/lib_verify.php
+rm /var/www/html/om/lib_admin.php
+ln -s /opt/model/om/php/src/lib_admin.php /var/www/html/om/lib_admin.php
 rm /var/www/html/om/fn_checkTreeRunDate.php
 ln -s /opt/model/om/php/src/fn_checkTreeRunDate.php /var/www/html/om/fn_checkTreeRunDate.php
 rm /var/www/html/om/fn_batchedit_broadcast_matrix.php

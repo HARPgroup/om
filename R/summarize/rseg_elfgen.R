@@ -269,7 +269,7 @@ elfgen_huc <- function(
     sql <- str_replace_all(sql, '\\[ws_varkey\\]', as.character(config$ws_varkey))
     sql <- str_replace_all(sql, '\\[bio_varkey\\]', as.character(config$bio_varkey))
     sql <- str_replace_all(sql, '\\[sampres\\]', as.character(config$sampres))
-    
+    message(paste("querying for samples contained by", watershed_feature$ftype, watershed_feature$hydrocode))
     watershed.df <- sqldf(sql, conn=ds$connection)
     watershed.df <- watershed.df[,c('x_metric', 'y_metric', 'hydrocode')]
   }

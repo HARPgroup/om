@@ -182,6 +182,7 @@ elfgen_huc <- function(
   watershed.code <- as.character(nhd_code)
   watershed.bundle <- 'watershed'
   watershed.ftype <- paste("nhd_", huc_level, sep = "") #watershed.ftpe[i] when creating function
+  watershed_feature = RomFeature$new(ds, list(ftype=watershed.ftype, hydrocode=watershed.code), TRUE)
   datasite <- site
 
   if (dataset == 'IchthyMaps'){
@@ -257,7 +258,7 @@ elfgen_huc <- function(
   and ws.bundle='watershed';
 " 
     config <- list(
-      covid = riverseg_feature$hydroid,
+      covid = watershed_feature$hydroid,
       ws_ftype = 'nhdplus',
       ws_varkey = 'erom_q0001e_mean',
       bio_varkey = 'aqbio_nt_total',

@@ -944,10 +944,20 @@ rseg_hydroid<-rseg$featureid
 
 huc_level <- 'huc8'
 dataset <- 'VAHydro-EDAS'
-
+ws_varkey = 'erom_q0001e_aug'
+elf_quantile = 0.9
 elfgen_huc(
-  runid, rseg_hydroid, huc_level, dataset, scenprop, 
-  ds, save_directory, save_url, site
+  runid = runid, 
+  hydroid = rseg_hydroid, 
+  huc_level = huc_level, 
+  dataset = dataset, 
+  ws_varkey = ws_varkey,
+  scenprop = scenprop, 
+  ds = ds, 
+  save_directory = save_directory, 
+  save_url = save_url, 
+  site = site,
+  quantile = elf_quantile
 )
 ###############################################
 ###############################################

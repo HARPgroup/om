@@ -76,7 +76,7 @@ elfgen_confidence <- function(elf,rseg.name,outlet_flow,yaxis_thresh,cuf){
   plt <- elf$plot +
     geom_segment(aes(x = outlet_flow, y = -Inf, xend = outlet_flow, yend = int), color = 'red', linetype = 'dashed', show.legend = FALSE) +
     geom_segment(aes(x = 0, xend = outlet_flow, y = int, yend = int), color = 'red', linetype = 'dashed', show.legend = FALSE) +
-    geom_point(aes(x = outlet_flow, y = int, fill = paste("River Segment Outlet\n(MAF = ",outlet_flow," cfs)",sep="")), color = 'red', shape = 'triangle', size = 2) +
+    geom_point(aes(x = outlet_flow, y = int, fill = paste("River Segment Outlet\n(", nhd_col,"=",outlet_flow,"cfs)",sep="")), color = 'red', shape = 'triangle', size = 2) +
     geom_segment(aes(x = xmin, y = (m1 * log(xmin) + b1), xend = xmax, yend = (m1 * log(xmax) + b1)), color = 'blue', linetype = 'dashed', show.legend = FALSE) +
     geom_segment(aes(x = xmin, y = (m2 * log(xmin) + b2), xend = xmax, yend = (m2 * log(xmax) + b2)), color = 'blue', linetype = 'dashed', show.legend = FALSE) +
 
@@ -103,16 +103,17 @@ elfgen_confidence <- function(elf,rseg.name,outlet_flow,yaxis_thresh,cuf){
 
 elfgen_huc <- function(
   runid, hydroid, huc_level, dataset, scenprop, ds,
+  ws_varkey = 'erom_q0001e_mean',
   save_directory = '/var/www/html/data/proj3/out',
   save_url = 'http://deq1.bse.vt.edu:81/data/proj3/out',
-  site = 'http://deq1.bse.vt.edu/d.dh'
+  site = 'http://deq1.bse.vt.edu/d.dh',
+  quantile = 0.8,
+  breakpt = 530,
+  yaxis_thresh = 53
   ) {
-  breakpt <- 530
-  x.metric <- 'erom_q0001e_mean'
-  y.metric <- 'aqbio_nt_total'
-  y.sampres <- 'species'
-  quantile <- 0.8
-  yaxis_thresh <- 53
+  #x.metric <- 'erom_q0001e_mean'
+  #y.metric <- 'aqbio_nt_total'
+  #y.sampres <- 'species'
 
   pdf(file = NULL) # disable pdf image writing
   #Determine watershed outlet nhd+ segment and hydroid
@@ -129,7 +130,23 @@ elfgen_huc <- function(
   )
   nhdplus_df <- as.data.frame(get_nhdplus(comid= contained_df$hydrocode))
   message(paste("length(nhdplus_df): ", length(nhdplus_df[,1])))
-  nhdplus_df <- nhdplus_df[,c("comid", "gnis_name", "reachcode", "totdasqkm", "qa_ma")]
+  nhd_map <- list(
+    'erom_q0001e_jan' = 'qa_01',
+    'erom_q0001e_feb' = 'qa_02',
+    'erom_q0001e_mar' = 'qa_03',
+    'erom_q0001e_apr' = 'qa_04',
+    'erom_q0001e_may' = 'qa_05',
+    'erom_q0001e_june' = 'qa_06',
+    'erom_q0001e_july' = 'qa_07',
+    'erom_q0001e_aug' = 'qa_08',
+    'erom_q0001e_sept' = 'qa_09',
+    'erom_q0001e_oct' = 'qa_10',
+    'erom_q0001e_nov' = 'qa_11',
+    'erom_q0001e_dec' = 'qa_12',
+    'erom_q0001e_mean' = 'qa_ma'
+  )
+  nhd_col = as.character(nhd_map[ws_varkey])
+  nhdplus_df <- nhdplus_df[,c("comid", "gnis_name", "reachcode", "totdasqkm", nhd_col)]
   
   if (dataset == 'IchthyMaps'){
     dataname='Ichthy'
@@ -161,7 +178,7 @@ elfgen_huc <- function(
   #MORE EFFICIENT SQL
   outlet_nhdplus_segment <-sqldf("select * from nhdplus_df ORDER BY totdasqkm DESC LIMIT 1")
   #Pulls mean annual outlet flow
-  outlet_flow <- outlet_nhdplus_segment$qa_ma #outlet flow as erom_q0001e_mean of nhdplus segment
+  outlet_flow <- outlet_nhdplus_segment[,nhd_col] #outlet flow as erom_q0001e_mean of nhdplus segment
   nhd_code <- substr(outlet_nhdplus_segment$reachcode, 1, as.integer(str_remove(huc_level, "huc")))
   code_out <- outlet_nhdplus_segment$comid
   rseg.name <- outlet_nhdplus_segment$gnis_name
@@ -260,7 +277,7 @@ elfgen_huc <- function(
     config <- list(
       covid = watershed_feature$hydroid,
       ws_ftype = 'nhdplus',
-      ws_varkey = 'erom_q0001e_mean',
+      ws_varkey = ws_varkey,
       bio_varkey = 'aqbio_nt_total',
       sampres = 'species'
     )

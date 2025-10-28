@@ -9,7 +9,7 @@ source(paste(elfgen_location,'R/clean-vahydro.R',sep='/'))
 source(paste(elfgen_location,'R/elfgen.R',sep='/'))
 source(paste(elfgen_location,'R/richness-change.R',sep='/'))
 
-elfgen_confidence <- function(elf,rseg.name,outlet_flow,yaxis_thresh,cuf){
+elfgen_confidence <- function(elf,rseg.name, outlet_flow,yaxis_thresh,cuf, outlet_col="MAF"){
   #Confidence Interval information
   uq <- elf$plot$plot_env$upper.quant
 
@@ -76,7 +76,7 @@ elfgen_confidence <- function(elf,rseg.name,outlet_flow,yaxis_thresh,cuf){
   plt <- elf$plot +
     geom_segment(aes(x = outlet_flow, y = -Inf, xend = outlet_flow, yend = int), color = 'red', linetype = 'dashed', show.legend = FALSE) +
     geom_segment(aes(x = 0, xend = outlet_flow, y = int, yend = int), color = 'red', linetype = 'dashed', show.legend = FALSE) +
-    geom_point(aes(x = outlet_flow, y = int, fill = paste("River Segment Outlet\n(", nhd_col,"=",outlet_flow,"cfs)",sep="")), color = 'red', shape = 'triangle', size = 2) +
+    geom_point(aes(x = outlet_flow, y = int, fill = paste("River Segment Outlet\n(", outlet_col,"=",outlet_flow,"cfs)",sep="")), color = 'red', shape = 'triangle', size = 2) +
     geom_segment(aes(x = xmin, y = (m1 * log(xmin) + b1), xend = xmax, yend = (m1 * log(xmax) + b1)), color = 'blue', linetype = 'dashed', show.legend = FALSE) +
     geom_segment(aes(x = xmin, y = (m2 * log(xmin) + b2), xend = xmax, yend = (m2 * log(xmax) + b2)), color = 'blue', linetype = 'dashed', show.legend = FALSE) +
 
@@ -101,35 +101,8 @@ elfgen_confidence <- function(elf,rseg.name,outlet_flow,yaxis_thresh,cuf){
 
 }
 
-elfgen_huc <- function(
-  runid, hydroid, huc_level, dataset, scenprop, ds,
-  ws_varkey = 'erom_q0001e_mean',
-  save_directory = '/var/www/html/data/proj3/out',
-  save_url = 'http://deq1.bse.vt.edu:81/data/proj3/out',
-  site = 'http://deq1.bse.vt.edu/d.dh',
-  quantile = 0.8,
-  breakpt = 530,
-  yaxis_thresh = 53
-  ) {
-  #x.metric <- 'erom_q0001e_mean'
-  #y.metric <- 'aqbio_nt_total'
-  #y.sampres <- 'species'
-
-  pdf(file = NULL) # disable pdf image writing
-  #Determine watershed outlet nhd+ segment and hydroid
-  riverseg_feature <- RomFeature$new(ds, list(hydroid=as.integer(hydroid)), TRUE)
-  contained_df <- riverseg_feature$find_spatial_relations(
-    target_entity = 'dh_feature', 
-    inputs = list(
-      bundle = 'watershed',
-      ftype = 'nhdplus'
-    ),
-    operator = 'st_contains',
-    return_geoms = FALSE,
-    query_remote = TRUE
-  )
-  nhdplus_df <- as.data.frame(get_nhdplus(comid= contained_df$hydrocode))
-  message(paste("length(nhdplus_df): ", length(nhdplus_df[,1])))
+elfgen_varkey_nhd_col <- function(varkey) {
+  
   nhd_map <- list(
     'erom_q0001e_jan' = 'qa_01',
     'erom_q0001e_feb' = 'qa_02',
@@ -145,7 +118,138 @@ elfgen_huc <- function(
     'erom_q0001e_dec' = 'qa_12',
     'erom_q0001e_mean' = 'qa_ma'
   )
-  nhd_col = as.character(nhd_map[ws_varkey])
+  nhd_col <- nhd_map[[varkey]]
+  return(nhd_col)
+}
+
+elfgen_feature_nhdsegs <- function(
+    hydroid
+) {
+  #x.metric <- 'erom_q0001e_mean'
+  #y.metric <- 'aqbio_nt_total'
+  #y.sampres <- 'species'
+  
+  #Determine watershed outlet nhd+ segment and hydroid
+  riverseg_feature <- RomFeature$new(ds, list(hydroid=as.integer(hydroid)), TRUE)
+  contained_df <- riverseg_feature$find_spatial_relations(
+    target_entity = 'dh_feature', 
+    inputs = list(
+      bundle = 'watershed',
+      ftype = 'nhdplus'
+    ),
+    operator = 'st_contains',
+    return_geoms = FALSE,
+    query_remote = TRUE
+  )
+  nhdplus_df <- as.data.frame(get_nhdplus(comid= contained_df$hydrocode))
+  message(paste("length(nhdplus_df): ", length(nhdplus_df[,1])))
+  return(nhdplus_df)
+}
+
+dh_elfdata <- function(watershed_feature, ws_varkey, bio_varkey, ds) {
+  # elfdata_vahydro() function for retrieving data from VAHydro
+  
+  
+  sql <- "
+  select event.tid,to_timestamp(event.tstime), pv.varkey,
+  biodat.propcode, biodat.propvalue as y_metric, dap.propvalue as x_metric,
+    CASE 
+      WHEN ws.ftype = 'nhd_huc8' THEN REPLACE(ws.hydrocode,'nhd_huc8_','') 
+      WHEN ws.ftype = 'nhd_huc12' THEN REPLACE(ws.hydrocode,'huc12_', '') 
+      WHEN ws.ftype = 'vahydro' THEN REPLACE(ws.hydrocode,'vahydrosw_wshed_','') 
+      ELSE ws.hydrocode
+    END as hydrocode,
+    st.hydroid as station_hydroid
+  from dh_feature_fielded as cov
+  left outer join dh_feature_fielded as ws
+  on (
+    st_contains(cov.dh_geofield_geom, ws.dh_geofield_geom)
+  )
+  left outer join dh_feature_fielded as st
+  on (
+    st_contains(ws.dh_geofield_geom, st.dh_geofield_geom)
+  )
+  left outer join dh_variabledefinition as tsv 
+  on (tsv.varkey = 'aqbio_sample_event')
+  left outer join dh_timeseries as event
+  on (
+    event.varid = tsv.hydroid
+    and event.featureid = st.hydroid
+  ) 
+  left outer join dh_properties as biodat
+  on (
+    biodat.featureid = event.tid
+    and biodat.entity_type = 'dh_timeseries'
+  ) 
+  left outer join dh_variabledefinition as pv 
+  on (
+    pv.varkey = '[bio_varkey]'
+    and pv.hydroid = biodat.varid
+  )
+  left outer join dh_variabledefinition as dav 
+  on (
+    dav.varkey = '[ws_varkey]'
+  )
+  left outer join dh_properties as dap 
+  on (
+    dap.featureid = ws.hydroid
+    and dap.entity_type = 'dh_feature'
+    and dav.hydroid = dap.varid
+  )
+  left outer join dh_variabledefinition as srv 
+  on (
+    srv.varkey = 'sampres'
+  )
+  left outer join dh_properties as sr 
+  on (
+    sr.featureid = event.tid
+    and sr.entity_type = 'dh_timeseries'
+    and srv.hydroid = sr.varid
+  )
+  where pv.hydroid is not null
+  and sr.propcode = '[sampres]'
+  and cov.hydroid = [covid] 
+  and ws.ftype = '[ws_ftype]'
+  and ws.bundle='watershed';
+" 
+  config <- list(
+    covid = watershed_feature$hydroid,
+    ws_ftype = 'nhdplus',
+    ws_varkey = ws_varkey,
+    bio_varkey = bio_varkey,
+    sampres = 'species'
+  )
+  sql <- str_replace_all(sql, '\\[covid\\]', as.character(config$covid))
+  sql <- str_replace_all(sql, '\\[ws_ftype\\]', as.character(config$ws_ftype))
+  sql <- str_replace_all(sql, '\\[ws_varkey\\]', as.character(config$ws_varkey))
+  sql <- str_replace_all(sql, '\\[bio_varkey\\]', as.character(config$bio_varkey))
+  sql <- str_replace_all(sql, '\\[sampres\\]', as.character(config$sampres))
+  message(paste("querying for samples contained by", watershed_feature$ftype, watershed_feature$hydrocode))
+  watershed_df <- sqldf(sql, conn=ds$connection)
+  watershed_df <- watershed_df[,c('x_metric', 'y_metric', 'hydrocode')]
+  return(watershed_df)
+}
+
+elfgen_huc <- function(
+  runid, hydroid, huc_level, dataset, scenprop, ds,
+  ws_varkey = 'erom_q0001e_mean',
+  bio_varkey = 'aqbio_nt_total',
+  save_directory = '/var/www/html/data/proj3/out',
+  save_url = 'http://deq1.bse.vt.edu:81/data/proj3/out',
+  site = 'http://deq1.bse.vt.edu/d.dh',
+  quantile = 0.8,
+  breakpt = 530,
+  yaxis_thresh = 53
+  ) {
+  #x.metric <- 'erom_q0001e_mean'
+  #y.metric <- 'aqbio_nt_total'
+  #y.sampres <- 'species'
+
+  pdf(file = NULL) # disable pdf image writing
+  #Determine watershed outlet nhd+ segment and hydroid
+  
+  nhdplus_df <- elfgen_feature_nhdsegs(hydroid)
+  nhd_col <- elfgen_varkey_nhd_col(ws_varkey)
   nhdplus_df <- nhdplus_df[,c("comid", "gnis_name", "reachcode", "totdasqkm", nhd_col)]
   
   if (dataset == 'IchthyMaps'){
@@ -209,87 +313,8 @@ elfgen_huc <- function(
       }
     watershed.df <- elfdata(watershed.code)
   }else{
-    # elfdata_vahydro() function for retrieving data from VAHydro
-    
-    
-    sql <- "
-  select event.tid,to_timestamp(event.tstime), pv.varkey,
-  biodat.propcode, biodat.propvalue as y_metric, dap.propvalue as x_metric,
-    CASE 
-      WHEN ws.ftype = 'nhd_huc8' THEN REPLACE(ws.hydrocode,'nhd_huc8_','') 
-      WHEN ws.ftype = 'nhd_huc12' THEN REPLACE(ws.hydrocode,'huc12_', '') 
-      WHEN ws.ftype = 'vahydro' THEN REPLACE(ws.hydrocode,'vahydrosw_wshed_','') 
-      ELSE ws.hydrocode
-    END as hydrocode,
-    st.hydroid as station_hydroid
-  from dh_feature_fielded as cov
-  left outer join dh_feature_fielded as ws
-  on (
-    st_contains(cov.dh_geofield_geom, ws.dh_geofield_geom)
-  )
-  left outer join dh_feature_fielded as st
-  on (
-    st_contains(ws.dh_geofield_geom, st.dh_geofield_geom)
-  )
-  left outer join dh_variabledefinition as tsv 
-  on (tsv.varkey = 'aqbio_sample_event')
-  left outer join dh_timeseries as event
-  on (
-    event.varid = tsv.hydroid
-    and event.featureid = st.hydroid
-  ) 
-  left outer join dh_properties as biodat
-  on (
-    biodat.featureid = event.tid
-    and biodat.entity_type = 'dh_timeseries'
-  ) 
-  left outer join dh_variabledefinition as pv 
-  on (
-    pv.varkey = '[bio_varkey]'
-    and pv.hydroid = biodat.varid
-  )
-  left outer join dh_variabledefinition as dav 
-  on (
-    dav.varkey = '[ws_varkey]'
-  )
-  left outer join dh_properties as dap 
-  on (
-    dap.featureid = ws.hydroid
-    and dap.entity_type = 'dh_feature'
-    and dav.hydroid = dap.varid
-  )
-  left outer join dh_variabledefinition as srv 
-  on (
-    srv.varkey = 'sampres'
-  )
-  left outer join dh_properties as sr 
-  on (
-    sr.featureid = event.tid
-    and sr.entity_type = 'dh_timeseries'
-    and srv.hydroid = sr.varid
-  )
-  where pv.hydroid is not null
-  and sr.propcode = '[sampres]'
-  and cov.hydroid = [covid] 
-  and ws.ftype = '[ws_ftype]'
-  and ws.bundle='watershed';
-" 
-    config <- list(
-      covid = watershed_feature$hydroid,
-      ws_ftype = 'nhdplus',
-      ws_varkey = ws_varkey,
-      bio_varkey = 'aqbio_nt_total',
-      sampres = 'species'
-    )
-    sql <- str_replace_all(sql, '\\[covid\\]', as.character(config$covid))
-    sql <- str_replace_all(sql, '\\[ws_ftype\\]', as.character(config$ws_ftype))
-    sql <- str_replace_all(sql, '\\[ws_varkey\\]', as.character(config$ws_varkey))
-    sql <- str_replace_all(sql, '\\[bio_varkey\\]', as.character(config$bio_varkey))
-    sql <- str_replace_all(sql, '\\[sampres\\]', as.character(config$sampres))
-    message(paste("querying for samples contained by", watershed_feature$ftype, watershed_feature$hydrocode))
-    watershed.df <- sqldf(sql, conn=ds$connection)
-    watershed.df <- watershed.df[,c('x_metric', 'y_metric', 'hydrocode')]
-  }
+    watershed.df <- dh_elfdata(watershed_feature, ws_varkey, bio_varkey, ds)
+ }
 
   #######################################################
   # run elfgen (with tryCatch to capture any errors originating from elfgen)
@@ -330,7 +355,7 @@ elfgen_huc <- function(
   #######################################################
   
   
-  confidence <- elfgen_confidence(elf,rseg.name,outlet_flow,yaxis_thresh,cuf)
+  confidence <- elfgen_confidence(elf,rseg.name, outlet_flow,yaxis_thresh,cuf, nhd_col)
 
   
   #--------------------------------------------------------------

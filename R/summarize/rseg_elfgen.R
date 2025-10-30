@@ -101,24 +101,32 @@ elfgen_confidence <- function(elf,rseg.name, outlet_flow,yaxis_thresh,cuf, outle
 
 }
 
-elfgen_varkey_nhd_col <- function(varkey) {
+elfgen_varkey_nhd_col <- function(varkey, dataset='dh_nhd') {
   
   nhd_map <- list(
-    'erom_q0001e_jan' = 'qa_01',
-    'erom_q0001e_feb' = 'qa_02',
-    'erom_q0001e_mar' = 'qa_03',
-    'erom_q0001e_apr' = 'qa_04',
-    'erom_q0001e_may' = 'qa_05',
-    'erom_q0001e_june' = 'qa_06',
-    'erom_q0001e_july' = 'qa_07',
-    'erom_q0001e_aug' = 'qa_08',
-    'erom_q0001e_sept' = 'qa_09',
-    'erom_q0001e_oct' = 'qa_10',
-    'erom_q0001e_nov' = 'qa_11',
-    'erom_q0001e_dec' = 'qa_12',
-    'erom_q0001e_mean' = 'qa_ma'
+    'erom_q0001e_jan' = list(dh_nhd='qa_01',elfgen='Q01'),
+    'erom_q0001e_feb' = list(dh_nhd='qa_02',elfgen='Q02'),
+    'erom_q0001e_mar' = list(dh_nhd='qa_03',elfgen='Q03'),
+    'erom_q0001e_apr' = list(dh_nhd='qa_04',elfgen='Q04'),
+    'erom_q0001e_may' = list(dh_nhd='qa_05',elfgen='Q05'),
+    'erom_q0001e_june' = list(dh_nhd='qa_06',elfgen='Q06'),
+    'erom_q0001e_july' = list(dh_nhd='qa_07',elfgen='Q07'),
+    'erom_q0001e_aug' = list(dh_nhd='qa_08',elfgen='Q08'),
+    'erom_q0001e_sept' = list(dh_nhd='qa_09',elfgen='Q09'),
+    'erom_q0001e_oct' = list(dh_nhd='qa_10',elfgen='Q10'),
+    'erom_q0001e_nov' = list(dh_nhd='qa_11',elfgen='Q11'),
+    'erom_q0001e_dec' = list(dh_nhd='qa_12',elfgen='Q12'),
+    'erom_q0001e_mean' = list(dh_nhd='qa_ma', elfgen='MAF')
   )
-  nhd_col <- nhd_map[[varkey]]
+  if (varkey == FALSE) {
+    # they want it all
+    return(nhd_map)
+  }
+  if (dataset == 'dh_nhd') {
+   nhd_col <- as.character(nhd_map[[varkey]]$dh_nhd)
+  } else {
+    nhd_col <- as.charcter(nhd_map[[varkey]]$elfgen)
+  }
   return(nhd_col)
 }
 
@@ -159,6 +167,19 @@ dh_elfdata <- function(watershed_feature, ws_varkey, bio_varkey, ds) {
       WHEN ws.ftype = 'vahydro' THEN REPLACE(ws.hydrocode,'vahydrosw_wshed_','') 
       ELSE ws.hydrocode
     END as hydrocode,
+    q01.propvalue as qa_01,
+    q02.propvalue as qa_02,
+    q03.propvalue as qa_03,
+    q04.propvalue as qa_04,
+    q05.propvalue as qa_05,
+    q06.propvalue as qa_06,
+    q07.propvalue as qa_07,
+    q08.propvalue as qa_08,
+    q09.propvalue as qa_09,
+    q10.propvalue as qa_10,
+    q11.propvalue as qa_11,
+    q12.propvalue as qa_12,
+    qmaf.propvalue as qa_ma,
     st.hydroid as station_hydroid
   from dh_feature_fielded as cov
   left outer join dh_feature_fielded as ws
@@ -190,11 +211,89 @@ dh_elfdata <- function(watershed_feature, ws_varkey, bio_varkey, ds) {
   on (
     dav.varkey = '[ws_varkey]'
   )
-  left outer join dh_properties as dap 
+  left outer join dh_properties_fielded as dap 
   on (
     dap.featureid = ws.hydroid
     and dap.entity_type = 'dh_feature'
-    and dav.hydroid = dap.varid
+    and dap.varkey = '[ws_varkey]'
+  )
+  left outer join dh_properties_fielded as q01 
+  on (
+    q01.featureid = ws.hydroid
+    and q01.entity_type = 'dh_feature'
+    and q01.varkey = 'erom_q0001e_jan'
+  )
+  left outer join dh_properties_fielded as q02 
+  on (
+    q02.featureid = ws.hydroid
+    and q02.entity_type = 'dh_feature'
+    and q02.varkey = 'erom_q0001e_feb'
+  )
+  left outer join dh_properties_fielded as q03 
+  on (
+    q03.featureid = ws.hydroid
+    and q03.entity_type = 'dh_feature'
+    and q03.varkey = 'erom_q0001e_mar'
+  )
+  left outer join dh_properties_fielded as q04
+  on (
+    q04.featureid = ws.hydroid
+    and q04.entity_type = 'dh_feature'
+    and q04.varkey = 'erom_q0001e_apr'
+  )
+  left outer join dh_properties_fielded as q05 
+  on (
+    q05.featureid = ws.hydroid
+    and q05.entity_type = 'dh_feature'
+    and q05.varkey = 'erom_q0001e_may'
+  )
+  left outer join dh_properties_fielded as q06 
+  on (
+    q06.featureid = ws.hydroid
+    and q06.entity_type = 'dh_feature'
+    and q06.varkey = 'erom_q0001e_june'
+  )
+  left outer join dh_properties_fielded as q07
+  on (
+    q07.featureid = ws.hydroid
+    and q07.entity_type = 'dh_feature'
+    and q07.varkey = 'erom_q0001e_july'
+  )
+  left outer join dh_properties_fielded as q08 
+  on (
+    q08.featureid = ws.hydroid
+    and q08.entity_type = 'dh_feature'
+    and q08.varkey = 'erom_q0001e_aug'
+  )
+  left outer join dh_properties_fielded as q09 
+  on (
+    q09.featureid = ws.hydroid
+    and q09.entity_type = 'dh_feature'
+    and q09.varkey = 'erom_q0001e_sept'
+  )
+  left outer join dh_properties_fielded as q10 
+  on (
+    q10.featureid = ws.hydroid
+    and q10.entity_type = 'dh_feature'
+    and q10.varkey = 'erom_q0001e_oct'
+  )
+  left outer join dh_properties_fielded as q11 
+  on (
+    q11.featureid = ws.hydroid
+    and q11.entity_type = 'dh_feature'
+    and q11.varkey = 'erom_q0001e_jan'
+  )
+  left outer join dh_properties_fielded as q12 
+  on (
+    q12.featureid = ws.hydroid
+    and q12.entity_type = 'dh_feature'
+    and q12.varkey = 'erom_q0001e_dec'
+  )
+  left outer join dh_properties_fielded as qmaf 
+  on (
+    qmaf.featureid = ws.hydroid
+    and qmaf.entity_type = 'dh_feature'
+    and qmaf.varkey = 'erom_q0001e_mean'
   )
   left outer join dh_variabledefinition as srv 
   on (
@@ -226,7 +325,6 @@ dh_elfdata <- function(watershed_feature, ws_varkey, bio_varkey, ds) {
   sql <- str_replace_all(sql, '\\[sampres\\]', as.character(config$sampres))
   message(paste("querying for samples contained by", watershed_feature$ftype, watershed_feature$hydrocode))
   watershed_df <- sqldf(sql, conn=ds$connection)
-  watershed_df <- watershed_df[,c('x_metric', 'y_metric', 'hydrocode')]
   return(watershed_df)
 }
 
@@ -314,6 +412,8 @@ elfgen_huc <- function(
     watershed.df <- elfdata(watershed.code)
   }else{
     watershed.df <- dh_elfdata(watershed_feature, ws_varkey, bio_varkey, ds)
+    # this may not be necessary but we do it to insure extra cols don't cause trouble
+    watershed.df <- watershed.df[,c('x_metric', 'y_metric', 'hydrocode')]
  }
 
   #######################################################

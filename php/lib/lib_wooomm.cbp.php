@@ -1084,6 +1084,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       } else {
         $limit = $this->max_memory_values;
       }
+      error_log("numts = $numts, max_memory_values = $this->max_memory_values");
       $this->listobject->querystring = "  SELECT * ";
       $this->listobject->querystring .= " FROM  " . $this->db_cache_name;
       $this->listobject->querystring .= " WHERE \"timestamp\" > $this->lasttimesec ";

@@ -1,13 +1,13 @@
 #!/bin/bash
 binpath=/usr/local/bin/
-
-cp ./etc/om.config /etc/om.config
-cp ./sh/om_config $binpath
-cp ./sh/dh/om_delete_property $binpath
-cp ./sh/dh/om_copy_property $binpath
-cp ./sh/dh/om_get_propnames $binpath
-cp ./sh/dh/om_copy_all_props $binpath
-cp ./sh/dh/om_get_by_pid $binpath
-cp ./sh/dh/om_get_prop $binpath
-cp ./sh/dh/om_set_prop $binpath
-cp ./sh/dh/om_get_by_elid $binpath
+sudo cp ./etc/om.config /etc/om.config
+sudo cp ./sh/om_config $binpath
+sudo cp ./sh/dh/om_delete_property $binpath
+sudo cp ./sh/dh/om_copy_property $binpath
+sudo cp ./sh/dh/om_get_propnames $binpath
+sudo cp ./sh/dh/om_copy_all_props $binpath
+sudo cp ./sh/dh/om_get_by_pid $binpath
+sudo cp ./sh/dh/om_get_prop $binpath
+sudo cp ./sh/dh/om_set_prop $binpath
+sudo cp ./sh/dh/om_get_by_elid $binpath
+sudo cp /opt/model/om/sh/runoff_db_check $binpath

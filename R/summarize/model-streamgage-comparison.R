@@ -9,8 +9,12 @@ basepath='/var/www/R';
 source(paste(basepath,'config.R',sep='/'))
 library(dataRetrieval)
 library(hydrotools)
-ds <- RomDataSource$new("http://deq1.bse.vt.edu/d.dh", rest_uname)
-ds$get_token(rest_pw)
+source(paste0(github_location,"/cbp6/R/get.gage.timespan.R"))
+source(paste0(github_location,"/cbp6/R/gage_import_data_cfs.R"))
+source(paste0(github_location,"/cbp6/R/model_import_data_cfs.R"))
+
+#ds <- RomDataSource$new("http://deq1.bse.vt.edu/d.dh", rest_uname)
+#ds$get_token(rest_pw)
 
 save_directory <-  "/var/www/html/data/proj3/out"
 

@@ -1,0 +1,26 @@
+#!/bin/bash
+. hspf_config
+
+if [ $# -lt 1 ]; then
+  echo 1>&2 "Usage: runoff_db_check landseg scenario [version=p6]"
+  echo 1>&2 "Ex: runoff_db_check A51045 CFBASE30Y20180615 p532 "
+  exit 2
+fi 
+
+landseg=$1
+scenario=$2
+version="p6"
+if [ $# -gt 2 ]; then
+  version=$3
+fi 
+
+tablename="cbp_${version}_${scenario}_${landseg}"
+tablename=`echo $tablename | tr '[:upper:]' '[:lower:]'`
+
+isql="select extract(year from to_timestamp(timestamp)), "
+isql="$isql sum(for_agwo) as agwo, sum(for_ifwo) as ifwo, sum(for_suro) as suro"
+isql="$isql from $tablename "
+isql="$isql group by extract(year from to_timestamp(timestamp))"
+isql="$isql order by extract(year from to_timestamp(timestamp))"
+echo $isql | psql -U postgres -p 5444 model_scratch
+

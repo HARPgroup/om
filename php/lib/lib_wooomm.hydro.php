@@ -44,8 +44,8 @@ class hydroGrid extends dataMatrix {
       $this->solveForElevation($storage);
    }
    
-   function formatMatrix () {
-      parent::formatMatrix();
+   function formatMatrix($force_refresh = 0) {
+      parent::formatMatrix($force_refresh);
       //subtract elevation number from cell bottom matrix (array_sub)
       $this->bottoms = array();
       $vals = array_values_recursive($this->matrix_rowcol);

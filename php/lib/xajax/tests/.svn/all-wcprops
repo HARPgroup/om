@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/28/trunk/xajax/tests
+END
+xajaxResponseTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/xajaxResponseTest.php
+END
+preFunctionTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/28/trunk/xajax/tests/preFunctionTest.php
+END
+registerExternalFunctionTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/28/trunk/xajax/tests/registerExternalFunctionTest.php
+END
+errorHandlingTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/errorHandlingTest.php
+END
+myExternalFunction.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/28/trunk/xajax/tests/myExternalFunction.php
+END
+callScriptTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/28/trunk/xajax/tests/callScriptTest.php
+END
+basicPluginTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/28/trunk/xajax/tests/basicPluginTest.php
+END
+performance.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/28/trunk/xajax/tests/performance.php
+END
+redirectTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/28/trunk/xajax/tests/redirectTest.php
+END
+searchReplaceTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/searchReplaceTest.php
+END
+callTechniquesTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/28/trunk/xajax/tests/callTechniquesTest.php
+END
+phpWhitespaceTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/phpWhitespaceTest.php
+END
+nonXajaxResponseTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/28/trunk/xajax/tests/nonXajaxResponseTest.php
+END
+createFormInputTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/28/trunk/xajax/tests/createFormInputTest.php
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/28/trunk/xajax/tests/index.php
+END
+largeResponseTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/largeResponseTest.php
+END
+includeExternalScriptTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/28/trunk/xajax/tests/includeExternalScriptTest.php
+END
+registerObjectTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/28/trunk/xajax/tests/registerObjectTest.php
+END
+fluentInterfaceTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/28/trunk/xajax/tests/fluentInterfaceTest.php
+END
+formSubmissionTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/28/trunk/xajax/tests/formSubmissionTest.php
+END
+eventHandlerTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/28/trunk/xajax/tests/eventHandlerTest.php
+END
+customResponseClassTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/28/trunk/xajax/tests/customResponseClassTest.php
+END
+xajax_error_log.log
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/28/trunk/xajax/tests/xajax_error_log.log
+END
+catchAllFunctionTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/28/trunk/xajax/tests/catchAllFunctionTest.php
+END
+HTTPStatusTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/28/trunk/xajax/tests/HTTPStatusTest.php
+END
+myExternalFunction.js
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/myExternalFunction.js
+END
+charEncodingTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/28/trunk/xajax/tests/charEncodingTest.php
+END
+changeEventTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/28/trunk/xajax/tests/changeEventTest.php
+END
+disabledFormElementsTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/28/trunk/xajax/tests/disabledFormElementsTest.php
+END

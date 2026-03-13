@@ -3098,7 +3098,7 @@ class modelSubObject extends modelObject {
     parent::sleep();
   }
 
-  function logState() {
+  function logstate($logvalues = array()) {
 
     // logging will be done by the parent, so no need to waste memory and time with this
     // should consider whether we filter values here to prevent mismatches with the log data type.
@@ -14933,7 +14933,18 @@ class WDMDSN extends timeSeriesInput {
       #error_log("State of DSN $dsn " . print_r($this->state, 1));
    }
    
-   function logState() {
+  function logstate($logvalues = array()) {
+
+    $thislog = array();
+
+    $logsrc = array();
+
+    // if an array of values is passed in, use these instead of our state array (used to pass child info upstream)
+    if (count($logvalues) > 0) {
+       $logsrc = $logvalues;
+    } else {
+       $logsrc = $this->state;
+    }
       # do not log this item till we figure out why there is the trouble with the
       # thistime column coming out as an integer, and hosing the logging routine.
    }

@@ -7885,7 +7885,7 @@ function unSerializeSingleModelObjectDB($dbobj, $elementid, $input_props = array
 function om_xml_array($elem_xml) {
   // test new xml code
   // see: https://github.com/pear/pear-core/blob/master/PEAR/XMLParser.php
-  include_once("/var/www/html/lib/pear-core/PEAR/XMLParser.php");
+  include_once("/var/www/html/lib/PEAR/PEAR/XMLParser.php");
   $object_data = FALSE;
   $parser = new PEAR_XMLParser;
   $prez = $parser->parse($elem_xml);

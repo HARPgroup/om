@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite
+END
+index-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/index-php.html
+END
+css-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/css-php.html
+END
+functions-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/functions-php.html
+END
+scriptContext-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/scriptContext-php.html
+END
+server_events-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/server_events-php.html
+END
+assign_append-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/assign_append-php.html
+END
+theFrame-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/theFrame-php.html
+END
+callScriptTest-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/callScriptTest-php.html
+END
+controls_html_401_transitional-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/controls_html_401_transitional-php.html
+END
+delayEvents-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/delayEvents-php.html
+END
+alert_confirm-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/alert_confirm-php.html
+END
+events-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/events-php.html
+END
+controls_xhtml_10_transitional-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/suite/controls_xhtml_10_transitional-php.html
+END

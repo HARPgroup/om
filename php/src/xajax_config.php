@@ -11,7 +11,7 @@ global $listobject, $adminsetuparray;
 //error_reporting(E_NONE);
 //error_reporting('E_ERROR');
 //error_reporting(E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR);
-$debug = FALSE;
+$debug = TRUE;
 //error_reporting(E_ALL);
 //error_reporting(E_ALL & ~E_WARNING);
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
@@ -32,10 +32,12 @@ if ($debug) {
 #include_once ("./xajax_config.php");
 #require("$libpath/xajax/xajax_core/xajax.inc.php");
 if ($debug) {
-   error_log("Getting Ajax libs");
+   error_log("Getting Ajax libs from $libpath/");
 }
-//error_reporting(E_ALL);
+error_reporting(E_ERROR);
 include_once ("$libpath/xajax/xajax_core/xajax.inc.php");
+require_once ("$libpath/xajax/xajax_core/xajaxArgumentManager.inc.php");
+include_once ("$libpath/xajax/xajax_core/plugin_layer/support/xajaxUserFunction.inc.php");
 include_once ("$libpath/xdg/xajaxgrid.inc.php");
 if (strlen($xajaxscript) > 0) {
    $xajax = new xajax($xajaxscript);

@@ -724,7 +724,18 @@ class USGSGageSubComp extends USGSGageObject {
       parent::sleep();
    }
    
-   function logState() {
+   function logstate($logvalues = array()) {
+
+    $thislog = array();
+
+    $logsrc = array();
+
+    // if an array of values is passed in, use these instead of our state array (used to pass child info upstream)
+    if (count($logvalues) > 0) {
+       $logsrc = $logvalues;
+    } else {
+       $logsrc = $this->state;
+    }
    
       // logging will be done by the parent, so no need to waste memory and time with this
    

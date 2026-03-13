@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/28/trunk/xajax/examples/xul
+END
+xulApplication.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/28/trunk/xajax/examples/xul/xulApplication.php
+END
+xulServer.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/28/trunk/xajax/examples/xul/xulServer.php
+END
+xulClient.xul
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/28/trunk/xajax/examples/xul/xulClient.xul
+END

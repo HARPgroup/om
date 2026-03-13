@@ -164,7 +164,7 @@ class dynamicWaterUsers extends dynamicQuerySubComponents {
       }
    }
 
-   function writeToParent() {
+   function writeToParent($vars = [], $verbose = 0) {
       if (is_object($this->parentobject)) {
          foreach ($this->wvars as $thisvar) {
             $this->parentobject->setStateVar($this->getParentVarName($thisvar), $this->state[$thisvar]);
@@ -980,7 +980,7 @@ class wsp_demand extends modelSubObject {
       $this->parentobject->setSingleDataColumnType($this->name, 'float8', 0.0);
    }
 
-   function writeToParent() {
+   function writeToParent($vars = [], $verbose = 0) {
       if (is_object($this->parentobject)) {
          foreach ($this->wvars as $thisvar) {
             $this->parentobject->setStateVar($this->name . "_" . $thisvar, $this->state[$thisvar]);
@@ -3859,7 +3859,7 @@ class cova_watershedContainerLink extends textField {
       }
    }
    
-   function showElementInfo($propname, $view='info', $params = array()) {
+   function showElementInfo($propname='', $view='info', $params = array()) {
       $view = trim($view);
       $propname = trim($propname);
       $localviews = array('cova_locator');

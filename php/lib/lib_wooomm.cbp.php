@@ -1197,7 +1197,7 @@ class CBPLandDataConnection_sub extends CBPLandDataConnection {
       parent::sleep();
    }
    
-   function logState() {
+   function logState($logvalues = []) {
    
       // logging will be done by the parent, so no need to waste memory and time with this
    

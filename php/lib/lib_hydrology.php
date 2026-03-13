@@ -794,6 +794,13 @@ class modelObject {
         if (method_exists($value, 'toArray')) {
           $array[$key] = $value->toArray();
         } else {
+          # I think the argument to get_object_vars 
+          # should be $value not $this as this would 
+          # create a copy of the parent for evey child
+          # object that lacked a "toArray()" method.
+          # I think this is a bug that has never happend since
+          # all objects in this ecosystem HAVE the toArray method 
+          # but this would lead to endless recursion
           $array[$key] = get_object_vars($this);
         }
       }

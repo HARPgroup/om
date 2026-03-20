@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/legacy_tests
+END
+index-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/legacy_tests/index-php.html
+END
+jsLoadingTest-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/legacy_tests/jsLoadingTest-php.html
+END
+preFunctionTest-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/legacy_tests/preFunctionTest-php.html
+END
+catchAllFunctionTest-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/legacy_tests/catchAllFunctionTest-php.html
+END

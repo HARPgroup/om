@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/13/trunk/PEAR/PEAR
+END
+Validate.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Validate.php
+END
+PackageFile.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/13/trunk/PEAR/PEAR/PackageFile.php
+END
+Remote.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Remote.php
+END
+Installer.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Installer.php
+END
+Downloader.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Downloader.php
+END
+Exception.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Exception.php
+END
+Autoloader.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Autoloader.php
+END
+Dependency2.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Dependency2.php
+END
+RunTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/13/trunk/PEAR/PEAR/RunTest.php
+END
+Config.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Config.php
+END
+Registry.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Registry.php
+END
+ChannelFile.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/13/trunk/PEAR/PEAR/ChannelFile.php
+END
+REST.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/13/trunk/PEAR/PEAR/REST.php
+END
+Packager.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Packager.php
+END
+XMLParser.php
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/13/trunk/PEAR/PEAR/XMLParser.php
+END
+Dependency.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Dependency.php
+END
+Command.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Command.php
+END
+Frontend.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Frontend.php
+END
+ErrorStack.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/13/trunk/PEAR/PEAR/ErrorStack.php
+END
+DependencyDB.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/13/trunk/PEAR/PEAR/DependencyDB.php
+END
+Builder.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Builder.php
+END
+Common.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/13/trunk/PEAR/PEAR/Common.php
+END

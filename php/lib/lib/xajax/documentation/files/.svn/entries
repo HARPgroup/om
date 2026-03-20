@@ -1,0 +1,80 @@
+10
+
+dir
+34
+https://vdeq-libs.googlecode.com/svn/trunk/xajax/documentation/files
+https://vdeq-libs.googlecode.com/svn
+
+
+
+2012-03-14T20:02:43.315468Z
+28
+rburghol@vt.edu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a11c7149-6a82-dadb-7783-8e40b7aa0563
+
+tests
+dir
+
+xajax_core
+dir
+
+xajax_js
+dir
+
+copyright-inc-php.html
+file
+
+
+
+
+2012-03-14T20:02:07.000000Z
+2e21284f14cb98453eb6b4628a5b2ebc
+2012-03-14T20:02:43.315468Z
+28
+rburghol@vt.edu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16700
+
+xajax_plugins
+dir
+
+xajax_controls
+dir
+
+examples
+dir
+

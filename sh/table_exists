@@ -1,0 +1,35 @@
+#!/bin/bash
+. hspf_config
+
+if [ $# -lt 1 ]; then
+  echo 1>&2 "Usage: table_exists tablename DB_NAME [DB_HOST=$DB_HOST] [DB_PORT=$DB_PORT]"
+  echo 1>&2 "Ex: table_exists scen_model_element model "
+  exit 2
+fi
+SCHEMA_NAME='public' # Change if your table is in a different schema
+# PGPASSWORD can be set as an environment variable, or use a .pgpass file for security.
+# export PGPASSWORD="your_password" 
+
+TABLE_NAME=$1
+DB_NAME=$2
+if [ $# -gt 2 ]; then
+  DB_HOST=$3
+fi
+if [ $# -gt 3 ]; then
+  DB_PORT=$4
+fi
+
+
+
+# Run psql command and store the result
+# -t: Turn off table titles and footers
+# -A: Unaligned table output mode (fields separated by '|')
+# -c: Run a single command (SQL query)
+TABLE_EXISTS=$(psql -tAc "SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = '$SCHEMA_NAME' AND table_name = '$TABLE_NAME');" -d "$DB_NAME" -U "$DB_USER" -h $DB_HOST -p $DB_PORT)
+
+# Check the output of the psql command
+if [[ "$TABLE_EXISTS" == "t" ]]; then
+    echo "1"
+else
+    echo "0"
+fi

@@ -1,6 +1,6 @@
 #!/bin/sh
 # shell
-pgpath="/data/postgres/$1"
+pgpath="/var/lib/postgresql/$1"
 bindir="/usr/lib/postgresql/$1/bin"
 pguser="postgres"
 db_port=5433

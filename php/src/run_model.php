@@ -51,8 +51,8 @@ $offset = $thiskey;
 $optional_input = array('dt'); // This starts at the 9th param.  
                                // A hinky way of doing it, but works OK for cmd line
 foreach ($optional as $thiskey => $thisval) {
-   if (isset($formValues[$thiskey + $offset])) {
-      $optional_input[$thisval] = $formValues[$thiskey + $offset];
+   if (isset($formValues[$thiskey . $offset])) {
+      $optional_input[$thisval] = $formValues[$thiskey . $offset];
    }
 }
 

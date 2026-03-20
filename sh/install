@@ -10,4 +10,5 @@ sudo cp ./sh/dh/om_get_by_pid $binpath
 sudo cp ./sh/dh/om_get_prop $binpath
 sudo cp ./sh/dh/om_set_prop $binpath
 sudo cp ./sh/dh/om_get_by_elid $binpath
+sudo cp /opt/model/om/sh/table_exists $binpath
 sudo cp /opt/model/om/sh/runoff_db_check $binpath

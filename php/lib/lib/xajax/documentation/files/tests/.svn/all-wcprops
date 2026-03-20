@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests
+END
+index-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/index-php.html
+END
+xajaxResponseTest-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/xajaxResponseTest-php.html
+END
+registerObjectTest-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/registerObjectTest-php.html
+END
+errorHandlingTest-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/errorHandlingTest-php.html
+END
+searchReplaceTest-php.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/28/trunk/xajax/documentation/files/tests/searchReplaceTest-php.html
+END

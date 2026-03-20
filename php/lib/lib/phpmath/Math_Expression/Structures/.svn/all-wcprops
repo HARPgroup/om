@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/13/trunk/phpmath/Math_Expression/Structures
+END
+Math_Expression_Structure_Vector.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/13/trunk/phpmath/Math_Expression/Structures/Math_Expression_Structure_Vector.php
+END
+Math_Expression_Structure_Real.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/13/trunk/phpmath/Math_Expression/Structures/Math_Expression_Structure_Real.php
+END
+Math_Expression_Structure_Parenthesis.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/13/trunk/phpmath/Math_Expression/Structures/Math_Expression_Structure_Parenthesis.php
+END
+Math_Expression_Structure.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/13/trunk/phpmath/Math_Expression/Structures/Math_Expression_Structure.php
+END

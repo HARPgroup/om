@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/13/trunk/PEAR/XML/XML_Parser-1.2.8/tests
+END
+test2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/13/trunk/PEAR/XML/XML_Parser-1.2.8/tests/test2.xml
+END
+test3.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/13/trunk/PEAR/XML/XML_Parser-1.2.8/tests/test3.xml
+END
+001.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/13/trunk/PEAR/XML/XML_Parser-1.2.8/tests/001.phpt
+END
+002.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/13/trunk/PEAR/XML/XML_Parser-1.2.8/tests/002.phpt
+END
+003.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/13/trunk/PEAR/XML/XML_Parser-1.2.8/tests/003.phpt
+END
+004.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/13/trunk/PEAR/XML/XML_Parser-1.2.8/tests/004.phpt
+END
+005.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/13/trunk/PEAR/XML/XML_Parser-1.2.8/tests/005.phpt
+END

@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/!svn/ver/13/trunk/PEAR/DB
+END
+mssql.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/13/trunk/PEAR/DB/mssql.php
+END
+sqlite.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/13/trunk/PEAR/DB/sqlite.php
+END
+oci8.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/13/trunk/PEAR/DB/oci8.php
+END
+storage.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/13/trunk/PEAR/DB/storage.php
+END
+mysql.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/13/trunk/PEAR/DB/mysql.php
+END
+fbsql.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/13/trunk/PEAR/DB/fbsql.php
+END
+odbc.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/13/trunk/PEAR/DB/odbc.php
+END
+msql.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/13/trunk/PEAR/DB/msql.php
+END
+mysqli.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/13/trunk/PEAR/DB/mysqli.php
+END
+dbase.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/13/trunk/PEAR/DB/dbase.php
+END
+ibase.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/13/trunk/PEAR/DB/ibase.php
+END
+pgsql.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/13/trunk/PEAR/DB/pgsql.php
+END
+ifx.php
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/13/trunk/PEAR/DB/ifx.php
+END
+sybase.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/13/trunk/PEAR/DB/sybase.php
+END
+common.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/13/trunk/PEAR/DB/common.php
+END

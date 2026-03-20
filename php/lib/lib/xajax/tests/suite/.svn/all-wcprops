@@ -1,0 +1,203 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/28/trunk/xajax/tests/suite
+END
+testScriptPlugin.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/28/trunk/xajax/tests/suite/testScriptPlugin.inc.php
+END
+pluginTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/28/trunk/xajax/tests/suite/pluginTest.php
+END
+xajax_tests.css
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/suite/xajax_tests.css
+END
+callScriptTest.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/28/trunk/xajax/tests/suite/callScriptTest.php
+END
+controls_html_401_transitional.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/28/trunk/xajax/tests/suite/controls_html_401_transitional.php
+END
+options.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/suite/options.inc.php
+END
+events.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/28/trunk/xajax/tests/suite/events.php
+END
+frame_left.htm
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/28/trunk/xajax/tests/suite/frame_left.htm
+END
+scriptContext.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/28/trunk/xajax/tests/suite/scriptContext.php
+END
+tables.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/28/trunk/xajax/tests/suite/tables.php
+END
+googleMap.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/28/trunk/xajax/tests/suite/googleMap.php
+END
+css1.css
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/28/trunk/xajax/tests/suite/css1.css
+END
+css2.css
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/28/trunk/xajax/tests/suite/css2.css
+END
+css3.css
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/28/trunk/xajax/tests/suite/css3.css
+END
+css4.css
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/28/trunk/xajax/tests/suite/css4.css
+END
+alert_confirm.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/28/trunk/xajax/tests/suite/alert_confirm.php
+END
+frame_right.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/suite/frame_right.php
+END
+css.php
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/28/trunk/xajax/tests/suite/css.php
+END
+server_events.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/28/trunk/xajax/tests/suite/server_events.php
+END
+theFrame.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/28/trunk/xajax/tests/suite/theFrame.php
+END
+transport.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/28/trunk/xajax/tests/suite/transport.php
+END
+alert_confirm_external.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/28/trunk/xajax/tests/suite/alert_confirm_external.inc.php
+END
+none.php
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/28/trunk/xajax/tests/suite/none.php
+END
+iframe.php
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/28/trunk/xajax/tests/suite/iframe.php
+END
+frameset.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/28/trunk/xajax/tests/suite/frameset.php
+END
+controls_xhtml_10_transitional.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/28/trunk/xajax/tests/suite/controls_xhtml_10_transitional.php
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/28/trunk/xajax/tests/suite/index.php
+END
+theFrame.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/28/trunk/xajax/tests/suite/theFrame.html
+END
+functions.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/28/trunk/xajax/tests/suite/functions.php
+END
+assign_append.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/28/trunk/xajax/tests/suite/assign_append.php
+END
+xajax.css
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/28/trunk/xajax/tests/suite/xajax.css
+END
+delayEvents.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/tests/suite/delayEvents.php
+END
+iframe.js
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/28/trunk/xajax/tests/suite/iframe.js
+END

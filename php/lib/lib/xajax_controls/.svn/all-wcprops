@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/28/trunk/xajax/xajax_controls
+END
+form.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/xajax_controls/form.inc.php
+END
+content.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/28/trunk/xajax/xajax_controls/content.inc.php
+END
+validate_HTML401TRANSITIONAL.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/28/trunk/xajax/xajax_controls/validate_HTML401TRANSITIONAL.inc.php
+END
+misc.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/28/trunk/xajax/xajax_controls/misc.inc.php
+END
+group.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/28/trunk/xajax/xajax_controls/group.inc.php
+END
+document.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/28/trunk/xajax/xajax_controls/document.inc.php
+END
+validate_XHTML10TRANSITIONAL.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/28/trunk/xajax/xajax_controls/validate_XHTML10TRANSITIONAL.inc.php
+END
+structure.inc.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/28/trunk/xajax/xajax_controls/structure.inc.php
+END

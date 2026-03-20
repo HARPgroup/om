@@ -1015,7 +1015,7 @@ class modelObject {
   function setProp($propname, $propvalue, $view = '') {
     // sets a specific state variable to a specific value
     // pull these apart as they are no longer relevant if json
-    list($propname, $subprop_name) = explode(':', $propname);
+    list($propname, $subprop_name) = array_pad(explode(':', $propname), 2, '');
     switch ($view) {
       case 'json-2d':
       case 'json_decoded':
@@ -2189,9 +2189,15 @@ class modelObject {
                $this->reportstring .= "Runtime Table SQL: " . $createsql . "\n\n<br>";
                $this->outstring .= "Runtime Table SQL: " . $createsql . "\n\n<br>";
                  // write the SQL def 
-                $sqldfp = fopen($this->outdir . "/" . 'def.' . $this->componentid . "." . $this->runid . ".sql",'w');
-                fwrite($sqldfp, $createsql);
-                $this->debugstring = '';
+                $dpath = $this->outdir . "/" . 'def.' . $this->componentid . "." . $this->runid . ".sql";
+                $sqldfp = fopen($dpath,'w');
+                try {
+                  fwrite($sqldfp, $createsql);
+                  $this->debugstring = '';
+                } catch (TypeError $e) {
+                  error_log("Could not open file to write SQL runtime table at $dpath - exiting.");
+                  exit;
+                }
                 fclose($sqldfp);
              }
           //}
@@ -12865,13 +12871,6 @@ class HSPFContainer extends modelContainer {
             $pg_obj[$i] = new HSPFPlotgen;
             $pgparamcols = array();
             $fp = $thisrec['filepath'];
-            /*
-            if ($fp == 'RCHRES.localflow.1.out') {
-               $pg_obj[$i]->debug = 1;
-               $pg_obj[$i]->debugmode = 1;
-               $pg_obj[$i]->loglines = 5;
-            }
-            */
             $pg_obj[$i]->filepath = dirname($this->filepath) . '/' . $fp;
             $pg_obj[$i]->tmpdir = $this->tmpdir;
             $pg_obj[$i]->wdm_messagefile = $this->wdm_messagefile;

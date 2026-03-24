@@ -188,11 +188,11 @@ class Equation extends modelSubObject {
           default:
           try {
             $this->result = mathProcessor2( $this->equation, $this->arData, $this, $this->debug);
-          } catch (Exception $e) {
-            error_log( 'Error Executing Object:',  $this->name);
-            error_log( 'Equation:',  $this->equation);
-            error_log( 'Data:',  print_r($this->arData,1));
-            error_log( 'Caught exception: ',  $e->getMessage());
+          } catch (Throwable $e) {
+            error_log( 'Error Executing Object:' . $this->name);
+            error_log( 'Equation:' .  $this->equation);
+            error_log( 'Data:' .  print_r($this->arData,1));
+            error_log( 'Caught exception: ' .  $e->getMessage());
           }
           break;
         }
@@ -215,7 +215,7 @@ class Equation extends modelSubObject {
            error_log("NULL result in equation (>= 30x) $this->equation, from $this->name ($this->componentid) on object " . $this->parentobject->name);
          }
       }
-      if (is_nan($this->result) or is_infinite($this->result)) {
+      if (!is_numeric($this->result) or is_nan($this->result) or is_infinite($this->result)) {
          # not a number, 
          if ($this->debug) {
             $this->logDebug(" Result is not valid, using default: $this->nanvalue <br>");

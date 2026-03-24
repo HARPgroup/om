@@ -16,11 +16,11 @@ ln -s /opt/model/om/drupal/om /var/www/html/d.dh/modules/om
 # NAS big links
 sudo mount deqnas:/data /media/NAS
 sudo mount deqnas2:/data /media/NAS2
-ln -s /media/model/p6/tmp/wdm/river /opt/model/p6/p6_gb604/tmp/wdm/river
-ln -s /media/model/p6/tmp/wdm/land /opt/model/p6/p6_gb604/tmp/wdm/land
-ln -s /media/model/p6/out /opt/model/p6/p6_gb604/out
-ln -s /media/model/omdata /var/www/html/data
-ln -s /media/model/p532/tmp/wdm /opt/model/p53/p532c-sova/tmp/wdm
+sudo ln -s /media/model/p6/tmp/wdm/river /opt/model/p6/p6_gb604/tmp/wdm/river
+sudo ln -s /media/model/p6/tmp/wdm/land /opt/model/p6/p6_gb604/tmp/wdm/land
+sudo ln -s /media/model/p6/out /opt/model/p6/p6_gb604/out
+sudo ln -s /media/model/omdata/ /var/www/html/data
+sudo ln -s /media/model/p532/tmp/wdm /opt/model/p53/p532c-sova/tmp/wdm
 
 // Libraries
 rm /var/www/html/scripts

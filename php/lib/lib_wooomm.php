@@ -9586,7 +9586,7 @@ function storeElementRunData($listobject, $elementid, $components, $runid, $run_
       error_log($listobject->querystring);
     };
     $listobject->performQuery();
-    if ( ($runid <> -1) and !in_array($thiscomp, $cachedlist)) {
+    if ( ($runid <> -1) ) {
       $meanexectime = floatval($thiscomp->meanexectime);
       error_log("Element $thiscomp is not cached - saving runid specific file");
       // we want to store this output as a specific run, in addition to the default "last run" code 

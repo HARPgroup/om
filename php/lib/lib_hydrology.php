@@ -1873,17 +1873,21 @@ class modelObject {
     
     if (!$this->log_headers_sent) {
        #$this->logDebug($outarr);
-       $colnames = array(array_keys($this->logtable[0]));
-       putDelimitedFile("$filename",$colnames,$this->translateDelim($this->delimiter),1,$this->fileformat);
-       $this->log_headers_sent = true;
+       if (!is_array($this->logtable[0])) {
+         error_log("Warning: $this->name ($this->componentid) has NULL logtable.");
+       } else { 
+         $colnames = array(array_keys($this->logtable[0]));
+         putDelimitedFile("$filename",$colnames,$this->translateDelim($this->delimiter),1,$this->fileformat);
+         $this->log_headers_sent = true;
+         if (count($this->logtable) > 0) {
+           $outarr = $this->formatLogData();
+           // append the data to the file, then close the file
+           putArrayToFilePlatform("$filename", $outarr,0,$this->fileformat);
+         }
+       }
     }
     
-    if (count($this->logtable) > 0) {
-       $outarr = $this->formatLogData();
-       // append the data to the file, then close the file
-       putArrayToFilePlatform("$filename", $outarr,0,$this->fileformat);
-       // clear log from memory 
-    }
+    // clear log from memory 
     $this->logtable = array();
     $this->logRetrieved = 0;
     return $filename;
@@ -2140,6 +2144,12 @@ class modelObject {
   //error_log(print_r($logvars, 1) );
     foreach ($logvars as $thisvar) {
        // eleminate the geometry column if log_geom is set to 0 (default)
+       if (is_array($thisvar)) {
+         if ($this->timer->step <= 2) {
+           error_log("Array sent to logState() for $this->name, value:" . print_r($thisvar, 1));
+         }
+         continue;
+       }
        if ( (strlen(trim($thisvar)) > 0) and ( ($this->log_geom == 1) or ($thisvar <> 'the_geom') ) ) {
           $thislog[$thisvar] = $logsrc[$thisvar];
        }
@@ -2168,7 +2178,6 @@ class modelObject {
              if ($this->timer->steps <= 2) {
                 $olddebug = $this->listobject->debug;
                 // un-comment this to turn on debugging in listobject temporarily
-                //$this->listobject->debug = 1;
                 $this->logDebug("DB Column formats: " . print_r($this->dbcolumntypes,1));
                 $this->logDebug("Logged Columns and Values: " . print_r($thislog,1));
              }
@@ -2177,30 +2186,26 @@ class modelObject {
           $createsql = $this->listobject->array2tmpTable(array($thislog), $this->dbtblname, array_keys($thislog), $this->dbcolumntypes, 1, $this->bufferlog);
           $this->logsql .= $createsql . "/n";
 
-          // always log table creation sql cause why not?
-          //if ($this->debug) {
-             if ($this->timer->steps <= 1) {
-                $lkl = 1;
-                foreach (str_split($createsql, 128) as $csql) {
-                  $this->logDebug("Table creation SQL ($lkl): " . $csql . "<br>");                  
-                  $lkl++;
-                }
-                $this->listobject->debug = $olddebug;
-               $this->reportstring .= "Runtime Table SQL: " . $createsql . "\n\n<br>";
-               $this->outstring .= "Runtime Table SQL: " . $createsql . "\n\n<br>";
-                 // write the SQL def 
-                $dpath = $this->outdir . "/" . 'def.' . $this->componentid . "." . $this->runid . ".sql";
-                $sqldfp = fopen($dpath,'w');
-                try {
-                  fwrite($sqldfp, $createsql);
-                  $this->debugstring = '';
-                } catch (TypeError $e) {
-                  error_log("Could not open file to write SQL runtime table at $dpath - exiting.");
-                  exit;
-                }
-                fclose($sqldfp);
-             }
-          //}
+          if ($this->timer->steps <= 1) {
+            $lkl = 1;
+            foreach (str_split($createsql, 128) as $csql) {
+              $this->logDebug("Table creation SQL ($lkl): " . $csql . "<br>");                  
+              $lkl++;
+            }
+            $this->reportstring .= "Runtime Table SQL: " . $createsql . "\n\n<br>";
+            $this->outstring .= "Runtime Table SQL: " . $createsql . "\n\n<br>";
+            // write the SQL def 
+            $dpath = $this->outdir . "/" . 'def.' . $this->componentid . "." . $this->runid . ".sql";
+            $sqldfp = fopen($dpath,'w');
+            try {
+              fwrite($sqldfp, $createsql);
+              $this->debugstring = '';
+            } catch (TypeError $e) {
+              error_log("Could not open file to write SQL runtime table at $dpath - exiting.");
+              exit;
+            }
+            fclose($sqldfp);
+         }
        } else {
           // log to db requested, but no valid db object is set
           if ($this->timer->steps <= 1) {
@@ -2538,8 +2543,6 @@ class modelObject {
          error_log("Adding to dependency for $thisdepend: " . print_r($dbg,1));
          $pvars = array_unique($pvars);
        }
-       //$watchlist = array('impoundment', 'local_channel');
-       //$this->debug = in_array( $this->processors[$depend]->name, $watchlist) ? 1 : 0;
        if ($this->debug) {
           $this->logDebug("Checking $thisdepend variables \n");
           $this->logDebug($pvars);
@@ -2634,8 +2637,6 @@ class modelObject {
     }
     $this->debug = $dbc;
     $hiersort = array_merge($preexec, $execlist, $postexec);
-    
-    
     $this->logDebug("Final Queue \n");
     $this->logDebug($queue);
     $this->logDebug("Final independents \n");
@@ -4970,8 +4971,16 @@ class dataMatrix extends modelSubObject {
             if ($this->debug) {
                $this->logDebug("Rowvals Matrix = " . print_r($rowvals,1) . "<br>");
             }
-            // now perform the column lookup in the selected/interpolated row
-            $luval = arrayLookup($rowvals, $key2, $this->lutype2, $this->defaultval, $this->debug);
+            if (!is_array($rowvals)) {
+              if ($this->timer->step <= 2) {
+                error_log("Rowvals matrix is NULL for key: $key on $this->name ($this->componentid).");
+                $this->logDebug("Rowvals matrix is NULL for key: $key on $this->name ($this->componentid).<br>");
+              }
+              $luval = $this->defaultval;
+            } else {
+              // now perform the column lookup in the selected/interpolated row
+              $luval = arrayLookup($rowvals, $key2, $this->lutype2, $this->defaultval, $this->debug);
+            }
             if ($this->debug) {
                $this->logDebug("Final Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
                //error_log("Final Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
@@ -6177,9 +6186,7 @@ class timeSeriesInput extends modelObject {
             $this->logDebug("Outputting Time Series to db: $this->db_cache_name <br>");
             $this->logDebug("Using the following db-columntypes: " . print_r($this->dbcolumntypes,1) . " <br>");
          }
-         //$this->listobject->debug = 1;
          $this->cache_create_sql = $this->listobject->array2Table($this->tsvalues, $this->db_cache_name, $columns, $this->dbcolumntypes, 1, $this->bufferlog, $this->db_cache_persist);
-         //$this->listobject->debug = 0;
          if ($this->debug) {
             $this->logDebug($this->cache_create_sql);
             if ($this->listobject->error) {
@@ -6233,6 +6240,12 @@ class timeSeriesInput extends modelObject {
          }
          if (in_array('flow_mode', array_keys($this->state))) {
            array_push($forbidden, 'flow_mode');
+         }
+         if (!is_array($tvals)) {
+           if ($this->timer->step < 2) {
+             error_log("searchTimeSeries() returned null for " . $this->name);
+             $tvals = array();
+           }
          }
          foreach(array_keys($tvals) as $tkey) {
             if (!in_array($tkey, $forbidden)) {
@@ -7568,7 +7581,6 @@ class hydroImpoundment extends hydroObject {
       if ($this->debug) {
          $this->logDebug("Step Begin state[] array contents " . print_r($this->state,1) . " <br>\n");
       }
-      //$this->debug = 1;
 
       $Uin = $this->state['Uin']; // heat in
       $U0 = $this->state['U']; // total heat in BTU/Kcal at previous timestep
@@ -9302,9 +9314,7 @@ class dataConnectionObject extends timeSeriesInput {
                }
             }
          }
-         //$this->listobject->debug = 1;
          $this->localtab_create_sql = $this->listobject->array2tmpTable($theserecs, $scratchname, $columns, $localdbcols, 1, $this->bufferlog);
-         //$this->listobject->debug = 0;
          
          if ($this->debug) {
             //error_log("$this->name calling array2tmptable with localdbcols - " . print_r($localdbcols,1));
@@ -11900,10 +11910,8 @@ return;
             }
          }
       }
-      #$this->debug = 1;
       if ($this->debug) {
          $this->logDebug("Drawing $this->graphtype $this->goutdir, $this->gouturl:<br>");
-         //$this->logDebug(print_r($thisgraph,1) . "<br>");
       }
       // something in this next block is triggering an error
       //it seems to be with the postgresql query object, which makes no sense but there is a 
@@ -12156,7 +12164,6 @@ return;
       #$this->logDebug("Adding graph $i <br>");
       $i++;
 
-      #$this->debug = 1;
       switch ($this->graphtype) {
          case 'line':
          $thisimg = showGenericMultiLine($this->goutdir, $this->gouturl, $thisgraph, $this->debug);
@@ -12332,7 +12339,6 @@ return;
       }
       $i++;
 
-      #$this->debug = 1;
       
       switch ($this->graphtype) {
          case 'line':
@@ -12510,7 +12516,6 @@ class reverseFlowObject extends modelSubObject {
 
    function step() {
    //$this->debugmode = 1;
-   //$this->debug = 1;
       // all step methods MUST call preStep(),execProcessors(), postStep()
       $this->preStep();
       if ($this->debug) {
@@ -12865,8 +12870,6 @@ class HSPFContainer extends modelContainer {
          $this->plotgens = array();
          $pgnames = $this->listobject->queryrecords;
          $i = 0;
-         #$this->debug = 1;
-         #$this->debugmode = 1;
          foreach ($pgnames as $thisrec) {
             $pg_obj[$i] = new HSPFPlotgen;
             $pgparamcols = array();
@@ -12918,8 +12921,6 @@ class HSPFContainer extends modelContainer {
             $this->addComponent($pg_obj[$i]);
             $i++;
          }
-         #$this->debug = 0;
-         #$this->debugmode = 0;
 
          ############################################
          # now, create WDM objects for all files    #
@@ -12945,8 +12946,6 @@ class HSPFContainer extends modelContainer {
          # so as not to overwrite the plotgens
          # $i = 0;
          $wdm_obj = array();
-         #$this->debug = 1;
-         #$this->debugmode = 1;
          foreach ($pgnames as $thisrec) {
             $wdm_obj[$i] = new HSPFWDM;
             
@@ -13480,8 +13479,6 @@ class HSPFContainer extends modelContainer {
          # so as not to overwrite the plotgens
          # $i = 0;
          $this->wdm_files = array();
-         #$this->debug = 1;
-         #$this->debugmode = 1;
          foreach ($pgnames as $thisrec) {
             $this->wdm_files[$thisrec['handle']] = array(
                'id'=>$thisrec['handle'],
@@ -13940,7 +13937,6 @@ class HSPFWDM extends modelObject {
    }
 
    function init() {
-//$this->debug = 1;
       $this->setUpFormats();
       if (is_object($this->timer)) {
          if (is_object($this->timer->thistime)) {
@@ -13987,7 +13983,6 @@ class HSPFWDM extends modelObject {
       if ($this->debug) error_log("Parsing " . $expfile . "<br>\n");
       
       $stashdebug = $this->debug;
-      //$this->debug = 1;
       error_log("Calling this->parseEXPFile($expfile, 'DSN' => $dsn, $this->startdate, $this->enddate)");;
       $dsn_recs = $this->parseEXPFile($expfile, $crit, $this->startdate, $this->enddate);
 
@@ -14022,10 +14017,7 @@ class HSPFWDM extends modelObject {
       if ($this->debug) {
          $this->logDebug("Parsing " . $expfile . "<br>\n");
       }
-      $stashdebug = $this->debug;
-      #$this->debug = 0;
       $dsn_recs = $this->parseEXPFile($expfile, $crit, $this->startdate, $this->enddate);
-      #$this->debug = $stashdebug;
 
       if ($this->debug) {
          $this->logDebug("Loading data from " . $expfile . "<br>\n");
@@ -14070,7 +14062,6 @@ class HSPFWDM extends modelObject {
          //error_log("WDMDSN create with max_memory_values set to " . $d->max_memory_values);
          $d->init();
          if ($this->debug) {
-            //$d->debug = 1;
             $d->debugmode = 0;
             $this->logDebug("Adding Records to DSN Object <br>\n");
          }
@@ -14443,8 +14434,6 @@ class HSPFWDM extends modelObject {
                      }
                   }
                }
-               #$this->debug = 0;
-               #$this->debugmode = 0;
             } else {
                if ($in_label) {
                   if ($this->debug) {
@@ -15420,8 +15409,6 @@ class hydroImpSmall extends hydroImpoundment {
       $this->storage_matrix = new dataMatrix;
       $this->storage_matrix->name = 'storage_stage_area';
       $this->storage_matrix->wake();
-      //$this->storage_matrix->debug = 1;
-      //$this->storage_matrix->debugmode = 1;
       $this->storage_matrix->delimiter = $this->delimiter;
       $this->storage_matrix->numcols = 3;
       $this->storage_matrix->fixed_cols = true;
@@ -15768,7 +15755,6 @@ class hydroImpSmall extends hydroImpoundment {
       $innerHTML .= "<table><tr>";
       $innerHTML .= "<td valign=top>";
       $innerHTML .= "<b>Impoundment Geometry:</b> <br>";
-      //$this->storage_matrix->debug = 1;
       $innerHTML .= $this->storage_matrix->showFormBody($formatted,$formname, $disabled);
       $innerHTML .= "</td>";
       $innerHTML .= "<td valign=top>";

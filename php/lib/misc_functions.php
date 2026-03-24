@@ -111,7 +111,12 @@ for($i = 0;$i < count($formar);$i++) {
       $numdecimals = substr($thisform,2);
       $outstring .= sciFormat($thisval,$numdecimals);
    } else {
-      $outstring .= sprintf("%$thisform", $thisval);
+      try {
+        $outstring .= sprintf("%$thisform", $thisval);
+      } catch (Throwable $r) {
+        error_log("Bad call to sprintf(\"%$thisform\", $thisval)");
+        return $outstring;
+      }
    }
 
 }

@@ -1183,7 +1183,7 @@ function addDynamicChildElements($modeldb, $input_props, $dynamics, $debug=0) {
 }
 
 
-function loadModelUsingCached($modeldb, $elementid, $runid, $cache_runid, $input_props, $cache_level, $cache_list, $run_date) {
+function loadModelUsingCached($modeldb, $elementid, $runid, $cache_runid, $input_props, $cache_level, $cache_list, $run_date, $debug = 0) {
    global $listobject;
    $retarr = array();
    $retarr['errors'] = '';

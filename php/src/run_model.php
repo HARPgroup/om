@@ -125,7 +125,7 @@ switch ($runtype) {
    
 }
 
-pg_close($modeldb);//boot the model db to prevent temp name collisions?
+pg_close($modeldb->dbconn); # boot the model db to prevent temp name collisions?
 if (!$runVars['test_only'] and ($runtype <> 'cached_meta_model')) {
 // handle post-processing
   $runid = intval(trim($runVars['runid']));

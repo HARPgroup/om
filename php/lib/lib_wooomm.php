@@ -8319,7 +8319,6 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
     // now set the parent props for all subcomps, then
     if ($debug) {
       error_log("Sub-object $thisobject->name is class " . get_class($thisproc));
-      $thisproc->debug = $debug;
       error_log("Getting parent properties for adminsetup for $thisproc->name ");
     }
     if ($debug) {

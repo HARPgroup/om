@@ -1008,6 +1008,9 @@ function shakeTree($listobject, $sip, $num_sim, $recid, $run_id, $startdate, $en
 
 
 function formatPrintContainer($container) {
+  if (!isset($container['children']) or !is_array($container['children'])) {
+    $container['children'] = array();
+  }
    $innerHTML = '';
    $innerHTML .= "<table border=1>";
    $innerHTML .= "<tr><td align=center valign=top>";

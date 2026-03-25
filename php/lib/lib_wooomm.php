@@ -9179,7 +9179,7 @@ function loadCachedObject($model_listobj, $elementid, $runid, $debug) {
                $j++;
             }
          } else {
-            $thisobject->logDebug(get_class($proj_object) . " is not broadcast object .<br> ");
+            $thisobject->logDebug(get_class($proc_object) . " is not broadcast object .<br> ");
          }
       }
    }

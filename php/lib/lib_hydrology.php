@@ -1107,11 +1107,11 @@ class modelObject {
     //error_log("Notice: Trying to save $pname as processor ");
     if (!is_array($pvalue)) {
       error_log("Warning: Skipping component $pname because json did not have array. ");
-      return;
+      return $prop;
     }
     if (!isset($pvalue['object_class']) ) {
       error_log("Warning: Skipping component $pname because json did not have object_class. ");
-      return;
+      return $prop;
     }
     // @todo: include plumbing from set_subprop.php to handle robust json property setting.
     // Does a sub-comp of this name exist? Or, is this an object_class change?
@@ -1126,7 +1126,7 @@ class modelObject {
     if ($prop === FALSE) {
       if (!class_exists($object_class)) {
         error_log("Error: Object class $object_class can not be found. Skipping $pname .");
-        return;
+        return $prop;
       }
       if (
         is_subclass_of($object_class, 'modelObject')

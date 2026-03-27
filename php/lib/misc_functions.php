@@ -480,7 +480,13 @@ function interpValue($thistime, $ts, $tv, $nts, $ntv, $intmethod=1) {
    switch ($intmethod) {
       default:
          //error_log(" $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) ) ");
-         $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
+         try {
+           $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
+         } catch  (Throwable $r) {
+           error_log("Exception executing: $interpValue($thistime, $ts, $tv, $nts, $ntv, $intmethod=1) = tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) ) ";
+           return $tv;
+         }
+         
       break;
 
    }

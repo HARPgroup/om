@@ -12,6 +12,7 @@ error_reporting(E_ERROR);
 include_once('./xajax_modeling.element.php');
 $noajax = 1;
 $projectid = 3;
+// testing: $argv = array('import_element_json.php', 220019, '/tmp/element_220019.json');
 
 if ( count($argv) < 3 ) {
   error_log("Usage: import_element_json.php elementid openmi_json_file \n");

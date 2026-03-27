@@ -9,6 +9,7 @@ class Equation extends modelSubObject {
    var $arData = array();
    var $logdata = array();
    var $vars = array();
+   var $state = array();
    var $equation = '';
    var $result;
    var $name = '';

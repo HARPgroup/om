@@ -1090,7 +1090,7 @@ class modelObject {
         $this->applyJSONPropArray($pname, $pvalue);
       } else {
         $prop = $this->applyJSONComponentArray($pname, $pvalue);
-        error_log("Final prop object " . $prop->name . " of class " . get_class($prop) );
+        //error_log("Final prop object " . $prop->name . " of class " . get_class($prop) );
       }
     }
   }

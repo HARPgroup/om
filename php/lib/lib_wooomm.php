@@ -8018,47 +8018,6 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
       }
    }
    
-   /*
-  // ***** BEGIN Old Method *****
-   if ($debug) {
-      $returnArray['debug'] .= "Creating Unserializer<br>";
-   }
-   // tell the unserializer to create an object
-   $options = array("complexType" => "object");
-   // tell the unserializer to create an array of properties
-   #$options = array("complexType" => "array");
-   // create object 
-   if (!class_exists('XML_Unserializer')) {
-      error_log("class XML_Unserializer - PEAR class needs to be installed ");
-   }
-   //error_log("calling XML_Unserializer ");
-   $unserializer = new XML_Unserializer($options);
-
-   if ($debug) {
-      $returnArray['debug'] .= "Unserializing<br>";
-   }
-   //error_log("Unserializing<br>");
-   // unserialize the object. Use "false" since this is not a document, "true" if it is a document
-   error_log("unserializer->unserialize $elementid" );
-   
-   $result = $unserializer->unserialize($elem_xml, false);
-   error_log("Finished unserializer->unserialize $elementid" );
-   $returnArray['elemtype'] = $unserializer->getRootName();
-   if (is_object($returnArray['elemtype'])) {
-      if (get_class($returnArray['elemtype']) == 'PEAR_Error') {
-         error_log("PEAR Unserialize Error: " . $returnArray['elemtype']->message);
-         error_log("Called from unSerializeSingleModelObject($elementid, : " . print_r($input_props,1));
-      }
-   } else {
-      if ($debug) {
-         error_log("Unserialize found elemen type: " . $returnArray['elemtype']);
-      }
-   }
-   // dump the result
-   $thisobject = $unserializer->getUnserializedData();
-  // ***** END Old Method *****
-  */
-   
   // ***** BEGIN New Method *****
   $object_data = om_xml_array($elem_xml);
   //error_log("XML:" . $elem_xml);

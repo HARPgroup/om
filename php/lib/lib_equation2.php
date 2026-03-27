@@ -125,6 +125,7 @@ class Equation extends modelSubObject {
       if (!is_array($this->wvars)) {
          $this->wvars = array();
       }
+      parent::wake();
    }
    
    function logError($errorstring) {

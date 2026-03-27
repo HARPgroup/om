@@ -7285,17 +7285,22 @@ class channelObject extends hydroObject {
     
     // now calculate heat flux
     // O1 is outflow at last time step, 
-    $U = ($Storage * ($U0 + $Uin)) / ( $Qout * $dt + $Storage);
-    switch ($this->units) {
-       case 1:
-       // SI
-       $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
-       break;
-       
-       case 2:
-       // EE
-       $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
-       break;
+    if ($Storage > 0) {
+      $U = ($Storage * ($U0 + $Uin)) / ( $Qout * $dt + $Storage);
+      switch ($this->units) {
+         case 1:
+         // SI
+         $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
+         break;
+         
+         case 2:
+         // EE
+         $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
+         break;
+      }
+    } else {
+      $U =0;
+      $T = 0;
     }
     // let's also assume that the water isn't frozen, so we limit this to zero
     if ($T < 0) {

@@ -14,7 +14,7 @@ $noajax = 1;
 $projectid = 3;
 
 if ( count($argv) < 3 ) {
-  error_log("Usage: imoport_element_json.php elementid openmi_json_file \n");
+  error_log("Usage: import_element_json.php elementid openmi_json_file \n");
   die;
 }
 
@@ -28,7 +28,7 @@ $openmi_json = file_get_contents($openmi_json);
 $json_obj = json_decode(trim($openmi_json), TRUE);
 error_log("**** json_obj[name] = " . $json_obj['name']);
 error_log("json_last_error() " . json_last_error());
-error_log("json encoding " . mb_detect_encoding());
+//error_log("json encoding " . mb_detect_encoding($json_obj));
 error_log("Calling unSerializeSingleModelObject($elid)"); 
 
 if ($elid > 0) {

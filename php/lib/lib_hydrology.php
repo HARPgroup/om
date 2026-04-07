@@ -4982,8 +4982,8 @@ class dataMatrix extends modelSubObject {
             }
             if (!is_array($rowvals)) {
               if ($this->timer->step <= 2) {
-                error_log("Rowvals matrix is NULL for key: $key on $this->name ($this->componentid).");
-                $this->logDebug("Rowvals matrix is NULL for key: $key on $this->name ($this->componentid).<br>");
+                error_log("Rowvals matrix is NULL for key: $key1 on $this->name ($this->componentid).");
+                $this->logDebug("Rowvals matrix is NULL for key: $key1 on $this->name ($this->componentid).<br>");
               }
               $luval = $this->defaultval;
             } else {
@@ -6667,7 +6667,7 @@ class timeSeriesInput extends modelObject {
             try {
               $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
             } catch (TypeError $e) {
-              error_log("$this->name ($this->componentid) had inerpValue error in $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) )");
+              error_log("Fatal Error: $this->name ($this->componentid) had inerpValue error in $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) )");
               exit;
             }
          break;

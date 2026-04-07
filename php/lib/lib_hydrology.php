@@ -8847,7 +8847,9 @@ class dataConnectionObject extends timeSeriesInput {
    
    function closeDBConns() {
       // close all non-needed connections
-      
+      if ($this->dbobject === FALSE) {
+        return;
+      }
       switch ($this->conntype) {
          case 1:
          # postgis 
@@ -9085,7 +9087,12 @@ class dataConnectionObject extends timeSeriesInput {
       if ($this->debug) {
          $this->logDebug("Getting Data");
       }
+      
       if (is_object($this->dbobject) and (strlen($this->sql_query) > 0) ) {
+        if ($this->dbobject->dbconn === FALSE) {
+          error_log("$this->name has null dbobject dbconn. Returning.");
+          return;
+        }
          // check to see if query has any wildcards in it that we should sub for
          // this should have a select box, so that we don't inadvertently goof it up
          $this->dbobject->querystring = "select * from ( " . $this->subLocalProperties($this->sql_query);
@@ -9545,11 +9552,13 @@ class dataConnectionObject extends timeSeriesInput {
       if ($this->debug) {
          $this->logDebug("function getTablesColumns() called on $this->name <br>");
       }
-      
       $base_query = $this->subLocalProperties($this->sql_query);
       $this->raw_columns = array();
       $this->raw_column_types = array();
-
+      
+      if ($this->dbobject->dbconn === FALSE) {
+        return;
+      }
       switch ($this->conntype) {
          case 1:
          # postgis will call all tables

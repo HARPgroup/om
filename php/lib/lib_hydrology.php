@@ -6653,7 +6653,7 @@ class timeSeriesInput extends modelObject {
       // return the values
    }
 
-   function interpValue($thistime, $ts, $tv, $nts, $ntv) {
+   function interpValue($thistime, $ts, $tv, $nts, $ntv, $defval = 0) {
 
       if ($this->intflag == 2) {
          # places a limit on how long we can interpolate
@@ -6667,8 +6667,8 @@ class timeSeriesInput extends modelObject {
             try {
               $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
             } catch (TypeError $e) {
-              error_log("Fatal Error: $this->name ($this->componentid) had inerpValue error in $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) )");
-              exit;
+              error_log("Caught Fatal Error: $this->name ($this->componentid) had interpValue error in $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) ) -- returning default value = $defval");
+              return($defval);
             }
          break;
 

@@ -857,7 +857,7 @@ class modelObject {
       error_log("Executable components keys: " . print_r(array_keys($this->components,1)));
        foreach ($this->components as $thiskey => $thisop) {
          if (!is_object($thisop)) {
-           error_log("Object key $thiskey is not an exeuctable object. value = " . $thisop);
+           error_log("Object key $thiskey is not an executable object. value = " . $thisop);
          } else {
            $thisop->setSimTimer($thistimer);
          }
@@ -4129,8 +4129,12 @@ class modelContainer extends modelObject {
       $execlist = array();
 
       # compile a list of independent and dependent variables
-      foreach ($this->components as $thiscomp) {
+      foreach ($this->components as $thiskey => $thiscomp) {
          // use new getObjectDependencies() method
+         if (!is_object($thiscomp)) {
+           error_log("Warning: Component $thiskey is not an object.");
+           continue;
+         }
          $deps = $thiscomp->getObjectDependencies();
          if ($this->debug) {
             $this->logDebug("<br>getObjectDependencies returned " . count($deps) . " <br>");

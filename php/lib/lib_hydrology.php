@@ -6664,7 +6664,12 @@ class timeSeriesInput extends modelObject {
       switch ($this->intmethod) {
          case 0:
             // mean value
-            $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
+            try {
+              $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
+            } catch (TypeError $e) {
+              error_log("$this->name ($this->componentid) had inerpValue error in $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) )");
+              exit;
+            }
          break;
 
          case 1:

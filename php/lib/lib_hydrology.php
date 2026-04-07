@@ -854,8 +854,13 @@ class modelObject {
        }
     }
     if (is_array($this->components)) {
-       foreach ($this->components as $thisop) {
-          $thisop->setSimTimer($thistimer);
+      error_log("Executable components keys: " . print_r(array_keys($this->components,1)));
+       foreach ($this->components as $thiskey => $thisop) {
+         if (!is_object($thisop)) {
+           error_log("Object key $thiskey is not an exeuctable object. value = " . $thisop);
+         } else {
+           $thisop->setSimTimer($thistimer);
+         }
        }
     }
   }

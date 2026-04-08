@@ -19,6 +19,7 @@ if ( count($argv) < 3 ) {
   die;
 }
 
+
 list($script, $elid, $openmi_json) = $argv;
 
 // for now we over-ride and get hard coded file if we send test as json

@@ -1725,11 +1725,15 @@ function runCiaWatershed ($prop_elid, $runid, $cache_runid, $startdate='', $endd
 }
 
 function runCached($elementid, $runid, $cache_runid, $startdate, $enddate, $cache_list, $cache_level, $dynamics, $input_props = array(), $test_only = 0) {
-   global $modeldb, $listobject, $outdir, $serverip;
-   $run_date = date('r');
-   if (!is_array($cache_list)) {
+  global $modeldb, $listobject, $outdir, $serverip;
+  $run_date = date('r');
+  if (!is_array($cache_list)) {
+    if (trim($cache_list) == "") {
+    $cache_list = array();
+    } else {
       $cache_list = explode(',', $cache_list);
-   }
+    }
+  }
    // this routine, if passed empty cache_list and dynamics list will simply perform a normal model run
    if (is_array($elementid)) {
       if (count($elementid) > 0) {

@@ -8026,6 +8026,10 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
   $object_data = om_xml_array($elem_xml);
   //error_log("XML:" . $elem_xml);
   $object_class = $object_data['object_class'];
+  if (trim($object_class) == "") {
+    error_log("Warning: Could not get object_class from XML, using last database attribute " . $record['objectclass']);
+    $object_class = $record['objectclass'];
+  }
   $thisobject = om_make_object($object_class, $object_data, TRUE, $debug);
   // ***** END New Method *****
   if ($thisobject === FALSE) {

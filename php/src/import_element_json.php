@@ -21,7 +21,7 @@ if ( count($argv) < 3 ) {
 
 
 list($script, $elid, $openmi_json) = $argv;
-
+error_log("To debug use: \$argv = array('import_element_json.php', $elid, '$openmi_json');");
 // for now we over-ride and get hard coded file if we send test as json
 error_log("Reading json file: $openmi_json");
 $openmi_json = file_get_contents($openmi_json);

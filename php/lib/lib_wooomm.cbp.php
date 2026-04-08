@@ -736,7 +736,7 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
         $this->logDebug("Setting db_cache_name to cbp_  $this->version _ $this->scenario _ $this->landseg");
       }
       error_log("Setting db_cache_name to cbp_  $this->version _ $this->scenario _ $this->landseg");
-      $this->reportstring .= "Setting db_cache_name to cbp_$this->version" . "_$this->scenario" . "_ $this->landseg \n\n<br>";
+      $this->reportstring .= "Setting db_cache_name to cbp_$this->version" . "_$this->scenario" . "_ $this->landseg \n\n";
       $this->db_cache_name = strtolower('cbp_' . implode('_', array($this->version, $this->scenario, $this->landseg)));
       $this->db_cache_persist = TRUE; // we can do this for files that are large and infrequently updated
       //error_log("DSN $this->name set to $this->db_cache_name ");

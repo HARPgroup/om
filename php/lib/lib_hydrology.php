@@ -2684,7 +2684,7 @@ class modelObject {
           $retval = $lowvalue + ($highvalue - $lowvalue) * ( ($thiskey - $lowkey) / ($highkey - $lowkey) );
         } catch (Throwable $r) {
           if ($this->timer->step < 50) {
-            error_log("Exception on $this->name @ $this->timer->step executing: interpValue($thiskey, $lowkey, $lowvalue, $highkey, $highvalue) = $lowvalue + ($highvalue - $lowvalue) * ( ($thiskey - $lowkey) / ($highkey - $lowkey) ) ");
+            error_log("Exception on $this->name @ " . $this->timer->step . " executing: interpValue($thiskey, $lowkey, $lowvalue, $highkey, $highvalue) = $lowvalue + ($highvalue - $lowvalue) * ( ($thiskey - $lowkey) / ($highkey - $lowkey) ) ");
           }
           return $lowvalue;
         }

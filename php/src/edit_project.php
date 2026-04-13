@@ -466,7 +466,7 @@ $taboutput->tab_HTML['aquatic_bio'] .= "<i>Using elementid $spatial_id for spati
 $taboutput->tab_HTML['aquatic_bio'] .= $bioinfo['innerHTML'];
 */
 //$taboutput->tab_HTML['aquatic_bio'] .= $bioinfo['debug'];
-/ *****************************
+// *****************************
 // END - Aquatic Bio Tab
 // *****************************
 

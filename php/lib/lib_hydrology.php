@@ -2679,13 +2679,25 @@ class modelObject {
   function interpValue($thiskey, $lowkey, $lowvalue, $highkey, $highvalue) {
 
     switch ($this->intmethod) {
-       case 0:
+      case 0:
+        try {
           $retval = $lowvalue + ($highvalue - $lowvalue) * ( ($thiskey - $lowkey) / ($highkey - $lowkey) );
-       break;
+        } catch (Throwable $r) {
+          if ($this->timer->step < 50) {
+            error_log("Exception on $this->name @ $this->timer->step executing: interpValue($thiskey, $lowkey, $lowvalue, $highkey, $highvalue) = $lowvalue + ($highvalue - $lowvalue) * ( ($thiskey - $lowkey) / ($highkey - $lowkey) ) ");
+          }
+          return $lowvalue;
+        }
+      break;
 
-       case 1:
-          $retval = $tv;
-       break;
+      case 1:
+        $retval = $tv;
+      break;
+
+      case 2:
+        // next value
+        $retval = $ntv;
+      break;
 
     }
     return $retval;
@@ -5384,6 +5396,7 @@ class lookupObject extends modelSubObject {
       if ($this->debug) {
          $this->logDebug("Scanning $this->lucsv for valid entries<br>");
       }
+      $this->defaultval = $this->defval;
       $this->dateranges = array();
       # check for properties, which would override the datevalues
       foreach (array('startyear', 'endyear', 'startmonth', 'endmonth', 'startday', 'endday', 'startweekday', 'endweekday', 'starthour','endhour') as $thisprop) {
@@ -6653,7 +6666,7 @@ class timeSeriesInput extends modelObject {
       // return the values
    }
 
-   function interpValue($thistime, $ts, $tv, $nts, $ntv, $defval = 0) {
+   function interpValue($thistime, $ts, $tv, $nts, $ntv) {
 
       if ($this->intflag == 2) {
          # places a limit on how long we can interpolate
@@ -6661,28 +6674,7 @@ class timeSeriesInput extends modelObject {
             return NULL;
          }
       }
-      switch ($this->intmethod) {
-         case 0:
-            // mean value
-            try {
-              $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
-            } catch (TypeError $e) {
-              error_log("Caught Fatal Error: $this->name ($this->componentid) had interpValue error in $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) ) -- returning default value = $defval");
-              return($defval);
-            }
-         break;
-
-         case 1:
-            // previous value
-            $retval = $tv;
-         break;
-
-         case 2:
-            // next value
-            $retval = $ntv;
-         break;
-
-      }
+      $retval = parent::interpValue($thistime, $ts, $tv, $nts, $ntv);
       return $retval;
    }
 }

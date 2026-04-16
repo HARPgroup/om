@@ -945,9 +945,20 @@ class CBPLandDataConnectionFile extends timeSeriesFile {
       $this->state['agwo'] = floatval($comp_vals['agwo']);
       $this->state['ifwo'] = floatval($comp_vals['ifwo']);
       $this->state['in_ivld'] = floatval($comp_vals['in_ivld']);
-      foreach ($other_comps as $thiscomp) {
-         // un-weight these other components now, since we want raw, not converted values
-         $this->state[$thiscomp] = floatval($comp_vals[$thiscomp] / $area_ac);
+      if (!($area_ac > 0)) {
+        if ($this->elog_count < 10) {
+          $this->elog_count += 1;
+          error_log("$this->name area_sqmi resolved to 0.0 in lu_matrix:" . print_r($lumatrix,1)); 
+        }
+        foreach ($other_comps as $thiscomp) {
+           // un-weight these other components now, since we want raw, not converted values
+           $this->state[$thiscomp] = 0.0;
+        }
+      } else {
+        foreach ($other_comps as $thiscomp) {
+           // un-weight these other components now, since we want raw, not converted values
+           $this->state[$thiscomp] = floatval($comp_vals[$thiscomp] / $area_ac);
+        }
       }
       
       // log the results

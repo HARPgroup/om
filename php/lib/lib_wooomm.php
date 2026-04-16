@@ -6020,10 +6020,10 @@ function loadElement($elem_xml, $parentobject = -1) {
 
 function extract_xml_sertag($thisobject) {
   # check to see if any array props have been mangled
-  $props = get_object_vars($thisobject);
+  $props = array_keys(get_object_vars($thisobject));
   foreach ($props as $propname) {
     #error_log($thisprop);
-    if (property_exists($propname, $thisobject)) {
+    if (property_exists($thisobject, $propname)) {
       if (is_array($thisobject->{$propname}) and array_key_exists('XML_Serializer_Tag', $thisobject->{$propname})) {
         $thisobject->{$propname} = $thisprop{$propname}['XML_Serializer_Tag'];
         $thisdebug .= "Setting $propname to array<br>";

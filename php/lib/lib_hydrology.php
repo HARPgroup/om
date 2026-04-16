@@ -2684,7 +2684,8 @@ class modelObject {
         try {
           $retval = $lowvalue + ($highvalue - $lowvalue) * ( ($thiskey - $lowkey) / ($highkey - $lowkey) );
         } catch (Throwable $r) {
-          if ($this->timer->step < 50) {
+          if ($this->elog_count < 10) {
+               $this->elog_count += 1;
             error_log("Exception on $this->name ($this->componentid) @ " . $this->timer->step . " executing: interpValue($thiskey, $lowkey, $lowvalue, $highkey, $highvalue) = $lowvalue + ($highvalue - $lowvalue) * ( ($thiskey - $lowkey) / ($highkey - $lowkey) ) ");
           }
           return $lowvalue;
@@ -5107,7 +5108,8 @@ class dataMatrix extends modelSubObject {
                $this->logDebug("Rowvals Matrix = " . print_r($rowvals,1) . "<br>");
             }
             if (!is_array($rowvals)) {
-              if ($this->timer->step <= 2) {
+              if ($this->elog_count < 10) {
+               $this->elog_count += 1;
                 error_log("Rowvals matrix is NULL for key: $key1 on $this->name ($this->componentid).");
                 $this->logDebug("Rowvals matrix is NULL for key: $key1 on $this->name ($this->componentid).<br>");
               }
@@ -5117,7 +5119,8 @@ class dataMatrix extends modelSubObject {
               $luval = $this->arrayLookup($rowvals, $key2, $this->lutype2, $this->defaultval, $this->debug);
             }
             if ($this->debug) {
-              if ($this->timer->step <= 2) {
+              if ($this->elog_count < 10) {
+               $this->elog_count += 1;
                $this->logDebug("Final Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
                //error_log("Final Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
                error_log("Rowvals Matrix = " . print_r($rowvals,1) . "<br>");
@@ -6380,7 +6383,8 @@ class timeSeriesInput extends modelObject {
            array_push($forbidden, 'flow_mode');
          }
          if (!is_array($tvals)) {
-           if ($this->timer->step < 2) {
+            if ($this->elog_count < 10) {
+            $this->elog_count += 1;
              error_log("searchTimeSeries() returned null for " . $this->name);
              $tvals = array();
            }

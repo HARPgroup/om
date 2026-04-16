@@ -6028,6 +6028,7 @@ function extract_xml_sertag(&$thisobject) {
       $thisobject->{$propname} = $thisobject->{$propname}['XML_Serializer_Tag'];
     }
   }
+  return $thisobject;
 }
 
 function createObjectLink($projectid, $scenarioid, $src_id, $dest_id, $linktype, $src_prop='', $dest_prop='', $testonly = 0) {

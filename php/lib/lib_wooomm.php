@@ -6024,9 +6024,8 @@ function extract_xml_sertag($thisobject) {
   foreach ($props as $propname) {
     #error_log($thisprop);
     if (is_array($thisobject->{$propname}) and array_key_exists('XML_Serializer_Tag', $thisobject->{$propname})) {
-      error_log("Setting $propname to array<br>");
-      $thisobject->{$propname} = $thisprop{$propname}['XML_Serializer_Tag'];
-      $thisdebug .= "Setting $propname to array<br>";
+      error_log("Extracting $propname from XML_Serializer_Tag<br>");
+      $thisobject->{$propname} = $thisobject{$propname}['XML_Serializer_Tag'];
     }
   }
   return $thisobject;

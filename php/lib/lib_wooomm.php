@@ -6018,17 +6018,16 @@ function loadElement($elem_xml, $parentobject = -1) {
    return $retarr;
 }
 
-function extract_xml_sertag($thisobject) {
+function extract_xml_sertag(&$thisobject) {
   # check to see if any array props have been mangled
   $props = array_keys(get_object_vars($thisobject));
   foreach ($props as $propname) {
     #error_log($thisprop);
     if (is_array($thisobject->{$propname}) and array_key_exists('XML_Serializer_Tag', $thisobject->{$propname})) {
       error_log("Extracting $propname from XML_Serializer_Tag<br>");
-      $thisobject->{$propname} = $thisobject{$propname}['XML_Serializer_Tag'];
+      $thisobject->{$propname} = $thisobject->{$propname}['XML_Serializer_Tag'];
     }
   }
-  return $thisobject;
 }
 
 function createObjectLink($projectid, $scenarioid, $src_id, $dest_id, $linktype, $src_prop='', $dest_prop='', $testonly = 0) {

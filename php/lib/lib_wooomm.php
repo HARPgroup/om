@@ -5993,7 +5993,6 @@ function loadElement($elem_xml, $parentobject = -1) {
       if (method_exists($thisobject, 'wake')) {
          $thisobject->wake();
       }
-
       /*
       # check to see if any array props have been mangled
       $props = (array)$thisobject;
@@ -6017,6 +6016,24 @@ function loadElement($elem_xml, $parentobject = -1) {
    $retarr['object'] = $thisobject;
    $retarr['debug'] = $thisdebug;
    return $retarr;
+}
+
+function extract_xml_sertag($thisobject) {
+  # check to see if any array props have been mangled
+  $props = (array)$thisobject;
+  foreach (array_keys($props) as $thisprop) {
+    #error_log($thisprop);
+    if (property_exists($thisobject, $thisprop)) {
+      $propval = $thisobject->$thisprop;
+      $proparr = (array)$propval;
+      if (isset($proparr['XML_Serializer_Tag'])) {
+        $thisobject->thisprop = $proparr['XML_Serializer_Tag'];
+        $thisdebug .= "Setting $thisprop to array<br>";
+        error_log("Setting $thisprop to array<br>");
+      }
+    }
+  }
+  return $thisobject;
 }
 
 function createObjectLink($projectid, $scenarioid, $src_id, $dest_id, $linktype, $src_prop='', $dest_prop='', $testonly = 0) {
@@ -7909,6 +7926,8 @@ function om_make_object($object_class, $props, $allowRecreate = TRUE, $debug = 0
     //  - but, the applyPropsToObject() method has one advantage in that it checks to see if the object should
     //    have it's recreate() method triggered.
     $result = applyPropsToObject(FALSE, $thisobject, $props, $allowRecreate, $debug);
+    // this checks to see if any arrays have been buried in nested containers
+    $result['object'] = extract_xml_sertag($result['object']);
     $result['object']->object_class = $object_class;
     return $result['object'];
   } else {

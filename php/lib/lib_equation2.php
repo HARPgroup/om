@@ -191,10 +191,13 @@ class Equation extends modelSubObject {
           try {
             $this->result = mathProcessor2( $this->equation, $this->arData, $this, $this->debug);
           } catch (Throwable $e) {
-            error_log( 'Error Executing Object:' . $this->name);
-            error_log( 'Equation:' .  $this->equation);
-            error_log( 'Data:' .  print_r($this->arData,1));
-            error_log( 'Caught exception: ' .  $e->getMessage());
+            if ($this->elog_count < 10) {
+              error_log( 'Error Executing Object:' . $this->name);
+              error_log( 'Equation:' .  $this->equation);
+              error_log( 'Data:' .  print_r($this->arData,1));
+              error_log( 'Caught exception: ' .  $e->getMessage());
+            }
+            $this->elog_count += 1;
           }
           break;
         }

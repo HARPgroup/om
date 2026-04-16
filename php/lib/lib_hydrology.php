@@ -24,6 +24,7 @@ class modelObject {
   var $objectname = '';
   var $defaultval = 0;
   var $logging = 1;
+  var $elog_count = 0; // how many errors have we logged?
   var $object_class = 'modelObject'; // will be set externally but could be overridden
   var $intmethod = 0; // interpolation method - 0 = linear, 1 - stair step
   var $units = 2; // Units 1 - SI, 2 - EE
@@ -3902,7 +3903,7 @@ class modelContainer extends modelObject {
       if (is_object($this->systemlog_obj)) {
          setStatus($this->systemlog_obj, $this->sessionid, $mesg, $this->modelhost, $status_flag, $this->runid, $pid);
          
-         if (count($this->childstatus) > 0) {
+         if (is_array($this->childstatus) and count($this->childstatus) > 0) {
             foreach ($this->childstatus as $thischild) {
                setStatus($this->systemlog_obj, $thischild, "(run $this->sessionid)" . $mesg, $this->modelhost, $status_flag, $this->runid, $pid);
             }

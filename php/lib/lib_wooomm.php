@@ -7922,7 +7922,7 @@ function om_make_object($object_class, $props, $allowRecreate = TRUE, $debug = 0
     //    have it's recreate() method triggered.
     $result = applyPropsToObject(FALSE, $thisobject, $props, $allowRecreate, $debug);
     // this checks to see if any arrays have been buried in nested containers
-   // extract_xml_sertag($result['object']);
+    extract_xml_sertag($result['object']);
     $result['object']->object_class = $object_class;
     return $result['object'];
   } else {

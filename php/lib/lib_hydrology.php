@@ -5117,11 +5117,13 @@ class dataMatrix extends modelSubObject {
               $luval = $this->arrayLookup($rowvals, $key2, $this->lutype2, $this->defaultval, $this->debug);
             }
             if ($this->debug) {
+              if ($this->timer->step <= 2) {
                $this->logDebug("Final Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
                //error_log("Final Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
                error_log("Rowvals Matrix = " . print_r($rowvals,1) . "<br>");
                $this->logDebug("Key 1 = $key1, Key 2 = $key2, LUType = $this->lutype2 - Value: $luval<br>");
                error_log("Key 1 = $key1, Key 2 = $key2, LUType = $this->lutype2 - Value: $luval<br>");
+              }
             }
          break;
       }

@@ -3760,7 +3760,7 @@ class modelContainer extends modelObject {
    function setModelTime($starttime, $endtime = '') {
       // this sets and properly formats time, to allow for using offest/relative times (like "+7 days" and "-7 days"
       if (!strtotime($starttime)) {
-         $starttime = date();
+         $starttime = date('Y-m-d H:i:s');
       }
       $conv_time = new DateTime($starttime);
       $this->starttime = $conv_time->format('Y-m-d H:i:s');
@@ -7872,24 +7872,27 @@ class hydroImpoundment extends hydroObject {
       $this->state['lake_elev'] = $stage;
       $this->state['refill_full_mgd'] = (($max_capacity - $Storage) / 3.07) * (86400.0 / $dt);
       
-      // now calculate heat flux
+      // now calculate heat flux if storage is non-zero
       // O1 is outflow at last time step, 
-      if ( ( $Qout * $dt + $Storage) > 0) {
+      if ( ($Storage > 0) && ( $Qout * $dt + $Storage) > 0) {
          $U = ($Storage * ($U0 + $Uin)) / ( $Qout * $dt + $Storage);
+		 
+         switch ($this->units) {
+           case 1:
+           // SI
+           $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
+           break;
+           
+           case 2:
+           // EE
+           $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
+           break;
+        }
       } else {
          $U = 0.0;
+	 $T = 0.0;
       }
-      switch ($this->units) {
-         case 1:
-         // SI
-         $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
-         break;
-         
-         case 2:
-         // EE
-         $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
-         break;
-      }
+
       // let's also assume that the water isn't frozen, so we limit this to zero
       if ($T < 0) {
          $T = 0;
@@ -15524,7 +15527,11 @@ class hydroImpSmall extends hydroImpoundment {
       $this->storage_matrix = -1;
       $this->vars = array();
       $this->outlet_plugin = FALSE;
-      fclose($this->tmpfile);
+      try {
+	fclose($this->tmpfile);
+      } catch (Throwable $e){
+   	error_log("$this->name could not close $this->tmp file");
+      }
    }
    
    function create() {
@@ -15838,22 +15845,25 @@ class hydroImpSmall extends hydroImpoundment {
       
       // now calculate heat flux
       // O1 is outflow at last time step, 
-      if ( ( $Qout * $dt + $Storage) > 0) {
+      if ( ($Storage > 0) && ( $Qout * $dt + $Storage) > 0) {
          $U = ($Storage * ($U0 + $Uin)) / ( $Qout * $dt + $Storage);
+		 
+	 switch ($this->units) {
+           case 1:
+           // SI
+           $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
+           break;
+           
+           case 2:
+           // EE
+           $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
+           break;
+        }
       } else {
          $U = 0.0;
+	 $T = 0.0;
       }
-      switch ($this->units) {
-         case 1:
-         // SI
-         $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
-         break;
-         
-         case 2:
-         // EE
-         $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
-         break;
-      }
+
       // let's also assume that the water isn't frozen, so we limit this to zero
       if ($T < 0) {
          $T = 0;

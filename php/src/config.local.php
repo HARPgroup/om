@@ -1,17 +1,19 @@
 <?php
+error_reporting(E_ERROR);
+//error_reporting(E_ALL);
 // db passwords stored here
 include ("./config.private");
 $adminemail = 'rburghol@vt.edu';
 // database connection info
 // main modeling database
 $dbname = 'model';
-$dbip = '192.168.0.21'; // dbase2
-$dbport = 5432;
-// dH database
-$dh_dbname = 'drupal.dh03';
-$dh_dbip = '192.168.0.21'; // dbase2
-$dh_dbport = 5432;
-
+$dbip = '192.168.0.21'; // dbase1
+$dbport = 5432; // dbase1 temp
+//$dbport = 5432;
+//$dbip = '192.168.0.21'; // dbase2
+//$dbip = '192.168.0.13'; // deq3
+//$cbp_dbip = '192.168.0.20'; // dbase1
+// deq1 - localhost in use tem as of 1/24/2017
 $cbp_dbip = '192.168.0.21'; 
 $cbp_port = 5434;
 // session data database
@@ -33,8 +35,10 @@ $remote_run = TRUE;
 $vwuds_dbname = 'vwuds';
 //$vwuds_dbip = '192.168.0.13'; // deq3
 $vwuds_dbip = '192.168.0.21'; // dbase1
+$usgs_dbip = '192.168.0.21'; // dbase1
 
-$serverip = 'deq2.bse.vt.edu';
+$serverip = 'deq1.bse.vt.edu:81';
+$server_protocol = "http";
 $mapservip = '66.16.215.162';
 $mapserv_cgi = 'mapserv'; # would be mapserv.exe under windows
 # google api key
@@ -82,7 +86,6 @@ $default_imagetype = 'png';
 $wdm_messagefile = '/var/www/cgi-bin/message.wdm';
 $hspf_exe = '/var/www/cgi-bin/hspf';
 $wdimex_exe = '/var/www/cgi-bin/wdimex';
-
 
 # local executable for php
 //$php_exe = "/var/www/cgi-bin/php";

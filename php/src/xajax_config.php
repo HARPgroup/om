@@ -34,7 +34,7 @@ if ($debug) {
 if ($debug) {
    error_log("Getting Ajax libs from $libpath/");
 }
-error_reporting(E_ERROR);
+//error_reporting(E_ERROR);
 include_once ("$libpath/xajax/xajax_core/xajax.inc.php");
 require_once ("$libpath/xajax/xajax_core/xajaxArgumentManager.inc.php");
 include_once ("$libpath/xajax/xajax_core/plugin_layer/support/xajaxUserFunction.inc.php");

@@ -6024,9 +6024,9 @@ function extract_xml_sertag($thisobject) {
   foreach ($props as $propname) {
     #error_log($thisprop);
     if (is_array($thisobject->{$propname}) and array_key_exists('XML_Serializer_Tag', $thisobject->{$propname})) {
+      error_log("Setting $propname to array<br>");
       $thisobject->{$propname} = $thisprop{$propname}['XML_Serializer_Tag'];
       $thisdebug .= "Setting $propname to array<br>";
-      error_log("Setting $propname to array<br>");
     }
   }
   return $thisobject;
@@ -7923,7 +7923,7 @@ function om_make_object($object_class, $props, $allowRecreate = TRUE, $debug = 0
     //    have it's recreate() method triggered.
     $result = applyPropsToObject(FALSE, $thisobject, $props, $allowRecreate, $debug);
     // this checks to see if any arrays have been buried in nested containers
-    extract_xml_sertag($result['object']);
+   // extract_xml_sertag($result['object']);
     $result['object']->object_class = $object_class;
     return $result['object'];
   } else {

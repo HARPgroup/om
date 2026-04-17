@@ -6386,8 +6386,8 @@ class timeSeriesInput extends modelObject {
             if ($this->elog_count < 10) {
             $this->elog_count += 1;
              error_log("searchTimeSeries() returned null for " . $this->name  " ID: " . $this->componentid);
-             $tvals = array();
            }
+           $tvals = array();
          }
          foreach(array_keys($tvals) as $tkey) {
             if (!in_array($tkey, $forbidden)) {

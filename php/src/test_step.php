@@ -96,7 +96,7 @@ for ($i = 1; $i <= $steps ; $i++) {
 }
 
 $outmesg = "<b>Finished test model run. Note - this is not a complete run and re-run should be completed before analyzing data.<br>";
-$outmesg .= "\nTo remove run status execute: php clear_run.php $modelid $runid";
+$outmesg .= "\nTo remove run status execute: php fn_clearRun.php $modelid $runid";
 error_log($outmesg);
 $model->systemLog($outmesg,0);
 ?>

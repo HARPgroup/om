@@ -24,6 +24,7 @@ class modelObject {
   var $objectname = '';
   var $defaultval = 0;
   var $logging = 1;
+  var $elog_count = 0; // how many errors have we logged?
   var $object_class = 'modelObject'; // will be set externally but could be overridden
   var $intmethod = 0; // interpolation method - 0 = linear, 1 - stair step
   var $units = 2; // Units 1 - SI, 2 - EE
@@ -854,8 +855,13 @@ class modelObject {
        }
     }
     if (is_array($this->components)) {
-       foreach ($this->components as $thisop) {
-          $thisop->setSimTimer($thistimer);
+      error_log("Executable components keys: " . print_r(array_keys($this->components,1)));
+       foreach ($this->components as $thiskey => $thisop) {
+         if (!is_object($thisop)) {
+           error_log("Object key $thiskey is not an executable object. value = " . $thisop);
+         } else {
+           $thisop->setSimTimer($thistimer);
+         }
        }
     }
   }
@@ -1090,7 +1096,7 @@ class modelObject {
         $this->applyJSONPropArray($pname, $pvalue);
       } else {
         $prop = $this->applyJSONComponentArray($pname, $pvalue);
-        error_log("Final prop object " . $prop->name . " of class " . get_class($prop) );
+        //error_log("Final prop object " . $prop->name . " of class " . get_class($prop) );
       }
     }
   }
@@ -1107,11 +1113,11 @@ class modelObject {
     //error_log("Notice: Trying to save $pname as processor ");
     if (!is_array($pvalue)) {
       error_log("Warning: Skipping component $pname because json did not have array. ");
-      return;
+      return $prop;
     }
     if (!isset($pvalue['object_class']) ) {
       error_log("Warning: Skipping component $pname because json did not have object_class. ");
-      return;
+      return $prop;
     }
     // @todo: include plumbing from set_subprop.php to handle robust json property setting.
     // Does a sub-comp of this name exist? Or, is this an object_class change?
@@ -1126,7 +1132,7 @@ class modelObject {
     if ($prop === FALSE) {
       if (!class_exists($object_class)) {
         error_log("Error: Object class $object_class can not be found. Skipping $pname .");
-        return;
+        return $prop;
       }
       if (
         is_subclass_of($object_class, 'modelObject')
@@ -2674,16 +2680,142 @@ class modelObject {
   function interpValue($thiskey, $lowkey, $lowvalue, $highkey, $highvalue) {
 
     switch ($this->intmethod) {
-       case 0:
+      case 0:
+        try {
           $retval = $lowvalue + ($highvalue - $lowvalue) * ( ($thiskey - $lowkey) / ($highkey - $lowkey) );
-       break;
+        } catch (Throwable $r) {
+          if ($this->elog_count < 10) {
+               $this->elog_count += 1;
+            error_log("Exception on $this->name ($this->componentid) @ " . $this->timer->step . " executing: interpValue($thiskey, $lowkey, $lowvalue, $highkey, $highvalue) = $lowvalue + ($highvalue - $lowvalue) * ( ($thiskey - $lowkey) / ($highkey - $lowkey) ) ");
+          }
+          return $lowvalue;
+        }
+      break;
 
-       case 1:
-          $retval = $tv;
-       break;
+      case 1:
+        $retval = $tv;
+      break;
+
+      case 2:
+        // next value
+        $retval = $ntv;
+      break;
 
     }
     return $retval;
+  }
+
+  function arrayLookup($src_array, $search_key, $lookup_method, $defval, $debug=0) {
+    // takes an array, and a key to search for, and performs a lookup, with flexible
+    // key matching (exact match, interpolation, or stair-step) and value tranformation (if stair-step)
+    switch ($lookup_method) {
+      case 0:
+      # exact match lookup table
+      if (in_array($search_key, array_keys($src_array))) {
+         $luval = $src_array[$search_key];
+      } else {
+         $luval = $defval;
+      }
+      break;
+
+      case 1:
+      # interpolated lookup table
+      $lukeys = array_keys($src_array);
+      if ($debug) {
+         error_log("$this->name: Trying to interpolate key $search_key in set " . print_r($lukeys,1));
+      }
+      $luval = $defval;
+      for ($i=0; $i < (count($lukeys) - 1); $i++) {
+         $lokey = $lukeys[$i];
+         $hikey = $lukeys[$i+1];
+         $loval = $src_array[$lokey];
+         $hival = $src_array[$hikey];
+         $minkey = min(array($lokey,$hikey));
+         $maxkey = max(array($lokey,$hikey));
+         if ($debug) {
+            error_log("Is ($minkey <= $search_key) and ($maxkey >= $search_key) ?? ");
+         }
+         if ( ($minkey <= $search_key) and ($maxkey >= $search_key) ) {
+            if (is_array($loval)) {
+               // we have an array, so we have to interpolate each member of the hi and low value arrays
+               $luval = array();
+               foreach ($loval as $key => $value) {
+                  $hv = $hival[$key];
+                  $lv = $value;
+                  $intval = $this->interpValue($search_key, $lokey, $lv, $hikey, $hv);
+                  $luval[$key] = $intval;
+               }
+            } else {
+               if ($debug) {
+                  error_log("Interpolating: interpValue($search_key, $lokey, $loval, $hikey, $hival) ");
+               }
+               $luval = $this->interpValue($search_key, $lokey, $loval, $hikey, $hival);
+            }
+         }
+      }
+      break;
+
+      case 2:
+      # stair-step lookup table
+      $lukeys = array_keys($src_array);
+      if ($debug) {
+         error_log("Stair Step Lookup requested for key $search_key in set " . print_r($lukeys,1));
+      }
+      $luval = $defval;
+      $lastkey = 'N/A';
+      for ($i=0; $i <= (count($lukeys) - 1); $i++) {
+        $lokey = $lukeys[$i];
+        $loval = $src_array[$lokey];
+        if ($debug) {
+           error_log("Comparing $lokey <= $search_key");
+        }
+        if ( ((float)$lokey <= $search_key) ) {
+          $luval = $loval;
+          $lastkey = $lokey;
+          if ($debug) {
+             error_log("match, setting  luval = $loval ");
+          }
+        }
+      }
+      break;
+
+      case 3:
+      # interpolated lookup table, but rather than return the value, returns the interpolated key
+      // useful for return period type calcs
+      $lukeys = array_keys($src_array);
+      $luval = $defval;
+      for ($i=0; $i < (count($lukeys) - 1); $i++) {
+         $lokey = $lukeys[$i];
+         $hikey = $lukeys[$i+1];
+         $loval = $src_array[$lokey];
+         $hival = $src_array[$hikey];
+         $minkey = min(array($loval,$hival));
+         $maxkey = max(array($loval,$hival));
+         //error_log("Type 3 Lookup: Row $i : $search_key, $loval, $lokey, $hival, $hikey");
+         if (!is_array($loval) and !is_array($hival)) {
+            if ( ($minkey <= $search_key) and ($maxkey >= $search_key) ) {
+               $luval = $this->interpValue($search_key, $loval, $lokey, $hival, $hikey);
+            }
+         }
+      }
+      break;
+
+      default:
+      # exact match lookup table
+      if (in_array($search_key, array_keys($src_array))) {
+         $luval = $src_array[$search_key];
+      } else {
+         $luval = $defval;
+      }
+      break;
+
+    }
+
+    if ($debug) {
+      error_log("Returning $luval ");
+    }
+    return $luval;
+
   }
 
   function addLookup($thisinput, $srcparam, $lutype, $lookuptable, $defaultval) {
@@ -3630,7 +3762,7 @@ class modelContainer extends modelObject {
    function setModelTime($starttime, $endtime = '') {
       // this sets and properly formats time, to allow for using offest/relative times (like "+7 days" and "-7 days"
       if (!strtotime($starttime)) {
-         $starttime = date();
+         $starttime = date('Y-m-d H:i:s');
       }
       $conv_time = new DateTime($starttime);
       $this->starttime = $conv_time->format('Y-m-d H:i:s');
@@ -3772,7 +3904,7 @@ class modelContainer extends modelObject {
       if (is_object($this->systemlog_obj)) {
          setStatus($this->systemlog_obj, $this->sessionid, $mesg, $this->modelhost, $status_flag, $this->runid, $pid);
          
-         if (count($this->childstatus) > 0) {
+         if (is_array($this->childstatus) and count($this->childstatus) > 0) {
             foreach ($this->childstatus as $thischild) {
                setStatus($this->systemlog_obj, $thischild, "(run $this->sessionid)" . $mesg, $this->modelhost, $status_flag, $this->runid, $pid);
             }
@@ -4124,8 +4256,12 @@ class modelContainer extends modelObject {
       $execlist = array();
 
       # compile a list of independent and dependent variables
-      foreach ($this->components as $thiscomp) {
+      foreach ($this->components as $thiskey => $thiscomp) {
          // use new getObjectDependencies() method
+         if (!is_object($thiscomp)) {
+           error_log("Warning: Component $thiskey is not an object.");
+           continue;
+         }
          $deps = $thiscomp->getObjectDependencies();
          if ($this->debug) {
             $this->logDebug("<br>getObjectDependencies returned " . count($deps) . " <br>");
@@ -4952,7 +5088,7 @@ class dataMatrix extends modelSubObject {
          
          case 1:
          // 1-column lookup
-            $luval = arrayLookup($this->matrix_formatted, $key1, $this->lutype1, $this->defaultval, $this->debug);
+            $luval = $this->arrayLookup($this->matrix_formatted, $key1, $this->lutype1, $this->defaultval, $this->debug);
             if ($this->debug) {
                error_log("Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
                error_log("Key = " . $key1 . " - Value: $luval<br>");
@@ -4967,26 +5103,30 @@ class dataMatrix extends modelSubObject {
             if ($this->debug) {
                //$this->logDebug("Final Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
             }
-            $rowvals = arrayLookup($this->matrix_formatted, $key1, $this->lutype1, $this->defaultval, $this->debug);
+            $rowvals = $this->arrayLookup($this->matrix_formatted, $key1, $this->lutype1, $this->defaultval, $this->debug);
             if ($this->debug) {
                $this->logDebug("Rowvals Matrix = " . print_r($rowvals,1) . "<br>");
             }
             if (!is_array($rowvals)) {
-              if ($this->timer->step <= 2) {
-                error_log("Rowvals matrix is NULL for key: $key on $this->name ($this->componentid).");
-                $this->logDebug("Rowvals matrix is NULL for key: $key on $this->name ($this->componentid).<br>");
+              if ($this->elog_count < 10) {
+               $this->elog_count += 1;
+                error_log("Rowvals matrix is NULL for key: $key1 on $this->name ($this->componentid).");
+                $this->logDebug("Rowvals matrix is NULL for key: $key1 on $this->name ($this->componentid).<br>");
               }
               $luval = $this->defaultval;
             } else {
               // now perform the column lookup in the selected/interpolated row
-              $luval = arrayLookup($rowvals, $key2, $this->lutype2, $this->defaultval, $this->debug);
+              $luval = $this->arrayLookup($rowvals, $key2, $this->lutype2, $this->defaultval, $this->debug);
             }
             if ($this->debug) {
+              if ($this->elog_count < 10) {
+               $this->elog_count += 1;
                $this->logDebug("Final Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
                //error_log("Final Matrix = " . print_r($this->matrix_formatted,1) . "<br>");
                error_log("Rowvals Matrix = " . print_r($rowvals,1) . "<br>");
                $this->logDebug("Key 1 = $key1, Key 2 = $key2, LUType = $this->lutype2 - Value: $luval<br>");
                error_log("Key 1 = $key1, Key 2 = $key2, LUType = $this->lutype2 - Value: $luval<br>");
+              }
             }
          break;
       }
@@ -5375,6 +5515,7 @@ class lookupObject extends modelSubObject {
       if ($this->debug) {
          $this->logDebug("Scanning $this->lucsv for valid entries<br>");
       }
+      $this->defaultval = $this->defval;
       $this->dateranges = array();
       # check for properties, which would override the datevalues
       foreach (array('startyear', 'endyear', 'startmonth', 'endmonth', 'startday', 'endday', 'startweekday', 'endweekday', 'starthour','endhour') as $thisprop) {
@@ -6242,10 +6383,11 @@ class timeSeriesInput extends modelObject {
            array_push($forbidden, 'flow_mode');
          }
          if (!is_array($tvals)) {
-           if ($this->timer->step < 2) {
-             error_log("searchTimeSeries() returned null for " . $this->name);
-             $tvals = array();
+            if ($this->elog_count < 10) {
+            $this->elog_count += 1;
+             error_log("searchTimeSeries() returned null for " . $this->name . " ID: " . $this->componentid);
            }
+           $tvals = array();
          }
          foreach(array_keys($tvals) as $tkey) {
             if (!in_array($tkey, $forbidden)) {
@@ -6652,23 +6794,7 @@ class timeSeriesInput extends modelObject {
             return NULL;
          }
       }
-      switch ($this->intmethod) {
-         case 0:
-            // mean value
-            $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
-         break;
-
-         case 1:
-            // previous value
-            $retval = $tv;
-         break;
-
-         case 2:
-            // next value
-            $retval = $ntv;
-         break;
-
-      }
+      $retval = parent::interpValue($thistime, $ts, $tv, $nts, $ntv);
       return $retval;
    }
 }
@@ -7285,17 +7411,22 @@ class channelObject extends hydroObject {
     
     // now calculate heat flux
     // O1 is outflow at last time step, 
-    $U = ($Storage * ($U0 + $Uin)) / ( $Qout * $dt + $Storage);
-    switch ($this->units) {
-       case 1:
-       // SI
-       $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
-       break;
-       
-       case 2:
-       // EE
-       $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
-       break;
+    if ($Storage > 0) {
+      $U = ($Storage * ($U0 + $Uin)) / ( $Qout * $dt + $Storage);
+      switch ($this->units) {
+         case 1:
+         // SI
+         $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
+         break;
+         
+         case 2:
+         // EE
+         $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
+         break;
+      }
+    } else {
+      $U =0;
+      $T = 0;
     }
     // let's also assume that the water isn't frozen, so we limit this to zero
     if ($T < 0) {
@@ -7748,24 +7879,27 @@ class hydroImpoundment extends hydroObject {
       $this->state['lake_elev'] = $stage;
       $this->state['refill_full_mgd'] = (($max_capacity - $Storage) / 3.07) * (86400.0 / $dt);
       
-      // now calculate heat flux
+      // now calculate heat flux if storage is non-zero
       // O1 is outflow at last time step, 
-      if ( ( $Qout * $dt + $Storage) > 0) {
+      if ( ($Storage > 0) && ( $Qout * $dt + $Storage) > 0) {
          $U = ($Storage * ($U0 + $Uin)) / ( $Qout * $dt + $Storage);
+		 
+         switch ($this->units) {
+           case 1:
+           // SI
+           $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
+           break;
+           
+           case 2:
+           // EE
+           $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
+           break;
+        }
       } else {
          $U = 0.0;
+	 $T = 0.0;
       }
-      switch ($this->units) {
-         case 1:
-         // SI
-         $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
-         break;
-         
-         case 2:
-         // EE
-         $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
-         break;
-      }
+
       // let's also assume that the water isn't frozen, so we limit this to zero
       if ($T < 0) {
          $T = 0;
@@ -8842,7 +8976,9 @@ class dataConnectionObject extends timeSeriesInput {
    
    function closeDBConns() {
       // close all non-needed connections
-      
+      if ($this->dbobject === FALSE) {
+        return;
+      }
       switch ($this->conntype) {
          case 1:
          # postgis 
@@ -9080,7 +9216,12 @@ class dataConnectionObject extends timeSeriesInput {
       if ($this->debug) {
          $this->logDebug("Getting Data");
       }
+      
       if (is_object($this->dbobject) and (strlen($this->sql_query) > 0) ) {
+        if ($this->dbobject->dbconn === FALSE) {
+          error_log("$this->name has null dbobject dbconn. Returning.");
+          return;
+        }
          // check to see if query has any wildcards in it that we should sub for
          // this should have a select box, so that we don't inadvertently goof it up
          $this->dbobject->querystring = "select * from ( " . $this->subLocalProperties($this->sql_query);
@@ -9540,11 +9681,13 @@ class dataConnectionObject extends timeSeriesInput {
       if ($this->debug) {
          $this->logDebug("function getTablesColumns() called on $this->name <br>");
       }
-      
       $base_query = $this->subLocalProperties($this->sql_query);
       $this->raw_columns = array();
       $this->raw_column_types = array();
-
+      
+      if ($this->dbobject->dbconn === FALSE) {
+        return;
+      }
       switch ($this->conntype) {
          case 1:
          # postgis will call all tables
@@ -15391,7 +15534,11 @@ class hydroImpSmall extends hydroImpoundment {
       $this->storage_matrix = -1;
       $this->vars = array();
       $this->outlet_plugin = FALSE;
-      fclose($this->tmpfile);
+      try {
+	fclose($this->tmpfile);
+      } catch (Throwable $e){
+   	error_log("$this->name could not close $this->tmp file");
+      }
    }
    
    function create() {
@@ -15705,22 +15852,25 @@ class hydroImpSmall extends hydroImpoundment {
       
       // now calculate heat flux
       // O1 is outflow at last time step, 
-      if ( ( $Qout * $dt + $Storage) > 0) {
+      if ( ($Storage > 0) && ( $Qout * $dt + $Storage) > 0) {
          $U = ($Storage * ($U0 + $Uin)) / ( $Qout * $dt + $Storage);
+		 
+	 switch ($this->units) {
+           case 1:
+           // SI
+           $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
+           break;
+           
+           case 2:
+           // EE
+           $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
+           break;
+        }
       } else {
          $U = 0.0;
+	 $T = 0.0;
       }
-      switch ($this->units) {
-         case 1:
-         // SI
-         $T = $U / $Storage; // this is NOT right, don't know what units for storage would be in SI, since this is not really implemented
-         break;
-         
-         case 2:
-         // EE
-         $T = 32.0 + ($U / ($Storage * 7.4805)) * (1.0 / 8.34); // Storage - cubic feet, 7.4805 gal/ft^3
-         break;
-      }
+
       // let's also assume that the water isn't frozen, so we limit this to zero
       if ($T < 0) {
          $T = 0;
@@ -15786,13 +15936,15 @@ class hydroImpSmall extends hydroImpoundment {
       return $innerHTML;
    }
    
-  function setProp($propname, $propvalue, $view = '') {
+  function setProp($propname, $propvalue, $view = '', $debug=FALSE) {
     //$json_object = json_decode($json);
     //if (is_object($thisobject) and $json_object
     // subprop_name can be name:subname 
     // if so, this is a special sub-prop like hydroImpSmall matrix
     list($subprop_name, $subsub_name) = explode(':', $propname);
-    error_log("Matrix $this->name --> setProp $subprop_name $subsub_name");
+    if ($debug) {
+      error_log("Matrix $this->name --> setProp $subprop_name $subsub_name");
+    }
     if ( ($subprop_name == 'storage_stage_area') and ($subsub_name == 'matrix') ) {
       // handle calls to set the stage-storage attributes 
       // decode from json if applicable

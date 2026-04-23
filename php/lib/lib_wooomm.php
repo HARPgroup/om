@@ -1183,7 +1183,7 @@ function addDynamicChildElements($modeldb, $input_props, $dynamics, $debug=0) {
 }
 
 
-function loadModelUsingCached($modeldb, $elementid, $runid, $cache_runid, $input_props, $cache_level, $cache_list, $run_date) {
+function loadModelUsingCached($modeldb, $elementid, $runid, $cache_runid, $input_props, $cache_level, $cache_list, $run_date, $debug = 0) {
    global $listobject;
    $retarr = array();
    $retarr['errors'] = '';
@@ -1725,11 +1725,15 @@ function runCiaWatershed ($prop_elid, $runid, $cache_runid, $startdate='', $endd
 }
 
 function runCached($elementid, $runid, $cache_runid, $startdate, $enddate, $cache_list, $cache_level, $dynamics, $input_props = array(), $test_only = 0) {
-   global $modeldb, $listobject, $outdir, $serverip;
-   $run_date = date('r');
-   if (!is_array($cache_list)) {
+  global $modeldb, $listobject, $outdir, $serverip;
+  $run_date = date('r');
+  if (!is_array($cache_list)) {
+    if (trim($cache_list) == "") {
+    $cache_list = array();
+    } else {
       $cache_list = explode(',', $cache_list);
-   }
+    }
+  }
    // this routine, if passed empty cache_list and dynamics list will simply perform a normal model run
    if (is_array($elementid)) {
       if (count($elementid) > 0) {
@@ -5989,7 +5993,6 @@ function loadElement($elem_xml, $parentobject = -1) {
       if (method_exists($thisobject, 'wake')) {
          $thisobject->wake();
       }
-
       /*
       # check to see if any array props have been mangled
       $props = (array)$thisobject;
@@ -6013,6 +6016,19 @@ function loadElement($elem_xml, $parentobject = -1) {
    $retarr['object'] = $thisobject;
    $retarr['debug'] = $thisdebug;
    return $retarr;
+}
+
+function extract_xml_sertag(&$thisobject) {
+  # check to see if any array props have been mangled
+  $props = array_keys(get_object_vars($thisobject));
+  foreach ($props as $propname) {
+    #error_log($thisprop);
+    if (is_array($thisobject->{$propname}) and array_key_exists('XML_Serializer_Tag', $thisobject->{$propname})) {
+      //error_log("Extracting $propname from XML_Serializer_Tag<br>");
+      $thisobject->{$propname} = $thisobject->{$propname}['XML_Serializer_Tag'];
+    }
+  }
+  return $thisobject;
 }
 
 function createObjectLink($projectid, $scenarioid, $src_id, $dest_id, $linktype, $src_prop='', $dest_prop='', $testonly = 0) {
@@ -7905,6 +7921,8 @@ function om_make_object($object_class, $props, $allowRecreate = TRUE, $debug = 0
     //  - but, the applyPropsToObject() method has one advantage in that it checks to see if the object should
     //    have it's recreate() method triggered.
     $result = applyPropsToObject(FALSE, $thisobject, $props, $allowRecreate, $debug);
+    // this checks to see if any arrays have been buried in nested containers
+    extract_xml_sertag($result['object']);
     $result['object']->object_class = $object_class;
     return $result['object'];
   } else {
@@ -8018,51 +8036,14 @@ function unSerializeSingleModelObject($elementid, $input_props = array(), $debug
       }
    }
    
-   /*
-  // ***** BEGIN Old Method *****
-   if ($debug) {
-      $returnArray['debug'] .= "Creating Unserializer<br>";
-   }
-   // tell the unserializer to create an object
-   $options = array("complexType" => "object");
-   // tell the unserializer to create an array of properties
-   #$options = array("complexType" => "array");
-   // create object 
-   if (!class_exists('XML_Unserializer')) {
-      error_log("class XML_Unserializer - PEAR class needs to be installed ");
-   }
-   //error_log("calling XML_Unserializer ");
-   $unserializer = new XML_Unserializer($options);
-
-   if ($debug) {
-      $returnArray['debug'] .= "Unserializing<br>";
-   }
-   //error_log("Unserializing<br>");
-   // unserialize the object. Use "false" since this is not a document, "true" if it is a document
-   error_log("unserializer->unserialize $elementid" );
-   
-   $result = $unserializer->unserialize($elem_xml, false);
-   error_log("Finished unserializer->unserialize $elementid" );
-   $returnArray['elemtype'] = $unserializer->getRootName();
-   if (is_object($returnArray['elemtype'])) {
-      if (get_class($returnArray['elemtype']) == 'PEAR_Error') {
-         error_log("PEAR Unserialize Error: " . $returnArray['elemtype']->message);
-         error_log("Called from unSerializeSingleModelObject($elementid, : " . print_r($input_props,1));
-      }
-   } else {
-      if ($debug) {
-         error_log("Unserialize found elemen type: " . $returnArray['elemtype']);
-      }
-   }
-   // dump the result
-   $thisobject = $unserializer->getUnserializedData();
-  // ***** END Old Method *****
-  */
-   
   // ***** BEGIN New Method *****
   $object_data = om_xml_array($elem_xml);
   //error_log("XML:" . $elem_xml);
   $object_class = $object_data['object_class'];
+  if (trim($object_class) == "") {
+    error_log("Warning: Could not get object_class from XML, using last database attribute " . $record['objectclass']);
+    $object_class = $record['objectclass'];
+  }
   $thisobject = om_make_object($object_class, $object_data, TRUE, $debug);
   // ***** END New Method *****
   if ($thisobject === FALSE) {
@@ -9179,7 +9160,7 @@ function loadCachedObject($model_listobj, $elementid, $runid, $debug) {
                $j++;
             }
          } else {
-            $thisobject->logDebug(get_class($proj_object) . " is not broadcast object .<br> ");
+            $thisobject->logDebug(get_class($proc_object) . " is not broadcast object .<br> ");
          }
       }
    }

@@ -9,7 +9,7 @@ $runtype = 'normal';
 $sumdir = '/var/www/html/d.dh/'; // default for post-processing
 include_once('xajax_modeling.element.php');
 error_log("Remote Run Parameter: $remote_run ");
-error_reporting(E_ERROR);
+error_reporting(E_ALL);
 $required = array('elementid');
 $optional = array('');
 

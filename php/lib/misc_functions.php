@@ -106,6 +106,9 @@ for($i = 0;$i < count($formar);$i++) {
 
    $thisval = $valar[$i];
    $thisform = $formar[$i+1];
+   if ($thisform == "") {
+     $thisform = "s";
+   }
    #print("format: $thisform - value: $thisval <br>");
    if ( substr($thisform,0,2) == 'sc') {
       $numdecimals = substr($thisform,2);
@@ -480,7 +483,13 @@ function interpValue($thistime, $ts, $tv, $nts, $ntv, $intmethod=1) {
    switch ($intmethod) {
       default:
          //error_log(" $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) ) ");
-         $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
+         try {
+           $retval = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) );
+         } catch (Throwable $r) {
+           error_log("Exception executing: interpValue($thistime, $ts, $tv, $nts, $ntv, $intmethod) = $tv + ($ntv - $tv) * ( ($thistime - $ts) / ($nts - $ts) ) ");
+           return $tv;
+         }
+         
       break;
 
    }

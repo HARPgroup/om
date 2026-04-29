@@ -47,6 +47,7 @@ for (i in names(element_list)) {
 element_json <- jsonlite::prettify(jsonlite::toJSON(element_list, auto_unbox = TRUE))
 #element_json <- paste0('"',stringr::str_replace_all(jsonlite::toJSON(element_list),'"','\"'),'"')
 element_path <- paste0(tempDirectory,"/element_", elid,".json")
+message(paste("Exporting JSON to:", element_path))
 write(element_json,element_path)
 if (!is.na(elid)) {
   cmd_str <- paste("php import_element_json.php", elid, element_path )

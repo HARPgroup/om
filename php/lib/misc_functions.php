@@ -106,6 +106,9 @@ for($i = 0;$i < count($formar);$i++) {
 
    $thisval = $valar[$i];
    $thisform = $formar[$i+1];
+   if ($thisform == "") {
+     $thisform = "s";
+   }
    #print("format: $thisform - value: $thisval <br>");
    if ( substr($thisform,0,2) == 'sc') {
       $numdecimals = substr($thisform,2);

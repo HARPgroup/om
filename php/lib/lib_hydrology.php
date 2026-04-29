@@ -14,8 +14,12 @@ class modelObject {
   // ****** BEGIN - Settable Properties *******
   // ******************************************
   // object class settings
+  var $parentHub; // the "up-link" for peer-broadcast sharing in this container space
+  var $childHub; // the hub space for this objects contained children (their parentHub - if they exist)
   var $name = '';
   var $nullvalue = NULL;
+  var $value = 0;
+  var $result = 0;
   var $debug = 0;
   var $debugmode = 0; // 0-store in string, 1-print debugging info to stderr, 2-print out to stdout, 3-spool to file
   var $cascadedebug = 0;
@@ -205,8 +209,6 @@ class modelObject {
 
     // set up data type for dbexpropt
     // set a name for the temp table that will not hose the db
-    $targ = array(' ',':','-','.');
-    $repl = array('_', '_', '_', '_');
     $this->setDBTablePrefix();
     $this->dbtblname = $this->tblprefix . 'datalog';
     $this->setDataColumnTypes();
@@ -222,6 +224,8 @@ class modelObject {
   }
   
   function setDBTablePrefix() {
+    $targ = array(' ',':','-','.');
+    $repl = array('_', '_', '_', '_');
     $this->tblprefix = str_replace($targ, $repl, "tmp$this->componentid" . "_"  . str_pad(rand(1,99), 3, '0', STR_PAD_LEFT) . "_");
   }
   
@@ -318,7 +322,18 @@ class modelObject {
              $tstate['the_geom'] = 'geom huidden';
              error_log("State variables = " .  print_r($tstate,1) . "\n");
           }
-          $this->parentobject->setStateVar($this->getParentVarName($thisvar), $this->state[$thisvar]);
+          if (!array_key_exists($thisvar, $this->state)) {
+            $this->elog_count += 1;
+            if ($this->elog_count < 10) {
+                error_log( 'Error Executing Object:' . $this->name);
+                error_log( "Tried to setStateVar but $thisvar does not exist in state.");
+                error_log( 'Data:' .  print_r($this->state,1));
+            }
+            $pval = 0.0;
+          } else {
+            $pval = $this->state[$thisvar];
+          }
+          $this->parentobject->setStateVar($this->getParentVarName($thisvar), $pval);
           if ($this->debug and $verbose) {
              $this->logDebug(" $thisvar = " . $this->state[$thisvar] . "<br>\n");
           }
@@ -577,7 +592,7 @@ class modelObject {
              }
           } else {
              $this->data_cols[] = $thiscol;
-             $this->log_formats[$thiscol] = $logformat;
+             $this->logformats[$thiscol] = $logformat;
              $this->dbcolumntypes[$thiscol] = $dbcolumntype;
           }
        }
@@ -855,7 +870,7 @@ class modelObject {
        }
     }
     if (is_array($this->components)) {
-      error_log("Executable components keys: " . print_r(array_keys($this->components,1)));
+      error_log("Executable components keys: " . print_r(array_keys($this->components),1));
        foreach ($this->components as $thiskey => $thisop) {
          if (!is_object($thisop)) {
            error_log("Object key $thiskey is not an executable object. value = " . $thisop);
@@ -1954,6 +1969,13 @@ class modelObject {
        }
        $fdel = ',';
     }
+    $nsf_debug = 0;
+    if ($this->name == "N51065_YP3_6470_6690") { 
+      $nsf_debug = 1; 
+      error_log("Calling nestArraySprintf for $this->name with " . count($this->logtable) . "records");
+      error_log("- Output Formats: $outform");
+      error_log("- logtable keys: " . print_r(array_keys($this->logtable[0]),1));
+    }
     $outarr = nestArraySprintf($outform, $this->logtable);
     return $outarr;
   }
@@ -2060,8 +2082,7 @@ class modelObject {
   }
 
 
-  //function logstate($logvalues = array(), $preserve_timestamp=0) {
-  function logstate($logvalues = array()) {
+  function logstate($logvalues = array(), $preserve_timestamp=0) {
 
     $thislog = array();
 
@@ -2156,7 +2177,7 @@ class modelObject {
          }
          continue;
        }
-       if ( (strlen(trim($thisvar)) > 0) and ( ($this->log_geom == 1) or ($thisvar <> 'the_geom') ) ) {
+       if ( (strlen(trim($thisvar)) > 0) and array_key_exists($thisvar,$logsrc) and ( ($this->log_geom == 1) or ($thisvar <> 'the_geom') ) ) {
           $thislog[$thisvar] = $logsrc[$thisvar];
        }
     }
@@ -3237,7 +3258,7 @@ class modelSubObject extends modelObject {
     parent::sleep();
   }
 
-  function logstate($logvalues = array()) {
+  function logstate($logvalues = array(), $preserve_timestamp=0) {
 
     // logging will be done by the parent, so no need to waste memory and time with this
     // should consider whether we filter values here to prevent mismatches with the log data type.
@@ -3276,8 +3297,6 @@ class modelSubObject extends modelObject {
 
 class broadCastObject extends modelSubObject {
    // HUB object communication entities
-   var $parentHub; // the "up-link" for peer-broadcast sharing in this container space
-   var $childHub; // the hub space for this objects contained children (their parentHub - if they exist)
    var $broadcast_params = array();  // used for remote setting of local_varname and broadcast_varname -- @tbd replace them with this single variable as an array
    var $read_vars = array();
    var $cast_vars = array();
@@ -3445,8 +3464,19 @@ class broadCastObject extends modelSubObject {
       for ($i = 0; $i < count($this->local_varname); $i++) {
          $remote = $this->broadcast_varname[$i];
          $local = $this->local_varname[$i];
-         $target->broadCast($this->broadcast_class, $remote, $this->componentid . '_' . $local, $this->arData[$local]);
-         $this->logDebug("Broadcasting $this->broadcast_class, $remote, $this->componentid, " . $this->arData[$local] . "<br>");
+         if (!array_key_exists($local, $this->arData)) {
+           if ($this->elog_count < 10) {
+             error_log( 'Error Executing Object:' . $this->name . ": key '$local' does not exist in arData" . print_r($this->arData,1) );
+           }
+           $this->elog_count += 1;
+           $bval = 0.0;
+         } else {
+           $bval = $this->arData[$local];
+         }
+         $target->broadCast($this->broadcast_class, $remote, $this->componentid . '_' . $local, $bval);
+         if ($this->debug) {
+            $this->logDebug("Broadcasting $this->broadcast_class, $remote, $this->componentid, " . $bval . "<br>");
+         }
       }
    }
    
@@ -3535,7 +3565,11 @@ class broadCastObject extends modelSubObject {
                $this->logDebug("Looking for remote variable $remote <br>\n");
             }
             $local = $this->local_varname[$i];
-            $remote_array = is_array($thisclass[$remote]) ? $thisclass[$remote] : array();
+            if (isset($thisclass[$remote]) and is_array($thisclass[$remote])) {
+              $remote_array = $thisclass[$remote];
+            } else {
+              $remote_array = array();
+            }
             if ($this->debug) {
                $this->logDebug("Found " . print_r($remote_array, 1) . "<br>\n");
             }
@@ -4946,7 +4980,19 @@ class dataMatrix extends modelSubObject {
             for ($j = 0; $j < $numcols; $j++) {
                // old - did not consider if a value was a variable or not
                //$matrix_rowcol[$i][$j] = $this->matrix[$mindex];
-               $matrix_rowcol[$i][$j] = $this->evalMatrixVar(trim($this->matrix[$mindex]));
+               if (!array_key_exists($mindex, $this->matrix)) {
+                 $mval = 0.0;
+                 if ($this->elog_count < 10) {
+                   $this->elog_count += 1;
+                   error_log("Index $mindex does not exist in matrix for object $this->name ($this->componentid)");
+                   $this->logDebug("Index $mindex does not exist in matrix for object $this->name ($this->componentid).<br>");
+                 }
+               } else {
+                 // now perform the column lookup in the selected/interpolated row
+                 $mstr = $this->matrix[$mindex] === NULL ? '' : trim($this->matrix[$mindex]);
+                 $mval = $this->evalMatrixVar($mstr);
+               }
+               $matrix_rowcol[$i][$j] = $mval;
                $mindex++;
             }
          }
@@ -4962,8 +5008,17 @@ class dataMatrix extends modelSubObject {
             case 1:
                // put it in a single dimensional key-value relationship, with the first column being the keys
                for ($i = 0; $i < $this->numrows; $i++) {
+                 if (!array_key_exists($i, $matrix_rowcol)) {
+                   $key = 0;
+                   if ($this->elog_count < 10) {
+                     $this->elog_count += 1;
+                     error_log("Row $i does not exist in matrix_rowcol for object $this->name ($this->componentid)");
+                     $this->logDebug("Row $i does not exist in matrix_rowcol for object $this->name ($this->componentid).<br>");
+                   }
+                 } else {
+                   // now perform the column lookup in the selected/interpolated row
                   $key = $matrix_rowcol[$i][0];
-                  
+                 }
                   if ($numcols == 1) {
                      $values = $this->defaultval;
                   } else {
@@ -6704,6 +6759,7 @@ class timeSeriesInput extends modelObject {
                $meanarr[$thisspan] = 0;
                $sumarr[$thisspan] = 0;
                foreach ($spanvals[$thisspan] as $spanv) {
+                 $spanv = floatval($spanv);
                   $meanarr[$thisspan] += $spanv;
                   $sumarr[$thisspan] += $spanv;
                }
@@ -6813,7 +6869,7 @@ class timeSeriesFile extends timeSeriesInput {
     parent::sleep();
   }
   
-  function logState($logvalues = array()) {
+  function logState($logvalues = array(), $preserve_timestamp=0) {
     // need to call this to fix timestamp values such as modays that may get interpolated if
     // the source file is a model run record.
     $this->setStateTimerVars();
@@ -7243,7 +7299,11 @@ class channelObject extends hydroObject {
       $this->setSingleDataColumnType('pdepth', 'float8', $this->pdepth);
       $this->setSingleDataColumnType('last_S', 'float8', $this->pdepth);
       
-      $statenums = array('Qout', 'depth', 'Vout', 'Storage', 'T', 'U', 'Uout','demand', 'pdepth', 'Rin', 'discharge', 'last_discharge', 'last_demand', 'imp_off', 'Qlocal', 'rejected_demand_mgd', 'rejected_demand_pct');
+      $statenums = array('Qout', 'depth', 'Vout', 'Storage', 'T', 'U', 'Uout',
+         'demand', 'pdepth', 'Rin', 'discharge', 'last_discharge', 'last_demand', 
+         'imp_off', 'Qlocal', 'rejected_demand_mgd', 'rejected_demand_pct',
+         'Uin', 'Qafps'
+      );
       foreach ($statenums as $thiscol) {
          $this->setSingleDataColumnType($thiscol, 'float8', 0);
          //$this->dbcolumntypes[$thiscol] = 'float8';
@@ -7722,6 +7782,8 @@ class hydroImpoundment extends hydroObject {
       $demand = $this->state['demand']; // assumed to be in MGD
       $refill = $this->state['refill']; // assumed to be in MGD
       $discharge = $this->state['discharge']; // assumed to be in MGD
+      $Vout = 0.0; // we do not currently simulate this
+      $depth = 0.0; // this would be riser depth - we do not currently simulate this
       // In original method of doing this we recognized flowby as the release variable
       // so we support that.  This should never be used.
       // Note: this code is used also by the hydroImp_small component if the riser option is OFF.
@@ -7905,6 +7967,7 @@ class hydroImpoundment extends hydroObject {
          $T = 0;
       }
       $Uout = $U0 + $Uin - $U;
+      $this->state['Uin'] = $Uin;
       $this->state['U'] = $U;
       $this->state['Uout'] = $Uout;
       $this->state['T'] = $T;
@@ -15064,7 +15127,7 @@ class WDMDSN extends timeSeriesInput {
       #error_log("State of DSN $dsn " . print_r($this->state, 1));
    }
    
-  function logstate($logvalues = array()) {
+  function logstate($logvalues = array(), $preserve_timestamp=0) {
 
     $thislog = array();
 
@@ -15849,6 +15912,11 @@ class hydroImpSmall extends hydroImpoundment {
       $this->state['storage_mg'] = $Storage / 3.07;
       $this->state['lake_elev'] = $stage;
       $this->state['refill_full_mgd'] = (($max_capacity - $Storage) / 3.07) * (86400.0 / $dt);
+      $this->state['riser_stage'] = $stage; // same as lake+elev
+      $this->state['riser_head'] = 0.0; // not currently simulated
+      $this->state['riser_flow'] = $riser_flow;
+      $this->state['riser_mode'] = $riser_mode;
+      $this->state['riser_flow'] = $riser_flow;
       
       // now calculate heat flux
       // O1 is outflow at last time step, 
@@ -15941,7 +16009,7 @@ class hydroImpSmall extends hydroImpoundment {
     //if (is_object($thisobject) and $json_object
     // subprop_name can be name:subname 
     // if so, this is a special sub-prop like hydroImpSmall matrix
-    list($subprop_name, $subsub_name) = explode(':', $propname);
+    list($subprop_name, $subsub_name) = array_pad(explode(':', $propname), 2, NULL);
     if ($debug) {
       error_log("Matrix $this->name --> setProp $subprop_name $subsub_name");
     }
@@ -17070,6 +17138,7 @@ class textField extends modelSubObject {
    var $value = '';
    var $loggable = 1;
    var $json2d = TRUE;
+   var $result = '';
    
    
   function wake() {

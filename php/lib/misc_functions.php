@@ -79,12 +79,18 @@ function isalpha($test) {
    return !(preg_match("/[^a-z,A-Z ]/", $test));
 }
 
-function nestArraySprintf($formatstring, $inarray) {
+function nestArraySprintf($formatstring, $inarray, $debug=0) {
 
+   if ($debug) {
+     error_log("calling arraySprintf for " . count($inarray) . " lines");
+   }
    $outarr = array();
    foreach ($inarray as $thisline) {
       $outline = arraySprintf($formatstring, $thisline);
       array_push($outarr, $outline);
+   }
+   if ($debug) {
+     error_log("Returned from arraySprintf with " . count($outarr) . "lines");
    }
 
    return $outarr;
@@ -96,6 +102,7 @@ function arraySprintf($formatstring, $inarray) {
 # uses sciFormat, a custom sprintf function
 
 $numr = count($inarray);
+$formatstring = str_replace(["'", '"'], "", $formatstring);
 $formar = explode('%',$formatstring);
 $valar = array_values($inarray);
 $outstring = $formar[0];
@@ -104,8 +111,16 @@ $outstring = $formar[0];
 
 for($i = 0;$i < count($formar);$i++) {
 
-   $thisval = $valar[$i];
-   $thisform = $formar[$i+1];
+   if (array_key_exists($i,$valar)) {
+     $thisval = $valar[$i];
+   } else {
+     $thisval = '';
+   }
+   if (array_key_exists($i+1,$formar)) {
+     $thisform = $formar[$i + 1];
+   } else {
+     $thisform = "s";
+   } 
    if ($thisform == "") {
      $thisform = "s";
    }

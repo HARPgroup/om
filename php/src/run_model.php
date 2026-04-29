@@ -7,12 +7,21 @@ $noajax = 1;
 $projectid = 3;
 $runtype = 'normal';
 $sumdir = '/var/www/html/d.dh/'; // default for post-processing
+error_reporting(E_ERROR);
 include_once('xajax_modeling.element.php');
 error_log("Remote Run Parameter: $remote_run ");
-error_reporting(E_ALL);
 $required = array('elementid');
 $optional = array('');
-
+// check status and fail if the runtime model sb is not available
+$stat = pg_connection_status($modeldb->dbconn);
+if (!($stat === PGSQL_CONNECTION_OK)) {
+  error_log("Model runtime database is not running, exiting.");
+  error_log("- connstring = $modeldb->connstring");
+  error_log("To start the runtime db try:");
+  error_log("sudo su - postgres");
+  error_log("/opt/model/om/sh/startup.model_scratch.sh");
+  exit;
+}
 $runVars = array('runid'=>-1, 'elementid'=>-1, 'cache_runid'=>-1, 'startdate'=>'', 'enddate'=>'', 'cache_level'=>-1, 'cache_list' => '', 'test_only' => 0, 'scenarioid' => -1);
 
 if (isset($_GET['runtype'])) {

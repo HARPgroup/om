@@ -13,7 +13,7 @@ function lookupDetail($dbconn,$listtable,$listpkcol,$listcolumns,$selectedcol,$s
    #print("$getlistsql<br>");
    $returnvals = array();
    $getlistquery = pg_exec($dbconn,$getlistsql);
-   for ($i = 0;$i < pg_numrows($getlistquery);$i++) {
+   for ($i = 0;$i < pg_num_rows($getlistquery);$i++) {
       $getlistrow = pg_fetch_array($getlistquery,$i,PGSQL_ASSOC);
       array_push($returnvals,$getlistrow);
    }
@@ -100,40 +100,44 @@ class pgsql_QueryObject {
       $this->numrows = 0;
 
       if ( ($this->querystring <> "") && (isset($this->dbconn)) ) {
-         #$this->result = pg_exec($this->dbconn,$this->querystring);
-         $this->error = FALSE;
-         // asynchronous method
-         //pg_send_query($this->dbconn,$this->querystring);
-         //$this->result = pg_get_result($this->dbconn);
-         //$this->error = pg_result_error($this->result);
-         // synchronous method
-         $this->result = pg_query($this->dbconn,$this->querystring);
-         $this->error = pg_last_error($this->dbconn);
-         $this->queryrecords = array();
-         
-         if (!$this->error) {
-            # a false error result means that the query succeeded, so proceed with records, otherwise set error
-            # only store a certain number of records, if not, simply store the result and exit
-            if ( (pg_numrows($this->result) <= $this->maxrecords) or ($this->maxrecords == -1)) {
-               for ($i = 0;$i < pg_numrows($this->result);$i++) {
-                  array_push($this->queryrecords,pg_fetch_array($this->result,$i,PGSQL_ASSOC));
-                  $this->numrows++;
-               }
-            } else {
-               print("Max records exceeded in query, result stored.");
-            }
-            $this->lastserial = -1;
-            # get the last serial value for the pk, can be used later if this is an insert
-            if (isset($this->adminsetup['table info']['pk_seq'])) {
-               # this only works if the sequence is identified in the table setup
-               $seqname = $this->adminsetup['table info']['pk_seq'];
-               $seqres = pg_exec($this->dbconn, "SELECT currval('$seqname')");
-               if (pg_numrows($seqres) == 1) {
-                  $resvals = pg_fetch_array($seqres,0,PGSQL_ASSOC);
-                  $this->lastserial = $resvals['currval'];
-               }
-            }
-         }
+        #$this->result = pg_exec($this->dbconn,$this->querystring);
+        $this->error = FALSE;
+        // asynchronous method
+        //pg_send_query($this->dbconn,$this->querystring);
+        //$this->result = pg_get_result($this->dbconn);
+        //$this->error = pg_result_error($this->result);
+        // synchronous method
+        $this->queryrecords = array();
+        if ($this->dbconn === FALSE) {
+          error_log("psql_queryobject $this->connstring has null dbobject dbconn. Returning.");
+          return;
+        }
+        $this->result = pg_query($this->dbconn,$this->querystring);
+        $this->error = pg_last_error($this->dbconn);
+
+        if (!$this->error) {
+          # a false error result means that the query succeeded, so proceed with records, otherwise set error
+          # only store a certain number of records, if not, simply store the result and exit
+          if ( (pg_num_rows($this->result) <= $this->maxrecords) or ($this->maxrecords == -1)) {
+             for ($i = 0;$i < pg_num_rows($this->result);$i++) {
+                array_push($this->queryrecords,pg_fetch_array($this->result,$i,PGSQL_ASSOC));
+                $this->numrows++;
+             }
+          } else {
+             print("Max records exceeded in query, result stored.");
+          }
+          $this->lastserial = -1;
+          # get the last serial value for the pk, can be used later if this is an insert
+          if (isset($this->adminsetup['table info']['pk_seq'])) {
+             # this only works if the sequence is identified in the table setup
+             $seqname = $this->adminsetup['table info']['pk_seq'];
+             $seqres = pg_exec($this->dbconn, "SELECT currval('$seqname')");
+             if (pg_num_rows($seqres) == 1) {
+                $resvals = pg_fetch_array($seqres,0,PGSQL_ASSOC);
+                $this->lastserial = $resvals['currval'];
+             }
+          }
+        }
             
       } else {
          if (!isset($this->dbconn)) {
@@ -407,6 +411,12 @@ class pgsql_QueryObject {
                  if ($this->debug) {
                     //error_log("$thiscol is Numeric column <br>\n");
                  }
+                 if (!array_key_exists($thiscol, $thisrow)) {
+                   $thisrow[$thiscol] = '';
+                 }
+                 if ($thisrow[$thiscol] === NULL) {
+                    $thisrow[$thiscol] = 'NULL';
+                 }
                  if (trim($thisrow[$thiscol]) == '') {
                     $thisrow[$thiscol] = 'NULL';
                  }
@@ -464,19 +474,20 @@ class pgsql_QueryObject {
    
    function guessDataType($thisval) {
      // strip quotes from the beginning and end?
+     $charlen = 0;
      if (is_numeric($thisval)) {
         $vtype = 'float8';
      } elseif (strtotime($thisval)) {
         $vtype = 'timestamp';
      } elseif (is_string($thisval)) {
         $vtype = 'varchar(' . intval(3.0 * strlen($thisval) + 1) . ')';
-        $charlens[$thisname] = intval(3.0 * strlen($thisval) + 1);
+        $charlen = intval(3.0 * strlen($thisval) + 1);
      } else {
         $vtype = 'varchar(' . intval(3.0 * strlen($thisval) + 1) . ')';
-        $charlens[$thisname] = intval(3.0 * strlen($thisval) + 1);
+        $charlen = intval(3.0 * strlen($thisval) + 1);
      }
      
-     return array('vtype' => $vtype, 'length' => $charlens);
+     return array('vtype' => $vtype, 'length' => $charlen);
   }
 
 

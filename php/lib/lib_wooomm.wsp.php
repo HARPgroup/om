@@ -1231,6 +1231,12 @@ class wsp_conservation extends modelSubObject {
    function init() {
       parent::init();
    }
+
+   function setState() {
+      parent::setState();
+      $this->setStateVar('enable_conservation', $this->enable_conservation);
+   }
+
    
    function step() {
       parent::step();
@@ -1265,6 +1271,7 @@ class wsp_conservation extends modelSubObject {
          $reduction = $this->state[$this->custom_cons_var];
          break;
       }
+      $this->state['reduction'] = $reduction;
          
    }
    

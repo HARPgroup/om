@@ -1976,7 +1976,11 @@ class modelObject {
       error_log("- Output Formats: $outform");
       error_log("- logtable keys: " . print_r(array_keys($this->logtable[0]),1));
     }
-    $outarr = nestArraySprintf($outform, $this->logtable);
+    $outarr = nestArraySprintf($outform, $this->logtable, $nsf_debug);
+    $mem_use = (memory_get_usage(true) / (1024.0 * 1024.0));
+    $mem_use_malloc = (memory_get_usage(false) / (1024.0 * 1024.0));
+    error_log("Total Memory used = $mem_use / $mem_use_malloc (malloc method)");
+
     return $outarr;
   }
 

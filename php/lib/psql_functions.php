@@ -323,6 +323,13 @@ class pgsql_QueryObject {
            } else {
               # try to guess the type
               $thisval = $values[$firstkey][$thisname];
+              # screen for array values, which we should NOT be getting.
+              if (is_array($thisval)) {
+                error_log("Fatal Error: Array value sent to SQL logging for $thisname - Quitting");
+                error_log("Debugging Info: array keys:", print_r($colnames,1));
+                error_log("Debugging Info: array values:", print_r($values[$firstkey],1));
+                exit;
+              }
 
               if (is_numeric($thisval)) {
                  $vtype = 'float8';

@@ -11743,7 +11743,7 @@ function createxAjaxGrid($tablename, $divname, $start = 0, $limit = 1,$filter = 
    return $result;
 }
 
-function createPostGrid($tablename, $divname, $start = 0, $limit = 1,$filter = null, $content = null, $order = null, $form_name){
+function createPostGrid($tablename, $divname, $start = 0, $limit = 1,$filter = null, $content = null, $order = null, $form_name = ''){
    global $session_db;
    $result = array('innerHTML'=>'', 'query'=>'');
    $html = '';

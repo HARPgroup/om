@@ -553,7 +553,20 @@ function mathProcessor2( $sEquation, $arData, $eqobject, $debug = 0) {
     
     foreach ($arSorted as $thisLengthData) {
        foreach(array_keys($thisLengthData) as $thisvar) {
-          $sEquation = str_replace($thisvar,$arData[$thisvar], $sEquation);
+          // insure a non-null replacement
+          if ($arData[$thisvar] === NULL) {
+             $rval = '';
+             $eqobject->elog_count += 1;
+             if ($eqobject->elog_count < 10) {
+                error_log( 'Error Executing Object:' . $eqobject->name);
+                error_log( 'Equation:' .  $eqobject->equation);
+                error_log( 'Data:' .  print_r($eqobject->arData,1));
+                error_log( 'Caught exception: ' .  $e->getMessage());
+             }
+          } else {
+             $rval = $arData[$thisvar];
+          }
+          $sEquation = str_replace($thisvar,$rval, $sEquation);
        }
     }
     // substitute + for double --

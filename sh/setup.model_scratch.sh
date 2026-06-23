@@ -1,7 +1,7 @@
 #!/bin/sh
 # shell
 pgbase="/data/postgres"
-libbase="/usr/lib/postgresql/$pgv/bin"
+libbase="/usr/lib/postgresql"
 pguser="postgres"
 db_port=5433
 if [ $# -lt 1 ]; then
@@ -18,7 +18,7 @@ if [ $# -gt 2 ]; then
 fi
 pgpath="${pgbase}/$pgv"
 bindir="${libbase}/$pgv/bin"
-echo "Setting up OM  model_sesssiondata on "
+echo "Setting up OM  model_scratch on "
 echo "PostgreSQL version: $pgv"
 echo "pgpath=$pgpath"
 echo "bindir=$bindir"

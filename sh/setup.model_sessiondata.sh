@@ -1,7 +1,7 @@
 #!/bin/sh
 # shell
 pgbase="/data/postgres"
-libbase="/usr/lib/postgresql/$pgv/bin"
+libbase="/usr/lib/postgresql"
 pguser="postgres"
 db_port=5433
 if [ $# -lt 1 ]; then

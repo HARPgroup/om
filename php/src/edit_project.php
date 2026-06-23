@@ -458,10 +458,13 @@ switch ($props['runform']) {
       $spatial_id = $runvars['elementid'];
    break;
 }
+/*
+// DISABLE UNUSED TAB
 $wkt = getElementShape($spatial_id);
 $bioinfo = showBioDB ($wkt);
 $taboutput->tab_HTML['aquatic_bio'] .= "<i>Using elementid $spatial_id for spatial coverage </i><br>";
 $taboutput->tab_HTML['aquatic_bio'] .= $bioinfo['innerHTML'];
+*/
 //$taboutput->tab_HTML['aquatic_bio'] .= $bioinfo['debug'];
 // *****************************
 // END - Aquatic Bio Tab

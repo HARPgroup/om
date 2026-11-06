@@ -69,6 +69,7 @@ if (is.na(l90_RUnit)) {
 l90prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_RUnit', l90_RUnit, ds)
 l90yr_prop <- vahydro_post_metric_to_scenprop(scenprop$pid, 'om_class_Constant', NULL, 'l90_year', l90_year, ds)
 # post warnings if need be
+warnings <- scenprop$set_prop('warnings', varkey='om_annotation')
 if (l90_Runit == 0.0) {
   warning <- warnings$set_prop('l90_Runit', varkey='om_annotation', propcode = paste('l90_Runit is 0.0 in simulation',runid))
 }

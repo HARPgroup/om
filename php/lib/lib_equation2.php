@@ -191,7 +191,7 @@ class Equation extends modelSubObject {
           try {
             $this->result = mathProcessor2( $this->equation, $this->arData, $this, $this->debug);
           } catch (Throwable $e) {
-            if ($this->elog_count < 10) {
+            if (($this->timer->step > 1) AND ($this->elog_count < 10)) {
               error_log( 'Error Executing Object:' . $this->name);
               error_log( 'Equation:' .  $this->equation);
               error_log( 'Data:' .  print_r($this->arData,1));

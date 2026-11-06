@@ -6428,7 +6428,7 @@ function saveModelObject($elementid, $thisobject, $prop_array, $debug = 0) {
       } else {
          $debugHTML .= $compres['errorHTML'];
       }
-      //error_log("Finished storing");
+      //error_log("$listobject->querystring");
    } else {
       $innerHTML .= "\n\nThere was a problem loading object $elementid - " . $loadres['error'];
    }

@@ -985,7 +985,7 @@ class modelObject {
        // 
        if (!($inval === NULL)) {
           if ($method == 'guess') {
-             if (is_numeric($inval)) {
+             if (is_numeric($inval) AND is_numeric($this->state[$varname]) ) {
                 if( $this->state[$varname] === NULL) {
                    $this->state[$varname] = 0;
                 }
@@ -9015,6 +9015,9 @@ class dataConnectionObject extends timeSeriesInput {
             }
             $this->listobject->performQuery();
          }
+      if (!is_array($this->columns)) {
+        return;
+      }
 
          if ( in_array($this->lat_col, $this->columns) and in_array($this->lon_col, $this->columns) ) {
             # now, if we have defined an X/Y column, we have to clean up the geomtry table

@@ -157,6 +157,9 @@ class PEAR_XMLParser
      */
     function postProcess($data, $element)
     {
+        if ($data === NULL) {
+             return "";
+        }
         return trim($data);
     }
 

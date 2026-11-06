@@ -65,8 +65,9 @@ if ($subcomp <> '') {
 }
 
 for ($i = 1; $i <= $steps ; $i++) {
+  $sc->debug = 1;
   $model->step();
-  error_log("State for " . $target->name . "(" . get_class($target) . ") ");
+  error_log("Step $i for " . $target->name . "(" . get_class($target) . ") ");
   error_log("state: " . print_r($target->debugFormat($target->state),1));
   if ($subcomp <> '') {
     $ar = $target->debugFormat($sc->arData);
@@ -74,10 +75,28 @@ for ($i = 1; $i <= $steps ; $i++) {
     error_log("arData:" . print_r($ar,1) );
     $sv = $target->debugFormat($sc->state);
     error_log("state:" . print_r($sv,1) );
+    if (get_class($sc) == 'broadCastObject') {
+      error_log("$sc->name is broadCastObject on channel $sc->broadcast_channel");
+      error_log("Reading local vars: " . print_r($sc->local_varname,1));
+      switch ($sc->broadcast_hub) {
+         case 'parent':
+            $hub = $sc->parentHub;
+         break;
+         case 'child':
+            $hub = $sc->childHub;
+         break;
+         default:
+           error_log("$sc->name is broadcast_hub $sc->broadcast_hub is not valid");
+         break;
+      }
+      $hub_data = $hub->read();
+      error_log("HUB DATA: " . print_r($hub_data,1));
+    }
   }
 }
 
 $outmesg = "<b>Finished test model run. Note - this is not a complete run and re-run should be completed before analyzing data.<br>";
+$outmesg .= "\nTo remove run status execute: php fn_clearRun.php $modelid $runid";
 error_log($outmesg);
 $model->systemLog($outmesg,0);
 ?>

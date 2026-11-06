@@ -1,8 +1,8 @@
 ################################
 #### *** Water Supply Element
 ################################
+# Initialize ####
 # dirs/URLs
-
 #----------------------------------------------
 site <- "http://deq1.bse.vt.edu/d.dh"    #Specify the site of interest, either d.bet OR d.dh
 #----------------------------------------------
@@ -20,12 +20,12 @@ suppressPackageStartupMessages(library(dplyr))
 
 source('https://github.com/HARPgroup/om/raw/main/R/summarize/fn_get_pd_min.R')
 
-# Read Args
+# Read Args ####
 argst <- commandArgs(trailingOnly=T)
 pid <- as.integer(argst[1])
 elid <- as.integer(argst[2])
 runid <- as.integer(argst[3])
-fn$message("To Debug set: argst=c($pid $elid $runid")
+fn$message("To Debug set: argst=c($pid, $elid, $runid)")
 finfo <- fn_get_runfile_info(elid, runid,37, site= omsite)
 remote_url <- as.character(finfo$remote_url)
 dat <- fn_get_runfile(elid, runid, site= omsite,  cached = FALSE)
@@ -39,6 +39,8 @@ edate <- max(dat$thisdate)
 syear <- year(sdate)
 eyear <- year(edate)
 cols <- names(dat)
+
+# Local Imp Check ####
 # does this have an impoundment sub-comp and is imp_off = 0?
 # check for local_impoundment, and if so, rename to impoundment for processing
 if("local_impoundment" %in% cols) {
@@ -59,6 +61,7 @@ imp_enabled = FALSE
 if("impoundment" %in% cols) {
   imp_enabled = TRUE
 }
+## Pump Checks ####
 pump_store = FALSE
 # rename ps_refill_pump_mgd to refill_pump_mgd
 if (!("refill_pump_mgd" %in% cols)) {
@@ -129,6 +132,7 @@ vahydro_post_metric_to_scenprop(scenprop$pid, 'external_file', remote_url, 'logf
 #dat <- window(dat, start = as.POSIXct("1984-10-01"), end = as.POSIXct("2014-09-30"));
 #boxplot(as.numeric(dat$Qreach) ~ dat$year, ylim=c(0,amn))
 
+# Barplot of base demand ####
 datdf <- as.data.frame(dat)
 modat <- sqldf("select month, avg(base_demand_mgd) as base_demand_mgd from datdf group by month")
 #barplot(wd_mgd ~ month, data=modat)

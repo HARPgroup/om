@@ -13,7 +13,7 @@ library(stringr)
 # dirs/URLs
 save_directory <- "/var/www/html/data/proj3/out"
 suppressPackageStartupMessages(library(hydrotools))
-suppressPackageStartupMessages(library(IHA))
+#suppressPackageStartupMessages(library(IHA))
 # authenticate
 
 source('https://github.com/HARPgroup/om/raw/main/R/summarize/fn_get_pd_min.R')

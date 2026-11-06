@@ -598,6 +598,13 @@ class USGSGageObject extends timeSeriesInput {
             if ($this->debug) {
                $this->logDebug("Adding record: " . print_r($thisdata,1) . "<br>");
             }
+            if (!array_key_exists('thisdate', $thisdata)) {
+              $this->elog_count += 1;
+              if ($this->elog_count < 10) {
+                error_log( "Warning: 'thisdate' not found in USGS Object data:" . $this->name);
+              }
+              continue;
+            }
             $thisdate = new DateTime($thisdata['datetime']);
             $ts = $thisdate->format('r');
             $uts = $thisdate->format('U');
@@ -724,7 +731,7 @@ class USGSGageSubComp extends USGSGageObject {
       parent::sleep();
    }
    
-   function logstate($logvalues = array()) {
+   function logstate($logvalues = array(), $preserve_timestamp=0) {
 
     $thislog = array();
 

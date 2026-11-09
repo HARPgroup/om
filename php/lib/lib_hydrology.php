@@ -6882,8 +6882,13 @@ class timeSeriesFile extends timeSeriesInput {
 
   function wake() {
     parent::wake();
-    $fe = fopen($this->getFileName(),'r');
-    error_log("File open result: $fe for " . $this->getFileName());
+    $fname = $this->getFileName();
+    try {
+      $fe = fopen($fname,'r');
+    } catch (Throwable $e){
+      error_log("$this->name ($this->componentid) could not open file $fname");
+      error_log("File open result: $fe for " . $this->getFileName());
+    }
     if ($fe) {
       if ($this->location_type == 0) {
         fclose($fe);
@@ -15605,9 +15610,9 @@ class hydroImpSmall extends hydroImpoundment {
       $this->vars = array();
       $this->outlet_plugin = FALSE;
       try {
-	fclose($this->tmpfile);
+        fclose($this->tmpfile);
       } catch (Throwable $e){
-   	error_log("$this->name could not close $this->tmp file");
+        error_log("$this->name could not close $this->tmp file");
       }
    }
    
